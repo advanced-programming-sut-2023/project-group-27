@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/GameMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/LoginMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/MapEditMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/ProfileMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/RegisterMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/TradeMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Cell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Fightable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/FoodType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Passable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/ResourceType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Trade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/TradingSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/building/Building.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/building/CivilBuilding.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/building/FightableBuilding.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuilding.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/CastleComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/Tower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/Trap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/Wall.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/man/Engineer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/man/Man.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/man/MeeleSoldier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/man/RangedSoldier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/man/Soldier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/task/Fight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/task/Move.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/task/Patrol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/task/Task.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/GameMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/LoginMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/MapEditMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/ProfileMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/RegisterMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/TradeMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/enums/GameMenuRegexes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/enums/LoginMenuRegexes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/enums/MapEditMenuRegexes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/enums/ProfileMenuRegexes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/enums/RegisterMenuRegexes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/enums/TradeMenuRegexes.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2ONsgClZmzcWnTpaFMAKFHic5mL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="" />
+      <created>1681412486243</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1681412486243</updated>
+      <workItem from="1681412490459" duration="4091000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
