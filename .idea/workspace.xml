@@ -53,7 +53,7 @@
       <option name="presentableId" value="Default" />
       <updated>1681412486243</updated>
       <workItem from="1681412490459" duration="4091000" />
-      <workItem from="1681417260676" duration="391000" />
+      <workItem from="1681417260676" duration="710000" />
     </task>
     <task id="LOCAL-00001" summary="first commit to initial_base">
       <created>1681417450067</created>
@@ -69,7 +69,28 @@
       <option name="project" value="LOCAL" />
       <updated>1681417644977</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="first commit to initial_base">
+      <created>1681417694228</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681417694228</updated>
+    </task>
+    <task id="LOCAL-00004" summary="first commit to initial_base">
+      <created>1681417784046</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681417784046</updated>
+    </task>
+    <task id="LOCAL-00005" summary="first commit to initial_base">
+      <created>1681417792180</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1681417792180</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
