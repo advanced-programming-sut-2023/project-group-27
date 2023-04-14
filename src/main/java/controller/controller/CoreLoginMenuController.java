@@ -1,6 +1,6 @@
 package controller.controller;
 
-public class LoginMenuController {
+public class CoreLoginMenuController {
 
     public String login(String username, String password) {
         return null;
