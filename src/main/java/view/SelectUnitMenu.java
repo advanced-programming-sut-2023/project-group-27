@@ -5,13 +5,14 @@ import controller.view_controllers.SelectUnitController;
 import java.util.Scanner;
 
 public class SelectUnitMenu {
-    private SelectUnitController selectUnitController;
+    private SelectUnitController controller;
 
-    public SelectUnitMenu(SelectUnitController selectUnitController) {
-        this.selectUnitController = selectUnitController;
+    public SelectUnitMenu(SelectUnitController controller) {
+        this.controller = controller;
     }
 
     public String run(Scanner scanner) {
+
         return null;
     }
 }
