@@ -7,5 +7,5 @@ public class Cell implements Passable{
     private Building building;
     // hello
     // second comment
-
+    // salam
 }
