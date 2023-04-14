@@ -3,9 +3,14 @@ package model;
 import model.building.Building;
 
 public class Cell implements Passable{
-    private String type;
+    private LandType type;
     private Building building;
-    // hello
-    // second comment
+    private int xCoordinate;
+    private int yCoordinate;
 
+
+    @Override
+    public boolean isPassable(Cell cell) {
+        return false;
+    }
 }
