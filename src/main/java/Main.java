@@ -8,5 +8,6 @@ public class Main {
         Controller controller = new Controller();
         controller.openFile();
         controller.run(scanner);
+        controller.saveFile();
     }
 }
