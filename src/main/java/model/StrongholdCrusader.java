@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class StrongholdCrusader {
     private static User CurrentUser;
-    private static HashMap<String , Map> allMaps;
-    private static HashMap<String , User> allUsers;
+    private static HashMap<String , Map> allMaps = new HashMap<>();
+    private static HashMap<String , User> allUsers = new HashMap<>();
 
     public static User getCurrentUser() {
         return CurrentUser;

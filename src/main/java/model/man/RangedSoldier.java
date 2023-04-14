@@ -1,7 +1,9 @@
 package model.man;
 
 public class RangedSoldier extends Soldier{
+    private RangedTypes rangedTypes;
     private int range;
+
 
     public int getRange() {
         return range;
