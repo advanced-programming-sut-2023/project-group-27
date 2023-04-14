@@ -2,7 +2,7 @@ package controller.controller;
 
 import model.User;
 
-public class ProfileMenuController {
+public class CoreProfileMenuController {
     User loggedInUser;
 
     public String changeUsername(String username) {
