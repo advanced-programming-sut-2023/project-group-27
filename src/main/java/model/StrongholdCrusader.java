@@ -1,11 +1,11 @@
 package model;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class StrongholdCrusader {
     private static User CurrentUser;
     private static GameMap currentMatchMap;
+    private int turnCounter;
     private static HashMap<String , GameMap> allMaps = new HashMap<>();
 
     private static HashMap<String , User> allUsers = new HashMap<>();
@@ -20,6 +20,14 @@ public class StrongholdCrusader {
 
     public static void setCurrentUser(User currentUser) {
         CurrentUser = currentUser;
+    }
+
+    public int getTurnCounter() {
+        return turnCounter;
+    }
+
+    public void addTurnCounter(){
+        turnCounter++;
     }
 
     public static HashMap<String, GameMap> getAllMaps() {
