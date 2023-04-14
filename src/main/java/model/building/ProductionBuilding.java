@@ -6,7 +6,8 @@ import java.util.List;
 
 public class ProductionBuilding extends Building{
     private ProductionTypes productionTypes;
-
+    private List<Production> requirements;
+    private Production product;
     public ProductionBuilding(List<Production> requirements, Production product , ProductionTypes productionTypes) {
         this.productionTypes = productionTypes;
         this.requirements = requirements;
@@ -15,9 +16,6 @@ public class ProductionBuilding extends Building{
     public ProductionTypes getProductionTypes() {
         return productionTypes;
     }
-
-    List<Production> requirements;
-    Production product;
 
     public void act() {
         for (Production requirement : requirements) {
