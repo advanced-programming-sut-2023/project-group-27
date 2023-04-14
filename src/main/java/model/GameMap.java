@@ -1,10 +1,10 @@
 package model;
 
-public class Map {
+public class GameMap {
     private String mapName;
     private final int size;
     private final Cell [][] map;
-    public Map(int size) {
+    public GameMap(int size) {
         this.size = size;
         map = new Cell[size][size];
     }
