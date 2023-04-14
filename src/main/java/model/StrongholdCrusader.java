@@ -5,18 +5,24 @@ import java.util.Map;
 
 public class StrongholdCrusader {
     private static User CurrentUser;
-    private static HashMap<String , Map> allMaps = new HashMap<>();
+    private static GameMap currentMatchMap;
+    private static HashMap<String , GameMap> allMaps = new HashMap<>();
+
     private static HashMap<String , User> allUsers = new HashMap<>();
 
     public static User getCurrentUser() {
         return CurrentUser;
     }
 
+    public static GameMap getCurrentMatchMap() {
+        return currentMatchMap;
+    }
+
     public static void setCurrentUser(User currentUser) {
         CurrentUser = currentUser;
     }
 
-    public static HashMap<String, Map> getAllMaps() {
+    public static HashMap<String, GameMap> getAllMaps() {
         return allMaps;
     }
 
@@ -29,7 +35,7 @@ public class StrongholdCrusader {
 
     }
 
-    public static void addMap(Map map)
+    public static void addMap(GameMap map)
     {
 
     }
