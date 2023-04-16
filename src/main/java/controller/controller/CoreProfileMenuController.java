@@ -1,16 +1,25 @@
 package controller.controller;
 
+import model.StrongholdCrusader;
 import model.User;
+
+import static controller.controller.Utilities.validatePassword;
 
 public class CoreProfileMenuController {
     User loggedInUser;
 
     public String changeUsername(String username) {
-        return null;
+        if (!username.matches("[0-9a-zA-Z_]+")) {
+            return "Invalid username format";
+        }
+        StrongholdCrusader.getAllUsers().remove(loggedInUser.getUsername());
+        loggedInUser.setUsername(username);
+        StrongholdCrusader.getAllUsers().put(username, loggedInUser);
+        return "Successful";
     }
 
-    public String changeNickname(String nickname) {
-        return null;
+    public void changeNickname(String nickname) {
+        loggedInUser.setNickname(nickname);
     }
 
     public boolean isPasswordValid(String oldPassword) {
@@ -18,15 +27,30 @@ public class CoreProfileMenuController {
     }
 
     public String changePassword(String newPassword, String newPasswordConfirmation) {
-        return null;
+        String error = validatePassword(newPassword);
+        if (error != null) return error;
+        if (newPassword.equals(loggedInUser.getPassword())) {
+            return "Password can't be the same as old password";
+        }
+        if (newPassword.equals(loggedInUser.getUsername())) {
+            return "Password can't be the same as username";
+        }
+        if (newPassword.equals(loggedInUser.getNickname())) {
+            return "Password can't be the same as nickname";
+        }
+        if (!newPassword.equals(newPasswordConfirmation)) {
+            return "passwords don't match";
+        }
+        loggedInUser.setPassword(newPassword);
+        return "Successful";
     }
 
-    public String changeSlogan(String newSlogan) {
-        return null;
+    public void changeSlogan(String newSlogan) {
+        loggedInUser.setSlogan(newSlogan);
     }
 
     public void removeSlogan() {
-
+        loggedInUser.setSlogan("");
     }
 
     public int showHighScore() {
@@ -34,7 +58,11 @@ public class CoreProfileMenuController {
     }
 
     public int showRank() {
-        return 1;
+       int result = 1;
+        for (User user : StrongholdCrusader.getAllUsers().values()) {
+            if (user.compareTo(loggedInUser) > 0)result++;
+        }
+        return result;
     }
 
     public String showSlogan() {
@@ -42,6 +70,13 @@ public class CoreProfileMenuController {
     }
 
     public String showProfile() {
-        return null;
+        String result = "";
+        result = result.concat("Username: " + loggedInUser.getUsername() + "\n");
+        result = result.concat("Nickname: " + loggedInUser.getNickname() + "\n");
+        result = result.concat("Rank: " + showRank() + "\n");
+        result = result.concat("High Score: " + loggedInUser.getHighScore() + "\n");
+        result = result.concat("Slogan: " + loggedInUser.getSlogan() + "\n");
+        result = result.concat("Email: " + loggedInUser.getEmail() + "\n");
+        return result;
     }
 }
