@@ -9,6 +9,5 @@ public class Main {
         controller.openFile();
         controller.run(scanner);
         controller.saveFile();
-        // comment
     }
 }
