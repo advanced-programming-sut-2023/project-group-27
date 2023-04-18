@@ -26,6 +26,10 @@ public class StrongholdCrusader {
         return turnCounter;
     }
 
+    public User getUserByUsername(String username) {
+        return allUsers.getOrDefault(username, null);
+    }
+
     public void addTurnCounter(){
         turnCounter++;
     }
