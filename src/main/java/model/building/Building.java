@@ -8,7 +8,7 @@ public class Building extends Destructable implements Passable {
     private boolean isActive;
 
     @Override
-    public boolean isPassable(Cell cell) {
+    public boolean isPassable() {
         return false;
     }
 }
