@@ -1,14 +1,15 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StrongholdCrusader {
     private static User CurrentUser;
     private static GameMap currentMatchMap;
     private int turnCounter;
-    private static HashMap<String , GameMap> allMaps = new HashMap<>();
+    private static final HashMap<String , GameMap> allMaps = new HashMap<>();
 
-    private static HashMap<String , User> allUsers = new HashMap<>();
+    private static final HashMap<String , User> allUsers = new HashMap<>();
 
     public static User getCurrentUser() {
         return CurrentUser;
@@ -42,13 +43,29 @@ public class StrongholdCrusader {
         return allUsers;
     }
 
-    public static void addUser(User user)
-    {
-
+    public static void addUser(User user) {
+        allUsers.put(user.getUsername(), user);
     }
 
-    public static void addMap(GameMap map)
-    {
+    public static void addMap(GameMap map) {
+        allMaps.put(map.getMapName(), map);
+    }
 
+    public static void removeUser(User user) {
+        allUsers.remove(user.getUsername());
+    }
+
+    public static void removeMap(GameMap map) {
+        allMaps.remove(map.getMapName());
+    }
+
+    public static void addAllUsers(ArrayList<User> usersToBeAdded) {
+        for (User currentUser : usersToBeAdded)
+            addUser(currentUser);
+    }
+
+    public static void addAllMaps(ArrayList<GameMap> mapsToBeAdded) {
+        for (GameMap currentMap : mapsToBeAdded)
+            addMap(currentMap);
     }
 }
