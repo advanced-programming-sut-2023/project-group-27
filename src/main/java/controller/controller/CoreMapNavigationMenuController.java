@@ -1,13 +1,12 @@
 package controller.controller;
 
-import model.Pair;
-import model.StrongholdCrusader;
+import model.Location;
 
 public class CoreMapNavigationMenuController {
-    private Pair<Integer, Integer> location;
+    private Location location;
 
     public CoreMapNavigationMenuController(int x, int y) {
-        this.location = new Pair<>(x, y);
+        this.location = new Location(x, y);
     }
 
     public void move(int deltaX, int deltaY) {

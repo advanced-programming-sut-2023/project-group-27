@@ -22,6 +22,10 @@ public class StrongholdCrusader {
         CurrentUser = currentUser;
     }
 
+    public static GameMap getCurrentMap() {
+        return currentMatchMap;
+    }
+
     public int getTurnCounter() {
         return turnCounter;
     }

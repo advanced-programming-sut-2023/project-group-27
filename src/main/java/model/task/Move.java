@@ -1,9 +1,9 @@
 package model.task;
 
-import model.Pair;
+import model.Location;
 
 public class Move implements Task {
-    private Pair<Integer, Integer> destination;
+    private Location destination;
 
     @Override
     public void run() {
@@ -11,6 +11,6 @@ public class Move implements Task {
     }
 
     public Move(int x, int y) {
-        destination = new Pair<>(x, y);
+        destination = new Location(x, y);
     }
 }

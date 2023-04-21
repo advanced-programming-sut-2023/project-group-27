@@ -2,23 +2,30 @@ package model;
 
 public class GameMap {
     private String mapName;
-    private final int size;
+    private final int width;
+    private final int height;
     private final Cell [][] map;
-    public GameMap(int size) {
-        this.size = size;
-        map = new Cell[size][size];
+    public GameMap(int width, int height, String name) {
+        this.width = width;
+        this.height = height;
+        map = new Cell[width][height];
+        this.mapName = name;
     }
 
     public String getMapName() {
         return mapName;
     }
 
-    public void setMapName(String mapName) {
-        this.mapName = mapName;
+    public int getWidth() {
+        return width;
     }
 
-    public int getSize() {
-        return size;
+    public int getHeight() {
+        return height;
+    }
+
+    public Cell getCell(int x, int y) {
+        return map[x][y];
     }
 
     public Cell[][] getMap() {

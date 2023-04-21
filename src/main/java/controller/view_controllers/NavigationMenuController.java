@@ -1,7 +1,6 @@
 package controller.view_controllers;
 
 import controller.controller.CoreMapNavigationMenuController;
-import model.Pair;
 
 public class NavigationMenuController {
     private CoreMapNavigationMenuController controller;

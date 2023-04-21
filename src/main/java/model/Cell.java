@@ -12,7 +12,10 @@ public class Cell implements Passable{
 
 
     @Override
-    public boolean isPassable(Cell cell) {
-        return false;
+    public boolean isPassable() {
+        if (this.building != null) {
+            return building.isPassable();
+        }
+        return type.isPassable();
     }
 }
