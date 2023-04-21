@@ -5,10 +5,11 @@ public class GameMap {
     private final int width;
     private final int height;
     private final Cell [][] map;
-    public GameMap(int width, int height) {
+    public GameMap(int width, int height, String name) {
         this.width = width;
         this.height = height;
         map = new Cell[width][height];
+        this.mapName = name;
     }
 
     public String getMapName() {
