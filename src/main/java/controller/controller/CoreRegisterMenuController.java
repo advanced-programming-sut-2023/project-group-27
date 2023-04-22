@@ -1,11 +1,37 @@
 package controller.controller;
 
+import controller.view_controllers.RegisterMenuController;
 import model.StrongholdCrusader;
 import model.User;
+import view.RegisterMenu;
+
+import java.util.Scanner;
 
 public class CoreRegisterMenuController {
 
     public User rawUser;
+    private final RegisterMenu registerMenu;
+    private final RegisterMenuController registerMenuController;
+    private final CoreLoginMenuController coreLoginMenuController;
+
+    public CoreRegisterMenuController(){
+        registerMenuController = new RegisterMenuController();
+        registerMenu = new RegisterMenu(registerMenuController);
+        coreLoginMenuController = new CoreLoginMenuController();
+    }
+    public String run(Scanner scanner){
+        String registerMenuResult;
+        while (true) {
+            registerMenuResult = registerMenu.run(scanner);
+            switch (registerMenuResult){
+                case "Exit":
+                    return "Exit";
+                case "Enter login menu":
+                    coreLoginMenuController.run(scanner);
+                    break;
+            }
+        }
+    }
     public String initializeUser(
             String username, String password, String email, String nickname,
             String slogan) {
