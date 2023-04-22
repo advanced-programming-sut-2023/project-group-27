@@ -1,12 +1,24 @@
 package controller.controller;
 
+import controller.view_controllers.ProfileMenuController;
 import model.StrongholdCrusader;
 import model.User;
+import view.ProfileMenu;
+
+import java.util.Scanner;
 
 import static controller.controller.Utilities.validatePassword;
 
 public class CoreProfileMenuController {
     User loggedInUser;
+    private final ProfileMenu profileMenu;
+
+    public CoreProfileMenuController(){
+        profileMenu = new ProfileMenu(new ProfileMenuController());
+    }
+    public void run(Scanner scanner){
+        profileMenu.run(scanner);
+    }
 
     public String changeUsername(String username) {
         if (!username.matches("[0-9a-zA-Z_]+")) {

@@ -11,12 +11,10 @@ public class CoreRegisterMenuController {
 
     public User rawUser;
     private final RegisterMenu registerMenu;
-    private final RegisterMenuController registerMenuController;
     private final CoreLoginMenuController coreLoginMenuController;
 
     public CoreRegisterMenuController(){
-        registerMenuController = new RegisterMenuController();
-        registerMenu = new RegisterMenu(registerMenuController);
+        registerMenu = new RegisterMenu(new RegisterMenuController());
         coreLoginMenuController = new CoreLoginMenuController();
     }
     public String run(Scanner scanner){

@@ -7,24 +7,24 @@ import java.util.Scanner;
 
 public class CoreLoginMenuController {
     private final LoginMenu loginMenu;
-    private final LoginMenuController loginMenuController;
     private final CoreMainMenuController coreMainMenuController;
     public CoreLoginMenuController() {
-        loginMenuController = new LoginMenuController();
-        loginMenu = new LoginMenu(loginMenuController);
+        loginMenu = new LoginMenu(new LoginMenuController());
         coreMainMenuController = new CoreMainMenuController();
     }
 
     public String run (Scanner scanner){
-        String loginMenuResult = loginMenu.run(scanner);
-        switch (loginMenuResult){
-            case "Exit":
-                return "Exit";
-            case "Enter main menu":
-                coreMainMenuController.run(scanner);
-                break;
+        String loginMenuResult;
+        while (true) {
+            loginMenuResult = loginMenu.run(scanner);
+            switch (loginMenuResult) {
+                case "Exit":
+                    return "Exit";
+                case "Enter main menu":
+                    coreMainMenuController.run(scanner);
+                    break;
+            }
         }
-        return null;
     }
 
     public String login(String username, String password) {

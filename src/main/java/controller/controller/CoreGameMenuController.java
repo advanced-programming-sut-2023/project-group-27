@@ -1,15 +1,23 @@
 package controller.controller;
 
+import controller.view_controllers.GameMenuController;
+import model.StrongholdCrusader;
 import model.User;
 import view.GameMenu;
 
+import java.util.Scanner;
+
 public class CoreGameMenuController {
     private User loggedInUser;
-    private GameMenu gameMenu;
+    private final GameMenu gameMenu;
 
-    public CoreGameMenuController(User loggedInUser, GameMenu gameMenu) {
+    public CoreGameMenuController(User loggedInUser) {
         this.loggedInUser = loggedInUser;
-        this.gameMenu = gameMenu;
+        gameMenu = new GameMenu(new GameMenuController(StrongholdCrusader.getCurrentUser()));
+    }
+
+    public String run(Scanner scanner){
+        return null;
     }
 
     public String showPopularityFactors(){
