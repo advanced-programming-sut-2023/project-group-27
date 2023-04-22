@@ -3,6 +3,7 @@ package controller.controller;
 import controller.view_controllers.GameMenuController;
 import model.StrongholdCrusader;
 import model.User;
+import model.building.Building;
 import model.man.Man;
 import view.GameMenu;
 
@@ -13,6 +14,7 @@ public class CoreGameMenuController {
     private final GameMenu gameMenu;
     private final CoreTradeMenuController coreTradeMenuController;
     private CoreSelectUnitMenuController coreSelectUnitMenuController;
+    private CoreSelectBuildingMenuController coreSelectBuildingMenuController;
 
     public CoreGameMenuController(User loggedInUser) {
         this.loggedInUser = loggedInUser;
@@ -73,7 +75,10 @@ public class CoreGameMenuController {
         return null;
     }
 
-    public String selectBuilding(int x , int y){
+    public String selectBuilding(int x , int y , Scanner scanner){
+        Building selectedBuilding = null;
+        coreSelectBuildingMenuController = new CoreSelectBuildingMenuController(selectedBuilding);
+        coreSelectBuildingMenuController.run(scanner);
         return null;
     }
 
