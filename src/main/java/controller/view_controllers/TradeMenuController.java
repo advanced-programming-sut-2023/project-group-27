@@ -2,15 +2,14 @@ package controller.view_controllers;
 
 import controller.controller.CoreTradeMenuController;
 import model.User;
-import view.TradeMenu;
 
 import java.util.regex.Matcher;
 
 public class TradeMenuController {
-    private CoreTradeMenuController coreTradeMenuController;
+    private final User loggedInUser;
 
-    public TradeMenuController(User loggedInUser , TradeMenu tradeMenu) {
-        this.coreTradeMenuController = new CoreTradeMenuController(loggedInUser , tradeMenu);
+    public TradeMenuController(User loggedInUser) {
+        this.loggedInUser = loggedInUser;
     }
 
     public String showTradeList(){

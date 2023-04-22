@@ -3,6 +3,7 @@ package controller.controller;
 import controller.view_controllers.GameMenuController;
 import model.StrongholdCrusader;
 import model.User;
+import model.man.Man;
 import view.GameMenu;
 
 import java.util.Scanner;
@@ -10,14 +11,26 @@ import java.util.Scanner;
 public class CoreGameMenuController {
     private User loggedInUser;
     private final GameMenu gameMenu;
+    private final CoreTradeMenuController coreTradeMenuController;
+    private CoreSelectUnitController coreSelectUnitController;
 
     public CoreGameMenuController(User loggedInUser) {
         this.loggedInUser = loggedInUser;
         gameMenu = new GameMenu(new GameMenuController(StrongholdCrusader.getCurrentUser()));
+        coreTradeMenuController = new CoreTradeMenuController(StrongholdCrusader.getCurrentUser());
     }
 
     public String run(Scanner scanner){
-        return null;
+        String gameMenuResult;
+        while (true){
+            gameMenuResult = gameMenu.run(scanner);
+            switch (gameMenuResult){
+                case "Match end":
+                    return "Match end";
+                case "Enter trade manu":
+                    coreTradeMenuController.run(scanner);
+            }
+        }
     }
 
     public String showPopularityFactors(){
@@ -64,7 +77,10 @@ public class CoreGameMenuController {
         return null;
     }
 
-    public String selectUnit(int x , int y){
+    public String selectUnit(int x , int y , Scanner scanner){
+        Man selectedMan = null;
+        coreSelectUnitController = new CoreSelectUnitController(selectedMan);
+        coreSelectUnitController.run(scanner);
         return null;
     }
 

@@ -6,10 +6,10 @@ import model.User;
 import java.util.regex.Matcher;
 
 public class GameMenuController {
-    private CoreGameMenuController coreGameMenuController;
+    private final User loggedInUser;
 
     public GameMenuController(User loggedInUser) {
-        this.coreGameMenuController = new CoreGameMenuController(loggedInUser);
+        this.loggedInUser = loggedInUser;
     }
 
     public String showPopularityFactors(){
