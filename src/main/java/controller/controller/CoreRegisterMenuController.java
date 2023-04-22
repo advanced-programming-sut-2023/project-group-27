@@ -27,7 +27,7 @@ public class CoreRegisterMenuController {
                 case "Exit":
                     return "Exit";
                 case "Enter login menu":
-                    coreLoginMenuController.run(scanner);
+                    if (coreLoginMenuController.run(scanner).equals("Exit")) return "Exit";
                     break;
             }
         }
