@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 public class SelectUnitController {
     private CoreSelectUnitController coreSelectUnitController;
 
-    public SelectUnitController(int x, int y) {
+    public SelectUnitController(Man selectedMan) {
     }
 
     public String moveTo(Matcher matcher) {
