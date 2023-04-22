@@ -1,11 +1,11 @@
 package controller.view_controllers;
 
-import controller.controller.CoreSelectMenuBuildingController;
+import controller.controller.CoreSelectBuildingMenuController;
 
 import java.util.regex.Matcher;
 
 public class SelectBuildingMenuController {
-    private CoreSelectMenuBuildingController controller;
+    private CoreSelectBuildingMenuController controller;
     public SelectBuildingMenuController(int x, int y) {
     }
 

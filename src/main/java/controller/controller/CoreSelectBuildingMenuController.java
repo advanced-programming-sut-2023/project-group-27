@@ -2,10 +2,10 @@ package controller.controller;
 
 import model.building.Building;
 
-public class CoreSelectMenuBuildingController {
+public class CoreSelectBuildingMenuController {
     private Building selectedBuilding;
 
-    public CoreSelectMenuBuildingController(Building selectedBuilding) {
+    public CoreSelectBuildingMenuController(Building selectedBuilding) {
         this.selectedBuilding = selectedBuilding;
     }
 

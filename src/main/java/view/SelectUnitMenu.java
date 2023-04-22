@@ -1,13 +1,13 @@
 package view;
 
-import controller.view_controllers.SelectUnitController;
+import controller.view_controllers.SelectUnitMenuController;
 
 import java.util.Scanner;
 
 public class SelectUnitMenu {
-    private SelectUnitController controller;
+    private SelectUnitMenuController controller;
 
-    public SelectUnitMenu(SelectUnitController controller) {
+    public SelectUnitMenu(SelectUnitMenuController controller) {
         this.controller = controller;
     }
 

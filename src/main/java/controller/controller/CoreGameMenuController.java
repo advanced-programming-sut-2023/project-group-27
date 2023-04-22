@@ -12,7 +12,7 @@ public class CoreGameMenuController {
     private User loggedInUser;
     private final GameMenu gameMenu;
     private final CoreTradeMenuController coreTradeMenuController;
-    private CoreSelectUnitController coreSelectUnitController;
+    private CoreSelectUnitMenuController coreSelectUnitMenuController;
 
     public CoreGameMenuController(User loggedInUser) {
         this.loggedInUser = loggedInUser;
@@ -79,8 +79,8 @@ public class CoreGameMenuController {
 
     public String selectUnit(int x , int y , Scanner scanner){
         Man selectedMan = null;
-        coreSelectUnitController = new CoreSelectUnitController(selectedMan);
-        coreSelectUnitController.run(scanner);
+        coreSelectUnitMenuController = new CoreSelectUnitMenuController(selectedMan);
+        coreSelectUnitMenuController.run(scanner);
         return null;
     }
 

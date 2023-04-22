@@ -1,17 +1,17 @@
 package controller.controller;
 
-import controller.view_controllers.SelectUnitController;
+import controller.view_controllers.SelectUnitMenuController;
 import model.man.Man;
 import view.SelectUnitMenu;
 
 import java.util.Scanner;
 
-public class CoreSelectUnitController {
+public class CoreSelectUnitMenuController {
     private Man selectedMan;
     private final SelectUnitMenu selectUnitMenu;
-    public CoreSelectUnitController(Man selectedMan) {
+    public CoreSelectUnitMenuController(Man selectedMan) {
         this.selectedMan = selectedMan;
-        selectUnitMenu = new SelectUnitMenu(new SelectUnitController(selectedMan));
+        selectUnitMenu = new SelectUnitMenu(new SelectUnitMenuController(selectedMan));
     }
 
     public void run(Scanner scanner){
