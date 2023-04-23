@@ -14,7 +14,7 @@ public class CoreRegisterMenuController {
     private final CoreLoginMenuController coreLoginMenuController;
 
     public CoreRegisterMenuController(){
-        registerMenu = new RegisterMenu(new RegisterMenuController());
+        registerMenu = new RegisterMenu(new RegisterMenuController(this));
         coreLoginMenuController = new CoreLoginMenuController();
     }
     public String run(Scanner scanner){
