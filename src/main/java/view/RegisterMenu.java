@@ -28,7 +28,7 @@ public class RegisterMenu {
             }
             System.out.print("Invalid command\n");
         }
-        // TODO return somthing that would handle menu navigation: MazMaz
+        // TODO return something that would handle menu navigation: MazMaz
         return null;
     }
 

@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
+import static controller.controller.Utilities.randomSlogan;
+
 public class RegisterMenuController {
     CoreRegisterMenuController coreController;
     RegisterMenu menu;
@@ -21,7 +23,7 @@ public class RegisterMenuController {
         }
         if (!args.containsKey("u") || !args.containsKey("p") ||
                 !args.containsKey("n") || !args.containsKey("email")) {
-            return "Do not leave 'username', 'password', 'nickname' or 'email' as blank!\n";
+            return "Do not leave username, password, nickname or email as blank!\n";
         }
         String username = args.get("u");
         String password = args.get("p");
@@ -32,11 +34,11 @@ public class RegisterMenuController {
 
         String result = "";
         if (slogan.equals("random")) {
-            slogan = Utilities.randomSlogan();
+            slogan = randomSlogan();
             menu.showInformation("Your slogan is \"" + slogan + "\"\n");
         }
         if (password.equals("random")) {
-            password = Utilities.randomPassword();
+            password = controller.controller.Utilities.randomPassword();
             do {
                 menu.showInformation("Your password is \"" + password + "\"\n");
             } while (menu.confirm("Please re-enter your password here:", password));
