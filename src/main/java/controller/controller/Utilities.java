@@ -1,5 +1,9 @@
 package controller.controller;
 
+import com.google.common.hash.Hashing;
+
+import java.nio.charset.StandardCharsets;
+
 public class Utilities {
     public static String validatePassword(String newPassword) {
         if (newPassword.length() < 6) {
@@ -12,5 +16,11 @@ public class Utilities {
             return "Password must contain at least one special character";
         }
         return null;
+    }
+
+    public static String encryptString(String originalContent) {
+        return Hashing.sha256()
+                .hashString(originalContent, StandardCharsets.UTF_8)
+                .toString();
     }
 }
