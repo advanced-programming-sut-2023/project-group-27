@@ -1,5 +1,6 @@
 package model.castle_components;
 
-public class CastleComponent {
+import model.building.Building;
 
+public class CastleComponent extends Building {
 }

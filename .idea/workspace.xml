@@ -4,11 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="added comment">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="caught the deadline">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/database/Data.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/model/CellTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/Utilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/StrongholdCrusader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/StrongholdCrusader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/CastleComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/CastleComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/phase0-uml.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +26,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Enum" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -30,6 +40,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="main" />
+        <option value="develop" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -49,12 +67,60 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
+  <component name="Push.Settings">
+    <force-push-targets>
+      <force-push-target remote-path="origin" branch="dahanet_service" />
+    </force-push-targets>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Arshia\Desktop\AP-project\project-group-27\src\main\resources\data" />
+      <recent name="C:\Users\Arshia\Desktop\AP-project\project-group-27\src\main" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="model" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="project-group-27" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CellTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project-group-27" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.CellTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.CellTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -65,7 +131,12 @@
       <updated>1681412486243</updated>
       <workItem from="1681412490459" duration="4091000" />
       <workItem from="1681417260676" duration="710000" />
-      <workItem from="1681456656848" duration="2558000" />
+      <workItem from="1681472555888" duration="1449000" />
+      <workItem from="1681487286653" duration="8208000" />
+      <workItem from="1681496542520" duration="6120000" />
+      <workItem from="1681913387158" duration="6275000" />
+      <workItem from="1681933992388" duration="46000" />
+      <workItem from="1681975782435" duration="4081000" />
     </task>
     <task id="LOCAL-00001" summary="first commit to initial_base">
       <created>1681417450067</created>
@@ -109,7 +180,63 @@
       <option name="project" value="LOCAL" />
       <updated>1681461753995</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="edited Cell class">
+      <created>1681465061862</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1681465061862</updated>
+    </task>
+    <task id="LOCAL-00008" summary="completed my first round of tasks">
+      <created>1681470938873</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1681470938873</updated>
+    </task>
+    <task id="LOCAL-00009" summary="completing the fields of classes">
+      <created>1681490134158</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1681490134158</updated>
+    </task>
+    <task id="LOCAL-00010" summary="completing the fields of classes">
+      <created>1681492014998</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1681492014998</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added selectBuildingMenu and controllers and enums">
+      <created>1681495410838</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1681495410838</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added selectBuildingMenu and controllers and enums">
+      <created>1681495886944</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1681495886944</updated>
+    </task>
+    <task id="LOCAL-00013" summary="final development on select unit menu">
+      <created>1681498650987</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1681498650987</updated>
+    </task>
+    <task id="LOCAL-00014" summary="caught the deadline">
+      <created>1681502929678</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1681502929679</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,7 +258,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="init" />
+                        <option value="origin/develop" />
                       </list>
                     </value>
                   </entry>
@@ -146,7 +273,13 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first commit to initial_base" />
-    <MESSAGE value="added comment" />
-    <option name="LAST_COMMIT_MESSAGE" value="added comment" />
+    <MESSAGE value="added Map class" />
+    <MESSAGE value="edited Cell class" />
+    <MESSAGE value="completed my first round of tasks" />
+    <MESSAGE value="completing the fields of classes" />
+    <MESSAGE value="added selectBuildingMenu and controllers and enums" />
+    <MESSAGE value="final development on select unit menu" />
+    <MESSAGE value="caught the deadline" />
+    <option name="LAST_COMMIT_MESSAGE" value="caught the deadline" />
   </component>
 </project>

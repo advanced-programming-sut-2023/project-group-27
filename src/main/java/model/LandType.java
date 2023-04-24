@@ -1,4 +1,10 @@
 package model;
 
-public enum LandType {
+public enum LandType implements Passable{
+    ;
+
+    @Override
+    public boolean isPassable() {
+        return false;
+    }
 }

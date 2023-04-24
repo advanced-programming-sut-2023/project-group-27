@@ -31,8 +31,7 @@ public class CoreRegisterMenuController {
         }
     }
     public String initializeUser(
-            String username, String password, String email, String nickname,
-            String slogan) {
+            String username, String password, String email, String nickname, String slogan) {
         if (username.equals("") || password.equals("") ||
                 email.equals("") || nickname.equals("")) {
             return "Please fill required fields";
@@ -54,8 +53,8 @@ public class CoreRegisterMenuController {
             return "Email already exists";
         }
 
-        rawUser = new User(username, password, 0, slogan, email, "", "");
-        return "User created successfully";
+        rawUser = new User(username, password, 0, "", email, "", "");
+        return null;
     }
 
     public String finalizeUser(String securityQuestion, String securityAnswer) {
@@ -65,7 +64,7 @@ public class CoreRegisterMenuController {
         rawUser.setSecurityQ(securityQuestion);
         rawUser.setSecurityA(securityAnswer);
         StrongholdCrusader.addUser(rawUser);
-        return "User created successfully";
+        return null;
     }
 
 }
