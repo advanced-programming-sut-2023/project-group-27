@@ -6,9 +6,10 @@ import model.man.Man;
 import java.util.regex.Matcher;
 
 public class SelectUnitMenuController {
-    private CoreSelectUnitMenuController coreSelectUnitMenuController;
+    private final CoreSelectUnitMenuController coreController;
 
-    public SelectUnitMenuController(Man selectedMan) {
+    public SelectUnitMenuController(Man selectedMan, CoreSelectUnitMenuController coreController) {
+        this.coreController = coreController;
     }
 
     public String moveTo(Matcher matcher) {

@@ -7,8 +7,8 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 
 public class LoginMenuController {
-    private LoginMenu menu;
-    private CoreLoginMenuController coreController;
+    private final LoginMenu menu;
+    private final CoreLoginMenuController coreController;
 
     public LoginMenuController(CoreLoginMenuController coreController, Scanner scanner) {
         this.menu = new LoginMenu(this, scanner);

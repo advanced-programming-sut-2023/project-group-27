@@ -1,12 +1,20 @@
 package controller.view_controllers;
 
+import controller.controller.CoreProfileMenuController;
 import model.User;
 
 import java.util.regex.Matcher;
 
 public class ProfileMenuController {
+    private final CoreProfileMenuController coreController;
 
-    User loggedInUser;
+    private User loggedInUser;
+
+    public ProfileMenuController(CoreProfileMenuController coreController, User loggedInUser) {
+        this.coreController = coreController;
+        this.loggedInUser = loggedInUser;
+    }
+
     public String changeUsername(Matcher matcher) {
         return null;
     }

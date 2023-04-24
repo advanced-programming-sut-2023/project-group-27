@@ -20,7 +20,7 @@ public class CoreGameMenuController {
     public CoreGameMenuController(User loggedInUser , Scanner scanner) {
         this.scanner = scanner;
         this.loggedInUser = loggedInUser;
-        gameMenu = new GameMenu(new GameMenuController(StrongholdCrusader.getCurrentUser()));
+        gameMenu = new GameMenu(new GameMenuController(this , StrongholdCrusader.getCurrentUser()));
         coreTradeMenuController = new CoreTradeMenuController(StrongholdCrusader.getCurrentUser() , scanner);
     }
 
@@ -33,6 +33,7 @@ public class CoreGameMenuController {
                     return "Match end";
                 case "Enter trade manu":
                     coreTradeMenuController.run();
+                    break;
             }
         }
     }

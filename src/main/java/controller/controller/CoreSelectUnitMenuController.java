@@ -13,7 +13,7 @@ public class CoreSelectUnitMenuController {
     public CoreSelectUnitMenuController(Man selectedMan , Scanner scanner) {
         this.scanner = scanner;
         this.selectedMan = selectedMan;
-        selectUnitMenu = new SelectUnitMenu(new SelectUnitMenuController(selectedMan));
+        selectUnitMenu = new SelectUnitMenu(new SelectUnitMenuController(selectedMan, this));
     }
 
     public void run(){

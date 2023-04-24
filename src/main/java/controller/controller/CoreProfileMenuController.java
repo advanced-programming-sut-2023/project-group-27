@@ -11,12 +11,13 @@ import static controller.controller.Utilities.validatePassword;
 
 public class CoreProfileMenuController {
     private final Scanner scanner;
-    User loggedInUser;
+    private final User loggedInUser;
     private final ProfileMenu profileMenu;
 
     public CoreProfileMenuController(Scanner scanner){
         this.scanner = scanner;
-        profileMenu = new ProfileMenu(new ProfileMenuController());
+        loggedInUser = StrongholdCrusader.getCurrentUser();
+        profileMenu = new ProfileMenu(new ProfileMenuController(this, StrongholdCrusader.getCurrentUser()));
     }
     public void run(){
         profileMenu.run(scanner);

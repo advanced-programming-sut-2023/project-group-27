@@ -6,9 +6,11 @@ import model.User;
 import java.util.regex.Matcher;
 
 public class TradeMenuController {
-    private final User loggedInUser;
+    private final CoreTradeMenuController coreController;
+    private User loggedInUser;
 
-    public TradeMenuController(User loggedInUser) {
+    public TradeMenuController(CoreTradeMenuController coreController, User loggedInUser) {
+        this.coreController = coreController;
         this.loggedInUser = loggedInUser;
     }
 

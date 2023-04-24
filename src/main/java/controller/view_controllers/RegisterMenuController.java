@@ -11,8 +11,8 @@ import java.util.regex.Matcher;
 import static controller.controller.Utilities.randomSlogan;
 
 public class RegisterMenuController {
-    CoreRegisterMenuController coreController;
-    RegisterMenu menu;
+    private final CoreRegisterMenuController coreController;
+    private final RegisterMenu menu;
 
     public RegisterMenuController(CoreRegisterMenuController coreController, Scanner scanner) {
         this.coreController = coreController;

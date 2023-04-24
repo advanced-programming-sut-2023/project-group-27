@@ -6,8 +6,9 @@ import model.building.Building;
 import java.util.regex.Matcher;
 
 public class SelectBuildingMenuController {
-    private CoreSelectBuildingMenuController controller;
-    public SelectBuildingMenuController(Building selectedBuilding) {
+    private final CoreSelectBuildingMenuController coreController;
+    public SelectBuildingMenuController(Building selectedBuilding, CoreSelectBuildingMenuController coreController) {
+        this.coreController = coreController;
     }
 
     public String createUnit(Matcher matcher) {

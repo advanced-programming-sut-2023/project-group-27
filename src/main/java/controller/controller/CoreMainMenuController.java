@@ -15,7 +15,7 @@ public class CoreMainMenuController {
 
     public CoreMainMenuController(Scanner scanner){
         this.scanner = scanner;
-        mainMenu = new MainMenu(new MainMenuController());
+        mainMenu = new MainMenu(new MainMenuController(this));
         coreProfileMenuController = new CoreProfileMenuController(scanner);
         coreMapEditMenuController = new CoreMapEditMenuController(scanner);
         coreGameMenuController = new CoreGameMenuController(StrongholdCrusader.getCurrentUser(), scanner);

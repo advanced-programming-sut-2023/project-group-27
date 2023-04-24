@@ -6,9 +6,11 @@ import model.User;
 import java.util.regex.Matcher;
 
 public class GameMenuController {
+    private final CoreGameMenuController coreController;
     private final User loggedInUser;
 
-    public GameMenuController(User loggedInUser) {
+    public GameMenuController(CoreGameMenuController coreController, User loggedInUser) {
+        this.coreController = coreController;
         this.loggedInUser = loggedInUser;
     }
 

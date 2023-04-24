@@ -11,7 +11,7 @@ public class CoreMapEditMenuController {
 
     public CoreMapEditMenuController(Scanner scanner) {
         this.scanner = scanner;
-        mapEditMenu = new MapEditMenu(new MapEditMenuController());
+        mapEditMenu = new MapEditMenu(new MapEditMenuController(this));
     }
 
     public void run(){

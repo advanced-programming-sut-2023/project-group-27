@@ -17,7 +17,7 @@ public class CoreTradeMenuController {
     public CoreTradeMenuController(User loggedInUser , Scanner scanner) {
         this.scanner = scanner;
         this.loggedInUser = loggedInUser;
-        tradeMenu = new TradeMenu(new TradeMenuController(StrongholdCrusader.getCurrentUser()));
+        tradeMenu = new TradeMenu(new TradeMenuController(this, StrongholdCrusader.getCurrentUser()));
     }
 
     public void run(){

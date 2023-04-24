@@ -14,7 +14,7 @@ public class CoreSelectBuildingMenuController {
     public CoreSelectBuildingMenuController(Building selectedBuilding , Scanner scanner) {
         this.scanner = scanner;
         this.selectedBuilding = selectedBuilding;
-        selectBuildingMenu = new SelectBuildingMenu(new SelectBuildingMenuController(selectedBuilding));
+        selectBuildingMenu = new SelectBuildingMenu(new SelectBuildingMenuController(selectedBuilding, this));
     }
 
     public void run(){
