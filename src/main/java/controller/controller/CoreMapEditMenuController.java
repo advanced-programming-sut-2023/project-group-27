@@ -6,13 +6,15 @@ import view.MapEditMenu;
 import java.util.Scanner;
 
 public class CoreMapEditMenuController {
+    private final Scanner scanner;
     private final MapEditMenu mapEditMenu;
 
-    public CoreMapEditMenuController() {
+    public CoreMapEditMenuController(Scanner scanner) {
+        this.scanner = scanner;
         mapEditMenu = new MapEditMenu(new MapEditMenuController());
     }
 
-    public void run(Scanner scanner){
+    public void run(){
         mapEditMenu.run(scanner);
     }
 }

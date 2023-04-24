@@ -7,14 +7,16 @@ import view.SelectUnitMenu;
 import java.util.Scanner;
 
 public class CoreSelectUnitMenuController {
+    private final Scanner scanner;
     private Man selectedMan;
     private final SelectUnitMenu selectUnitMenu;
-    public CoreSelectUnitMenuController(Man selectedMan) {
+    public CoreSelectUnitMenuController(Man selectedMan , Scanner scanner) {
+        this.scanner = scanner;
         this.selectedMan = selectedMan;
         selectUnitMenu = new SelectUnitMenu(new SelectUnitMenuController(selectedMan));
     }
 
-    public void run(Scanner scanner){
+    public void run(){
         selectUnitMenu.run(scanner);
     }
 

@@ -10,13 +10,15 @@ import java.util.Scanner;
 import static controller.controller.Utilities.validatePassword;
 
 public class CoreProfileMenuController {
+    private final Scanner scanner;
     User loggedInUser;
     private final ProfileMenu profileMenu;
 
-    public CoreProfileMenuController(){
+    public CoreProfileMenuController(Scanner scanner){
+        this.scanner = scanner;
         profileMenu = new ProfileMenu(new ProfileMenuController());
     }
-    public void run(Scanner scanner){
+    public void run(){
         profileMenu.run(scanner);
     }
 

@@ -7,18 +7,20 @@ import view.MainMenu;
 import java.util.Scanner;
 
 public class CoreMainMenuController {
+    private final Scanner scanner;
     private final MainMenu mainMenu;
     private final CoreMapEditMenuController coreMapEditMenuController;
     private final CoreProfileMenuController coreProfileMenuController;
     private final CoreGameMenuController coreGameMenuController;
 
-    public CoreMainMenuController(){
+    public CoreMainMenuController(Scanner scanner){
+        this.scanner = scanner;
         mainMenu = new MainMenu(new MainMenuController());
-        coreProfileMenuController = new CoreProfileMenuController();
-        coreMapEditMenuController = new CoreMapEditMenuController();
-        coreGameMenuController = new CoreGameMenuController(StrongholdCrusader.getCurrentUser());
+        coreProfileMenuController = new CoreProfileMenuController(scanner);
+        coreMapEditMenuController = new CoreMapEditMenuController(scanner);
+        coreGameMenuController = new CoreGameMenuController(StrongholdCrusader.getCurrentUser(), scanner);
     }
-    public String run(Scanner scanner){
+    public String run(){
         String mainMenuResult;
         while (true) {
             mainMenuResult = mainMenu.run(scanner);
@@ -26,11 +28,14 @@ public class CoreMainMenuController {
                 case "Logout":
                     return "Logout";
                 case "Enter profile menu":
-                    coreProfileMenuController.run(scanner);
+                    coreProfileMenuController.run();
+                    break;
                 case "Enter map edit menu":
-                    coreMapEditMenuController.run(scanner);
+                    coreMapEditMenuController.run();
+                    break;
                 case "Enter game menu":
-                    coreGameMenuController.run(scanner);
+                    coreGameMenuController.run();
+                    break;
             }
         }
     }

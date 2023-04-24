@@ -6,13 +6,15 @@ import view.LoginMenu;
 import java.util.Scanner;
 
 public class CoreLoginMenuController {
+    private final Scanner scanner;
     private final LoginMenu loginMenu;
     private final LoginMenuController loginController;
     private final CoreMainMenuController coreMainMenuController;
     public CoreLoginMenuController(Scanner scanner) {
+        this.scanner = scanner;
         this.loginController = new LoginMenuController(this, scanner);
         loginMenu = loginController.getMenu();
-        coreMainMenuController = new CoreMainMenuController();
+        coreMainMenuController = new CoreMainMenuController(scanner);
     }
 
     public String run (){
@@ -23,7 +25,7 @@ public class CoreLoginMenuController {
                 case "Exit":
                     return "Exit";
                 case "Enter main menu":
-//                    coreMainMenuController.run(scanner);
+                    coreMainMenuController.run();
                     break;
             }
         }

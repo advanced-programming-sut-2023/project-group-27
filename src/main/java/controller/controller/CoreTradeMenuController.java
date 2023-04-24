@@ -9,16 +9,18 @@ import view.TradeMenu;
 import java.util.Scanner;
 
 public class CoreTradeMenuController {
+    private final Scanner scanner;
     private User loggedInUser;
 
     private final TradeMenu tradeMenu;
 
-    public CoreTradeMenuController(User loggedInUser) {
+    public CoreTradeMenuController(User loggedInUser , Scanner scanner) {
+        this.scanner = scanner;
         this.loggedInUser = loggedInUser;
         tradeMenu = new TradeMenu(new TradeMenuController(StrongholdCrusader.getCurrentUser()));
     }
 
-    public void run(Scanner scanner){
+    public void run(){
         tradeMenu.run(scanner);
     }
 

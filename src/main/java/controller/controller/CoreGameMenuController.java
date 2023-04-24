@@ -10,19 +10,21 @@ import view.GameMenu;
 import java.util.Scanner;
 
 public class CoreGameMenuController {
+    private final Scanner scanner;
     private User loggedInUser;
     private final GameMenu gameMenu;
     private final CoreTradeMenuController coreTradeMenuController;
     private CoreSelectUnitMenuController coreSelectUnitMenuController;
     private CoreSelectBuildingMenuController coreSelectBuildingMenuController;
 
-    public CoreGameMenuController(User loggedInUser) {
+    public CoreGameMenuController(User loggedInUser , Scanner scanner) {
+        this.scanner = scanner;
         this.loggedInUser = loggedInUser;
         gameMenu = new GameMenu(new GameMenuController(StrongholdCrusader.getCurrentUser()));
-        coreTradeMenuController = new CoreTradeMenuController(StrongholdCrusader.getCurrentUser());
+        coreTradeMenuController = new CoreTradeMenuController(StrongholdCrusader.getCurrentUser() , scanner);
     }
 
-    public String run(Scanner scanner){
+    public String run(){
         String gameMenuResult;
         while (true){
             gameMenuResult = gameMenu.run(scanner);
@@ -30,7 +32,7 @@ public class CoreGameMenuController {
                 case "Match end":
                     return "Match end";
                 case "Enter trade manu":
-                    coreTradeMenuController.run(scanner);
+                    coreTradeMenuController.run();
             }
         }
     }
@@ -75,17 +77,17 @@ public class CoreGameMenuController {
         return null;
     }
 
-    public String selectBuilding(int x , int y , Scanner scanner){
+    public String selectBuilding(int x , int y){
         Building selectedBuilding = null;
-        coreSelectBuildingMenuController = new CoreSelectBuildingMenuController(selectedBuilding);
-        coreSelectBuildingMenuController.run(scanner);
+        coreSelectBuildingMenuController = new CoreSelectBuildingMenuController(selectedBuilding , scanner);
+        coreSelectBuildingMenuController.run();
         return null;
     }
 
-    public String selectUnit(int x , int y , Scanner scanner){
+    public String selectUnit(int x , int y){
         Man selectedMan = null;
-        coreSelectUnitMenuController = new CoreSelectUnitMenuController(selectedMan);
-        coreSelectUnitMenuController.run(scanner);
+        coreSelectUnitMenuController = new CoreSelectUnitMenuController(selectedMan , scanner);
+        coreSelectUnitMenuController.run();
         return null;
     }
 
