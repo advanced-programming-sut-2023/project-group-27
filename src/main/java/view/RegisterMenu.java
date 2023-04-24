@@ -24,12 +24,13 @@ public class RegisterMenu {
                 output = controller.createUser(
                         RegisterMenuRegexes.RAW_REGISTER.getMatcher(command));
                 System.out.print(output);
+                command = scanner.nextLine();
                 continue;
             }
             System.out.print("Invalid command\n");
+            command = scanner.nextLine();
         }
-        // TODO return something that would handle menu navigation: MazMaz
-        return null;
+        return "Exit";
     }
 
     public void showInformation(String info) {

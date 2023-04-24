@@ -14,6 +14,15 @@ public class RegisterMenuController {
     CoreRegisterMenuController coreController;
     RegisterMenu menu;
 
+    public RegisterMenuController(CoreRegisterMenuController coreController, Scanner scanner) {
+        this.coreController = coreController;
+        this.menu = new RegisterMenu(this, scanner);
+    }
+
+    public RegisterMenu getMenu() {
+        return menu;
+    }
+
     public String createUser(Matcher matcher) {
         matcher.matches();
         String argsString = matcher.group("options");
@@ -92,12 +101,12 @@ public class RegisterMenuController {
                 continue;
             }
             error = coreController.finalizeUser(StrongholdCrusader.getSecurityQuestions()
-                    .get(Integer.parseInt(QNum)), answer);
+                    .get(Integer.parseInt(QNum)-1), answer);
             if (error != null) {
                 return error;
             }
             break;
         }
-        return "User registered successfully :)";
+        return "User registered successfully :)\n";
     }
 }

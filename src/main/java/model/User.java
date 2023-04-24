@@ -12,10 +12,11 @@ public class User implements Comparable<User>{
     private String securityQ;
     private String securityA;
 
-    public User(String username, String password, int highscore, String slogan, String email, String securityQ, String securityA) {
+    public User(String username, String password, String nickname, String slogan, String email, String securityQ, String securityA) {
         this.username = username;
         this.password = password;
-        this.highScore = highscore;
+        this.nickname = nickname;
+        this.highScore = 0;
         this.slogan = slogan;
         this.email = email;
         this.securityQ = securityQ;

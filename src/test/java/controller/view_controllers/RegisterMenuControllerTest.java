@@ -1,5 +1,6 @@
 package controller.view_controllers;
 
+import controller.controller.CoreRegisterMenuController;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -7,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import view.enums.RegisterMenuRegexes;
 
 import java.util.Map;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,7 +22,8 @@ class RegisterMenuControllerTest {
     })
     void createUser(String command, String expectedError) {
         Matcher matcher = RegisterMenuRegexes.RAW_REGISTER.getMatcher(command);
-        RegisterMenuController controller = new RegisterMenuController();
+        RegisterMenuController controller =
+                new CoreRegisterMenuController(new Scanner("")).getRegisterController();
         String output = controller.createUser(matcher);
         assertEquals(expectedError, output);
     }

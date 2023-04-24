@@ -1,8 +1,24 @@
 package controller.view_controllers;
 
+import controller.controller.CoreLoginMenuController;
+import view.LoginMenu;
+
+import java.util.Scanner;
 import java.util.regex.Matcher;
 
 public class LoginMenuController {
+    private LoginMenu menu;
+    private CoreLoginMenuController coreController;
+
+    public LoginMenuController(CoreLoginMenuController coreController, Scanner scanner) {
+        this.menu = new LoginMenu(this, scanner);
+        this.coreController = coreController;
+    }
+
+    public LoginMenu getMenu() {
+        return menu;
+    }
+
     public String login(Matcher matcher) {
         return null;
     }
@@ -14,4 +30,5 @@ public class LoginMenuController {
     public String changePassword(Matcher matcher) {
         return "New password is set successfully";
     }
+
 }

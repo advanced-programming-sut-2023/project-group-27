@@ -11,21 +11,28 @@ public class CoreRegisterMenuController {
 
     public User rawUser;
     private final RegisterMenu registerMenu;
+    private final RegisterMenuController registerController;
     private final CoreLoginMenuController coreLoginMenuController;
 
-    public CoreRegisterMenuController(){
-        registerMenu = new RegisterMenu(new RegisterMenuController(this));
-        coreLoginMenuController = new CoreLoginMenuController();
+    public CoreRegisterMenuController(Scanner scanner){
+        this.registerController = new RegisterMenuController(this, scanner);
+        registerMenu = this.registerController.getMenu();
+        coreLoginMenuController = new CoreLoginMenuController(scanner);
     }
-    public String run(Scanner scanner){
+
+    public RegisterMenuController getRegisterController() {
+        return registerController;
+    }
+
+    public String run(){
         String registerMenuResult;
         while (true) {
-            registerMenuResult = registerMenu.run(scanner);
+            registerMenuResult = registerMenu.run();
             switch (registerMenuResult){
                 case "Exit":
                     return "Exit";
                 case "Enter login menu":
-                    if (coreLoginMenuController.run(scanner).equals("Exit")) return "Exit";
+                    if (coreLoginMenuController.run().equals("Exit")) return "Exit";
                     break;
             }
         }
@@ -53,7 +60,7 @@ public class CoreRegisterMenuController {
             return "Email already exists";
         }
 
-        rawUser = new User(username, password, 0, "", email, "", "");
+        rawUser = new User(username, password, nickname, "", email, "", "");
         return null;
     }
 

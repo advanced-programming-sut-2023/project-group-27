@@ -18,6 +18,10 @@ public class StrongholdCrusader {
             "What was name of your first crush?"
     );
 
+    public static User getUserByName(String name) {
+        return allUsers.get(name);
+    }
+
     public static List<String> getSecurityQuestions() {
         return securityQuestions;
     }
