@@ -60,6 +60,7 @@ public class CoreRegisterMenuController {
             return "Email already exists";
         }
 
+        username = Utilities.encryptString(username);
         rawUser = new User(username, password, nickname, "", email, "", "");
         return null;
     }
