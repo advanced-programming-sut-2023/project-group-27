@@ -1,15 +1,41 @@
 package controller.controller;
 
+import controller.view_controllers.GameMenuController;
+import model.StrongholdCrusader;
 import model.User;
+import model.building.Building;
+import model.man.Man;
 import view.GameMenu;
 
-public class CoreGameMenuController {
-    private User loggedInUser;
-    private GameMenu gameMenu;
+import java.util.Scanner;
 
-    public CoreGameMenuController(User loggedInUser, GameMenu gameMenu) {
+public class CoreGameMenuController {
+    private final Scanner scanner;
+    private User loggedInUser;
+    private final GameMenu gameMenu;
+    private final CoreTradeMenuController coreTradeMenuController;
+    private CoreSelectUnitMenuController coreSelectUnitMenuController;
+    private CoreSelectBuildingMenuController coreSelectBuildingMenuController;
+
+    public CoreGameMenuController(User loggedInUser , Scanner scanner) {
+        this.scanner = scanner;
         this.loggedInUser = loggedInUser;
-        this.gameMenu = gameMenu;
+        gameMenu = new GameMenu(new GameMenuController(this , StrongholdCrusader.getCurrentUser()));
+        coreTradeMenuController = new CoreTradeMenuController(StrongholdCrusader.getCurrentUser() , scanner);
+    }
+
+    public String run(){
+        String gameMenuResult;
+        while (true){
+            gameMenuResult = gameMenu.run(scanner);
+            switch (gameMenuResult){
+                case "Match end":
+                    return "Match end";
+                case "Enter trade manu":
+                    coreTradeMenuController.run();
+                    break;
+            }
+        }
     }
 
     public String showPopularityFactors(){
@@ -53,10 +79,16 @@ public class CoreGameMenuController {
     }
 
     public String selectBuilding(int x , int y){
+        Building selectedBuilding = null;
+        coreSelectBuildingMenuController = new CoreSelectBuildingMenuController(selectedBuilding , scanner);
+        coreSelectBuildingMenuController.run();
         return null;
     }
 
     public String selectUnit(int x , int y){
+        Man selectedMan = null;
+        coreSelectUnitMenuController = new CoreSelectUnitMenuController(selectedMan , scanner);
+        coreSelectUnitMenuController.run();
         return null;
     }
 

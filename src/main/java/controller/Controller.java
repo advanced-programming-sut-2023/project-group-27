@@ -1,6 +1,7 @@
 package controller;
 
 import com.google.gson.Gson;
+import controller.controller.CoreRegisterMenuController;
 import model.GameMap;
 import model.StrongholdCrusader;
 import model.User;
@@ -11,12 +12,17 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Controller {
-    public void run(Scanner scanner){
+    private final CoreRegisterMenuController coreRegisterMenuController;
 
+    public Controller(Scanner scanner) {
+        coreRegisterMenuController = new CoreRegisterMenuController(scanner);
+    }
+
+    public void run(){
+        coreRegisterMenuController.run();
     }
 
     public void fetchData() throws FileNotFoundException {

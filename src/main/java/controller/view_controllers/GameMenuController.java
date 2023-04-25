@@ -2,15 +2,16 @@ package controller.view_controllers;
 
 import controller.controller.CoreGameMenuController;
 import model.User;
-import view.GameMenu;
 
 import java.util.regex.Matcher;
 
 public class GameMenuController {
-    private CoreGameMenuController coreGameMenuController;
+    private final CoreGameMenuController coreController;
+    private final User loggedInUser;
 
-    public GameMenuController(User loggedInUser , GameMenu gameMenu) {
-        this.coreGameMenuController = new CoreGameMenuController(loggedInUser , gameMenu);
+    public GameMenuController(CoreGameMenuController coreController, User loggedInUser) {
+        this.coreController = coreController;
+        this.loggedInUser = loggedInUser;
     }
 
     public String showPopularityFactors(){

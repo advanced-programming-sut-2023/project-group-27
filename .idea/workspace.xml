@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="caught the deadline">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/database/Data.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/data.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/model/CellTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="add other tests for register&#10;slight change in menu design">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/Utilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/StrongholdCrusader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/StrongholdCrusader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/CastleComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/CastleComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/phase0-uml.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,10 +26,44 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature0" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="feature_mixed(0_and_16)" />
+                    <option name="lastUsedInstant" value="1682326550" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="feature0" />
+                    <option name="lastUsedInstant" value="1682320804" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="feature16" />
+                    <option name="lastUsedInstant" value="1682320795" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1682320794" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="GithubProjectSettings">
     <option name="branchProtectionPatterns">
@@ -51,6 +75,13 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="2ONsgClZmzcWnTpaFMAKFHic5mL" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -69,6 +100,7 @@
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "C:/Users/mobin/IdeaProjects/Tclone",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0"
@@ -91,33 +123,94 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="project-group-27" />
+  <component name="RunManager" selected="JUnit.CoreRegisterMenuControllerTest.successfulRegisterTest">
+    <configuration name="CoreRegisterMenuControllerTest.initializeAndFinalizeUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AP-project-group27" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller.controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.controller.CoreRegisterMenuControllerTest" />
+      <option name="METHOD_NAME" value="initializeAndFinalizeUser" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CellTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="project-group-27" />
+    <configuration name="CoreRegisterMenuControllerTest.runTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AP-project-group27" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="controller.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.CellTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="controller.controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.controller.CoreRegisterMenuControllerTest" />
+      <option name="METHOD_NAME" value="runTest(java.lang.String,java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CoreRegisterMenuControllerTest.runTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AP-project-group27" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller.controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.controller.CoreRegisterMenuControllerTest" />
+      <option name="METHOD_NAME" value="runTest(java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CoreRegisterMenuControllerTest.successfulRegisterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AP-project-group27" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller.controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.controller.CoreRegisterMenuControllerTest" />
+      <option name="METHOD_NAME" value="successfulRegisterTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RegisterMenuControllerTest.createUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AP-project-group27" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.view_controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller.view_controllers" />
+      <option name="MAIN_CLASS_NAME" value="controller.view_controllers.RegisterMenuControllerTest" />
+      <option name="METHOD_NAME" value="createUser(java.lang.String,java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.CellTest" />
+        <item itemvalue="JUnit.CoreRegisterMenuControllerTest.successfulRegisterTest" />
+        <item itemvalue="JUnit.CoreRegisterMenuControllerTest.runTest (1)" />
+        <item itemvalue="JUnit.CoreRegisterMenuControllerTest.runTest" />
+        <item itemvalue="JUnit.CoreRegisterMenuControllerTest.initializeAndFinalizeUser" />
+        <item itemvalue="JUnit.RegisterMenuControllerTest.createUser" />
       </list>
     </recent_temporary>
   </component>
@@ -236,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681502929679</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add other tests for register&#10;slight change in menu design">
+      <created>1682326520111</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1682326520112</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,13 +358,28 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/develop" />
+                        <option value="feature_mixed(0_and_16)" />
                       </list>
                     </value>
                   </entry>
                 </map>
               </option>
             </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="feature0" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
@@ -280,6 +395,18 @@
     <MESSAGE value="added selectBuildingMenu and controllers and enums" />
     <MESSAGE value="final development on select unit menu" />
     <MESSAGE value="caught the deadline" />
-    <option name="LAST_COMMIT_MESSAGE" value="caught the deadline" />
+    <MESSAGE value="add other tests for register&#10;slight change in menu design" />
+    <option name="LAST_COMMIT_MESSAGE" value="add other tests for register&#10;slight change in menu design" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

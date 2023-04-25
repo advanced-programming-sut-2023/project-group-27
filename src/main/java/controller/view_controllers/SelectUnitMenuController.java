@@ -1,14 +1,15 @@
 package controller.view_controllers;
 
-import controller.controller.CoreSelectUnitController;
+import controller.controller.CoreSelectUnitMenuController;
 import model.man.Man;
 
 import java.util.regex.Matcher;
 
-public class SelectUnitController {
-    private CoreSelectUnitController coreSelectUnitController;
+public class SelectUnitMenuController {
+    private final CoreSelectUnitMenuController coreController;
 
-    public SelectUnitController(int x, int y) {
+    public SelectUnitMenuController(Man selectedMan, CoreSelectUnitMenuController coreController) {
+        this.coreController = coreController;
     }
 
     public String moveTo(Matcher matcher) {

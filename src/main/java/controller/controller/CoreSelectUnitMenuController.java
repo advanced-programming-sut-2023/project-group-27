@@ -1,12 +1,23 @@
 package controller.controller;
 
+import controller.view_controllers.SelectUnitMenuController;
 import model.man.Man;
+import view.SelectUnitMenu;
 
-public class CoreSelectUnitController {
+import java.util.Scanner;
+
+public class CoreSelectUnitMenuController {
+    private final Scanner scanner;
     private Man selectedMan;
-
-    public CoreSelectUnitController(Man selectedMan) {
+    private final SelectUnitMenu selectUnitMenu;
+    public CoreSelectUnitMenuController(Man selectedMan , Scanner scanner) {
+        this.scanner = scanner;
         this.selectedMan = selectedMan;
+        selectUnitMenu = new SelectUnitMenu(new SelectUnitMenuController(selectedMan, this));
+    }
+
+    public void run(){
+        selectUnitMenu.run(scanner);
     }
 
     public String moveTo(int x,int y) {

@@ -1,12 +1,27 @@
 package controller.controller;
 
+import controller.view_controllers.ProfileMenuController;
 import model.StrongholdCrusader;
 import model.User;
+import view.ProfileMenu;
+
+import java.util.Scanner;
 
 import static controller.controller.Utilities.validatePassword;
 
 public class CoreProfileMenuController {
-    User loggedInUser;
+    private final Scanner scanner;
+    private final User loggedInUser;
+    private final ProfileMenu profileMenu;
+
+    public CoreProfileMenuController(Scanner scanner){
+        this.scanner = scanner;
+        loggedInUser = StrongholdCrusader.getCurrentUser();
+        profileMenu = new ProfileMenu(new ProfileMenuController(this, StrongholdCrusader.getCurrentUser()));
+    }
+    public void run(){
+        profileMenu.run(scanner);
+    }
 
     public String changeUsername(String username) {
         if (!username.matches("[0-9a-zA-Z_]+")) {

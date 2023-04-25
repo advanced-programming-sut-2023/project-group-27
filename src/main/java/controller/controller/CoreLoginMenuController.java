@@ -1,6 +1,35 @@
 package controller.controller;
 
+import controller.view_controllers.LoginMenuController;
+import view.LoginMenu;
+
+import java.util.Scanner;
+
 public class CoreLoginMenuController {
+    private final Scanner scanner;
+    private final LoginMenu loginMenu;
+    private final LoginMenuController loginController;
+    private final CoreMainMenuController coreMainMenuController;
+    public CoreLoginMenuController(Scanner scanner) {
+        this.scanner = scanner;
+        this.loginController = new LoginMenuController(this, scanner);
+        loginMenu = loginController.getMenu();
+        coreMainMenuController = new CoreMainMenuController(scanner);
+    }
+
+    public String run (){
+        String loginMenuResult;
+        while (true) {
+            loginMenuResult = loginMenu.run();
+            switch (loginMenuResult) {
+                case "Exit":
+                    return "Exit";
+                case "Enter main menu":
+                    coreMainMenuController.run();
+                    break;
+            }
+        }
+    }
 
     public String login(String username, String password) {
         return null;

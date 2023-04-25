@@ -1,17 +1,27 @@
 package controller.controller;
 
+import controller.view_controllers.TradeMenuController;
 import model.Goods;
+import model.StrongholdCrusader;
 import model.User;
 import view.TradeMenu;
 
+import java.util.Scanner;
+
 public class CoreTradeMenuController {
+    private final Scanner scanner;
     private User loggedInUser;
 
-    private TradeMenu tradeMenu;
+    private final TradeMenu tradeMenu;
 
-    public CoreTradeMenuController(User loggedInUser, TradeMenu tradeMenu) {
+    public CoreTradeMenuController(User loggedInUser , Scanner scanner) {
+        this.scanner = scanner;
         this.loggedInUser = loggedInUser;
-        this.tradeMenu = tradeMenu;
+        tradeMenu = new TradeMenu(new TradeMenuController(this, StrongholdCrusader.getCurrentUser()));
+    }
+
+    public void run(){
+        tradeMenu.run(scanner);
     }
 
     public String showTradeList(){

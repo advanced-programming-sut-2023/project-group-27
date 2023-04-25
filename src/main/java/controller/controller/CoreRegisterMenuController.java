@@ -1,14 +1,44 @@
 package controller.controller;
 
+import controller.view_controllers.RegisterMenuController;
 import model.StrongholdCrusader;
 import model.User;
+import view.RegisterMenu;
+
+import java.util.Scanner;
 
 public class CoreRegisterMenuController {
 
-    public User rawUser;
+    private User rawUser;
+    private final RegisterMenu registerMenu;
+    private final RegisterMenuController registerController;
+    private final CoreLoginMenuController coreLoginMenuController;
+
+    public CoreRegisterMenuController(Scanner scanner){
+        this.registerController = new RegisterMenuController(this, scanner);
+        registerMenu = this.registerController.getMenu();
+        coreLoginMenuController = new CoreLoginMenuController(scanner);
+    }
+
+    public RegisterMenuController getRegisterController() {
+        return registerController;
+    }
+
+    public String run(){
+        String registerMenuResult;
+        while (true) {
+            registerMenuResult = registerMenu.run();
+            switch (registerMenuResult){
+                case "Exit":
+                    return "Exit";
+                case "Enter login menu":
+                    if (coreLoginMenuController.run().equals("Exit")) return "Exit";
+                    break;
+            }
+        }
+    }
     public String initializeUser(
-            String username, String password, String email, String nickname,
-            String slogan) {
+            String username, String password, String email, String nickname, String slogan) {
         if (username.equals("") || password.equals("") ||
                 email.equals("") || nickname.equals("")) {
             return "Please fill required fields";
@@ -30,8 +60,9 @@ public class CoreRegisterMenuController {
             return "Email already exists";
         }
 
-        rawUser = new User(username, password, 0, slogan, email, "", "");
-        return "User created successfully";
+        username = Utilities.encryptString(username);
+        rawUser = new User(username, password, nickname, "", email, "", "");
+        return null;
     }
 
     public String finalizeUser(String securityQuestion, String securityAnswer) {
@@ -41,7 +72,7 @@ public class CoreRegisterMenuController {
         rawUser.setSecurityQ(securityQuestion);
         rawUser.setSecurityA(securityAnswer);
         StrongholdCrusader.addUser(rawUser);
-        return "User created successfully";
+        return null;
     }
 
 }
