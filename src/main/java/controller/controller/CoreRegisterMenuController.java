@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class CoreRegisterMenuController {
 
-    public User rawUser;
+    private User rawUser;
     private final RegisterMenu registerMenu;
     private final RegisterMenuController registerController;
     private final CoreLoginMenuController coreLoginMenuController;
