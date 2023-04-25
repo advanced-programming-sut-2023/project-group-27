@@ -1,6 +1,8 @@
 package view;
 
 import controller.view_controllers.MainMenuController;
+import model.StrongholdCrusader;
+import view.enums.MainMenuRegexes;
 
 import java.util.Scanner;
 
@@ -12,6 +14,26 @@ public class MainMenu {
     }
 
     public String run(Scanner scanner){
-        return null;
+        do {
+            String command = scanner.nextLine();
+            if (MainMenuRegexes.LOGOUT.getMatcher(command).matches()) {
+                System.out.println("User " + StrongholdCrusader.getCurrentUser().getUsername() + " logged out.");
+                return "Logout";
+            }
+            if (MainMenuRegexes.ENTERPROFILEMENU.getMatcher(command).matches()) {
+                System.out.println("Entered Profile Menu");
+                return "Enter profile menu";
+            }
+            if (MainMenuRegexes.ENTERMAPEDITMENU.getMatcher(command).matches()) {
+                System.out.println("Entered Map Edit Menu");
+                return "Enter map edit menu";
+            }
+            if (MainMenuRegexes.ENTERGAMEMENU.getMatcher(command).matches()) {
+                System.out.println("Entered Game Menu");
+                return "Enter game menu";
+            }
+
+            System.out.println("Invalid command!");
+        } while (true);
     }
 }
