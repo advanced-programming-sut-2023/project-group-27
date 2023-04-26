@@ -8,4 +8,8 @@ public class MainMenuController {
     public MainMenuController(CoreMainMenuController coreController) {
         this.coreController = coreController;
     }
+
+    public void logout() {
+        coreController.logout();
+    }
 }
