@@ -1,6 +1,8 @@
 package controller.view_controllers;
 
 import controller.controller.CoreLoginMenuController;
+import model.StrongholdCrusader;
+import model.User;
 import view.LoginMenu;
 
 import java.util.Map;
@@ -34,7 +36,23 @@ public class LoginMenuController {
     }
 
     public String forgetPassword() {
-        return null;
+        menu.showInformation("Please enter your username");
+        String username = menu.fetchAnswer();
+        if (!StrongholdCrusader.getAllUsers().containsKey(username))
+            return "This username doesn't exist!";
+        User user = StrongholdCrusader.getAllUsers().get(username);
+        menu.showInformation("Please answer the security question");
+        if (!menu.confirm(user.getSecurityQ() , user.getSecurityA()))
+            return "Wrong answer!";
+        menu.showInformation("Enter a new password");
+        String newPassword = menu.fetchAnswer();
+        String result = coreController.forgetPassword(user , newPassword);
+        while (!result.equals("Password changed successfully!")) {
+            menu.showInformation(result);
+            newPassword = menu.fetchAnswer();
+            result = coreController.forgetPassword(user , newPassword);
+        }
+        return "Password changed successfully!";
     }
 
 }

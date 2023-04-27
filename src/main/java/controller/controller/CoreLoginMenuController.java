@@ -37,7 +37,7 @@ public class CoreLoginMenuController {
     public String login(String username, String password , boolean stayLoggedIn) {
         currentTime = System.currentTimeMillis();
         if ((currentTime - delayStart) / 1000 < delay)
-            return "You need to wait another " + (delay - (currentTime - delayStart) / 1000) + "seconds!";
+            return "You need to wait another " + (delay - (currentTime - delayStart) / 1000) + "seconds to login!";
         if (!StrongholdCrusader.getAllUsers().containsKey(username))
             return "This username doesn't exist!";
         User user = StrongholdCrusader.getAllUsers().get(username);
@@ -51,7 +51,7 @@ public class CoreLoginMenuController {
         return "User logged in successfully!";
     }
 
-    public String forgetPassword() {
+    public String forgetPassword(User user , String newPassword) {
         return null;
     }
 

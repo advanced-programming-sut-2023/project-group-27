@@ -2,6 +2,7 @@ package view;
 
 import controller.view_controllers.LoginMenuController;
 import view.enums.LoginMenuRegexes;
+import view.enums.RegisterMenuRegexes;
 
 import java.util.Scanner;
 
@@ -31,5 +32,18 @@ public class LoginMenu {
             }
             else System.out.print("Invalid command\n");
         }
+    }
+
+    public void showInformation(String info) {
+        System.out.println(info);
+    }
+
+    public boolean confirm(String message, String expectedValue) {
+        System.out.println(message);
+        return this.scanner.nextLine().equals(expectedValue);
+    }
+
+    public String fetchAnswer() {
+        return this.scanner.nextLine();
     }
 }
