@@ -46,6 +46,9 @@ public class LoginMenuController {
             return "Wrong answer!";
         menu.showInformation("Enter a new password");
         String newPassword = menu.fetchAnswer();
+        while (!menu.confirm("Please confirm your new password" , newPassword)) {
+            menu.showInformation("The confirmation doesn't match the password");
+        }
         String result = coreController.forgetPassword(user , newPassword);
         while (!result.equals("Password changed successfully!")) {
             menu.showInformation(result);

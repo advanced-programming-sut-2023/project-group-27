@@ -97,7 +97,7 @@ public class RegisterMenuController {
             String answer = answerArgs.get("a");
             String answerConfirmation = answerArgs.get("c");
             if (!answerConfirmation.equals(answer)) {
-                menu.showInformation("your answer ans it's confirmation doesn't match");
+                menu.showInformation("your answer and it's confirmation doesn't match");
                 continue;
             }
             error = coreController.finalizeUser(StrongholdCrusader.getSecurityQuestions()

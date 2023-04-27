@@ -52,7 +52,10 @@ public class CoreLoginMenuController {
     }
 
     public String forgetPassword(User user , String newPassword) {
-        return null;
+        String validateResult = Utilities.validatePassword(newPassword);
+        if (validateResult != null) return validateResult;
+        user.setPassword(newPassword);
+        return "Password changed successfully!";
     }
 
 }
