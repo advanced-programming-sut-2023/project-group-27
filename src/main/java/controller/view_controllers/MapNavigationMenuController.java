@@ -10,13 +10,38 @@ import model.man.Engineer;
 import model.man.Man;
 import model.man.Soldier;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class MapNavigationMenuController {
     private final CoreMapNavigationMenuController controller;
     public MapNavigationMenuController(int x, int y, CoreMapNavigationMenuController controller) {
         this.controller = controller;
     }
 
-    public void move(int deltaX, int deltaY) {
+    public void move(String input) {
+        String regex = "(?<direction>((up)|(down)|(left)|(right)))(\\s+(?<number>-?\\d+))?";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        int deltaX = 0, deltaY = 0, displacement = 0;
+        String result;
+        while (matcher.find()) {
+            displacement = ((result = matcher.group("number")) == null) ? 1 : Integer.parseInt(result);
+            switch (matcher.group("direction")) {
+                case "up":
+                    deltaY += displacement;
+                    break;
+                case "down":
+                    deltaY -= displacement;
+                    break;
+                case "left":
+                    deltaX -= displacement;
+                    break;
+                case "right":
+                    deltaX += displacement;
+                    break;
+            }
+        }
         controller.move(deltaX, deltaY);
         showMap();
     }
@@ -56,7 +81,34 @@ public class MapNavigationMenuController {
         }
     }
 
-    public String showDetails(int x, int y) {
-        return null;
+    public String showDetails(String input) {
+        String regex = "(?<coordinate>((-x)|(-y)))\\s*(?<number>-?\\d+)";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        String axis = "";
+        int x = 0, y = 0, number;
+        while (matcher.find()) {
+            if (axis.equals(matcher.group("coordinate")))
+                return "Repetitious coordinates, include both -x and -y.";
+            axis = matcher.group("coordinate");
+            number = Integer.parseInt(matcher.group("number"));
+
+            if (number < 0)
+                return "Coordinates can't be negative.";
+
+            switch (axis) {
+                case "-x":
+                    x = number;
+                    break;
+                case "-y":
+                    y = number;
+                    break;
+            }
+        }
+
+        if ((x >= controller.getMapXSize()) || (y >= controller.getMapYSize()))
+            return "Coordinates bigger than map size.";
+
+        return controller.showDetails(x, y);
     }
 }

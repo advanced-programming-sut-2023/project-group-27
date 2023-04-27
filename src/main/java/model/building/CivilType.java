@@ -1,4 +1,4 @@
 package model.building;
 
-public enum CivilTypes {
+public enum CivilType {
 }

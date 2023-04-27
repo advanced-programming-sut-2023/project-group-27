@@ -1,11 +1,12 @@
 package view;
 
 import controller.view_controllers.MapNavigationMenuController;
+import view.enums.MapNavigationMenuRegexes;
 
 import java.util.Scanner;
 
 public class MapNavigationMenu {
-    private MapNavigationMenuController controller;
+    private final MapNavigationMenuController controller;
     private final Scanner scanner;
 
     public MapNavigationMenu(MapNavigationMenuController controller, Scanner scanner) {
@@ -15,8 +16,22 @@ public class MapNavigationMenu {
 
     public String run() {
        controller.showMap();
-       String command = scanner.nextLine();
-       //TODO complete run
-        return null;
+       while (true) {
+           String command = scanner.nextLine();
+           if (MapNavigationMenuRegexes.MOVEMAP.getMatcher(command).matches()) {
+               controller.move(command);
+               continue;
+           }
+           if (MapNavigationMenuRegexes.SHOWDETAILS.getMatcher(command).matches()) {
+               System.out.println(controller.showDetails(command));
+               continue;
+           }
+           if (MapNavigationMenuRegexes.EXIT.getMatcher(command).matches()) {
+               System.out.println("Exited MapNavigation Menu");
+               return "Exit";
+           }
+
+           System.out.println("Invalid command.");
+       }
     }
 }
