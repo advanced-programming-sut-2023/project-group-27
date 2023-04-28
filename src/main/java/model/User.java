@@ -14,7 +14,7 @@ public class User implements Comparable<User>{
 
     public User(String username, String password, String nickname, String slogan, String email, String securityQ, String securityA) {
         this.username = username;
-        this.password = password;
+        this.password = controller.controller.Utilities.encryptString(password);
         this.nickname = nickname;
         this.highScore = 0;
         this.slogan = slogan;
@@ -47,10 +47,6 @@ public class User implements Comparable<User>{
         return nickname;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public String getSecurityA() {
         return securityA;
     }
@@ -60,7 +56,7 @@ public class User implements Comparable<User>{
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = controller.controller.Utilities.encryptString(password);
     }
 
     public void setHighScore(int highScore) {
@@ -88,7 +84,8 @@ public class User implements Comparable<User>{
     }
 
     public boolean isPasswordCorrect(String password) {
-        return this.password.equals(password);
+        String encryptedPassword = controller.controller.Utilities.encryptString(password);
+        return this.password.equals(encryptedPassword);
     }
 
     @Override
