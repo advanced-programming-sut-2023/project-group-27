@@ -1,5 +1,7 @@
 package model;
 
+import controller.controller.Utilities;
+
 import java.io.PrintStream;
 
 public class User implements Comparable<User>{
@@ -90,6 +92,7 @@ public class User implements Comparable<User>{
     }
 
     public boolean isPasswordCorrect(String password) {
+        password = Utilities.encryptString(password);
         return this.password.equals(password);
     }
 
