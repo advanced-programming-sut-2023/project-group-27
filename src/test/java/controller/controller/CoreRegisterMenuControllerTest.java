@@ -28,7 +28,7 @@ class CoreRegisterMenuControllerTest {
         assertEquals("Invalid username format", output);
         output = coreController.initializeUser("mobin", "password@1", "mo@gm.com", "nickname", "slogan");
         assertEquals("Password must contain at least one " +
-                "uppercase letter, one lowercase letter and one digit", output);
+                "uppercase letter, one lowercase letter and one digit\n", output);
         output = coreController.initializeUser("mobin", "Pass1wAord@1", "mmm.com", "nickname", "slogan");
         assertEquals("Invalid email format", output);
         output = coreController.initializeUser("mobin", "Password@1", "mo@gm.com", "nickname", "slogan");
@@ -80,5 +80,6 @@ class CoreRegisterMenuControllerTest {
     @AfterEach
     void tearDown() {
         outContent.reset();
+        StrongholdCrusader.reset();
     }
 }
