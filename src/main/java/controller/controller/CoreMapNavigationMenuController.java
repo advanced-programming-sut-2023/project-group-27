@@ -46,7 +46,6 @@ public class CoreMapNavigationMenuController {
         while (true) {
             mapNavigationMenuResult = mapNavigationMenu.run();
             if (mapNavigationMenuResult.equals("Exit")) {
-                coreGameMenuController.run();
                 return "Exit";
             }
         }

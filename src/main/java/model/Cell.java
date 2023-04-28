@@ -8,13 +8,16 @@ public class Cell implements Passable{
     private TreeType treeType;
     private Building building;
     private Man man;
-    private int xCoordinate;
-    private int yCoordinate;
+    private Location location;
 
     public Cell(LandType type, int xCoordinate, int yCoordinate) {
         this.type = type;
-        this.xCoordinate = xCoordinate;
-        this.yCoordinate = yCoordinate;
+        this.location = new Location(xCoordinate, yCoordinate);
+    }
+
+    public Cell(LandType type, Location location) {
+        this.type = type;
+        this.location = new Location(location.x, location.y);
     }
 
     @Override
@@ -42,11 +45,15 @@ public class Cell implements Passable{
     }
 
     public int getXCoordinate() {
-        return xCoordinate;
+        return location.x;
     }
 
     public int getYCoordinate() {
-        return yCoordinate;
+        return location.y;
+    }
+
+    public Location getLocation() {
+        return location;
     }
 
     public void setTreeType(TreeType treeType) {
