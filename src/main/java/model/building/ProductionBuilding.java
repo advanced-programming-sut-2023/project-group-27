@@ -5,16 +5,16 @@ import model.Production;
 import java.util.List;
 
 public class ProductionBuilding extends Building{
-    private ProductionTypes productionTypes;
+    private ProductionType productionType;
     private List<Production> requirements;
     private Production product;
-    public ProductionBuilding(List<Production> requirements, Production product , ProductionTypes productionTypes) {
-        this.productionTypes = productionTypes;
+    public ProductionBuilding(List<Production> requirements, Production product , ProductionType productionType) {
+        this.productionType = productionType;
         this.requirements = requirements;
         this.product = product;
     }
-    public ProductionTypes getProductionTypes() {
-        return productionTypes;
+    public ProductionType getProductionType() {
+        return productionType;
     }
 
     public void act() {

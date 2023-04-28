@@ -2,14 +2,14 @@ package model.building;
 
 
 public class CivilBuilding extends Building {
-    private CivilTypes civilTypes;
+    private final CivilType civilType;
 
-    public CivilBuilding(CivilTypes civilTypes) {
-        this.civilTypes = civilTypes;
+    public CivilBuilding(CivilType civilType) {
+        this.civilType = civilType;
     }
 
-    public CivilTypes getCivilTypes() {
-        return civilTypes;
+    public CivilType getCivilType() {
+        return civilType;
     }
 
 }

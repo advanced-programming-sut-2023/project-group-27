@@ -16,6 +16,7 @@ public class CoreGameMenuController {
     private final CoreTradeMenuController coreTradeMenuController;
     private CoreSelectUnitMenuController coreSelectUnitMenuController;
     private CoreSelectBuildingMenuController coreSelectBuildingMenuController;
+    private CoreMapNavigationMenuController coreMapNavigationMenuController;
 
     public CoreGameMenuController(User loggedInUser , Scanner scanner) {
         this.scanner = scanner;
@@ -78,17 +79,25 @@ public class CoreGameMenuController {
         return null;
     }
 
-    public String selectBuilding(int x , int y){
+    public String selectBuilding(int x , int y) {
         Building selectedBuilding = null;
         coreSelectBuildingMenuController = new CoreSelectBuildingMenuController(selectedBuilding , scanner);
         coreSelectBuildingMenuController.run();
         return null;
     }
 
-    public String selectUnit(int x , int y){
+    public String selectUnit(int x , int y) {
         Man selectedMan = null;
         coreSelectUnitMenuController = new CoreSelectUnitMenuController(selectedMan , scanner);
         coreSelectUnitMenuController.run();
+        return null;
+    }
+
+    public String showMap(int x, int y) {
+        coreMapNavigationMenuController  = new CoreMapNavigationMenuController(x, y, scanner,
+                StrongholdCrusader.getCurrentMap(),
+                this);
+        coreMapNavigationMenuController.run();
         return null;
     }
 
