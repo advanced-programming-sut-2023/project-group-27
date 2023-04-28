@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="some issues resolved">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/GoodsType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/ProductionRules.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/ProdutionRule.java" afterDir="false" />
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="adding selectunit required logics">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/FoodType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Goods.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuilding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/ProductionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuildingType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/Storage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/Engineer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/Engineer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/Man.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/Man.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/MeeleSoldier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/MeeleSoldier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/RangedSoldier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/RangedSoldier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/Soldier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/Soldier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/GoodsType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoodsType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ProductionRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ProductionRules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuildingType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuildingType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +226,7 @@
       <workItem from="1681975782435" duration="4081000" />
       <workItem from="1682578572548" duration="24090000" />
       <workItem from="1682621295379" duration="4964000" />
-      <workItem from="1682661029537" duration="12790000" />
+      <workItem from="1682661029537" duration="17338000" />
     </task>
     <task id="LOCAL-00001" summary="first commit to initial_base">
       <created>1681417450067</created>
@@ -379,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682668391884</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="adding selectunit required logics">
+      <created>1682694807327</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1682694807327</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,7 +440,8 @@
     <MESSAGE value="completed map navigation menu" />
     <MESSAGE value="completed some type enums" />
     <MESSAGE value="some issues resolved" />
-    <option name="LAST_COMMIT_MESSAGE" value="some issues resolved" />
+    <MESSAGE value="adding selectunit required logics" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding selectunit required logics" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

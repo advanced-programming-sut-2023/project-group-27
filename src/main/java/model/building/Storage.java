@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class Storage extends Building{
     private final HashMap<GoodsType, Integer> goodsMap;
 
-    public Storage(ArrayList<GoodsType> goodsTypes) {
+    public Storage(GoodsType[] goodsTypes) {
         goodsMap = new HashMap<>();
 
         for (GoodsType goodsType : goodsTypes)

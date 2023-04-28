@@ -12,19 +12,36 @@ public enum GoodsType {
     WOOD("Wood"),
     STONE("Stone"),
     IRON("Iron"),
-    BOW("Boew"),
+    BOW("Bow"),
     CROSSBOW("CrossBow"),
     LEATHERARMOUR("LeatherArmour"),
     ARMOUR("Armour"),
     SWORD("Sword"),
+    SPEAR("Spear"),
     PIKE("Pike"),
     MACE("Mace"),
     PITCH("Pitch");
 
 
-    private String name;
+    private final String name;
 
     GoodsType(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public static GoodsType[] getGranaryGoods() {
+        return new GoodsType[] {BREAD, APPLE, CHEESE, MEAT};
+    }
+
+    public static GoodsType[] getStockPileGoods() {
+        return new GoodsType[] {WHEAT, HOPS, FLOUR, BEER, WOOD, STONE, IRON, PITCH};
+    }
+
+    public static GoodsType[] getArmouryGoods() {
+        return new GoodsType[] {BOW, CROSSBOW, PIKE, MACE, SWORD, SPEAR, LEATHERARMOUR};
     }
 }
