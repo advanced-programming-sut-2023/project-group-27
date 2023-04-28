@@ -70,7 +70,7 @@ class CoreRegisterMenuControllerTest {
         assertEquals(0, user.getHighScore());
         assertEquals("user", user.getUsername());
         assertEquals("m@m.com", user.getEmail());
-        assertEquals("Password@1", user.getPassword());
+        assertTrue(user.isPasswordCorrect("Password@1"));
         assertEquals("nick", user.getNickname());
         assertEquals("", user.getSlogan());
         assertEquals(StrongholdCrusader.getSecurityQuestions().get(0), user.getSecurityQ());

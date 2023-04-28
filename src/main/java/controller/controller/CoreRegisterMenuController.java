@@ -53,14 +53,13 @@ public class CoreRegisterMenuController {
         if (passwordError != null) {
             return passwordError;
         }
-        if (!email.matches("[0-9a-zA-Z_]+@[0-9a-zA-Z_]+\\.[0-9a-zA-Z_]+")) {
-            return "Invalid email format";
+        if (Utilities.validateEmail(email) != null) {
+            return Utilities.validateEmail(email);
         }
         if (StrongholdCrusader.getAllUsers().values().stream().anyMatch(user -> user.getEmail().equals(email))) {
             return "Email already exists";
         }
 
-        password = Utilities.encryptString(password);
         rawUser = new User(username, password, nickname, "", email, "", "");
         return null;
     }
