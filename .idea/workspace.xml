@@ -4,11 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="completed some type enums">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="some issues resolved">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/GoodsType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/ProductionRules.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/ProdutionRule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapNavigationMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapNavigationMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/FoodType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Goods.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/ProductionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuildingType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/Storage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/Engineer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/Engineer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/Man.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/Man.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/MeeleSoldier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/MeeleSoldier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/RangedSoldier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/RangedSoldier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/Soldier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/Soldier.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,10 +39,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="checkpoint1_finalization" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
@@ -225,7 +237,7 @@
       <workItem from="1681975782435" duration="4081000" />
       <workItem from="1682578572548" duration="24090000" />
       <workItem from="1682621295379" duration="4964000" />
-      <workItem from="1682661029537" duration="2353000" />
+      <workItem from="1682661029537" duration="12790000" />
     </task>
     <task id="LOCAL-00001" summary="first commit to initial_base">
       <created>1681417450067</created>
@@ -360,7 +372,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682605438382</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="some issues resolved">
+      <created>1682668391884</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1682668391884</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -424,7 +443,8 @@
     <MESSAGE value="map navigation feature" />
     <MESSAGE value="completed map navigation menu" />
     <MESSAGE value="completed some type enums" />
-    <option name="LAST_COMMIT_MESSAGE" value="completed some type enums" />
+    <MESSAGE value="some issues resolved" />
+    <option name="LAST_COMMIT_MESSAGE" value="some issues resolved" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
