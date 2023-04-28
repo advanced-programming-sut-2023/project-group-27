@@ -86,7 +86,6 @@ public class ProfileMenuController {
 
     public void removeSlogan() {
         coreController.removeSlogan();
-        // TODO register
     }
 
     public String showHighScore() {

@@ -43,6 +43,12 @@ public class CoreRegisterMenuController {
                 email.equals("") || nickname.equals("")) {
             return "Please fill required fields";
         }
+        if (slogan != null && slogan.equals("")) {
+            return "If you provide '-s' then you should provide some input for it";
+        }
+        if (slogan == null) {
+            slogan = "";
+        }
         if (!username.matches("[0-9a-zA-Z_]+")) {
             return "Invalid username format";
         }
@@ -60,7 +66,7 @@ public class CoreRegisterMenuController {
             return "Email already exists";
         }
 
-        rawUser = new User(username, password, nickname, "", email, "", "");
+        rawUser = new User(username, password, nickname, slogan, email, "", "");
         return null;
     }
 
