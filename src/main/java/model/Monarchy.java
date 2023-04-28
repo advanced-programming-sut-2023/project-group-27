@@ -14,6 +14,6 @@ public class Monarchy {
     int foodRate;
     int gold;
     int fearRate;
-    List<FoodType> foodTypes;
+    List<GoodsType> foodTypes;
 
 }
