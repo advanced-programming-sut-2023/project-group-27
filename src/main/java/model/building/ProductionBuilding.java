@@ -9,9 +9,9 @@ public class ProductionBuilding extends Building{
     private List<Production> requirements;
     private Production product;
     
-    public ProductionBuilding(int hitpoint, List<Production> requirements, Production product , ProductionType productionType) {
+    public ProductionBuilding(int hitpoint, List<Production> requirements, Production product , ProductionBuildingType productionType) {
         super(hitpoint);
-        this.productionType = productionType;
+        this.productionBuildingType = productionType;
         this.requirements = requirements;
         this.product = product;
     }
