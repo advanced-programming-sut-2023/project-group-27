@@ -5,6 +5,7 @@ public class GameMap {
     private final int width;
     private final int height;
     private final Cell [][] map;
+
     public GameMap(int width, int height, String name) {
         this.width = width;
         this.height = height;
@@ -30,10 +31,5 @@ public class GameMap {
 
     public Cell[][] getMap() {
         return map;
-    }
-
-    public Cell[][] showMap(int x , int y , int sizeToBeShown)
-    {
-        return null;
     }
 }

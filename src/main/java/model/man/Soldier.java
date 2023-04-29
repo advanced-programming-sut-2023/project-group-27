@@ -9,6 +9,11 @@ public class Soldier extends Man{
     private String state;
     private int damage;
 
+    public Soldier(int hitpoint, String name, int damage) {
+        super(hitpoint, name);
+        this.damage = damage;
+    }
+
     public String getState() {
         return state;
     }
