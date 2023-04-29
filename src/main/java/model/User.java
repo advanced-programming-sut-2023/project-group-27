@@ -1,5 +1,7 @@
 package model;
 
+import controller.controller.Utilities;
+
 import java.io.PrintStream;
 
 public class User implements Comparable<User>{
@@ -11,6 +13,7 @@ public class User implements Comparable<User>{
     private String email;
     private String securityQ;
     private String securityA;
+    private boolean stayLoggedIn;
 
     public User(String username, String password, String nickname, String slogan, String email, String securityQ, String securityA) {
         this.username = username;
@@ -21,6 +24,7 @@ public class User implements Comparable<User>{
         this.email = email;
         this.securityQ = securityQ;
         this.securityA = securityA;
+        stayLoggedIn = false;
     }
 
     public int getHighScore() {
@@ -88,7 +92,12 @@ public class User implements Comparable<User>{
     }
 
     public boolean isPasswordCorrect(String password) {
+        password = Utilities.encryptString(password);
         return this.password.equals(password);
+    }
+
+    public void setStayLoggedIn(boolean stayLoggedIn) {
+        this.stayLoggedIn = stayLoggedIn;
     }
 
     @Override

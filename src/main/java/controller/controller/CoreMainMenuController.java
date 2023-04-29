@@ -39,4 +39,8 @@ public class CoreMainMenuController {
             }
         }
     }
+
+    public void logout() {
+        StrongholdCrusader.getCurrentUser().setStayLoggedIn(false);
+    }
 }
