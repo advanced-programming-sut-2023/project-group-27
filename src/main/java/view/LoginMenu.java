@@ -6,13 +6,12 @@ import view.enums.RegisterMenuRegexes;
 
 import java.util.Scanner;
 
-public class LoginMenu {
+public class LoginMenu extends MenuBase{
     private final LoginMenuController controller;
-    private final Scanner scanner;
 
     public LoginMenu(LoginMenuController controller, Scanner scanner) {
+        super(scanner);
         this.controller = controller;
-        this.scanner = scanner;
     }
 
     public String run() {
@@ -34,16 +33,4 @@ public class LoginMenu {
         }
     }
 
-    public void showInformation(String info) {
-        System.out.println(info);
-    }
-
-    public boolean confirm(String message, String expectedValue) {
-        System.out.println(message);
-        return this.scanner.nextLine().equals(expectedValue);
-    }
-
-    public String fetchAnswer() {
-        return this.scanner.nextLine();
-    }
 }
