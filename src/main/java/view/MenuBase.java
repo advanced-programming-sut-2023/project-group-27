@@ -16,7 +16,6 @@ public class MenuBase {
     }
 
     public boolean confirm(String message, String expectedValue) {
-        String confirmation = "";
         System.out.println(message);
         return this.scanner.nextLine().equals(expectedValue);
     }
