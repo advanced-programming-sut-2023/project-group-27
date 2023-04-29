@@ -43,6 +43,12 @@ public class CoreRegisterMenuController {
                 email.equals("") || nickname.equals("")) {
             return "Please fill required fields";
         }
+        if (slogan != null && slogan.equals("")) {
+            return "If you provide '-s' then you should provide some input for it";
+        }
+        if (slogan == null) {
+            slogan = "";
+        }
         if (!username.matches("[0-9a-zA-Z_]+")) {
             return "Invalid username format";
         }
@@ -53,15 +59,14 @@ public class CoreRegisterMenuController {
         if (passwordError != null) {
             return passwordError;
         }
-        if (!email.matches("[0-9a-zA-Z_]+@[0-9a-zA-Z_]+\\.[0-9a-zA-Z_]+")) {
-            return "Invalid email format";
+        if (Utilities.validateEmail(email) != null) {
+            return Utilities.validateEmail(email);
         }
         if (StrongholdCrusader.getAllUsers().values().stream().anyMatch(user -> user.getEmail().equals(email))) {
             return "Email already exists";
         }
 
-        password = Utilities.encryptString(password);
-        rawUser = new User(username, password, nickname, "", email, "", "");
+        rawUser = new User(username, password, nickname, slogan, email, "", "");
         return null;
     }
 

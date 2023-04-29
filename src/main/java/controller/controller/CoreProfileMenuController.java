@@ -7,20 +7,20 @@ import view.ProfileMenu;
 
 import java.util.Scanner;
 
-import static controller.controller.Utilities.validatePassword;
-
 public class CoreProfileMenuController {
     private final Scanner scanner;
     private final User loggedInUser;
     private final ProfileMenu profileMenu;
+    private final ProfileMenuController controller;
 
     public CoreProfileMenuController(Scanner scanner){
         this.scanner = scanner;
-        loggedInUser = StrongholdCrusader.getCurrentUser();
-        profileMenu = new ProfileMenu(new ProfileMenuController(this, StrongholdCrusader.getCurrentUser()));
+        this.loggedInUser = StrongholdCrusader.getCurrentUser();
+        this.controller = new ProfileMenuController(this, StrongholdCrusader.getCurrentUser(), scanner);
+        this.profileMenu = this.controller.getMenu();
     }
     public void run(){
-        profileMenu.run(scanner);
+        profileMenu.run();
     }
 
     public String changeUsername(String username) {
@@ -41,23 +41,8 @@ public class CoreProfileMenuController {
         return loggedInUser.isPasswordCorrect(oldPassword);
     }
 
-    public String changePassword(String newPassword, String newPasswordConfirmation) {
-        String error = validatePassword(newPassword);
-        if (error != null) return error;
-        if (newPassword.equals(loggedInUser.getPassword())) {
-            return "Password can't be the same as old password";
-        }
-        if (newPassword.equals(loggedInUser.getUsername())) {
-            return "Password can't be the same as username";
-        }
-        if (newPassword.equals(loggedInUser.getNickname())) {
-            return "Password can't be the same as nickname";
-        }
-        if (!newPassword.equals(newPasswordConfirmation)) {
-            return "passwords don't match";
-        }
+    public void changePassword(String newPassword) {
         loggedInUser.setPassword(newPassword);
-        return "Successful";
     }
 
     public void changeSlogan(String newSlogan) {
@@ -93,5 +78,9 @@ public class CoreProfileMenuController {
         result = result.concat("Slogan: " + loggedInUser.getSlogan() + "\n");
         result = result.concat("Email: " + loggedInUser.getEmail() + "\n");
         return result;
+    }
+
+    public void changeEmail(String newEmail) {
+        loggedInUser.setEmail(newEmail);
     }
 }

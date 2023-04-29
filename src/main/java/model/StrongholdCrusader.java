@@ -42,6 +42,11 @@ public class StrongholdCrusader {
         return currentMatchMap;
     }
 
+    public static void reset() {
+        allUsers.clear();
+        allMaps.clear();
+    }
+
     public int getTurnCounter() {
         return turnCounter;
     }

@@ -2,6 +2,7 @@ package model.man;
 
 import model.Cell;
 import model.Destructable;
+import model.User;
 import model.task.Task;
 
 public class Soldier extends Man{
@@ -9,8 +10,8 @@ public class Soldier extends Man{
     private String state;
     private int damage;
 
-    public Soldier(int hitpoint, String name, int damage) {
-        super(hitpoint, name);
+    public Soldier(int hitpoint, String name, int damage, User owner) {
+        super(hitpoint, name, owner);
         this.damage = damage;
     }
 

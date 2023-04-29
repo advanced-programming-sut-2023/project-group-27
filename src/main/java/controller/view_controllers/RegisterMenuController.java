@@ -39,10 +39,9 @@ public class RegisterMenuController {
         String nickname = args.get("n");
         String email = args.get("email");
         String slogan = args.get("s");
-        if (slogan == null) slogan = "";
 
         String result = "";
-        if (slogan.equals("random")) {
+        if (slogan != null && slogan.equals("random")) {
             slogan = randomSlogan();
             menu.showInformation("Your slogan is \"" + slogan + "\"\n");
         }
