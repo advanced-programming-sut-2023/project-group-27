@@ -1,6 +1,8 @@
 package controller.controller;
 
 import controller.view_controllers.LoginMenuController;
+import model.StrongholdCrusader;
+import model.User;
 import view.LoginMenu;
 
 import java.util.Scanner;
@@ -17,6 +19,10 @@ public class CoreLoginMenuController {
         coreMainMenuController = new CoreMainMenuController(scanner);
     }
 
+    public LoginMenuController getLoginController() {
+        return loginController;
+    }
+
     public String run (){
         String loginMenuResult;
         while (true) {
@@ -30,16 +36,37 @@ public class CoreLoginMenuController {
             }
         }
     }
+    private static int delay = 0;
+    private static long delayStart;
 
-    public String login(String username, String password) {
-        return null;
+    public String login(String username, String password , boolean stayLoggedIn) {
+        long currentTime = System.currentTimeMillis();
+        if ((currentTime - delayStart) / 1000 < delay)
+            return "You need to wait another " + (delay - (currentTime - delayStart) / 1000) + " seconds to login!";
+        if (!StrongholdCrusader.getAllUsers().containsKey(username))
+            return "This username doesn't exist!";
+        User user = StrongholdCrusader.getAllUsers().get(username);
+        if (!user.isPasswordCorrect(password)) {
+            delayStart = System.currentTimeMillis();
+            delay += 5;
+            return "Username and password didn't match!";
+        }
+        if (stayLoggedIn) user.setStayLoggedIn(true);
+        delay = 0;
+        return "User logged in successfully!";
     }
 
-    public boolean isVerifiedPassword(String username, String securityA) {
-        return true;
+    public String forgetPassword(User user , String newPassword) {
+        String validateResult = Utilities.validatePassword(newPassword);
+        if (validateResult != null) return validateResult;
+        newPassword = Utilities.encryptString(newPassword);
+        user.setPassword(newPassword);
+        return "Password changed successfully!";
     }
 
-    public String changePassword(String username, String newPassword) {
-        return "New password is set successfully";
+    public static void resetDelay() {
+        delay = 0;
+        delayStart = 0;
     }
+
 }

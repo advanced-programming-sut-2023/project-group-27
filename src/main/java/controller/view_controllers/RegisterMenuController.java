@@ -49,7 +49,7 @@ public class RegisterMenuController {
             password = controller.controller.Utilities.randomPassword();
             do {
                 menu.showInformation("Your password is \"" + password + "\"\n");
-            } while (menu.confirm("Please re-enter your password here:", password));
+            } while (!menu.confirm("Please re-enter your password here:", password));
         }
         String error = coreController.initializeUser(username, password, email, nickname, slogan);
         if (error != null) {
@@ -96,7 +96,7 @@ public class RegisterMenuController {
             String answer = answerArgs.get("a");
             String answerConfirmation = answerArgs.get("c");
             if (!answerConfirmation.equals(answer)) {
-                menu.showInformation("your answer ans it's confirmation doesn't match");
+                menu.showInformation("your answer and it's confirmation doesn't match");
                 continue;
             }
             error = coreController.finalizeUser(StrongholdCrusader.getSecurityQuestions()
