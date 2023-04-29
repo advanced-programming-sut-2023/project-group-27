@@ -3,17 +3,51 @@ package model;
 import model.building.Building;
 import model.man.Man;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Monarchy {
-    List<Building> buildings;
-    List<Man> men;
-    User king;
-    int popularity;
-    int taxRate;
-    int foodRate;
-    int gold;
-    int fearRate;
-    List<GoodsType> foodTypes;
+    private List<Building> buildings = new ArrayList<>();
+    private List<GoodsType> foodTypes = new ArrayList<>();
+    private List<Man> men = new ArrayList<>();
+    private Map<GoodsType, Integer> storage = new HashMap<>();
+    private final TradingSystem tradingSystem;
+    private User king;
+    private int popularity;
+    private int taxRate;
+    private int foodRate;
+    private int gold;
+    private int fearRate;
 
+    public Monarchy(User king) {
+        this.king = king;
+        this.tradingSystem = new TradingSystem(king);
+        this.popularity = 50;
+        this.taxRate = 0;
+        this.foodRate = 0;
+        this.gold = 0;
+        this.fearRate = 0;
+    }
+
+    public User getKing() {
+        return king;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public void changeGold(int amount) {
+        gold += amount;
+    }
+
+    public TradingSystem getTradingSystem() {
+        return tradingSystem;
+    }
+
+    public Map<GoodsType, Integer> getStorage() {
+        return storage;
+    }
 }

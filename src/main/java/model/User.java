@@ -11,6 +11,7 @@ public class User implements Comparable<User>{
     private String email;
     private String securityQ;
     private String securityA;
+    private Monarchy monarchy;
 
     public User(String username, String password, String nickname, String slogan, String email, String securityQ, String securityA) {
         this.username = username;
@@ -21,6 +22,7 @@ public class User implements Comparable<User>{
         this.email = email;
         this.securityQ = securityQ;
         this.securityA = securityA;
+        this.monarchy = new Monarchy(this);
     }
 
     public int getHighScore() {
@@ -49,6 +51,10 @@ public class User implements Comparable<User>{
 
     public String getSecurityA() {
         return securityA;
+    }
+
+    public Monarchy getMonarchy() {
+        return monarchy;
     }
 
     public void setUsername(String username) {

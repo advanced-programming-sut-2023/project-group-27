@@ -20,7 +20,7 @@ public class CoreProfileMenuController {
         this.profileMenu = this.controller.getMenu();
     }
     public void run(){
-        profileMenu.run(scanner);
+        profileMenu.run();
     }
 
     public String changeUsername(String username) {

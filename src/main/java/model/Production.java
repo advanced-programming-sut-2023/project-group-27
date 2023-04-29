@@ -4,10 +4,10 @@ import model.building.Storage;
 
 public enum Production {
     ;
-    private Goods good;
+    private GoodsType good;
     private Storage storage;
     private int amount;
-    Production(Goods good, Storage storage, int amount) {
+    Production(GoodsType good, Storage storage, int amount) {
         this.amount = amount;
         this.good = good;
         this.storage = storage;
