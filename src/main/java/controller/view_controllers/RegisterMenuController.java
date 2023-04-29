@@ -50,7 +50,7 @@ public class RegisterMenuController {
             password = controller.controller.Utilities.randomPassword();
             do {
                 menu.showInformation("Your password is \"" + password + "\"\n");
-            } while (menu.confirm("Please re-enter your password here:", password));
+            } while (!menu.confirm("Please re-enter your password here:", password));
         }
         String error = coreController.initializeUser(username, password, email, nickname, slogan);
         if (error != null) {

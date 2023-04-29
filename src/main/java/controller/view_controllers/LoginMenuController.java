@@ -23,6 +23,7 @@ public class LoginMenuController {
     }
 
     public String login(Matcher matcher) {
+        matcher.matches();
         String argsString = matcher.group("options");
         Map<String , String> args = Utilities.extractOptionsFromString(argsString);
         if (args == null)
@@ -42,8 +43,8 @@ public class LoginMenuController {
             return "This username doesn't exist!";
         User user = StrongholdCrusader.getAllUsers().get(username);
         menu.showInformation("Please answer the security question");
-        if (!menu.confirm(user.getSecurityQ() , user.getSecurityA()))
-            return "Wrong answer!";
+        while (!menu.confirm(user.getSecurityQ() , user.getSecurityA()))
+            menu.showInformation("Wrong answer!");
         menu.showInformation("Enter a new password");
         String newPassword = menu.fetchAnswer();
         while (!menu.confirm("Please confirm your new password" , newPassword)) {
