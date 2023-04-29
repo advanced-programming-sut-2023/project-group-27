@@ -13,7 +13,7 @@ public class ProfileMenu extends MenuBase{
         this.controller = controller;
     }
 
-    public String run(Scanner scanner) {
+    public String run() {
         while (true) {
             String command = scanner.nextLine();
             String output = "";

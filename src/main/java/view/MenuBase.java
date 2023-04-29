@@ -5,7 +5,7 @@ import view.enums.RegisterMenuRegexes;
 import java.util.Scanner;
 
 public class MenuBase {
-    private final Scanner scanner;
+    protected final Scanner scanner;
 
     public MenuBase(Scanner scanner) {
         this.scanner = scanner;
@@ -23,9 +23,6 @@ public class MenuBase {
 
     public String fetchAnswer() {
         String answer = this.scanner.nextLine();
-        if (!RegisterMenuRegexes.SECURITY_A.getMatcher(answer).matches()) {
-            return null;
-        }
         return answer;
     }
 }

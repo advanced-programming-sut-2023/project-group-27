@@ -7,13 +7,12 @@ import view.enums.RegisterMenuRegexes;
 import java.util.Map;
 import java.util.Scanner;
 
-public class RegisterMenu {
+public class RegisterMenu extends MenuBase{
     private final RegisterMenuController controller;
-    private final Scanner scanner;
 
     public RegisterMenu(RegisterMenuController controller, Scanner scanner) {
+        super(scanner);
         this.controller = controller;
-        this.scanner = scanner;
     }
 
     public String run() {
@@ -33,16 +32,7 @@ public class RegisterMenu {
         return "Exit";
     }
 
-    public void showInformation(String info) {
-        System.out.println(info);
-    }
-
-    public boolean confirm(String message, String expectedValue) {
-        String confirmation = "";
-        System.out.println(message);
-        return this.scanner.nextLine().equals(expectedValue);
-    }
-
+    @Override
     public String fetchAnswer() {
         String answer = this.scanner.nextLine();
         if (!RegisterMenuRegexes.SECURITY_A.getMatcher(answer).matches()) {
