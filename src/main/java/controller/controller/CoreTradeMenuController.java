@@ -17,7 +17,9 @@ public class CoreTradeMenuController {
     public CoreTradeMenuController(User loggedInUser , Scanner scanner) {
         this.scanner = scanner;
         this.loggedInUser = loggedInUser;
-        this.tradingSystem = loggedInUser.getMonarchy().getTradingSystem();
+        if (loggedInUser != null) {
+            this.tradingSystem = loggedInUser.getMonarchy().getTradingSystem();
+        }
         this.controller = new TradeMenuController(this, loggedInUser, scanner);
         this.menu = this.controller.getMenu();
     }
