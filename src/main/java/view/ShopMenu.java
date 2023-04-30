@@ -1,6 +1,7 @@
 package view;
 
 import controller.view_controllers.ShopMenuController;
+import view.enums.ShopMenuRegexes;
 
 import java.util.Scanner;
 
@@ -14,6 +15,23 @@ public class ShopMenu {
     }
 
     public String run() {
-        return null;
+        String command , output;
+        while (true) {
+            command = scanner.nextLine();
+            if (ShopMenuRegexes.EXIT.getMatcher(command).matches()) return "EXit";
+            else if (ShopMenuRegexes.SHOWPRICELIST.getMatcher(command).matches()) {
+                output = controller.buy(ShopMenuRegexes.SHOWPRICELIST.getMatcher(command));
+                System.out.println(output);
+            }
+            else if (ShopMenuRegexes.BUY.getMatcher(command).matches()) {
+                output = controller.buy(ShopMenuRegexes.BUY.getMatcher(command));
+                System.out.println(output);
+            }
+            else if (ShopMenuRegexes.SELL.getMatcher(command).matches()) {
+                output = controller.buy(ShopMenuRegexes.SELL.getMatcher(command));
+                System.out.println(output);
+            }
+            else System.out.println("Invalid command!");
+        }
     }
 }

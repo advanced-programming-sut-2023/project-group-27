@@ -2,7 +2,6 @@ package view;
 
 import controller.view_controllers.LoginMenuController;
 import view.enums.LoginMenuRegexes;
-import view.enums.RegisterMenuRegexes;
 
 import java.util.Scanner;
 
@@ -29,7 +28,7 @@ public class LoginMenu extends MenuBase{
                 output = controller.forgetPassword();
                 System.out.println(output);
             }
-            else System.out.print("Invalid command\n");
+            else System.out.println("Invalid command!");
         }
     }
 
