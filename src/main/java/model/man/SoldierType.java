@@ -2,15 +2,17 @@ package model.man;
 
 import model.GoodsType;
 
-public enum MeeleType {
+public enum SoldierType {
     SPEARMAN("SpearMan", 0, 0, 0, null, 8, "european",
             new GoodsType[] {GoodsType.SPEAR}),
     PIKEMAN("PikeMan", 0, 0, 0, null, 20, "european",
             new GoodsType[] {GoodsType.ARMOUR, GoodsType.PIKE}),
     MACEMAN("MaceMan", 0, 0, 0, null, 20, "european",
             new GoodsType[] {GoodsType.LEATHERARMOUR, GoodsType.MACE}),
-    SWORDSMAN("SwordsMan", 0, 0, 0, null, 40, "european", requirments),
-    KNIGHT("Knight", 0, 0, 0, null, 40, "european", requirments),
+    SWORDSMAN("SwordsMan", 0, 0, 0, null, 40, "european",
+            new GoodsType[] {GoodsType.ARMOUR, GoodsType.SWORD}),
+    KNIGHT("Knight", 0, 0, 0, null, 40, "european",
+            new GoodsType[] {GoodsType.ARMOUR, GoodsType.SWORD, GoodsType.HORSE}),
     BLACKMONK("BlackMonk", 0, 0, 0, null, 10, "european", null),
     TUNNELER("Tunneler", 0, 0, 0, null, 30, "european", null),
     LADDERMAN("LadderMan", 0, 0, 0, null, 3, "european", null),
@@ -35,7 +37,7 @@ public enum MeeleType {
     private final int cost;
     private final String nationality;
     private final GoodsType[] requirments;
-    MeeleType(String name, int hitpoint, int damage, int movementSpeed, Integer range, int cost, String nationality, GoodsType[] requirments) {
+    SoldierType(String name, int hitpoint, int damage, int movementSpeed, Integer range, int cost, String nationality, GoodsType[] requirments) {
         this.name = name;
         this.hitpoint = hitpoint;
         this.damage = damage;
@@ -68,5 +70,13 @@ public enum MeeleType {
 
     public int getCost() {
         return cost;
+    }
+
+    public GoodsType[] getRequirments() {
+        return requirments;
+    }
+
+    public int getRange() {
+        return range;
     }
 }

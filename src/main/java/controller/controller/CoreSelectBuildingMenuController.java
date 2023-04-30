@@ -35,28 +35,26 @@ public class CoreSelectBuildingMenuController {
 
         if (menToBeAdded[0] == null) return "";
         currentMonarchy.addallMen(menToBeAdded);
-        return true;
+        return "true";
     }
 
     public Man getNewMan(Object type) {
         if (type == null)
             return new Engineer(100, currentMonarchy.getKing());
-        if (type instanceof MeeleType)
-            return new MeeleSoldier((MeeleType) type, currentMonarchy.getKing());
-        if (type instanceof RangedType)
-            return new RangedSoldier((RangedType) type, currentMonarchy.getKing());
+        if (type instanceof SoldierType)
+            return new Soldier((SoldierType) type, currentMonarchy.getKing());
         return null;
     }
 
     public String repair() {
-        int fullHitpont = ((CastleComponent) selectedBuilding).getCastleComponentType().getHitpoint(),
+        int fullHitpoint = ((CastleComponent) selectedBuilding).getCastleComponentType().getHitpoint(),
                 currentStone = currentMonarchy.getStockPile().getGoodsCount(GoodsType.STONE),
-                stoneNeeded = fullHitpont - selectedBuilding.getHitpoint();
+                stoneNeeded = fullHitpoint - selectedBuilding.getHitpoint();
         if (currentStone <= stoneNeeded)
             return "Stone needed my Lord\n!";
 
         currentMonarchy.getStockPile().modifyGoodsCount(GoodsType.STONE, -1 * stoneNeeded);
-        selectedBuilding.setHitpoint(fullHitpont);
+        selectedBuilding.setHitpoint(fullHitpoint);
         return "Repaired Succesfully!\n";
     }
 

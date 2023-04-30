@@ -63,4 +63,20 @@ public class Monarchy {
     public Storage getArmoury() {
         return storages[2];
     }
+
+    public int getGood(GoodsType goodsType) {
+        Integer amount;
+        for (Storage thisStorage : storages) {
+            if ((amount = thisStorage.getGoodsCount(goodsType)) != null)
+                return amount;
+        }
+        return 0;
+    }
+
+    public void putGood(GoodsType goodsType, int number) {
+        for (Storage thisStorage : storages) {
+            if (thisStorage.contains(goodsType))
+                thisStorage.putGoodsCount(goodsType, number);
+        }
+    }
 }

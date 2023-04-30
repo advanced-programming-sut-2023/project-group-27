@@ -51,7 +51,7 @@ public class TradingSystem {
             return "no such trade\n";
         }
         Monarchy systemOwnerMonarchy = systemOwner.getMonarchy();
-        if (systemOwnerMonarchy.getStorage().getOrDefault(trade.getType(), 0) < trade.getAmount()) {
+        if (systemOwnerMonarchy.getGood(trade.getType()) < trade.getAmount()) {
             return "not enough goods to accept this trade\n";
         }
         Monarchy tradeOwnerMonarchy = trade.getOwner().getMonarchy();
@@ -61,11 +61,11 @@ public class TradingSystem {
         trade.setStateToDone();
         tradeOwnerMonarchy.changeGold(-trade.getPrice());
         systemOwnerMonarchy.changeGold(trade.getPrice());
-        tradeOwnerMonarchy.getStorage().put(trade.getType(),
-                tradeOwnerMonarchy.getStorage().getOrDefault(trade.getType(), 0)
+        tradeOwnerMonarchy.putGood(trade.getType(),
+                tradeOwnerMonarchy.getGood(trade.getType())
                         + trade.getAmount());
-        systemOwnerMonarchy.getStorage().put(trade.getType(),
-                systemOwnerMonarchy.getStorage().getOrDefault(trade.getType(), 0)
+        systemOwnerMonarchy.putGood(trade.getType(),
+                systemOwnerMonarchy.getGood(trade.getType())
                         - trade.getAmount());
         awaitingTrades.remove(trade);
         history.add(trade);
