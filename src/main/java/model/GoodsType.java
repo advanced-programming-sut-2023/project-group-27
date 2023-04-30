@@ -20,7 +20,8 @@ public enum GoodsType {
     SPEAR("Spear"),
     PIKE("Pike"),
     MACE("Mace"),
-    PITCH("Pitch");
+    PITCH("Pitch"),
+    HORSE("Horse");
 
 
     private final String name;

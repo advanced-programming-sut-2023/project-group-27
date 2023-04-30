@@ -6,8 +6,10 @@ public class RangedSoldier extends Soldier{
     private RangedType rangedType;
     private int range;
 
-    public RangedSoldier(int hitpoint, int damage, RangedType rangedType, User owner) {
-        super(hitpoint, rangedType.getName(), damage, owner);
+    public RangedSoldier(RangedType rangedType, User owner) {
+        super(rangedType.getHitpoint(), rangedType.getName(), rangedType.getDamage(), owner);
+        this.rangedType = rangedType;
+        range = rangedType.getRange();
     }
 
 
@@ -19,8 +21,7 @@ public class RangedSoldier extends Soldier{
         this.range = range;
     }
 
-    public void isOnTopOfTower()
-    {
-
+    public boolean isOnTopOfTower() {
+        return false;
     }
 }

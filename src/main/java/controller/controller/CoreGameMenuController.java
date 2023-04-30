@@ -1,8 +1,8 @@
 package controller.controller;
 
 import controller.view_controllers.GameMenuController;
+import model.Monarchy;
 import model.StrongholdCrusader;
-import model.User;
 import model.building.Building;
 import model.man.Man;
 import view.GameMenu;
@@ -11,16 +11,16 @@ import java.util.Scanner;
 
 public class CoreGameMenuController {
     private final Scanner scanner;
-    private User loggedInUser;
+    private Monarchy currentMonarchy;
     private final GameMenu gameMenu;
     private final CoreTradeMenuController coreTradeMenuController;
     private CoreSelectUnitMenuController coreSelectUnitMenuController;
     private CoreSelectBuildingMenuController coreSelectBuildingMenuController;
     private CoreMapNavigationMenuController coreMapNavigationMenuController;
 
-    public CoreGameMenuController(User loggedInUser , Scanner scanner) {
+    public CoreGameMenuController(Monarchy currentMonarchy, Scanner scanner) {
         this.scanner = scanner;
-        this.loggedInUser = loggedInUser;
+        this.currentMonarchy = currentMonarchy;
         gameMenu = new GameMenu(new GameMenuController(this , StrongholdCrusader.getCurrentUser()));
         coreTradeMenuController = new CoreTradeMenuController(StrongholdCrusader.getCurrentUser() , scanner);
     }
@@ -81,7 +81,7 @@ public class CoreGameMenuController {
 
     public String selectBuilding(int x , int y) {
         Building selectedBuilding = null;
-        coreSelectBuildingMenuController = new CoreSelectBuildingMenuController(selectedBuilding , scanner);
+        coreSelectBuildingMenuController = new CoreSelectBuildingMenuController(selectedBuilding , scanner, currentMonarchy);
         coreSelectBuildingMenuController.run();
         return null;
     }

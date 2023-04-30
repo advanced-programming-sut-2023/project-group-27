@@ -22,4 +22,5 @@ public class Storage extends Building{
     public int getGoodsCount(GoodsType goodsType) {
         return goodsMap.get(goodsType);
     }
+
 }

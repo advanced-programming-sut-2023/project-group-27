@@ -6,6 +6,7 @@ import java.util.List;
 
 public class StrongholdCrusader {
     private static User CurrentUser;
+    private static Monarchy currentMonarchy;
     private static GameMap currentMatchMap;
     private int turnCounter;
     private static final HashMap<String , GameMap> allMaps = new HashMap<>();
@@ -40,6 +41,10 @@ public class StrongholdCrusader {
 
     public static GameMap getCurrentMap() {
         return currentMatchMap;
+    }
+
+    public static Monarchy getCurrentMonarchy() {
+        return currentMonarchy;
     }
 
     public static void reset() {

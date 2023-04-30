@@ -5,7 +5,8 @@ import model.User;
 public class MeeleSoldier extends Soldier{
     private MeeleType meeleType;
 
-    public MeeleSoldier(int hitpoint, int damage, MeeleType meeleType, User owner) {
-        super(hitpoint, meeleType.getName(), damage, owner);
+    public MeeleSoldier(MeeleType meeleType, User owner) {
+        super(meeleType.getHitpoint(), meeleType.getName(), meeleType.getDamage(), owner);
+        this.meeleType = meeleType;
     }
 }

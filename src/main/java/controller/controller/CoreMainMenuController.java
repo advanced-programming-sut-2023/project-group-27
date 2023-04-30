@@ -18,7 +18,7 @@ public class CoreMainMenuController {
         mainMenu = new MainMenu(new MainMenuController(this));
         coreProfileMenuController = new CoreProfileMenuController(scanner);
         coreMapEditMenuController = new CoreMapEditMenuController(scanner);
-        coreGameMenuController = new CoreGameMenuController(StrongholdCrusader.getCurrentUser(), scanner);
+        coreGameMenuController = new CoreGameMenuController(StrongholdCrusader.getCurrentMonarchy(), scanner);
     }
     public String run(){
         String mainMenuResult;
