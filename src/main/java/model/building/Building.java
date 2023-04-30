@@ -20,7 +20,4 @@ public class Building extends Destructable implements Passable {
     public String getName() {
         return name;
     }
-
-
-
 }
