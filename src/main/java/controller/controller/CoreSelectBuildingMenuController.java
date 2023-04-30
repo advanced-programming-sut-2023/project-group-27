@@ -34,14 +34,13 @@ public class CoreSelectBuildingMenuController {
             menToBeAdded[i] = getNewMan(troopType);
 
         if (menToBeAdded[0] == null) return "Invalid Type\n";
+        if (!evaluateGold(troopType, count)) return "Not enough Gold!\n";
+        if (!evaluateOtherRequirements(troopType, count)) return "You are short of armoury requirements!\n";
+        takeGold(troopType, count);
+        takeRequirements(troopType, count);
         currentMonarchy.addallMen(menToBeAdded);
-        return "created succesfully";
-    }
-
-    public Man getNewMan(SoldierType type) {
-        if (type == null)
-            return new Engineer(100, currentMonarchy.getKing());
-        return new Soldier(type, currentMonarchy.getKing());
+        //TODO add troops on map;
+        return "troops added succesfully\n";
     }
 
     public String repair() {
@@ -56,15 +55,39 @@ public class CoreSelectBuildingMenuController {
         return "Repaired Successfully!\n";
     }
 
+    public Man getNewMan(SoldierType type) {
+        if (type == null)
+            return new Engineer(100, currentMonarchy.getKing());
+        return new Soldier(type, currentMonarchy.getKing());
+    }
+
     public Building getSelectedBuilding() {
         return selectedBuilding;
     }
 
-    public boolean evaluateGold() {
-        return true;
+    public boolean evaluateGold(SoldierType troopType, int count) {
+        return currentMonarchy.getGold() >= (troopType.getCost() * count);
     }
 
-    public boolean evaluateOtherRequirements() {
-        return true;
+    public void takeGold(SoldierType troopType, int count) {
+        currentMonarchy.changeGold(-1 * (troopType.getCost() * count));
+    }
+
+    public boolean evaluateOtherRequirements(SoldierType troopType, int count) {
+        GoodsType[] requirments = troopType.getRequirments();
+        if (!(requirments == null)) {
+            for (GoodsType currentgoods : requirments)
+                if (currentMonarchy.getGood(currentgoods) < count) return false;
+            return true;
+        }
+        return false;
+    }
+
+    public void takeRequirements(SoldierType troopType, int count) {
+        GoodsType[] requirments = troopType.getRequirments();
+        if (!(requirments == null)) {
+            for (GoodsType currentgoods : requirments)
+                currentMonarchy.putGood(currentgoods, currentMonarchy.getGood(currentgoods) - count);
+        }
     }
 }
