@@ -45,12 +45,12 @@ public class CoreLoginMenuController {
         if ((currentTime - delayStart) / 1000 < delay)
             return "You need to wait another " + (delay - (currentTime - delayStart) / 1000) + " seconds to login!";
         if (!StrongholdCrusader.getAllUsers().containsKey(username))
-            return "This username doesn't exist!";
+            return "This username does not exist!";
         User user = StrongholdCrusader.getAllUsers().get(username);
         if (!user.isPasswordCorrect(password)) {
             delayStart = System.currentTimeMillis();
             delay += 5;
-            return "Username and password didn't match!";
+            return "Username and password did not match!";
         }
         if (stayLoggedIn) user.setStayLoggedIn(true);
         delay = 0;

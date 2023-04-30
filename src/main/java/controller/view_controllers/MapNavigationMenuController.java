@@ -94,7 +94,7 @@ public class MapNavigationMenuController {
             number = Integer.parseInt(matcher.group("number"));
 
             if (number < 0)
-                return "Coordinates can't be negative.";
+                return "Coordinates can not be negative.";
 
             switch (axis) {
                 case "-x":

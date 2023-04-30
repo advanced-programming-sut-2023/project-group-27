@@ -25,7 +25,7 @@ class CoreRegisterMenuControllerTest {
         CoreRegisterMenuController coreController = new CoreRegisterMenuController(new Scanner(""));
         String output;
         output = coreController.initializeUser("mobin@", "Password@1", "mo@gm.com", "nickname", "slogan");
-        assertEquals("Invalid username format", output);
+        assertEquals("Invalid username format\n", output);
         output = coreController.initializeUser("mobin", "password@1", "mo@gm.com", "nickname", "slogan");
         assertEquals("Password must contain at least one " +
                 "uppercase letter, one lowercase letter and one digit\n", output);
@@ -35,9 +35,9 @@ class CoreRegisterMenuControllerTest {
         assertNull(output);
         coreController.finalizeUser("Q", "A");
         output = coreController.initializeUser("mobin", "Password@1", "mo@gm.com", "nickname", "slogan");
-        assertEquals("Username already exists", output);
+        assertEquals("Username already exists\n", output);
         output = coreController.initializeUser("mobin2", "Password@1", "mo@gm.com", "nickname", "slogan");
-        assertEquals("Email already exists", output);
+        assertEquals("Email already exists\n", output);
     }
 
     @ParameterizedTest

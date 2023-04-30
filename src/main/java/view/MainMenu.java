@@ -15,6 +15,12 @@ public class MainMenu {
 
     public String run(Scanner scanner){
         System.out.println("Entered Main Menu");
+        System.out.println("your options are:" +
+                "\n1. Enter profile menu" +
+                "\n2. Enter map edit menu" +
+                "\n3. Enter game menu" +
+                "\n4. Logout");
+
         do {
             String command = scanner.nextLine();
             if (MainMenuRegexes.LOGOUT.getMatcher(command).matches()) {

@@ -24,7 +24,7 @@ public class ProfileMenuController {
         matcher.matches();
         String newUsername = matcher.group("username");
         if (newUsername.equals(loggedInUser.getUsername())) {
-            return "Username can't be the same as old username\n";
+            return "Username can not be the same as old username\n";
         }
         if (newUsername.equals("")) {
             return "empty field\n";
@@ -50,13 +50,13 @@ public class ProfileMenuController {
             return "Current password is incorrect!\n";
         }
         if (oldPassword.equals(newPassword)) {
-            return "New password can't be the same as old password";
+            return "New password can not be the same as old password";
         }
         if (Utilities.validatePassword(newPassword) != null) {
             return Utilities.validatePassword(newPassword);
         }
         if (!menu.confirm("Please enter your new password again", newPassword)) {
-            return "Passwords don't match";
+            return "Passwords do not match";
         }
         coreController.changePassword(newPassword);
         return "Successful";
