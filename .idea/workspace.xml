@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="select building logic">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectBuildingMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectBuildingMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/TradingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/TradingSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/Storage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/MeeleSoldier.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/MeeleType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/SoldierType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/RangedSoldier.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/RangedType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/Soldier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/Soldier.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +224,7 @@
       <workItem from="1682578572548" duration="24090000" />
       <workItem from="1682621295379" duration="4964000" />
       <workItem from="1682661029537" duration="26051000" />
-      <workItem from="1682860064105" duration="14786000" />
+      <workItem from="1682860064105" duration="15851000" />
     </task>
     <task id="LOCAL-00001" summary="first commit to initial_base">
       <created>1681417450067</created>
@@ -417,7 +408,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682876198871</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="select building logic">
+      <created>1682878727643</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1682878727643</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

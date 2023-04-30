@@ -27,23 +27,21 @@ public class CoreSelectBuildingMenuController {
         selectBuildingMenu.run(scanner);
     }
 
-    public String createUnit(Object troopType, int count) {
+    public String createUnit(SoldierType troopType, int count) {
         Man[] menToBeAdded = new Man[count];
 
         for (int i = 0; i < count; i++)
             menToBeAdded[i] = getNewMan(troopType);
 
-        if (menToBeAdded[0] == null) return "";
+        if (menToBeAdded[0] == null) return "Invalid Type\n";
         currentMonarchy.addallMen(menToBeAdded);
-        return "true";
+        return "created succesfully";
     }
 
-    public Man getNewMan(Object type) {
+    public Man getNewMan(SoldierType type) {
         if (type == null)
             return new Engineer(100, currentMonarchy.getKing());
-        if (type instanceof SoldierType)
-            return new Soldier((SoldierType) type, currentMonarchy.getKing());
-        return null;
+        return new Soldier(type, currentMonarchy.getKing());
     }
 
     public String repair() {
@@ -55,10 +53,18 @@ public class CoreSelectBuildingMenuController {
 
         currentMonarchy.getStockPile().modifyGoodsCount(GoodsType.STONE, -1 * stoneNeeded);
         selectedBuilding.setHitpoint(fullHitpoint);
-        return "Repaired Succesfully!\n";
+        return "Repaired Successfully!\n";
     }
 
     public Building getSelectedBuilding() {
         return selectedBuilding;
+    }
+
+    public boolean evaluateGold() {
+        return true;
+    }
+
+    public boolean evaluateOtherRequirements() {
+        return true;
     }
 }
