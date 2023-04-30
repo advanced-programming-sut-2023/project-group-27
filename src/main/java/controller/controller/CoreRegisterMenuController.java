@@ -41,19 +41,19 @@ public class CoreRegisterMenuController {
             String username, String password, String email, String nickname, String slogan) {
         if (username.equals("") || password.equals("") ||
                 email.equals("") || nickname.equals("")) {
-            return "Please fill required fields";
+            return "Please fill required fields\n";
         }
         if (slogan != null && slogan.equals("")) {
-            return "If you provide '-s' then you should provide some input for it";
+            return "If you provide '-s' then you should provide some input for it\n";
         }
         if (slogan == null) {
             slogan = "";
         }
         if (!username.matches("[0-9a-zA-Z_]+")) {
-            return "Invalid username format";
+            return "Invalid username format\n";
         }
         if (StrongholdCrusader.getAllUsers().containsKey(username)) {
-            return "Username already exists";
+            return "Username already exists\n";
         }
         String passwordError = Utilities.validatePassword(password);
         if (passwordError != null) {
@@ -63,7 +63,7 @@ public class CoreRegisterMenuController {
             return Utilities.validateEmail(email);
         }
         if (StrongholdCrusader.getAllUsers().values().stream().anyMatch(user -> user.getEmail().equals(email))) {
-            return "Email already exists";
+            return "Email already exists\n";
         }
 
         rawUser = new User(username, password, nickname, slogan, email, "", "");
@@ -72,7 +72,7 @@ public class CoreRegisterMenuController {
 
     public String finalizeUser(String securityQuestion, String securityAnswer) {
         if (securityQuestion.equals("") || securityAnswer.equals("")) {
-            return "Please fill required fields";
+            return "Please fill required fields\n";
         }
         rawUser.setSecurityQ(securityQuestion);
         rawUser.setSecurityA(securityAnswer);

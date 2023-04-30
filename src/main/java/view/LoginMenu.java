@@ -16,6 +16,7 @@ public class LoginMenu {
     }
 
     public String run() {
+        System.out.println("Entered Login Menu");
         String command , output;
         while (true){
             command = scanner.nextLine();

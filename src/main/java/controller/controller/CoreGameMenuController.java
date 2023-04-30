@@ -18,9 +18,9 @@ public class CoreGameMenuController {
     private CoreSelectBuildingMenuController coreSelectBuildingMenuController;
     private CoreMapNavigationMenuController coreMapNavigationMenuController;
 
-    public CoreGameMenuController(User loggedInUser , Scanner scanner) {
+    public CoreGameMenuController(Scanner scanner) {
         this.scanner = scanner;
-        this.loggedInUser = loggedInUser;
+        this.loggedInUser = StrongholdCrusader.getCurrentUser();
         gameMenu = new GameMenu(new GameMenuController(this , StrongholdCrusader.getCurrentUser()));
         coreTradeMenuController = new CoreTradeMenuController(StrongholdCrusader.getCurrentUser() , scanner);
     }
