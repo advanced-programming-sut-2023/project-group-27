@@ -12,7 +12,7 @@ public class GameMenu {
     }
 
     public String run(Scanner scanner) {
-
+        System.out.println("Entered Game Menu");
         return null;
     }
 }

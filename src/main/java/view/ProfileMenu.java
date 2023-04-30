@@ -14,32 +14,38 @@ public class ProfileMenu extends MenuBase{
     }
 
     public String run() {
+        System.out.println("Entered Profile Menu");
         while (true) {
             String command = scanner.nextLine();
-            String output = "";
+            String output;
             if (ProfileMenuRegexes.CHANGE_USERNAME.getMatcher(command).matches()) {
                 output = controller.changeUsername(
                         ProfileMenuRegexes.CHANGE_USERNAME.getMatcher(command));
+                System.out.print(output);
                 continue;
             }
             if (ProfileMenuRegexes.CHANGE_NICKNAME.getMatcher(command).matches()) {
                 output = controller.changeNickname(
                         ProfileMenuRegexes.CHANGE_NICKNAME.getMatcher(command));
+                System.out.print(output);
                 continue;
             }
             if (ProfileMenuRegexes.CHANGE_PASSWORD.getMatcher(command).matches()) {
                 output = controller.changePassword(
                         ProfileMenuRegexes.CHANGE_PASSWORD.getMatcher(command));
+                System.out.print(output);
                 continue;
             }
             if (ProfileMenuRegexes.CHANGE_SLOGAN.getMatcher(command).matches()) {
                 output = controller.changeSlogan(
                         ProfileMenuRegexes.CHANGE_SLOGAN.getMatcher(command));
+                System.out.print(output);
                 continue;
             }
             if (ProfileMenuRegexes.CHANGE_EMAIL.getMatcher(command).matches()) {
                 output = controller.changeEmail(
                         ProfileMenuRegexes.CHANGE_EMAIL.getMatcher(command));
+                System.out.print(output);
                 continue;
             }
             if (ProfileMenuRegexes.REMOVE_SLOGAN.getMatcher(command).matches()) {
@@ -65,7 +71,7 @@ public class ProfileMenu extends MenuBase{
             if (command.equals("Exit")) {
                 break;
             }
-            System.out.print(output);
+            System.out.print("Invalid command\n");
         }
         return "Exit";
     }

@@ -15,6 +15,7 @@ public class TradeMenu extends MenuBase{
     }
 
     public String run() {
+        System.out.println("Entered Trade Menu");
         while (true) {
             String command = scanner.nextLine();
             String output = "";

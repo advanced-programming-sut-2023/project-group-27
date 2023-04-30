@@ -25,12 +25,12 @@ public class CoreProfileMenuController {
 
     public String changeUsername(String username) {
         if (!username.matches("[0-9a-zA-Z_]+")) {
-            return "Invalid username format";
+            return "Invalid username format\n";
         }
         StrongholdCrusader.getAllUsers().remove(loggedInUser.getUsername());
         loggedInUser.setUsername(username);
         StrongholdCrusader.getAllUsers().put(username, loggedInUser);
-        return "Successful";
+        return "Successful\n";
     }
 
     public void changeNickname(String nickname) {

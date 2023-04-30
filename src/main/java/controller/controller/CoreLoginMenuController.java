@@ -11,12 +11,11 @@ public class CoreLoginMenuController {
     private final Scanner scanner;
     private final LoginMenu loginMenu;
     private final LoginMenuController loginController;
-    private final CoreMainMenuController coreMainMenuController;
+
     public CoreLoginMenuController(Scanner scanner) {
         this.scanner = scanner;
         this.loginController = new LoginMenuController(this, scanner);
         loginMenu = loginController.getMenu();
-        coreMainMenuController = new CoreMainMenuController(scanner);
     }
 
     public LoginMenuController getLoginController() {
@@ -31,6 +30,8 @@ public class CoreLoginMenuController {
                 case "Exit":
                     return "Exit";
                 case "Enter main menu":
+                    CoreMainMenuController coreMainMenuController =
+                            new CoreMainMenuController(scanner);
                     coreMainMenuController.run();
                     break;
             }
@@ -53,6 +54,7 @@ public class CoreLoginMenuController {
         }
         if (stayLoggedIn) user.setStayLoggedIn(true);
         delay = 0;
+        StrongholdCrusader.setCurrentUser(user);
         return "User logged in successfully!";
     }
 

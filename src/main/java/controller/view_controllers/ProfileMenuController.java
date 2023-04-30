@@ -21,17 +21,19 @@ public class ProfileMenuController {
     }
 
     public String changeUsername(Matcher matcher) {
+        matcher.matches();
         String newUsername = matcher.group("username");
         if (newUsername.equals(loggedInUser.getUsername())) {
-            return "Username can't be the same as old username";
+            return "Username can't be the same as old username\n";
         }
         if (newUsername.equals("")) {
-            return "empty field";
+            return "empty field\n";
         }
         return coreController.changeUsername(newUsername);
     }
 
     public String changeNickname(Matcher matcher) {
+        matcher.matches();
         String newNickname = matcher.group("nickname");
         if (newNickname.equals("")) {
             return "empty field";
@@ -40,11 +42,8 @@ public class ProfileMenuController {
         return null;
     }
 
-    public boolean isPasswordValid(Matcher matcher) {
-        return true;
-    }
-
     public String changePassword(Matcher matcher) {
+        matcher.matches();
         String oldPassword = matcher.group("oldPassword");
         String newPassword = matcher.group("newPassword");
         if (loggedInUser.isPasswordCorrect(oldPassword)) {
@@ -64,6 +63,7 @@ public class ProfileMenuController {
     }
 
     public String changeSlogan(Matcher matcher) {
+        matcher.matches();
         String slogan = matcher.group("slogan");
         if (slogan.equals("")) {
             return "empty field";
@@ -73,6 +73,7 @@ public class ProfileMenuController {
     }
 
     public String changeEmail(Matcher matcher) {
+        matcher.matches();
         String newEmail = matcher.group("email");
         if (newEmail.equals("")) {
             return "empty field";
