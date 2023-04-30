@@ -24,6 +24,12 @@ public class CoreProfileMenuController {
     }
 
     public String changeUsername(String username) {
+        if (username.equals(loggedInUser.getUsername())) {
+            return "Username can not be the same as old username\n";
+        }
+        if (username.equals("")) {
+            return "empty field\n";
+        }
         if (!username.matches("[0-9a-zA-Z_]+")) {
             return "Invalid username format\n";
         }
@@ -39,6 +45,19 @@ public class CoreProfileMenuController {
 
     public boolean isPasswordValid(String oldPassword) {
         return loggedInUser.isPasswordCorrect(oldPassword);
+    }
+
+    public String changePasswordPrep(String oldPassword, String newPassword) {
+        if (!isPasswordValid(oldPassword)) {
+            return "Current password is incorrect!\n";
+        }
+        if (oldPassword.equals(newPassword)) {
+            return "New password can not be the same as old password\n";
+        }
+        if (Utilities.validatePassword(newPassword) != null) {
+            return Utilities.validatePassword(newPassword);
+        }
+        return null;
     }
 
     public void changePassword(String newPassword) {
@@ -60,7 +79,7 @@ public class CoreProfileMenuController {
     public int showRank() {
        int result = 1;
         for (User user : StrongholdCrusader.getAllUsers().values()) {
-            if (user.compareTo(loggedInUser) > 0)result++;
+            if (user.compareTo(loggedInUser) < 0)result++;
         }
         return result;
     }
@@ -80,7 +99,18 @@ public class CoreProfileMenuController {
         return result;
     }
 
-    public void changeEmail(String newEmail) {
+    public String changeEmail(String newEmail) {
+        if (newEmail.equals("")) {
+            return "empty field\n";
+        }
+        if (Utilities.validateEmail(newEmail) != null) {
+            return Utilities.validateEmail(newEmail);
+        }
+        if (StrongholdCrusader.getAllUsers().values().stream()
+                .anyMatch(user -> user.getEmail().equals(newEmail))) {
+            return "Email already exists\n";
+        }
         loggedInUser.setEmail(newEmail);
+        return "Successful\n";
     }
 }

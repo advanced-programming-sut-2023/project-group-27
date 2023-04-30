@@ -23,12 +23,6 @@ public class ProfileMenuController {
     public String changeUsername(Matcher matcher) {
         matcher.matches();
         String newUsername = matcher.group("username");
-        if (newUsername.equals(loggedInUser.getUsername())) {
-            return "Username can not be the same as old username\n";
-        }
-        if (newUsername.equals("")) {
-            return "empty field\n";
-        }
         return coreController.changeUsername(newUsername);
     }
 
@@ -49,14 +43,8 @@ public class ProfileMenuController {
         if (loggedInUser.isPasswordCorrect(oldPassword)) {
             return "Current password is incorrect!\n";
         }
-        if (oldPassword.equals(newPassword)) {
-            return "New password can not be the same as old password";
-        }
-        if (Utilities.validatePassword(newPassword) != null) {
-            return Utilities.validatePassword(newPassword);
-        }
-        if (!menu.confirm("Please enter your new password again", newPassword)) {
-            return "Passwords do not match";
+        if (coreController.changePasswordPrep(oldPassword, newPassword) != null) {
+            return coreController.changePasswordPrep(oldPassword, newPassword);
         }
         coreController.changePassword(newPassword);
         return "Successful";
@@ -75,14 +63,7 @@ public class ProfileMenuController {
     public String changeEmail(Matcher matcher) {
         matcher.matches();
         String newEmail = matcher.group("email");
-        if (newEmail.equals("")) {
-            return "empty field";
-        }
-        if (Utilities.validateEmail(newEmail) != null) {
-            return Utilities.validateEmail(newEmail);
-        }
-        coreController.changeEmail(newEmail);
-        return "Successful";
+        return coreController.changeEmail(newEmail);
     }
 
     public void removeSlogan() {
