@@ -2,6 +2,8 @@ package controller.controller;
 
 import controller.view_controllers.SelectUnitMenuController;
 import model.man.Man;
+import model.task.Move;
+import model.task.Task;
 import view.SelectUnitMenu;
 
 import java.util.Scanner;
@@ -13,15 +15,15 @@ public class CoreSelectUnitMenuController {
     public CoreSelectUnitMenuController(Man selectedMan , Scanner scanner) {
         this.scanner = scanner;
         this.selectedMan = selectedMan;
-        selectUnitMenu = new SelectUnitMenu(new SelectUnitMenuController(selectedMan, this));
+        selectUnitMenu = new SelectUnitMenu(new SelectUnitMenuController(selectedMan, this), scanner);
     }
 
     public void run(){
-        selectUnitMenu.run(scanner);
+        selectUnitMenu.run();
     }
 
-    public String moveTo(int x,int y) {
-        return null;
+    public void moveTo(int x,int y) {
+        Task task = new Move(x , y);
     }
 
     public String patrol(int x1, int y1, int x2, int y2) {
