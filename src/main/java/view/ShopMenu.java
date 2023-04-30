@@ -20,7 +20,7 @@ public class ShopMenu {
             command = scanner.nextLine();
             if (ShopMenuRegexes.EXIT.getMatcher(command).matches()) return "EXit";
             else if (ShopMenuRegexes.SHOWPRICELIST.getMatcher(command).matches()) {
-                output = controller.buy(ShopMenuRegexes.SHOWPRICELIST.getMatcher(command));
+                output = controller.showPriceList();
                 System.out.println(output);
             }
             else if (ShopMenuRegexes.BUY.getMatcher(command).matches()) {
@@ -28,7 +28,7 @@ public class ShopMenu {
                 System.out.println(output);
             }
             else if (ShopMenuRegexes.SELL.getMatcher(command).matches()) {
-                output = controller.buy(ShopMenuRegexes.SELL.getMatcher(command));
+                output = controller.sell(ShopMenuRegexes.SELL.getMatcher(command));
                 System.out.println(output);
             }
             else System.out.println("Invalid command!");

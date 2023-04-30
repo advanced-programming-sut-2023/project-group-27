@@ -4,6 +4,7 @@ import controller.controller.CoreLoginMenuController;
 import controller.controller.CoreShopMenuController;
 import view.ShopMenu;
 
+import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -20,7 +21,45 @@ public class ShopMenuController {
         return menu;
     }
 
+    public String showPriceList() {
+        return coreController.showPriceList();
+    }
+
     public String buy(Matcher matcher) {
+        matcher.matches();
+        String argsString = matcher.group("options");
+        Map <String , String> args = Utilities.extractOptionsFromString(argsString);
+        if (args == null) return "Dont determine a field twice!";
+        if (!args.containsKey("i")) return "Determine Item's name";
+        if (!args.containsKey("a")) return "Determine Item's amount";
+        int amount;
+        try {
+            amount = Integer.parseInt(args.get("a"));
+        } catch (NumberFormatException e) {
+            return "Invalid amount format!";
+        }
+        if (amount <= 0) return "Invalid amount number!";
+        String itemName = args.get("i");
+
+        return null;
+    }
+
+    public String sell(Matcher matcher) {
+        matcher.matches();
+        String argsString = matcher.group("options");
+        Map <String , String> args = Utilities.extractOptionsFromString(argsString);
+        if (args == null) return "Dont determine a field twice!";
+        if (!args.containsKey("i")) return "Determine Item's name";
+        if (!args.containsKey("a")) return "Determine Item's amount";
+        int amount;
+        try {
+            amount = Integer.parseInt(args.get("a"));
+        } catch (NumberFormatException e) {
+            return "Invalid amount format!";
+        }
+        if (amount <= 0) return "Invalid amount number!";
+        String itemName = args.get("i");
+
         return null;
     }
 }
