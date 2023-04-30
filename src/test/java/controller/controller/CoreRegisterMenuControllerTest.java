@@ -30,7 +30,7 @@ class CoreRegisterMenuControllerTest {
         assertEquals("Password must contain at least one " +
                 "uppercase letter, one lowercase letter and one digit\n", output);
         output = coreController.initializeUser("mobin", "Pass1wAord@1", "mmm.com", "nickname", "slogan");
-        assertEquals("Invalid email format", output);
+        assertEquals("Invalid email format\n", output);
         output = coreController.initializeUser("mobin", "Password@1", "mo@gm.com", "nickname", "slogan");
         assertNull(output);
         coreController.finalizeUser("Q", "A");
