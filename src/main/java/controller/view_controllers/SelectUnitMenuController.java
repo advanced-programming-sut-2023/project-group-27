@@ -29,13 +29,32 @@ public class SelectUnitMenuController {
         } catch (NumberFormatException e) {
             return "Invalid coordinate format";
         }
-        if (x <= 0 || y <= 0) return "Invalid coordinate amount";
+        if (x <= 0 || y <= 0) return "Invalid coordinate amount!";
         coreController.moveTo(x , y);
-        return "Move Success!";
+        return "Move success!";
     }
 
     public String patrol(Matcher matcher) {
-        return null;
+        matcher.matches();
+        String argsString = matcher.group("options");
+        Map <String , String> args = Utilities.extractOptionsFromString(argsString);
+        if (args == null) return "Dont determine a field twice!";
+        if (!args.containsKey("x1")) return "Determine X1 coordinate!";
+        if (!args.containsKey("y1")) return "Determine Y1 coordinate!";
+        if (!args.containsKey("x2")) return "Determine X2 coordinate!";
+        if (!args.containsKey("y2")) return "Determine Y2 coordinate!";
+        int x1 , y1 , x2 , y2;
+        try {
+            x1 = Integer.parseInt(args.get("x1"));
+            y1 = Integer.parseInt(args.get("y1"));
+            x2 = Integer.parseInt(args.get("x2"));
+            y2 = Integer.parseInt(args.get("y2"));
+        } catch (NumberFormatException e) {
+            return "Invalid coordinate format!";
+        }
+        if (x1 <= 0 || y1 <= 0 || x2 <= 0 || y2 <= 0) return "Invalid coordinate amount!";
+        coreController.patrol(x1 , y1 , x2 , y2);
+        return "Patrol success!";
     }
 
     public String setStatus(Matcher matcher) {

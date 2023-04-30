@@ -3,6 +3,7 @@ package controller.controller;
 import controller.view_controllers.SelectUnitMenuController;
 import model.man.Man;
 import model.task.Move;
+import model.task.Patrol;
 import model.task.Task;
 import view.SelectUnitMenu;
 
@@ -24,10 +25,13 @@ public class CoreSelectUnitMenuController {
 
     public void moveTo(int x,int y) {
         Task task = new Move(x , y);
+        //TODO add task to task to do list
+
     }
 
-    public String patrol(int x1, int y1, int x2, int y2) {
-        return null;
+    public void patrol(int x1, int y1, int x2, int y2) {
+        Task task = new Patrol(x1 , y1 , x2 , y2);
+        //TODO add task to task to do list
     }
 
     public String setStatus(String state) {
