@@ -5,13 +5,15 @@ import controller.view_controllers.SelectBuildingMenuController;
 import java.util.Scanner;
 
 public class SelectBuildingMenu {
-    private SelectBuildingMenuController controller;
+    private final SelectBuildingMenuController controller;
+    private final Scanner scanner;
 
-    public SelectBuildingMenu(SelectBuildingMenuController controller) {
+    public SelectBuildingMenu(SelectBuildingMenuController controller, Scanner scanner) {
         this.controller = controller;
+        this.scanner = scanner;
     }
 
-    public String run(Scanner scanner) {
+    public String run() {
 
         return null;
     }

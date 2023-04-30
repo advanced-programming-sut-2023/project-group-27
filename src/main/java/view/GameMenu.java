@@ -60,10 +60,20 @@ public class GameMenu {
                 continue;
             }
             if (GameMenuRegexes.SELECT_BUILDING.getMatcher(command).matches()) {
-
+                output = controller.selectBuilding(
+                        GameMenuRegexes.SELECT_BUILDING.getMatcher(command));
+                if (output != null) {
+                    System.out.print(output);
+                }
+                continue;
             }
             if (GameMenuRegexes.SELECT_UNIT.getMatcher(command).matches()) {
-
+                output = controller.selectUnit(
+                        GameMenuRegexes.SELECT_UNIT.getMatcher(command));
+                if (output != null) {
+                    System.out.print(output);
+                }
+                continue;
             }
             if (GameMenuRegexes.SHOW_MAP.getMatcher(command).matches()) {
 

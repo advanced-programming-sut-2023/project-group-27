@@ -1,10 +1,12 @@
 package controller.controller;
 
 import controller.view_controllers.GameMenuController;
+import model.GameMap;
 import model.StrongholdCrusader;
 import model.User;
 import model.building.Building;
 import model.man.Man;
+import org.apache.commons.lang3.math.NumberUtils;
 import view.GameMenu;
 
 import java.util.Scanner;
@@ -12,15 +14,16 @@ import java.util.Scanner;
 public class CoreGameMenuController {
     private final Scanner scanner;
     private User loggedInUser;
+    private final GameMap map;
     private final GameMenu gameMenu;
     private final CoreTradeMenuController coreTradeMenuController;
-    private CoreSelectUnitMenuController coreSelectUnitMenuController;
-    private CoreSelectBuildingMenuController coreSelectBuildingMenuController;
-    private CoreMapNavigationMenuController coreMapNavigationMenuController;
+    private CoreSelectUnitMenuController coreUnitController;
+    private CoreSelectBuildingMenuController coreBuildingController;
 
     public CoreGameMenuController(Scanner scanner) {
         this.scanner = scanner;
         this.loggedInUser = StrongholdCrusader.getCurrentUser();
+        this.map = StrongholdCrusader.getCurrentMap();
         gameMenu = new GameMenu(new GameMenuController(this , StrongholdCrusader.getCurrentUser()));
         coreTradeMenuController = new CoreTradeMenuController(StrongholdCrusader.getCurrentUser() , scanner);
     }
@@ -79,25 +82,57 @@ public class CoreGameMenuController {
         return null;
     }
 
-    public String selectBuilding(int x , int y) {
-        Building selectedBuilding = null;
-        coreSelectBuildingMenuController = new CoreSelectBuildingMenuController(selectedBuilding , scanner);
-        coreSelectBuildingMenuController.run();
+    public String selectBuilding(String xStr , String yStr) {
+        Integer x,y;
+        if (!NumberUtils.isNumber(xStr) || ! NumberUtils.isNumber(yStr)) {
+            return "x and y should be integers";
+        }
+        x = Integer.parseInt(xStr);
+        y = Integer.parseInt(yStr);
+        String coordinateError = XYCheck(x, y);
+        if (coordinateError != null) return coordinateError;
+        Building selectedBuilding = map.getCell(x, y).getBuilding();
+        if (selectedBuilding == null) {
+            return "no building here\n";
+        }
+        coreBuildingController =
+                new CoreSelectBuildingMenuController(selectedBuilding , scanner);
+        coreBuildingController.run();
         return null;
     }
 
-    public String selectUnit(int x , int y) {
-        Man selectedMan = null;
-        coreSelectUnitMenuController = new CoreSelectUnitMenuController(selectedMan , scanner);
-        coreSelectUnitMenuController.run();
+    public String selectUnit(String xStr , String yStr) {
+        Integer x,y;
+        if (!NumberUtils.isNumber(xStr) || ! NumberUtils.isNumber(yStr)) {
+            return "x and y should be integers";
+        }
+        x = Integer.parseInt(xStr);
+        y = Integer.parseInt(yStr);
+        String coordinateError = XYCheck(x, y);
+        if (coordinateError != null) return coordinateError;
+        Man selectedMan = map.getCell(x, y).getMan();
+        coreUnitController = new CoreSelectUnitMenuController(selectedMan , scanner);
+        coreUnitController.run();
+        return null;
+    }
+
+    private String XYCheck(int x, int y) {
+        if (x >= map.getWidth() || x < 0) {
+            return "x is out of range it should be between 0 and " +
+                    (map.getWidth() - 1) + "\n";
+        }
+        if (y >= map.getHeight() || y < 0) {
+            return "y is out of range it should be between 0 and " +
+                    (map.getHeight() - 1) + "\n";
+        }
         return null;
     }
 
     public String showMap(int x, int y) {
-        coreMapNavigationMenuController  = new CoreMapNavigationMenuController(x, y, scanner,
+        CoreMapNavigationMenuController coreNavigationController = new CoreMapNavigationMenuController(x, y, scanner,
                 StrongholdCrusader.getCurrentMap(),
                 this);
-        coreMapNavigationMenuController.run();
+        coreNavigationController.run();
         return null;
     }
 
