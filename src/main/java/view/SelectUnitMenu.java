@@ -31,7 +31,7 @@ public class SelectUnitMenu extends MenuBase{
                 System.out.println(output);
             }
             else if (SelectUnitMenuRegexes.ATTACK.getMatcher(command).matches()) {
-                output = controller.attackByEnemy(SelectUnitMenuRegexes.ATTACK.getMatcher(command));
+                output = controller.attack(SelectUnitMenuRegexes.ATTACK.getMatcher(command));
                 System.out.println(output);
             }
             else if (SelectUnitMenuRegexes.POUROIL.getMatcher(command).matches()) {

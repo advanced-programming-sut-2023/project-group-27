@@ -4,6 +4,7 @@ import controller.controller.CoreSelectUnitMenuController;
 import model.man.Man;
 import org.apache.commons.lang3.math.NumberUtils;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.regex.Matcher;
 
@@ -78,6 +79,14 @@ public class SelectUnitMenuController {
         return coreController.setStatus(state);
     }
 
+
+    public String attack(Matcher matcher) {
+        matcher.matches();
+        String argsString = matcher.group("options");
+        Map <String , String> args = Utilities.extractOptionsFromString(argsString);
+        if (args == null) return "Dont determine a field twice!";
+        return null;
+    }
     public String attackByEnemy(Matcher matcher) {
         return null;
     }
