@@ -76,7 +76,15 @@ public class GameMenu {
                 continue;
             }
             if (GameMenuRegexes.SHOW_MAP.getMatcher(command).matches()) {
-
+                output = controller.showMap(GameMenuRegexes.SHOW_MAP.getMatcher(command));
+                if (output != null) {
+                    System.out.print(output);
+                }
+                continue;
+            }
+            if (GameMenuRegexes.ENTER_SHOP.getMatcher(command).matches()) {
+                controller.enterShop();
+                continue;
             }
             if (command.equals("Exit")) {
                 break;
