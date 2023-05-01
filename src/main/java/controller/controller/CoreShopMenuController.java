@@ -2,8 +2,12 @@ package controller.controller;
 
 import controller.view_controllers.ShopMenuController;
 import model.GoodsType;
+import model.Monarchy;
+import model.StrongholdCrusader;
+import model.building.Storage;
 import view.ShopMenu;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class CoreShopMenuController {
@@ -34,11 +38,31 @@ public class CoreShopMenuController {
     }
 
     public String buy(GoodsType goodsType , int amount) {
-        return null;
+        int priceBuy = 1;
+        int storageLimit = 0;
+        Monarchy monarchy = StrongholdCrusader.getCurrentUser().getMonarchy();
+        Map <GoodsType , Integer> storage = StrongholdCrusader.getCurrentUser().getMonarchy().getStorage();
+        if (storage.containsKey(goodsType) && storage.get(goodsType) + amount > storageLimit)
+            return "You do not have enough space!";
+        if (!storage.containsKey(goodsType) && amount > storageLimit)
+            return "You do not have enough space!";
+        if (monarchy.getGold() < amount * priceBuy)
+            return "You do not have enough gold!";
+        storage.put(goodsType , storage.get(goodsType) + amount);
+        monarchy.changeGold(-amount * priceBuy);
+        return "Buy successful!";
     }
 
     public String sell(GoodsType goodsType , int amount) {
-        return null;
+        int priceSell = 1;
+        Monarchy monarchy = StrongholdCrusader.getCurrentUser().getMonarchy();
+        Map <GoodsType , Integer> storage = StrongholdCrusader.getCurrentUser().getMonarchy().getStorage();
+        if (!storage.containsKey(goodsType)) return "You do not have this item in your storage!";
+        if (storage.containsKey(goodsType) && storage.get(goodsType) < amount)
+            return "You do not have enough item to sell!";
+        storage.put(goodsType , storage.get(goodsType) - amount);
+        monarchy.changeGold(amount * priceSell);
+        return "Sell successful!";
     }
 
 }
