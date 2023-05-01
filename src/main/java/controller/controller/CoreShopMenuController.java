@@ -34,7 +34,16 @@ public class CoreShopMenuController {
     }
 
     public String showPriceList() {
-        return null;
+        StringBuilder builder = new StringBuilder();
+        Map <GoodsType , Integer> storage = StrongholdCrusader.getCurrentUser()
+                .getMonarchy().getStorage();
+        for (GoodsType type : GoodsType.values()) {
+            builder.append("sell price: ").append(type.getShopSellPrice());
+            builder.append("\tbuy price: ").append(type.getShopBuyPrice());
+            builder.append("\tamount: ").append(storage.getOrDefault(type, 0));
+            builder.append("\n");
+        }
+        return builder.toString();
     }
 
     public String buy(GoodsType goodsType , int amount) {

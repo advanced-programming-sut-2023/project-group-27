@@ -21,7 +21,7 @@ public class ShopMenu {
             if (ShopMenuRegexes.EXIT.getMatcher(command).matches()) return "EXit";
             else if (ShopMenuRegexes.SHOWPRICELIST.getMatcher(command).matches()) {
                 output = controller.showPriceList();
-                System.out.println(output);
+                System.out.print(output);
             }
             else if (ShopMenuRegexes.BUY.getMatcher(command).matches()) {
                 output = controller.buy(ShopMenuRegexes.BUY.getMatcher(command));
