@@ -11,12 +11,11 @@ public class CoreLoginMenuController {
     private final Scanner scanner;
     private final LoginMenu loginMenu;
     private final LoginMenuController loginController;
-    private final CoreMainMenuController coreMainMenuController;
+
     public CoreLoginMenuController(Scanner scanner) {
         this.scanner = scanner;
         this.loginController = new LoginMenuController(this, scanner);
         loginMenu = loginController.getMenu();
-        coreMainMenuController = new CoreMainMenuController(scanner);
     }
 
     public LoginMenuController getLoginController() {
@@ -31,6 +30,8 @@ public class CoreLoginMenuController {
                 case "Exit":
                     return "Exit";
                 case "Enter main menu":
+                    CoreMainMenuController coreMainMenuController =
+                            new CoreMainMenuController(scanner);
                     coreMainMenuController.run();
                     break;
             }
@@ -44,15 +45,16 @@ public class CoreLoginMenuController {
         if ((currentTime - delayStart) / 1000 < delay)
             return "You need to wait another " + (delay - (currentTime - delayStart) / 1000) + " seconds to login!";
         if (!StrongholdCrusader.getAllUsers().containsKey(username))
-            return "This username doesn't exist!";
+            return "This username does not exist!";
         User user = StrongholdCrusader.getAllUsers().get(username);
         if (!user.isPasswordCorrect(password)) {
             delayStart = System.currentTimeMillis();
             delay += 5;
-            return "Username and password didn't match!";
+            return "Username and password did not match!";
         }
         if (stayLoggedIn) user.setStayLoggedIn(true);
         delay = 0;
+        StrongholdCrusader.setCurrentUser(user);
         return "User logged in successfully!";
     }
 

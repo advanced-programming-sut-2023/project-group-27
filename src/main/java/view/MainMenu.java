@@ -14,6 +14,13 @@ public class MainMenu {
     }
 
     public String run(Scanner scanner){
+        System.out.println("Entered Main Menu");
+        System.out.println("your options are:" +
+                "\n1. Enter profile menu" +
+                "\n2. Enter map edit menu" +
+                "\n3. Enter game menu" +
+                "\n4. Logout");
+
         do {
             String command = scanner.nextLine();
             if (MainMenuRegexes.LOGOUT.getMatcher(command).matches()) {
@@ -21,16 +28,13 @@ public class MainMenu {
                 System.out.println("User " + StrongholdCrusader.getLoggedInUser().getUsername() + " logged out.");
                 return "Logout";
             }
-            if (MainMenuRegexes.ENTERPROFILEMENU.getMatcher(command).matches()) {
-                System.out.println("Entered Profile Menu");
+            if (MainMenuRegexes.ENTER_PROFILE_MENU.getMatcher(command).matches()) {
                 return "Enter profile menu";
             }
-            if (MainMenuRegexes.ENTERMAPEDITMENU.getMatcher(command).matches()) {
-                System.out.println("Entered Map Edit Menu");
+            if (MainMenuRegexes.ENTER_MAP_EDIT_MENU.getMatcher(command).matches()) {
                 return "Enter map edit menu";
             }
-            if (MainMenuRegexes.ENTERGAMEMENU.getMatcher(command).matches()) {
-                System.out.println("Entered Game Menu");
+            if (MainMenuRegexes.ENTER_GAME_MENU.getMatcher(command).matches()) {
                 return "Enter game menu";
             }
 

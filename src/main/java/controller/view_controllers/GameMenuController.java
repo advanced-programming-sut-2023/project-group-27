@@ -1,53 +1,71 @@
 package controller.view_controllers;
 
 import controller.controller.CoreGameMenuController;
+import model.GameMap;
+import model.StrongholdCrusader;
 import model.User;
+import org.apache.commons.lang3.math.NumberUtils;
 
+import java.util.Map;
 import java.util.regex.Matcher;
 
 public class GameMenuController {
     private final CoreGameMenuController coreController;
+    private final GameMap map;
     private final User loggedInUser;
 
     public GameMenuController(CoreGameMenuController coreController, User loggedInUser) {
         this.coreController = coreController;
         this.loggedInUser = loggedInUser;
+        this.map = StrongholdCrusader.getCurrentMap();
     }
 
     public String showPopularityFactors(){
         return null;
     }
 
-    public int showPopularity(){
-        return 0;
+    public String showPopularity(){
+        return coreController.showPopularity();
     }
 
     public String showFoodList(){
-        return null;
+        return coreController.showFoodList();
     }
 
     public String setFoodRate(Matcher matcher){
-        return null;
+        Map<String, String> args = getArgs(matcher);
+        String x = getError(!args.containsKey("r"), "provide rate\n", args, 1);
+        if (x != null) return x;
+        String rateStr = args.get("r");
+        return coreController.setFoodRate(rateStr);
     }
 
     public String showFoodRate(){
-        return null;
+        return coreController.showFoodRate();
     }
 
     public String setTaxRate(Matcher matcher){
-        return null;
+        Map<String, String> args = getArgs(matcher);
+        String x = getError(!args.containsKey("r"), "provide rate\n", args, 1);
+        if (x != null) return x;
+        String rateStr = args.get("r");
+        return coreController.setTaxRate(rateStr);
     }
 
     public String showTaxRate(){
-        return null;
+        return coreController.showTaxRate();
     }
 
     public String setFearRate(Matcher matcher){
-        return null;
+        Map<String, String> args = getArgs(matcher);
+        String x = getError(!args.containsKey("r"), "provide rate\n", args, 1);
+        if (x != null) return x;
+        String rateStr = args.get("r");
+        return coreController.setFearRate(rateStr);
     }
 
     public String showFearRate(){
-        return null;
+        return coreController.showFearRate();
     }
 
     public String dropBuilding(Matcher matcher){
@@ -55,10 +73,55 @@ public class GameMenuController {
     }
 
     public String selectBuilding(Matcher matcher){
-        return null;
+        Map<String, String> args = getArgs(matcher);
+        String x = getError(!args.containsKey("x") || !args.containsKey("y"),
+                "provide x and y\n", args, 2);
+        if (x != null) return x;
+        String xStr = args.get("x");
+        String yStr = args.get("y");
+        return coreController.selectBuilding(xStr, yStr);
     }
 
     public String selectUnit(Matcher matcher){
+        Map<String, String> args = getArgs(matcher);
+        String x = getError(!args.containsKey("x") || !args.containsKey("y"),
+                "provide x and y\n", args, 2);
+        if (x != null) return x;
+        String xStr = args.get("x");
+        String yStr = args.get("y");
+        return coreController.selectUnit(xStr, yStr);
+    }
+
+    public String showMap(Matcher matcher) {
+        Map<String, String> args = getArgs(matcher);
+        String x = getError(!args.containsKey("x") || !args.containsKey("y"),
+                "provide x and y\n", args, 2);
+        if (x != null) return x;
+        String xStr = args.get("x");
+        String yStr = args.get("y");
+        return coreController.showMap(xStr, yStr);
+    }
+
+    public void enterShop() {
+
+        // TODO implement here
+    }
+
+    private static String getError(boolean checkRequiredArgs, String error, Map<String, String> args, int expectedSize) {
+        if (checkRequiredArgs) {
+            return error;
+        }
+        if (args.size() > expectedSize) {
+            return "additional arguments found!\n";
+        }
         return null;
     }
+
+    private static Map<String, String> getArgs(Matcher matcher) {
+        matcher.matches();
+        String options = matcher.group("options");
+        Map<String, String> args = Utilities.extractOptionsFromString(options);
+        return args;
+    }
+
 }

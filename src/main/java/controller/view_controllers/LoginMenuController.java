@@ -40,7 +40,7 @@ public class LoginMenuController {
         menu.showInformation("Please enter your username");
         String username = menu.fetchAnswer();
         if (!StrongholdCrusader.getAllUsers().containsKey(username))
-            return "This username doesn't exist!";
+            return "This username does not exist!";
         User user = StrongholdCrusader.getAllUsers().get(username);
         menu.showInformation("Please answer the security question");
         while (!menu.confirm(user.getSecurityQ() , user.getSecurityA()))
@@ -48,7 +48,7 @@ public class LoginMenuController {
         menu.showInformation("Enter a new password");
         String newPassword = menu.fetchAnswer();
         while (!menu.confirm("Please confirm your new password" , newPassword)) {
-            menu.showInformation("The confirmation doesn't match the password");
+            menu.showInformation("The confirmation does not match the password");
         }
         String result = coreController.forgetPassword(user , newPassword);
         while (!result.equals("Password changed successfully!")) {

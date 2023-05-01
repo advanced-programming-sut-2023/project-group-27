@@ -21,17 +21,13 @@ public class ProfileMenuController {
     }
 
     public String changeUsername(Matcher matcher) {
+        matcher.matches();
         String newUsername = matcher.group("username");
-        if (newUsername.equals(loggedInUser.getUsername())) {
-            return "Username can't be the same as old username";
-        }
-        if (newUsername.equals("")) {
-            return "empty field";
-        }
         return coreController.changeUsername(newUsername);
     }
 
     public String changeNickname(Matcher matcher) {
+        matcher.matches();
         String newNickname = matcher.group("nickname");
         if (newNickname.equals("")) {
             return "empty field";
@@ -40,30 +36,22 @@ public class ProfileMenuController {
         return null;
     }
 
-    public boolean isPasswordValid(Matcher matcher) {
-        return true;
-    }
-
     public String changePassword(Matcher matcher) {
+        matcher.matches();
         String oldPassword = matcher.group("oldPassword");
         String newPassword = matcher.group("newPassword");
         if (loggedInUser.isPasswordCorrect(oldPassword)) {
             return "Current password is incorrect!\n";
         }
-        if (oldPassword.equals(newPassword)) {
-            return "New password can't be the same as old password";
-        }
-        if (Utilities.validatePassword(newPassword) != null) {
-            return Utilities.validatePassword(newPassword);
-        }
-        if (!menu.confirm("Please enter your new password again", newPassword)) {
-            return "Passwords don't match";
+        if (coreController.changePasswordPrep(oldPassword, newPassword) != null) {
+            return coreController.changePasswordPrep(oldPassword, newPassword);
         }
         coreController.changePassword(newPassword);
         return "Successful";
     }
 
     public String changeSlogan(Matcher matcher) {
+        matcher.matches();
         String slogan = matcher.group("slogan");
         if (slogan.equals("")) {
             return "empty field";
@@ -73,15 +61,9 @@ public class ProfileMenuController {
     }
 
     public String changeEmail(Matcher matcher) {
+        matcher.matches();
         String newEmail = matcher.group("email");
-        if (newEmail.equals("")) {
-            return "empty field";
-        }
-        if (Utilities.validateEmail(newEmail) != null) {
-            return Utilities.validateEmail(newEmail);
-        }
-        coreController.changeEmail(newEmail);
-        return "Successful";
+        return coreController.changeEmail(newEmail);
     }
 
     public void removeSlogan() {

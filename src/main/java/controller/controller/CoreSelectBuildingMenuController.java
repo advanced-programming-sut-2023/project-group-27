@@ -7,18 +7,18 @@ import view.SelectBuildingMenu;
 import java.util.Scanner;
 
 public class CoreSelectBuildingMenuController {
-    private final Scanner scanner;
+    private final SelectBuildingMenuController buildingController;
     private Building selectedBuilding;
     private final SelectBuildingMenu selectBuildingMenu;
 
     public CoreSelectBuildingMenuController(Building selectedBuilding , Scanner scanner) {
-        this.scanner = scanner;
         this.selectedBuilding = selectedBuilding;
-        selectBuildingMenu = new SelectBuildingMenu(new SelectBuildingMenuController(selectedBuilding, this));
+        this.buildingController = new SelectBuildingMenuController(this, selectedBuilding, scanner);
+        this.selectBuildingMenu = this.buildingController.getMenu();
     }
 
     public void run(){
-        selectBuildingMenu.run(scanner);
+        selectBuildingMenu.run();
     }
 
     public String createUnit(Object troopType, int count) {

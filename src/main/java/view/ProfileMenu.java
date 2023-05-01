@@ -74,6 +74,7 @@ public class ProfileMenu extends MenuBase{
             if (command.equals("Exit")) {
                 break;
             }
+            System.out.print("Invalid command\n");
         }
         return "Exit";
     }

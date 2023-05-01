@@ -32,7 +32,7 @@ public class Utilities {
 
     public static String validateEmail(String email) {
         if (!email.matches("[0-9a-zA-Z_]+@[0-9a-zA-Z_]+\\.[0-9a-zA-Z_]+")) {
-            return "Invalid email format";
+            return "Invalid email format\n";
         }
         return null;
     }
