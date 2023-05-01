@@ -15,8 +15,8 @@ public class CoreProfileMenuController {
 
     public CoreProfileMenuController(Scanner scanner){
         this.scanner = scanner;
-        this.loggedInUser = StrongholdCrusader.getCurrentUser();
-        this.controller = new ProfileMenuController(this, StrongholdCrusader.getCurrentUser(), scanner);
+        this.loggedInUser = StrongholdCrusader.getLoggedInUser();
+        this.controller = new ProfileMenuController(this, StrongholdCrusader.getLoggedInUser(), scanner);
         this.profileMenu = this.controller.getMenu();
     }
     public void run(){

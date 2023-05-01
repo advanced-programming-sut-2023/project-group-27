@@ -21,8 +21,8 @@ public class CoreGameMenuController {
     public CoreGameMenuController(User loggedInUser , Scanner scanner) {
         this.scanner = scanner;
         this.loggedInUser = loggedInUser;
-        gameMenu = new GameMenu(new GameMenuController(this , StrongholdCrusader.getCurrentUser()));
-        coreTradeMenuController = new CoreTradeMenuController(StrongholdCrusader.getCurrentUser() , scanner);
+        gameMenu = new GameMenu(new GameMenuController(this , StrongholdCrusader.getLoggedInUser()));
+        coreTradeMenuController = new CoreTradeMenuController(StrongholdCrusader.getLoggedInUser() , scanner);
     }
 
     public String run(){

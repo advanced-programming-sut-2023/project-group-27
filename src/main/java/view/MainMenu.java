@@ -18,7 +18,7 @@ public class MainMenu {
             String command = scanner.nextLine();
             if (MainMenuRegexes.LOGOUT.getMatcher(command).matches()) {
                 controller.logout();
-                System.out.println("User " + StrongholdCrusader.getCurrentUser().getUsername() + " logged out.");
+                System.out.println("User " + StrongholdCrusader.getLoggedInUser().getUsername() + " logged out.");
                 return "Logout";
             }
             if (MainMenuRegexes.ENTERPROFILEMENU.getMatcher(command).matches()) {

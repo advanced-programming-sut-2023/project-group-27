@@ -18,7 +18,7 @@ public class CoreMainMenuController {
         mainMenu = new MainMenu(new MainMenuController(this));
         coreProfileMenuController = new CoreProfileMenuController(scanner);
         coreMapEditMenuController = new CoreMapEditMenuController(scanner);
-        coreGameMenuController = new CoreGameMenuController(StrongholdCrusader.getCurrentUser(), scanner);
+        coreGameMenuController = new CoreGameMenuController(StrongholdCrusader.getLoggedInUser(), scanner);
     }
     public String run(){
         String mainMenuResult;
@@ -41,6 +41,6 @@ public class CoreMainMenuController {
     }
 
     public void logout() {
-        StrongholdCrusader.getCurrentUser().setStayLoggedIn(false);
+        StrongholdCrusader.getLoggedInUser().setStayLoggedIn(false);
     }
 }
