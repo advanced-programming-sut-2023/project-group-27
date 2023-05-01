@@ -2,6 +2,7 @@ package controller.controller;
 
 import controller.view_controllers.SelectUnitMenuController;
 import model.man.Man;
+import model.man.Soldier;
 import model.task.Move;
 import model.task.Patrol;
 import model.task.Task;
@@ -35,7 +36,9 @@ public class CoreSelectUnitMenuController {
     }
 
     public String setStatus(String state) {
-        return null;
+        if (!(selectedMan instanceof Soldier)) return "The selected unit must be a soldier!";
+        ((Soldier) selectedMan).setState(state);
+        return "State set successfully!";
     }
 
     public String attackByEnemy(int x, int y) {
