@@ -11,7 +11,7 @@ import view.SelectBuildingMenu;
 import java.util.Scanner;
 
 public class CoreSelectBuildingMenuController {
-    private final Scanner scanner;
+    private final SelectBuildingMenuController buildingController;
     private Building selectedBuilding;
     private Monarchy currentMonarchy;
     private final SelectBuildingMenu selectBuildingMenu;

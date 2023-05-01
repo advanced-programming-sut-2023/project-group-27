@@ -1,6 +1,7 @@
 package controller.controller;
 
 import controller.view_controllers.MainMenuController;
+import controller.view_controllers.ProfileMenuController;
 import model.StrongholdCrusader;
 import view.MainMenu;
 
@@ -9,16 +10,11 @@ import java.util.Scanner;
 public class CoreMainMenuController {
     private final Scanner scanner;
     private final MainMenu mainMenu;
-    private final CoreMapEditMenuController coreMapEditMenuController;
-    private final CoreProfileMenuController coreProfileMenuController;
-    private final CoreGameMenuController coreGameMenuController;
 
     public CoreMainMenuController(Scanner scanner){
         this.scanner = scanner;
-        mainMenu = new MainMenu(new MainMenuController(this));
-        coreProfileMenuController = new CoreProfileMenuController(scanner);
-        coreMapEditMenuController = new CoreMapEditMenuController(scanner);
-        coreGameMenuController = new CoreGameMenuController(StrongholdCrusader.getCurrentMonarchy(), scanner);
+        MainMenuController mainController = new MainMenuController(this);
+        mainMenu = new MainMenu(mainController);
     }
     public String run(){
         String mainMenuResult;
@@ -28,13 +24,18 @@ public class CoreMainMenuController {
                 case "Logout":
                     return "Logout";
                 case "Enter profile menu":
-                    coreProfileMenuController.run();
+                    CoreProfileMenuController coreProfileController =
+                            new CoreProfileMenuController(scanner);
+                    coreProfileController.run();
                     break;
                 case "Enter map edit menu":
-                    coreMapEditMenuController.run();
+                    CoreMapEditMenuController coreMapEditController = new CoreMapEditMenuController(scanner);
+                    coreMapEditController.run();
                     break;
                 case "Enter game menu":
-                    coreGameMenuController.run();
+                    CoreGameMenuController coreGameController =
+                            new CoreGameMenuController(scanner);
+                    coreGameController.run();
                     break;
             }
         }

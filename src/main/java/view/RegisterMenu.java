@@ -16,6 +16,7 @@ public class RegisterMenu extends MenuBase{
     }
 
     public String run() {
+        System.out.println("Entered Register Menu");
         String command = this.scanner.nextLine();
         while (!RegisterMenuRegexes.EXIT.getMatcher(command).matches()) {
             if (RegisterMenuRegexes.RAW_REGISTER.getMatcher(command).matches()) {
@@ -25,6 +26,9 @@ public class RegisterMenu extends MenuBase{
                 System.out.print(output);
                 command = scanner.nextLine();
                 continue;
+            }
+            if (command.equals("login")) {
+                return "Enter login menu";
             }
             System.out.print("Invalid command\n");
             command = scanner.nextLine();

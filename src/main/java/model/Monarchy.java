@@ -32,6 +32,18 @@ public class Monarchy {
         this.fearRate = 0;
     }
 
+    public int getTaxRate() {
+        return taxRate;
+    }
+
+    public int getFoodRate() {
+        return foodRate;
+    }
+
+    public int getFearRate() {
+        return fearRate;
+    }
+
     public User getKing() {
         return king;
     }
@@ -78,5 +90,22 @@ public class Monarchy {
             if (thisStorage.contains(goodsType))
                 thisStorage.putGoodsCount(goodsType, number);
         }
+    }
+
+    public void setTaxRate(int taxRate) {
+        this.taxRate = taxRate;
+    }
+
+    public void setFoodRate(int foodRate) {
+        this.foodRate = foodRate;
+    }
+
+    public void setFearRate(int fearRate) {
+        this.fearRate = fearRate;
+    }
+
+    public int calcPopularity() {
+        // TODO implement here
+        return 0;
     }
 }

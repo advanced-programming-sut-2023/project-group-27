@@ -31,8 +31,8 @@ class LoginMenuControllerTest {
     @DisplayName("Login")
     @ParameterizedTest
     @CsvSource({
-            "user login -u rick -p <password> , This username doesn't exist!",
-            "user login -u mazdak -p Password , Username and password didn't match!",
+            "user login -u rick -p <password> , This username does not exist!",
+            "user login -u mazdak -p Password , Username and password did not match!",
             "user login -u mazdak -p Password@1 , User logged in successfully!",
     })
     void login(String command , String expectedError) {
@@ -49,12 +49,12 @@ class LoginMenuControllerTest {
     void delayTest() throws InterruptedException {
         CoreLoginMenuController coreController = new CoreLoginMenuController(new Scanner(System.in));
         String output = coreController.login("mazdak", "pass" , false);
-        assertEquals("Username and password didn't match!" , output);
+        assertEquals("Username and password did not match!" , output);
         output = coreController.login("mazdak", "Password@1" , false);
         assertEquals("You need to wait another 5 seconds to login!" , output);
         Thread.sleep(5000);
         output = coreController.login("mazdak", "Password" , false);
-        assertEquals("Username and password didn't match!" , output);
+        assertEquals("Username and password did not match!" , output);
         Thread.sleep(5000);
         output = coreController.login("mazdak", "Password@1" , false);
         assertEquals("You need to wait another 5 seconds to login!" , output);
@@ -66,21 +66,23 @@ class LoginMenuControllerTest {
     @DisplayName("ّForget Password")
     @ParameterizedTest
     @CsvSource({
-            "'forgot my password\nmazdak\nbbbbb\nPassword@1\nPassword@1\nexit'," +
-                    "'Please enter your username\r\nPlease answer the security question\r\n" +
+            "'forgot my password\nmazdak\nbbbbb\nPassword@1\nPassword@1\nExit'," +
+                    "'Entered Login Menu\r\nPlease enter your username\r\n" +
+                    "Please answer the security question\r\n" +
                     "aaaaaa\r\nEnter a new password\r\nPlease confirm your new password\r\n" +
                     "Password changed successfully!\r\n'",
-            "'forgot my password\nmani\nexit'," +
-                    "'Please enter your username\r\nThis username doesnt exist!\r\n'",
-            "'forgot my password\nmazdak\nbbb\nbbbbb\nPassword@2\nPassword@1\nPassword@2\nexit'," +
-                    "'Please enter your username\r\n" +
+            "'forgot my password\nmani\nExit'," +
+                    "'Entered Login Menu\r\nPlease enter your username\r\nThis username does not exist!\r\n'",
+            "'forgot my password\nmazdak\nbbb\nbbbbb\nPassword@2\nPassword@1\nPassword@2\nExit'," +
+                    "'Entered Login Menu\r\n" +
+                    "Please enter your username\r\n" +
                     "Please answer the security question\r\n" +
                     "aaaaaa\r\n" +
                     "Wrong answer!\r\n" +
                     "aaaaaa\r\n" +
                     "Enter a new password\r\n" +
                     "Please confirm your new password\r\n" +
-                    "The confirmation doesnt match the password\r\n" +
+                    "The confirmation does not match the password\r\n" +
                     "Please confirm your new password\r\n" +
                     "Password changed successfully!\r\n'"
     })

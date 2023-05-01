@@ -31,10 +31,6 @@ public class StrongholdCrusader {
         return CurrentUser;
     }
 
-    public static GameMap getCurrentMatchMap() {
-        return currentMatchMap;
-    }
-
     public static void setCurrentUser(User currentUser) {
         CurrentUser = currentUser;
     }

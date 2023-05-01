@@ -8,9 +8,11 @@ import java.util.regex.Matcher;
 
 public class SelectBuildingMenu {
     private final SelectBuildingMenuController controller;
+    private final Scanner scanner;
 
-    public SelectBuildingMenu(SelectBuildingMenuController controller) {
+    public SelectBuildingMenu(SelectBuildingMenuController controller, Scanner scanner) {
         this.controller = controller;
+        this.scanner = scanner;
     }
 
     public String run(Scanner scanner) {

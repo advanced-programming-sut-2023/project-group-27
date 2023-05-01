@@ -7,17 +7,17 @@ import view.SelectUnitMenu;
 import java.util.Scanner;
 
 public class CoreSelectUnitMenuController {
-    private final Scanner scanner;
     private Man selectedMan;
     private final SelectUnitMenu selectUnitMenu;
+    private final SelectUnitMenuController selectUnitController;
     public CoreSelectUnitMenuController(Man selectedMan , Scanner scanner) {
-        this.scanner = scanner;
         this.selectedMan = selectedMan;
-        selectUnitMenu = new SelectUnitMenu(new SelectUnitMenuController(selectedMan, this));
+        selectUnitController = new SelectUnitMenuController(selectedMan, this, scanner);
+        selectUnitMenu = selectUnitController.getUnitMenu();
     }
 
     public void run(){
-        selectUnitMenu.run(scanner);
+        selectUnitMenu.run();
     }
 
     public String moveTo(int x,int y) {
