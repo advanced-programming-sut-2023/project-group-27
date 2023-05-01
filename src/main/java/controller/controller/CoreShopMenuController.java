@@ -38,8 +38,8 @@ public class CoreShopMenuController {
     }
 
     public String buy(GoodsType goodsType , int amount) {
-        int priceBuy = 1;
-        int storageLimit = 0;
+        int priceBuy = goodsType.getShopBuyPrice();
+        int storageLimit = goodsType.getStorageLimit();
         Monarchy monarchy = StrongholdCrusader.getCurrentUser().getMonarchy();
         Map <GoodsType , Integer> storage = StrongholdCrusader.getCurrentUser().getMonarchy().getStorage();
         if (storage.containsKey(goodsType) && storage.get(goodsType) + amount > storageLimit)
@@ -54,7 +54,7 @@ public class CoreShopMenuController {
     }
 
     public String sell(GoodsType goodsType , int amount) {
-        int priceSell = 1;
+        int priceSell = goodsType.getShopSellPrice();
         Monarchy monarchy = StrongholdCrusader.getCurrentUser().getMonarchy();
         Map <GoodsType , Integer> storage = StrongholdCrusader.getCurrentUser().getMonarchy().getStorage();
         if (!storage.containsKey(goodsType)) return "You do not have this item in your storage!";

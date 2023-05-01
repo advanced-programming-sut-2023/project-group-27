@@ -3,7 +3,7 @@ package model;
 public enum ProductionRules {
     APPLE(null, GoodsType.APPLE, 3, 0, 10),
     DAIRY1(null, GoodsType.CHEESE, 3, 0, 10),
-    DAIRY2(null, GoodsType.LEATHERARMOUR, 3, 0, 10),
+    DAIRY2(null, GoodsType.LEATHER_ARMOUR, 3, 0, 10),
     HOPS(null, GoodsType.HOPS, 3, 0, 10),
     HUNTING(null, GoodsType.MEAT, 3, 0, 10),
     WHEAT(null, GoodsType.WHEAT, 3, 0, 10),
