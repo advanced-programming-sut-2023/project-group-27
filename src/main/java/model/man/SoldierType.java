@@ -26,7 +26,8 @@ public enum SoldierType {
     ARCHERBOW("ArcherBow", 0, 0, 0, 0, 75, "arab", null),
     SLINGER("Slinger", 0, 0, 0, 0, 12, "arab", null),
     HORSEARCHER("HorseArcher", 0, 0, 0, 0, 60, "arab", null),
-    FIRETHROWER("FireThrower", 0, 0, 0, 0, 100, "arab", null);
+    FIRETHROWER("FireThrower", 0, 0, 0, 0, 100, "arab", null),
+    ENGINEER("Engineer", 0, 0, 0, 0, 40, "guild", null);
 
 
     private final String name;
@@ -36,8 +37,8 @@ public enum SoldierType {
     private final int movementSpeed;
     private final int cost;
     private final String nationality;
-    private final GoodsType[] requirments;
-    SoldierType(String name, int hitpoint, int damage, int movementSpeed, Integer range, int cost, String nationality, GoodsType[] requirments) {
+    private final GoodsType[] requirements;
+    SoldierType(String name, int hitpoint, int damage, int movementSpeed, Integer range, int cost, String nationality, GoodsType[] requirements) {
         this.name = name;
         this.hitpoint = hitpoint;
         this.damage = damage;
@@ -45,7 +46,7 @@ public enum SoldierType {
         this.range = range;
         this.cost = cost;
         this.nationality = nationality;
-        this.requirments = requirments;
+        this.requirements = requirements;
     }
 
     public String getName() {
@@ -72,8 +73,8 @@ public enum SoldierType {
         return cost;
     }
 
-    public GoodsType[] getRequirments() {
-        return requirments;
+    public GoodsType[] getRequirements() {
+        return requirements;
     }
 
     public int getRange() {

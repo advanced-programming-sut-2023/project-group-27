@@ -24,7 +24,10 @@ public class CoreSelectBuildingMenuController {
     }
 
     public void run(){
-        selectBuildingMenu.run(scanner);
+        String result = "";
+        while (!result.equals("Exit")) {
+            result = selectBuildingMenu.run(scanner);
+        }
     }
 
     public String createUnit(SoldierType troopType, int count) {
@@ -32,14 +35,12 @@ public class CoreSelectBuildingMenuController {
 
         for (int i = 0; i < count; i++)
             menToBeAdded[i] = getNewMan(troopType);
-
-        if (menToBeAdded[0] == null) return "Invalid Type\n";
         if (!evaluateGold(troopType, count)) return "Not enough Gold!\n";
-        if (!evaluateOtherRequirements(troopType, count)) return "You are short of armoury requirements!\n";
+        if (!evaluateOtherRequirements(troopType, count)) return "You are short of armoury or other requirements requirements!\n";
         takeGold(troopType, count);
         takeRequirements(troopType, count);
         currentMonarchy.addallMen(menToBeAdded);
-        //TODO add troops on map;
+        selectedBuilding.getCell().addMen(menToBeAdded);
         return "troops added succesfully\n";
     }
 
@@ -47,6 +48,7 @@ public class CoreSelectBuildingMenuController {
         int fullHitpoint = ((CastleComponent) selectedBuilding).getCastleComponentType().getHitpoint(),
                 currentStone = currentMonarchy.getStockPile().getGoodsCount(GoodsType.STONE),
                 stoneNeeded = fullHitpoint - selectedBuilding.getHitpoint();
+        if (stoneNeeded == 0 ) return "This building is at maximum hit points\n";
         if (currentStone <= stoneNeeded)
             return "Stone needed my Lord\n!";
 
@@ -56,8 +58,8 @@ public class CoreSelectBuildingMenuController {
     }
 
     public Man getNewMan(SoldierType type) {
-        if (type == null)
-            return new Engineer(100, currentMonarchy.getKing());
+        if (type == SoldierType.ENGINEER)
+            return new Engineer(SoldierType.ENGINEER.getHitpoint(), currentMonarchy.getKing());
         return new Soldier(type, currentMonarchy.getKing());
     }
 
@@ -70,11 +72,11 @@ public class CoreSelectBuildingMenuController {
     }
 
     public void takeGold(SoldierType troopType, int count) {
-        currentMonarchy.changeGold(-1 * (troopType.getCost() * count));
+        currentMonarchy.changeGold(-1 * troopType.getCost() * count);
     }
 
     public boolean evaluateOtherRequirements(SoldierType troopType, int count) {
-        GoodsType[] requirments = troopType.getRequirments();
+        GoodsType[] requirments = troopType.getRequirements();
         if (!(requirments == null)) {
             for (GoodsType currentgoods : requirments)
                 if (currentMonarchy.getGood(currentgoods) < count) return false;
@@ -84,7 +86,7 @@ public class CoreSelectBuildingMenuController {
     }
 
     public void takeRequirements(SoldierType troopType, int count) {
-        GoodsType[] requirments = troopType.getRequirments();
+        GoodsType[] requirments = troopType.getRequirements();
         if (!(requirments == null)) {
             for (GoodsType currentgoods : requirments)
                 currentMonarchy.putGood(currentgoods, currentMonarchy.getGood(currentgoods) - count);

@@ -3,19 +3,25 @@ package model;
 import model.building.Building;
 import model.man.Man;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cell implements Passable{
     private LandType type;
     private TreeType treeType;
     private Building building;
     private Man man;
+    private ArrayList<Man> men;
     private Location location;
 
     public Cell(LandType type, int xCoordinate, int yCoordinate) {
+        men = new ArrayList<>();
         this.type = type;
         this.location = new Location(xCoordinate, yCoordinate);
     }
 
     public Cell(LandType type, Location location) {
+        men = new ArrayList<>();
         this.type = type;
         this.location = new Location(location.x, location.y);
     }
@@ -41,7 +47,22 @@ public class Cell implements Passable{
     }
 
     public Man getMan() {
-        return man;
+        return men.get(0);
+    }
+
+    public ArrayList<Man> getMen() {
+        return men;
+    }
+
+    public void addMan(Man man) {
+        men.add(man);
+    }
+
+    public void addMen(Man[] menToBeAdded) {
+        men.addAll(List.of(menToBeAdded));
+    }
+    public void removeMan(Man man) {
+        men.remove(man);
     }
 
     public int getXCoordinate() {
