@@ -60,7 +60,7 @@ public enum GoodsType {
         return storageLimit;
     }
 
-    public GoodsType getTypeByName(String name) {
+    public static GoodsType getTypeByName(String name) {
         return map.get(name);
     }
 

@@ -2,6 +2,7 @@ package controller.view_controllers;
 
 import controller.controller.CoreLoginMenuController;
 import controller.controller.CoreShopMenuController;
+import model.GoodsType;
 import view.ShopMenu;
 
 import java.util.Map;
@@ -40,8 +41,8 @@ public class ShopMenuController {
         }
         if (amount <= 0) return "Invalid amount number!";
         String itemName = args.get("i");
-
-        return null;
+        GoodsType goodsType = GoodsType.getTypeByName(itemName);
+        return coreController.buy(goodsType , amount);
     }
 
     public String sell(Matcher matcher) {
@@ -59,7 +60,7 @@ public class ShopMenuController {
         }
         if (amount <= 0) return "Invalid amount number!";
         String itemName = args.get("i");
-
-        return null;
+        GoodsType goodsType = GoodsType.getTypeByName(itemName);
+        return coreController.sell(goodsType , amount);
     }
 }
