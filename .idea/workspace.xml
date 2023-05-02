@@ -4,16 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="select building logic">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="added match class and fixed problems">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Match.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/BFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/BFS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMainMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectBuildingMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectBuildingMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreShopMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreShopMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/GameMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/SelectBuildingMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/SelectBuildingMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/Building.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/CivilType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/CivilType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/GoodsType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoodsType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/StrongholdCrusader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/StrongholdCrusader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/man/SoldierType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/SoldierType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/SelectBuildingMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/SelectBuildingMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/SelectBuildingRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/enums/SelectBuildingMenuRegexes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +31,8 @@
       <list>
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -233,7 +239,8 @@
       <workItem from="1682621295379" duration="4964000" />
       <workItem from="1682661029537" duration="26051000" />
       <workItem from="1682860064105" duration="20941000" />
-      <workItem from="1682943387136" duration="5482000" />
+      <workItem from="1682943387136" duration="6135000" />
+      <workItem from="1683047369079" duration="5949000" />
     </task>
     <task id="LOCAL-00001" summary="first commit to initial_base">
       <created>1681417450067</created>
@@ -438,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682885785918</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="finalized selectBuildinbg Menu">
+      <created>1682948974917</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1682948974917</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,7 +521,9 @@
     <MESSAGE value="resolved minor conflicts" />
     <MESSAGE value="filling enums" />
     <MESSAGE value="select building logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="select building logic" />
+    <MESSAGE value="finalized selectBuildinbg Menu" />
+    <MESSAGE value="added match class and fixed problems" />
+    <option name="LAST_COMMIT_MESSAGE" value="added match class and fixed problems" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -11,22 +11,20 @@ import view.SelectBuildingMenu;
 import java.util.Scanner;
 
 public class CoreSelectBuildingMenuController {
-    private final SelectBuildingMenuController buildingController;
-    private Building selectedBuilding;
-    private Monarchy currentMonarchy;
+    private final Building selectedBuilding;
+    private final Monarchy currentMonarchy;
     private final SelectBuildingMenu selectBuildingMenu;
 
     public CoreSelectBuildingMenuController(Building selectedBuilding , Scanner scanner, Monarchy currentMonarchy) {
-        this.scanner = scanner;
         this.selectedBuilding = selectedBuilding;
-        selectBuildingMenu = new SelectBuildingMenu(new SelectBuildingMenuController(selectedBuilding, this));
+        selectBuildingMenu = new SelectBuildingMenu(new SelectBuildingMenuController(this, selectedBuilding, scanner), scanner);
         this.currentMonarchy = currentMonarchy;
     }
 
     public void run(){
         String result = "";
         while (!result.equals("Exit")) {
-            result = selectBuildingMenu.run(scanner);
+            result = selectBuildingMenu.run();
         }
     }
 

@@ -1,10 +1,7 @@
 package controller.controller;
 
 import controller.view_controllers.GameMenuController;
-import model.Monarchy;
-import model.GameMap;
-import model.GoodsType;
-import model.StrongholdCrusader;
+import model.*;
 import model.building.Building;
 import model.man.Man;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -14,20 +11,21 @@ import java.util.Scanner;
 
 public class CoreGameMenuController {
     private final Scanner scanner;
+    private Match currentMatch;
+    private User currentUser;
     private Monarchy currentMonarchy;
-    private User loggedInUser;
     private final GameMap map;
     private final GameMenu gameMenu;
     private final CoreTradeMenuController coreTradeMenuController;
     private CoreSelectUnitMenuController coreUnitController;
     private CoreSelectBuildingMenuController coreBuildingController;
 
-    public CoreGameMenuController(Monarchy currentMonarchy, Scanner scanner) {
+    public CoreGameMenuController(Match currentMatch, Scanner scanner) {
         this.scanner = scanner;
-        this.currentMonarchy = currentMonarchy;
-        this.loggedInUser = StrongholdCrusader.getCurrentUser();
-        this.map = StrongholdCrusader.getCurrentMap();
-        gameMenu = new GameMenu(new GameMenuController(this , StrongholdCrusader.getCurrentUser()));
+        this.currentMatch = currentMatch;
+        this.currentUser = StrongholdCrusader.getCurrentUser();
+        this.map = currentMatch.getCurrentMatchMap();
+        gameMenu = new GameMenu(new GameMenuController(this , null));
         coreTradeMenuController = new CoreTradeMenuController(StrongholdCrusader.getCurrentUser() , scanner);
     }
 
@@ -51,13 +49,13 @@ public class CoreGameMenuController {
     }
 
     public String showPopularity(){
-        return String.valueOf(loggedInUser.getMonarchy().calcPopularity());
+        return String.valueOf(currentUser.getMonarchy().calcPopularity());
     }
 
     public String showFoodList(){
         StringBuilder result = new StringBuilder();
         for (GoodsType food : GoodsType.getGranaryGoods()) {
-            int num = loggedInUser.getMonarchy().getStorage().getOrDefault(food, 0);
+            int num = currentUser.getMonarchy().getGranary().getGoodsCount(food);
             if (num > 0) {
                 result.append(food.getName()).append(": ").append(num).append("\n");
             }
@@ -69,36 +67,36 @@ public class CoreGameMenuController {
         if (!NumberUtils.isNumber(rateStr)) return "rate should be an integer\n";
         int rate = Integer.parseInt(rateStr);
         if (rate < -2 || rate > 2) return "rate should be between -2 and 2\n";
-        loggedInUser.getMonarchy().setFoodRate(rate);
+        currentUser.getMonarchy().setFoodRate(rate);
         return "success\n";
     }
 
     public String showFoodRate(){
-        return String.valueOf(loggedInUser.getMonarchy().getFoodRate());
+        return String.valueOf(currentUser.getMonarchy().getFoodRate());
     }
 
     public String setTaxRate(String rateStr){
         if (!NumberUtils.isNumber(rateStr)) return "rate should be an integer\n";
         int rate = Integer.parseInt(rateStr);
         if (rate < -3 || rate > 8) return "rate should be between -3 and 8\n";
-        loggedInUser.getMonarchy().setTaxRate(rate);
+        currentUser.getMonarchy().setTaxRate(rate);
         return "success\n";
     }
 
     public String showTaxRate(){
-        return String.valueOf(loggedInUser.getMonarchy().getTaxRate());
+        return String.valueOf(currentUser.getMonarchy().getTaxRate());
     }
 
     public String setFearRate(String rateStr){
         if (!NumberUtils.isNumber(rateStr)) return "rate should be an integer\n";
         int rate = Integer.parseInt(rateStr);
         if (rate < -5 || rate > 5) return "rate should be between -5 and 5\n";
-        loggedInUser.getMonarchy().setFearRate(rate);
+        currentUser.getMonarchy().setFearRate(rate);
         return "success\n";
     }
 
     public String showFearRate(){
-        return String.valueOf(loggedInUser.getMonarchy().getFearRate());
+        return String.valueOf(currentUser.getMonarchy().getFearRate());
     }
 
     public String dropBuilding(int x , int y , String type){
@@ -117,7 +115,7 @@ public class CoreGameMenuController {
             return "no building here\n";
         }
         coreBuildingController =
-                new CoreSelectBuildingMenuController(selectedBuilding , scanner);
+                new CoreSelectBuildingMenuController(selectedBuilding , scanner, currentMonarchy);
         coreBuildingController.run();
         return null;
     }
@@ -142,7 +140,7 @@ public class CoreGameMenuController {
         if (XYCheck(x, y) != null) return XYCheck(x, y);
         CoreMapNavigationMenuController coreNavigationController =
                 new CoreMapNavigationMenuController(
-                        x, y, scanner, StrongholdCrusader.getCurrentMap(), this);
+                        x, y, scanner, currentMatch.getCurrentMatchMap(), this);
         coreNavigationController.run();
         return null;
     }

@@ -4,7 +4,6 @@ import controller.view_controllers.ShopMenuController;
 import model.GoodsType;
 import model.Monarchy;
 import model.StrongholdCrusader;
-import model.building.Storage;
 import view.ShopMenu;
 
 import java.util.Map;
@@ -73,5 +72,4 @@ public class CoreShopMenuController {
         monarchy.changeGold(amount * priceSell);
         return "Sell successful!";
     }
-
 }

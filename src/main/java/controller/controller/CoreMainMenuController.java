@@ -34,7 +34,7 @@ public class CoreMainMenuController {
                     break;
                 case "Enter game menu":
                     CoreGameMenuController coreGameController =
-                            new CoreGameMenuController(scanner);
+                            new CoreGameMenuController(null, scanner);
                     coreGameController.run();
                     break;
             }

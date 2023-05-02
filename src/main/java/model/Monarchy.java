@@ -15,7 +15,7 @@ public class Monarchy {
     private final List<Man> men = new ArrayList<>();
     private final Storage[] storages = new Storage[3];
     private final TradingSystem tradingSystem;
-    private User king;
+    private final User king;
     private int popularity;
     private int taxRate;
     private int foodRate;
