@@ -1,6 +1,7 @@
 package model;
 
 import model.building.Building;
+import model.building.Storage;
 import model.man.Man;
 
 import java.util.ArrayList;
@@ -9,10 +10,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Monarchy {
-    private List<Building> buildings = new ArrayList<>();
-    private List<GoodsType> foodTypes = new ArrayList<>();
-    private List<Man> men = new ArrayList<>();
-    private Map<GoodsType, Integer> storage = new HashMap<>();
+    private final List<Building> buildings = new ArrayList<>();
+    private final List<GoodsType> foodTypes = new ArrayList<>();
+    private final List<Man> men = new ArrayList<>();
+    private final Storage[] storages = new Storage[3];
     private final TradingSystem tradingSystem;
     private User king;
     private int popularity;
@@ -55,12 +56,40 @@ public class Monarchy {
         gold += amount;
     }
 
+    public void addallMen(Man[] menToBeAdded) {
+        men.addAll(List.of(menToBeAdded));
+    }
+
     public TradingSystem getTradingSystem() {
         return tradingSystem;
     }
 
-    public Map<GoodsType, Integer> getStorage() {
-        return storage;
+    public Storage getGranary() {
+        return storages[0];
+    }
+
+    public Storage getStockPile() {
+        return storages[1];
+    }
+
+    public Storage getArmoury() {
+        return storages[2];
+    }
+
+    public int getGood(GoodsType goodsType) {
+        Integer amount;
+        for (Storage thisStorage : storages) {
+            if ((amount = thisStorage.getGoodsCount(goodsType)) != null)
+                return amount;
+        }
+        return 0;
+    }
+
+    public void putGood(GoodsType goodsType, int number) {
+        for (Storage thisStorage : storages) {
+            if (thisStorage.contains(goodsType))
+                thisStorage.putGoodsCount(goodsType, number);
+        }
     }
 
     public void setTaxRate(int taxRate) {

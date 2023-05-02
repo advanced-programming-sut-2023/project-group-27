@@ -1,10 +1,10 @@
 package controller.controller;
 
 import controller.view_controllers.GameMenuController;
+import model.Monarchy;
 import model.GameMap;
 import model.GoodsType;
 import model.StrongholdCrusader;
-import model.User;
 import model.building.Building;
 import model.man.Man;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -14,6 +14,7 @@ import java.util.Scanner;
 
 public class CoreGameMenuController {
     private final Scanner scanner;
+    private Monarchy currentMonarchy;
     private User loggedInUser;
     private final GameMap map;
     private final GameMenu gameMenu;
@@ -21,8 +22,9 @@ public class CoreGameMenuController {
     private CoreSelectUnitMenuController coreUnitController;
     private CoreSelectBuildingMenuController coreBuildingController;
 
-    public CoreGameMenuController(Scanner scanner) {
+    public CoreGameMenuController(Monarchy currentMonarchy, Scanner scanner) {
         this.scanner = scanner;
+        this.currentMonarchy = currentMonarchy;
         this.loggedInUser = StrongholdCrusader.getCurrentUser();
         this.map = StrongholdCrusader.getCurrentMap();
         gameMenu = new GameMenu(new GameMenuController(this , StrongholdCrusader.getCurrentUser()));

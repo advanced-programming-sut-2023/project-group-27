@@ -19,7 +19,15 @@ public class Storage extends Building{
         goodsMap.put(goodsType, goodsMap.get(goodsType) + number);
     }
 
-    public int getGoodsCount(GoodsType goodsType) {
+    public void putGoodsCount(GoodsType goodsType, int value) {
+        goodsMap.put(goodsType, value);
+    }
+
+    public Integer getGoodsCount(GoodsType goodsType) {
         return goodsMap.get(goodsType);
+    }
+
+    public boolean contains(GoodsType goodsType) {
+        return goodsMap.containsKey(goodsType);
     }
 }

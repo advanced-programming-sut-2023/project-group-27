@@ -6,13 +6,16 @@ import model.User;
 import model.task.Task;
 
 public class Soldier extends Man{
+    private SoldierType soldierType;
     private Task task;
     private String state;
+    private Integer range;
     private int damage;
 
-    public Soldier(int hitpoint, String name, int damage, User owner) {
-        super(hitpoint, name, owner);
-        this.damage = damage;
+    public Soldier(SoldierType soldierType, User owner) {
+        super(soldierType.getHitpoint(), soldierType.getName(), owner);
+        this.damage = soldierType.getDamage();
+        this.range = soldierType.getRange();
     }
 
     public String getState() {

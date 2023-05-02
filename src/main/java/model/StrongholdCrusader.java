@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class StrongholdCrusader {
+    private static Monarchy currentMonarchy;
     private static User loggedInUser;
     private static User currentUser;
     private static GameMap currentMatchMap;
@@ -49,6 +50,10 @@ public class StrongholdCrusader {
 
     public static GameMap getCurrentMap() {
         return currentMatchMap;
+    }
+
+    public static Monarchy getCurrentMonarchy() {
+        return currentMonarchy;
     }
 
     public static void reset() {
