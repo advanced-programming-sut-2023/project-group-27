@@ -14,10 +14,9 @@ public class ProfileMenu extends MenuBase{
     }
 
     public String run() {
-        System.out.println("Entered Profile Menu");
+        String command , output;
         while (true) {
-            String command = scanner.nextLine();
-            String output;
+            command = scanner.nextLine();
             if (ProfileMenuRegexes.CHANGE_USERNAME.getMatcher(command).matches()) {
                 output = controller.changeUsername(
                         ProfileMenuRegexes.CHANGE_USERNAME.getMatcher(command));
@@ -54,18 +53,22 @@ public class ProfileMenu extends MenuBase{
             }
             if (ProfileMenuRegexes.DISPLAY_HIGH_SCORE.getMatcher(command).matches()) {
                 output = controller.showHighScore();
+                System.out.print(output);
                 continue;
             }
             if (ProfileMenuRegexes.DISPLAY_RANK.getMatcher(command).matches()) {
                 output = controller.showRank();
+                System.out.print(output);
                 continue;
             }
             if (ProfileMenuRegexes.DISPLAY_SLOGAN.getMatcher(command).matches()) {
                 output = controller.showSlogan();
+                System.out.print(output);
                 continue;
             }
             if (ProfileMenuRegexes.DISPLAY_PROFILE.getMatcher(command).matches()) {
                 output = controller.showProfile();
+                System.out.print(output);
                 continue;
             }
             if (command.equals("Exit")) {

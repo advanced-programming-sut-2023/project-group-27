@@ -2,17 +2,15 @@ package view;
 
 import controller.view_controllers.LoginMenuController;
 import view.enums.LoginMenuRegexes;
-import view.enums.RegisterMenuRegexes;
 
 import java.util.Scanner;
 
-public class LoginMenu {
+public class LoginMenu extends MenuBase{
     private final LoginMenuController controller;
-    private final Scanner scanner;
 
     public LoginMenu(LoginMenuController controller, Scanner scanner) {
+        super(scanner);
         this.controller = controller;
-        this.scanner = scanner;
     }
 
     public String run() {
@@ -31,20 +29,8 @@ public class LoginMenu {
                 output = controller.forgetPassword();
                 System.out.println(output);
             }
-            else System.out.print("Invalid command\n");
+            else System.out.println("Invalid command!");
         }
     }
 
-    public void showInformation(String info) {
-        System.out.println(info);
-    }
-
-    public boolean confirm(String message, String expectedValue) {
-        System.out.println(message);
-        return this.scanner.nextLine().equals(expectedValue);
-    }
-
-    public String fetchAnswer() {
-        return this.scanner.nextLine();
-    }
 }

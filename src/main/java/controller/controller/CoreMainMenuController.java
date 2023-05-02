@@ -42,6 +42,6 @@ public class CoreMainMenuController {
     }
 
     public void logout() {
-        StrongholdCrusader.getCurrentUser().setStayLoggedIn(false);
+        StrongholdCrusader.getLoggedInUser().setStayLoggedIn(false);
     }
 }
