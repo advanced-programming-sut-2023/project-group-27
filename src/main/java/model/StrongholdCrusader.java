@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class StrongholdCrusader {
-    private static User CurrentUser;
+    private static User loggedInUser;
+    private static User currentUser;
     private static GameMap currentMatchMap;
     private int turnCounter;
     private static final HashMap<String , GameMap> allMaps = new HashMap<>();
@@ -26,12 +27,24 @@ public class StrongholdCrusader {
         return securityQuestions;
     }
 
+    public static User getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public static GameMap getCurrentMatchMap() {
+        return currentMatchMap;
+    }
+
+    public static void setLoggedInUser(User loggedInUser) {
+        StrongholdCrusader.loggedInUser = loggedInUser;
+    }
+
     public static User getCurrentUser() {
-        return CurrentUser;
+        return currentUser;
     }
 
     public static void setCurrentUser(User currentUser) {
-        CurrentUser = currentUser;
+        StrongholdCrusader.currentUser = currentUser;
     }
 
     public static GameMap getCurrentMap() {
