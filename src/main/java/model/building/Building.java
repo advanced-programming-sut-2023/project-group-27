@@ -5,11 +5,12 @@ import model.*;
 public class Building extends Destructable implements Passable {
     private boolean isActive;
     private String name;
-    private User owner;
+    private final User owner;
     private Cell cell;
 
-    public Building(int hitpoint) {
+    public Building(int hitpoint, User owner) {
         super(hitpoint);
+        this.owner = owner;
     }
 
     @Override
@@ -27,10 +28,6 @@ public class Building extends Destructable implements Passable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
     }
 
     public void setCell(Cell cell) {

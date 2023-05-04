@@ -1,17 +1,14 @@
 package controller.controller;
 
 import controller.view_controllers.MapEditMenuController;
-import controller.controller.Utilities;
 import model.*;
-import model.building.Building;
-import model.building.CivilBuilding;
-import model.building.CivilBuildingType;
-import model.building.ProductionBuilding;
+import model.building.*;
+import model.castle_components.CastleComponent;
+import model.castle_components.CastleComponentType;
 import model.man.Man;
 import model.man.SoldierType;
 import view.MapEditMenu;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CoreMapEditMenuController {
@@ -145,7 +142,7 @@ public class CoreMapEditMenuController {
         Man[] men = new Man[count];
         for (int i = 0; i < count; i++)
             men[i] = Utilities.getNewMan(soldierType, currentOwner);
-        currentMatch.getCurrentMonarchy().addallMen(men);
+        currentMatch.getCurrentMonarchy().addAllMen(men);
         currentCell.addMen(men);
 
         return "Men added Successfully";
@@ -160,11 +157,17 @@ public class CoreMapEditMenuController {
             return "Can't place building here!";
 
         Building building;
-        if (type instanceof CivilBuildingType) {
-            building = new CivilBuilding(((CivilBuildingType) type).getHitpoint(), (CivilBuildingType) type);
-        } else if (type instanceof ProductionBuilding) {
+        if (type instanceof CivilBuildingType)
+            building = new CivilBuilding(((CivilBuildingType) type).getHitpoint(), (CivilBuildingType) type, currentOwner);
+        else if (type instanceof ProductionBuildingType)
+            building = new ProductionBuilding(0, null, null, (ProductionBuildingType) type, currentOwner);
+            //TODO fix this shit
+        else
+            //(type instanceof CastleComponentType)
+            building = new CastleComponent(((CastleComponentType) type).getHitpoint(), (CastleComponentType) type, currentOwner );
 
-        }
-        return null;
+        currentCell.setBuilding(building);
+        currentMatch.getCurrentMonarchy().addBuilding(building);
+        return "Building placed successfully";
     }
 }

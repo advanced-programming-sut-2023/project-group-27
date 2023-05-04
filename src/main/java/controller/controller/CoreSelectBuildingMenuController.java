@@ -37,7 +37,7 @@ public class CoreSelectBuildingMenuController {
         if (!evaluateOtherRequirements(troopType, count)) return "You are short of armoury or other requirements requirements!\n";
         takeGold(troopType, count);
         takeRequirements(troopType, count);
-        currentMonarchy.addallMen(menToBeAdded);
+        currentMonarchy.addAllMen(menToBeAdded);
         selectedBuilding.getCell().addMen(menToBeAdded);
         return "troops added succesfully\n";
     }

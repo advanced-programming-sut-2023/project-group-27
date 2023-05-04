@@ -1,5 +1,7 @@
 package model.building;
 
+import model.User;
+
 public enum CivilBuildingType {
     HOVEL("Hovel", 100, new int[] {0, 6, 0}),
     CATHERDAL("Catherdal", 1000, new int[] {1000, 0, 0}),
@@ -37,7 +39,7 @@ public enum CivilBuildingType {
         return this.hitpoint;
     }
 
-    public CivilBuilding createCivilBuilding() {
-        return new CivilBuilding(hitpoint, this);
+    public CivilBuilding createCivilBuilding(User owner) {
+        return new CivilBuilding(hitpoint, this, owner);
     }
 }
