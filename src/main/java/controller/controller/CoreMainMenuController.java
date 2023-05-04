@@ -29,7 +29,7 @@ public class CoreMainMenuController {
                     coreProfileController.run();
                     break;
                 case "Enter map edit menu":
-                    CoreMapEditMenuController coreMapEditController = new CoreMapEditMenuController(scanner);
+                    CoreMapEditMenuController coreMapEditController = new CoreMapEditMenuController(null, scanner);
                     coreMapEditController.run();
                     break;
                 case "Enter game menu":

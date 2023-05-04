@@ -1,14 +1,11 @@
 package model.building;
 
-import model.Cell;
-import model.Destructable;
-import model.Location;
-import model.Passable;
+import model.*;
 
 public class Building extends Destructable implements Passable {
     private boolean isActive;
     private String name;
-
+    private User owner;
     private Cell cell;
 
     public Building(int hitpoint) {
@@ -28,7 +25,19 @@ public class Building extends Destructable implements Passable {
         return cell;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
     public void setCell(Cell cell) {
         this.cell = cell;
+    }
+
+    public User getOwner() {
+        return owner;
     }
 }

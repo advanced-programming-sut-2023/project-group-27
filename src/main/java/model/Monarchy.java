@@ -108,4 +108,12 @@ public class Monarchy {
         // TODO implement here
         return 0;
     }
+
+    public void removeBuilding(Building building) {
+        this.buildings.remove(building);
+    }
+
+    public void removeMan(Man man) {
+        this.men.remove(man);
+    }
 }
