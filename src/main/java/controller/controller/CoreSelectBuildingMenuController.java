@@ -32,7 +32,7 @@ public class CoreSelectBuildingMenuController {
         Man[] menToBeAdded = new Man[count];
 
         for (int i = 0; i < count; i++)
-            menToBeAdded[i] = getNewMan(troopType);
+            menToBeAdded[i] = Utilities.getNewMan(troopType, currentMonarchy.getKing());
         if (!evaluateGold(troopType, count)) return "Not enough Gold!\n";
         if (!evaluateOtherRequirements(troopType, count)) return "You are short of armoury or other requirements requirements!\n";
         takeGold(troopType, count);
@@ -53,12 +53,6 @@ public class CoreSelectBuildingMenuController {
         currentMonarchy.getStockPile().modifyGoodsCount(GoodsType.STONE, -1 * stoneNeeded);
         selectedBuilding.setHitpoint(fullHitpoint);
         return "Repaired Successfully!\n";
-    }
-
-    public Man getNewMan(SoldierType type) {
-        if (type == SoldierType.ENGINEER)
-            return new Engineer(SoldierType.ENGINEER.getHitpoint(), currentMonarchy.getKing());
-        return new Soldier(type, currentMonarchy.getKing());
     }
 
     public Building getSelectedBuilding() {

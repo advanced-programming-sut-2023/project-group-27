@@ -4,18 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="added match class and fixed problems">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="parts of map editing features">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMainMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapNavigationMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapNavigationMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/MapNavigationMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/MapNavigationMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectBuildingMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectBuildingMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/Utilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/LandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/LandType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/TreeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/NaturalEntityType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/Building.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/CivilBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/CivilBuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/CivilType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/CivilBuildingType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/CastleComponentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/CastleComponentType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,7 +235,7 @@
       <workItem from="1682943387136" duration="6135000" />
       <workItem from="1683047369079" duration="6147000" />
       <workItem from="1683108104132" duration="844000" />
-      <workItem from="1683186366854" duration="11593000" />
+      <workItem from="1683186366854" duration="18600000" />
     </task>
     <task id="LOCAL-00001" summary="first commit to initial_base">
       <created>1681417450067</created>
@@ -457,7 +454,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683060476334</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="parts of map editing features">
+      <created>1683200456345</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1683200456345</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -528,6 +532,7 @@
     <MESSAGE value="select building logic" />
     <MESSAGE value="finalized selectBuildinbg Menu" />
     <MESSAGE value="added match class and fixed problems" />
-    <option name="LAST_COMMIT_MESSAGE" value="added match class and fixed problems" />
+    <MESSAGE value="parts of map editing features" />
+    <option name="LAST_COMMIT_MESSAGE" value="parts of map editing features" />
   </component>
 </project>

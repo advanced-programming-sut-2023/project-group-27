@@ -1,11 +1,17 @@
 package controller.controller;
 
 import controller.view_controllers.MapEditMenuController;
-import controller.view_controllers.Utilities;
+import controller.controller.Utilities;
 import model.*;
+import model.building.Building;
+import model.building.CivilBuilding;
+import model.building.CivilBuildingType;
+import model.building.ProductionBuilding;
+import model.man.Man;
+import model.man.SoldierType;
 import view.MapEditMenu;
 
-import java.util.Map;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CoreMapEditMenuController {
@@ -124,5 +130,41 @@ public class CoreMapEditMenuController {
 
         currentCell.setNaturalEntityType(naturalEntityType);
         return output + "Tree placed successfully!";
+    }
+
+    public String dropUnit(Location location, SoldierType soldierType, int count) {
+        if (!Utilities.checkBounds(location, currentMap))
+            return "Location out of bounds!";
+        Cell currentCell = currentMap.getCell(location.x, location.y);
+
+        if (!currentCell.isPassable())
+            return "Can't place soldier or person here.";
+        if (count <= 0 || count > 30)
+            return "Count isn't in bounds.";
+
+        Man[] men = new Man[count];
+        for (int i = 0; i < count; i++)
+            men[i] = Utilities.getNewMan(soldierType, currentOwner);
+        currentMatch.getCurrentMonarchy().addallMen(men);
+        currentCell.addMen(men);
+
+        return "Men added Successfully";
+    }
+
+    public String dropBuilding(Location location,Object type) {
+        if (!Utilities.checkBounds(location, currentMap))
+            return "Location out of bounds!";
+        Cell currentCell = currentMap.getCell(location.x, location.y);
+
+        if (!currentCell.isPassable())
+            return "Can't place building here!";
+
+        Building building;
+        if (type instanceof CivilBuildingType) {
+            building = new CivilBuilding(((CivilBuildingType) type).getHitpoint(), (CivilBuildingType) type);
+        } else if (type instanceof ProductionBuilding) {
+
+        }
+        return null;
     }
 }
