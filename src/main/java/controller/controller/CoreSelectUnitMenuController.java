@@ -20,7 +20,6 @@ public class CoreSelectUnitMenuController {
         this.selectedMan = selectedMan;
         selectUnitController = new SelectUnitMenuController(selectedMan, this, scanner);
         selectUnitMenu = selectUnitController.getUnitMenu();
-        selectUnitMenu = new SelectUnitMenu(new SelectUnitMenuController(selectedMan, this), scanner);
     }
 
     public void run(){
