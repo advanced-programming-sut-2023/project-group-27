@@ -18,11 +18,11 @@ public class MapNavigationMenu {
        controller.showMap();
        while (true) {
            String command = scanner.nextLine();
-           if (MapNavigationMenuRegexes.MOVEMAP.getMatcher(command).matches()) {
+           if (MapNavigationMenuRegexes.MOVE_MAP.getMatcher(command).matches()) {
                controller.move(command);
                continue;
            }
-           if (MapNavigationMenuRegexes.SHOWDETAILS.getMatcher(command).matches()) {
+           if (MapNavigationMenuRegexes.SHOW_DETAILS.getMatcher(command).matches()) {
                System.out.println(controller.showDetails(command));
                continue;
            }

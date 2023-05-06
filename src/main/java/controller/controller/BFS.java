@@ -2,6 +2,7 @@ package controller.controller;
 
 import model.GameMap;
 import model.Location;
+import model.Movable;
 import model.StrongholdCrusader;
 
 import java.util.*;
@@ -11,7 +12,7 @@ public class BFS {
     GameMap map;
     Map<Location, Location> parent = new HashMap<>();
 
-    public BFS(Location origin, GameMap map) {
+    public BFS(Location origin, GameMap map, Movable movable) {
         this.map = map;
         Queue<Location> cells = new LinkedList<>();
         cells.add(origin);
@@ -19,7 +20,7 @@ public class BFS {
         parent.put(startingLocation, null);
         while (!cells.isEmpty()) {
             Location currentLocation = cells.poll();
-            List<Location> locationNeighbors = currentLocation.getNeighbors(map);
+            List<Location> locationNeighbors = currentLocation.getNeighbors(map, movable);
             for (Location neighbor : locationNeighbors) {
                 if (!parent.containsKey(neighbor)) {
                     parent.put(neighbor, currentLocation);

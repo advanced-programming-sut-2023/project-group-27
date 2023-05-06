@@ -25,7 +25,7 @@ public class Move implements Task {
             if (!map.getCell(path.get(i)).isPassable(movable)) {
                 Location origin = path.get(0);
                 Location destination = path.get(path.size()-1);
-                this.bfs = new BFS(origin, map);
+                this.bfs = new BFS(origin, map, movable);
                 this.path = this.bfs.pathTo(destination);
                 if (this.path == null) {
                     return;
@@ -47,7 +47,7 @@ public class Move implements Task {
         Location origin = new Location(originX, originY);
         Location destination = new Location(destinationX, destinationY);
         this.map = map;
-        this.bfs = new BFS(origin, map);
+        this.bfs = new BFS(origin, map, movable);
         this.path = this.bfs.pathTo(destination);
         this.movable = movable;
     }

@@ -38,12 +38,14 @@ public enum GoodsType {
         this.shopBuyPrice = shopBuyPrice;
         this.shopSellPrice = shopSellPrice;
         this.storageLimit = storageLimit;
-        this.addToMap();
     }
 
-    private void addToMap() {
-        map.put(this.name, this);
+    public static void init() {
+        for (GoodsType type : values()) {
+            map.put(type.name, type);
+        }
     }
+    // TODO remember to init before usage
 
     public String getName() {
         return name;
