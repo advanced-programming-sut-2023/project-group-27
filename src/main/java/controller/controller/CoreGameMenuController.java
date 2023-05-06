@@ -4,9 +4,11 @@ import controller.view_controllers.GameMenuController;
 import model.*;
 import model.building.Building;
 import model.man.Man;
+import model.man.SoldierType;
 import org.apache.commons.lang3.math.NumberUtils;
 import view.GameMenu;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CoreGameMenuController {
@@ -122,14 +124,15 @@ public class CoreGameMenuController {
         return null;
     }
 
-    public String selectUnit(String xStr , String yStr) {
+    public String selectUnit(String xStr , String yStr , String unitType) {
         if (!NumberUtils.isNumber(xStr) || ! NumberUtils.isNumber(yStr)) {
             return "x and y should be integers";
         }
         int x = Integer.parseInt(xStr), y = Integer.parseInt(yStr);
         if (XYCheck(x, y) != null) return XYCheck(x, y);
-        Man selectedMan = map.getCell(x, y).getMan();
-        coreUnitController = new CoreSelectUnitMenuController(selectedMan , scanner);
+        ArrayList<Man> selectedMen = map.getCell(x , y).getMen();
+        selectedMen.removeIf(man -> !man.getName().equals(unitType));
+        coreUnitController = new CoreSelectUnitMenuController(selectedMen , scanner);
         coreUnitController.run();
         return null;
     }
