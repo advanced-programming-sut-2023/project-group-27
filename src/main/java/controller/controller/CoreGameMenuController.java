@@ -19,13 +19,15 @@ public class CoreGameMenuController {
     private final CoreTradeMenuController coreTradeMenuController;
     private CoreSelectUnitMenuController coreUnitController;
     private CoreSelectBuildingMenuController coreBuildingController;
+    private GameMenuController gameController;
 
     public CoreGameMenuController(Match currentMatch, Scanner scanner) {
         this.scanner = scanner;
         this.currentMatch = currentMatch;
         this.currentUser = StrongholdCrusader.getCurrentUser();
         this.map = currentMatch.getCurrentMatchMap();
-        gameMenu = new GameMenu(new GameMenuController(this , null));
+        this.gameController = new GameMenuController(this, currentMatch);
+        this.gameMenu = new GameMenu(this.gameController);
         coreTradeMenuController = new CoreTradeMenuController(StrongholdCrusader.getCurrentUser() , scanner);
     }
 
