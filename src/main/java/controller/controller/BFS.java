@@ -11,9 +11,10 @@ public class BFS {
     GameMap map;
     Map<Location, Location> parent = new HashMap<>();
 
-    public BFS(int x, int y) {
+    public BFS(Location origin, GameMap map) {
+        this.map = map;
         Queue<Location> cells = new LinkedList<>();
-        cells.add(new Location(x, y));
+        cells.add(origin);
         startingLocation = cells.peek();
         parent.put(startingLocation, null);
         while (!cells.isEmpty()) {

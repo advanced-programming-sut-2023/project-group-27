@@ -29,6 +29,10 @@ public class GameMap {
         return map[x][y];
     }
 
+    public Cell getCell(Location location) {
+        return getCell(location.x, location.y);
+    }
+
     public Cell[][] getMap() {
         return map;
     }

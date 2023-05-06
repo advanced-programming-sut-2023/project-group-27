@@ -32,7 +32,7 @@ public enum NaturalEntityType implements Passable {
 
 
     @Override
-    public boolean isPassable() {
+    public boolean isPassable(Movable movable) {
         return this.passability;
     }
 }

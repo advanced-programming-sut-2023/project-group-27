@@ -26,9 +26,9 @@ public class Cell implements Passable{
     }
 
     @Override
-    public boolean isPassable() {
+    public boolean isPassable(Movable movable) {
         if (this.building != null) {
-            return building.isPassable();
+            return building.isPassable(movable);
         }
         if (this.naturalEntityType != null) {
             return naturalEntityType.isPassable();
