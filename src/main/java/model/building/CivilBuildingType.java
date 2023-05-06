@@ -1,6 +1,8 @@
 package model.building;
 
-public enum CivilType {
+import model.User;
+
+public enum CivilBuildingType {
     HOVEL("Hovel", 100, new int[] {0, 6, 0}),
     CATHERDAL("Catherdal", 1000, new int[] {1000, 0, 0}),
     CHURCH("Church", 500, new int[] {250, 0, 0}),
@@ -12,7 +14,7 @@ public enum CivilType {
     private final int hitpoint;
     private final int[] resourcesNeededToBuild; //gold, wood, stone
 
-    CivilType(String name, int hitpoint, int[] resourcesNeededToBuild) {
+    CivilBuildingType(String name, int hitpoint, int[] resourcesNeededToBuild) {
         this.name = name;
         this.hitpoint = hitpoint;
         this.resourcesNeededToBuild = resourcesNeededToBuild;
@@ -37,7 +39,7 @@ public enum CivilType {
         return this.hitpoint;
     }
 
-    public CivilBuilding createCivilBuilding() {
-        return new CivilBuilding(hitpoint, this);
+    public CivilBuilding createCivilBuilding(User owner) {
+        return new CivilBuilding(hitpoint, this, owner);
     }
 }

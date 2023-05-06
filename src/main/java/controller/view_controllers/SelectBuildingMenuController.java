@@ -32,10 +32,11 @@ public class SelectBuildingMenuController {
                 countMatcher = countPattern.matcher(matcher.group("fields"));
         if (!typeMatcher.find() || !countMatcher.find())
             return "Invalid Fields!\n";
+
         String type = typeMatcher.group("type");
         int count = Integer.parseInt(countMatcher.group("count"));
         SoldierType soldierType;
-        if ((soldierType = getSoldierType(type)) == null)
+        if ((soldierType = SoldierType.getTypeByName(type)) == null)
             return "Invalid troop type!\n";
         if ((soldierType.getNationality().equals("european") &&
                 !coreController.getSelectedBuilding().getName().equals("Barracks"))
@@ -51,11 +52,5 @@ public class SelectBuildingMenuController {
         if (!(coreController.getSelectedBuilding() instanceof CastleComponent))
             return "This type of building can't be repaired\n";
         return coreController.repair();
-    }
-
-    private SoldierType getSoldierType(String string) {
-        for (SoldierType soldierType : SoldierType.values())
-            if (soldierType.getName().equals(string)) return soldierType;
-        return null;
     }
 }

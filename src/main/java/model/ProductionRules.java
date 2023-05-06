@@ -37,7 +37,7 @@ public enum ProductionRules {
         this.resourceProduced = resourceProduced;
     }
 
-    public ProdutionRule getProductionRule() {
-        return new ProdutionRule(usedType, producedType, turnsNeededToProduce, resourceRequired, resourceProduced);
+    public ProductionRule getProductionRule() {
+        return new ProductionRule(usedType, producedType, turnsNeededToProduce, resourceRequired, resourceProduced);
     }
 }

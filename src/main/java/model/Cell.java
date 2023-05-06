@@ -8,9 +8,8 @@ import java.util.List;
 
 public class Cell implements Passable{
     private LandType type;
-    private TreeType treeType;
+    private NaturalEntityType naturalEntityType;
     private Building building;
-    private Man man;
     private ArrayList<Man> men;
     private Location location;
 
@@ -31,6 +30,9 @@ public class Cell implements Passable{
         if (this.building != null) {
             return building.isPassable();
         }
+        if (this.naturalEntityType != null) {
+            return naturalEntityType.isPassable();
+        }
         return type.isPassable();
     }
 
@@ -38,8 +40,8 @@ public class Cell implements Passable{
         return type;
     }
 
-    public TreeType getTreeType() {
-        return treeType;
+    public NaturalEntityType getNaturalEntityType() {
+        return naturalEntityType;
     }
 
     public Building getBuilding() {
@@ -77,19 +79,25 @@ public class Cell implements Passable{
         return location;
     }
 
-    public void setTreeType(TreeType treeType) {
-        this.treeType = treeType;
+    public void setNaturalEntityType(NaturalEntityType naturalEntityType) {
+        this.naturalEntityType = naturalEntityType;
     }
 
     public void setBuilding(Building building) {
         this.building = building;
     }
 
-    public void setMan(Man man) {
-        this.man = man;
-    }
-
     public void setType(LandType type) {
         this.type = type;
+    }
+
+    public void clear() {
+        type = LandType.PLAIN;
+        naturalEntityType = null;
+        building.getOwner().getMonarchy().removeBuilding(building);
+        building = null;
+        for (Man man : this.men)
+            man.getOwner().getMonarchy().removeMan(man);
+        men.clear();
     }
 }

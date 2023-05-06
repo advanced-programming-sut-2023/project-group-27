@@ -23,7 +23,8 @@ public enum GoodsType {
     SPEAR("Spear", 480, 400, 700),
     PIKE("Pike", 350, 280, 700),
     MACE("Mace", 460, 380, 600),
-    PITCH("Pitch", 200, 160, 400);
+    PITCH("Pitch", 200, 160, 400),
+    HORSE("Horse", 0, 0, 0);
 
 
     private static final Map<String, GoodsType> map = new HashMap<>();

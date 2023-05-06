@@ -3,7 +3,7 @@ package controller.view_controllers;
 import controller.controller.CoreMapNavigationMenuController;
 import model.Cell;
 import model.LandType;
-import model.TreeType;
+import model.NaturalEntityType;
 import model.building.Building;
 import model.castle_components.CastleComponent;
 import model.man.Engineer;
@@ -49,7 +49,7 @@ public class MapNavigationMenuController {
     public void showMap() {
         Cell currentCell;
         String backGroundColor = "", textColor = "", text = " ";
-        TreeType treeType;
+        NaturalEntityType naturalEntityType;
         Building building;
         LandType type;
         Man man;
@@ -61,9 +61,9 @@ public class MapNavigationMenuController {
                  j++) {
                 currentCell = controller.getMapCell(i ,j);
                 backGroundColor = ((type = currentCell.getType()) != null) ? type.getANSI_BACKGROUND() : "";
-                if ((treeType = currentCell.getTreeType()) != null) {
-                    textColor = treeType.getANSI_COLOR();
-                    text = "T";
+                if ((naturalEntityType = currentCell.getNaturalEntityType()) != null) {
+                    textColor = naturalEntityType.getANSI_COLOR();
+                    text = naturalEntityType.isPassable() ? "T" : "R";
                 }
                 if ((building = currentCell.getBuilding()) != null) {
                     if (building instanceof CastleComponent) text = "W";

@@ -5,11 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class StrongholdCrusader {
-    private static Monarchy currentMonarchy;
     private static User loggedInUser;
     private static User currentUser;
-    private static GameMap currentMatchMap;
-    private int turnCounter;
     private static final HashMap<String , GameMap> allMaps = new HashMap<>();
     private static final HashMap<String , User> allUsers = new HashMap<>();
     private static final List<String> securityQuestions = List.of(
@@ -32,10 +29,6 @@ public class StrongholdCrusader {
         return loggedInUser;
     }
 
-    public static GameMap getCurrentMatchMap() {
-        return currentMatchMap;
-    }
-
     public static void setLoggedInUser(User loggedInUser) {
         StrongholdCrusader.loggedInUser = loggedInUser;
     }
@@ -48,29 +41,13 @@ public class StrongholdCrusader {
         StrongholdCrusader.currentUser = currentUser;
     }
 
-    public static GameMap getCurrentMap() {
-        return currentMatchMap;
-    }
-
-    public static Monarchy getCurrentMonarchy() {
-        return currentMonarchy;
-    }
-
     public static void reset() {
         allUsers.clear();
         allMaps.clear();
     }
 
-    public int getTurnCounter() {
-        return turnCounter;
-    }
-
     public User getUserByUsername(String username) {
         return allUsers.getOrDefault(username, null);
-    }
-
-    public void addTurnCounter(){
-        turnCounter++;
     }
 
     public static HashMap<String, GameMap> getAllMaps() {

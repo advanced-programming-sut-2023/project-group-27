@@ -1,5 +1,10 @@
 package controller.view_controllers;
 
+import model.Cell;
+import model.GameMap;
+import model.Location;
+import model.NaturalEntityType;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

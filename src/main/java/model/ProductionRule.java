@@ -1,13 +1,13 @@
 package model;
 
-public class ProdutionRule {
+public class ProductionRule {
     private final GoodsType usedType;
     private final GoodsType producedType;
     private final int turnsNeededToProduce;
     private final int resourceRequired;
     private final int resourceProduced;
 
-    public ProdutionRule(GoodsType usedType, GoodsType producedType, int turnsNeededToProduce, int resourceRequired, int resourceProduced) {
+    public ProductionRule(GoodsType usedType, GoodsType producedType, int turnsNeededToProduce, int resourceRequired, int resourceProduced) {
         this.usedType = usedType;
         this.producedType = producedType;
         this.turnsNeededToProduce = turnsNeededToProduce;

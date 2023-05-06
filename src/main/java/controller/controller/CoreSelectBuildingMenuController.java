@@ -11,22 +11,20 @@ import view.SelectBuildingMenu;
 import java.util.Scanner;
 
 public class CoreSelectBuildingMenuController {
-    private final SelectBuildingMenuController buildingController;
-    private Building selectedBuilding;
-    private Monarchy currentMonarchy;
+    private final Building selectedBuilding;
+    private final Monarchy currentMonarchy;
     private final SelectBuildingMenu selectBuildingMenu;
 
     public CoreSelectBuildingMenuController(Building selectedBuilding , Scanner scanner, Monarchy currentMonarchy) {
-        this.scanner = scanner;
         this.selectedBuilding = selectedBuilding;
-        selectBuildingMenu = new SelectBuildingMenu(new SelectBuildingMenuController(selectedBuilding, this));
+        selectBuildingMenu = new SelectBuildingMenu(new SelectBuildingMenuController(this, selectedBuilding, scanner), scanner);
         this.currentMonarchy = currentMonarchy;
     }
 
     public void run(){
         String result = "";
         while (!result.equals("Exit")) {
-            result = selectBuildingMenu.run(scanner);
+            result = selectBuildingMenu.run();
         }
     }
 
@@ -34,12 +32,12 @@ public class CoreSelectBuildingMenuController {
         Man[] menToBeAdded = new Man[count];
 
         for (int i = 0; i < count; i++)
-            menToBeAdded[i] = getNewMan(troopType);
+            menToBeAdded[i] = Utilities.getNewMan(troopType, currentMonarchy.getKing());
         if (!evaluateGold(troopType, count)) return "Not enough Gold!\n";
         if (!evaluateOtherRequirements(troopType, count)) return "You are short of armoury or other requirements requirements!\n";
         takeGold(troopType, count);
         takeRequirements(troopType, count);
-        currentMonarchy.addallMen(menToBeAdded);
+        currentMonarchy.addAllMen(menToBeAdded);
         selectedBuilding.getCell().addMen(menToBeAdded);
         return "troops added succesfully\n";
     }
@@ -55,12 +53,6 @@ public class CoreSelectBuildingMenuController {
         currentMonarchy.getStockPile().modifyGoodsCount(GoodsType.STONE, -1 * stoneNeeded);
         selectedBuilding.setHitpoint(fullHitpoint);
         return "Repaired Successfully!\n";
-    }
-
-    public Man getNewMan(SoldierType type) {
-        if (type == SoldierType.ENGINEER)
-            return new Engineer(SoldierType.ENGINEER.getHitpoint(), currentMonarchy.getKing());
-        return new Soldier(type, currentMonarchy.getKing());
     }
 
     public Building getSelectedBuilding() {

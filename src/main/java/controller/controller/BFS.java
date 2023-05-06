@@ -8,7 +8,7 @@ import java.util.*;
 
 public class BFS {
     Location startingLocation;
-    GameMap map = StrongholdCrusader.getCurrentMap();
+    GameMap map;
     Map<Location, Location> parent = new HashMap<>();
 
     public BFS(int x, int y) {

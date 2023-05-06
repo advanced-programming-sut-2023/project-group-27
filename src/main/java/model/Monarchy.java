@@ -7,7 +7,6 @@ import model.man.Man;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Monarchy {
     private final List<Building> buildings = new ArrayList<>();
@@ -15,7 +14,7 @@ public class Monarchy {
     private final List<Man> men = new ArrayList<>();
     private final Storage[] storages = new Storage[3];
     private final TradingSystem tradingSystem;
-    private User king;
+    private final User king;
     private int popularity;
     private int taxRate;
     private int foodRate;
@@ -56,7 +55,7 @@ public class Monarchy {
         gold += amount;
     }
 
-    public void addallMen(Man[] menToBeAdded) {
+    public void addAllMen(Man[] menToBeAdded) {
         men.addAll(List.of(menToBeAdded));
     }
 
@@ -76,6 +75,13 @@ public class Monarchy {
         return storages[2];
     }
 
+    public HashMap<GoodsType, Integer> getStorage() {
+        HashMap<GoodsType, Integer> output = new HashMap<>();
+        output.putAll(storages[0].getMap());
+        output.putAll(storages[1].getMap());
+        output.putAll(storages[2].getMap());
+        return output;
+    }
     public int getGood(GoodsType goodsType) {
         Integer amount;
         for (Storage thisStorage : storages) {
@@ -107,5 +113,16 @@ public class Monarchy {
     public int calcPopularity() {
         // TODO implement here
         return 0;
+    }
+
+    public void addBuilding(Building building) {
+      buildings.add(building);
+    }
+    public void removeBuilding(Building building) {
+        this.buildings.remove(building);
+    }
+
+    public void removeMan(Man man) {
+        this.men.remove(man);
     }
 }

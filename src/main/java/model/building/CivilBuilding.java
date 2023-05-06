@@ -1,16 +1,18 @@
 package model.building;
 
 
-public class CivilBuilding extends Building {
-    private final CivilType civilType;
+import model.User;
 
-    public CivilBuilding(int hitpoint, CivilType civilType) {
-        super(hitpoint);
-        this.civilType = civilType;
+public class CivilBuilding extends Building {
+    private final CivilBuildingType civilBuildingType;
+
+    public CivilBuilding(int hitpoint, CivilBuildingType civilBuildingType, User owner) {
+        super(hitpoint, owner);
+        this.civilBuildingType = civilBuildingType;
     }
 
-    public CivilType getCivilType() {
-        return civilType;
+    public CivilBuildingType getCivilType() {
+        return civilBuildingType;
     }
 
 }
