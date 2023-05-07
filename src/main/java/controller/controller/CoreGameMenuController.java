@@ -4,6 +4,7 @@ import controller.view_controllers.GameMenuController;
 import controller.view_controllers.Utilities;
 import model.*;
 import model.building.Building;
+import model.man.SoldierType;
 import org.apache.commons.lang3.math.NumberUtils;
 import view.GameMenu;
 
@@ -129,8 +130,10 @@ public class CoreGameMenuController {
         if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         ArrayList<Selectable> theSelected = map.getCell(x , y).getSelectables();
         theSelected.removeIf(selectable -> !selectable.getName().equals(unitType));
+        SoldierType type = SoldierType.getTypeByName(unitType);
+        if (type == null) return "Unit type is invalid!";
         if (theSelected.size() == 0) return "There is not any unit of this type on this cell!";
-        coreUnitController = new CoreSelectUnitMenuController(theSelected, currentMatch , scanner, map);
+        coreUnitController = new CoreSelectUnitMenuController(theSelected, currentMatch , scanner, map, type);
         coreUnitController.run();
         return null;
     }

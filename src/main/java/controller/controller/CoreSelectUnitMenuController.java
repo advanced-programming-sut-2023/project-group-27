@@ -3,14 +3,16 @@ package controller.controller;
 import controller.view_controllers.SelectUnitMenuController;
 import model.*;
 import model.man.Soldier;
+import model.man.SoldierType;
+import model.task.AirStrike;
 import model.task.Fight;
 import model.task.Move;
 import model.task.Patrol;
 import view.SelectUnitMenu;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
-import java.util.Spliterator;
 
 public class CoreSelectUnitMenuController {
     private final Scanner scanner;
@@ -19,11 +21,13 @@ public class CoreSelectUnitMenuController {
     private final ArrayList<Selectable> theSelected;
     private final SelectUnitMenu selectUnitMenu;
     private final SelectUnitMenuController selectUnitController;
-    public CoreSelectUnitMenuController(ArrayList<Selectable> theSelected , Match match , Scanner scanner, GameMap map) {
+    private final SoldierType type;
+    public CoreSelectUnitMenuController(ArrayList<Selectable> theSelected , Match match , Scanner scanner, GameMap map, SoldierType type) {
         this.scanner = scanner;
         this.currentMatch = match;
         this.theSelected = theSelected;
         this.map = map;
+        this.type = type;
         selectUnitController = new SelectUnitMenuController(theSelected, this, map, scanner);
         selectUnitMenu = selectUnitController.getUnitMenu();
     }
@@ -68,6 +72,17 @@ public class CoreSelectUnitMenuController {
     }
 
     public String attackByXY(int x, int y) {
+        if (type.range == null) return "Selected unit is not ranged!";
+        int xUnit = theSelected.get(0).getLocation().x;
+        int yUnit = theSelected.get(0).getLocation().y;
+        int distance = Math.abs(x - xUnit) + Math.abs(y - yUnit);
+        if (type.range < distance) return "Target is out of range!";
+        ArrayList<Selectable> selectableEnemies = map.getCell(x , y).getSelectables();
+        Random random = new Random();
+        for (Selectable selectable : theSelected) {
+            currentMatch.addTask(new AirStrike((Fightable) selectable ,
+                    (Destructable) selectableEnemies.get(random.nextInt() % selectableEnemies.size())));
+        }
         return null;
     }
 
