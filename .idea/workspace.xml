@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="map editing core logics and other changes">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="map editing controller and other changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/MapEditMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/MapEditMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/SelectBuildingMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/SelectBuildingMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/LandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/LandType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/NaturalEntityType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/NaturalEntityType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/CivilBuildingType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/CivilBuildingType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuildingType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuildingType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/CastleComponentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/CastleComponentType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/SoldierType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/SoldierType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MapEditMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MapEditMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MapNavigationMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MapNavigationMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/MapEditMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/enums/MapEditMenuRegexes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -241,7 +234,7 @@
       <workItem from="1683108104132" duration="844000" />
       <workItem from="1683186366854" duration="25591000" />
       <workItem from="1683387601968" duration="472000" />
-      <workItem from="1683457673315" duration="9308000" />
+      <workItem from="1683457673315" duration="10765000" />
     </task>
     <task id="LOCAL-00001" summary="first commit to initial_base">
       <created>1681417450067</created>
@@ -481,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683224614842</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="map editing controller and other changes">
+      <created>1683467016977</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1683467016977</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -554,6 +554,7 @@
     <MESSAGE value="added match class and fixed problems" />
     <MESSAGE value="parts of map editing features" />
     <MESSAGE value="map editing core logics and other changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="map editing core logics and other changes" />
+    <MESSAGE value="map editing controller and other changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="map editing controller and other changes" />
   </component>
 </project>

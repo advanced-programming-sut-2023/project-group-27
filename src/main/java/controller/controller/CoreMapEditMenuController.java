@@ -24,11 +24,16 @@ public class CoreMapEditMenuController {
         this.currentMap = match.getCurrentMatchMap();
         this.currentOwner = match.getCurrentMonarchy().getKing();
         this.scanner = scanner;
-        mapEditMenu = new MapEditMenu(new MapEditMenuController(this));
+        mapEditMenu = new MapEditMenu(new MapEditMenuController(this), scanner);
     }
 
     public void run(){
-        mapEditMenu.run(scanner);
+        String result;
+        while (true) {
+            result = mapEditMenu.run();
+            if (result.equals("Exit"))
+                return;
+        }
     }
 
     public String setTexture(Location location, LandType landType) {

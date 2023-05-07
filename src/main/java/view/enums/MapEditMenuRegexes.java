@@ -10,7 +10,8 @@ public enum MapEditMenuRegexes {
     DROPROCK("^\\s*droprock(?<data>(\\s+-[xyd]\\s+\\S+){3})$"),
     DROPTREE("^\\s*droptree(?<data>(\\s+-[xyt]\\s+\\S+){3})$"),
     DROPBUILDING("^\\s*dropbuilding(?<data>(\\s+-[xyt]\\s+\\S+){3})$"),
-    DROPUNIT("^\\s*dropunit(?<data>(\\s+-[xytc]\\s+\\S+){4})$");
+    DROPUNIT("^\\s*dropunit(?<data>(\\s+-[xytc]\\s+\\S+){4})$"),
+    EXIT("^\\s*exit\\s*$");
 
     private final Pattern pattern;
     MapEditMenuRegexes(String regex) {
