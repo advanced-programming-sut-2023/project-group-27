@@ -1,18 +1,16 @@
 package controller.controller;
 
 import controller.view_controllers.SelectUnitMenuController;
-import model.GameMap;
-import model.Match;
-import model.Movable;
-import model.Selectable;
-import model.man.Man;
+import model.*;
 import model.man.Soldier;
+import model.task.Fight;
 import model.task.Move;
 import model.task.Patrol;
 import view.SelectUnitMenu;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Spliterator;
 
 public class CoreSelectUnitMenuController {
     private final Scanner scanner;
@@ -57,6 +55,15 @@ public class CoreSelectUnitMenuController {
     }
 
     public String attackByEnemy(int x, int y) {
+        ArrayList<Selectable> selectableEnemies = map.getCell(x , y).getSelectables();
+        for (Selectable selectable : selectableEnemies) {
+            if (selectable instanceof Fightable && !((Soldier) selectable).isFighting()) {
+                for (Selectable enemy : selectableEnemies) {
+                    if (enemy instanceof Fightable && !((Soldier) enemy).isFighting())
+                        currentMatch.addTask(new Fight((Fightable) selectable, (Destructable) enemy));
+                }
+            }
+        }
         return null;
     }
 

@@ -1,16 +1,24 @@
 package model.task;
 
 import model.Destructable;
+import model.Fightable;
 
 public class Fight implements Task {
-    private Destructable target;
+    private final Fightable fightable;
+    private final Destructable target;
+
+    public Fight(Fightable fightable , Destructable target) {
+        this.fightable = fightable;
+        this.target = target;
+    }
 
     @Override
     public void run() {
 
     }
 
-    public Fight(Destructable target) {
-        this.target = target;
+    @Override
+    public boolean isValid() {
+        return false;
     }
 }

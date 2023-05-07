@@ -1,9 +1,11 @@
 package controller.view_controllers;
 
 import controller.controller.CoreSelectUnitMenuController;
+import model.Fightable;
 import model.GameMap;
 import model.Movable;
 import model.Selectable;
+import model.man.Soldier;
 import view.SelectUnitMenu;
 
 import java.util.ArrayList;
@@ -92,6 +94,8 @@ public class SelectUnitMenuController {
         if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         String state = args.get("s");
         if (!state.matches("standing|defensive|offensive")) return "Invalid status format!";
+        if (!(theSelected.get(0) instanceof Soldier))
+            return "The selected unit type must be soldier!";
         return coreController.setStatus(state);
     }
 
@@ -111,6 +115,8 @@ public class SelectUnitMenuController {
             return "Invalid coordinate format";
         }
         if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
+        if (!(theSelected.get(0) instanceof Fightable))
+            return "The selected unit can not fight!";
         if (args.containsKey("e")) return coreController.attackByEnemy(x , y);
         else return coreController.attackByXY(x , y);
     }
