@@ -12,10 +12,10 @@ public class BFS {
     GameMap map;
     Map<Location, Location> parent = new HashMap<>();
 
-    public BFS(Location origin, GameMap map, Movable movable) {
+    public BFS(GameMap map, Movable movable) {
         this.map = map;
         Queue<Location> cells = new LinkedList<>();
-        cells.add(origin);
+        cells.add(movable.getLocation());
         startingLocation = cells.peek();
         parent.put(startingLocation, null);
         while (!cells.isEmpty()) {
@@ -30,11 +30,11 @@ public class BFS {
         }
     }
 
-    public List<Location> pathTo(Location destination) {
+    public LinkedList<Location> pathTo(Location destination) {
         if (parent.get(destination) == null) {
             return null;
         }
-        List<Location> result = new ArrayList<>();
+        LinkedList<Location> result = new LinkedList<>();
         while (destination != null) {
             result.add(destination);
             destination = parent.get(destination);
