@@ -26,7 +26,7 @@ public class CoreSelectUnitMenuController {
         this.currentMatch = match;
         this.theSelected = theSelected;
         this.map = map;
-        selectUnitController = new SelectUnitMenuController(theSelected, this, scanner);
+        selectUnitController = new SelectUnitMenuController(theSelected, this, map, scanner);
         selectUnitMenu = selectUnitController.getUnitMenu();
     }
 

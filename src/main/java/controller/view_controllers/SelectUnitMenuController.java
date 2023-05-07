@@ -1,6 +1,7 @@
 package controller.view_controllers;
 
 import controller.controller.CoreSelectUnitMenuController;
+import model.GameMap;
 import model.Movable;
 import model.Selectable;
 import view.SelectUnitMenu;
@@ -13,11 +14,13 @@ import java.util.regex.Matcher;
 public class SelectUnitMenuController {
     private final CoreSelectUnitMenuController coreController;
     private final ArrayList<Selectable> theSelected;
+    private final GameMap map;
     private final SelectUnitMenu unitMenu;
 
-    public SelectUnitMenuController(ArrayList<Selectable> theSelected, CoreSelectUnitMenuController coreController, Scanner scanner) {
+    public SelectUnitMenuController(ArrayList<Selectable> theSelected, CoreSelectUnitMenuController coreController, GameMap map, Scanner scanner) {
         this.coreController = coreController;
         this.theSelected = theSelected;
+        this.map = map;
         this.unitMenu = new SelectUnitMenu(this, scanner);
     }
 
@@ -39,7 +42,7 @@ public class SelectUnitMenuController {
         } catch (NumberFormatException e) {
             return "Invalid coordinate format";
         }
-        if (x <= 0 || y <= 0) return "Invalid coordinate amount!";
+        if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         if (!(theSelected.get(0) instanceof Movable))
             return "You can not move this unit!";
         coreController.moveTo(x , y);
@@ -64,7 +67,8 @@ public class SelectUnitMenuController {
         } catch (NumberFormatException e) {
             return "Invalid coordinate format!";
         }
-        if (x1 <= 0 || y1 <= 0 || x2 <= 0 || y2 <= 0) return "Invalid coordinate amount!";
+        if (Utilities.XYCheck(x1, y1 , map) != null) return Utilities.XYCheck(x1, y1 , map);
+        if (Utilities.XYCheck(x2, y2 , map) != null) return Utilities.XYCheck(x2, y2 , map);
         if (!(theSelected.get(0) instanceof Movable))
             return "You can not move this unit!";
         coreController.patrol(x1 , y1 , x2 , y2);
@@ -85,7 +89,7 @@ public class SelectUnitMenuController {
         } catch (NumberFormatException e) {
             return "Invalid coordinate format";
         }
-        if (x <= 0 || y <= 0) return "Invalid coordinate amount!";
+        if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         String state = args.get("s");
         if (!state.matches("standing|defensive|offensive")) return "Invalid status format!";
         return coreController.setStatus(state);
@@ -97,15 +101,18 @@ public class SelectUnitMenuController {
         String argsString = matcher.group("options");
         Map <String , String> args = Utilities.extractOptionsFromString(argsString);
         if (args == null) return "Dont determine a field twice!";
-        return null;
-    }
-
-    public String attackByEnemy(Matcher matcher) {
-        return null;
-    }
-
-    public String attackByXY(Matcher matcher) {
-        return null;
+        if (!args.containsKey("x")) return "Determine X coordinate!";
+        if (!args.containsKey("y")) return "Determine Y coordinate!";
+        int x , y;
+        try {
+            x = Integer.parseInt(args.get("x"));
+            y = Integer.parseInt(args.get("y"));
+        } catch (NumberFormatException e) {
+            return "Invalid coordinate format";
+        }
+        if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
+        if (args.containsKey("e")) return coreController.attackByEnemy(x , y);
+        else return coreController.attackByXY(x , y);
     }
 
     public String pourOil(Matcher matcher) {
