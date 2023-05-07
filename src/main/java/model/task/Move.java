@@ -37,7 +37,7 @@ public class Move implements Task {
         }
     }
 
-    public Boolean isValid() {
+    public boolean isValid() {
         if (this.path == null || this.path.size() <= 1) {
             return false;
         }

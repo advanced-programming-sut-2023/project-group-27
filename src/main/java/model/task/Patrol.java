@@ -64,7 +64,7 @@ public class Patrol implements Task {
         }
     }
 
-    public Boolean isValid() {
+    public boolean isValid() {
         if (!isInitialized && this.initialPath == null) {
             return false;
         }
