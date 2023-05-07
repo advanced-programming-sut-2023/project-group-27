@@ -53,17 +53,17 @@ public class MapNavigationMenuController {
         Building building;
         LandType type;
         Man man;
-        for (int i = Math.min(0, controller.getXCoordinates() - 29);
-             i < Math.max(controller.getMapXSize(), controller.getXCoordinates() + 30);
+        for (int i = Math.max(0, controller.getXCoordinates() - 29);
+             i < Math.min(controller.getMapXSize(), controller.getXCoordinates() + 30);
              i++) {
-            for (int j =Math.min(0, controller.getYCoordinates() - 29);
-                 j < Math.max(controller.getMapYSize(), controller.getYCoordinates() + 30);
+            for (int j =Math.max(0, controller.getYCoordinates() - 29);
+                 j < Math.min(controller.getMapYSize(), controller.getYCoordinates() + 30);
                  j++) {
                 currentCell = controller.getMapCell(i ,j);
                 backGroundColor = ((type = currentCell.getType()) != null) ? type.getANSI_BACKGROUND() : "";
                 if ((naturalEntityType = currentCell.getNaturalEntityType()) != null) {
                     textColor = naturalEntityType.getANSI_COLOR();
-                    text = naturalEntityType.isPassable() ? "T" : "R";
+                    text = naturalEntityType.isPassable(null) ? "T" : "R";
                 }
                 if ((building = currentCell.getBuilding()) != null) {
                     if (building instanceof CastleComponent) text = "W";
@@ -75,7 +75,7 @@ public class MapNavigationMenuController {
                     else text = "H";
                 }
 
-                System.out.print(backGroundColor + textColor + text + "\\u001B[0m");
+                System.out.print(backGroundColor + textColor + text + "\u001B[0m");
             }
             System.out.print("\n");
         }

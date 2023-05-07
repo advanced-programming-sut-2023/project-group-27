@@ -14,7 +14,7 @@ public class Building extends Destructable implements Passable {
     }
 
     @Override
-    public boolean isPassable() {
+    public boolean isPassable(Movable movable) {
         return false;
     }
 

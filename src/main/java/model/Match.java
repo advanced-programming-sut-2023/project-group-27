@@ -7,14 +7,17 @@ import java.util.List;
 
 public class Match {
     private final GameMap currentMatchMap;
-    private final ArrayList<Monarchy> monarchies;
+    private final List<Monarchy> monarchies;
+    private final List<User> users;
     private Monarchy currentMonarchy;
     private int turnNumber;
     private List<Task> taskList;
 
-    public Match(GameMap currentMatchMap, ArrayList<Monarchy> monarchies) {
+    public Match(GameMap currentMatchMap, List<User> users) {
         this.currentMatchMap = currentMatchMap;
-        this.monarchies = monarchies;
+        this.users = users;
+        monarchies = new ArrayList<>();
+        users.forEach(x -> monarchies.add(x.getMonarchy()));
         this.turnNumber = 0;
     }
 
@@ -42,6 +45,10 @@ public class Match {
         return null;
     }
 
+    public User getCurrentUser() {
+        return users.get(turnNumber % users.size());
+    }
+
     public Monarchy getCurrentMonarchy() {
         return currentMonarchy;
     }
@@ -50,7 +57,7 @@ public class Match {
         return currentMatchMap;
     }
 
-    public ArrayList<Monarchy> getMonarchies() {
+    public List<Monarchy> getMonarchies() {
         return monarchies;
     }
 
