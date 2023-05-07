@@ -44,7 +44,40 @@ class MoveTest {
             moveTask.run();
             yLocation += speed;
             int yInt = (int) yLocation;
-            assert (yInt == man.getLocation().y);
+            assertEquals(yInt, man.getLocation().y);
         }
+    }
+
+    @Test
+    void MoveTest() {
+        Move moveTask = new Move(this.map, this.man, 48, 0);
+        int expectedTurns = 0;
+        while (moveTask.isValid()) {
+            expectedTurns++;
+            moveTask.run();
+        }
+        assertEquals(81, expectedTurns);
+        assertEquals(48, man.getLocation().x);
+        assertEquals(0, man.getLocation().y);
+    }
+
+    @Test
+    void simplePatrolTest() {
+        Patrol patrolTask = new Patrol(this.map, this.man, 1, 25, 1, 49);
+        for (int i = 0; i < 18; i++) {
+            patrolTask.run();
+        }
+        assertEquals(man.getLocation().x, 1);
+        assertEquals(man.getLocation().y, 25);
+        for (int i = 0; i < 16; i++) {
+            patrolTask.run();
+        }
+        assertEquals(man.getLocation().x, 1);
+        assertEquals(man.getLocation().y, 49);
+        for (int i = 0; i < 16; i++) {
+            patrolTask.run();
+        }
+        assertEquals(man.getLocation().x, 1);
+        assertEquals(man.getLocation().y, 25);
     }
 }

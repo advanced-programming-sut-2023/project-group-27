@@ -41,8 +41,9 @@ public class Patrol implements Task {
             }
         }
 
-        movable.move(this.map.getCell(path.get(Math.min(range, path.size() - 1))), map);
-        for (int i = 0; i < Math.min(range, path.size() - 1); i++) {
+        int min = Math.min(range, path.size() - 1);
+        movable.move(this.map.getCell(path.get(min)), map);
+        for (int i = 0; i < min; i++) {
             path.removeFirst();
         }
 
@@ -78,8 +79,8 @@ public class Patrol implements Task {
         this.movementSpeed = movable.getMovementSpeed();
         this.movable = movable;
         this.map = map;
-        destination1 = new Location(x1, y1);
-        destination2 = new Location(x2, y2);
+        destination1 = map.getCell(x1, y1).getLocation();
+        destination2 = map.getCell(x2, y2).getLocation();
         BFS bfs = new BFS(map, movable);
         initialPath = bfs.pathTo(destination1);
     }
