@@ -1,13 +1,11 @@
 package model.man;
 
-import model.Cell;
-import model.Destructable;
-import model.Movable;
-import model.User;
+import model.*;
 
 public abstract class Man extends Destructable implements Movable {
     private final String name;
     private final User owner;
+    private Location location;
 
     public Man(int hitpoint, String name, User owner) {
         super(hitpoint);
@@ -15,9 +13,21 @@ public abstract class Man extends Destructable implements Movable {
         this.owner = owner;
     }
 
-    @Override
-    public void move(Cell cell) {
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
+    @Override
+    public void move(Cell cell, GameMap map) {
+        if (location == null)return;
+        Cell origin = map.getCell(location);
+        origin.removeMan(this);
+        cell.addMan(this);
+    }
+
+    @Override
+    public Location getLocation() {
+        return location;
     }
 
     public String getName() {

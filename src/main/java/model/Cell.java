@@ -26,14 +26,14 @@ public class Cell implements Passable{
     }
 
     @Override
-    public boolean isPassable() {
+    public boolean isPassable(Movable movable) {
         if (this.building != null) {
-            return building.isPassable();
+            return building.isPassable(movable);
         }
         if (this.naturalEntityType != null) {
-            return naturalEntityType.isPassable();
+            return naturalEntityType.isPassable(movable);
         }
-        return type.isPassable();
+        return type.isPassable(movable);
     }
 
     public LandType getType() {
@@ -49,6 +49,9 @@ public class Cell implements Passable{
     }
 
     public Man getMan() {
+        if (men.size() == 0) {
+            return null;
+        }
         return men.get(0);
     }
 

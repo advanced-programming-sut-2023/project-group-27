@@ -26,6 +26,10 @@ public class Storage extends Building{
         goodsMap.put(goodsType, value);
     }
 
+    public void changeGoodsCount(GoodsType goodsType, int value) {
+        goodsMap.put(goodsType, goodsMap.getOrDefault(goodsType, 0) + value);
+    }
+
     public Integer getGoodsCount(GoodsType goodsType) {
         return goodsMap.get(goodsType);
     }

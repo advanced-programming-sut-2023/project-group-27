@@ -22,6 +22,9 @@ public class Monarchy {
     private int fearRate;
 
     public Monarchy(User king) {
+        storages[0] = new Storage(GoodsType.getGranaryGoods(), 30000, king);
+        storages[1] = new Storage(GoodsType.getStockPileGoods(), 30000, king);
+        storages[2] = new Storage(GoodsType.getArmouryGoods(), 30000, king);
         this.king = king;
         this.tradingSystem = new TradingSystem(king);
         this.popularity = 50;

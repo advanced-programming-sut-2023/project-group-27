@@ -2,6 +2,7 @@ package model.man;
 
 import model.Cell;
 import model.Destructable;
+import model.Location;
 import model.User;
 import model.task.Task;
 

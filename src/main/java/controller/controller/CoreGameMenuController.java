@@ -25,7 +25,7 @@ public class CoreGameMenuController {
     public CoreGameMenuController(Match currentMatch, Scanner scanner) {
         this.scanner = scanner;
         this.currentMatch = currentMatch;
-        this.currentUser = StrongholdCrusader.getCurrentUser();
+        this.currentUser = currentMatch.getCurrentUser();
         this.map = currentMatch.getCurrentMatchMap();
         this.gameController = new GameMenuController(this, currentMatch);
         this.gameMenu = new GameMenu(this.gameController);
@@ -59,9 +59,7 @@ public class CoreGameMenuController {
         StringBuilder result = new StringBuilder();
         for (GoodsType food : GoodsType.getGranaryGoods()) {
             int num = currentUser.getMonarchy().getGranary().getGoodsCount(food);
-            if (num > 0) {
-                result.append(food.getName()).append(": ").append(num).append("\n");
-            }
+            result.append(food.getName()).append(": ").append(num).append("\n");
         }
         return result.toString();
     }

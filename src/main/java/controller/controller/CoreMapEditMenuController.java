@@ -80,7 +80,7 @@ public class CoreMapEditMenuController {
         String output = "";
 
         if (currentCell.getNaturalEntityType() != null) {
-            if (currentCell.getNaturalEntityType().isPassable())
+            if (currentCell.getNaturalEntityType().isPassable(null))
                 output = "There's a tree in this location. It'll be replaced with rock.\n";
             else output = "There's a Rock in this location. It'll be replaced with new rock.\n";
         }
@@ -120,7 +120,7 @@ public class CoreMapEditMenuController {
         String output = "";
 
         if (currentCell.getNaturalEntityType() != null) {
-            if (currentCell.getNaturalEntityType().isPassable())
+            if (currentCell.getNaturalEntityType().isPassable(null))
                 output = "There's a tree in this location. It'll be replaced with new tree.\n";
             else output = "There's a Rock in this location. It'll be replaced with tree.\n";
         }
@@ -132,16 +132,18 @@ public class CoreMapEditMenuController {
     public String dropUnit(Location location, SoldierType soldierType, int count) {
         if (!Utilities.checkBounds(location, currentMap))
             return "Location out of bounds!";
-        Cell currentCell = currentMap.getCell(location.x, location.y);
+        Cell currentCell = currentMap.getCell(location);
 
-        if (!currentCell.isPassable())
+        if (!currentCell.isPassable(Utilities.getNewMan(soldierType, currentOwner)))
             return "Can't place soldier or person here.";
         if (count <= 0 || count > 30)
             return "Count isn't in bounds.";
 
         Man[] men = new Man[count];
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++) {
             men[i] = Utilities.getNewMan(soldierType, currentOwner);
+            men[i].setLocation(location);
+        }
         currentMatch.getCurrentMonarchy().addAllMen(men);
         currentCell.addMen(men);
 
@@ -152,8 +154,7 @@ public class CoreMapEditMenuController {
         if (!Utilities.checkBounds(location, currentMap))
             return "Location out of bounds!";
         Cell currentCell = currentMap.getCell(location.x, location.y);
-
-        if (!currentCell.isPassable())
+        if (!currentCell.isPassable(null))
             return "Can't place building here!";
 
         Building building;
