@@ -49,12 +49,14 @@ public enum SoldierType {
         this.cost = cost;
         this.nationality = nationality;
         this.requirements = requirements;
-        addToMap();
     }
 
-    private void addToMap() {
-        map.put(this.name, this);
+    public static void init() {
+        for (SoldierType type : values()) {
+            map.put(type.name, type);
+        }
     }
+    // TODO remember to init before usage
 
     public static SoldierType getSoldierTypeByName(String name) {
         return map.get(name);

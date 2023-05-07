@@ -1,5 +1,7 @@
 package model.castle_components;
 
+import model.GoodsType;
+
 import java.util.HashMap;
 
 public enum CastleComponentType {
@@ -20,12 +22,14 @@ public enum CastleComponentType {
         this.name = name;
         this.hitpoint = hitpoint;
         this.resourceNeededToBeBuild = costToBeBuild;
-        addToMap();
     }
 
-    private void addToMap() {
-        map.put(this.name, this);
+    public static void init() {
+        for (CastleComponentType type : values()) {
+            map.put(type.name, type);
+        }
     }
+    // TODO remember to init before usage
 
     public static CastleComponentType getTypeByName(String input) {
         return map.get(input);

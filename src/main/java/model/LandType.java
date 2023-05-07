@@ -32,12 +32,14 @@ public enum LandType implements Passable{
         this.passability = passability;
         this.ANSI_BACKGROUND = ANSI_BACKGROUND;
         this.canPlaceRockOn = canPlaceRockOn;
-        addToMap();
     }
 
-    private void addToMap() {
-        map.put(this.name(), this);
+    public static void init() {
+        for (LandType type : values()) {
+            map.put(type.typeName, type);
+        }
     }
+    // TODO remember to init before usage
 
     public static LandType getLandTypeByName(String input) {
         return map.get(input);

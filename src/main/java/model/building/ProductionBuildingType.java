@@ -1,5 +1,6 @@
 package model.building;
 
+import model.GoodsType;
 import model.ProductionRules;
 import model.ProductionRule;
 import model.castle_components.CastleComponentType;
@@ -40,12 +41,14 @@ public enum ProductionBuildingType {
         this.hitpoint = hitpoint;
         this.resourcesRequiredForBuilding = resourcesRequiredForBuilding;
         this.productionRules = productionRules;
-        addToMap();
     }
 
-    private void addToMap() {
-        map.put(this.name, this);
+    public static void init() {
+        for (ProductionBuildingType type : values()) {
+            map.put(type.name, type);
+        }
     }
+    // TODO remember to init before usage
 
     public static ProductionBuildingType getTypeByName(String input) {
         return map.get(input);

@@ -1,7 +1,7 @@
 package model.building;
 
+import model.GoodsType;
 import model.User;
-import model.castle_components.CastleComponentType;
 
 import java.util.HashMap;
 
@@ -23,12 +23,14 @@ public enum CivilBuildingType {
         this.name = name;
         this.hitpoint = hitpoint;
         this.resourcesNeededToBuild = resourcesNeededToBuild;
-        addToMap();
     }
 
-    private void addToMap() {
-        map.put(this.name, this);
+    public static void init() {
+        for (CivilBuildingType type : values()) {
+            map.put(type.name, type);
+        }
     }
+    // TODO remember to init before usage
 
     public static CivilBuildingType getTypeByName(String input) {
         return map.get(input);
