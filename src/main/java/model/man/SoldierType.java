@@ -2,34 +2,36 @@ package model.man;
 
 import model.GoodsType;
 
+import java.util.HashMap;
+
 public enum SoldierType {
     SPEARMAN("SpearMan", 0, 0, 0, null, 8, "european",
             new GoodsType[] {GoodsType.SPEAR}),
     PIKEMAN("PikeMan", 0, 0, 0, null, 20, "european",
             new GoodsType[] {GoodsType.ARMOUR, GoodsType.PIKE}),
     MACEMAN("MaceMan", 0, 0, 0, null, 20, "european",
-            new GoodsType[] {GoodsType.LEATHERARMOUR, GoodsType.MACE}),
+            new GoodsType[] {GoodsType.LEATHER_ARMOUR, GoodsType.MACE}),
     SWORDSMAN("SwordsMan", 0, 0, 0, null, 40, "european",
             new GoodsType[] {GoodsType.ARMOUR, GoodsType.SWORD}),
     KNIGHT("Knight", 0, 0, 0, null, 40, "european",
             new GoodsType[] {GoodsType.ARMOUR, GoodsType.SWORD, GoodsType.HORSE}),
-    BLACKMONK("BlackMonk", 0, 0, 0, null, 10, "european", null),
-    TUNNELER("Tunneler", 0, 0, 0, null, 30, "european", null),
-    LADDERMAN("LadderMan", 0, 0, 0, null, 3, "european", null),
+    BLACKMONK("BlackMonk", 0, 0, 0, null, 10, "church", null),
+    TUNNELER("Tunneler", 0, 0, 0, null, 30, "guild", null),
+    LADDERMAN("LadderMan", 0, 0, 0, null, 3, "guild", null),
     SLAVE("Slave", 0, 0, 0, null, 5, "arab", null),
     ASSASSIN("Assassin", 0, 0, 0, null, 60, "arab", null),
     ARABSWORDSMAN("ArabSwordsMan", 0, 0, 0, null, 80, "arab", null),
     ARCHER("Archer", 0, 0, 0, 0, 12, "european",
             new GoodsType[] {GoodsType.BOW}),
     CROSSBOWMAN("CrossBowMan", 0, 0, 0, 0, 20, "european",
-            new GoodsType[] {GoodsType.CROSSBOW, GoodsType.LEATHERARMOUR}),
+            new GoodsType[] {GoodsType.CROSSBOW, GoodsType.LEATHER_ARMOUR}),
     ARCHERBOW("ArcherBow", 0, 0, 0, 0, 75, "arab", null),
     SLINGER("Slinger", 0, 0, 0, 0, 12, "arab", null),
     HORSEARCHER("HorseArcher", 0, 0, 0, 0, 60, "arab", null),
     FIRETHROWER("FireThrower", 0, 0, 0, 0, 100, "arab", null),
     ENGINEER("Engineer", 0, 0, 0, 0, 40, "guild", null);
 
-
+    private static final HashMap<String, SoldierType> map = new HashMap<>();
     private final String name;
     private final int hitpoint;
     private final int damage;
@@ -47,8 +49,16 @@ public enum SoldierType {
         this.cost = cost;
         this.nationality = nationality;
         this.requirements = requirements;
+        addToMap();
     }
 
+    private void addToMap() {
+        map.put(this.name, this);
+    }
+
+    public static SoldierType getTypeByName(String name) {
+        return map.get(name);
+    }
     public String getName() {
         return this.name;
     }

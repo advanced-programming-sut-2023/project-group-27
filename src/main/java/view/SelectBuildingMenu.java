@@ -15,7 +15,7 @@ public class SelectBuildingMenu {
         this.scanner = scanner;
     }
 
-    public String run(Scanner scanner) {
+    public String run() {
         String command = scanner.nextLine();
         Matcher matcher;
         if (SelectBuildingMenuRegexes.EXIT.getMatcher(command).matches()) {

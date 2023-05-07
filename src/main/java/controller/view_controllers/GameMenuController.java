@@ -2,6 +2,7 @@ package controller.view_controllers;
 
 import controller.controller.CoreGameMenuController;
 import model.GameMap;
+import model.Match;
 import model.StrongholdCrusader;
 import model.User;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -12,12 +13,12 @@ import java.util.regex.Matcher;
 public class GameMenuController {
     private final CoreGameMenuController coreController;
     private final GameMap map;
-    private final User loggedInUser;
+    private final Match currentMatch;
 
-    public GameMenuController(CoreGameMenuController coreController, User loggedInUser) {
+    public GameMenuController(CoreGameMenuController coreController, Match match) {
         this.coreController = coreController;
-        this.loggedInUser = loggedInUser;
-        this.map = StrongholdCrusader.getCurrentMap();
+        this.currentMatch = match;
+        this.map = match.getCurrentMatchMap();
     }
 
     public String showPopularityFactors(){
@@ -123,5 +124,4 @@ public class GameMenuController {
         Map<String, String> args = Utilities.extractOptionsFromString(options);
         return args;
     }
-
 }

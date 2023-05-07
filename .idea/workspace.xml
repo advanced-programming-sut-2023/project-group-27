@@ -4,16 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="select building logic">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="parts of map editing features">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectBuildingMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectBuildingMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/SelectBuildingMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/SelectBuildingMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ProductionRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ProductionRules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ProdutionRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ProductionRule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/building/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/Building.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/CivilType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/CivilType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/SoldierType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/SoldierType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/SelectBuildingMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/SelectBuildingMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/SelectBuildingRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/enums/SelectBuildingMenuRegexes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/CivilBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/CivilBuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/CivilBuildingType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/CivilBuildingType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/FightableBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/FightableBuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuildingType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuildingType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/Storage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/CastleComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/CastleComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/Tower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/Tower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/Trap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/Trap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/Wall.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +33,8 @@
       <list>
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -233,7 +241,10 @@
       <workItem from="1682621295379" duration="4964000" />
       <workItem from="1682661029537" duration="26051000" />
       <workItem from="1682860064105" duration="20941000" />
-      <workItem from="1682943387136" duration="5482000" />
+      <workItem from="1682943387136" duration="6135000" />
+      <workItem from="1683047369079" duration="6147000" />
+      <workItem from="1683108104132" duration="844000" />
+      <workItem from="1683186366854" duration="25045000" />
     </task>
     <task id="LOCAL-00001" summary="first commit to initial_base">
       <created>1681417450067</created>
@@ -438,7 +449,35 @@
       <option name="project" value="LOCAL" />
       <updated>1682885785918</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="finalized selectBuildinbg Menu">
+      <created>1682948974917</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1682948974917</updated>
+    </task>
+    <task id="LOCAL-00031" summary="added match class and fixed problems">
+      <created>1683060476334</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1683060476334</updated>
+    </task>
+    <task id="LOCAL-00032" summary="parts of map editing features">
+      <created>1683200456345</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1683200456345</updated>
+    </task>
+    <task id="LOCAL-00033" summary="parts of map editing features">
+      <created>1683207417142</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1683207417142</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,17 +546,9 @@
     <MESSAGE value="resolved minor conflicts" />
     <MESSAGE value="filling enums" />
     <MESSAGE value="select building logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="select building logic" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="finalized selectBuildinbg Menu" />
+    <MESSAGE value="added match class and fixed problems" />
+    <MESSAGE value="parts of map editing features" />
+    <option name="LAST_COMMIT_MESSAGE" value="parts of map editing features" />
   </component>
 </project>

@@ -4,6 +4,7 @@ import controller.view_controllers.MapNavigationMenuController;
 import model.Cell;
 import model.GameMap;
 import model.Location;
+import model.man.Man;
 import view.MapNavigationMenu;
 
 import java.util.Scanner;
@@ -60,13 +61,13 @@ public class CoreMapNavigationMenuController {
         Cell cell = gameMap.getCell(x ,y);
         String output = "Cell Details:\n";
         output += "Land Type: " + cell.getType().getANSI_BACKGROUND() + cell.getType().getTypeName() + "\\u001B[0m\n";
-        if (cell.getTreeType() != null)
-            output += "Tree Type: " + cell.getTreeType().getANSI_COLOR() + cell.getTreeType().getTreeName() + "\\u001B[0m\n";
+        if (cell.getNaturalEntityType() != null)
+            output += "NaturalEntity(Tree or Rocks) Type: " + cell.getNaturalEntityType().getANSI_COLOR() + cell.getNaturalEntityType().getNaturalEntityName() + "\\u001B[0m\n";
         if (cell.getBuilding() != null)
-            output += "Building Type: " + cell.getBuilding().getName() + "\n";
-        if (cell.getMan() != null)
-            output += "Human Type: " + cell.getMan().getName();
-
+            output += "Building Type: " + cell.getBuilding().getName() + "owner: " + cell.getBuilding().getOwner() + "hitpoints: " + cell.getBuilding().getHitpoint() + "\n";
+        if (cell.getMen() != null && cell.getMen().size() != 0)
+            for (Man man : cell.getMen())
+                output += "Human Type: " + man.getName() + "owner: " + man.getOwner() + "hitpoints: " + man.getHitpoint() + "\n";
         return output;
     }
 }
