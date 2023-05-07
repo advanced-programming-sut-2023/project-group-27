@@ -5,6 +5,7 @@ import model.GameMap;
 import model.Match;
 import model.StrongholdCrusader;
 import model.User;
+import model.man.SoldierType;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import java.util.Map;
@@ -85,12 +86,14 @@ public class GameMenuController {
 
     public String selectUnit(Matcher matcher){
         Map<String, String> args = getArgs(matcher);
-        String x = getError(!args.containsKey("x") || !args.containsKey("y"),
-                "provide x and y\n", args, 2);
+        String x = getError(!args.containsKey("x") || !args.containsKey("y") || !args.containsKey("t"),
+                "provide x and y and type\n", args, 3);
         if (x != null) return x;
         String xStr = args.get("x");
         String yStr = args.get("y");
-        return coreController.selectUnit(xStr, yStr);
+        String unitType = args.get("t");
+        if (SoldierType.getTypeByName(unitType) == null) return "Invalid unit type!";
+        return coreController.selectUnit(xStr, yStr , unitType);
     }
 
     public String showMap(Matcher matcher) {

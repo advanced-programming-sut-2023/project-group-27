@@ -6,14 +6,13 @@ import model.Location;
 import model.Movable;
 
 import java.util.LinkedList;
-import java.util.List;
 
 public class Patrol implements Task {
     private final Location destination1, destination2;
     private LinkedList<Location> initialPath, patrolPath;
     private final Movable movable;
     private final GameMap map;
-    Double reminder, movementSpeed;
+    double reminder, movementSpeed;
     private Boolean isInitialized = false;
 
     @Override
@@ -42,10 +41,11 @@ public class Patrol implements Task {
             }
         }
 
-        for (int i = 0; i < Math.min(range, path.size() - 1); i++) {
+        int min = Math.min(range, path.size() - 1);
+        movable.move(this.map.getCell(path.get(min)), map);
+        for (int i = 0; i < min; i++) {
             path.removeFirst();
         }
-        movable.move(this.map.getCell(path.get(Math.min(range, path.size() - 1))), map);
 
         if (!isInitialized) {
             this.initialPath = path;
@@ -65,7 +65,7 @@ public class Patrol implements Task {
         }
     }
 
-    public Boolean isValid() {
+    public boolean isValid() {
         if (!isInitialized && this.initialPath == null) {
             return false;
         }
@@ -76,10 +76,11 @@ public class Patrol implements Task {
     }
 
     public Patrol(GameMap map, Movable movable, int x1, int y1, int x2, int y2) {
+        this.movementSpeed = movable.getMovementSpeed();
         this.movable = movable;
         this.map = map;
-        destination1 = new Location(x1, y1);
-        destination2 = new Location(x2, y2);
+        destination1 = map.getCell(x1, y1).getLocation();
+        destination2 = map.getCell(x2, y2).getLocation();
         BFS bfs = new BFS(map, movable);
         initialPath = bfs.pathTo(destination1);
     }

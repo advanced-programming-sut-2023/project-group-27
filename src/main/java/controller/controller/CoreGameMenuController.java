@@ -1,12 +1,14 @@
 package controller.controller;
 
 import controller.view_controllers.GameMenuController;
+import controller.view_controllers.Utilities;
 import model.*;
 import model.building.Building;
-import model.man.Man;
+import model.man.SoldierType;
 import org.apache.commons.lang3.math.NumberUtils;
 import view.GameMenu;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CoreGameMenuController {
@@ -25,6 +27,7 @@ public class CoreGameMenuController {
         this.scanner = scanner;
         this.currentMatch = currentMatch;
         this.currentUser = currentMatch.getCurrentUser();
+        this.currentMonarchy = currentUser.getMonarchy();
         this.map = currentMatch.getCurrentMatchMap();
         this.gameController = new GameMenuController(this, currentMatch);
         this.gameMenu = new GameMenu(this.gameController);
@@ -46,12 +49,16 @@ public class CoreGameMenuController {
     }
 
     public String showPopularityFactors(){
-        // TODO implement here
-        return null;
+        StringBuilder builder = new StringBuilder();
+        builder.append("Food: ").append(currentMonarchy.calcPopularityFood()).append("\n");
+        builder.append("Tax: ").append(currentMonarchy.calcPopularityTax()).append("\n");
+        builder.append("Religion: ").append(currentMonarchy.calcPopularityReligion()).append("\n");
+        builder.append("Fear: ").append(currentMonarchy.calcPopularityFear()).append("\n");
+        return builder.toString();
     }
 
     public String showPopularity(){
-        return String.valueOf(currentUser.getMonarchy().calcPopularity());
+        return String.valueOf(currentUser.getMonarchy().getPopularity());
     }
 
     public String showFoodList(){
@@ -109,7 +116,7 @@ public class CoreGameMenuController {
             return "x and y should be integers";
         }
         int x = Integer.parseInt(xStr), y = Integer.parseInt(yStr);
-        if (XYCheck(x, y) != null) return XYCheck(x, y);
+        if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         Building selectedBuilding = map.getCell(x, y).getBuilding();
         if (selectedBuilding == null) {
             return "no building here\n";
@@ -120,14 +127,18 @@ public class CoreGameMenuController {
         return null;
     }
 
-    public String selectUnit(String xStr , String yStr) {
+    public String selectUnit(String xStr , String yStr , String unitType) {
         if (!NumberUtils.isNumber(xStr) || ! NumberUtils.isNumber(yStr)) {
             return "x and y should be integers";
         }
         int x = Integer.parseInt(xStr), y = Integer.parseInt(yStr);
-        if (XYCheck(x, y) != null) return XYCheck(x, y);
-        Man selectedMan = map.getCell(x, y).getMan();
-        coreUnitController = new CoreSelectUnitMenuController(selectedMan , scanner);
+        if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
+        ArrayList<Selectable> theSelected = map.getCell(x , y).getSelectables();
+        theSelected.removeIf(selectable -> !selectable.getName().equals(unitType));
+        SoldierType type = SoldierType.getTypeByName(unitType);
+        if (type == null) return "Unit type is invalid!";
+        if (theSelected.size() == 0) return "There is not any unit of this type on this cell!";
+        coreUnitController = new CoreSelectUnitMenuController(theSelected, currentMatch , scanner, map, type);
         coreUnitController.run();
         return null;
     }
@@ -137,7 +148,7 @@ public class CoreGameMenuController {
             return "x and y should be integers";
         }
         int x = Integer.parseInt(xStr), y = Integer.parseInt(yStr);
-        if (XYCheck(x, y) != null) return XYCheck(x, y);
+        if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         CoreMapNavigationMenuController coreNavigationController =
                 new CoreMapNavigationMenuController(
                         x, y, scanner, currentMatch.getCurrentMatchMap(), this);
@@ -145,16 +156,5 @@ public class CoreGameMenuController {
         return null;
     }
 
-    private String XYCheck(int x, int y) {
-        if (x >= map.getWidth() || x < 0) {
-            return "x is out of range it should be between 0 and " +
-                    (map.getWidth() - 1) + "\n";
-        }
-        if (y >= map.getHeight() || y < 0) {
-            return "y is out of range it should be between 0 and " +
-                    (map.getHeight() - 1) + "\n";
-        }
-        return null;
-    }
 
 }

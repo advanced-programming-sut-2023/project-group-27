@@ -1,5 +1,7 @@
 package model.task;
 
+
 public interface Task {
-    public void run();
+    void run();
+    boolean isValid();
 }
