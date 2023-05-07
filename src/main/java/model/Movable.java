@@ -1,6 +1,6 @@
 package model;
 
-public interface Movable {
-    public void move(Cell cell, GameMap map);
-    public Location getLocation();
+public interface Movable extends Selectable {
+    void move(Cell cell, GameMap map);
+    Location getLocation();
 }

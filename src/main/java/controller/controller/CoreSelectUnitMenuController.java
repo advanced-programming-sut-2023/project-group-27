@@ -1,7 +1,10 @@
 package controller.controller;
 
 import controller.view_controllers.SelectUnitMenuController;
+import model.GameMap;
 import model.Match;
+import model.Movable;
+import model.Selectable;
 import model.man.Man;
 import model.man.Soldier;
 import model.task.Move;
@@ -14,14 +17,16 @@ import java.util.Scanner;
 public class CoreSelectUnitMenuController {
     private final Scanner scanner;
     private final Match currentMatch;
-    private final ArrayList<Man> selectedMen;
+    private final GameMap map;
+    private final ArrayList<Selectable> theSelected;
     private final SelectUnitMenu selectUnitMenu;
     private final SelectUnitMenuController selectUnitController;
-    public CoreSelectUnitMenuController(ArrayList<Man> selectedMen , Match match , Scanner scanner) {
+    public CoreSelectUnitMenuController(ArrayList<Selectable> theSelected , Match match , Scanner scanner, GameMap map) {
         this.scanner = scanner;
         this.currentMatch = match;
-        this.selectedMen = selectedMen;
-        selectUnitController = new SelectUnitMenuController(selectedMen, this, scanner);
+        this.theSelected = theSelected;
+        this.map = map;
+        selectUnitController = new SelectUnitMenuController(theSelected, this, scanner);
         selectUnitMenu = selectUnitController.getUnitMenu();
     }
 
@@ -30,21 +35,23 @@ public class CoreSelectUnitMenuController {
     }
 
     public void moveTo(int x,int y) {
-        for (Man man : selectedMen) {
-            currentMatch.addTask(new Move(x , y, man));
+        for (Selectable selectable : theSelected) {
+            currentMatch.addTask(new Move(map , (Movable) selectable , x , y));
+            //TODO maybe change movable to and array list of movables
         }
     }
 
     public void patrol(int x1, int y1, int x2, int y2) {
-        for (Man man : selectedMen) {
-            currentMatch.addTask(new Patrol(x1 , y1 , x2 , y2, man));
+        for (Selectable selectable : theSelected) {
+            currentMatch.addTask(new Patrol(map, (Movable) selectable, x1 , y1 , x2 , y2));
+            //TODO maybe change movable to and array list of movables
         }
     }
 
     public String setStatus(String state) {
-        for (Man man : selectedMen) {
-            if (!(man instanceof Soldier)) return "The selected unit must be a soldier!";
-            ((Soldier) man).setState(state);
+        for (Selectable selectable : theSelected) {
+            if (!(selectable instanceof Soldier)) return "The selected unit must be a soldier!";
+            ((Soldier) selectable).setState(state);
         }
         return "State set successfully!";
     }

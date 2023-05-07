@@ -1,7 +1,8 @@
 package controller.view_controllers;
 
 import controller.controller.CoreSelectUnitMenuController;
-import model.man.Man;
+import model.Movable;
+import model.Selectable;
 import view.SelectUnitMenu;
 
 import java.util.ArrayList;
@@ -11,12 +12,12 @@ import java.util.regex.Matcher;
 
 public class SelectUnitMenuController {
     private final CoreSelectUnitMenuController coreController;
-    private final ArrayList<Man> selectedMen;
+    private final ArrayList<Selectable> theSelected;
     private final SelectUnitMenu unitMenu;
 
-    public SelectUnitMenuController(ArrayList<Man> selectedMen, CoreSelectUnitMenuController coreController, Scanner scanner) {
+    public SelectUnitMenuController(ArrayList<Selectable> theSelected, CoreSelectUnitMenuController coreController, Scanner scanner) {
         this.coreController = coreController;
-        this.selectedMen = selectedMen;
+        this.theSelected = theSelected;
         this.unitMenu = new SelectUnitMenu(this, scanner);
     }
 
@@ -39,6 +40,8 @@ public class SelectUnitMenuController {
             return "Invalid coordinate format";
         }
         if (x <= 0 || y <= 0) return "Invalid coordinate amount!";
+        if (!(theSelected.get(0) instanceof Movable))
+            return "You can not move this unit!";
         coreController.moveTo(x , y);
         return "Move success!";
     }
@@ -62,6 +65,8 @@ public class SelectUnitMenuController {
             return "Invalid coordinate format!";
         }
         if (x1 <= 0 || y1 <= 0 || x2 <= 0 || y2 <= 0) return "Invalid coordinate amount!";
+        if (!(theSelected.get(0) instanceof Movable))
+            return "You can not move this unit!";
         coreController.patrol(x1 , y1 , x2 , y2);
         return "Patrol success!";
     }

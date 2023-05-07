@@ -3,13 +3,11 @@ package model.task;
 import controller.controller.BFS;
 import model.GameMap;
 import model.Location;
-import model.man.Man;
 import model.Movable;
 
 import java.util.LinkedList;
-import java.util.List;
 
-public class Patrol extends Task {
+public class Patrol implements Task {
     private final Location destination1, destination2;
     private LinkedList<Location> initialPath, patrolPath;
     private final Movable movable;
@@ -76,8 +74,7 @@ public class Patrol extends Task {
         return true;
     }
 
-    public Patrol(GameMap map, Movable movable, int x1, int y1, int x2, int y2 , Man taskOwner) {
-        super(taskOwner);
+    public Patrol(GameMap map, Movable movable, int x1, int y1, int x2, int y2) {
         this.movable = movable;
         this.map = map;
         destination1 = new Location(x1, y1);

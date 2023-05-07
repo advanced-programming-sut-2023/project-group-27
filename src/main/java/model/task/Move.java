@@ -1,17 +1,13 @@
 package model.task;
 
 import controller.controller.BFS;
-import model.Cell;
 import model.GameMap;
 import model.Location;
 import model.Movable;
 
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import model.man.Man;
 
-public class Move extends Task {
+public class Move implements Task {
     private BFS bfs;
     private GameMap map;
     private LinkedList<Location> path;
@@ -48,8 +44,7 @@ public class Move extends Task {
         return true;
     }
 
-     public Move(GameMap map, Movable movable, int destinationX, int destinationY , Man taskOwner) {
-        super(taskOwner);
+     public Move(GameMap map, Movable movable, int destinationX, int destinationY) {
         Location origin = movable.getLocation();
         Location destination = new Location(destinationX, destinationY);
         this.map = map;

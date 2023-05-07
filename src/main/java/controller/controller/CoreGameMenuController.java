@@ -3,7 +3,6 @@ package controller.controller;
 import controller.view_controllers.GameMenuController;
 import model.*;
 import model.building.Building;
-import model.man.Man;
 import org.apache.commons.lang3.math.NumberUtils;
 import view.GameMenu;
 
@@ -127,9 +126,10 @@ public class CoreGameMenuController {
         }
         int x = Integer.parseInt(xStr), y = Integer.parseInt(yStr);
         if (XYCheck(x, y) != null) return XYCheck(x, y);
-        ArrayList<Man> selectedMen = map.getCell(x , y).getMen();
-        selectedMen.removeIf(man -> !man.getName().equals(unitType));
-        coreUnitController = new CoreSelectUnitMenuController(selectedMen , currentMatch , scanner);
+        ArrayList<Selectable> theSelected = map.getCell(x , y).getSelectables();
+        theSelected.removeIf(selectable -> !selectable.getName().equals(unitType));
+        if (theSelected.size() == 0) return "There is not any unit of this type on this cell!";
+        coreUnitController = new CoreSelectUnitMenuController(theSelected, currentMatch , scanner, map);
         coreUnitController.run();
         return null;
     }
