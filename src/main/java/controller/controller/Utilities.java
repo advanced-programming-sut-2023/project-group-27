@@ -2,6 +2,7 @@ package controller.controller;
 
 import com.google.common.hash.Hashing;
 import model.*;
+import model.building.Building;
 import model.man.Engineer;
 import model.man.Man;
 import model.man.Soldier;
@@ -112,5 +113,13 @@ public class Utilities {
             default:
                 return NaturalEntityType.ROCKWEST;
         }
+    }
+
+    public static boolean canBuildOnThisType(Building building, LandType landType) {
+        if (landType.equals(LandType.STONE) ^ building.getName().equals("Quarry") ||
+                landType.equals(LandType.IRON) ^ building.getName().equals("IronMIne") ||
+                landType.equals(LandType.OIl) ^ building.getName().equals("PitchRig"))
+            return false;
+        return !building.getName().endsWith("Farm") || (landType.equals(LandType.GRASS) || landType.equals(LandType.DENSEMEADOW));
     }
 }
