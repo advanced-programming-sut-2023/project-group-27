@@ -15,11 +15,7 @@ public class Monarchy {
     private final Storage[] storages = new Storage[3];
     private final TradingSystem tradingSystem;
     private final User king;
-    private int popularity;
-    private int taxRate;
-    private int foodRate;
-    private int gold;
-    private int fearRate;
+    private int popularity, taxRate, foodRate, gold, fearRate, religiousBuildingCount;
 
     public Monarchy(User king) {
         storages[0] = new Storage(GoodsType.getGranaryGoods(), 30000, king);
@@ -94,6 +90,10 @@ public class Monarchy {
         return 0;
     }
 
+    public int getPopularity() {
+        return popularity;
+    }
+
     public void putGood(GoodsType goodsType, int number) {
         for (Storage thisStorage : storages) {
             if (thisStorage.contains(goodsType))
@@ -114,7 +114,7 @@ public class Monarchy {
     }
 
     public int calcPopularity() {
-        // TODO implement here
+        int result = 0;
         return 0;
     }
 
@@ -127,5 +127,50 @@ public class Monarchy {
 
     public void removeMan(Man man) {
         this.men.remove(man);
+    }
+
+    public int calcPopularityFood() {
+        return 4 * foodRate;
+    }
+
+    public int calcPopularityTax() {
+        if (taxRate <= 0) {
+            return taxRate * -2 + 1;
+        }
+        if (taxRate <= 4) {
+            return taxRate * 2;
+        }
+        return taxRate * 4 - 8;
+    }
+
+
+    public int calcPopularityReligion() {
+        // TODO update religiousBuildingCount when creating or destroying religious buildings
+        return 2 * religiousBuildingCount;
+    }
+
+
+    public int calcPopularityFear() {
+        int result = 2 * fearRate;
+        for (Building building : buildings) {
+            Location location = building.getLocation();
+            Location castleLocation = new Location(0, 0);
+            int d = 20;
+            List<String> friendlyBuildings = List.of("Church", "Hovel", "Cathedral");
+            List<String> fearfulBuildings = List.of("Barracks", "MercenaryPost");
+            if (Math.abs(location.x - castleLocation.x) + Math.abs(location.y - castleLocation.y) > d) {
+                result += (friendlyBuildings.contains(building.getName())) ? +1 : 0;
+                result += (fearfulBuildings.contains(building.getName())) ? -1 : 0;
+            }
+        }
+        return result;
+    }
+
+    public void updatePopularity() {
+        // TODO remember to update popularity every turn
+        this.popularity += calcPopularityFear();
+        this.popularity += calcPopularityFood();
+        this.popularity += calcPopularityReligion();
+        this.popularity += calcPopularityTax();
     }
 }

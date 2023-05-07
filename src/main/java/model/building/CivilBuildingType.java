@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public enum CivilBuildingType {
     HOVEL("Hovel", 100, new int[] {0, 6, 0}),
-    CATHERDAL("Catherdal", 1000, new int[] {1000, 0, 0}),
+    CATHERDAL("Cathedral", 1000, new int[] {1000, 0, 0}),
     CHURCH("Church", 500, new int[] {250, 0, 0}),
     BARRACKS("Barracks", 700, new int[] {0, 0, 15}),
     MERCENARYPOST("MercenaryPost", 500, new int[] {0, 10, 0}),

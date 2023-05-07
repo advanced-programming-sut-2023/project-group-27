@@ -105,13 +105,13 @@ public class Utilities {
         int direction = random.nextInt(4);
         switch (direction) {
             case 0:
-                return NaturalEntityType.ROCKNORTH;
+                return NaturalEntityType.ROCK_NORTH;
             case 1:
-                return NaturalEntityType.ROCKEAST;
+                return NaturalEntityType.ROCK_EAST;
             case 2:
-                return NaturalEntityType.ROCKSOUTH;
+                return NaturalEntityType.ROCK_SOUTH;
             default:
-                return NaturalEntityType.ROCKWEST;
+                return NaturalEntityType.ROCK_WEST;
         }
     }
 

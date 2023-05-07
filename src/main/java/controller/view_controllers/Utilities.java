@@ -56,5 +56,16 @@ public class Utilities {
             return civilBuildingType;
 
         return CastleComponentType.getTypeByName(input);
+
+    public static String XYCheck(int x, int y , GameMap map) {
+        if (x >= map.getWidth() || x < 0) {
+            return "x is out of range it should be between 0 and " +
+                    (map.getWidth() - 1) + "\n";
+        }
+        if (y >= map.getHeight() || y < 0) {
+            return "y is out of range it should be between 0 and " +
+                    (map.getHeight() - 1) + "\n";
+        }
+        return null;
     }
 }

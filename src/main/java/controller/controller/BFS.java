@@ -8,9 +8,9 @@ import model.StrongholdCrusader;
 import java.util.*;
 
 public class BFS {
-    Location startingLocation;
-    GameMap map;
-    Map<Location, Location> parent = new HashMap<>();
+    private Location startingLocation;
+    private GameMap map;
+    private final Map<Location, Location> parent = new HashMap<>();
 
     public BFS(GameMap map, Movable movable) {
         this.map = map;
@@ -31,6 +31,7 @@ public class BFS {
     }
 
     public LinkedList<Location> pathTo(Location destination) {
+        destination = map.getCell(destination).getLocation();
         if (parent.get(destination) == null) {
             return null;
         }
