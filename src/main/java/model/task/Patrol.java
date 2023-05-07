@@ -45,7 +45,7 @@ public class Patrol implements Task {
         for (int i = 0; i < Math.min(range, path.size() - 1); i++) {
             path.removeFirst();
         }
-        movable.move(this.map.getCell(path.get(Math.min(range, path.size() - 1))));
+        movable.move(this.map.getCell(path.get(Math.min(range, path.size() - 1))), map);
 
         if (!isInitialized) {
             this.initialPath = path;

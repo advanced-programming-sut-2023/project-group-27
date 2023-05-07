@@ -132,7 +132,7 @@ public class CoreMapEditMenuController {
     public String dropUnit(Location location, SoldierType soldierType, int count) {
         if (!Utilities.checkBounds(location, currentMap))
             return "Location out of bounds!";
-        Cell currentCell = currentMap.getCell(location.x, location.y);
+        Cell currentCell = currentMap.getCell(location);
 
         if (!currentCell.isPassable(Utilities.getNewMan(soldierType, currentOwner)))
             return "Can't place soldier or person here.";
@@ -140,8 +140,10 @@ public class CoreMapEditMenuController {
             return "Count isn't in bounds.";
 
         Man[] men = new Man[count];
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++) {
             men[i] = Utilities.getNewMan(soldierType, currentOwner);
+            men[i].setLocation(location);
+        }
         currentMatch.getCurrentMonarchy().addAllMen(men);
         currentCell.addMen(men);
 

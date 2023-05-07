@@ -7,16 +7,22 @@ public class Man extends Destructable implements Movable {
     private User owner;
     private Location location;
 
-    public Man(int hitpoint, String name, User owner, Location location) {
+    public Man(int hitpoint, String name, User owner) {
         super(hitpoint);
         this.name = name;
         this.owner = owner;
+    }
+
+    public void setLocation(Location location) {
         this.location = location;
     }
 
     @Override
-    public void move(Cell cell) {
-
+    public void move(Cell cell, GameMap map) {
+        if (location == null)return;
+        Cell origin = map.getCell(location);
+        origin.removeMan(this);
+        cell.addMan(this);
     }
 
     @Override

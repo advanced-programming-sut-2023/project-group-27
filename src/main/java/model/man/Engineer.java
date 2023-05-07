@@ -1,6 +1,7 @@
 package model.man;
 
 import model.Cell;
+import model.Location;
 import model.User;
 
 public class Engineer extends Man {

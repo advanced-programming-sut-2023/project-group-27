@@ -37,7 +37,7 @@ public class Move implements Task {
         for (int i = 0; i < Math.min(range, path.size() - 1); i++) {
             path.removeFirst();
         }
-        this.movable.move(map.getCell(path.get(Math.min(range, path.size()) - 1)));
+        this.movable.move(map.getCell(path.get(Math.min(range, path.size()) - 1)), map);
     }
 
     public Boolean isValid() {
