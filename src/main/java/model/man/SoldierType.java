@@ -56,7 +56,7 @@ public enum SoldierType {
         map.put(this.name, this);
     }
 
-    public static SoldierType getTypeByName(String name) {
+    public static SoldierType getSoldierTypeByName(String name) {
         return map.get(name);
     }
     public String getName() {

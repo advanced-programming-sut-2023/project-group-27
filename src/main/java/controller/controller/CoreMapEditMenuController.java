@@ -102,7 +102,7 @@ public class CoreMapEditMenuController {
                 currentCell.setNaturalEntityType(Utilities.getRandomRock());
                 break;
             default:
-                return "Invalid rock directon.";
+                return "Invalid rock direction.";
         }
 
         return output + "Rock placed successfully!";

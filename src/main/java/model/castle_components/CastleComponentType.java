@@ -1,5 +1,7 @@
 package model.castle_components;
 
+import java.util.HashMap;
+
 public enum CastleComponentType {
     KEEP("Keep", 400 , new int[] {0, 0}),
     BIGKEEP("BigKeep", 600, new int[] {0, 0}),
@@ -10,6 +12,7 @@ public enum CastleComponentType {
     CIRCLETOWER("CircleTower", 200, new int[] {40, 0}),
     CHANGINGBRIDGE("ChangingBridge", 200, new int[] {0, 10});
 
+    private static final HashMap<String, CastleComponentType> map = new HashMap<>();
     private final String name;
     private final int hitpoint;
     private final int[] resourceNeededToBeBuild;  // stone, wood
@@ -17,8 +20,16 @@ public enum CastleComponentType {
         this.name = name;
         this.hitpoint = hitpoint;
         this.resourceNeededToBeBuild = costToBeBuild;
+        addToMap();
     }
 
+    private void addToMap() {
+        map.put(this.name, this);
+    }
+
+    public static CastleComponentType getTypeByName(String input) {
+        return map.get(input);
+    }
     public String getName() {
         return name;
     }

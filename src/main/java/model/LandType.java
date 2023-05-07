@@ -1,5 +1,7 @@
 package model;
 
+import java.util.HashMap;
+
 public enum LandType implements Passable{
     PLAIN("Plain", true, "\u001B[48;5;231m", true),
     GRAVEL("Gravel", true, "\u001B[48;5;222m", true),
@@ -18,6 +20,7 @@ public enum LandType implements Passable{
     BEACH("Beach", true, "\u001B[48;5;229m", false),
     SEA("Sea", false, "\u001B[48;5;18m", false);
 
+    private static final HashMap<String, LandType> map = new HashMap<>();
     private final String typeName;
     private final boolean passability;
     private final String ANSI_BACKGROUND;
@@ -29,8 +32,16 @@ public enum LandType implements Passable{
         this.passability = passability;
         this.ANSI_BACKGROUND = ANSI_BACKGROUND;
         this.canPlaceRockOn = canPlaceRockOn;
+        addToMap();
     }
 
+    private void addToMap() {
+        map.put(this.name(), this);
+    }
+
+    public static LandType getLandTypeByName(String input) {
+        return map.get(input);
+    }
     public String getTypeName() {
         return typeName;
     }
