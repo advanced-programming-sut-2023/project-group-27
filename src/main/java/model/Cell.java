@@ -64,6 +64,7 @@ public class Cell implements Passable{
     }
 
     public void addMan(Man man) {
+        man.setLocation(this.location);
         men.add(man);
         selectables.add(man);
     }

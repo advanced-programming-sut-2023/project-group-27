@@ -6,9 +6,11 @@ public abstract class Man extends Destructable implements Movable {
     private final String name;
     private final User owner;
     private Location location;
+    private final Double movementSpeed;
 
-    public Man(int hitpoint, String name, User owner) {
+    public Man(int hitpoint, String name, User owner, Double movementSpeed) {
         super(hitpoint);
+        this.movementSpeed = movementSpeed;
         this.name = name;
         this.owner = owner;
     }
@@ -28,6 +30,11 @@ public abstract class Man extends Destructable implements Movable {
     @Override
     public Location getLocation() {
         return location;
+    }
+
+    @Override
+    public Double getMovementSpeed() {
+        return movementSpeed;
     }
 
     public String getName() {

@@ -10,11 +10,11 @@ public class Soldier extends Man{
     private SoldierType soldierType;
     private Task task;
     private String state;
-    private Integer range;
+    private int range;
     private int damage;
 
     public Soldier(SoldierType soldierType, User owner) {
-        super(soldierType.getHitpoint(), soldierType.getName(), owner);
+        super(soldierType.getHitpoint(), soldierType.getName(), owner, soldierType.getMovementSpeed());
         this.damage = soldierType.getDamage();
         this.range = soldierType.getRange();
     }

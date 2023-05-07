@@ -12,7 +12,7 @@ public class Patrol implements Task {
     private LinkedList<Location> initialPath, patrolPath;
     private final Movable movable;
     private final GameMap map;
-    Double reminder, movementSpeed;
+    double reminder, movementSpeed;
     private Boolean isInitialized = false;
 
     @Override
@@ -41,10 +41,10 @@ public class Patrol implements Task {
             }
         }
 
+        movable.move(this.map.getCell(path.get(Math.min(range, path.size() - 1))), map);
         for (int i = 0; i < Math.min(range, path.size() - 1); i++) {
             path.removeFirst();
         }
-        movable.move(this.map.getCell(path.get(Math.min(range, path.size() - 1))), map);
 
         if (!isInitialized) {
             this.initialPath = path;
@@ -75,6 +75,7 @@ public class Patrol implements Task {
     }
 
     public Patrol(GameMap map, Movable movable, int x1, int y1, int x2, int y2) {
+        this.movementSpeed = movable.getMovementSpeed();
         this.movable = movable;
         this.map = map;
         destination1 = new Location(x1, y1);
