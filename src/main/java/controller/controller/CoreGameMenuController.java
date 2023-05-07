@@ -1,6 +1,7 @@
 package controller.controller;
 
 import controller.view_controllers.GameMenuController;
+import controller.view_controllers.Utilities;
 import model.*;
 import model.building.Building;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -109,7 +110,7 @@ public class CoreGameMenuController {
             return "x and y should be integers";
         }
         int x = Integer.parseInt(xStr), y = Integer.parseInt(yStr);
-        if (XYCheck(x, y) != null) return XYCheck(x, y);
+        if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         Building selectedBuilding = map.getCell(x, y).getBuilding();
         if (selectedBuilding == null) {
             return "no building here\n";
@@ -125,7 +126,7 @@ public class CoreGameMenuController {
             return "x and y should be integers";
         }
         int x = Integer.parseInt(xStr), y = Integer.parseInt(yStr);
-        if (XYCheck(x, y) != null) return XYCheck(x, y);
+        if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         ArrayList<Selectable> theSelected = map.getCell(x , y).getSelectables();
         theSelected.removeIf(selectable -> !selectable.getName().equals(unitType));
         if (theSelected.size() == 0) return "There is not any unit of this type on this cell!";
@@ -139,7 +140,7 @@ public class CoreGameMenuController {
             return "x and y should be integers";
         }
         int x = Integer.parseInt(xStr), y = Integer.parseInt(yStr);
-        if (XYCheck(x, y) != null) return XYCheck(x, y);
+        if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         CoreMapNavigationMenuController coreNavigationController =
                 new CoreMapNavigationMenuController(
                         x, y, scanner, currentMatch.getCurrentMatchMap(), this);
@@ -147,16 +148,5 @@ public class CoreGameMenuController {
         return null;
     }
 
-    private String XYCheck(int x, int y) {
-        if (x >= map.getWidth() || x < 0) {
-            return "x is out of range it should be between 0 and " +
-                    (map.getWidth() - 1) + "\n";
-        }
-        if (y >= map.getHeight() || y < 0) {
-            return "y is out of range it should be between 0 and " +
-                    (map.getHeight() - 1) + "\n";
-        }
-        return null;
-    }
 
 }
