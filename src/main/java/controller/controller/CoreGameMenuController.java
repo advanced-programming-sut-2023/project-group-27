@@ -27,6 +27,7 @@ public class CoreGameMenuController {
         this.scanner = scanner;
         this.currentMatch = currentMatch;
         this.currentUser = currentMatch.getCurrentUser();
+        this.currentMonarchy = currentUser.getMonarchy();
         this.map = currentMatch.getCurrentMatchMap();
         this.gameController = new GameMenuController(this, currentMatch);
         this.gameMenu = new GameMenu(this.gameController);
@@ -48,12 +49,16 @@ public class CoreGameMenuController {
     }
 
     public String showPopularityFactors(){
-        // TODO implement here
-        return null;
+        StringBuilder builder = new StringBuilder();
+        builder.append("Food: ").append(currentMonarchy.calcPopularityFood()).append("\n");
+        builder.append("Tax: ").append(currentMonarchy.calcPopularityTax()).append("\n");
+        builder.append("Religion: ").append(currentMonarchy.calcPopularityReligion()).append("\n");
+        builder.append("Fear: ").append(currentMonarchy.calcPopularityFear()).append("\n");
+        return builder.toString();
     }
 
     public String showPopularity(){
-        return String.valueOf(currentUser.getMonarchy().calcPopularity());
+        return String.valueOf(currentUser.getMonarchy().getPopularity());
     }
 
     public String showFoodList(){
