@@ -1,8 +1,9 @@
 package model.task;
 
 import model.Destructable;
+import model.man.Man;
 
-public class Fight implements Task {
+public class Fight extends Task {
     private Destructable target;
 
     @Override
@@ -10,7 +11,8 @@ public class Fight implements Task {
 
     }
 
-    public Fight(Destructable target) {
+    public Fight(Destructable target , Man taskOwner) {
+        super(taskOwner);
         this.target = target;
     }
 }

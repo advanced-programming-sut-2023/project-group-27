@@ -4,7 +4,6 @@ import controller.view_controllers.GameMenuController;
 import model.*;
 import model.building.Building;
 import model.man.Man;
-import model.man.SoldierType;
 import org.apache.commons.lang3.math.NumberUtils;
 import view.GameMenu;
 
@@ -132,7 +131,7 @@ public class CoreGameMenuController {
         if (XYCheck(x, y) != null) return XYCheck(x, y);
         ArrayList<Man> selectedMen = map.getCell(x , y).getMen();
         selectedMen.removeIf(man -> !man.getName().equals(unitType));
-        coreUnitController = new CoreSelectUnitMenuController(selectedMen , scanner);
+        coreUnitController = new CoreSelectUnitMenuController(selectedMen , currentMatch , scanner);
         coreUnitController.run();
         return null;
     }

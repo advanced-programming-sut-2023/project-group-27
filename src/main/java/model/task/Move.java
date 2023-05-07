@@ -1,8 +1,9 @@
 package model.task;
 
 import model.Location;
+import model.man.Man;
 
-public class Move implements Task {
+public class Move extends Task {
     private Location destination;
 
     @Override
@@ -10,7 +11,8 @@ public class Move implements Task {
 
     }
 
-    public Move(int x, int y) {
+    public Move(int x, int y , Man taskOwner) {
+        super(taskOwner);
         destination = new Location(x, y);
     }
 }

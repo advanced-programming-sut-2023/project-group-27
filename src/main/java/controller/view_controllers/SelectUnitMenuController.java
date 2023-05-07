@@ -2,7 +2,6 @@ package controller.view_controllers;
 
 import controller.controller.CoreSelectUnitMenuController;
 import model.man.Man;
-import org.apache.commons.lang3.math.NumberUtils;
 import view.SelectUnitMenu;
 
 import java.util.ArrayList;
@@ -12,12 +11,12 @@ import java.util.regex.Matcher;
 
 public class SelectUnitMenuController {
     private final CoreSelectUnitMenuController coreController;
-    private final Man selectedMan;
+    private final ArrayList<Man> selectedMen;
     private final SelectUnitMenu unitMenu;
 
-    public SelectUnitMenuController(Man selectedMan, CoreSelectUnitMenuController coreController, Scanner scanner) {
+    public SelectUnitMenuController(ArrayList<Man> selectedMen, CoreSelectUnitMenuController coreController, Scanner scanner) {
         this.coreController = coreController;
-        this.selectedMan = selectedMan;
+        this.selectedMen = selectedMen;
         this.unitMenu = new SelectUnitMenu(this, scanner);
     }
 
