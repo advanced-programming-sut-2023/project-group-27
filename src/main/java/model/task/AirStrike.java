@@ -3,11 +3,11 @@ package model.task;
 import model.Destructable;
 import model.Fightable;
 
-public class Fight implements Task {
+public class AirStrike implements Task{
     private final Fightable fightable;
     private final Destructable target;
 
-    public Fight(Fightable fightable , Destructable target) {
+    public AirStrike(Fightable fightable, Destructable target) {
         this.fightable = fightable;
         this.target = target;
     }

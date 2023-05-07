@@ -87,16 +87,16 @@ public class CoreMapEditMenuController {
 
         switch (direction) {
             case "n":
-                currentCell.setNaturalEntityType(NaturalEntityType.ROCKNORTH);
+                currentCell.setNaturalEntityType(NaturalEntityType.ROCK_NORTH);
                 break;
             case "e":
-                currentCell.setNaturalEntityType(NaturalEntityType.ROCKEAST);
+                currentCell.setNaturalEntityType(NaturalEntityType.ROCK_EAST);
                 break;
             case "w":
-                currentCell.setNaturalEntityType(NaturalEntityType.ROCKWEST);
+                currentCell.setNaturalEntityType(NaturalEntityType.ROCK_WEST);
                 break;
             case "s":
-                currentCell.setNaturalEntityType(NaturalEntityType.ROCKSOUTH);
+                currentCell.setNaturalEntityType(NaturalEntityType.ROCK_SOUTH);
                 break;
             case "r":
                 currentCell.setNaturalEntityType(Utilities.getRandomRock());

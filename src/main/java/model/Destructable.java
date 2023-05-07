@@ -1,6 +1,6 @@
 package model;
 
-public class Destructable {
+public abstract class Destructable {
     private int hitpoint;
 
     public Destructable(int hitpoint) {

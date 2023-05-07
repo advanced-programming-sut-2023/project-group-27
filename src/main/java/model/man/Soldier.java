@@ -10,13 +10,15 @@ public class Soldier extends Man{
     private SoldierType soldierType;
     private Task task;
     private String state;
-    private Integer range;
+    private int range;
     private int damage;
+    private boolean isFighting;
 
     public Soldier(SoldierType soldierType, User owner) {
-        super(soldierType.getHitpoint(), soldierType.getName(), owner);
+        super(soldierType.getHitpoint(), soldierType.getName(), owner, soldierType.getMovementSpeed());
         this.damage = soldierType.getDamage();
         this.range = soldierType.getRange();
+        isFighting = false;
     }
 
     public String getState() {
@@ -41,6 +43,14 @@ public class Soldier extends Man{
 
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+    public boolean isFighting() {
+        return isFighting;
+    }
+
+    public void setFighting(boolean fighting) {
+        isFighting = fighting;
     }
 
     public void fight(Destructable destructable)

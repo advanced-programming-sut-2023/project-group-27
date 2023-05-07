@@ -1,21 +1,18 @@
 package model.task;
 
 import controller.controller.BFS;
-import model.Cell;
 import model.GameMap;
 import model.Location;
 import model.Movable;
 
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
 public class Move implements Task {
     private BFS bfs;
-    private GameMap map;
+    private final GameMap map;
     private LinkedList<Location> path;
-    private Double reminder;
-    private Double movementSpeed;
+    private double reminder;
+    private final double movementSpeed;
     private final Movable movable;
 
     @Override
@@ -34,20 +31,21 @@ public class Move implements Task {
                 break;
             }
         }
+        this.movable.move(map.getCell(path.get(Math.min(range, path.size() - 1))), map);
         for (int i = 0; i < Math.min(range, path.size() - 1); i++) {
             path.removeFirst();
         }
-        this.movable.move(map.getCell(path.get(Math.min(range, path.size()) - 1)), map);
     }
 
-    public Boolean isValid() {
-        if (this.path == null) {
+    public boolean isValid() {
+        if (this.path == null || this.path.size() <= 1) {
             return false;
         }
         return true;
     }
 
      public Move(GameMap map, Movable movable, int destinationX, int destinationY) {
+        this.movementSpeed = movable.getMovementSpeed();
         Location origin = movable.getLocation();
         Location destination = new Location(destinationX, destinationY);
         this.map = map;
