@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="fixed color code problems and enhanced show map output by adding separation">
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Production.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/Building.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuilding.java" afterDir="false" />
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="added act and canAct for productionBuildings">
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/MapEditMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/MapEditMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/SelectBuildingMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/SelectBuildingMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/SoldierType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/SoldierType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +235,7 @@
       <workItem from="1683186366854" duration="25591000" />
       <workItem from="1683387601968" duration="472000" />
       <workItem from="1683457673315" duration="17763000" />
-      <workItem from="1683641315148" duration="3020000" />
+      <workItem from="1683641315148" duration="3329000" />
     </task>
     <task id="LOCAL-00001" summary="first commit to initial_base">
       <created>1681417450067</created>
@@ -510,7 +510,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683642351563</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="added act and canAct for productionBuildings">
+      <created>1683644388569</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1683644388569</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -585,6 +592,7 @@
     <MESSAGE value="map editing core logics and other changes" />
     <MESSAGE value="map editing controller and other changes" />
     <MESSAGE value="fixed color code problems and enhanced show map output by adding separation" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed color code problems and enhanced show map output by adding separation" />
+    <MESSAGE value="added act and canAct for productionBuildings" />
+    <option name="LAST_COMMIT_MESSAGE" value="added act and canAct for productionBuildings" />
   </component>
 </project>

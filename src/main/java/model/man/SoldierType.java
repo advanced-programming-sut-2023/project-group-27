@@ -58,9 +58,10 @@ public enum SoldierType {
     }
     // TODO remember to init before usage
 
-    public static SoldierType getSoldierTypeByName(String name) {
+    public static SoldierType getTypeByName(String name) {
         return map.get(name);
     }
+
     public String getName() {
         return this.name;
     }

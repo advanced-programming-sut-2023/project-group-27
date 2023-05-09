@@ -155,6 +155,4 @@ public class CoreGameMenuController {
         coreNavigationController.run();
         return null;
     }
-
-
 }
