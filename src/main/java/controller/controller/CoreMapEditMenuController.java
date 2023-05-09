@@ -24,11 +24,16 @@ public class CoreMapEditMenuController {
         this.currentMap = match.getCurrentMatchMap();
         this.currentOwner = match.getCurrentMonarchy().getKing();
         this.scanner = scanner;
-        mapEditMenu = new MapEditMenu(new MapEditMenuController(this));
+        mapEditMenu = new MapEditMenu(new MapEditMenuController(this), scanner);
     }
 
     public void run(){
-        mapEditMenu.run(scanner);
+        String result;
+        while (true) {
+            result = mapEditMenu.run();
+            if (result.equals("Exit"))
+                return;
+        }
     }
 
     public String setTexture(Location location, LandType landType) {
@@ -102,7 +107,7 @@ public class CoreMapEditMenuController {
                 currentCell.setNaturalEntityType(Utilities.getRandomRock());
                 break;
             default:
-                return "Invalid rock directon.";
+                return "Invalid rock direction.";
         }
 
         return output + "Rock placed successfully!";
@@ -166,6 +171,8 @@ public class CoreMapEditMenuController {
         else
             //(type instanceof CastleComponentType)
             building = new CastleComponent(((CastleComponentType) type).getHitpoint(), (CastleComponentType) type, currentOwner );
+        if (!Utilities.canBuildOnThisType(building, currentCell.getType()))
+            return "Can't build this building on this type of land.";
 
         currentCell.setBuilding(building);
         currentMatch.getCurrentMonarchy().addBuilding(building);

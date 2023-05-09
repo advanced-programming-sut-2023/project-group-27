@@ -1,7 +1,11 @@
 package model.building;
 
+import model.GoodsType;
 import model.ProductionRules;
 import model.ProductionRule;
+import model.castle_components.CastleComponentType;
+
+import java.util.HashMap;
 
 public enum ProductionBuildingType {
     APPLEFARM("AppleFarm", 100, new int[]{0, 5, 1}, new ProductionRule[]{ProductionRules.APPLE.getProductionRule()}),
@@ -26,6 +30,7 @@ public enum ProductionBuildingType {
             ProductionRules.BLACKSMITH2.getProductionRule()}),
     INN("Inn", 100, new int[]{100, 20, 1}, new ProductionRule[]{ProductionRules.INN.getProductionRule()});
 
+    private static final HashMap<String, ProductionBuildingType> map = new HashMap<>();
     private final String name;
     private final int hitpoint;
     private final int[] resourcesRequiredForBuilding;   // gold, wood, workers.
@@ -36,6 +41,17 @@ public enum ProductionBuildingType {
         this.hitpoint = hitpoint;
         this.resourcesRequiredForBuilding = resourcesRequiredForBuilding;
         this.productionRules = productionRules;
+    }
+
+    public static void init() {
+        for (ProductionBuildingType type : values()) {
+            map.put(type.name, type);
+        }
+    }
+    // TODO remember to init before usage
+
+    public static ProductionBuildingType getTypeByName(String input) {
+        return map.get(input);
     }
 
     public String getName() {

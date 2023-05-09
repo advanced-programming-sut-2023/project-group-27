@@ -1,5 +1,7 @@
 package model;
 
+import java.util.HashMap;
+
 public enum NaturalEntityType implements Passable {
     DESSERT_SHRUB("Dessert Palm", "\\u001B[38;5;m", true),
     CHERRY_PALM("Cherry Palm", "\\u001B[31m", true),
@@ -11,15 +13,26 @@ public enum NaturalEntityType implements Passable {
     ROCK_WEST("Rock to North", "\\u001B[38;5;232m", false),
     ROCK_EAST("Rock to North", "\\u001B[38;5;232m", false);
 
-
-    private final String treeName;
+    private static final HashMap<String, NaturalEntityType> map = new HashMap<>();
+    private final String entityName;
     private final String ANSI_COLOR;
     private final boolean passability;
 
-    NaturalEntityType(String treeName, String ANSI_COLOR, boolean passability) {
-        this.treeName = treeName;
+    NaturalEntityType(String EntityName, String ANSI_COLOR, boolean passability) {
+        this.entityName = EntityName;
         this.ANSI_COLOR = ANSI_COLOR;
         this.passability = passability;
+    }
+
+    public static void init() {
+        for (NaturalEntityType type : values()) {
+            map.put(type.entityName, type);
+        }
+    }
+    // TODO remember to init before usage
+
+    public static NaturalEntityType getNaturalEntityTypeByName(String input) {
+        return map.get(input);
     }
 
     public String getANSI_COLOR() {
@@ -27,7 +40,7 @@ public enum NaturalEntityType implements Passable {
     }
 
     public String getNaturalEntityName() {
-        return treeName;
+        return entityName;
     }
 
 
