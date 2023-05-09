@@ -18,6 +18,7 @@ public class Monarchy {
     private int popularity, taxRate, foodRate, gold, fearRate, religiousBuildingCount;
 
     public Monarchy(User king) {
+        //TODO fix here and don't create building by default
         storages[0] = new Storage(GoodsType.getGranaryGoods(), 30000, king);
         storages[1] = new Storage(GoodsType.getStockPileGoods(), 30000, king);
         storages[2] = new Storage(GoodsType.getArmouryGoods(), 30000, king);
