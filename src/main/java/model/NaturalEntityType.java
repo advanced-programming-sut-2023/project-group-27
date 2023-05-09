@@ -3,15 +3,15 @@ package model;
 import java.util.HashMap;
 
 public enum NaturalEntityType implements Passable {
-    DESSERT_SHRUB("Dessert Palm", "\\u001B[38;5;m", true),
-    CHERRY_PALM("Cherry Palm", "\\u001B[31m", true),
-    OLIVE_TREE("Olive Tree", "\\u001B[38;5;178m", true),
-    COCONUT_PALM("Coconut Palm", "\\u001B[37m", true),
-    DATES_PALM("Dates Palm", "\\u001B[38;5;237m", true),
-    ROCK_NORTH("Rock to North", "\\u001B[38;5;232m", false),
-    ROCK_SOUTH("Rock to North", "\\u001B[38;5;232m", false),
-    ROCK_WEST("Rock to North", "\\u001B[38;5;232m", false),
-    ROCK_EAST("Rock to North", "\\u001B[38;5;232m", false);
+    DESSERT_SHRUB("Dessert Palm", "\u001B[38;5;m", true),
+    CHERRY_PALM("Cherry Palm", "\u001B[31m", true),
+    OLIVE_TREE("Olive Tree", "\u001B[38;5;178m", true),
+    COCONUT_PALM("Coconut Palm", "\u001B[37m", true),
+    DATES_PALM("Dates Palm", "\u001B[38;5;237m", true),
+    ROCK_NORTH("Rock to North", "\u001B[38;5;232m", false),
+    ROCK_SOUTH("Rock to North", "\u001B[38;5;232m", false),
+    ROCK_WEST("Rock to North", "\u001B[38;5;232m", false),
+    ROCK_EAST("Rock to North", "\u001B[38;5;232m", false);
 
     private static final HashMap<String, NaturalEntityType> map = new HashMap<>();
     private final String entityName;

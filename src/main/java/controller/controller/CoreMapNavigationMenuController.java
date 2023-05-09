@@ -60,9 +60,9 @@ public class CoreMapNavigationMenuController {
     public String showDetails(int x, int y) {
         Cell cell = gameMap.getCell(x ,y);
         String output = "Cell Details:\n";
-        output += "Land Type: " + cell.getType().getANSI_BACKGROUND() + cell.getType().getTypeName() + "\\u001B[0m\n";
+        output += "Land Type: " + cell.getType().getANSI_BACKGROUND() + cell.getType().getTypeName() + "\u001B[0m\n";
         if (cell.getNaturalEntityType() != null)
-            output += "NaturalEntity(Tree or Rocks) Type: " + cell.getNaturalEntityType().getANSI_COLOR() + cell.getNaturalEntityType().getNaturalEntityName() + "\\u001B[0m\n";
+            output += "NaturalEntity(Tree or Rocks) Type: " + cell.getNaturalEntityType().getANSI_COLOR() + cell.getNaturalEntityType().getNaturalEntityName() + "\u001B[0m\n";
         if (cell.getBuilding() != null)
             output += "Building Type: " + cell.getBuilding().getName() + "owner: " + cell.getBuilding().getOwner() + "hitpoints: " + cell.getBuilding().getHitpoint() + "\n";
         if (cell.getMen() != null && cell.getMen().size() != 0)

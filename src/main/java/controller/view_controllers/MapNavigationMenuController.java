@@ -19,6 +19,8 @@ public class MapNavigationMenuController {
         this.controller = controller;
     }
 
+    private final int mapOutputSize = 30;
+
     public void move(String input) {
         String regex = "(?<direction>((up)|(down)|(left)|(right)))(\\s+(?<number>-?\\d+))?";
         Pattern pattern = Pattern.compile(regex);
@@ -53,11 +55,11 @@ public class MapNavigationMenuController {
         Building building;
         LandType type;
         Man man;
-        for (int i = Math.max(0, controller.getXCoordinates() - 29);
-             i < Math.min(controller.getMapXSize(), controller.getXCoordinates() + 30);
+        for (int i = Math.max(0, controller.getXCoordinates() - mapOutputSize + 1);
+             i < Math.min(controller.getMapXSize(), controller.getXCoordinates() + mapOutputSize);
              i++) {
             for (int j =Math.max(0, controller.getYCoordinates() - 29);
-                 j < Math.min(controller.getMapYSize(), controller.getYCoordinates() + 30);
+                 j < Math.min(controller.getMapYSize(), controller.getYCoordinates() + mapOutputSize);
                  j++) {
                 currentCell = controller.getMapCell(i ,j);
                 backGroundColor = ((type = currentCell.getType()) != null) ? type.getANSI_BACKGROUND() : "";
@@ -75,9 +77,11 @@ public class MapNavigationMenuController {
                     else text = "H";
                 }
 
-                System.out.print(backGroundColor + textColor + text + "\u001B[0m");
+                System.out.print(backGroundColor + textColor + text + "\u001B[0m" + "|");
             }
             System.out.print("\n");
+            for (int j = 0; j < 30; j++) System.out.print("-");
+            System.out.println("\n");
         }
     }
 
