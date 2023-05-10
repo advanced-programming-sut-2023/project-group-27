@@ -15,7 +15,9 @@ public enum GameStartMenuRegexes {
     SHOW_COLORS(""),
     SET_COLOR(""),
     REMOVE_COLOR(""),
-    START_GAME("");
+    ASSIGN_KEEPS_AND_START_GAME(""),
+    START_GAME(""),
+    EXIT("");
     private final Pattern pattern;
 
     GameStartMenuRegexes(String regex) {

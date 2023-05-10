@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Location{
+public class Location {
     public int x;
     public int y;
 
@@ -27,5 +27,13 @@ public class Location{
             neighbors.add(map.getCell(x, y + 1).getLocation());
         }
         return neighbors;
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

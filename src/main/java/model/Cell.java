@@ -117,4 +117,10 @@ public class Cell implements Passable{
             man.getOwner().getMonarchy().removeMan(man);
         men.clear();
     }
+
+    public void storm() {
+        building = null;
+        naturalEntityType = null;
+        men.clear();
+    }
 }

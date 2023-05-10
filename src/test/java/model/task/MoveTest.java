@@ -25,7 +25,7 @@ class MoveTest {
                 "test",
                 "a",
                 "b");
-        this.map = new GameMap(50, 50, "myMap", capacity);
+        this.map = new GameMap(50, 50, "myMap", capacity, keepsLocations);
         this.man = Utilities.getNewMan(SoldierType.ARCHER, user);
         map.getCell(0, 0).addMan(man);
         for (int i = 1; i < 50; i+= 2) {

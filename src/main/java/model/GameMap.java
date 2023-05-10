@@ -7,11 +7,13 @@ public class GameMap {
 
     private final int capacity;
     private final Cell [][] map;
+    private final Cell[] keepsLocations;
 
-    public GameMap(int width, int height, String name, int capacity) {
+    public GameMap(int width, int height, String name, int capacity, Cell[] keepsLocations) {
         this.width = width;
         this.height = height;
         this.capacity = capacity;
+        this.keepsLocations = keepsLocations;
         map = new Cell[width][height];
         for (int i = 0; i < width; i++)
             for (int j = 0; j < height; j++)
@@ -45,5 +47,9 @@ public class GameMap {
 
     public Cell[][] getMap() {
         return map;
+    }
+
+    public Cell[] getKeepsLocations() {
+        return keepsLocations;
     }
 }
