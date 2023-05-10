@@ -24,7 +24,7 @@ class CoreProfileMenuControllerTest {
         user3.setHighScore(3000);
         StrongholdCrusader.addUser(user3);
 
-        StrongholdCrusader.setCurrentUser(StrongholdCrusader.getUserByName("test"));
+        StrongholdCrusader.setLoggedInUser(StrongholdCrusader.getUserByName("test"));
         coreController = new CoreProfileMenuController(new Scanner(""));
     }
 
@@ -34,7 +34,7 @@ class CoreProfileMenuControllerTest {
         assertEquals("New password can not be the same as old password\n", coreController.changePasswordPrep("Password@1", "Password@1"));
         assertNull(coreController.changePasswordPrep("Password@1", "Password@2"));
         coreController.changePassword("Password@2");
-        assertTrue(StrongholdCrusader.getCurrentUser().isPasswordCorrect("Password@2"));
+        assertTrue(StrongholdCrusader.getLoggedInUser().isPasswordCorrect("Password@2"));
     }
 
     @Test
@@ -43,13 +43,13 @@ class CoreProfileMenuControllerTest {
         assertEquals("empty field\n", coreController.changeUsername(""));
         assertEquals("Invalid username format\n", coreController.changeUsername("test@"));
         coreController.changeUsername("test2");
-        assertEquals("test2", StrongholdCrusader.getCurrentUser().getUsername());
+        assertEquals("test2", StrongholdCrusader.getLoggedInUser().getUsername());
     }
 
     @Test
     void changeNickname() {
         coreController.changeNickname("test2");
-        assertEquals("test2", StrongholdCrusader.getCurrentUser().getNickname());
+        assertEquals("test2", StrongholdCrusader.getLoggedInUser().getNickname());
     }
 
     @Test
@@ -61,10 +61,10 @@ class CoreProfileMenuControllerTest {
     @Test
     void showRank() {
         assertEquals(3, coreController.showRank());
-        StrongholdCrusader.setCurrentUser(StrongholdCrusader.getUserByName("test2"));
+        StrongholdCrusader.setLoggedInUser(StrongholdCrusader.getUserByName("test2"));
         coreController = new CoreProfileMenuController(new Scanner(""));
         assertEquals(2, coreController.showRank());
-        StrongholdCrusader.setCurrentUser(StrongholdCrusader.getUserByName("test3"));
+        StrongholdCrusader.setLoggedInUser(StrongholdCrusader.getUserByName("test3"));
         coreController = new CoreProfileMenuController(new Scanner(""));
         assertEquals(1, coreController.showRank());
     }
@@ -86,6 +86,6 @@ class CoreProfileMenuControllerTest {
         assertEquals("Invalid email format\n", coreController.changeEmail("test"));
         assertEquals("Email already exists\n", coreController.changeEmail("test3@test3.com"));
         coreController.changeEmail("test1@test1.com");
-        assertEquals("test1@test1.com", StrongholdCrusader.getCurrentUser().getEmail());
+        assertEquals("test1@test1.com", StrongholdCrusader.getLoggedInUser().getEmail());
     }
 }

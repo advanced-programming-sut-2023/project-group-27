@@ -14,6 +14,22 @@ public class GameMenu {
 
     public String run(Scanner scanner) {
         System.out.println("Entered Game Menu");
+        System.out.print("your options are:\n" +
+                "1. show popularity factors\n" +
+                "2. show popularity\n" +
+                "3. show food list\n" +
+                "4. food rate show\n" +
+                "5. fear rate show\n" +
+                "6. tax rate show\n" +
+                "7. fear rate -r <rate>\n" +
+                "8. food rate -r <rate>\n" +
+                "9. tax rate -r <rate>\n" +
+                "10. show map -x <x> -y <y>\n" +
+                "11. drop building -<x> -<y> --type<type>\n" +
+                "12. select building -x <x> -y <y>\n" +
+                "13. select unit -x <y> -y <y>\n" +
+                "14. enter shop\n" +
+                "15. back\n");
         while (true) {
             String command = scanner.nextLine();
             String output;

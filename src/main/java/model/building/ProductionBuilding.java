@@ -34,4 +34,5 @@ public class ProductionBuilding extends Building{
             monarchy.putGood(productionRule.getProducedType(), monarchy.getGood(productionRule.getProducedType()) + productionRule.getResourceProduced());
         }
     }
+
 }

@@ -1,12 +1,11 @@
 package model;
 
 import model.building.Building;
+import model.building.ProductionBuilding;
 import model.building.Storage;
 import model.man.Man;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Monarchy {
     private final List<Building> buildings = new ArrayList<>();
@@ -49,6 +48,11 @@ public class Monarchy {
 
     public int getGold() {
         return gold;
+    }
+
+    public int getPopulation() {
+        // TODO implement here
+        return 0;
     }
 
     public void changeGold(int amount) {
@@ -167,11 +171,81 @@ public class Monarchy {
         return result;
     }
 
-    public void updatePopularity() {
-        // TODO remember to update popularity every turn
+    public void run() {
+        buildings.stream().filter(building -> building instanceof ProductionBuilding)
+                .forEach(building -> ((ProductionBuilding) building).act());
+        feedPopulation();
+        getTax();
         this.popularity += calcPopularityFear();
-        this.popularity += calcPopularityFood();
         this.popularity += calcPopularityReligion();
+    }
+
+    public void changePopularity(int amount) {
+        this.popularity += amount;
+    }
+
+    private int foodCount() {
+        int totalFood = 0;
+        totalFood += this.getGranary().getGoodsCount(GoodsType.BREAD);
+        totalFood += this.getGranary().getGoodsCount(GoodsType.MEAT);
+        totalFood += this.getGranary().getGoodsCount(GoodsType.APPLE);
+        totalFood += this.getGranary().getGoodsCount(GoodsType.CHEESE);
+        return totalFood;
+    }
+
+    private int getFoodDiversity() {
+        int foodDiversity = 0;
+        if (this.getGranary().getGoodsCount(GoodsType.BREAD) > 0) {
+            foodDiversity++;
+        }
+        if (this.getGranary().getGoodsCount(GoodsType.MEAT) > 0) {
+            foodDiversity++;
+        }
+        if (this.getGranary().getGoodsCount(GoodsType.APPLE) > 0) {
+            foodDiversity++;
+        }
+        if (this.getGranary().getGoodsCount(GoodsType.CHEESE) > 0) {
+            foodDiversity++;
+        }
+        return foodDiversity;
+    }
+
+    private void feedPopulation() {
+        int totalFood = foodCount();
+        double maxRate = (double) totalFood / ((double) this.getPopulation() * 0.5);
+        maxRate -= 2;
+        if (foodRate > maxRate) {
+            foodRate = (int) maxRate;
+        }
+        this.popularity += getFoodDiversity();
+        this.popularity += calcPopularityFood();
+        double foodNeeded = this.getPopulation() * ((foodRate + 2) * 0.5);
+        List<GoodsType> foods = Arrays.stream(GoodsType.getGranaryGoods())
+                .sorted(Comparator.comparingInt(this::getGood)).toList();
+        for (int i = 0; i < foods.size(); i++) {
+            GoodsType food = foods.get(i);
+            int foodAmount = getGood(food);
+            double requiredFood = foodNeeded / (foods.size() - i);
+            requiredFood = Math.floor(requiredFood * 2) / 2;
+            if (foodAmount > requiredFood) {
+                foodNeeded -= requiredFood;
+                putGood(food, (int) (foodAmount - requiredFood));
+            } else {
+                foodNeeded -= foodAmount;
+                putGood(food, 0);
+            }
+        }
+    }
+
+    private void getTax() {
+        int totalTax = 0;
+        if (taxRate < 0) {
+            totalTax += (taxRate * (0.2) - 0.4) * this.getPopulation();
+        }
+        if (taxRate > 0) {
+            totalTax += (taxRate * (0.2) + 0.4) * this.getPopulation();
+        }
+        this.changeGold(totalTax);
         this.popularity += calcPopularityTax();
     }
 }

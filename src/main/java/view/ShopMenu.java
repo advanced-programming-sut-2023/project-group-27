@@ -15,6 +15,12 @@ public class ShopMenu {
     }
 
     public String run() {
+        System.out.print("Entered Shop Menu\n");
+        System.out.print("your options are:\n" +
+                "1. show price list\n" +
+                "2. buy -i <item’s name> -a <item’s amount>\n" +
+                "3. sell -i <item’s name> -a <item’s amount>\n" +
+                "4. Exit\n");
         String command , output;
         while (true) {
             command = scanner.nextLine();

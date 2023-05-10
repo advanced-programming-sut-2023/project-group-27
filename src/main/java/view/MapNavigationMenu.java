@@ -16,6 +16,11 @@ public class MapNavigationMenu {
 
     public String run() {
        controller.showMap();
+       System.out.print("Entered MapNavigation Menu\n");
+       System.out.print("your options are:\n" +
+               "1. map <up|down|left|right>\n" +
+               "2. show details -x <x> -y <y>\n" +
+               "3. Exit\n");
        while (true) {
            String command = scanner.nextLine();
 

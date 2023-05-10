@@ -115,6 +115,11 @@ public class Utilities {
         }
     }
 
+    public static void init() {
+        SoldierType.init();
+        GoodsType.init();
+    }
+
     public static boolean canBuildOnThisType(Building building, LandType landType) {
         if (landType.equals(LandType.STONE) ^ building.getName().equals("Quarry") ||
                 landType.equals(LandType.IRON) ^ building.getName().equals("IronMIne") ||
