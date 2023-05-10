@@ -12,6 +12,7 @@ public enum GameStartMenuRegexes {
     ADD_PLAYER(""),
     REMOVE_PLAYER(""),
     SELECT_MAP(""),
+    SHOW_COLORS(""),
     SET_COLOR(""),
     REMOVE_COLOR(""),
     START_GAME("");

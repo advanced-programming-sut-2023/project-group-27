@@ -2,21 +2,24 @@ package controller.controller;
 
 import controller.view_controllers.GameStartMenuController;
 import model.GameMap;
+import model.MonarchyColorType;
 import model.StrongholdCrusader;
 import model.User;
 import view.GameStartMenu;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class CoreGameStartMenuController {
 
     private final Scanner scanner;
     private final GameStartMenu gameStartMenu;
+    private final MonarchyColorType[] colorTypes;
     private final GameStartMenuController gameStartMenuController;
 
     private final ArrayList<User> thisGamePlayers;
-
+    private final HashMap<User, MonarchyColorType> colors;
     private final User[] allUsers;
     private final GameMap[] allMaps;
     private GameMap selectedMap;
@@ -31,6 +34,8 @@ public class CoreGameStartMenuController {
         this.allUsers = StrongholdCrusader.getAllUsersList();
         this.allMaps = StrongholdCrusader.getAllMapsList();
         this.selectedMap = null;
+        this.colors = new HashMap<>();
+        this.colorTypes = MonarchyColorType.values();
     }
 
     public String run() {
@@ -94,6 +99,8 @@ public class CoreGameStartMenuController {
             return "number is invalid!";
         if (number == 1)
             return "you can't remove yourself!";
+        if (colors.containsKey(thisGamePlayers.get(number - 1)))
+            colors.remove(thisGamePlayers.get(number - 1));
         thisGamePlayers.remove(number - 1);
         return "removed player successfully!";
     }
@@ -104,6 +111,16 @@ public class CoreGameStartMenuController {
         GameMap newMap = allMaps[number - 1];
         if (newMap.getCapacity() < thisGamePlayers.size())
             return "already selected players exceed this maps capacity, remove some and try again.";
+        selectedMap = newMap;
+        return "successfully changed map";
+    }
 
+    public String showColors() {
+        String output = "colors:";
+        for (int index = 0; index < colorTypes.length; index++) {
+            MonarchyColorType type = colorTypes[index];
+            output += "\n" + (index + 1) + "- name: " + type.getColorName();
+        }
+        return output;
     }
 }

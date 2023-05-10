@@ -4,23 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="bug fixes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameStartMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/GameStartMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/MonarchyColorType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/GameStartMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/enums/GameStartMenuRegexes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/GameMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GameMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/StrongholdCrusader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/StrongholdCrusader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/MainMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/enums/MainMenuRegexes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/controller/controller/CoreGameMenuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/controller/CoreGameMenuControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/task/MoveTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/task/MoveTest.java" afterDir="false" />
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="adding start game logic">
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameStartMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameStartMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/GameStartMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/enums/GameStartMenuRegexes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +233,7 @@
       <workItem from="1683387601968" duration="472000" />
       <workItem from="1683457673315" duration="17763000" />
       <workItem from="1683641315148" duration="5245000" />
-      <workItem from="1683725694757" duration="9551000" />
+      <workItem from="1683725694757" duration="10408000" />
     </task>
     <task id="LOCAL-00001" summary="first commit to initial_base">
       <created>1681417450067</created>
@@ -536,7 +522,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683644683037</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="adding start game logic">
+      <created>1683735998323</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1683735998323</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,7 +580,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added Map class" />
     <MESSAGE value="edited Cell class" />
     <MESSAGE value="completed my first round of tasks" />
     <MESSAGE value="completing the fields of classes" />
@@ -612,6 +604,7 @@
     <MESSAGE value="fixed color code problems and enhanced show map output by adding separation" />
     <MESSAGE value="added act and canAct for productionBuildings" />
     <MESSAGE value="bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixes" />
+    <MESSAGE value="adding start game logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding start game logic" />
   </component>
 </project>
