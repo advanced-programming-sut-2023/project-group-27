@@ -49,7 +49,6 @@ public enum SoldierType {
         this.cost = cost;
         this.nationality = nationality;
         this.requirements = requirements;
-        // TODO remember to initialize before use
     }
 
     public static void init() {
@@ -57,8 +56,9 @@ public enum SoldierType {
             map.put(type.name, type);
         }
     }
+    // TODO remember to init before usage
 
-    public static SoldierType getTypeByName(String name) {
+    public static SoldierType getSoldierTypeByName(String name) {
         return map.get(name);
     }
     public String getName() {

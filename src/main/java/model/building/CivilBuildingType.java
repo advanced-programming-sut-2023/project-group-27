@@ -1,6 +1,9 @@
 package model.building;
 
+import model.GoodsType;
 import model.User;
+
+import java.util.HashMap;
 
 public enum CivilBuildingType {
     HOVEL("Hovel", 100, new int[] {0, 6, 0}),
@@ -10,6 +13,8 @@ public enum CivilBuildingType {
     MERCENARYPOST("MercenaryPost", 500, new int[] {0, 10, 0}),
     ENGINEERSGUILD("EngineersGuild", 400, new int[] {100, 10, 0}),
     STABLE("Stable", 0 , null);
+
+    private static final HashMap<String, CivilBuildingType> map = new HashMap<>();
     private final String name;
     private final int hitpoint;
     private final int[] resourcesNeededToBuild; //gold, wood, stone
@@ -18,6 +23,17 @@ public enum CivilBuildingType {
         this.name = name;
         this.hitpoint = hitpoint;
         this.resourcesNeededToBuild = resourcesNeededToBuild;
+    }
+
+    public static void init() {
+        for (CivilBuildingType type : values()) {
+            map.put(type.name, type);
+        }
+    }
+    // TODO remember to init before usage
+
+    public static CivilBuildingType getTypeByName(String input) {
+        return map.get(input);
     }
 
     public String getName() {

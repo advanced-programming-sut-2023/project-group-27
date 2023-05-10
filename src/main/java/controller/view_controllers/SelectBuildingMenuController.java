@@ -36,7 +36,7 @@ public class SelectBuildingMenuController {
         String type = typeMatcher.group("type");
         int count = Integer.parseInt(countMatcher.group("count"));
         SoldierType soldierType;
-        if ((soldierType = SoldierType.getTypeByName(type)) == null)
+        if ((soldierType = SoldierType.getSoldierTypeByName(type)) == null)
             return "Invalid troop type!\n";
         if ((soldierType.getNationality().equals("european") &&
                 !coreController.getSelectedBuilding().getName().equals("Barracks"))

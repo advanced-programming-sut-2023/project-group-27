@@ -18,6 +18,7 @@ public class MapNavigationMenu {
        controller.showMap();
        while (true) {
            String command = scanner.nextLine();
+
            if (MapNavigationMenuRegexes.MOVE_MAP.getMatcher(command).matches()) {
                controller.move(command);
                continue;
