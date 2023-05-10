@@ -61,6 +61,11 @@ public enum SoldierType {
     public static SoldierType getSoldierTypeByName(String name) {
         return map.get(name);
     }
+
+    public static SoldierType getTypeByName(String unitType) {
+        return map.get(unitType);
+    }
+
     public String getName() {
         return this.name;
     }

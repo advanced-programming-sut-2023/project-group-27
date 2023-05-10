@@ -14,7 +14,7 @@ public enum GameMenuRegexes {
     SHOW_TAX_RATE("\\s*tax\\s+rate\\s+show\\s*"),
     SET_FEAR_RATE("\\s*fear\\s+rate\\s*(?<options>((\\s+((-[a-zA-Z]\\s+((\"[^\"]+\")|(\\S+)))|(--[a-zA-Z]+\\s+((\"[^\"]+\")|(\\S+)))))+))"),
     SHOW_FEAR_RATE("\\s*fear\\s+rate\\s+show\\s*"),
-    DROP_BUILDING("\\s*dropbuilding\\s*(?<options>((\\s+((-[a-zA-Z]\\s+((\"[^\"]+\")|(\\S+)))|(--[a-zA-Z]+\\s+((\"[^\"]+\")|(\\S+)))))+))"),
+    DROP_BUILDING("\\s*drop\\s+building\\s*(?<options>((\\s+((-[a-zA-Z]\\s+((\"[^\"]+\")|(\\S+)))|(--[a-zA-Z]+\\s+((\"[^\"]+\")|(\\S+)))))+))"),
     SELECT_BUILDING("\\s*select\\s+building\\s*(?<options>((\\s+((-[a-zA-Z]\\s+((\"[^\"]+\")|(\\S+)))|(--[a-zA-Z]+\\s+((\"[^\"]+\")|(\\S+)))))+))"),
     SELECT_UNIT("\\s*select\\s+unit\\s*(?<options>((\\s+((-[a-zA-Z]\\s+((\"[^\"]+\")|(\\S+)))|(--[a-zA-Z]+\\s+((\"[^\"]+\")|(\\S+)))))+))"),
     ENTER_SHOP("\\s*enter\\s+shop\\s*");

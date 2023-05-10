@@ -1,5 +1,6 @@
 package controller.view_controllers;
 
+import model.GameMap;
 import model.building.CivilBuildingType;
 import model.building.ProductionBuildingType;
 import model.castle_components.CastleComponentType;
@@ -56,7 +57,7 @@ public class Utilities {
             return civilBuildingType;
 
         return CastleComponentType.getTypeByName(input);
-
+    }
     public static String XYCheck(int x, int y , GameMap map) {
         if (x >= map.getWidth() || x < 0) {
             return "x is out of range it should be between 0 and " +
