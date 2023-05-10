@@ -16,6 +16,11 @@ public class SelectBuildingMenu {
     }
 
     public String run() {
+        System.out.print("Entered Building Selection Menu.\n");
+        System.out.print("your options are:\n" +
+                "1. repair\n" +
+                "2. create unit -t [type] -c [count]\n" +
+                "3. Exit\n");
         String command = scanner.nextLine();
         Matcher matcher;
         if (SelectBuildingMenuRegexes.EXIT.getMatcher(command).matches()) {

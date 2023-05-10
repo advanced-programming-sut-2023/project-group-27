@@ -14,6 +14,19 @@ public class ProfileMenu extends MenuBase{
     }
 
     public String run() {
+        System.out.print("Entered Profile Menu.\n");
+        System.out.print("your options are:\n" +
+                "1. profile change -u <new username>\n" +
+                "2. profile change -n <new nickname>\n" +
+                "3. profile change -o <current password> -n <new password>\n" +
+                "4. profile change -e [new email]\n" +
+                "5. profile change slogan -s <new slogan>\n" +
+                "6. profile remove slogan\n" +
+                "7. profile display highscore\n" +
+                "8. profile display rank\n" +
+                "9. profile display slogan\n" +
+                "10. profile display\n" +
+                "11. Exit\n");
         String command , output;
         while (true) {
             command = scanner.nextLine();
