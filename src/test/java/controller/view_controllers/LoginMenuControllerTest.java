@@ -67,14 +67,27 @@ class LoginMenuControllerTest {
     @ParameterizedTest
     @CsvSource({
             "'forgot my password\nmazdak\nbbbbb\nPassword@1\nPassword@1\nExit'," +
-                    "'Entered Login Menu\r\nPlease enter your username\r\n" +
+                    "'Entered Login Menu\r\nyour options are:\n" +
+                    "1. user login -u <username> -p <password>\n" +
+                    "2. forgot my password -u <username>\n" +
+                    "3. Exit\n"+
+                    "Please enter your username\r\n" +
                     "Please answer the security question\r\n" +
                     "aaaaaa\r\nEnter a new password\r\nPlease confirm your new password\r\n" +
                     "Password changed successfully!\r\n'",
             "'forgot my password\nmani\nExit'," +
-                    "'Entered Login Menu\r\nPlease enter your username\r\nThis username does not exist!\r\n'",
+                    "'Entered Login Menu\r\n" +
+                    "your options are:\n" +
+                    "1. user login -u <username> -p <password>\n" +
+                    "2. forgot my password -u <username>\n" +
+                    "3. Exit\n" +
+                    "Please enter your username\r\nThis username does not exist!\r\n'",
             "'forgot my password\nmazdak\nbbb\nbbbbb\nPassword@2\nPassword@1\nPassword@2\nExit'," +
                     "'Entered Login Menu\r\n" +
+                    "your options are:\n" +
+                    "1. user login -u <username> -p <password>\n" +
+                    "2. forgot my password -u <username>\n" +
+                    "3. Exit\n" +
                     "Please enter your username\r\n" +
                     "Please answer the security question\r\n" +
                     "aaaaaa\r\n" +

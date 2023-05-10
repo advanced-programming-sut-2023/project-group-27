@@ -18,6 +18,7 @@ public class Match {
         this.users = users;
         monarchies = new ArrayList<>();
         users.forEach(x -> monarchies.add(x.getMonarchy()));
+        this.currentMonarchy = monarchies.get(0);
         this.turnNumber = 0;
     }
 
@@ -25,13 +26,13 @@ public class Match {
         this.taskList.add(task);
     }
 
-    public void runTasks() {
+    private void runTasks() {
         for (Task task : taskList) {
             task.run();
         }
     }
 
-    public void updateTasks() {
+    private void updateTasks() {
         List<Task> newList = new ArrayList<>();
         for (Task task : taskList) {
             newList.add(updatedTask(task));
@@ -41,7 +42,7 @@ public class Match {
     }
 
     private Task updatedTask(Task task) {
-        // TODO implement here
+
         return null;
     }
 
@@ -65,11 +66,15 @@ public class Match {
         return turnNumber;
     }
 
-    public void setCurrentMonarchy(Monarchy currentMonarchy) {
-        this.currentMonarchy = currentMonarchy;
-    }
-
-    public void incrementTurn() {
+    public void nextTurn() {
         turnNumber++;
+        currentMonarchy = monarchies.get(turnNumber % monarchies.size());
+        if (turnNumber % monarchies.size() == 0) {
+            runTasks();
+            updateTasks();
+            for (Monarchy monarchy : monarchies) {
+                monarchy.run();
+            }
+        }
     }
 }
