@@ -8,17 +8,19 @@ import java.util.Scanner;
 
 public class MainMenu {
     private final MainMenuController controller;
+    private final Scanner scanner;
 
-    public MainMenu(MainMenuController controller) {
+    public MainMenu(MainMenuController controller, Scanner scanner) {
         this.controller = controller;
+        this.scanner = scanner;
     }
 
-    public String run(Scanner scanner){
+    public String run(){
         System.out.println("Entered Main Menu");
         System.out.println("your options are:" +
                 "\n1. Enter profile menu" +
                 "\n2. Enter map edit menu" +
-                "\n3. Enter game menu" +
+                "\n3. Enter game start menu" +
                 "\n4. Logout");
 
         do {
@@ -34,8 +36,8 @@ public class MainMenu {
             if (MainMenuRegexes.ENTER_MAP_EDIT_MENU.getMatcher(command).matches()) {
                 return "Enter map edit menu";
             }
-            if (MainMenuRegexes.ENTER_GAME_MENU.getMatcher(command).matches()) {
-                return "Enter game menu";
+            if (MainMenuRegexes.ENTER_GAME_START_MENU.getMatcher(command).matches()) {
+                return "Enter game start menu";
             }
 
             System.out.println("Invalid command!");

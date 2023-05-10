@@ -58,6 +58,14 @@ public class StrongholdCrusader {
         return allUsers;
     }
 
+    public static User[] getAllUsersList() {
+        return allUsers.values().toArray(new User[0]);
+    }
+
+    public static GameMap[] getAllMapsList() {
+        return allMaps.values().toArray(new GameMap[0]);
+    }
+
     public static void addUser(User user) {
         allUsers.put(user.getUsername(), user);
     }

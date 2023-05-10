@@ -118,9 +118,10 @@ public class CoreGameMenuController {
         int x = Integer.parseInt(xStr), y = Integer.parseInt(yStr);
         if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         Building selectedBuilding = map.getCell(x, y).getBuilding();
-        if (selectedBuilding == null) {
+        if (selectedBuilding == null)
             return "no building here\n";
-        }
+        if (!selectedBuilding.getOwner().equals(currentUser))
+            return "This building is not yours.";
         coreBuildingController =
                 new CoreSelectBuildingMenuController(selectedBuilding , scanner, currentMonarchy);
         coreBuildingController.run();

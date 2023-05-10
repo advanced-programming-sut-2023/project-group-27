@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public enum MainMenuRegexes {
     LOGOUT("\\s*Logout\\s*"),
-    ENTER_GAME_MENU("\\s*Enter\\s+game menu\\s*"),
+    ENTER_GAME_START_MENU("\\s*Enter\\s+game start menu\\s*"),
     ENTER_MAP_EDIT_MENU("\\s*Enter\\s+map edit menu\\s*"),
     ENTER_PROFILE_MENU("\\s*Enter\\s+profile menu");
     private final Pattern pattern;
