@@ -65,6 +65,9 @@ public class Monarchy {
         men.addAll(List.of(menToBeAdded));
     }
 
+    public void addMan(Man man) {
+        men.add(man);
+    }
     public TradingSystem getTradingSystem() {
         return tradingSystem;
     }

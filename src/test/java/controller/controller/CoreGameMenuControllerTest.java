@@ -29,7 +29,7 @@ class CoreGameMenuControllerTest {
         this.monarchy = user.getMonarchy();
 
         User[] users = new User[] {user};
-        this.map = new GameMap(100, 100, "map", capacity, keepsLocations);
+        this.map = new GameMap(100, 100, "map", 8, new Cell[]{});
         this.match = new Match(this.map, Arrays.stream(users).toList());
         this.coreGameController = new CoreGameMenuController(match, new Scanner("Exit"));
     }

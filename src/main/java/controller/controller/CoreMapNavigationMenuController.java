@@ -14,10 +14,8 @@ public class CoreMapNavigationMenuController {
     private final GameMap gameMap;
 
     private final MapNavigationMenu mapNavigationMenu;
-    private final CoreGameMenuController coreGameMenuController;
-    public CoreMapNavigationMenuController(int x, int y, Scanner scanner, GameMap gameMap, CoreGameMenuController coreGameMenuController) {
+    public CoreMapNavigationMenuController(int x, int y, Scanner scanner, GameMap gameMap) {
         MapNavigationMenuController mapNavigationMenuController = new MapNavigationMenuController(x, y, this);
-        this.coreGameMenuController = coreGameMenuController;
         this.mapNavigationMenu = new MapNavigationMenu(mapNavigationMenuController, scanner);
         this.location = new Location(x, y);
         this.gameMap = gameMap;

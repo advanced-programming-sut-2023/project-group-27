@@ -152,7 +152,7 @@ public class CoreGameMenuController {
         if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         CoreMapNavigationMenuController coreNavigationController =
                 new CoreMapNavigationMenuController(
-                        x, y, scanner, currentMatch.getCurrentMatchMap(), this);
+                        x, y, scanner, currentMatch.getCurrentMatchMap());
         coreNavigationController.run();
         return null;
     }

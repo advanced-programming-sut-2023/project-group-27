@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="adding start game logic3">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="adding start game logic4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameStartMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameStartMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/GameMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GameMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/CastleComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/CastleComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/SoldierType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/SoldierType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/GameStartMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/enums/GameStartMenuRegexes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapNavigationMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapNavigationMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/Tower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/Tower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/Trap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/Trap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/Wall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameStartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameStartMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/controller/controller/CoreGameMenuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/controller/CoreGameMenuControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/model/task/MoveTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/task/MoveTest.java" afterDir="false" />
     </list>
@@ -133,7 +133,7 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="project-group-27" />
@@ -141,8 +141,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CoreRegisterMenuControllerTest.initializeAndFinalizeUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AP-project-group27" />
+    <configuration name="CoreGameMenuControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project-group-27" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="controller.controller.*" />
@@ -150,9 +150,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="controller.controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.controller.CoreRegisterMenuControllerTest" />
-      <option name="METHOD_NAME" value="initializeAndFinalizeUser" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="controller.controller.CoreGameMenuControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -207,11 +206,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CoreGameMenuControllerTest" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.CoreRegisterMenuControllerTest.successfulRegisterTest" />
         <item itemvalue="JUnit.CoreRegisterMenuControllerTest.runTest (1)" />
         <item itemvalue="JUnit.CoreRegisterMenuControllerTest.runTest" />
-        <item itemvalue="JUnit.CoreRegisterMenuControllerTest.initializeAndFinalizeUser" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -242,7 +241,7 @@
       <workItem from="1683387601968" duration="472000" />
       <workItem from="1683457673315" duration="17763000" />
       <workItem from="1683641315148" duration="5245000" />
-      <workItem from="1683725694757" duration="14461000" />
+      <workItem from="1683725694757" duration="17096000" />
     </task>
     <task id="LOCAL-00001" summary="first commit to initial_base">
       <created>1681417450067</created>
@@ -545,7 +544,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683736841416</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="adding start game logic4">
+      <created>1683740904844</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1683740904844</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -596,7 +602,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="completed my first round of tasks" />
     <MESSAGE value="completing the fields of classes" />
     <MESSAGE value="added selectBuildingMenu and controllers and enums" />
     <MESSAGE value="final development on select unit menu" />
@@ -621,6 +626,13 @@
     <MESSAGE value="bug fixes" />
     <MESSAGE value="adding start game logic" />
     <MESSAGE value="adding start game logic3" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding start game logic3" />
+    <MESSAGE value="adding start game logic4" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding start game logic4" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/project_group_27$Main.ic" NAME="Main Coverage Results" MODIFIED="1683744260592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest.ic" NAME="CoreGameMenuControllerTest Coverage Results" MODIFIED="1683744288536" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controller.controller.*</FILTER>
+    </SUITE>
   </component>
 </project>

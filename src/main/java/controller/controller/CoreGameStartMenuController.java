@@ -26,6 +26,7 @@ public class CoreGameStartMenuController {
     private final User[] allUsers;
     private final GameMap[] allMaps;
     private GameMap selectedMap;
+    private Match match;
 
     public CoreGameStartMenuController(Scanner scanner, User loggedInUser) {
         this.scanner = scanner;
@@ -42,10 +43,22 @@ public class CoreGameStartMenuController {
         keepCells = new HashMap<>();
     }
 
-    public String run() {
+    public void run() {
         String gameStartMenuResult;
         while (true) {
             gameStartMenuResult = gameStartMenu.run();
+            switch (gameStartMenuResult) {
+                case "Exit":
+                    return;
+                case "Start Game":
+                    (new CoreGameStartMenuController(scanner, null)).run();
+                    return;
+                case "Enter Map Navigation Menu":
+                    (new CoreMapNavigationMenuController(40, 40, scanner, selectedMap)).run();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -124,6 +137,10 @@ public class CoreGameStartMenuController {
         return "successfully changed map";
     }
 
+    public String navigateSelectedMap() {
+        return  (selectedMap == null) ? "no map selected!" : "Enter Map Navigation Menu";
+    }
+
     public String showAllColors() {
         String output = "colors:";
         for (int index = 0; index < colorTypes.length; index++) {
@@ -167,16 +184,14 @@ public class CoreGameStartMenuController {
             CastleComponent keep = new CastleComponent(CastleComponentType.KEEP, thisGamePlayers.get(index));
             Man lord = new Soldier(SoldierType.LORD, thisGamePlayers.get(index));
 
-
+            thisGamePlayers.get(index).setMonarchy(new Monarchy(thisGamePlayers.get(index), colors.get(thisGamePlayers.get(index))));
+            thisGamePlayers.get(index).getMonarchy().addBuilding(keep);
+            thisGamePlayers.get(index).getMonarchy().addMan(lord);
             mapsKeepCells[cellsToAssign.get(index)].setBuilding(keep);
             mapsKeepCells[cellsToAssign.get(index)].addMan(lord);
         }
 
-        return "successfully assigned keeps.";
-    }
-
-    public String removeAssignment() {
-        for (Cell cell : keepCells.values())
-            cell.clear();
+        match = new Match(selectedMap, thisGamePlayers);
+        return "Start Game";
     }
 }

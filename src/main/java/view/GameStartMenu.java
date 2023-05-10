@@ -14,6 +14,6 @@ public class GameStartMenu {
     }
 
     public String run() {
-
+        return null;
     }
 }
