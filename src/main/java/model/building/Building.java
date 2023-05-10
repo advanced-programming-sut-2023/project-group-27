@@ -27,10 +27,6 @@ public class Building extends Destructable implements Passable {
         return cell;
     }
 
-    public Location getLocation() {
-        return null;
-    }
-
     public void setName(String name) {
         this.name = name;
     }

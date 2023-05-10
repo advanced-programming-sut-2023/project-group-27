@@ -52,7 +52,7 @@ public enum SoldierType {
         // TODO remember to initialize before use
     }
 
-    public void init() {
+    public static void init() {
         for (SoldierType type : values()) {
             map.put(type.name, type);
         }

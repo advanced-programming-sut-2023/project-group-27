@@ -113,4 +113,9 @@ public class Utilities {
                 return NaturalEntityType.ROCK_WEST;
         }
     }
+
+    public static void init() {
+        SoldierType.init();
+        GoodsType.init();
+    }
 }
