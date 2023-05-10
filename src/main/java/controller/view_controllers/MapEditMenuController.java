@@ -91,7 +91,7 @@ public class MapEditMenuController {
     public String dropUnit(String input) {
         if ((dataHoldingUtility = Utilities.extractInputs(input)) == null)
             return "repetitive inputs are inserted!";
-        SoldierType soldierType = SoldierType.getSoldierTypeByName(dataHoldingUtility.get("t"));
+        SoldierType soldierType = SoldierType.getTypeByName(dataHoldingUtility.get("t"));
         if (soldierType == null)
             return "Invalid unit name!";
 

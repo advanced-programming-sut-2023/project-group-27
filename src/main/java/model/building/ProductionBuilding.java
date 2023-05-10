@@ -1,34 +1,38 @@
 package model.building;
 
-import model.Production;
+import model.Monarchy;
 import model.ProductionRule;
 import model.User;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ProductionBuilding extends Building{
-    private ProductionBuildingType productionBuildingType;
-    private ArrayList<ProductionRule> productionRules;
-    private List<Production> requirements;
-    private Production product;
+    private final ProductionBuildingType productionBuildingType;
+    private final ProductionRule[] productionRules;
+    private final Monarchy monarchy;
     
-    public ProductionBuilding(int hitpoint, List<Production> requirements, Production product , ProductionBuildingType productionType, User owner) {
-        super(hitpoint, owner);
+    public ProductionBuilding(ProductionBuildingType productionType, User owner, Monarchy monarchy) {
+        super(productionType.getHitpoint(), owner);
         this.productionBuildingType = productionType;
-        this.requirements = requirements;
-        this.product = product;
+        productionRules = productionType.getProductionRules();
+        this.monarchy = monarchy;
     }
     
     public ProductionBuildingType getProductionType() {
         return productionBuildingType;
     }
 
+    public boolean canAct() {
+        for (ProductionRule productionRule : productionRules) {
+            if ((productionRule.getUsedType() != null) && monarchy.getGood(productionRule.getUsedType()) < productionRule.getResourceRequired())
+                return false;
+        }
+        return true;
+    }
+    //TODO use these functions based on counts needed to produce the goods
     public void act() {
-        for (Production requirement : requirements)
-            requirement.utilize();
-        
-        product.produce();
+        for (ProductionRule productionRule : productionRules) {
+            monarchy.putGood(productionRule.getUsedType(), monarchy.getGood(productionRule.getUsedType()) - productionRule.getResourceRequired());
+            monarchy.putGood(productionRule.getProducedType(), monarchy.getGood(productionRule.getProducedType()) + productionRule.getResourceProduced());
+        }
     }
 
 }

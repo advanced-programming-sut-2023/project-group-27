@@ -166,8 +166,7 @@ public class CoreMapEditMenuController {
         if (type instanceof CivilBuildingType)
             building = new CivilBuilding(((CivilBuildingType) type).getHitpoint(), (CivilBuildingType) type, currentOwner);
         else if (type instanceof ProductionBuildingType)
-            building = new ProductionBuilding(0, null, null, (ProductionBuildingType) type, currentOwner);
-            //TODO fix this shit
+            building = new ProductionBuilding((ProductionBuildingType) type, currentOwner, currentOwner.getMonarchy());
         else
             //(type instanceof CastleComponentType)
             building = new CastleComponent(((CastleComponentType) type).getHitpoint(), (CastleComponentType) type, currentOwner );
