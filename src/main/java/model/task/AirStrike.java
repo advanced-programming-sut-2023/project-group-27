@@ -31,10 +31,11 @@ public class AirStrike implements Task{
             isValid = false;
             return;
         }
+        if (target.getHitpoint() <= 0) return;
         if (fightable instanceof Soldier) {
             target.setHitpoint(target.getHitpoint() - ((Soldier) fightable).getDamage());
         }
-        if (fightable instanceof FightableBuilding) {
+        else if (fightable instanceof FightableBuilding) {
             target.setHitpoint(target.getHitpoint() - ((FightableBuilding) fightable).getDamage());
         }
     }
