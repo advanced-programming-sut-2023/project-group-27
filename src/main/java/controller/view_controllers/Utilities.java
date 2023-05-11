@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public class Utilities {
     protected static Map<String, String> extractOptionsFromString(String input) {
         Map<String, String> result = new HashMap<>();
-        String args = "((-(?<option>[a-zA-Z])\\s+(?<optionValue>(\"[^\"]+\")|(\\S+)))|(--(?<flag>[a-zA-Z]+)\\s+(?<flagValue>(\"[^\"]+\")|(\\S+))))";
+        String args = "((-(?<option>[a-zA-Z0-9]+)\\s+(?<optionValue>(\"[^\"]+\")|(\\S+)))|(--(?<flag>[a-zA-Z0-9]+)\\s+(?<flagValue>(\"[^\"]+\")|(\\S+))))";
         Pattern pattern = Pattern.compile(args);
         Matcher matcher = pattern.matcher(input);
 

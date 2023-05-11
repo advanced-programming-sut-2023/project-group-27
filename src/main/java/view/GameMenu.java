@@ -27,7 +27,7 @@ public class GameMenu {
                 "10. show map -x <x> -y <y>\n" +
                 "11. drop building -<x> -<y> --type<type>\n" +
                 "12. select building -x <x> -y <y>\n" +
-                "13. select unit -x <y> -y <y>\n" +
+                "13. select unit -x <y> -y <y> -t <type>\n" +
                 "14. enter shop\n" +
                 "15. enter map edit\n" +
                 "16. show current player\n" +

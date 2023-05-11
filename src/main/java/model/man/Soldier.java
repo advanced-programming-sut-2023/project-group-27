@@ -18,6 +18,7 @@ public class Soldier extends Man{
         super(soldierType.getHitpoint(), soldierType.getName(), owner, soldierType.getMovementSpeed());
         this.damage = soldierType.getDamage();
         this.range = soldierType.getRange();
+        this.state = "standing";
         isFighting = false;
     }
 
