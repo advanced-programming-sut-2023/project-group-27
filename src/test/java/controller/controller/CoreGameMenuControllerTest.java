@@ -1,6 +1,5 @@
 package controller.controller;
 
-import controller.view_controllers.MapEditMenuController;
 import model.*;
 import model.man.Man;
 import model.man.Soldier;
@@ -176,6 +175,90 @@ class CoreGameMenuControllerTest {
             coreGameController.selectUnit("5", "5", "Archer");
             assertFalse(men.stream().anyMatch(man -> !(man instanceof Soldier)));
             assertTrue(men.stream().allMatch(man -> ((Soldier) man).getState().equals("offensive")));
+        }
+    }
+
+    @Nested
+    class ShopTest {
+        private ByteArrayOutputStream outContent;
+        @BeforeEach
+        void setUp() {
+            outContent = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(outContent));
+            match.getCurrentMonarchy().changeGold(GoodsType.IRON.getShopBuyPrice() * 2);
+        }
+
+        @Test
+        void showShop() {
+            match.getCurrentMonarchy().getStockPile().changeGoodsCount(GoodsType.IRON, 100);
+            coreGameController = new CoreGameMenuController(match, new Scanner("show price list\nExit"));
+            coreGameController.enterShop();
+            assertTrue(outContent.toString().contains(
+                    "Iron => sell price: " + GoodsType.IRON.getShopSellPrice() +
+                            " | buy price: " + GoodsType.IRON.getShopBuyPrice() +
+                            " | amount: 100"));
+        }
+
+        @Test
+        void shopNotEnoughMoney() {
+            coreGameController = new CoreGameMenuController(match, new Scanner("buy -i Iron -a 3\nExit"));
+            coreGameController.enterShop();
+            assertTrue(outContent.toString().contains("You do not have enough gold!"));
+        }
+
+        @Test
+        void shopInvalidNumber() {
+            coreGameController = new CoreGameMenuController(match, new Scanner("buy -i Iron -a -2\nExit"));
+            coreGameController.enterShop();
+            assertTrue(outContent.toString().contains("Invalid amount number!"));
+        }
+
+        @Test
+        void shopSuccessfulPurchase() {
+            coreGameController = new CoreGameMenuController(match, new Scanner("buy -i Iron -a 2\nExit"));
+            coreGameController.enterShop();
+            assertTrue(outContent.toString().trim().endsWith("Buy successful!"));
+            assertEquals(match.getCurrentMonarchy().getStorage().getOrDefault(GoodsType.IRON, 0), 2);
+        }
+
+
+        @Nested
+        class Sell {
+            @BeforeEach
+            void setUp() {
+                monarchy.getStockPile().changeGoodsCount(GoodsType.IRON, 2);
+            }
+
+            @Test
+            void checkInit() {
+                assertEquals(2, monarchy.getStockPile().getMap().getOrDefault(GoodsType.IRON, 0));
+            }
+
+            @Test
+            void shopSellNotEnoughGood() {
+                coreGameController = new CoreGameMenuController(match, new Scanner("sell -i Iron -a 3\nExit"));
+                coreGameController.enterShop();
+                assertTrue(outContent.toString().contains("You do not have enough item to sell!"));
+            }
+
+            @Test
+            void InvalidAmount() {
+                coreGameController = new CoreGameMenuController(match, new Scanner("sell -i Iron -a -2\nExit"));
+                coreGameController.enterShop();
+                assertTrue(outContent.toString().contains("Invalid amount number!"));
+            }
+
+            @Test
+            void Successful() {
+                coreGameController = new CoreGameMenuController(
+                        match, new Scanner("sell -i Iron -a 2\nExit"));
+                coreGameController.enterShop();
+                assertTrue(outContent.toString().trim().endsWith("Sell successful!"));
+                GoodsType iron = GoodsType.IRON;
+                assertEquals(0, monarchy.getStockPile().getMap().getOrDefault(iron, 0));
+                assertEquals(2 * (iron.getShopBuyPrice() + iron.getShopSellPrice()),
+                        monarchy.getGold());
+            }
         }
     }
 }

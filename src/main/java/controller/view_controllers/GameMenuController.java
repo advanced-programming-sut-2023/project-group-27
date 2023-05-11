@@ -107,8 +107,7 @@ public class GameMenuController {
     }
 
     public void enterShop() {
-
-        // TODO implement here
+        coreController.enterShop();
     }
 
     private static String getError(boolean checkRequiredArgs, String error, Map<String, String> args, int expectedSize) {

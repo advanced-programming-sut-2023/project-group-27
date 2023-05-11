@@ -167,4 +167,9 @@ public class CoreGameMenuController {
     public String showCurrentPlayer() {
         return currentMatch.getCurrentUser().getNickname();
     }
+
+    public void enterShop() {
+        CoreShopMenuController coreShopMenuController = new CoreShopMenuController(currentMatch, scanner);
+        coreShopMenuController.run();
+    }
 }
