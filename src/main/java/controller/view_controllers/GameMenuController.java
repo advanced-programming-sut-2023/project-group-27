@@ -127,4 +127,8 @@ public class GameMenuController {
         Map<String, String> args = Utilities.extractOptionsFromString(options);
         return args;
     }
+
+    public void enterMapEdit() {
+        coreController.enterMapEdit();
+    }
 }

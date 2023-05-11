@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class CoreMapEditMenuController {
     private final Scanner scanner;
     private final MapEditMenu mapEditMenu;
-
+    private final MapEditMenuController mapEditMenuController;
     private final Match currentMatch;
     private final GameMap currentMap;
     private User currentOwner;
@@ -24,7 +24,8 @@ public class CoreMapEditMenuController {
         this.currentMap = match.getCurrentMatchMap();
         this.currentOwner = match.getCurrentMonarchy().getKing();
         this.scanner = scanner;
-        mapEditMenu = new MapEditMenu(new MapEditMenuController(this), scanner);
+        this.mapEditMenuController = new MapEditMenuController(this);
+        this.mapEditMenu = new MapEditMenu(this.mapEditMenuController, scanner);
     }
 
     public void run(){
