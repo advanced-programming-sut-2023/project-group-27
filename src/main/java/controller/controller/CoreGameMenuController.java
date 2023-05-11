@@ -163,4 +163,8 @@ public class CoreGameMenuController {
         CoreMapEditMenuController coreController = new CoreMapEditMenuController(currentMatch, scanner);
         coreController.run();
     }
+
+    public String showCurrentPlayer() {
+        return currentMatch.getCurrentUser().getNickname();
+    }
 }

@@ -131,4 +131,8 @@ public class GameMenuController {
     public void enterMapEdit() {
         coreController.enterMapEdit();
     }
+
+    public String showCurrentPlayer() {
+        return coreController.showCurrentPlayer();
+    }
 }

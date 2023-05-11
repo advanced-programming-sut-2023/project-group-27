@@ -18,7 +18,8 @@ public enum GameMenuRegexes {
     SELECT_BUILDING("\\s*select\\s+building\\s*(?<options>((\\s+((-[a-zA-Z]\\s+((\"[^\"]+\")|(\\S+)))|(--[a-zA-Z]+\\s+((\"[^\"]+\")|(\\S+)))))+))"),
     SELECT_UNIT("\\s*select\\s+unit\\s*(?<options>((\\s+((-[a-zA-Z]\\s+((\"[^\"]+\")|(\\S+)))|(--[a-zA-Z]+\\s+((\"[^\"]+\")|(\\S+)))))+))"),
     ENTER_SHOP("\\s*enter\\s+shop\\s*"),
-    ENTER_MAP_EDIT("\\s*enter\\s+map\\s+edit\\s*");
+    ENTER_MAP_EDIT("\\s*enter\\s+map\\s+edit\\s*"),
+    SHOW_CURRENT_PLAYER("\\s*show\\s+current\\s+player\\s*");
     private final Pattern pattern;
     GameMenuRegexes(String regex) {
         this.pattern = Pattern.compile(regex);

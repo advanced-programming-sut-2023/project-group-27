@@ -30,7 +30,8 @@ public class GameMenu {
                 "13. select unit -x <y> -y <y>\n" +
                 "14. enter shop\n" +
                 "15. enter map edit\n" +
-                "16. back\n");
+                "16. show current player\n" +
+                "17. back\n");
         while (true) {
             String command = scanner.nextLine();
             String output;
@@ -105,6 +106,10 @@ public class GameMenu {
             }
             if (GameMenuRegexes.ENTER_MAP_EDIT.getMatcher(command).matches()) {
                 controller.enterMapEdit();
+                continue;
+            }
+            if (GameMenuRegexes.SHOW_CURRENT_PLAYER.getMatcher(command).matches()) {
+                System.out.print(controller.showCurrentPlayer());
                 continue;
             }
             if (command.equals("Exit")) {
