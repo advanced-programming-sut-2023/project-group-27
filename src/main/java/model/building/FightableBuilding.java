@@ -5,8 +5,14 @@ import model.Fightable;
 import model.User;
 
 public class FightableBuilding extends Building implements Fightable {
-    public FightableBuilding(int hitpoint, User owner) {
+    private int damage;
+    public FightableBuilding(int hitpoint, User owner , int damage) {
         super(hitpoint, owner);
+        this.damage = damage;
+    }
+
+    public int getDamage() {
+        return damage;
     }
 
     @Override

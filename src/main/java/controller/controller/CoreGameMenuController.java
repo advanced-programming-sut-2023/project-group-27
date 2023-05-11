@@ -149,7 +149,7 @@ public class CoreGameMenuController {
         SoldierType type = SoldierType.getTypeByName(unitType);
         if (type == null) return "Unit type is invalid!";
         if (theSelected.size() == 0) return "There is not any unit of this type on this cell!";
-        coreUnitController = new CoreSelectUnitMenuController(theSelected, currentMatch , scanner, map, type);
+        coreUnitController = new CoreSelectUnitMenuController(theSelected, currentMatch , scanner, currentUser, map, type);
         coreUnitController.run();
         return null;
     }
