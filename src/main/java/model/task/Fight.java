@@ -19,6 +19,12 @@ public class Fight implements Task {
 
     @Override
     public boolean isValid() {
-        return false;
+        if (fightable.getHitPoint() <= 0) {
+            return false;
+        }
+        if (target.getHitpoint() <= 0) {
+            return false;
+        }
+        return true;
     }
 }

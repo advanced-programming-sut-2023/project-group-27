@@ -1,12 +1,9 @@
 package model.man;
 
-import model.Cell;
-import model.Destructable;
-import model.Location;
-import model.User;
+import model.*;
 import model.task.Task;
 
-public class Soldier extends Man{
+public class Soldier extends Man implements Fightable {
     private SoldierType soldierType;
     private Task task;
     private String state;
@@ -57,6 +54,11 @@ public class Soldier extends Man{
     public void fight(Destructable destructable)
     {
 
+    }
+
+    @Override
+    public int getHitPoint() {
+        return super.getHitpoint();
     }
 
 }
