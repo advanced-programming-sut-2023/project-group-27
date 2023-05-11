@@ -10,7 +10,7 @@ public class Soldier extends Man{
     private SoldierType soldierType;
     private Task task;
     private String state;
-    private int range;
+    private Integer range;
     private int damage;
     private boolean isFighting;
 
