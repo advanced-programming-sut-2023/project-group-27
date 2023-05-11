@@ -24,7 +24,7 @@ public class ShopMenu {
         String command , output;
         while (true) {
             command = scanner.nextLine();
-            if (ShopMenuRegexes.EXIT.getMatcher(command).matches()) return "EXit";
+            if (ShopMenuRegexes.EXIT.getMatcher(command).matches()) return "Exit";
             else if (ShopMenuRegexes.SHOWPRICELIST.getMatcher(command).matches()) {
                 output = controller.showPriceList();
                 System.out.print(output);

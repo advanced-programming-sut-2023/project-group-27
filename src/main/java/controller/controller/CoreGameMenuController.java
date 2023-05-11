@@ -1,12 +1,14 @@
 package controller.controller;
 
 import controller.view_controllers.GameMenuController;
+import controller.view_controllers.MapEditMenuController;
 import controller.view_controllers.Utilities;
 import model.*;
 import model.building.Building;
 import model.man.SoldierType;
 import org.apache.commons.lang3.math.NumberUtils;
 import view.GameMenu;
+import view.MapEditMenu;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -135,6 +137,7 @@ public class CoreGameMenuController {
         if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         ArrayList<Selectable> theSelected = map.getCell(x , y).getSelectables();
         theSelected.removeIf(selectable -> !selectable.getName().equals(unitType));
+        theSelected.removeIf(selectable -> !selectable.getOwner().equals(currentMatch.getCurrentUser()));
         SoldierType type = SoldierType.getTypeByName(unitType);
         if (type == null) return "Unit type is invalid!";
         if (theSelected.size() == 0) return "There is not any unit of this type on this cell!";
@@ -154,5 +157,19 @@ public class CoreGameMenuController {
                         x, y, scanner, currentMatch.getCurrentMatchMap(), this);
         coreNavigationController.run();
         return null;
+    }
+
+    public void enterMapEdit(){
+        CoreMapEditMenuController coreController = new CoreMapEditMenuController(currentMatch, scanner);
+        coreController.run();
+    }
+
+    public String showCurrentPlayer() {
+        return currentMatch.getCurrentUser().getNickname();
+    }
+
+    public void enterShop() {
+        CoreShopMenuController coreShopMenuController = new CoreShopMenuController(currentMatch, scanner);
+        coreShopMenuController.run();
     }
 }

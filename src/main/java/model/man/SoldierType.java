@@ -90,7 +90,7 @@ public enum SoldierType {
         return requirements;
     }
 
-    public int getRange() {
+    public Integer getRange() {
         return range;
     }
 }

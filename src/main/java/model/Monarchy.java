@@ -15,6 +15,7 @@ public class Monarchy {
     private final TradingSystem tradingSystem;
     private final User king;
     private int popularity, taxRate, foodRate, gold, fearRate, religiousBuildingCount;
+    private int population = 20;
 
     public Monarchy(User king) {
         //TODO fix here and don't create building by default
@@ -51,8 +52,7 @@ public class Monarchy {
     }
 
     public int getPopulation() {
-        // TODO implement here
-        return 0;
+        return population;
     }
 
     public void changeGold(int amount) {
@@ -213,6 +213,9 @@ public class Monarchy {
     private void feedPopulation() {
         int totalFood = foodCount();
         double maxRate = (double) totalFood / ((double) this.getPopulation() * 0.5);
+        if (this.getPopulation() == 0) {
+            maxRate = 4;
+        }
         maxRate -= 2;
         if (foodRate > maxRate) {
             foodRate = (int) maxRate;

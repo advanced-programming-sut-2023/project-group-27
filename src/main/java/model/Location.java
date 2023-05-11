@@ -28,4 +28,21 @@ public class Location{
         }
         return neighbors;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof Location)) {
+            return false;
+        }
+        Location location = (Location) o;
+        return location.x == this.x && location.y == this.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return x * 1000 + y;
+    }
 }
