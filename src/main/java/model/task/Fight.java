@@ -25,10 +25,7 @@ public class Fight implements Task {
     @Override
     public void run() {
         if (fightable.getLocation().distance(location) > fightable.getAttackRange()) {
-            if (!(fightable instanceof Movable)) {
-                System.out.println("out of range");
-                return;
-            }
+            if (!(fightable instanceof Movable)) return;
             new Move(map, (Movable) fightable, location.x, location.y).run();
             return;
         }
