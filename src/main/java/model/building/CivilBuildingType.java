@@ -1,5 +1,6 @@
 package model.building;
 
+import model.Cell;
 import model.User;
 
 import java.util.HashMap;
@@ -54,7 +55,7 @@ public enum CivilBuildingType {
         return this.hitpoint;
     }
 
-    public CivilBuilding createCivilBuilding(User owner) {
-        return new CivilBuilding(hitpoint, this, owner);
+    public CivilBuilding createCivilBuilding(User owner, Cell cell) {
+        return new CivilBuilding(hitpoint, this, owner, cell);
     }
 }

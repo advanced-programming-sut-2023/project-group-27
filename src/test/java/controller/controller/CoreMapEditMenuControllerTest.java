@@ -18,10 +18,11 @@ class CoreMapEditMenuControllerTest {
 
     @BeforeEach
     void setUp() {
-        this.map = new GameMap(10, 10, "myMap", 100, null);
+        Cell cells[] = new Cell[] {new Cell(LandType.PLAIN, 1, 1), new Cell(LandType.PLAIN, 10, 10)};
+        this.map = new GameMap(10, 10, "myMap", 100, cells);
         this.user = new User("user", "Password@1", "user",
                 "user", "user@u.com", "a", "b");
-        user.setMonarchy(new Monarchy(user, MonarchyColorType.BLACK));
+        user.setMonarchy(new Monarchy(user, MonarchyColorType.BLACK, map, cells[0].getLocation()));
         User[] users = new User[]{user};
         this.match = new Match(map, Arrays.stream(users).toList());
         this.coreMapEditMenuController =

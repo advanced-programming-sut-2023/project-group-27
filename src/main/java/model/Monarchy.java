@@ -18,11 +18,14 @@ public class Monarchy {
     private int popularity, taxRate, foodRate, gold, fearRate, religiousBuildingCount;
     private int population = 20;
 
-    public Monarchy(User king, MonarchyColorType color) {
+    public Monarchy(User king, MonarchyColorType color, GameMap gameMap, Location mainKeepLocation) {
         //TODO fix here and don't create building by default
-        storages[0] = new Storage(GoodsType.getGranaryGoods(), 30000, king);
-        storages[1] = new Storage(GoodsType.getStockPileGoods(), 30000, king);
-        storages[2] = new Storage(GoodsType.getArmouryGoods(), 30000, king);
+        storages[0] = new Storage(GoodsType.getGranaryGoods(), 30000, king, gameMap.getCell(mainKeepLocation.getVicintyLocation(1, 0)));
+        storages[1] = new Storage(GoodsType.getStockPileGoods(), 30000, king, gameMap.getCell(mainKeepLocation.getVicintyLocation(-1, 0)));
+        storages[2] = new Storage(GoodsType.getArmouryGoods(), 30000, king, gameMap.getCell(mainKeepLocation.getVicintyLocation(1, 1)));
+        gameMap.getCell(mainKeepLocation.getVicintyLocation(1, 0)).setBuilding(storages[0]);
+        gameMap.getCell(mainKeepLocation.getVicintyLocation(-1, 0)).setBuilding(storages[1]);
+        gameMap.getCell(mainKeepLocation.getVicintyLocation(1, 1)).setBuilding(storages[2]);
         this.king = king;
         this.tradingSystem = new TradingSystem(king);
         this.popularity = 50;

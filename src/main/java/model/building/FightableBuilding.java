@@ -1,7 +1,6 @@
 package model.building;
 
 import model.*;
-import model.man.Man;
 
 import java.util.List;
 import java.util.Random;
@@ -9,7 +8,7 @@ import java.util.Random;
 public class FightableBuilding extends Building implements Fightable {
     private int damage;
       
-    public FightableBuilding(int hitpoint, User owner, Location location , int damage) {
+    public FightableBuilding(int hitpoint, User owner, Cell cell, int damage) {
         super(hitpoint, owner, location);
         this.damage = damage;
     }

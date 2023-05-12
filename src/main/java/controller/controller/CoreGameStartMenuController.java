@@ -190,11 +190,11 @@ public class CoreGameStartMenuController {
         for (int index = 0; index < thisGamePlayers.size(); index++) {
             mapsKeepCells[cellsToAssign.get(index)].flush();
 
-            CastleComponent keep = new CastleComponent(CastleComponentType.KEEP, thisGamePlayers.get(index));
+            CastleComponent keep = new CastleComponent(CastleComponentType.KEEP, thisGamePlayers.get(index), mapsKeepCells[cellsToAssign.get(index)]);
             Man lord = new Soldier(SoldierType.LORD, thisGamePlayers.get(index));
 
             thisGamePlayers.get(index).setMonarchy(new Monarchy(thisGamePlayers.get(index),
-                    colors.get(thisGamePlayers.get(index))));
+                    colors.get(thisGamePlayers.get(index)), selectedMap, mapsKeepCells[cellsToAssign.get(index)].getLocation()));
             thisGamePlayers.get(index).getMonarchy().addBuilding(keep);
             thisGamePlayers.get(index).getMonarchy().addMan(lord);
             mapsKeepCells[cellsToAssign.get(index)].setBuilding(keep);

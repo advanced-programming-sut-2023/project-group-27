@@ -56,4 +56,8 @@ public class Location {
     public int hashCode() {
         return x * 1000 + y;
     }
+
+    protected Location getVicintyLocation(int deltaX, int deltaY) {
+        return new Location(this.x + deltaX, this.y + deltaY);
+    }
 }

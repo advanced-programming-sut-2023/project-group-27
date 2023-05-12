@@ -1,5 +1,6 @@
 package model.building;
 
+import model.Cell;
 import model.Monarchy;
 import model.ProductionRule;
 import model.User;
@@ -9,8 +10,8 @@ public class ProductionBuilding extends Building{
     private final ProductionRule[] productionRules;
     private final Monarchy monarchy;
     
-    public ProductionBuilding(ProductionBuildingType productionType, User owner, Monarchy monarchy) {
-        super(productionType.getHitpoint(), owner);
+    public ProductionBuilding(ProductionBuildingType productionType, User owner, Monarchy monarchy, Cell cell) {
+        super(productionType.getHitpoint(), owner, cell);
         this.productionBuildingType = productionType;
         productionRules = productionType.getProductionRules();
         this.monarchy = monarchy;
