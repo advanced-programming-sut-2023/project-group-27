@@ -1,7 +1,5 @@
 package model.castle_components;
 
-import model.GoodsType;
-
 import java.util.HashMap;
 
 public enum CastleComponentType {
@@ -12,7 +10,9 @@ public enum CastleComponentType {
     DEFENSIVETOWER("DefensiveTower", 200, new int[] {15, 0}),
     SQUARETOWER("SquareTower", 200, new int[] {35, 0}),
     CIRCLETOWER("CircleTower", 200, new int[] {40, 0}),
-    CHANGINGBRIDGE("ChangingBridge", 200, new int[] {0, 10});
+    CHANGINGBRIDGE("ChangingBridge", 200, new int[] {0, 10}),
+    WALL("Wall", 400, new int[] {2, 0}),
+    SHORT_WALL("ShortWall", 300, new int[] {1, 0});
 
     private static final HashMap<String, CastleComponentType> map = new HashMap<>();
     private final String name;
@@ -48,5 +48,9 @@ public enum CastleComponentType {
 
     public int getWoodNeeded() {
         return resourceNeededToBeBuild[1];
+    }
+
+    public int getGoldNeeded() {
+        return 0;
     }
 }
