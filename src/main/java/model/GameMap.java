@@ -9,15 +9,17 @@ public class GameMap {
     private final Cell [][] map;
     private final Cell[] keepsLocations;
 
-    public GameMap(int width, int height, String name, int capacity, Cell[] keepsLocations) {
+    public GameMap(int width, int height, String name, int capacity, Location[] keepsLocations) {
         this.width = width;
         this.height = height;
         this.capacity = capacity;
-        this.keepsLocations = keepsLocations;
+        this.keepsLocations = new Cell[keepsLocations.length];
         map = new Cell[width][height];
         for (int i = 0; i < width; i++)
             for (int j = 0; j < height; j++)
                 map[i][j] = new Cell(LandType.PLAIN, i, j);
+        for (int index = 0; index < keepsLocations.length; index++)
+            this.keepsLocations[index] = getCell(keepsLocations[index]);
         this.mapName = name;
     }
 

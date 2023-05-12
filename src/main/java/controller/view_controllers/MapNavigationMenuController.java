@@ -55,12 +55,19 @@ public class MapNavigationMenuController {
         Building building;
         LandType type;
         Man man;
-        for (int i = Math.max(0, controller.getXCoordinates() - mapOutputSize + 1);
-             i < Math.min(controller.getMapXSize(), controller.getXCoordinates() + mapOutputSize);
-             i++) {
-            for (int j =Math.max(0, controller.getYCoordinates() - mapOutputSize + 1);
-                 j < Math.min(controller.getMapYSize(), controller.getYCoordinates() + mapOutputSize);
-                 j++) {
+        for (int k = Math.max(0, controller.getXCoordinates() - mapOutputSize + 1);
+             k < Math.min(controller.getMapXSize(), controller.getXCoordinates() + mapOutputSize);
+             k++){
+            System.out.print(k + "|");
+        }
+
+        for (int j = Math.min(controller.getMapYSize(), controller.getYCoordinates() + mapOutputSize) - 1;
+             j >= Math.max(0, controller.getYCoordinates() - mapOutputSize + 1);
+             j--) {
+            System.out.print(j + "|");
+            for (int i = Math.max(0, controller.getXCoordinates() - mapOutputSize + 1);
+                 i < Math.min(controller.getMapXSize(), controller.getXCoordinates() + mapOutputSize);
+                 i++) {
                 currentCell = controller.getMapCell(i ,j);
                 backGroundColor = ((type = currentCell.getType()) != null) ? type.getANSI_BACKGROUND() : "";
                 if ((naturalEntityType = currentCell.getNaturalEntityType()) != null) {
@@ -79,12 +86,15 @@ public class MapNavigationMenuController {
 
                 System.out.print(backGroundColor + textColor + text + " " + "\u001B[0m" + "|");
             }
+
             System.out.print("\n");
-            for (int j =Math.max(0, controller.getYCoordinates() - mapOutputSize + 1);
-                 j < Math.min(controller.getMapYSize(), controller.getYCoordinates() + mapOutputSize);
-                 j++){
+
+            for (int k = Math.max(0, controller.getXCoordinates() - mapOutputSize + 1);
+                 k < Math.min(controller.getMapXSize(), controller.getXCoordinates() + mapOutputSize);
+                 k++){
                 System.out.print("---");
             }
+
             System.out.print("\n");
         }
     }
