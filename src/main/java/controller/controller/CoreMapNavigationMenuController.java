@@ -62,10 +62,10 @@ public class CoreMapNavigationMenuController {
         if (cell.getNaturalEntityType() != null)
             output += "NaturalEntity(Tree or Rocks) Type: " + cell.getNaturalEntityType().getANSI_COLOR() + cell.getNaturalEntityType().getNaturalEntityName() + "\u001B[0m\n";
         if (cell.getBuilding() != null)
-            output += "Building Type: " + cell.getBuilding().getName() + "owner: " + cell.getBuilding().getOwner() + "hitpoints: " + cell.getBuilding().getHitpoint() + "\n";
+            output += "Building Type: " + cell.getBuilding().getName() + " owner: " + cell.getBuilding().getOwner().getUsername() + " hitpoints: " + cell.getBuilding().getHitpoint() + "\n";
         if (cell.getMen() != null && cell.getMen().size() != 0)
             for (Man man : cell.getMen())
-                output += "Human Type: " + man.getName() + "owner: " + man.getOwner() + "hitpoints: " + man.getHitpoint() + "\n";
+                output += "Human Type: " + man.getName() + " owner: " + man.getOwner() + " hitpoints: " + man.getHitpoint() + "\n";
         return output;
     }
 }

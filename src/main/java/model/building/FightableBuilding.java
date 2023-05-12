@@ -10,7 +10,7 @@ public class FightableBuilding extends Building implements Fightable {
     private int damage;
       
     public FightableBuilding(int hitpoint, User owner, Cell cell, int damage) {
-        super(hitpoint, owner, cell);
+        super(hitpoint, owner, cell, "fighterBuilding");
         this.damage = damage;
     }
     

@@ -8,10 +8,11 @@ public class Building extends Destructable implements Passable {
     private final User owner;
     private Cell cell;
 
-    public Building(int hitpoint, User owner, Cell cell) {
+    public Building(int hitpoint, User owner, Cell cell, String name) {
         super(hitpoint);
         this.cell = cell;
         this.owner = owner;
+        this.name = name;
     }
 
     @Override
