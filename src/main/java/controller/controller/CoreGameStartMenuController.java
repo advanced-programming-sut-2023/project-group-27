@@ -91,7 +91,7 @@ public class CoreGameStartMenuController {
             user = thisGamePlayers.get(index);
             output += "\n" + (index + 1) + "- name:" + user.getUsername() + " color: "
                     + (colors.containsKey(user) ? colors.get(user).getColorName() : "-") + " keepLocationNumber: "
-                    + (keepCells.containsKey(user) ? keepCells.get(user) : "-");
+                    + (keepCells.containsKey(user) ? keepCells.get(user).getLocation() : "-");
         }
         return output;
     }

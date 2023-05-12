@@ -1,10 +1,7 @@
 package model.task;
 
 import controller.controller.Utilities;
-import model.Cell;
-import model.GameMap;
-import model.NaturalEntityType;
-import model.User;
+import model.*;
 import model.man.Man;
 import model.man.SoldierType;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,7 +23,7 @@ class MoveTest {
                 "test",
                 "a",
                 "b");
-        this.map = new GameMap(50, 50, "myMap", 8, new Cell[]{});
+        this.map = new GameMap(50, 50, "myMap", 8, new Location[]{});
         this.man = Utilities.getNewMan(SoldierType.ARCHER, user);
         map.getCell(0, 0).addMan(man);
         for (int i = 1; i < 50; i+= 2) {

@@ -16,7 +16,7 @@ public class MapEditMenuController {
         this.coreController = coreController;
     }
 
-    public String settexture(String input) {
+    public String setTexture(String input) {
         if ((dataHoldingUtility = Utilities.extractInputs(input)) == null)
             return "repetitive inputs are inserted!";
         LandType landType = LandType.getLandTypeByName(dataHoldingUtility.get("t"));
