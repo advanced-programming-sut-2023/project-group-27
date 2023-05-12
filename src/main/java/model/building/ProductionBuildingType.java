@@ -8,27 +8,27 @@ import model.castle_components.CastleComponentType;
 import java.util.HashMap;
 
 public enum ProductionBuildingType {
-    APPLEFARM("AppleFarm", 100, new int[]{0, 5, 1}, new ProductionRule[]{ProductionRules.APPLE.getProductionRule()}),
-    DAIRYFARM("DairyFarm", 100, new int[]{0, 10, 1}, new ProductionRule[]{ProductionRules.DAIRY1.getProductionRule(),
+    APPLEFARM("AppleFarm", 200, new int[]{30, 5, 1}, new ProductionRule[]{ProductionRules.APPLE.getProductionRule()}),
+    DAIRYFARM("DairyFarm", 100, new int[]{30, 10, 1}, new ProductionRule[]{ProductionRules.DAIRY1.getProductionRule(),
             ProductionRules.DAIRY2.getProductionRule()}),
-    HOPSFARM("HopsFarm", 100, new int[]{0, 15, 1}, new ProductionRule[]{ProductionRules.HOPS.getProductionRule()}),
-    HUNTINGPOST("HuntingPost", 100, new int[]{0, 5, 1}, new ProductionRule[]{ProductionRules.HUNTING.getProductionRule()}),
-    WHEATFARM("WheatFarm", 100, new int[]{0, 15, 1}, new ProductionRule[]{ProductionRules.WHEAT.getProductionRule()}),
-    BAKERY("Bakery", 100, new int[]{0, 10, 1}, new ProductionRule[]{ProductionRules.BAKERY.getProductionRule()}),
-    BREWERY("Brewery", 100, new int[]{0, 10, 1}, new ProductionRule[]{ProductionRules.BREWERY.getProductionRule()}),
-    WOODCUTTER("WoodCutter", 100, new int[]{0, 3, 1}, new ProductionRule[]{ProductionRules.WOOD.getProductionRule()}),
-    MILL("Mill", 100, new int[]{0, 20, 3}, new ProductionRule[]{ProductionRules.MILL.getProductionRule()}),
-    QUARRY("Quarry", 100, new int[]{0, 20, 3}, new ProductionRule[]{ProductionRules.STONE.getProductionRule()}),
-    PITCHRIG("PitchRig", 100, new int[]{0, 20, 1}, new ProductionRule[]{ProductionRules.PITCHRIG.getProductionRule()}),
-    IRONMINE("IronMine", 100, new int[]{0, 20, 2}, new ProductionRule[]{ProductionRules.IRONMINE.getProductionRule()}),
-    ARMOURER("Armourer", 100, new int[]{100, 20, 1}, new ProductionRule[]{ProductionRules.ARMOURER.getProductionRule()}),
-    POLETURNER("PoluternerWorkShop", 100, new int[]{100, 10, 1}, new ProductionRule[]{ProductionRules.POLETURNER1.getProductionRule(),
+    HOPSFARM("HopsFarm", 200, new int[]{40, 15, 1}, new ProductionRule[]{ProductionRules.HOPS.getProductionRule()}),
+    HUNTINGPOST("HuntingPost", 300, new int[]{20, 5, 1}, new ProductionRule[]{ProductionRules.HUNTING.getProductionRule()}),
+    WHEATFARM("WheatFarm", 100, new int[]{50, 15, 1}, new ProductionRule[]{ProductionRules.WHEAT.getProductionRule()}),
+    BAKERY("Bakery", 100, new int[]{60, 10, 1}, new ProductionRule[]{ProductionRules.BAKERY.getProductionRule()}),
+    BREWERY("Brewery", 100, new int[]{30, 10, 1}, new ProductionRule[]{ProductionRules.BREWERY.getProductionRule()}),
+    WOODCUTTER("WoodCutter", 200, new int[]{40, 3, 1}, new ProductionRule[]{ProductionRules.WOOD.getProductionRule()}),
+    MILL("Mill", 150, new int[]{60, 20, 3}, new ProductionRule[]{ProductionRules.MILL.getProductionRule()}),
+    QUARRY("Quarry", 100, new int[]{20, 20, 3}, new ProductionRule[]{ProductionRules.STONE.getProductionRule()}),
+    PITCHRIG("PitchRig", 100, new int[]{40, 20, 1}, new ProductionRule[]{ProductionRules.PITCHRIG.getProductionRule()}),
+    IRONMINE("IronMine", 180, new int[]{60, 20, 2}, new ProductionRule[]{ProductionRules.IRONMINE.getProductionRule()}),
+    ARMOURER("Armourer", 170, new int[]{100, 20, 1}, new ProductionRule[]{ProductionRules.ARMOURER.getProductionRule()}),
+    POLETURNER("PoluternerWorkShop", 200, new int[]{100, 10, 1}, new ProductionRule[]{ProductionRules.POLETURNER1.getProductionRule(),
             ProductionRules.POLETURNER2.getProductionRule()}),
-    FLETCHER("FletcherWorkShop", 100, new int[]{100, 20, 1}, new ProductionRule[]{ProductionRules.FLETCHER1.getProductionRule(),
+    FLETCHER("FletcherWorkShop", 400, new int[]{100, 20, 1}, new ProductionRule[]{ProductionRules.FLETCHER1.getProductionRule(),
             ProductionRules.FLETCHER2.getProductionRule()}),
-    BLACKSMITH("BlackSmith", 100, new int[]{100, 20, 1}, new ProductionRule[]{ProductionRules.BLACKSMITH1.getProductionRule(),
+    BLACKSMITH("BlackSmith", 300, new int[]{100, 20, 1}, new ProductionRule[]{ProductionRules.BLACKSMITH1.getProductionRule(),
             ProductionRules.BLACKSMITH2.getProductionRule()}),
-    INN("Inn", 100, new int[]{100, 20, 1}, new ProductionRule[]{ProductionRules.INN.getProductionRule()});
+    INN("Inn", 500, new int[]{100, 20, 1}, new ProductionRule[]{ProductionRules.INN.getProductionRule()});
 
     private static final HashMap<String, ProductionBuildingType> map = new HashMap<>();
     private final String name;

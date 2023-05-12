@@ -3,8 +3,8 @@ package model.castle_components;
 import java.util.HashMap;
 
 public enum CastleComponentType {
-    KEEP("Keep", 400 , new int[] {0, 0}),
-    BIGKEEP("BigKeep", 600, new int[] {0, 0}),
+    KEEP("Keep", 400 , new int[] {80, 80}),
+    BIGKEEP("BigKeep", 1600, new int[] {100, 100}),
     WATCHTOWER("WatchTower", 200, new int[] {10, 0}),
     ENVIRTOWER("EnvironmentTower", 200, new int[] {10, 0}),
     DEFENSIVETOWER("DefensiveTower", 200, new int[] {15, 0}),
@@ -29,7 +29,6 @@ public enum CastleComponentType {
             map.put(type.name, type);
         }
     }
-    // TODO remember to init before usage
 
     public static CastleComponentType getTypeByName(String input) {
         return map.get(input);

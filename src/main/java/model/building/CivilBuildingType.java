@@ -6,13 +6,13 @@ import model.User;
 import java.util.HashMap;
 
 public enum CivilBuildingType {
-    HOVEL("Hovel", 100, new int[] {0, 6, 0}),
-    CATHEDRAL("Cathedral", 1000, new int[] {1000, 0, 0}),
-    CHURCH("Church", 500, new int[] {250, 0, 0}),
-    BARRACKS("Barracks", 700, new int[] {0, 0, 15}),
-    MERCENARY_POST("MercenaryPost", 500, new int[] {0, 10, 0}),
-    ENGINEERS_GUILD("EngineersGuild", 400, new int[] {100, 10, 0}),
-    STABLE("Stable", 0 , null);
+    HOVEL("Hovel", 100, new int[] {100, 60, 20}),
+    CATHEDRAL("Cathedral", 1000, new int[] {100, 100, 100}),
+    CHURCH("Church", 500, new int[] {25, 30, 10}),
+    BARRACKS("Barracks", 700, new int[] {50, 10, 15}),
+    MERCENARY_POST("MercenaryPost", 500, new int[] {80, 10, 5}),
+    ENGINEERS_GUILD("EngineersGuild", 400, new int[] {100, 10, 15}),
+    STABLE("Stable", 1000 , new int[] {20, 50, 20});
 
     private static final HashMap<String, CivilBuildingType> map = new HashMap<>();
     private final String name;
