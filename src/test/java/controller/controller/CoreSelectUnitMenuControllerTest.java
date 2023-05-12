@@ -10,7 +10,7 @@ class CoreSelectUnitMenuControllerTest {
     private CoreSelectUnitMenuController coreSelectUnitMenuController;
     @BeforeEach
     void setUp() {
-        GameMap map = new GameMap(10, 10, "myMap");
+        GameMap map = new GameMap(10, 10, "myMap", 100, null);
 //        Utilities.getNewMan(SoldierType.ARCHER, )
 //        this.coreSelectUnitMenuController = new CoreSelectUnitMenuController();
     }

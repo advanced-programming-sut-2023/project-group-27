@@ -20,7 +20,7 @@ class CoreSelectBuildingMenuControllerTest {
 
     @BeforeEach
     void setUp() {
-        map = new GameMap(10, 10, "myMap");
+        map = new GameMap(10, 10, "myMap", 100, null);
         user = new User("user", "Password@1", "n", "s", "e", "q", "a");
         user2 = new User("user2", "Password@1", "n", "s", "e", "q", "a");
         User[] users = new User[]{user, user2};
