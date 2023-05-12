@@ -114,6 +114,9 @@ public class CoreGameMenuController {
 
     public String dropBuilding(int x , int y , String type){
         if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
+        if (!map.getCell(x, y).isPassable(null)) {
+            return "You can't build on this type\n";
+        }
         Building building;
         if (CivilBuildingType.getTypeByName(type) != null) {
             CivilBuildingType type1 = CivilBuildingType.getTypeByName(type);
