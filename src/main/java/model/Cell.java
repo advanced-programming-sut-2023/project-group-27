@@ -118,7 +118,7 @@ public class Cell implements Passable{
         men.clear();
     }
 
-    public void storm() {
+    public void flush() {
         building = null;
         naturalEntityType = null;
         men.clear();

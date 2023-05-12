@@ -18,7 +18,7 @@ public class Utilities {
                 "I shall have my revenge, in this life or the next.",
                 "Whatever It takes.",
                 "Peace through Strength",
-                "We quell the storm, and ride the thunder",
+                "We quell the flush, and ride the thunder",
                 "Better to die than to be a coward",
                 "War wins land, Peace wins People"
         );

@@ -51,7 +51,7 @@ public class CoreGameStartMenuController {
                 case "Exit":
                     return;
                 case "Start Game":
-                    (new CoreGameStartMenuController(scanner, null)).run();
+                    (new CoreGameMenuController(match, scanner)).run();
                     return;
                 case "Enter Map Navigation Menu":
                     (new CoreMapNavigationMenuController(40, 40, scanner, selectedMap)).run();
@@ -96,14 +96,20 @@ public class CoreGameStartMenuController {
         return output;
     }
 
-    public String showSelectedMapName() {
-        return ((selectedMap != null)
-                ? ("name: " + selectedMap.getMapName() + " capacity: " + selectedMap.getCapacity())
-                : "no map selected!");
+    public String showSelectedMapInfo() {
+        if (selectedMap != null) {
+            String output = "name: " + selectedMap.getMapName() + " capacity: " + selectedMap.getCapacity() + "\nkeep positions:";
+            for (Cell cell : selectedMap.getKeepsLocations())
+                output += "\n" + cell.getLocation().toString();
+            return output;
+        }
+        return "no map selected!";
     }
 
     public String addPlayer(int number) {
-        if ((selectedMap != null && (selectedMap.getCapacity() == thisGamePlayers.size())) || (selectedMap == null && thisGamePlayers.size() == 8))
+        if ((selectedMap != null &&
+                (selectedMap.getCapacity() == thisGamePlayers.size()))
+                || (selectedMap == null && thisGamePlayers.size() == 8))
             return "capacity is already full!";
         if (number <= 0 || number > allUsers.length)
             return "number is invalid!";
@@ -160,6 +166,10 @@ public class CoreGameStartMenuController {
         return "Color set successfully.";
     }
 
+    public void resetColors() {
+        colors.clear();
+    }
+
     public String assignKeepsAndStartGame(int[] numbers) {
         if (selectedMap == null)
             return "select a map first!";
@@ -179,12 +189,13 @@ public class CoreGameStartMenuController {
 
 
         for (int index = 0; index < thisGamePlayers.size(); index++) {
-            mapsKeepCells[cellsToAssign.get(index)].storm();
+            mapsKeepCells[cellsToAssign.get(index)].flush();
 
             CastleComponent keep = new CastleComponent(CastleComponentType.KEEP, thisGamePlayers.get(index));
             Man lord = new Soldier(SoldierType.LORD, thisGamePlayers.get(index));
 
-            thisGamePlayers.get(index).setMonarchy(new Monarchy(thisGamePlayers.get(index), colors.get(thisGamePlayers.get(index))));
+            thisGamePlayers.get(index).setMonarchy(new Monarchy(thisGamePlayers.get(index),
+                    colors.get(thisGamePlayers.get(index))));
             thisGamePlayers.get(index).getMonarchy().addBuilding(keep);
             thisGamePlayers.get(index).getMonarchy().addMan(lord);
             mapsKeepCells[cellsToAssign.get(index)].setBuilding(keep);
