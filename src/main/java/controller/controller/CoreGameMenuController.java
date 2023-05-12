@@ -1,6 +1,7 @@
 package controller.controller;
 
 import controller.view_controllers.GameMenuController;
+import controller.view_controllers.MapEditMenuController;
 import controller.view_controllers.Utilities;
 import model.*;
 import model.building.Building;
@@ -8,6 +9,7 @@ import model.man.Man;
 import model.man.SoldierType;
 import org.apache.commons.lang3.math.NumberUtils;
 import view.GameMenu;
+import view.MapEditMenu;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -33,7 +35,7 @@ public class CoreGameMenuController {
         this.map = currentMatch.getCurrentMatchMap();
         this.gameController = new GameMenuController(this, currentMatch);
         this.gameMenu = new GameMenu(this.gameController);
-        coreTradeMenuController = new CoreTradeMenuController(StrongholdCrusader.getCurrentUser() , scanner);
+        coreTradeMenuController = new CoreTradeMenuController(currentMatch, StrongholdCrusader.getCurrentUser() , scanner);
     }
 
     public String run(){
@@ -120,9 +122,10 @@ public class CoreGameMenuController {
         int x = Integer.parseInt(xStr), y = Integer.parseInt(yStr);
         if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         Building selectedBuilding = map.getCell(x, y).getBuilding();
-        if (selectedBuilding == null) {
+        if (selectedBuilding == null)
             return "no building here\n";
-        }
+        if (!selectedBuilding.getOwner().equals(currentUser))
+            return "This building is not yours.";
         coreBuildingController =
                 new CoreSelectBuildingMenuController(selectedBuilding , scanner, currentMonarchy);
         coreBuildingController.run();
@@ -147,6 +150,7 @@ public class CoreGameMenuController {
             }
         }
         theSelected.removeIf(selectable -> !selectable.getName().equals(unitType));
+        theSelected.removeIf(selectable -> !selectable.getOwner().equals(currentMatch.getCurrentUser()));
         SoldierType type = SoldierType.getTypeByName(unitType);
         if (type == null) return "Unit type is invalid!";
         if (theSelected.size() == 0) return "There is not any unit of this type on this cell!";
@@ -163,13 +167,23 @@ public class CoreGameMenuController {
         if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         CoreMapNavigationMenuController coreNavigationController =
                 new CoreMapNavigationMenuController(
-                        x, y, scanner, currentMatch.getCurrentMatchMap(), this);
+                        x, y, scanner, currentMatch.getCurrentMatchMap());
         coreNavigationController.run();
         return null;
     }
 
+
+    public void enterMapEdit(){
+        CoreMapEditMenuController coreController = new CoreMapEditMenuController(currentMatch, scanner);
+        coreController.run();
+    }
+
+    public String showCurrentPlayer() {
+        return currentMatch.getCurrentUser().getNickname();
+    }
+
     public void enterShop() {
-        coreShopController = new CoreShopMenuController(scanner);
-        coreShopController.run();
+        CoreShopMenuController coreShopMenuController = new CoreShopMenuController(currentMatch, scanner);
+        coreShopMenuController.run();
     }
 }

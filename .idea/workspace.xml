@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="added act and canAct for productionBuildings">
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/MapEditMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/MapEditMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/SelectBuildingMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/SelectBuildingMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/SoldierType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/SoldierType.java" afterDir="false" />
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="adding start game logic9">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/StrongholdCrusader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/StrongholdCrusader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +19,8 @@
       <list>
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -135,8 +133,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CoreRegisterMenuControllerTest.initializeAndFinalizeUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AP-project-group27" />
+    <configuration name="CoreGameMenuControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project-group-27" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="controller.controller.*" />
@@ -144,9 +142,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="controller.controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.controller.CoreRegisterMenuControllerTest" />
-      <option name="METHOD_NAME" value="initializeAndFinalizeUser" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="controller.controller.CoreGameMenuControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -201,11 +198,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.CoreGameMenuControllerTest" />
         <item itemvalue="JUnit.CoreRegisterMenuControllerTest.successfulRegisterTest" />
         <item itemvalue="JUnit.CoreRegisterMenuControllerTest.runTest (1)" />
         <item itemvalue="JUnit.CoreRegisterMenuControllerTest.runTest" />
-        <item itemvalue="JUnit.CoreRegisterMenuControllerTest.initializeAndFinalizeUser" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -235,7 +232,9 @@
       <workItem from="1683186366854" duration="25591000" />
       <workItem from="1683387601968" duration="472000" />
       <workItem from="1683457673315" duration="17763000" />
-      <workItem from="1683641315148" duration="3329000" />
+      <workItem from="1683641315148" duration="5245000" />
+      <workItem from="1683725694757" duration="17361000" />
+      <workItem from="1683863209346" duration="10986000" />
     </task>
     <task id="LOCAL-00001" summary="first commit to initial_base">
       <created>1681417450067</created>
@@ -517,7 +516,70 @@
       <option name="project" value="LOCAL" />
       <updated>1683644388569</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="bug fixes">
+      <created>1683644683037</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1683644683037</updated>
+    </task>
+    <task id="LOCAL-00042" summary="adding start game logic">
+      <created>1683735998323</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1683735998323</updated>
+    </task>
+    <task id="LOCAL-00043" summary="adding start game logic">
+      <created>1683736841416</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1683736841416</updated>
+    </task>
+    <task id="LOCAL-00044" summary="adding start game logic4">
+      <created>1683740904844</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1683740904844</updated>
+    </task>
+    <task id="LOCAL-00045" summary="adding start game logic5">
+      <created>1683744451174</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1683744451174</updated>
+    </task>
+    <task id="LOCAL-00046" summary="adding start game logic6">
+      <created>1683866451962</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1683866451962</updated>
+    </task>
+    <task id="LOCAL-00047" summary="adding start game logic7">
+      <created>1683868892621</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1683868892621</updated>
+    </task>
+    <task id="LOCAL-00048" summary="adding start game logic8">
+      <created>1683872301951</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1683872301951</updated>
+    </task>
+    <task id="LOCAL-00049" summary="adding start game logic9">
+      <created>1683873026192</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1683873026192</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,15 +630,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="first commit to initial_base" />
-    <MESSAGE value="added Map class" />
-    <MESSAGE value="edited Cell class" />
-    <MESSAGE value="completed my first round of tasks" />
-    <MESSAGE value="completing the fields of classes" />
-    <MESSAGE value="added selectBuildingMenu and controllers and enums" />
-    <MESSAGE value="final development on select unit menu" />
-    <MESSAGE value="caught the deadline" />
-    <MESSAGE value="add other tests for register&#10;slight change in menu design" />
     <MESSAGE value="finalized checkpoint 1" />
     <MESSAGE value="map navigation feature" />
     <MESSAGE value="completed map navigation menu" />
@@ -593,6 +646,21 @@
     <MESSAGE value="map editing controller and other changes" />
     <MESSAGE value="fixed color code problems and enhanced show map output by adding separation" />
     <MESSAGE value="added act and canAct for productionBuildings" />
-    <option name="LAST_COMMIT_MESSAGE" value="added act and canAct for productionBuildings" />
+    <MESSAGE value="bug fixes" />
+    <MESSAGE value="adding start game logic" />
+    <MESSAGE value="adding start game logic3" />
+    <MESSAGE value="adding start game logic4" />
+    <MESSAGE value="adding start game logic5" />
+    <MESSAGE value="adding start game logic6" />
+    <MESSAGE value="adding start game logic7" />
+    <MESSAGE value="adding start game logic8" />
+    <MESSAGE value="adding start game logic9" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding start game logic9" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/project_group_27$Main.ic" NAME="Main Coverage Results" MODIFIED="1683744260592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest.ic" NAME="CoreGameMenuControllerTest Coverage Results" MODIFIED="1683744288536" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controller.controller.*</FILTER>
+    </SUITE>
   </component>
 </project>

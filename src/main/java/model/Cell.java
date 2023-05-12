@@ -111,10 +111,18 @@ public class Cell implements Passable{
     public void clear() {
         type = LandType.PLAIN;
         naturalEntityType = null;
-        building.getOwner().getMonarchy().removeBuilding(building);
-        building = null;
+        if (building != null){
+            building.getOwner().getMonarchy().removeBuilding(building);
+            building = null;
+        }
         for (Man man : this.men)
             man.getOwner().getMonarchy().removeMan(man);
+        men.clear();
+    }
+
+    public void flush() {
+        building = null;
+        naturalEntityType = null;
         men.clear();
     }
 }

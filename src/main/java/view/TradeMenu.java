@@ -17,10 +17,10 @@ public class TradeMenu extends MenuBase{
     public String run() {
         System.out.println("Entered Trade Menu");
         System.out.println("your options are:" +
-                "\n1. trade -t [resourceType] -a [resourceAmount] -p [price] -m [message]" +
+                "\n1. trade -t [resourceType] -a [resourceAmount] -p [price] -m [message] -u [user]" +
                 "\n2. trade list" +
                 "\n3. trade history" +
-                "\n4. trade accept trade accept -i [id] -m message" +
+                "\n4. trade accept -i [id] -m message" +
                 "\n5. Exit");
         while (true) {
             String command = scanner.nextLine();

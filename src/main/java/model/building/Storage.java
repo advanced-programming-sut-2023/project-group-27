@@ -39,8 +39,6 @@ public class Storage extends Building{
     }
 
     public HashMap<GoodsType, Integer> getMap() {
-        HashMap<GoodsType, Integer> output = new HashMap<>();
-        output.putAll(goodsMap);
-        return output;
+        return goodsMap;
     }
 }

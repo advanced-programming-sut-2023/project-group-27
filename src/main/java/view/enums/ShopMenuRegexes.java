@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 public enum ShopMenuRegexes {
     EXIT("\\s*Exit\\s*"),
     SHOWPRICELIST("\\s*show\\s+price\\s+list\\s*"),
-    BUY("\\s*buy\\s*(?<options>((\\s+((-[a-zA-Z]\\s+((\"[^\"]+\")|(\\S+)))|(--[a-zA-Z]+\\s+((\"[^\"]+\")|(\\S+)))))+))"),
-    SELL("\\s*sell\\s*(?<options>((\\s+((-[a-zA-Z]\\s+((\"[^\"]+\")|(\\S+)))|(--[a-zA-Z]+\\s+((\"[^\"]+\")|(\\S+)))))+))");
+    BUY("\\s*buy\\s*(?<options>((\\s+((-[a-zA-Z0-9]+\\s+((\"[^\"]+\")|(\\S+)))|(--[a-zA-Z]+\\s+((\"[^\"]+\")|(\\S+)))))+))"),
+    SELL("\\s*sell\\s*(?<options>((\\s+((-[a-zA-Z0-9]+\\s+((\"[^\"]+\")|(\\S+)))|(--[a-zA-Z]+\\s+((\"[^\"]+\")|(\\S+)))))+))");
 
     private final Pattern pattern;
 

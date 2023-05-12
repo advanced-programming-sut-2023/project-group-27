@@ -73,8 +73,7 @@ public class SelectUnitMenuController {
         if (Utilities.XYCheck(x2, y2 , map) != null) return Utilities.XYCheck(x2, y2 , map);
         if (!(theSelected.get(0) instanceof Movable))
             return "You can not move this unit!";
-        coreController.patrol(x1 , y1 , x2 , y2);
-        return "Patrol success!";
+        return coreController.patrol(x1 , y1 , x2 , y2);
     }
 
     public String setStatus(Matcher matcher) {

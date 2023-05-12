@@ -1,7 +1,6 @@
 package controller.controller;
 
 import controller.view_controllers.MainMenuController;
-import controller.view_controllers.ProfileMenuController;
 import model.StrongholdCrusader;
 import view.MainMenu;
 
@@ -10,16 +9,15 @@ import java.util.Scanner;
 public class CoreMainMenuController {
     private final Scanner scanner;
     private final MainMenu mainMenu;
-
     public CoreMainMenuController(Scanner scanner){
         this.scanner = scanner;
         MainMenuController mainController = new MainMenuController(this);
-        mainMenu = new MainMenu(mainController);
+        mainMenu = new MainMenu(mainController, scanner);
     }
     public String run(){
         String mainMenuResult;
         while (true) {
-            mainMenuResult = mainMenu.run(scanner);
+            mainMenuResult = mainMenu.run();
             switch (mainMenuResult) {
                 case "Logout":
                     return "Logout";
@@ -32,10 +30,10 @@ public class CoreMainMenuController {
                     CoreMapEditMenuController coreMapEditController = new CoreMapEditMenuController(null, scanner);
                     coreMapEditController.run();
                     break;
-                case "Enter game menu":
-                    CoreGameMenuController coreGameController =
-                            new CoreGameMenuController(null, scanner);
-                    coreGameController.run();
+                case "Enter game start menu":
+                    CoreGameStartMenuController coreGameStartController =
+                            new CoreGameStartMenuController(scanner, StrongholdCrusader.getLoggedInUser());
+                    coreGameStartController.run();
                     break;
             }
         }

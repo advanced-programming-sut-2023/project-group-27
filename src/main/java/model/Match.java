@@ -11,7 +11,7 @@ public class Match {
     private final List<User> users;
     private Monarchy currentMonarchy;
     private int turnNumber;
-    private List<Task> taskList;
+    private final List<Task> taskList = new ArrayList<>();
 
     public Match(GameMap currentMatchMap, List<User> users) {
         this.currentMatchMap = currentMatchMap;
@@ -33,12 +33,12 @@ public class Match {
     }
 
     private void updateTasks() {
-        List<Task> newList = new ArrayList<>();
-        for (Task task : taskList) {
-            newList.add(updatedTask(task));
-        }
-        taskList.clear();
-        taskList.addAll(newList);
+//        List<Task> newList = new ArrayList<>();
+//        for (Task task : taskList) {
+//            newList.add(updatedTask(task));
+//        }
+//        taskList.clear();
+//        taskList.addAll(newList);
     }
 
     private Task updatedTask(Task task) {
@@ -76,5 +76,16 @@ public class Match {
                 monarchy.run();
             }
         }
+    }
+
+    public User getUserByName(String otherUserName) {
+        User user = null;
+        for (User user1 : users) {
+            if (user1.getUsername().equals(otherUserName)) {
+                user = user1;
+                break;
+            }
+        }
+        return user;
     }
 }

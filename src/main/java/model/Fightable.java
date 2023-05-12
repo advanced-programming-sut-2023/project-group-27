@@ -1,5 +1,9 @@
 package model;
 
 public interface Fightable extends Selectable {
-    public void fight(Destructable destructable);
+    void fight(Destructable destructable);
+    void fight(Location location);
+    int getHitPoint();
+
+    int getAttackRange();
 }

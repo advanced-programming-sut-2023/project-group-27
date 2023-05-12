@@ -1,6 +1,7 @@
 package model.task;
 
 import controller.controller.Utilities;
+import model.Cell;
 import model.GameMap;
 import model.NaturalEntityType;
 import model.User;
@@ -25,7 +26,7 @@ class MoveTest {
                 "test",
                 "a",
                 "b");
-        this.map = new GameMap(50, 50, "myMap");
+        this.map = new GameMap(50, 50, "myMap", 8, new Cell[]{});
         this.man = Utilities.getNewMan(SoldierType.ARCHER, user);
         map.getCell(0, 0).addMan(man);
         for (int i = 1; i < 50; i+= 2) {

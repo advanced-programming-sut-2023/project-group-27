@@ -14,4 +14,6 @@ public abstract class Destructable {
     public void setHitpoint(int hitpoint) {
         this.hitpoint = hitpoint;
     }
+
+    public abstract Location getLocation();
 }

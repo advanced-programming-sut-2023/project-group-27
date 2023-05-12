@@ -29,7 +29,8 @@ public enum SoldierType {
     SLINGER("Slinger", 0, 0, 0d, 0, 12, "arab", null),
     HORSEARCHER("HorseArcher", 0, 0, 0d, 0, 60, "arab", null),
     FIRETHROWER("FireThrower", 0, 0, 0d, 0, 100, "arab", null),
-    ENGINEER("Engineer", 0, 0, 1.5, 0, 40, "guild", null);
+    ENGINEER("Engineer", 0, 0, 1.5, 0, 40, "guild", null),
+    LORD("Lord",400, 100, 1.0 , null, 0 , "LordShip", null);
 
     private static final HashMap<String, SoldierType> map = new HashMap<>();
     private final String name;
@@ -53,6 +54,7 @@ public enum SoldierType {
 
     public static void init() {
         for (SoldierType type : values()) {
+            if (type.equals(LORD)) continue;
             map.put(type.name, type);
         }
     }
@@ -90,7 +92,7 @@ public enum SoldierType {
         return requirements;
     }
 
-    public int getRange() {
+    public Integer getRange() {
         return range;
     }
 }

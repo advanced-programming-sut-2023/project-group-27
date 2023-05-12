@@ -9,8 +9,9 @@ public class Building extends Destructable implements Passable {
     private Cell cell;
     private Location location;
 
-    public Building(int hitpoint, User owner) {
+    public Building(int hitpoint, User owner, Location location) {
         super(hitpoint);
+        this.location = location;
         this.owner = owner;
     }
 

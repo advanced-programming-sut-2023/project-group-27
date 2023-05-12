@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class CoreMapEditMenuController {
     private final Scanner scanner;
     private final MapEditMenu mapEditMenu;
-
+    private final MapEditMenuController mapEditMenuController;
     private final Match currentMatch;
     private final GameMap currentMap;
     private User currentOwner;
@@ -24,7 +24,8 @@ public class CoreMapEditMenuController {
         this.currentMap = match.getCurrentMatchMap();
         this.currentOwner = match.getCurrentMonarchy().getKing();
         this.scanner = scanner;
-        mapEditMenu = new MapEditMenu(new MapEditMenuController(this), scanner);
+        this.mapEditMenuController = new MapEditMenuController(this);
+        this.mapEditMenu = new MapEditMenu(this.mapEditMenuController, scanner);
     }
 
     public void run(){
@@ -53,8 +54,8 @@ public class CoreMapEditMenuController {
         if (!Utilities.checkRectanglePoints(location1, location2, currentMap))
             return "Invalid Locations for Rectangle points!";
         String output = "";
-        for (int i = location1.x; i <= location1.y; i++) {
-            for (int j = location2.x; j <= location2.y; j++) {
+        for (int i = location1.x; i <= location2.x; i++) {
+            for (int j = location1.y; j <= location2.y; j++) {
                 if (!Utilities.checkTextureChangePermission(currentMap.getCell(i, j))) {
                     output += "There's  building, tree or person in x: " + i + " and y: " + j + ". can't change the texture!\n";
                     continue;
@@ -169,7 +170,7 @@ public class CoreMapEditMenuController {
             building = new ProductionBuilding((ProductionBuildingType) type, currentOwner, currentOwner.getMonarchy());
         else
             //(type instanceof CastleComponentType)
-            building = new CastleComponent(((CastleComponentType) type).getHitpoint(), (CastleComponentType) type, currentOwner );
+            building = new CastleComponent((CastleComponentType) type, currentOwner );
         if (!Utilities.canBuildOnThisType(building, currentCell.getType()))
             return "Can't build this building on this type of land.";
 

@@ -1,20 +1,23 @@
 package model;
 
 public class GameMap {
-    private String mapName;
+    private final String mapName;
     private final int width;
     private final int height;
-    private final Cell [][] map;
 
-    public GameMap(int width, int height, String name) {
+    private final int capacity;
+    private final Cell [][] map;
+    private final Cell[] keepsLocations;
+
+    public GameMap(int width, int height, String name, int capacity, Cell[] keepsLocations) {
         this.width = width;
         this.height = height;
+        this.capacity = capacity;
+        this.keepsLocations = keepsLocations;
         map = new Cell[width][height];
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
+        for (int i = 0; i < width; i++)
+            for (int j = 0; j < height; j++)
                 map[i][j] = new Cell(LandType.PLAIN, i, j);
-            }
-        }
         this.mapName = name;
     }
 
@@ -30,6 +33,10 @@ public class GameMap {
         return height;
     }
 
+    public int getCapacity() {
+        return capacity;
+    }
+
     public Cell getCell(int x, int y) {
         return map[x][y];
     }
@@ -40,5 +47,9 @@ public class GameMap {
 
     public Cell[][] getMap() {
         return map;
+    }
+
+    public Cell[] getKeepsLocations() {
+        return keepsLocations;
     }
 }

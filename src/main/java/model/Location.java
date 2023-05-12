@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Location{
+public class Location {
     public int x;
     public int y;
 
@@ -27,5 +27,33 @@ public class Location{
             neighbors.add(map.getCell(x, y + 1).getLocation());
         }
         return neighbors;
+    }
+
+    public int distance(Location location) {
+        return Math.abs(x - location.x) + Math.abs(y - location.y);
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
+  
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof Location)) {
+            return false;
+        }
+        Location location = (Location) o;
+        return location.x == this.x && location.y == this.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return x * 1000 + y;
     }
 }
