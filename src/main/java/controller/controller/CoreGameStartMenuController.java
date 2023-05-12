@@ -67,7 +67,7 @@ public class CoreGameStartMenuController {
         String output = "all users:";
         for (int index = 0; index < allUsers.length; index++) {
             user = allUsers[index];
-            output += "\n" + (index + 1) + "- name:" + user.getUsername() + " aka: " + user.getNickname() + "highscore: " + user.getHighScore();
+            output += "\n" + (index + 1) + "- name:" + user.getUsername() + " aka: " + user.getNickname() + " highscore: " + user.getHighScore();
         }
         return output;
     }
