@@ -37,11 +37,12 @@ public class Controller {
         ArrayList<GameMap> gameMapsToBeAdded = fetchedData.getAllMaps();
         StrongholdCrusader.addAllUsers(usersToBeAdded);
         StrongholdCrusader.addAllMaps(gameMapsToBeAdded);
+        StrongholdCrusader.addAllStaticMaps(gameMapsToBeAdded);
     }
 
     public void pushData() throws IOException {
         ArrayList<User> users = new ArrayList<>(StrongholdCrusader.getAllUsers().values());
-        ArrayList<GameMap> gameMaps = new ArrayList<>(StrongholdCrusader.getAllMaps().values());
+        ArrayList<GameMap> gameMaps = new ArrayList<>(StrongholdCrusader.getAllStaticMaps().values());
         Data dataToBePushed = new Data(users, gameMaps);
 
         FileWriter fileWriter = new FileWriter("src/main/resources/data/data.json");
