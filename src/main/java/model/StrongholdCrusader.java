@@ -10,9 +10,9 @@ public class StrongholdCrusader {
     private static final HashMap<String , GameMap> allMaps = new HashMap<>();
     private static final HashMap<String , User> allUsers = new HashMap<>();
     private static final List<String> securityQuestions = List.of(
-            "What is my father’s name?",
-            "What was my first pet’s name?",
-            "What is my mother’s last name?",
+            "What is my father's name?",
+            "What was my first pet's name?",
+            "What is my mother's last name?",
             "What is your favorite video game?",
             "What was name of your first crush?"
     );

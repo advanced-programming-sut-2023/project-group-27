@@ -12,7 +12,7 @@ public enum MonarchyColorType {
     CYAN("Cyan"),
     BROWN("Brown");
 
-    private static HashMap<String, MonarchyColorType> map;
+    private static HashMap<String, MonarchyColorType> map = new HashMap<>();
     private String colorName;
     MonarchyColorType(String colorName) {
         this.colorName = colorName;

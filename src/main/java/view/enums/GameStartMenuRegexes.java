@@ -7,7 +7,7 @@ public enum GameStartMenuRegexes {
     SHOW_ALL_USERS("\\s*show\\s+all\\s+users\\s*"),
     SHOW_ALL_MAPS("\\s*show\\s+all\\s+maps\\s*"),
     SHOW_GAME_PLAYERS("\\s*show\\s+selected\\s+players\\s*"),
-    SHOW_SELECTED_MAP_INFO("\\s*show\\s+selected\\s+map\\s*"),
+    SHOW_SELECTED_MAP_INFO("\\s*show\\s+selected\\s+map\\s+info\\s*"),
     NAVIGATE_SELECTED_MAP("\\s*navigate\\s+selected\\s+map\\s*"),
     ADD_PLAYER("\\s*add\\s+player\\s+(?<data>\\d+)\\s*"),
     REMOVE_PLAYER("\\s*remove\\s+player\\s+(?<data>\\d+)\\s*"),
