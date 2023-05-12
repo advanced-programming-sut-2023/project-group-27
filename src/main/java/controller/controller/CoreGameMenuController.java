@@ -1,7 +1,6 @@
 package controller.controller;
 
 import controller.view_controllers.GameMenuController;
-import controller.view_controllers.MapEditMenuController;
 import controller.view_controllers.Utilities;
 import model.*;
 import model.building.Building;
@@ -9,7 +8,6 @@ import model.man.Man;
 import model.man.SoldierType;
 import org.apache.commons.lang3.math.NumberUtils;
 import view.GameMenu;
-import view.MapEditMenu;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -154,7 +152,7 @@ public class CoreGameMenuController {
         SoldierType type = SoldierType.getTypeByName(unitType);
         if (type == null) return "Unit type is invalid!";
         if (theSelected.size() == 0) return "There is not any unit of this type on this cell!";
-        coreUnitController = new CoreSelectUnitMenuController(theSelected, currentMatch , scanner, currentUser, map, type);
+        coreUnitController = new CoreSelectUnitMenuController(theSelected, currentMatch , scanner, currentUser, map, x, y, type);
         coreUnitController.run();
         return null;
     }
