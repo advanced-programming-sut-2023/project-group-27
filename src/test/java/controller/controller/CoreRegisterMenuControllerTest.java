@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import view.enums.RegisterMenuRegexes;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -51,7 +52,7 @@ class CoreRegisterMenuControllerTest {
                     "Exit'," +
                     "'User registered successfully :)\n'",
     })
-    void runTest(String input, String expectedOutput) {
+    void runTest(String input, String expectedOutput) throws IOException {
         CoreRegisterMenuController coreController =
                 new CoreRegisterMenuController(new Scanner(input));
         coreController.run();
@@ -59,7 +60,7 @@ class CoreRegisterMenuControllerTest {
     }
 
     @Test
-    void successfulRegisterTest() {
+    void successfulRegisterTest() throws IOException {
         String input = "user create -u user -p Password@1 -n nick --email m@m.com\n" +
                 "question pick -q 1 -a Tony -c Tony\nExit";
         CoreRegisterMenuController coreController =

@@ -1,5 +1,6 @@
 package controller.controller;
 
+import controller.Controller;
 import controller.view_controllers.GameStartMenuController;
 import model.*;
 import model.castle_components.CastleComponent;
@@ -8,7 +9,9 @@ import model.man.Man;
 import model.man.Soldier;
 import model.man.SoldierType;
 import view.GameStartMenu;
+import view.MapEditMenu;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -43,7 +46,10 @@ public class CoreGameStartMenuController {
         keepCells = new HashMap<>();
     }
 
-    public void run() {
+    public void run() throws IOException {
+        Controller controller = new Controller(null);
+        controller.pushData();
+        controller.fetchData();
         String gameStartMenuResult;
         while (true) {
             gameStartMenuResult = gameStartMenu.run();

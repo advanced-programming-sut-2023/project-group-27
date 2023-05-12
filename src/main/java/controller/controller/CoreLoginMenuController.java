@@ -5,6 +5,7 @@ import model.StrongholdCrusader;
 import model.User;
 import view.LoginMenu;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class CoreLoginMenuController {
@@ -22,7 +23,7 @@ public class CoreLoginMenuController {
         return loginController;
     }
 
-    public String run (){
+    public String run () throws IOException {
         String loginMenuResult;
         while (true) {
             loginMenuResult = loginMenu.run();
