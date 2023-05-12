@@ -5,6 +5,7 @@ import controller.view_controllers.MapEditMenuController;
 import controller.view_controllers.Utilities;
 import model.*;
 import model.building.Building;
+import model.man.Man;
 import model.man.SoldierType;
 import org.apache.commons.lang3.math.NumberUtils;
 import view.GameMenu;
@@ -23,6 +24,7 @@ public class CoreGameMenuController {
     private final CoreTradeMenuController coreTradeMenuController;
     private CoreSelectUnitMenuController coreUnitController;
     private CoreSelectBuildingMenuController coreBuildingController;
+    private CoreShopMenuController coreShopController;
     private GameMenuController gameController;
 
     public CoreGameMenuController(Match currentMatch, Scanner scanner) {
@@ -137,12 +139,22 @@ public class CoreGameMenuController {
         int x = Integer.parseInt(xStr), y = Integer.parseInt(yStr);
         if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         ArrayList<Selectable> theSelected = map.getCell(x , y).getSelectables();
+        for (Selectable selectable : theSelected) {
+            if (selectable instanceof Man) {
+                if (!((Man) selectable).getOwner().equals(currentUser))
+                    theSelected.remove(selectable);
+            }
+            if (selectable instanceof Building) {
+                if (!((Building) selectable).getOwner().equals(currentUser))
+                    theSelected.remove(selectable);
+            }
+        }
         theSelected.removeIf(selectable -> !selectable.getName().equals(unitType));
         theSelected.removeIf(selectable -> !selectable.getOwner().equals(currentMatch.getCurrentUser()));
         SoldierType type = SoldierType.getTypeByName(unitType);
         if (type == null) return "Unit type is invalid!";
         if (theSelected.size() == 0) return "There is not any unit of this type on this cell!";
-        coreUnitController = new CoreSelectUnitMenuController(theSelected, currentMatch , scanner, map, type);
+        coreUnitController = new CoreSelectUnitMenuController(theSelected, currentMatch , scanner, currentUser, map, type);
         coreUnitController.run();
         return null;
     }
@@ -159,6 +171,7 @@ public class CoreGameMenuController {
         coreNavigationController.run();
         return null;
     }
+
 
     public void enterMapEdit(){
         CoreMapEditMenuController coreController = new CoreMapEditMenuController(currentMatch, scanner);
