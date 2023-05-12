@@ -49,7 +49,8 @@ class CoreMapEditMenuControllerTest {
                 coreMapEditMenuController.setTexture(new Location(2, 2), LandType.ROCKY));
         assertEquals("Texture changed successfully!", coreMapEditMenuController
                 .setTexture(new Location(1, 1), LandType.ROCKY));
-        assertEquals("There's  building, tree or person in x: 2 and y: 2. can't change the texture!\n" +
+        assertEquals("There's  building, tree or person in x: 2 and y: 1. can't change the texture!\n" +
+                        "There's  building, tree or person in x: 2 and y: 2. can't change the texture!\n" +
                         "Texture of locations not specified above have successfully changed!",
                 coreMapEditMenuController.setTexture(new Location(1, 1),
                         new Location(3, 3), LandType.ROCKY));
