@@ -10,7 +10,7 @@ public class Soldier extends Man{
     private SoldierType soldierType;
     private Task task;
     private String state;
-    private int range;
+    private Integer range;
     private int damage;
     private boolean isFighting;
 
@@ -18,6 +18,7 @@ public class Soldier extends Man{
         super(soldierType.getHitpoint(), soldierType.getName(), owner, soldierType.getMovementSpeed());
         this.damage = soldierType.getDamage();
         this.range = soldierType.getRange();
+        this.state = "standing";
         isFighting = false;
     }
 

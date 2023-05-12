@@ -107,8 +107,7 @@ public class GameMenuController {
     }
 
     public void enterShop() {
-
-        // TODO implement here
+        coreController.enterShop();
     }
 
     private static String getError(boolean checkRequiredArgs, String error, Map<String, String> args, int expectedSize) {
@@ -126,5 +125,13 @@ public class GameMenuController {
         String options = matcher.group("options");
         Map<String, String> args = Utilities.extractOptionsFromString(options);
         return args;
+    }
+
+    public void enterMapEdit() {
+        coreController.enterMapEdit();
+    }
+
+    public String showCurrentPlayer() {
+        return coreController.showCurrentPlayer();
     }
 }

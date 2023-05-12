@@ -58,7 +58,7 @@ public class MapNavigationMenuController {
         for (int i = Math.max(0, controller.getXCoordinates() - mapOutputSize + 1);
              i < Math.min(controller.getMapXSize(), controller.getXCoordinates() + mapOutputSize);
              i++) {
-            for (int j =Math.max(0, controller.getYCoordinates() - 29);
+            for (int j =Math.max(0, controller.getYCoordinates() - mapOutputSize + 1);
                  j < Math.min(controller.getMapYSize(), controller.getYCoordinates() + mapOutputSize);
                  j++) {
                 currentCell = controller.getMapCell(i ,j);
@@ -77,11 +77,15 @@ public class MapNavigationMenuController {
                     else text = "H";
                 }
 
-                System.out.print(backGroundColor + textColor + text + "\u001B[0m" + "|");
+                System.out.print(backGroundColor + textColor + text + " " + "\u001B[0m" + "|");
             }
             System.out.print("\n");
-            for (int j = 0; j < 30; j++) System.out.print("-");
-            System.out.println("\n");
+            for (int j =Math.max(0, controller.getYCoordinates() - mapOutputSize + 1);
+                 j < Math.min(controller.getMapYSize(), controller.getYCoordinates() + mapOutputSize);
+                 j++){
+                System.out.print("---");
+            }
+            System.out.print("\n");
         }
     }
 
