@@ -54,7 +54,4 @@ public class Controller {
         fileWriter.close();
     }
 
-    public void nextTurn(){
-
-    }
 }
