@@ -22,6 +22,7 @@ public class CoreGameMenuController {
     private final CoreTradeMenuController coreTradeMenuController;
     private CoreSelectUnitMenuController coreUnitController;
     private CoreSelectBuildingMenuController coreBuildingController;
+    private CoreShopMenuController coreShopController;
     private GameMenuController gameController;
 
     public CoreGameMenuController(Match currentMatch, Scanner scanner) {
@@ -165,5 +166,10 @@ public class CoreGameMenuController {
                         x, y, scanner, currentMatch.getCurrentMatchMap(), this);
         coreNavigationController.run();
         return null;
+    }
+
+    public void enterShop() {
+        coreShopController = new CoreShopMenuController(scanner);
+        coreShopController.run();
     }
 }
