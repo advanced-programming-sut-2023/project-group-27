@@ -11,7 +11,7 @@ public class ProductionBuilding extends Building{
     private final Monarchy monarchy;
     
     public ProductionBuilding(ProductionBuildingType productionType, User owner, Monarchy monarchy, Cell cell) {
-        super(productionType.getHitpoint(), owner, cell);
+        super(productionType.getHitpoint(), owner, cell, productionType.getName());
         this.productionBuildingType = productionType;
         productionRules = productionType.getProductionRules();
         this.monarchy = monarchy;

@@ -11,8 +11,8 @@ import java.util.Set;
 public class Storage extends Building{
     private final HashMap<GoodsType, Integer> goodsMap;
 
-    public Storage(GoodsType[] goodsTypes, int hitpoint, User owner, Cell cell) {
-        super(hitpoint, owner, cell);
+    public Storage(GoodsType[] goodsTypes, int hitpoint, User owner, Cell cell, String name) {
+        super(hitpoint, owner, cell, name);
         goodsMap = new HashMap<>();
 
         for (GoodsType goodsType : goodsTypes)

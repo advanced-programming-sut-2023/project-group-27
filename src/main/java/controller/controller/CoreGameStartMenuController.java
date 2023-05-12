@@ -180,7 +180,8 @@ public class CoreGameStartMenuController {
             return "select a map first!";
         if (numbers.size() != thisGamePlayers.size())
             return "invalid numbers. can't match to players.";
-
+        if (thisGamePlayers.size() <= 1 || thisGamePlayers.size() > selectedMap.getCapacity())
+            return "bad players count";
         Cell[] mapsKeepCells = selectedMap.getKeepsLocations();
         ArrayList<Integer> cellsToAssign = new ArrayList<>();
 
