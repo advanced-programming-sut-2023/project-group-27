@@ -96,15 +96,32 @@ public class CoreSelectUnitMenuController {
         return null;
     }
 
-    public String pourOil(String direction) {
-        return null;
-    }
-
     public String digTunnel(int x, int y) {
         return null;
     }
 
     public String build(String equipmentName) {
+        if (!type.getName().equals("Engineer")) return "The selected unit must be engineer!";
+        int engineerCount = theSelected.size();
+        switch (equipmentName) {
+            case "shield" :
+                if (engineerCount < 1) return "You need at least 1 engineer!";
+                break;
+            case "battering ram" :
+                if (engineerCount < 4) return "You need at least 4 engineers!";
+                break;
+            case "siege tower" :
+                if (engineerCount < 4) return "You need at least 4 engineers!";
+                break;
+            case "catapult" :
+                if (engineerCount < 2) return "You need at least 2 engineers!";
+                break;
+            case "fixed catapult" :
+                if (engineerCount < 3) return "You need at least 3 engineers!";
+                break;
+            default:
+                return "Invalid equipment name!";
+        }
         return null;
     }
 
