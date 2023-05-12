@@ -29,7 +29,6 @@ public enum NaturalEntityType implements Passable {
             map.put(type.entityName, type);
         }
     }
-    // TODO remember to init before usage
 
     public static NaturalEntityType getNaturalEntityTypeByName(String input) {
         return map.get(input);

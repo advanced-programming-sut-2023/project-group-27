@@ -39,7 +39,6 @@ public enum LandType implements Passable{
             map.put(type.typeName, type);
         }
     }
-    // TODO remember to init before usage
 
     public static LandType getLandTypeByName(String input) {
         return map.get(input);
