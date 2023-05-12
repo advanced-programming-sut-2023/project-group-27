@@ -3,6 +3,10 @@ package controller.controller;
 import com.google.common.hash.Hashing;
 import model.*;
 import model.building.Building;
+import model.building.CivilBuildingType;
+import model.building.ProductionBuildingType;
+import model.castle_components.CastleComponent;
+import model.castle_components.CastleComponentType;
 import model.man.Engineer;
 import model.man.Man;
 import model.man.Soldier;
@@ -118,6 +122,12 @@ public class Utilities {
     public static void init() {
         SoldierType.init();
         GoodsType.init();
+        MonarchyColorType.init();
+        ProductionBuildingType.init();
+        CivilBuildingType.init();
+        CastleComponentType.init();
+        LandType.init();
+        NaturalEntityType.init();
     }
 
     public static boolean canBuildOnThisType(Building building, LandType landType) {

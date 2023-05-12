@@ -124,8 +124,7 @@ public class CoreGameStartMenuController {
             return "number is invalid!";
         if (number == 1)
             return "you can't remove yourself!";
-        if (colors.containsKey(thisGamePlayers.get(number - 1)))
-            colors.remove(thisGamePlayers.get(number - 1));
+        colors.remove(thisGamePlayers.get(number - 1));
 
         thisGamePlayers.remove(number - 1);
         return "removed player successfully!";
@@ -170,21 +169,21 @@ public class CoreGameStartMenuController {
         colors.clear();
     }
 
-    public String assignKeepsAndStartGame(int[] numbers) {
+    public String assignKeepsAndStart(ArrayList<Integer> numbers) {
         if (selectedMap == null)
             return "select a map first!";
-        if (numbers.length != thisGamePlayers.size())
+        if (numbers.size() != thisGamePlayers.size())
             return "invalid numbers. can't match to players.";
 
         Cell[] mapsKeepCells = selectedMap.getKeepsLocations();
         ArrayList<Integer> cellsToAssign = new ArrayList<>();
 
         for (int i = 0; i < thisGamePlayers.size(); i++) {
-            if (numbers[i] <= 0 || numbers[i] > mapsKeepCells.length)
+            if (numbers.get(i) <= 0 || numbers.get(i) > mapsKeepCells.length)
                 return "Invalid Keep location number!";
-            if (cellsToAssign.contains(numbers[i] - 1))
+            if (cellsToAssign.contains(numbers.get(i) - 1))
                 return "repetitious keep locations!";
-            cellsToAssign.add(numbers[i] - 1);
+            cellsToAssign.add(numbers.get(i) - 1);
         }
 
 
