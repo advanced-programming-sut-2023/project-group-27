@@ -129,10 +129,16 @@ public class SelectUnitMenuController {
     }
 
     public String build(Matcher matcher) {
-        return null;
+        matcher.matches();
+        String argsString = matcher.group("options");
+        Map<String , String> args = Utilities.extractOptionsFromString(argsString);
+        if (args == null) return "Dont determine a field twice!";
+        if (!args.containsKey("q")) return "Determine equipment name!";
+        String equipmentName = args.get("q");
+        return coreController.build(equipmentName);
     }
 
     public void disbandUnit() {
-
+        coreController.disbandUnit();
     }
 }

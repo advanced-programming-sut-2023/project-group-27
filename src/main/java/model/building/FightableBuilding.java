@@ -6,8 +6,15 @@ import model.Location;
 import model.User;
 
 public class FightableBuilding extends Building implements Fightable {
-    public FightableBuilding(int hitpoint, User owner, Location location) {
+    private int damage;
+      
+    public FightableBuilding(int hitpoint, User owner, Location location , int damage) {
         super(hitpoint, owner, location);
+        this.damage = damage;
+    }
+    
+    public int getDamage() {
+        return damage;
     }
 
     @Override
