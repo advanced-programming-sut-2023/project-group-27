@@ -7,8 +7,8 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 
 public class MapEditMenu {
-    private final MapEditMenuController controller;
-    private final Scanner scanner;
+    final MapEditMenuController controller;
+    final Scanner scanner;
 
     public MapEditMenu(MapEditMenuController controller, Scanner scanner) {
         this.controller = controller;
@@ -52,7 +52,7 @@ public class MapEditMenu {
             }
             if ((matcher = MapEditMenuRegexes.SET_TEXTURE.getMatcher(input)).matches() ||
                     (matcher = MapEditMenuRegexes.SET_TEXTURE2.getMatcher(input)).matches()) {
-                System.out.println(controller.settexture(matcher.group("data")));
+                System.out.println(controller.setTexture(matcher.group("data")));
                 continue;
             }
             if ((matcher = MapEditMenuRegexes.EXIT.getMatcher(input)).matches())
