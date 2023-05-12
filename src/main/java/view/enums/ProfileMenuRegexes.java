@@ -8,7 +8,7 @@ public enum ProfileMenuRegexes {
     CHANGE_NICKNAME("profile change -n (?<nickname>\\S+)"),
     CHANGE_PASSWORD("profile change -o (?<oldPassword>\\S+) -n (?<newPassword>\\S+)"),
     CHANGE_EMAIL("profile change -e (?<email>\\S+)"),
-    CHANGE_SLOGAN("profile change slogan -s (?<slogan>\\S+)"),
+    CHANGE_SLOGAN("profile change slogan -s (?<slogan>(\\S+)|((\"[^\"]+\")))"),
     REMOVE_SLOGAN("profile remove slogan"),
     DISPLAY_HIGH_SCORE("profile display highscore"),
     DISPLAY_RANK("profile display rank"),

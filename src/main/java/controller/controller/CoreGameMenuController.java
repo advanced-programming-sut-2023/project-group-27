@@ -5,6 +5,8 @@ import controller.view_controllers.MapEditMenuController;
 import controller.view_controllers.Utilities;
 import model.*;
 import model.building.Building;
+import model.building.CivilBuildingType;
+import model.building.ProductionBuildingType;
 import model.man.Man;
 import model.man.SoldierType;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -111,7 +113,48 @@ public class CoreGameMenuController {
     }
 
     public String dropBuilding(int x , int y , String type){
-        // TODO implement here
+        if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
+        if (!map.getCell(x, y).isPassable(null)) {
+            return "You can't build on this type\n";
+        }
+        Building building;
+        if (CivilBuildingType.getTypeByName(type) != null) {
+            CivilBuildingType type1 = CivilBuildingType.getTypeByName(type);
+            if (type1.getGoldNeeded() < currentMatch.getCurrentMonarchy().getGold()) {
+                return "You don't have enough gold\n";
+            }
+            if (type1.getWoodNeeded() < currentMatch.getCurrentMonarchy().getGood(GoodsType.WOOD)) {
+                return "You don't have enough wood\n";
+            }
+            if (type1.getStoneNeeded() < currentMatch.getCurrentMonarchy().getGood(GoodsType.STONE)) {
+                return "You don't have enough stone\n";
+            }
+            building = new Building(type1.getHitpoint(), currentMatch.getCurrentUser(), map.getCell(x, y));
+            if (!controller.controller.Utilities.canBuildOnThisType(building, map.getCell(x, y).getType())) {
+                return "You can't build on this type\n";
+            }
+            currentMatch.getCurrentMonarchy().changeGold(-type1.getGoldNeeded());
+            currentMatch.getCurrentMonarchy().getStockPile().changeGoodsCount(GoodsType.WOOD, -type1.getWoodNeeded());
+            currentMatch.getCurrentMonarchy().getStockPile().changeGoodsCount(GoodsType.STONE, -type1.getStoneNeeded());
+        } else if (ProductionBuildingType.getTypeByName(type) != null) {
+            ProductionBuildingType type1 = ProductionBuildingType.getTypeByName(type);
+            if (type1.getGoldRequired() < currentMatch.getCurrentMonarchy().getGold()) {
+                return "You don't have enough gold\n";
+            }
+            if (type1.getWoodRequired() < currentMatch.getCurrentMonarchy().getGood(GoodsType.WOOD)) {
+                return "You don't have enough wood\n";
+            }
+            building = new Building(type1.getHitpoint(), currentMatch.getCurrentUser(), map.getCell(x, y));
+            if (!controller.controller.Utilities.canBuildOnThisType(building, map.getCell(x, y).getType())) {
+                return "You can't build on this type\n";
+            }
+            currentMatch.getCurrentMonarchy().changeGold(-type1.getGoldRequired());
+            currentMatch.getCurrentMonarchy().getStockPile().changeGoodsCount(GoodsType.WOOD, -type1.getWoodRequired());
+        } else {
+            return "Invalid building type\n";
+        }
+        map.getCell(x, y).setBuilding(building);
+        currentMatch.getCurrentMonarchy().addBuilding(building);
         return null;
     }
 
