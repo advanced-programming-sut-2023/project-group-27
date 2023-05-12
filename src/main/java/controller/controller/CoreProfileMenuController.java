@@ -33,6 +33,9 @@ public class CoreProfileMenuController {
         if (!username.matches("[0-9a-zA-Z_]+")) {
             return "Invalid username format\n";
         }
+        if (StrongholdCrusader.getAllUsers().containsKey(username)) {
+            return "username already exists";
+        }
         StrongholdCrusader.getAllUsers().remove(loggedInUser.getUsername());
         loggedInUser.setUsername(username);
         StrongholdCrusader.getAllUsers().put(username, loggedInUser);

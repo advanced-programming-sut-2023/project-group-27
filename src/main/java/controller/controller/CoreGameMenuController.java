@@ -35,7 +35,7 @@ public class CoreGameMenuController {
         this.map = currentMatch.getCurrentMatchMap();
         this.gameController = new GameMenuController(this, currentMatch);
         this.gameMenu = new GameMenu(this.gameController);
-        coreTradeMenuController = new CoreTradeMenuController(currentMatch, StrongholdCrusader.getCurrentUser() , scanner);
+        coreTradeMenuController = new CoreTradeMenuController(currentMatch, currentMatch.getCurrentUser() , scanner);
     }
 
     public String run(){

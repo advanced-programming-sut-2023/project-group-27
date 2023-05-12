@@ -62,6 +62,8 @@ public class RegisterMenuController {
             questions.append("\n").append(index).append(". ").append(securityQuestion);
         }
         menu.showInformation("Pick your security question:" + questions);
+        menu.showInformation("In format:" +
+                " question pick -q <question number> -a <answer> -c <answer confirmation>\n");
         String choice;
         while (true) {
             choice = menu.fetchAnswer();

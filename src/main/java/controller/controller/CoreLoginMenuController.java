@@ -54,7 +54,7 @@ public class CoreLoginMenuController {
         }
         if (stayLoggedIn) user.setStayLoggedIn(true);
         delay = 0;
-        StrongholdCrusader.setCurrentUser(user);
+        StrongholdCrusader.setLoggedInUser(user);
         return "User logged in successfully!";
     }
 
