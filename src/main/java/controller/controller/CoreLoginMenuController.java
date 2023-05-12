@@ -61,7 +61,6 @@ public class CoreLoginMenuController {
     public String forgetPassword(User user , String newPassword) {
         String validateResult = Utilities.validatePassword(newPassword);
         if (validateResult != null) return validateResult;
-        newPassword = Utilities.encryptString(newPassword);
         user.setPassword(newPassword);
         return "Password changed successfully!";
     }
