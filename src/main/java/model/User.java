@@ -103,6 +103,9 @@ public class User implements Comparable<User>{
 
     @Override
     public int compareTo(User o) {
-        return o.highScore - this.highScore;
+        if (o.highScore != this.highScore){
+            return o.highScore - this.highScore;
+        }
+        return this.username.compareTo(o.username);
     }
 }

@@ -34,7 +34,7 @@ public class CoreProfileMenuController {
             return "Invalid username format\n";
         }
         if (StrongholdCrusader.getAllUsers().containsKey(username)) {
-            return "username already exists";
+            return "username already exists\n";
         }
         StrongholdCrusader.getAllUsers().remove(loggedInUser.getUsername());
         loggedInUser.setUsername(username);

@@ -30,7 +30,7 @@ public class ProfileMenuController {
         matcher.matches();
         String newNickname = matcher.group("nickname");
         if (newNickname.equals("")) {
-            return "empty field";
+            return "empty field\n";
         }
         coreController.changeNickname(newNickname);
         return null;
@@ -54,10 +54,10 @@ public class ProfileMenuController {
         matcher.matches();
         String slogan = matcher.group("slogan");
         if (slogan.equals("")) {
-            return "empty field";
+            return "empty field\n";
         }
         coreController.changeSlogan(slogan);
-        return "Successful";
+        return "Successful\n";
     }
 
     public String changeEmail(Matcher matcher) {
