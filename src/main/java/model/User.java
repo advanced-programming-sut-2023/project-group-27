@@ -1,5 +1,7 @@
 package model;
 
+import controller.controller.Utilities;
+
 public class User implements Comparable<User>{
     private String username;
     private String nickname;
@@ -20,7 +22,7 @@ public class User implements Comparable<User>{
         this.slogan = slogan;
         this.email = email;
         this.securityQ = securityQ;
-        this.securityA = securityA;
+        this.securityA = Utilities.encryptString(securityA);
         stayLoggedIn = false;
     }
 
@@ -85,7 +87,7 @@ public class User implements Comparable<User>{
     }
 
     public void setSecurityA(String securityA) {
-        this.securityA = securityA;
+        this.securityA = Utilities.encryptString(securityA);
     }
 
     public boolean isPasswordCorrect(String password) {

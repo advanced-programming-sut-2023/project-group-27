@@ -32,12 +32,13 @@ public class Controller {
 
         Gson gson = new Gson();
         Data fetchedData = gson.fromJson(dataScanner.nextLine(), Data.class);
-
+        Data fetchedData1 = gson.fromJson(dataScanner.nextLine(), Data.class);
         ArrayList<User> usersToBeAdded = fetchedData.getAllUsers();
         ArrayList<GameMap> gameMapsToBeAdded = fetchedData.getAllMaps();
+        ArrayList<GameMap> gameMapsToBeAdded1 = fetchedData.getAllMaps();
         StrongholdCrusader.addAllUsers(usersToBeAdded);
         StrongholdCrusader.addAllMaps(gameMapsToBeAdded);
-        StrongholdCrusader.addAllStaticMaps(gameMapsToBeAdded);
+        StrongholdCrusader.addAllStaticMaps(gameMapsToBeAdded1);
     }
 
     public void pushData() throws IOException {

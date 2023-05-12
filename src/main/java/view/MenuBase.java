@@ -1,5 +1,6 @@
 package view;
 
+import controller.controller.Utilities;
 import view.enums.RegisterMenuRegexes;
 
 import java.util.Scanner;
@@ -18,6 +19,11 @@ public class MenuBase {
     public boolean confirm(String message, String expectedValue) {
         System.out.println(message);
         return this.scanner.nextLine().equals(expectedValue);
+    }
+
+    public boolean confirmPass(String message, String expectedValue) {
+        System.out.println(message);
+        return Utilities.encryptString(this.scanner.nextLine()).equals(expectedValue);
     }
 
     public String fetchAnswer() {
