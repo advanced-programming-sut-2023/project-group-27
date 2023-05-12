@@ -30,7 +30,6 @@ public enum CivilBuildingType {
             map.put(type.name, type);
         }
     }
-    // TODO remember to init before usage
 
     public static CivilBuildingType getTypeByName(String input) {
         return map.get(input);

@@ -58,7 +58,6 @@ public enum SoldierType {
             map.put(type.name, type);
         }
     }
-    // TODO remember to init before usage
 
     public static SoldierType getTypeByName(String name) {
         return map.get(name);

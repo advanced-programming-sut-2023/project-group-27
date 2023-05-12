@@ -48,7 +48,6 @@ public enum ProductionBuildingType {
             map.put(type.name, type);
         }
     }
-    // TODO remember to init before usage
 
     public static ProductionBuildingType getTypeByName(String input) {
         return map.get(input);
