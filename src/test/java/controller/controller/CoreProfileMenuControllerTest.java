@@ -42,8 +42,8 @@ class CoreProfileMenuControllerTest {
         assertEquals("Username can not be the same as old username\n", coreController.changeUsername("test"));
         assertEquals("empty field\n", coreController.changeUsername(""));
         assertEquals("Invalid username format\n", coreController.changeUsername("test@"));
-        coreController.changeUsername("test2");
-        assertEquals("test2", StrongholdCrusader.getLoggedInUser().getUsername());
+        coreController.changeUsername("test4");
+        assertEquals("test4", StrongholdCrusader.getLoggedInUser().getUsername());
     }
 
     @Test
