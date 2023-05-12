@@ -1,9 +1,13 @@
 package model.man;
 
 import model.*;
+import model.building.Building;
 import model.task.Task;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class Soldier extends Man implements Fightable {
     private SoldierType soldierType;
@@ -55,12 +59,25 @@ public class Soldier extends Man implements Fightable {
 
     @Override
     public void fight(Destructable destructable) {
-        // TODO implement here
+        if (destructable.getOwner() == getOwner()) {
+            return;
+        }
+        destructable.setHitpoint(destructable.getHitpoint() - damage);
     }
 
     @Override
-    public void fight(Location location) {
-        // TODO implement here
+    public void fight(Cell cell) {
+        if (cell.getBuilding() != null && cell.getBuilding().getOwner() != getOwner()) {
+            fight(cell.getBuilding());
+            return;
+        }
+        List<Man> enemies = cell.getMen().stream()
+                .filter(m -> m.getOwner() != getOwner()).toList();
+        if (enemies.size() == 0) {
+            return;
+        }
+        Random random = new Random();
+        fight(enemies.get(random.nextInt(enemies.size())));
     }
 
     public int getAttackRange() {
