@@ -140,6 +140,6 @@ public class SelectUnitMenuController {
     }
 
     public void disbandUnit() {
-
+        coreController.disbandUnit();
     }
 }

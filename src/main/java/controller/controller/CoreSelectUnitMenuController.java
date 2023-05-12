@@ -126,6 +126,8 @@ public class CoreSelectUnitMenuController {
     }
 
     public void disbandUnit() {
-
+        int size = theSelected.size();
+        theSelected.clear();
+        currentUser.getMonarchy().changePopularity(size);
     }
 }
