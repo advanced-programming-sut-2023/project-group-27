@@ -66,13 +66,14 @@ public class Utilities {
         }
         Random random = new Random();
         List<Character> characters = new ArrayList<>();
-        random.ints(4).forEach(x -> characters.add(validLowerCase.get(x % 26)));
-        random.ints(4).forEach(x -> characters.add(validUpperCase.get(x % 26)));
-        random.ints(4).forEach(x -> characters.add(validDigits.get(x % 10)));
-        random.ints(4).forEach(x -> characters.add(validSpecial.get(x % 8)));
+        random.ints(4).forEach(x -> characters.add(validLowerCase.get(Math.abs(x) % 26)));
+        random.ints(4).forEach(x -> characters.add(validUpperCase.get(Math.abs(x) % 26)));
+        random.ints(4).forEach(x -> characters.add(validDigits.get(Math.abs(x) % 10)));
+        random.ints(4).forEach(x -> characters.add(validSpecial.get(Math.abs(x) % 8)));
         Collections.shuffle(characters);
         StringBuilder builder = new StringBuilder();
-        return Arrays.toString(characters.toArray());
+        characters.forEach(builder::append);
+        return builder.toString();
     }
 
     public static String randomSlogan() {
