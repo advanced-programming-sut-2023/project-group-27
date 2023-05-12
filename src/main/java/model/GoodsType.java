@@ -24,7 +24,7 @@ public enum GoodsType {
     PIKE("Pike", 350, 280, 700),
     MACE("Mace", 460, 380, 600),
     PITCH("Pitch", 200, 160, 400),
-    HORSE("Horse", 0, 0, 0);
+    HORSE("Horse", 4000, 3400, 40);
 
 
     private static final Map<String, GoodsType> map = new HashMap<>();
