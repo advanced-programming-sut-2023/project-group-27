@@ -26,10 +26,6 @@ public class CoreMainMenuController {
                             new CoreProfileMenuController(scanner);
                     coreProfileController.run();
                     break;
-                case "Enter map edit menu":
-                    CoreMapEditMenuController coreMapEditController = new CoreMapEditMenuController(null, scanner);
-                    coreMapEditController.run();
-                    break;
                 case "Enter game start menu":
                     CoreGameStartMenuController coreGameStartController =
                             new CoreGameStartMenuController(scanner, StrongholdCrusader.getLoggedInUser());

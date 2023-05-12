@@ -13,7 +13,7 @@ public enum GameStartMenuRegexes {
     REMOVE_PLAYER("\\s*remove\\s+player\\s+(?<data>\\d+)\\s*"),
     SELECT_MAP("\\s*select\\s+map\\s+(?<data>\\d+)\\s*"),
     SHOW_COLORS("\\s*show\\s+all\\s+colors\\s*"),
-    SET_COLOR("\\s*set\\s+color\\s+(?<data>(\\s+\\S+){2})"),
+    SET_COLOR("\\s*set\\s+color\\s*(?<data>(\\s+\\S+){2})"),
     RESET_COLORS("\\s*reset\\s+colors\\s*"),
     ASSIGN_KEEPS_AND_START("\\s*assign\\s+keeps\\s+and\\s+start(?<data>(\\s+\\d+)+)"),
     EXIT("\\s*Exit\\s*");

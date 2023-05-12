@@ -19,9 +19,8 @@ public class MainMenu {
         System.out.println("Entered Main Menu");
         System.out.println("your options are:" +
                 "\n1. Enter profile menu" +
-                "\n2. Enter map edit menu" +
-                "\n3. Enter game start menu" +
-                "\n4. Logout");
+                "\n2. Enter game start menu" +
+                "\n3. Logout");
 
         do {
             String command = scanner.nextLine();
@@ -32,9 +31,6 @@ public class MainMenu {
             }
             if (MainMenuRegexes.ENTER_PROFILE_MENU.getMatcher(command).matches()) {
                 return "Enter profile menu";
-            }
-            if (MainMenuRegexes.ENTER_MAP_EDIT_MENU.getMatcher(command).matches()) {
-                return "Enter map edit menu";
             }
             if (MainMenuRegexes.ENTER_GAME_START_MENU.getMatcher(command).matches()) {
                 return "Enter game start menu";

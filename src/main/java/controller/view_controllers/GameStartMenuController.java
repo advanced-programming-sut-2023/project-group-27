@@ -57,7 +57,7 @@ public class GameStartMenuController {
 
     public String setColor(String input) {
         Pattern patternInteger = Pattern.compile("\\d+");
-        Pattern patternType = Pattern.compile("[^0-9\\s]+]");
+        Pattern patternType = Pattern.compile("[^0-9\\s]+");
         Matcher matcherInteger = patternInteger.matcher(input);
         Matcher matcherType = patternType.matcher(input);
 
