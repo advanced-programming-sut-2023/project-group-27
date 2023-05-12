@@ -44,9 +44,10 @@ class CoreGameMenuControllerTest {
         this.user2 = user2;
 
         User[] users = new User[] {user, user2};
-        this.map = new GameMap(100, 100, "map", 100, null);
-        user.setMonarchy(new Monarchy(user, MonarchyColorType.BLACK));
-        user2.setMonarchy(new Monarchy(user2, MonarchyColorType.RED));
+        Cell cells[] = new Cell[] {new Cell(LandType.PLAIN, 1, 1), new Cell(LandType.PLAIN, 10, 10)};
+        this.map = new GameMap(100, 100, "map", 100, cells);
+        user.setMonarchy(new Monarchy(user, MonarchyColorType.BLACK, map, cells[0].getLocation()));
+        user2.setMonarchy(new Monarchy(user2, MonarchyColorType.RED, map, cells[1].getLocation()));
         this.monarchy = user.getMonarchy();
         this.match = new Match(this.map, Arrays.stream(users).toList());
         this.coreGameController = new CoreGameMenuController(match, new Scanner(""));

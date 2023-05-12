@@ -7,11 +7,10 @@ public class Building extends Destructable implements Passable {
     private String name;
     private final User owner;
     private Cell cell;
-    private Location location;
 
-    public Building(int hitpoint, User owner, Location location) {
+    public Building(int hitpoint, User owner, Cell cell) {
         super(hitpoint);
-        this.location = location;
+        this.cell = cell;
         this.owner = owner;
     }
 
@@ -41,6 +40,6 @@ public class Building extends Destructable implements Passable {
     }
 
     public Location getLocation() {
-        return location;
+        return cell.getLocation();
     }
 }

@@ -20,12 +20,14 @@ class CoreTradeMenuControllerTest {
 
     @BeforeEach
     void setUp() {
+        Cell cells[] = new Cell[] {new Cell(LandType.PLAIN, 1, 1), new Cell(LandType.PLAIN, 10, 10)};
+        GameMap gameMap = new GameMap(100, 100, "myMap", 100, cells);
         this.user = new User("user", "Password@1", "n", "s", "e", "a", "b");
         this.user2 = new User("user2", "Password@1", "n", "s", "e", "a", "b");
-        user.setMonarchy(new Monarchy(user, MonarchyColorType.BLACK));
-        user2.setMonarchy(new Monarchy(user2, MonarchyColorType.RED));
+        user.setMonarchy(new Monarchy(user, MonarchyColorType.BLACK, gameMap, cells[0].getLocation()));
+        user2.setMonarchy(new Monarchy(user2, MonarchyColorType.RED, gameMap, cells[0].getLocation()));
         User[] users = new User[]{user, user2};
-        this.match = new Match(new GameMap(10, 10, "myMap", 100, null), Arrays.stream(users).toList());
+        this.match = new Match(gameMap, Arrays.stream(users).toList());
         this.outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
     }

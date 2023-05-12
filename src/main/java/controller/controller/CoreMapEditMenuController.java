@@ -165,12 +165,12 @@ public class CoreMapEditMenuController {
 
         Building building;
         if (type instanceof CivilBuildingType)
-            building = new CivilBuilding(((CivilBuildingType) type).getHitpoint(), (CivilBuildingType) type, currentOwner);
+            building = new CivilBuilding(((CivilBuildingType) type).getHitpoint(), (CivilBuildingType) type, currentOwner, currentCell);
         else if (type instanceof ProductionBuildingType)
-            building = new ProductionBuilding((ProductionBuildingType) type, currentOwner, currentOwner.getMonarchy());
+            building = new ProductionBuilding((ProductionBuildingType) type, currentOwner, currentOwner.getMonarchy(), currentCell);
         else
             //(type instanceof CastleComponentType)
-            building = new CastleComponent((CastleComponentType) type, currentOwner );
+            building = new CastleComponent((CastleComponentType) type, currentOwner, currentCell );
         if (!Utilities.canBuildOnThisType(building, currentCell.getType()))
             return "Can't build this building on this type of land.";
 

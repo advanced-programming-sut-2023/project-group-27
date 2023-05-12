@@ -1,13 +1,10 @@
 package model.building;
 
-import model.Destructable;
-import model.Fightable;
-import model.Location;
-import model.User;
+import model.*;
 
 public class FightableBuilding extends Building implements Fightable {
-    public FightableBuilding(int hitpoint, User owner, Location location) {
-        super(hitpoint, owner, location);
+    public FightableBuilding(int hitpoint, User owner, Cell cell) {
+        super(hitpoint, owner, cell);
     }
 
     @Override

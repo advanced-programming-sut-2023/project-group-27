@@ -1,5 +1,6 @@
 package model.building;
 
+import model.Cell;
 import model.GoodsType;
 import model.User;
 
@@ -10,8 +11,8 @@ import java.util.Set;
 public class Storage extends Building{
     private final HashMap<GoodsType, Integer> goodsMap;
 
-    public Storage(GoodsType[] goodsTypes, int hitpoint, User owner) {
-        super(hitpoint, owner);
+    public Storage(GoodsType[] goodsTypes, int hitpoint, User owner, Cell cell) {
+        super(hitpoint, owner, cell);
         goodsMap = new HashMap<>();
 
         for (GoodsType goodsType : goodsTypes)

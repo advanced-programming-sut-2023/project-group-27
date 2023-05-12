@@ -4,10 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="adding start game logic9">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/StrongholdCrusader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/StrongholdCrusader.java" afterDir="false" />
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="map bug fixes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameStartMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameStartMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/Building.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/CivilBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/CivilBuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/CivilBuildingType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/CivilBuildingType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/FightableBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/FightableBuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/Storage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/CastleComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/CastleComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/Tower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/Tower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/Trap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/Trap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/castle_components/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/castle_components/Wall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/controller/CoreGameMenuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/controller/CoreGameMenuControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/controller/CoreMapEditMenuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/controller/CoreMapEditMenuControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/controller/CoreTradeMenuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/controller/CoreTradeMenuControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +140,7 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.CoreGameMenuControllerTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="project-group-27" />
@@ -148,6 +163,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CoreMapEditMenuControllerTest.setTexture" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project-group-27" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller.controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.controller.CoreMapEditMenuControllerTest" />
+      <option name="METHOD_NAME" value="setTexture" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CoreRegisterMenuControllerTest.runTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AP-project-group27" />
       <extension name="coverage">
@@ -159,22 +190,6 @@
       <option name="PACKAGE_NAME" value="controller.controller" />
       <option name="MAIN_CLASS_NAME" value="controller.controller.CoreRegisterMenuControllerTest" />
       <option name="METHOD_NAME" value="runTest(java.lang.String,java.lang.String)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CoreRegisterMenuControllerTest.runTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AP-project-group27" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controller.controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.controller.CoreRegisterMenuControllerTest" />
-      <option name="METHOD_NAME" value="runTest(java.lang.String)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -198,11 +213,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.CoreGameMenuControllerTest" />
+        <item itemvalue="JUnit.CoreMapEditMenuControllerTest.setTexture" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.CoreRegisterMenuControllerTest.successfulRegisterTest" />
         <item itemvalue="JUnit.CoreRegisterMenuControllerTest.runTest (1)" />
-        <item itemvalue="JUnit.CoreRegisterMenuControllerTest.runTest" />
       </list>
     </recent_temporary>
   </component>
@@ -234,14 +249,8 @@
       <workItem from="1683457673315" duration="17763000" />
       <workItem from="1683641315148" duration="5245000" />
       <workItem from="1683725694757" duration="17361000" />
-      <workItem from="1683863209346" duration="10986000" />
-    </task>
-    <task id="LOCAL-00001" summary="first commit to initial_base">
-      <created>1681417450067</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1681417450067</updated>
+      <workItem from="1683863209346" duration="13926000" />
+      <workItem from="1683889547328" duration="2917000" />
     </task>
     <task id="LOCAL-00002" summary="first commit to initial_base">
       <created>1681417644977</created>
@@ -579,7 +588,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683873026192</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="map bug fixes">
+      <created>1683874834577</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1683874834578</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -630,7 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="finalized checkpoint 1" />
     <MESSAGE value="map navigation feature" />
     <MESSAGE value="completed map navigation menu" />
     <MESSAGE value="completed some type enums" />
@@ -655,7 +670,8 @@
     <MESSAGE value="adding start game logic7" />
     <MESSAGE value="adding start game logic8" />
     <MESSAGE value="adding start game logic9" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding start game logic9" />
+    <MESSAGE value="map bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="map bug fixes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/project_group_27$Main.ic" NAME="Main Coverage Results" MODIFIED="1683744260592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
