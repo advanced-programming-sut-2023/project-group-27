@@ -1,9 +1,6 @@
 package controller.controller;
 
-import model.GameMap;
-import model.GoodsType;
-import model.Match;
-import model.User;
+import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -25,8 +22,10 @@ class CoreTradeMenuControllerTest {
     void setUp() {
         this.user = new User("user", "Password@1", "n", "s", "e", "a", "b");
         this.user2 = new User("user2", "Password@1", "n", "s", "e", "a", "b");
+        user.setMonarchy(new Monarchy(user, MonarchyColorType.BLACK));
+        user2.setMonarchy(new Monarchy(user2, MonarchyColorType.RED));
         User[] users = new User[]{user, user2};
-        this.match = new Match(new GameMap(10, 10, "myMap"), Arrays.stream(users).toList());
+        this.match = new Match(new GameMap(10, 10, "myMap", 100, null), Arrays.stream(users).toList());
         this.outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
     }
