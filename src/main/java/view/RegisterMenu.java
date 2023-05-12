@@ -18,8 +18,8 @@ public class RegisterMenu extends MenuBase{
     public String run() {
         System.out.println("Entered Register Menu");
         System.out.print("your options are:\n" +
-                "1. user create -u <username> -p <password> <password confirmation>" +
-                "–email <email> -n <nickname> -s <slogan> (slogan and password can be set \"random\")\n" +
+                "1. user create -u <username> -p <password> " +
+                "--email <email> -n <nickname> -s <slogan> (slogan and password can be set \"random\")\n" +
                 "2. login\n" +
                 "3. Exit\n");
         String command = this.scanner.nextLine();

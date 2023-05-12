@@ -79,5 +79,4 @@ public class CoreRegisterMenuController {
         StrongholdCrusader.addUser(rawUser);
         return null;
     }
-
 }

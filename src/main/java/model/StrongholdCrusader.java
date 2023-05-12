@@ -3,16 +3,18 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class StrongholdCrusader {
     private static User loggedInUser;
     private static User currentUser;
     private static final HashMap<String , GameMap> allMaps = new HashMap<>();
     private static final HashMap<String , User> allUsers = new HashMap<>();
+    private static final HashMap<String, GameMap> allStaticMaps = new HashMap<>();
     private static final List<String> securityQuestions = List.of(
-            "What is my father’s name?",
-            "What was my first pet’s name?",
-            "What is my mother’s last name?",
+            "What is my father's name?",
+            "What was my first pet's name?",
+            "What is my mother's last name?",
             "What is your favorite video game?",
             "What was name of your first crush?"
     );
@@ -46,6 +48,15 @@ public class StrongholdCrusader {
         allMaps.clear();
     }
 
+    public static void addAllStaticMaps(ArrayList<GameMap> gameMapsToBeAdded) {
+        for (GameMap map : gameMapsToBeAdded)
+            allStaticMaps.put(map.getMapName(), map);
+    }
+
+    public static HashMap<String, GameMap> getAllStaticMaps() {
+        return allStaticMaps;
+    }
+
     public User getUserByUsername(String username) {
         return allUsers.getOrDefault(username, null);
     }
@@ -56,6 +67,14 @@ public class StrongholdCrusader {
 
     public static HashMap<String, User> getAllUsers() {
         return allUsers;
+    }
+
+    public static User[] getAllUsersList() {
+        return allUsers.values().toArray(new User[0]);
+    }
+
+    public static GameMap[] getAllMapsList() {
+        return allMaps.values().toArray(new GameMap[0]);
     }
 
     public static void addUser(User user) {

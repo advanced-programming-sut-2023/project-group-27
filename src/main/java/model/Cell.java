@@ -119,4 +119,10 @@ public class Cell implements Passable{
             man.getOwner().getMonarchy().removeMan(man);
         men.clear();
     }
+
+    public void flush() {
+        building = null;
+        naturalEntityType = null;
+        men.clear();
+    }
 }

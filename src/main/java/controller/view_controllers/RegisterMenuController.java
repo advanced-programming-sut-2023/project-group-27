@@ -59,9 +59,9 @@ public class RegisterMenuController {
         int index = 0;
         for (String securityQuestion : StrongholdCrusader.getSecurityQuestions()) {
             index++;
-            questions.append(index).append(". ").append(securityQuestion).append("\n");
+            questions.append("\n").append(index).append(". ").append(securityQuestion);
         }
-        menu.showInformation("Pick your security question:\n" + questions);
+        menu.showInformation("Pick your security question:" + questions);
         String choice;
         while (true) {
             choice = menu.fetchAnswer();

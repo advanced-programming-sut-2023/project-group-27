@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Location{
+public class Location {
     public int x;
     public int y;
 
@@ -30,6 +30,13 @@ public class Location{
     }
 
     @Override
+    public String toString() {
+        return "Location{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
+  
     public boolean equals(Object o) {
         if (o == this) {
             return true;

@@ -14,10 +14,11 @@ public class Monarchy {
     private final Storage[] storages = new Storage[3];
     private final TradingSystem tradingSystem;
     private final User king;
+    private final MonarchyColorType color;
     private int popularity, taxRate, foodRate, gold, fearRate, religiousBuildingCount;
     private int population = 20;
 
-    public Monarchy(User king) {
+    public Monarchy(User king, MonarchyColorType color) {
         //TODO fix here and don't create building by default
         storages[0] = new Storage(GoodsType.getGranaryGoods(), 30000, king);
         storages[1] = new Storage(GoodsType.getStockPileGoods(), 30000, king);
@@ -29,6 +30,7 @@ public class Monarchy {
         this.foodRate = 0;
         this.gold = 0;
         this.fearRate = 0;
+        this.color = color;
     }
 
     public int getTaxRate() {
@@ -63,6 +65,9 @@ public class Monarchy {
         men.addAll(List.of(menToBeAdded));
     }
 
+    public void addMan(Man man) {
+        men.add(man);
+    }
     public TradingSystem getTradingSystem() {
         return tradingSystem;
     }
