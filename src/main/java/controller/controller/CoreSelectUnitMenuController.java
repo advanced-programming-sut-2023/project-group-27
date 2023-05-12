@@ -3,6 +3,8 @@ package controller.controller;
 import controller.view_controllers.SelectUnitMenuController;
 import model.*;
 import model.building.Building;
+import model.building.EngineerBuilding;
+import model.building.EngineerBuildingType;
 import model.man.Man;
 import model.man.Soldier;
 import model.man.SoldierType;
@@ -24,13 +26,17 @@ public class CoreSelectUnitMenuController {
     private final ArrayList<Selectable> theSelected;
     private final SelectUnitMenu selectUnitMenu;
     private final SelectUnitMenuController selectUnitController;
+    private final int x;
+    private final int y;
     private final SoldierType type;
-    public CoreSelectUnitMenuController(ArrayList<Selectable> theSelected , Match match , Scanner scanner, User currentUser, GameMap map, SoldierType type) {
+    public CoreSelectUnitMenuController(ArrayList<Selectable> theSelected , Match match , Scanner scanner, User currentUser, GameMap map, int x, int y, SoldierType type) {
         this.scanner = scanner;
         this.currentMatch = match;
         this.theSelected = theSelected;
         this.currentUser = currentUser;
         this.map = map;
+        this.x = x;
+        this.y = y;
         this.type = type;
         selectUnitController = new SelectUnitMenuController(theSelected, this, map, scanner);
         selectUnitMenu = selectUnitController.getUnitMenu();
@@ -107,26 +113,42 @@ public class CoreSelectUnitMenuController {
     public String build(String equipmentName) {
         if (!type.getName().equals("Engineer")) return "The selected unit must be engineer!";
         int engineerCount = theSelected.size();
+        EngineerBuildingType buildingType = EngineerBuildingType.getTypeByName(equipmentName);
+        Monarchy monarchy = currentUser.getMonarchy();
+        EngineerBuilding building;
         switch (equipmentName) {
             case "shield" :
                 if (engineerCount < 1) return "You need at least 1 engineer!";
                 break;
             case "battering ram" :
                 if (engineerCount < 4) return "You need at least 4 engineers!";
+                if (!(priceCheck(monarchy , buildingType))) return "Not enough gold!";
                 break;
             case "siege tower" :
                 if (engineerCount < 4) return "You need at least 4 engineers!";
+                if (!(priceCheck(monarchy , buildingType))) return "Not enough gold!";
                 break;
-            case "catapult" :
+            case "mobile catapult" :
                 if (engineerCount < 2) return "You need at least 2 engineers!";
+                if (!(priceCheck(monarchy , buildingType))) return "Not enough gold!";
                 break;
-            case "fixed catapult" :
+            case "static catapult" :
                 if (engineerCount < 3) return "You need at least 3 engineers!";
+                if (!(priceCheck(monarchy , buildingType))) return "Not enough gold!";
                 break;
             default:
                 return "Invalid equipment name!";
         }
         return null;
+    }
+
+    private boolean priceCheck(Monarchy monarchy , EngineerBuildingType buildingType) {
+        if (monarchy.getGold() < buildingType.getCost())
+            return false;
+        EngineerBuilding building = new EngineerBuilding(type.getHitpoint() , currentUser ,
+                map.getCell(x , y));
+        monarchy.addBuilding(building);
+        return true;
     }
 
     public void disbandUnit() {
