@@ -55,11 +55,6 @@ public class MapNavigationMenuController {
         Building building;
         LandType type;
         Man man;
-        for (int k = Math.max(0, controller.getXCoordinates() - mapOutputSize + 1);
-             k < Math.min(controller.getMapXSize(), controller.getXCoordinates() + mapOutputSize);
-             k++){
-            System.out.print(k + "|");
-        }
 
         for (int j = Math.min(controller.getMapYSize(), controller.getYCoordinates() + mapOutputSize) - 1;
              j >= Math.max(0, controller.getYCoordinates() - mapOutputSize + 1);
@@ -68,6 +63,7 @@ public class MapNavigationMenuController {
             for (int i = Math.max(0, controller.getXCoordinates() - mapOutputSize + 1);
                  i < Math.min(controller.getMapXSize(), controller.getXCoordinates() + mapOutputSize);
                  i++) {
+                text = " ";
                 currentCell = controller.getMapCell(i ,j);
                 backGroundColor = ((type = currentCell.getType()) != null) ? type.getANSI_BACKGROUND() : "";
                 if ((naturalEntityType = currentCell.getNaturalEntityType()) != null) {
@@ -97,6 +93,17 @@ public class MapNavigationMenuController {
 
             System.out.print("\n");
         }
+        printGrids();
+    }
+
+    private void printGrids() {
+        System.out.print("   ");
+        for (int k = Math.max(0, controller.getXCoordinates() - mapOutputSize + 1);
+             k < Math.min(controller.getMapXSize(), controller.getXCoordinates() + mapOutputSize);
+             k++){
+            System.out.print(k + "|");
+        }
+        System.out.print("\n");
     }
 
     public String showDetails(String input) {

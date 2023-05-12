@@ -16,6 +16,7 @@ public enum GameStartMenuRegexes {
     SET_COLOR("\\s*set\\s+color\\s+(?<data>(\\s+\\S+){2})"),
     RESET_COLORS("\\s*reset\\s+colors\\s*"),
     ASSIGN_KEEPS_AND_START("\\s*assign\\s+keeps\\s+and\\s+start(?<data>(\\s+\\d+)+)"),
+    ADD_MAP("add map"),
     EXIT("\\s*Exit\\s*");
     private final Pattern pattern;
 

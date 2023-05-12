@@ -5,6 +5,7 @@ import model.StrongholdCrusader;
 import model.User;
 import view.RegisterMenu;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class CoreRegisterMenuController {
@@ -24,7 +25,7 @@ public class CoreRegisterMenuController {
         return registerController;
     }
 
-    public String run(){
+    public String run() throws IOException {
         String registerMenuResult;
         while (true) {
             registerMenuResult = registerMenu.run();

@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import view.enums.LoginMenuRegexes;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -99,7 +100,7 @@ class LoginMenuControllerTest {
                     "Please confirm your new password\r\n" +
                     "Password changed successfully!\r\n'"
     })
-    void forgetPassword(String command , String expectedError) {
+    void forgetPassword(String command , String expectedError) throws IOException {
         CoreLoginMenuController coreController = new CoreLoginMenuController(new Scanner(command));
         coreController.run();
         assertEquals(expectedError , outContent.toString());

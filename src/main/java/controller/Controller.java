@@ -21,7 +21,7 @@ public class Controller {
         coreRegisterMenuController = new CoreRegisterMenuController(scanner);
     }
 
-    public void run(){
+    public void run() throws IOException {
         coreRegisterMenuController.run();
     }
 
@@ -31,8 +31,9 @@ public class Controller {
         if (!dataScanner.hasNextLine()) return;
 
         Gson gson = new Gson();
-        Data fetchedData = gson.fromJson(dataScanner.nextLine(), Data.class);
-        Data fetchedData1 = gson.fromJson(dataScanner.nextLine(), Data.class);
+        String output = dataScanner.nextLine();
+        Data fetchedData = gson.fromJson(output, Data.class);
+        Data fetchedData1 = gson.fromJson(output, Data.class);
         ArrayList<User> usersToBeAdded = fetchedData.getAllUsers();
         ArrayList<GameMap> gameMapsToBeAdded = fetchedData.getAllMaps();
         ArrayList<GameMap> gameMapsToBeAdded1 = fetchedData.getAllMaps();

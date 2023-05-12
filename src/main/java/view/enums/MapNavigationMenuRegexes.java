@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public enum MapNavigationMenuRegexes {
     MOVE_MAP("\\s*map\\s*(?<directionAndValue>\\s+((up)|(down)|(left)|(right))(\\s+-?\\d+)?)+\\s*"),
-    SHOW_DETAILS("\\s*show\\s+details\\s*(?<coordinate>\\s+(((-x)|(-y))\\s+\\d+)){2}}\\s*"),
+    SHOW_DETAILS("\\s*show\\s+details\\s*(?<coordinate>\\s+(((-x)|(-y))\\s+\\d+)){2}\\s*"),
     EXIT("\\s*Exit\\s*");
     private final Pattern pattern;
     MapNavigationMenuRegexes(String regex) {

@@ -77,6 +77,9 @@ public class StrongholdCrusader {
         return allMaps.values().toArray(new GameMap[0]);
     }
 
+    public static void addStaticMap(GameMap map) {
+        allStaticMaps.put(map.getMapName(), map);
+    }
     public static void addUser(User user) {
         allUsers.put(user.getUsername(), user);
     }

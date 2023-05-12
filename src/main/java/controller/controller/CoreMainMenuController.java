@@ -4,6 +4,7 @@ import controller.view_controllers.MainMenuController;
 import model.StrongholdCrusader;
 import view.MainMenu;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class CoreMainMenuController {
@@ -14,7 +15,7 @@ public class CoreMainMenuController {
         MainMenuController mainController = new MainMenuController(this);
         mainMenu = new MainMenu(mainController, scanner);
     }
-    public String run(){
+    public String run() throws IOException {
         String mainMenuResult;
         while (true) {
             mainMenuResult = mainMenu.run();
