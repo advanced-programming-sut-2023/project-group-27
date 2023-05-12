@@ -159,12 +159,14 @@ public class CoreGameMenuController {
                 return "You don't have enough wood\n";
             }
             building = new CastleComponent(type1,currentMatch.getCurrentUser(), map.getCell(x, y));
+            currentMatch.getCurrentMonarchy().getStockPile().changeGoodsCount(GoodsType.WOOD, -type1.getWoodNeeded());
+            currentMatch.getCurrentMonarchy().getStockPile().changeGoodsCount(GoodsType.STONE, -type1.getStoneNeeded());
         } else {
             return "Invalid building type\n";
         }
         map.getCell(x, y).setBuilding(building);
         currentMatch.getCurrentMonarchy().addBuilding(building);
-        return null;
+        return "success\n";
     }
 
     public String selectBuilding(String xStr , String yStr) {
