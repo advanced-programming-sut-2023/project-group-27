@@ -45,7 +45,6 @@ public enum GoodsType {
             map.put(type.name, type);
         }
     }
-    // TODO remember to init before usage
 
     public String getName() {
         return name;

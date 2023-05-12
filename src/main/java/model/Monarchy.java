@@ -19,7 +19,6 @@ public class Monarchy {
     private int population = 20;
 
     public Monarchy(User king, MonarchyColorType color, GameMap gameMap, Location mainKeepLocation) {
-        //TODO fix here and don't create building by default
         storages[0] = new Storage(GoodsType.getGranaryGoods(), 30000, king, gameMap.getCell(mainKeepLocation.getVicintyLocation(1, 0)));
         storages[1] = new Storage(GoodsType.getStockPileGoods(), 30000, king, gameMap.getCell(mainKeepLocation.getVicintyLocation(-1, 0)));
         storages[2] = new Storage(GoodsType.getArmouryGoods(), 30000, king, gameMap.getCell(mainKeepLocation.getVicintyLocation(1, 1)));
