@@ -35,7 +35,7 @@ public class Fight implements Task {
         if (target != null) {
             fightable.fight(this.target);
         } else {
-            fightable.fight(location);
+            fightable.fight(map.getCell(location));
             isValid = false;
         }
     }

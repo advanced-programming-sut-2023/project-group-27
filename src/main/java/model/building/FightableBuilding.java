@@ -1,23 +1,39 @@
 package model.building;
 
-import model.Destructable;
-import model.Fightable;
-import model.Location;
-import model.User;
+import model.*;
+import model.man.Man;
+
+import java.util.List;
+import java.util.Random;
 
 public class FightableBuilding extends Building implements Fightable {
     public FightableBuilding(int hitpoint, User owner, Location location) {
         super(hitpoint, owner, location);
+        this.damage = damage;
     }
+    private int damage;
 
     @Override
     public void fight(Destructable destructable) {
-        // TODO implement here
+        if (destructable.getOwner() == getOwner()) {
+            return;
+        }
+        destructable.setHitpoint(destructable.getHitpoint() - damage);
     }
 
     @Override
-    public void fight(Location location) {
-        // TODO implement here
+    public void fight(Cell cell) {
+        if (cell.getBuilding() != null && cell.getBuilding().getOwner() != getOwner()) {
+            fight(cell.getBuilding());
+            return;
+        }
+        List<Man> enemies = cell.getMen().stream()
+                .filter(m -> m.getOwner() != getOwner()).toList();
+        if (enemies.size() == 0) {
+            return;
+        }
+        Random random = new Random();
+        fight(enemies.get(random.nextInt(enemies.size())));
     }
 
     @Override
