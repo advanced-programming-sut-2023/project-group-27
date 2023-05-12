@@ -74,7 +74,7 @@ class CoreRegisterMenuControllerTest {
         assertEquals("nick", user.getNickname());
         assertEquals("", user.getSlogan());
         assertEquals(StrongholdCrusader.getSecurityQuestions().get(0), user.getSecurityQ());
-        assertEquals("Tony", user.getSecurityA());
+        assertEquals(Utilities.encryptString("Tony"), user.getSecurityA());
     }
 
     @AfterEach

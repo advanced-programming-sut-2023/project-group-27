@@ -36,5 +36,4 @@ public class LoginMenu extends MenuBase{
             else System.out.println("Invalid command!");
         }
     }
-
 }

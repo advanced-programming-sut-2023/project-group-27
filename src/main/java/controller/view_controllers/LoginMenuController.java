@@ -43,7 +43,7 @@ public class LoginMenuController {
             return "This username does not exist!";
         User user = StrongholdCrusader.getAllUsers().get(username);
         menu.showInformation("Please answer the security question");
-        while (!menu.confirm(user.getSecurityQ() , user.getSecurityA()))
+        while (!menu.confirmPass(user.getSecurityQ() , user.getSecurityA()))
             menu.showInformation("Wrong answer!");
         menu.showInformation("Enter a new password");
         String newPassword = menu.fetchAnswer();
@@ -58,5 +58,4 @@ public class LoginMenuController {
         }
         return "Password changed successfully!";
     }
-
 }
