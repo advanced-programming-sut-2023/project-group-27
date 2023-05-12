@@ -68,7 +68,7 @@ public class CoreSelectUnitMenuController {
             if (selectable instanceof Fightable && !((Soldier) selectable).isFighting()) {
                 for (Selectable enemy : selectableEnemies) {
                     if (enemy instanceof Fightable && !((Soldier) enemy).isFighting())
-                        currentMatch.addTask(new Fight((Fightable) selectable, (Destructable) enemy));
+                        currentMatch.addTask(new Fight(map, (Fightable) selectable, (Destructable) enemy));
                 }
             }
         }
