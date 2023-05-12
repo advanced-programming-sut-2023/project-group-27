@@ -40,14 +40,14 @@ public class ProfileMenuController {
         matcher.matches();
         String oldPassword = matcher.group("oldPassword");
         String newPassword = matcher.group("newPassword");
-        if (loggedInUser.isPasswordCorrect(oldPassword)) {
+        if (!loggedInUser.isPasswordCorrect(oldPassword)) {
             return "Current password is incorrect!\n";
         }
         if (coreController.changePasswordPrep(oldPassword, newPassword) != null) {
             return coreController.changePasswordPrep(oldPassword, newPassword);
         }
         coreController.changePassword(newPassword);
-        return "Successful";
+        return "Successful\n";
     }
 
     public String changeSlogan(Matcher matcher) {
@@ -71,15 +71,15 @@ public class ProfileMenuController {
     }
 
     public String showHighScore() {
-        return String.valueOf(coreController.showHighScore());
+        return String.valueOf(coreController.showHighScore()) + "\n";
     }
 
     public String showRank() {
-        return String.valueOf(coreController.showRank());
+        return String.valueOf(coreController.showRank()) + "\n";
     }
 
     public String showSlogan() {
-        return coreController.showSlogan();
+        return coreController.showSlogan() + "\n";
     }
 
     public String showProfile() {
