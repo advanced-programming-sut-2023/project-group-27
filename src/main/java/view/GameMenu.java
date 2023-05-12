@@ -27,9 +27,11 @@ public class GameMenu {
                 "10. show map -x <x> -y <y>\n" +
                 "11. drop building -<x> -<y> --type<type>\n" +
                 "12. select building -x <x> -y <y>\n" +
-                "13. select unit -x <y> -y <y>\n" +
+                "13. select unit -x <y> -y <y> -t <type>\n" +
                 "14. enter shop\n" +
-                "15. back\n");
+                "15. enter map edit\n" +
+                "16. show current player\n" +
+                "17. back\n");
         while (true) {
             String command = scanner.nextLine();
             String output;
@@ -100,6 +102,14 @@ public class GameMenu {
             }
             if (GameMenuRegexes.ENTER_SHOP.getMatcher(command).matches()) {
                 controller.enterShop();
+                continue;
+            }
+            if (GameMenuRegexes.ENTER_MAP_EDIT.getMatcher(command).matches()) {
+                controller.enterMapEdit();
+                continue;
+            }
+            if (GameMenuRegexes.SHOW_CURRENT_PLAYER.getMatcher(command).matches()) {
+                System.out.print(controller.showCurrentPlayer());
                 continue;
             }
             if (command.equals("Exit")) {

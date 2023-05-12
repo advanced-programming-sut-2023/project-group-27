@@ -43,11 +43,15 @@ public class CoreSelectUnitMenuController {
         }
     }
 
-    public void patrol(int x1, int y1, int x2, int y2) {
+    public String patrol(int x1, int y1, int x2, int y2) {
+        if (theSelected.stream().anyMatch(selectable1 -> !(selectable1 instanceof Movable))) {
+            return "The selected unit must be a movable!";
+        }
         for (Selectable selectable : theSelected) {
             currentMatch.addTask(new Patrol(map, (Movable) selectable, x1 , y1 , x2 , y2));
             //TODO maybe change movable to and array list of movables
         }
+        return "Patrol set successfully!";
     }
 
     public String setStatus(String state) {
