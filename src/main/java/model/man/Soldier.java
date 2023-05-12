@@ -3,6 +3,8 @@ package model.man;
 import model.*;
 import model.task.Task;
 
+import java.util.Objects;
+
 public class Soldier extends Man implements Fightable {
     private SoldierType soldierType;
     private Task task;
@@ -51,9 +53,18 @@ public class Soldier extends Man implements Fightable {
         isFighting = fighting;
     }
 
-    public void fight(Destructable destructable)
-    {
+    @Override
+    public void fight(Destructable destructable) {
+        // TODO implement here
+    }
 
+    @Override
+    public void fight(Location location) {
+        // TODO implement here
+    }
+
+    public int getAttackRange() {
+        return Objects.requireNonNullElse(range, 0);
     }
 
     @Override

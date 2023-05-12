@@ -29,6 +29,10 @@ public class Location {
         return neighbors;
     }
 
+    public int distance(Location location) {
+        return Math.abs(x - location.x) + Math.abs(y - location.y);
+    }
+
     @Override
     public String toString() {
         return "Location{" +
