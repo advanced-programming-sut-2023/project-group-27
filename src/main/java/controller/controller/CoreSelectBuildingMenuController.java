@@ -34,12 +34,12 @@ public class CoreSelectBuildingMenuController {
         for (int i = 0; i < count; i++)
             menToBeAdded[i] = Utilities.getNewMan(troopType, currentMonarchy.getKing());
         if (!evaluateGold(troopType, count)) return "Not enough Gold!\n";
-        if (!evaluateOtherRequirements(troopType, count)) return "You are short of armoury or other requirements requirements!\n";
+        if (!evaluateOtherRequirements(troopType, count)) return "You are short of armoury or other requirements!\n";
         takeGold(troopType, count);
         takeRequirements(troopType, count);
         currentMonarchy.addAllMen(menToBeAdded);
         selectedBuilding.getCell().addMen(menToBeAdded);
-        return "troops added succesfully\n";
+        return "troops added successfully\n";
     }
 
     public String repair() {
@@ -68,20 +68,20 @@ public class CoreSelectBuildingMenuController {
     }
 
     public boolean evaluateOtherRequirements(SoldierType troopType, int count) {
-        GoodsType[] requirments = troopType.getRequirements();
-        if (!(requirments == null)) {
-            for (GoodsType currentgoods : requirments)
-                if (currentMonarchy.getGood(currentgoods) < count) return false;
+        GoodsType[] requirements = troopType.getRequirements();
+        if (!(requirements == null)) {
+            for (GoodsType currentGoods : requirements)
+                if (currentMonarchy.getGood(currentGoods) < count) return false;
             return true;
         }
         return false;
     }
 
     public void takeRequirements(SoldierType troopType, int count) {
-        GoodsType[] requirments = troopType.getRequirements();
-        if (!(requirments == null)) {
-            for (GoodsType currentgoods : requirments)
-                currentMonarchy.putGood(currentgoods, currentMonarchy.getGood(currentgoods) - count);
+        GoodsType[] requirements = troopType.getRequirements();
+        if (!(requirements == null)) {
+            for (GoodsType currentGoods : requirements)
+                currentMonarchy.putGood(currentGoods, currentMonarchy.getGood(currentGoods) - count);
         }
     }
 }

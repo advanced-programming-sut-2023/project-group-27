@@ -13,8 +13,10 @@ public class CoreTradeMenuController {
     private TradingSystem tradingSystem;
     private final TradeMenuController controller;
     private final TradeMenu menu;
+    private Match match;
 
-    public CoreTradeMenuController(User loggedInUser , Scanner scanner) {
+    public CoreTradeMenuController(Match match, User loggedInUser , Scanner scanner) {
+        this.match = match;
         this.scanner = scanner;
         this.loggedInUser = loggedInUser;
         if (loggedInUser != null) {
@@ -47,9 +49,12 @@ public class CoreTradeMenuController {
     }
 
     public String tradeRequest(String otherUserName, String goods , String goodsAmount , String price , String massage){
-        User otherUser = StrongholdCrusader.getUserByName(otherUserName);
+        User otherUser = match.getUserByName(otherUserName);
         if (otherUser == null) {
             return "no such user\n";
+        }
+        if (otherUser.equals(loggedInUser)) {
+            return "you can't trade with yourself\n";
         }
         GoodsType type = null;
         for (GoodsType goodsType1 : GoodsType.getGoods()) {
@@ -74,6 +79,6 @@ public class CoreTradeMenuController {
         }
         TradingSystem tradingSystem = otherUser.getMonarchy().getTradingSystem();
         tradingSystem.addTrade(loggedInUser, type, goodsAmountInt, priceInt, massage);
-        return null;
+        return "trade request sent\n";
     }
 }

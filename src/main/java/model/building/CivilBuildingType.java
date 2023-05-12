@@ -1,17 +1,16 @@
 package model.building;
 
-import model.GoodsType;
 import model.User;
 
 import java.util.HashMap;
 
 public enum CivilBuildingType {
     HOVEL("Hovel", 100, new int[] {0, 6, 0}),
-    CATHERDAL("Cathedral", 1000, new int[] {1000, 0, 0}),
+    CATHEDRAL("Cathedral", 1000, new int[] {1000, 0, 0}),
     CHURCH("Church", 500, new int[] {250, 0, 0}),
     BARRACKS("Barracks", 700, new int[] {0, 0, 15}),
-    MERCENARYPOST("MercenaryPost", 500, new int[] {0, 10, 0}),
-    ENGINEERSGUILD("EngineersGuild", 400, new int[] {100, 10, 0}),
+    MERCENARY_POST("MercenaryPost", 500, new int[] {0, 10, 0}),
+    ENGINEERS_GUILD("EngineersGuild", 400, new int[] {100, 10, 0}),
     STABLE("Stable", 0 , null);
 
     private static final HashMap<String, CivilBuildingType> map = new HashMap<>();

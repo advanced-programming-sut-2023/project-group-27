@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 
 public enum TradeMenuRegexes {
     CREATE_TRADE("\\s*trade\\s*(?<options>((\\s+((-[a-zA-Z0-9]+\\s+((\"[^\"]+\")|(\\S+)))|(--[a-zA-Z]+\\s+((\"[^\"]+\")|(\\S+)))))+))"),
-    TRADE_LIST("\\s*trade\\s+list\\s+"),
-    TRADE_HISTORY("\\s*trade\\s+history\\s+"),
+    TRADE_LIST("\\s*trade\\s+list\\s*"),
+    TRADE_HISTORY("\\s*trade\\s+history\\s*"),
     TRADE_ACCEPT("\\s*trade\\s+accept\\s*(?<options>((\\s+((-[a-zA-Z0-9]+\\s+((\"[^\"]+\")|(\\S+)))|(--[a-zA-Z]+\\s+((\"[^\"]+\")|(\\S+)))))+))");
 
     private final Pattern pattern;

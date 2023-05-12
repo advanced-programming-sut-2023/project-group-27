@@ -13,4 +13,9 @@ public class FightableBuilding extends Building implements Fightable {
     public void fight(Destructable destructable) {
 
     }
+
+    @Override
+    public int getHitPoint() {
+        return super.getHitpoint();
+    }
 }

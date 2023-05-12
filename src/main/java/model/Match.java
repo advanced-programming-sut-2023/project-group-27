@@ -77,4 +77,15 @@ public class Match {
             }
         }
     }
+
+    public User getUserByName(String otherUserName) {
+        User user = null;
+        for (User user1 : users) {
+            if (user1.getUsername().equals(otherUserName)) {
+                user = user1;
+                break;
+            }
+        }
+        return user;
+    }
 }
