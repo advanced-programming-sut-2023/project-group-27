@@ -32,8 +32,10 @@ public class CoreMapEditMenuController {
         String result;
         while (true) {
             result = mapEditMenu.run();
-            if (result.equals("Exit"))
+            if (result.equals("Exit")) {
+                System.out.println("Exited map edit menu");
                 return;
+            }
         }
     }
 
@@ -169,7 +171,6 @@ public class CoreMapEditMenuController {
         else if (type instanceof ProductionBuildingType)
             building = new ProductionBuilding((ProductionBuildingType) type, currentOwner, currentOwner.getMonarchy(), currentCell);
         else
-            //(type instanceof CastleComponentType)
             building = new CastleComponent((CastleComponentType) type, currentOwner, currentCell );
         if (!Utilities.canBuildOnThisType(building, currentCell.getType()))
             return "Can't build this building on this type of land.";

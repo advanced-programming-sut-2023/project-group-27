@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="fix some bugs3">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="fix some bugs4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectBuildingMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectBuildingMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectUnitMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectUnitMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/GameMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/GameMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/enums/GameMenuRegexes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/SelectBuildingMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/enums/SelectBuildingMenuRegexes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/MapEditMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/MapEditMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/NaturalEntityType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/NaturalEntityType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/MapEditMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/enums/MapEditMenuRegexes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,14 +220,7 @@
       <workItem from="1683725694757" duration="17361000" />
       <workItem from="1683863209346" duration="13926000" />
       <workItem from="1683889547328" duration="2917000" />
-      <workItem from="1683979354507" duration="4813000" />
-    </task>
-    <task id="LOCAL-00013" summary="final development on select unit menu">
-      <created>1681498650987</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1681498650987</updated>
+      <workItem from="1683979354507" duration="7789000" />
     </task>
     <task id="LOCAL-00014" summary="caught the deadline">
       <created>1681502929678</created>
@@ -567,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683982079340</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="fix some bugs4">
+      <created>1683984272179</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1683984272179</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -618,7 +616,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="finalized selectBuildinbg Menu" />
     <MESSAGE value="added match class and fixed problems" />
     <MESSAGE value="parts of map editing features" />
     <MESSAGE value="map editing core logics and other changes" />
@@ -643,7 +640,8 @@
     <MESSAGE value="fix some bugs" />
     <MESSAGE value="fix some bugs2" />
     <MESSAGE value="fix some bugs3" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix some bugs3" />
+    <MESSAGE value="fix some bugs4" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix some bugs4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -39,7 +39,7 @@ public class Utilities {
         Pattern pattern = Pattern.compile("-(?<key>[xydtc]\\d*)\\s+(?<value>\\S+)");
         Matcher matcher = pattern.matcher(input);
 
-        while (matcher.matches()) {
+        while (matcher.find()) {
             if (outputMap.containsKey(matcher.group("key")))
                 return null;
             outputMap.put(matcher.group("key"), matcher.group("value"));

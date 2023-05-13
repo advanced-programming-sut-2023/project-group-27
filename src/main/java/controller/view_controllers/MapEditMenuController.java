@@ -61,7 +61,6 @@ public class MapEditMenuController {
     public String dropRock(String input) {
         if ((dataHoldingUtility = Utilities.extractInputs(input)) == null)
             return "repetitive inputs are inserted!";
-
         try {
             return coreController.dropRock(
                     new Location(Integer.parseInt(dataHoldingUtility.get("x")),
