@@ -31,8 +31,10 @@ public class CoreSelectBuildingMenuController {
     public String createUnit(SoldierType troopType, int count) {
         Man[] menToBeAdded = new Man[count];
 
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++){
             menToBeAdded[i] = Utilities.getNewMan(troopType, currentMonarchy.getKing());
+            menToBeAdded[i].setLocation(selectedBuilding.getCell().getLocation());
+        }
         if (!evaluateGold(troopType, count)) return "Not enough Gold!\n";
         if (!evaluateOtherRequirements(troopType, count)) return "You are short of armoury or other requirements!\n";
         takeGold(troopType, count);

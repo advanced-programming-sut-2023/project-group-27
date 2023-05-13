@@ -117,6 +117,10 @@ public class GameMenu {
                 System.out.print(controller.dropBuilding(matcher));
                 continue;
             }
+            if (GameMenuRegexes.NEXT_TURN.getMatcher(command).matches()) {
+                System.out.println(controller.nextTurn());
+                continue;
+            }
             if (command.equals("Exit")) {
                 return "Exit";
             }

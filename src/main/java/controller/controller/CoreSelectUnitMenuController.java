@@ -44,6 +44,7 @@ public class CoreSelectUnitMenuController {
 
     public void run(){
         selectUnitMenu.run();
+        System.out.println("Exited Unit Selection Menu");
     }
 
     public void moveTo(int x,int y) {

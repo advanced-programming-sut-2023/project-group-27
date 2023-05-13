@@ -243,4 +243,9 @@ public class CoreGameMenuController {
         CoreShopMenuController coreShopMenuController = new CoreShopMenuController(currentMatch, scanner);
         coreShopMenuController.run();
     }
+
+    public String nextTurn() {
+        currentMatch.nextTurn();
+        return currentMatch.getCurrentUser().getUsername();
+    }
 }

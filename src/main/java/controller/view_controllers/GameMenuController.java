@@ -140,4 +140,8 @@ public class GameMenuController {
     public String showCurrentPlayer() {
         return coreController.showCurrentPlayer();
     }
+
+    public String nextTurn() {
+        return coreController.nextTurn();
+    }
 }
