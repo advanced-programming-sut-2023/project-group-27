@@ -4,20 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="fix some bugs6">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreLoginMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreLoginMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/LoginMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/LoginMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/LoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/LoginMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/LoginMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/enums/LoginMenuRegexes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/MainMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/enums/MainMenuRegexes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/data.json" afterDir="false" />
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="fix some bugs7">
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectUnitMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectUnitMenuController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,14 +215,7 @@
       <workItem from="1683725694757" duration="17361000" />
       <workItem from="1683863209346" duration="13926000" />
       <workItem from="1683889547328" duration="2917000" />
-      <workItem from="1683979354507" duration="14101000" />
-    </task>
-    <task id="LOCAL-00016" summary="finalized checkpoint 1">
-      <created>1682446964597</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1682446964597</updated>
+      <workItem from="1683979354507" duration="15677000" />
     </task>
     <task id="LOCAL-00017" summary="map navigation feature">
       <created>1682590232580</created>
@@ -572,7 +553,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683990278915</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="fix some bugs7">
+      <created>1683995240601</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1683995240602</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -623,7 +611,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="map editing core logics and other changes" />
     <MESSAGE value="map editing controller and other changes" />
     <MESSAGE value="fixed color code problems and enhanced show map output by adding separation" />
     <MESSAGE value="added act and canAct for productionBuildings" />
@@ -648,7 +635,8 @@
     <MESSAGE value="fix some bugs4" />
     <MESSAGE value="fix some bugs5" />
     <MESSAGE value="fix some bugs6" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix some bugs6" />
+    <MESSAGE value="fix some bugs7" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix some bugs7" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

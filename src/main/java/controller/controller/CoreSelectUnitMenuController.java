@@ -113,10 +113,16 @@ public class CoreSelectUnitMenuController {
 
     public String build(String equipmentName) {
         if (!type.getName().equals("Engineer")) return "The selected unit must be engineer!";
+        if (!map.getCell(x , y).isPassable(null)) {
+            return "The selected cell is not appropriate for building!";
+        }
         int engineerCount = theSelected.size();
         EngineerBuildingType buildingType = EngineerBuildingType.getTypeByName(equipmentName);
         Monarchy monarchy = currentUser.getMonarchy();
         EngineerBuilding building;
+        if (buildingType != null) {
+            building = new EngineerBuilding(buildingType , currentUser , map.getCell(x , y));
+        }
         switch (equipmentName) {
             case "shield" :
                 if (engineerCount < 1) return "You need at least 1 engineer!";
@@ -149,6 +155,8 @@ public class CoreSelectUnitMenuController {
         EngineerBuilding building = new EngineerBuilding(buildingType , currentUser ,
                 map.getCell(x , y));
         monarchy.addBuilding(building);
+        monarchy.changeGold(-buildingType.getCost());
+        map.getCell(x, y).setBuilding(building);
         return true;
     }
 
