@@ -21,7 +21,7 @@ public enum SoldierType {
     SLAVE("Slave", 50, 50, 1.5, 0, 5, "arab", null),
     ASSASSIN("Assassin", 120, 90, 3.0, 0, 60, "arab", null),
     ARABSWORDSMAN("ArabSwordsMan", 220, 120, 0.8, 0, 80, "arab", null),
-    ARCHER("Archer", 80, 80, 1.5, 10, 12, "european",
+    ARCHER("Archer", 120, 80, 1.5, 10, 12, "european",
             new GoodsType[] {GoodsType.BOW}),
     CROSSBOWMAN("CrossBowMan", 120, 90, 1.2, 10, 20, "european",
             new GoodsType[] {GoodsType.CROSSBOW, GoodsType.LEATHER_ARMOUR}),

@@ -24,6 +24,10 @@ public class FightableBuilding extends Building implements Fightable {
         return task;
     }
 
+    public void setTask(Task task) {
+        this.task = task;
+    }
+
     @Override
     public void fight(Destructable destructable) {
         if (destructable.getOwner() == getOwner()) {

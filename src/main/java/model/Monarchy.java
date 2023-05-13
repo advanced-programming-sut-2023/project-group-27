@@ -141,6 +141,14 @@ public class Monarchy {
         this.men.remove(man);
     }
 
+    public List<Man> getMen() {
+        return men;
+    }
+
+    public List<Building> getBuildings() {
+        return buildings;
+    }
+
     public int calcPopularityFood() {
         return 4 * foodRate;
     }

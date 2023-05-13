@@ -1,6 +1,8 @@
 package model;
 
+import model.building.Building;
 import model.building.FightableBuilding;
+import model.man.Man;
 import model.man.Soldier;
 import model.task.*;
 
@@ -32,7 +34,25 @@ public class Match {
         for (Task task : taskList) {
             task.run();
         }
+        for (Monarchy monarchy: monarchies) {
+            for (Man man: monarchy.getMen()) {
+                if (man instanceof Soldier) {
+                    Soldier soldier = (Soldier) man;
+                    if (soldier.getTask() != null && !(soldier.getTask().isValid())) {
+                        soldier.setTask(null);
+                    }
+                }
+            }
+            for (Building building : monarchy.getBuildings().stream()
+                    .filter(building -> building instanceof FightableBuilding).toList()) {
+                FightableBuilding fightableBuilding = (FightableBuilding) building;
+                if (fightableBuilding.getTask() != null && !(fightableBuilding.getTask().isValid())) {
+                    fightableBuilding.setTask(null);
+                }
+            }
+        }
         taskList.removeIf(task -> !(task.isValid()));
+
     }
 
     private void updateTasks() {
@@ -41,7 +61,7 @@ public class Match {
             Fight fight = (Fight) task;
             Soldier target = fight.getTarget();
             if (target == null) continue;
-            if (target.getTask() instanceof Move) {
+            if (target.getTask() != null && target.getTask() instanceof Move) {
                 Task targetTask = new Fight(currentMatchMap , target , ((Fight) task).getOwner().getDestructable());
                 newTasks.add(targetTask);
                 target.setTask(targetTask);
@@ -62,10 +82,10 @@ public class Match {
                 owner = ((AirStrike) task).getOwner().getDestructable();
             }
             if (owner instanceof Soldier) {
-                if (((Soldier) owner).getTask() == task) continue;
+                if (((Soldier) owner).getTask() != task) continue;
             }
             if (owner instanceof FightableBuilding) {
-                if (((FightableBuilding) owner).getTask() == task) continue;
+                if (((FightableBuilding) owner).getTask() != task) continue;
             }
             if (!task.isValid()) continue;
             newTasks.add(task);

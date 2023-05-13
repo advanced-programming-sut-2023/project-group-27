@@ -17,12 +17,6 @@ public class Fight extends Task {
         this.map = map;
     }
 
-    public Fight(GameMap map, Fightable fightable, Location location) {
-        this.fightable = fightable;
-        this.location = location;
-        this.target = null;
-    }
-
     public Soldier getTarget() {
         if (target instanceof Soldier) return (Soldier) target;
         return null;
@@ -34,17 +28,12 @@ public class Fight extends Task {
 
     @Override
     public void run() {
-        if (fightable.getLocation().distance(location) > fightable.getAttackRange()) {
+        if (fightable.getLocation().distance(target.getLocation()) > fightable.getAttackRange()) {
             if (!(fightable instanceof Movable)) return;
-            new Move(map, (Movable) fightable, location.x, location.y).run();
+            new Move(map, (Movable) fightable, target.getLocation().x, target.getLocation().y).run();
             return;
         }
-        if (target != null) {
-            fightable.fight(this.target);
-        } else {
-            fightable.fight(map.getCell(location));
-            isValid = false;
-        }
+        fightable.fight(this.target);
     }
 
     @Override
