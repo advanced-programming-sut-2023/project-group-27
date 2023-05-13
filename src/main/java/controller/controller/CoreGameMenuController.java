@@ -48,6 +48,8 @@ public class CoreGameMenuController {
                 case "Enter trade manu":
                     coreTradeMenuController.run();
                     break;
+                case "Exit":
+                    return "Exit";
             }
         }
     }

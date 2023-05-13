@@ -113,9 +113,9 @@ public class GameMenu {
                 continue;
             }
             if (command.equals("Exit")) {
-                break;
+                return "Exit";
             }
+            System.out.println("Invalid command!");
         }
-        return null;
     }
 }
