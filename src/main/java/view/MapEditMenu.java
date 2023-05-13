@@ -55,8 +55,10 @@ public class MapEditMenu {
                 System.out.println(controller.setTexture(matcher.group("data")));
                 continue;
             }
-            if ((matcher = MapEditMenuRegexes.EXIT.getMatcher(input)).matches())
+            if ((matcher = MapEditMenuRegexes.EXIT.getMatcher(input)).matches()) {
+                System.out.println("Exited map edit menu");
                 return "Exit";
+            }
 
             System.out.println("Invalid command!");
         }

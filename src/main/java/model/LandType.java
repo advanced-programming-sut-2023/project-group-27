@@ -3,7 +3,7 @@ package model;
 import java.util.HashMap;
 
 public enum LandType implements Passable{
-    PLAIN("Plain", true, "\u001B[48;5;231m", true),
+    PLAIN("Plain", true, "\u001B[48;5;234m", true),
     GRAVEL("Gravel", true, "\u001B[48;5;222m", true),
     STONE("Stone", true, "\u001B[48;5;249m", true),
     ROCKY("Rocky", false, "\u001B[48;5;236m", true),

@@ -22,8 +22,7 @@ public class MapEditMenuController {
         LandType landType = LandType.getLandTypeByName(dataHoldingUtility.get("t"));
         if (landType == null)
             return "Invalid LandType name!";
-
-        if (dataHoldingUtility.containsKey("x1")) {
+        if (!dataHoldingUtility.containsKey("x1")) {
             try {
                 return coreController.setTexture(
                         new Location(Integer.parseInt(dataHoldingUtility.get("x")),

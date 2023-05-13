@@ -33,7 +33,6 @@ public class CoreMapEditMenuController {
         while (true) {
             result = mapEditMenu.run();
             if (result.equals("Exit")) {
-                System.out.println("Exited map edit menu");
                 return;
             }
         }
