@@ -48,8 +48,11 @@ public class CoreSelectUnitMenuController {
 
     public void moveTo(int x,int y) {
         for (Selectable selectable : theSelected) {
-            currentMatch.addTask(new Move(map , (Movable) selectable , x , y));
-            //TODO maybe change movable to and array list of movables
+            Move move = new Move(map, (Movable) selectable, x, y);
+            currentMatch.addTask(move);
+            if (selectable instanceof Man) {
+                ((Man) selectable).setTask(move);
+            }
         }
     }
 
@@ -58,8 +61,11 @@ public class CoreSelectUnitMenuController {
             return "The selected unit must be a movable!";
         }
         for (Selectable selectable : theSelected) {
-            currentMatch.addTask(new Patrol(map, (Movable) selectable, x1 , y1 , x2 , y2));
-            //TODO maybe change movable to and array list of movables
+            Patrol patrol = new Patrol(map, (Movable) selectable, x1 , y1 , x2 , y2);
+            currentMatch.addTask(patrol);
+            if (selectable instanceof Man) {
+                ((Man) selectable).setTask(patrol);
+            }
         }
         return "Patrol set successfully!";
     }
@@ -77,8 +83,11 @@ public class CoreSelectUnitMenuController {
         for (Selectable selectable : selectableEnemies) {
             if (selectable instanceof Fightable && !((Soldier) selectable).isFighting()) {
                 for (Selectable enemy : selectableEnemies) {
-                    if (enemy instanceof Fightable && !((Soldier) enemy).isFighting())
-                        currentMatch.addTask(new Fight(map, (Fightable) selectable, (Destructable) enemy));
+                    if (enemy instanceof Fightable && !((Soldier) enemy).isFighting()) {
+                        Fight fight = new Fight(map, (Fightable) selectable, (Destructable) enemy);
+                        currentMatch.addTask(fight);
+                        ((Soldier) selectable).setTask(fight);
+                    }
                 }
             }
         }
@@ -100,8 +109,10 @@ public class CoreSelectUnitMenuController {
         }
         Random random = new Random();
         for (Selectable selectable : theSelected) {
-            currentMatch.addTask(new AirStrike((Fightable) selectable , type ,
-                    (Destructable) selectableEnemies.get(random.nextInt() % selectableEnemies.size()) , x , y));
+            AirStrike airStrike = new AirStrike((Fightable) selectable, type,
+                    (Destructable) selectableEnemies.get(random.nextInt() % selectableEnemies.size()), x, y);
+            currentMatch.addTask(airStrike);
+            ((Man) selectable).setTask(airStrike);
         }
         return null;
     }

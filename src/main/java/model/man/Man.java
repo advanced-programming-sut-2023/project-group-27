@@ -1,10 +1,12 @@
 package model.man;
 
 import model.*;
+import model.task.Task;
 
 public abstract class Man extends Destructable implements Movable {
     private final String name;
     private final User owner;
+    private Task task;
     private Location location;
     private final Double movementSpeed;
 
@@ -43,5 +45,13 @@ public abstract class Man extends Destructable implements Movable {
 
     public User getOwner() {
         return owner;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
+
+    public Task getTask() {
+        return task;
     }
 }
