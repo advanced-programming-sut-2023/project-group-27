@@ -7,7 +7,7 @@ import model.Movable;
 
 import java.util.LinkedList;
 
-public class Patrol implements Task {
+public class Patrol extends Task {
     private final Location destination1, destination2;
     private LinkedList<Location> initialPath, patrolPath;
     private final Movable movable;

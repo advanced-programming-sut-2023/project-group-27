@@ -7,7 +7,7 @@ import model.Movable;
 
 import java.util.LinkedList;
 
-public class Move implements Task {
+public class Move extends Task {
     private BFS bfs;
     private final GameMap map;
     private LinkedList<Location> path;
