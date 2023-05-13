@@ -58,6 +58,10 @@ public class User implements Comparable<User>{
         return monarchy;
     }
 
+    public boolean isStayLoggedIn() {
+        return stayLoggedIn;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }

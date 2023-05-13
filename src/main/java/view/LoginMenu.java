@@ -16,7 +16,7 @@ public class LoginMenu extends MenuBase{
     public String run() {
         System.out.println("Entered Login Menu");
         System.out.print("your options are:\n" +
-                "1. user login -u <username> -p <password>\n" +
+                "1. user login -u <username> -p <password> --stayLoggedIn (optional)\n" +
                 "2. forgot my password -u <username>\n" +
                 "3. Exit\n");
         String command , output;

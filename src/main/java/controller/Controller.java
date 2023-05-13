@@ -1,6 +1,7 @@
 package controller;
 
 import com.google.gson.Gson;
+import controller.controller.CoreMainMenuController;
 import controller.controller.CoreRegisterMenuController;
 import model.GameMap;
 import model.StrongholdCrusader;
@@ -16,12 +17,20 @@ import java.util.Scanner;
 
 public class Controller {
     private final CoreRegisterMenuController coreRegisterMenuController;
+    private final CoreMainMenuController coreMainMenuController;
 
     public Controller(Scanner scanner) {
         coreRegisterMenuController = new CoreRegisterMenuController(scanner);
+        this.coreMainMenuController = new CoreMainMenuController(scanner);
     }
-
     public void run() throws IOException {
+        for (User user : StrongholdCrusader.getAllUsers().values()) {
+            if (user.isStayLoggedIn()) {
+                StrongholdCrusader.setLoggedInUser(user);
+                coreMainMenuController.run();
+                return;
+            }
+        }
         coreRegisterMenuController.run();
     }
 
@@ -54,5 +63,4 @@ public class Controller {
         fileWriter.write(jsonToBePushed);
         fileWriter.close();
     }
-
 }

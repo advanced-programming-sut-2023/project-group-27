@@ -1,14 +1,8 @@
 import controller.Controller;
-import controller.controller.CoreMapEditMenuController;
-import controller.controller.CoreMapNavigationMenuController;
 import controller.controller.Utilities;
-import controller.view_controllers.MapNavigationMenuController;
 import model.*;
-import view.MapNavigationMenu;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Scanner;
 
 public class Main {
@@ -18,7 +12,7 @@ public class Main {
         Controller controller = new Controller(scanner);
         controller.fetchData();
         ///////////////////////////////
-        Controller control = new Controller(null);
+        Controller control = new Controller(scanner);
         GameMap map = new GameMap(
                 800, 800, "BadLands", 8,
                 new Location[] {new Location(5, 5), new Location(5, 750), new Location(750, 750), new Location(400, 400),

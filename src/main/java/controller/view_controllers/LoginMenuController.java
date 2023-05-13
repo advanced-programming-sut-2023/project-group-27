@@ -32,7 +32,7 @@ public class LoginMenuController {
         if (!args.containsKey("p")) return "Please enter your password";
         String username = args.get("u");
         String password = args.get("p");
-        boolean stayLoggedIn = args.containsKey("stay-logged-in");
+        boolean stayLoggedIn = args.containsKey("stayLoggedIn");
         return coreController.login(username , password , stayLoggedIn);
     }
 

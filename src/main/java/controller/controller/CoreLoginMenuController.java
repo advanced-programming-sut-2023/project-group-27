@@ -24,7 +24,7 @@ public class CoreLoginMenuController {
     }
 
     public String run () throws IOException {
-        String loginMenuResult;
+        String loginMenuResult, utilityResult;
         while (true) {
             loginMenuResult = loginMenu.run();
             switch (loginMenuResult) {
@@ -33,7 +33,9 @@ public class CoreLoginMenuController {
                 case "Enter main menu":
                     CoreMainMenuController coreMainMenuController =
                             new CoreMainMenuController(scanner);
-                    coreMainMenuController.run();
+                    utilityResult = coreMainMenuController.run();
+                    if (utilityResult.equals("Exit"))
+                        return "Exit";
                     break;
             }
         }
@@ -70,5 +72,4 @@ public class CoreLoginMenuController {
         delay = 0;
         delayStart = 0;
     }
-
 }

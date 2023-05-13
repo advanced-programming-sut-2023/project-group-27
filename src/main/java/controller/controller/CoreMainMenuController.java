@@ -22,6 +22,8 @@ public class CoreMainMenuController {
             switch (mainMenuResult) {
                 case "Logout":
                     return "Logout";
+                case "Exit":
+                    return "Exit";
                 case "Enter profile menu":
                     CoreProfileMenuController coreProfileController =
                             new CoreProfileMenuController(scanner);
