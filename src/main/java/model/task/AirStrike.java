@@ -6,7 +6,7 @@ import model.building.FightableBuilding;
 import model.man.Soldier;
 import model.man.SoldierType;
 
-public class AirStrike implements Task{
+public class AirStrike extends Task{
     private final Fightable fightable;
     private final SoldierType type;
     private final Destructable target;
@@ -44,5 +44,9 @@ public class AirStrike implements Task{
     public boolean isValid() {
         if (((Destructable) fightable).getHitpoint() <= 0) return false;
         return isValid;
+    }
+
+    public Fightable getOwner() {
+        return fightable;
     }
 }

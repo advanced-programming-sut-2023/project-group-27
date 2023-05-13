@@ -1,8 +1,9 @@
 package model.task;
 
 import model.*;
+import model.man.Soldier;
 
-public class Fight implements Task {
+public class Fight extends Task {
     private final Fightable fightable;
     private final Destructable target;
     private final Location location;
@@ -20,6 +21,15 @@ public class Fight implements Task {
         this.fightable = fightable;
         this.location = location;
         this.target = null;
+    }
+
+    public Soldier getTarget() {
+        if (target instanceof Soldier) return (Soldier) target;
+        return null;
+    }
+
+    public Fightable getOwner() {
+        return fightable;
     }
 
     @Override

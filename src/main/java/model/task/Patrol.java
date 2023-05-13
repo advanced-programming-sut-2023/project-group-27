@@ -7,7 +7,7 @@ import model.Movable;
 
 import java.util.LinkedList;
 
-public class Patrol implements Task {
+public class Patrol extends Task {
     private final Location destination1, destination2;
     private LinkedList<Location> initialPath, patrolPath;
     private final Movable movable;
@@ -83,5 +83,9 @@ public class Patrol implements Task {
         destination2 = map.getCell(x2, y2).getLocation();
         BFS bfs = new BFS(map, movable);
         initialPath = bfs.pathTo(destination1);
+    }
+
+    public Movable getOwner() {
+        return movable;
     }
 }

@@ -7,7 +7,7 @@ import model.Movable;
 
 import java.util.LinkedList;
 
-public class Move implements Task {
+public class Move extends Task {
     private BFS bfs;
     private final GameMap map;
     private LinkedList<Location> path;
@@ -52,5 +52,9 @@ public class Move implements Task {
         this.bfs = new BFS(map, movable);
         this.path = this.bfs.pathTo(destination);
         this.movable = movable;
+    }
+
+    public Movable getOwner() {
+        return movable;
     }
 }

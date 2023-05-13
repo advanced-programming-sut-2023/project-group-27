@@ -1,6 +1,8 @@
 package model;
 
-import model.task.Task;
+import model.building.FightableBuilding;
+import model.man.Soldier;
+import model.task.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,20 +32,46 @@ public class Match {
         for (Task task : taskList) {
             task.run();
         }
+        taskList.removeIf(task -> !(task.isValid()));
     }
 
     private void updateTasks() {
-//        List<Task> newList = new ArrayList<>();
-//        for (Task task : taskList) {
-//            newList.add(updatedTask(task));
-//        }
-//        taskList.clear();
-//        taskList.addAll(newList);
-    }
-
-    private Task updatedTask(Task task) {
-
-        return null;
+        ArrayList<Task> newTasks = new ArrayList<>();
+        for (Task task : taskList.stream().filter(x -> x instanceof Fight).toList()) {
+            Fight fight = (Fight) task;
+            Soldier target = fight.getTarget();
+            if (target == null) continue;
+            if (target.getTask() instanceof Move) {
+                Task targetTask = new Fight(currentMatchMap , target , ((Fight) task).getOwner().getDestructable());
+                newTasks.add(targetTask);
+                target.setTask(targetTask);
+            }
+        }
+        for (Task task : taskList) {
+            Destructable owner;
+            if (task instanceof Fight) {
+                owner = ((Fight) task).getOwner().getDestructable();
+            }
+            else if (task instanceof Move) {
+                owner = ((Move) task).getOwner().getDestructable();
+            }
+            else if (task instanceof Patrol) {
+                owner = ((Patrol) task).getOwner().getDestructable();
+            }
+            else {
+                owner = ((AirStrike) task).getOwner().getDestructable();
+            }
+            if (owner instanceof Soldier) {
+                if (((Soldier) owner).getTask() == task) continue;
+            }
+            if (owner instanceof FightableBuilding) {
+                if (((FightableBuilding) owner).getTask() == task) continue;
+            }
+            if (!task.isValid()) continue;
+            newTasks.add(task);
+        }
+        taskList.clear();
+        taskList.addAll(newTasks);
     }
 
     public User getCurrentUser() {
@@ -70,8 +98,8 @@ public class Match {
         turnNumber++;
         currentMonarchy = monarchies.get(turnNumber % monarchies.size());
         if (turnNumber % monarchies.size() == 0) {
-            runTasks();
             updateTasks();
+            runTasks();
             for (Monarchy monarchy : monarchies) {
                 monarchy.run();
             }

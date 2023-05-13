@@ -1,7 +1,8 @@
 package model.task;
 
+public abstract class Task {
 
-public interface Task {
-    void run();
-    boolean isValid();
+    public abstract void run();
+    public abstract boolean isValid();
+
 }

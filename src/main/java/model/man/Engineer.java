@@ -1,8 +1,6 @@
 package model.man;
 
-import model.Cell;
-import model.Location;
-import model.User;
+import model.*;
 
 public class Engineer extends Man {
     public Engineer(int hitpoint, User owner) {
@@ -11,5 +9,9 @@ public class Engineer extends Man {
 
     public void pourOil(Cell cell) {
 
+    }
+
+    public Destructable getDestructable() {
+        return this;
     }
 }
