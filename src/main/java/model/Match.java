@@ -1,5 +1,9 @@
 package model;
 
+import model.building.FightableBuilding;
+import model.man.Soldier;
+import model.task.Fight;
+import model.task.Move;
 import model.task.Task;
 
 import java.util.ArrayList;
@@ -33,17 +37,31 @@ public class Match {
     }
 
     private void updateTasks() {
-//        List<Task> newList = new ArrayList<>();
-//        for (Task task : taskList) {
-//            newList.add(updatedTask(task));
-//        }
-//        taskList.clear();
-//        taskList.addAll(newList);
-    }
-
-    private Task updatedTask(Task task) {
-
-        return null;
+        ArrayList<Task> newTasks = new ArrayList<>();
+        for (Task task : taskList.stream().filter(x -> x instanceof Fight).toList()) {
+            Fight fight = (Fight) task;
+            Soldier target = fight.getTarget();
+            if (target == null) continue;
+            Task targetTask = target.getTask();
+            if (targetTask instanceof Move) {
+                targetTask = new Fight(currentMatchMap , target , task.getOwner());
+                newTasks.add(targetTask);
+                target.setTask(targetTask);
+            }
+        }
+        for (Task task : taskList) {
+            Destructable owner = task.getOwner();
+            if (owner instanceof Soldier) {
+                if (((Soldier) owner).getTask() == task) continue;
+            }
+            if (owner instanceof FightableBuilding) {
+                if (((FightableBuilding) owner).getTask() == task) continue;
+            }
+            if (!task.isValid()) continue;
+            newTasks.add(task);
+        }
+        taskList.clear();
+        taskList.addAll(newTasks);
     }
 
     public User getCurrentUser() {

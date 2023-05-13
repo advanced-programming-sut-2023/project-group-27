@@ -2,12 +2,14 @@ package model.building;
 
 import model.*;
 import model.man.Man;
+import model.task.Task;
 
 import java.util.List;
 import java.util.Random;
 
 public class FightableBuilding extends Building implements Fightable {
     private int damage;
+    private Task task;
       
     public FightableBuilding(int hitpoint, User owner, Cell cell, int damage) {
         super(hitpoint, owner, cell, "fighterBuilding");
@@ -16,6 +18,10 @@ public class FightableBuilding extends Building implements Fightable {
     
     public int getDamage() {
         return damage;
+    }
+
+    public Task getTask() {
+        return task;
     }
 
     @Override
