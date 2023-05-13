@@ -6,4 +6,6 @@ public interface Fightable extends Selectable {
     int getHitPoint();
 
     int getAttackRange();
+
+    Destructable getDestructable();
 }

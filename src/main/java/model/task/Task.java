@@ -2,14 +2,11 @@ package model.task;
 
 
 import model.Destructable;
+import model.Fightable;
 
 public abstract class Task {
-    private Destructable taskOwner;
 
     public abstract void run();
     public abstract boolean isValid();
 
-    public Destructable getOwner() {
-        return taskOwner;
-    }
 }

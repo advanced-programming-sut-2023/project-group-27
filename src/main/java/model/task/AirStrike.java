@@ -45,4 +45,8 @@ public class AirStrike extends Task{
         if (((Destructable) fightable).getHitpoint() <= 0) return false;
         return isValid;
     }
+
+    public Fightable getOwner() {
+        return fightable;
+    }
 }

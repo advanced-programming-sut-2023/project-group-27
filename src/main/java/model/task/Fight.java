@@ -28,6 +28,10 @@ public class Fight extends Task {
         return null;
     }
 
+    public Fightable getOwner() {
+        return fightable;
+    }
+
     @Override
     public void run() {
         if (fightable.getLocation().distance(location) > fightable.getAttackRange()) {

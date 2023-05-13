@@ -53,4 +53,8 @@ public class Move extends Task {
         this.path = this.bfs.pathTo(destination);
         this.movable = movable;
     }
+
+    public Movable getOwner() {
+        return movable;
+    }
 }

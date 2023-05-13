@@ -57,4 +57,9 @@ public class FightableBuilding extends Building implements Fightable {
         // TODO implement here
         return 0;
     }
+
+    @Override
+    public Destructable getDestructable() {
+        return this;
+    }
 }

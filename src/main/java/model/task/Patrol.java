@@ -84,4 +84,8 @@ public class Patrol extends Task {
         BFS bfs = new BFS(map, movable);
         initialPath = bfs.pathTo(destination1);
     }
+
+    public Movable getOwner() {
+        return movable;
+    }
 }

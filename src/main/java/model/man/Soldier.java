@@ -19,6 +19,7 @@ public class Soldier extends Man implements Fightable {
 
     public Soldier(SoldierType soldierType, User owner) {
         super(soldierType.getHitpoint(), soldierType.getName(), owner, soldierType.getMovementSpeed());
+        this.soldierType = soldierType;
         this.damage = soldierType.getDamage();
         this.range = soldierType.getRange();
         this.state = "standing";
@@ -82,6 +83,11 @@ public class Soldier extends Man implements Fightable {
 
     public int getAttackRange() {
         return Objects.requireNonNullElse(range, 0);
+    }
+
+    @Override
+    public Destructable getDestructable() {
+        return this;
     }
 
     @Override
