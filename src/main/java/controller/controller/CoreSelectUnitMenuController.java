@@ -145,7 +145,7 @@ public class CoreSelectUnitMenuController {
     private boolean priceCheck(Monarchy monarchy , EngineerBuildingType buildingType) {
         if (monarchy.getGold() < buildingType.getCost())
             return false;
-        EngineerBuilding building = new EngineerBuilding(type.getHitpoint() , currentUser ,
+        EngineerBuilding building = new EngineerBuilding(buildingType , currentUser ,
                 map.getCell(x , y));
         monarchy.addBuilding(building);
         return true;
