@@ -11,7 +11,6 @@ import java.util.Random;
 
 public class Soldier extends Man implements Fightable {
     private SoldierType soldierType;
-    private Task task;
     private String state;
     private Integer range;
     private int damage;
@@ -32,14 +31,6 @@ public class Soldier extends Man implements Fightable {
 
     public void setState(String state) {
         this.state = state;
-    }
-
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
     }
 
     public int getDamage() {
