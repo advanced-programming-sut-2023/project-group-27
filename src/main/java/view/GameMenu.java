@@ -4,6 +4,7 @@ import controller.view_controllers.GameMenuController;
 import view.enums.GameMenuRegexes;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
 
 public class GameMenu {
     private final GameMenuController controller;
@@ -25,9 +26,9 @@ public class GameMenu {
                 "8. food rate -r <rate>\n" +
                 "9. tax rate -r <rate>\n" +
                 "10. show map -x <x> -y <y>\n" +
-                "11. drop building -<x> -<y> --type<type>\n" +
+                "11. drop building -x <x> -y <y> -t <type>\n" +
                 "12. select building -x <x> -y <y>\n" +
-                "13. select unit -x <y> -y <y> -t <type>\n" +
+                "13. select unit -x <x> -y <y> -t <type>\n" +
                 "14. enter shop\n" +
                 "15. enter map edit\n" +
                 "16. show current player\n" +
@@ -35,6 +36,7 @@ public class GameMenu {
         while (true) {
             String command = scanner.nextLine();
             String output;
+            Matcher matcher;
             if (GameMenuRegexes.SHOW_POPULARITY_FACTORS.getMatcher(command).matches()) {
                 System.out.print(controller.showPopularityFactors());
                 continue;
@@ -88,9 +90,8 @@ public class GameMenu {
             if (GameMenuRegexes.SELECT_UNIT.getMatcher(command).matches()) {
                 output = controller.selectUnit(
                         GameMenuRegexes.SELECT_UNIT.getMatcher(command));
-                if (output != null) {
+                if (output != null)
                     System.out.print(output);
-                }
                 continue;
             }
             if (GameMenuRegexes.SHOW_MAP.getMatcher(command).matches()) {
@@ -110,6 +111,10 @@ public class GameMenu {
             }
             if (GameMenuRegexes.SHOW_CURRENT_PLAYER.getMatcher(command).matches()) {
                 System.out.print(controller.showCurrentPlayer());
+                continue;
+            }
+            if ((matcher = GameMenuRegexes.DROP_BUILDING.getMatcher(command)).matches()) {
+                System.out.print(controller.dropBuilding(matcher));
                 continue;
             }
             if (command.equals("Exit")) {

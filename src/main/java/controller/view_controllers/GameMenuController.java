@@ -71,7 +71,13 @@ public class GameMenuController {
     }
 
     public String dropBuilding(Matcher matcher){
-        return null;
+        String options = matcher.group("options");
+        Map<String, String> args = Utilities.extractOptionsFromString(options);
+        if (!args.containsKey("x") || !args.containsKey("y"))
+            return "provide x and y\n";
+        if (!args.containsKey("t"))
+            return "provide type\n";
+        return coreController.dropBuilding(args.get("x"), args.get("y"), args.get("t"));
     }
 
     public String selectBuilding(Matcher matcher){

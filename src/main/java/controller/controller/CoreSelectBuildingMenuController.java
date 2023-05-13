@@ -69,12 +69,10 @@ public class CoreSelectBuildingMenuController {
 
     public boolean evaluateOtherRequirements(SoldierType troopType, int count) {
         GoodsType[] requirements = troopType.getRequirements();
-        if (!(requirements == null)) {
+        if (!(requirements == null))
             for (GoodsType currentGoods : requirements)
                 if (currentMonarchy.getGood(currentGoods) < count) return false;
-            return true;
-        }
-        return false;
+        return true;
     }
 
     public void takeRequirements(SoldierType troopType, int count) {

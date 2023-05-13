@@ -112,7 +112,10 @@ public class CoreGameMenuController {
         return String.valueOf(currentUser.getMonarchy().getFearRate());
     }
 
-    public String dropBuilding(int x , int y , String type){
+    public String dropBuilding(String xStr , String yStr , String type){
+        if (!NumberUtils.isNumber(xStr) || !NumberUtils.isNumber(yStr)) return "x and y should be integers\n";
+        int x = Integer.parseInt(xStr);
+        int y = Integer.parseInt(yStr);
         if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         if (!map.getCell(x, y).isPassable(null)) {
             return "You can't build on this type\n";
@@ -120,13 +123,13 @@ public class CoreGameMenuController {
         Building building;
         if (CivilBuildingType.getTypeByName(type) != null) {
             CivilBuildingType type1 = CivilBuildingType.getTypeByName(type);
-            if (type1.getGoldNeeded() < currentMatch.getCurrentMonarchy().getGold()) {
+            if (type1.getGoldNeeded() > currentMatch.getCurrentMonarchy().getGold()) {
                 return "You don't have enough gold\n";
             }
-            if (type1.getWoodNeeded() < currentMatch.getCurrentMonarchy().getGood(GoodsType.WOOD)) {
+            if (type1.getWoodNeeded() > currentMatch.getCurrentMonarchy().getGood(GoodsType.WOOD)) {
                 return "You don't have enough wood\n";
             }
-            if (type1.getStoneNeeded() < currentMatch.getCurrentMonarchy().getGood(GoodsType.STONE)) {
+            if (type1.getStoneNeeded() > currentMatch.getCurrentMonarchy().getGood(GoodsType.STONE)) {
                 return "You don't have enough stone\n";
             }
             building = new CivilBuilding(type1.getHitpoint(), type1, currentMatch.getCurrentUser(), map.getCell(x, y));
@@ -138,10 +141,10 @@ public class CoreGameMenuController {
             currentMatch.getCurrentMonarchy().getStockPile().changeGoodsCount(GoodsType.STONE, -type1.getStoneNeeded());
         } else if (ProductionBuildingType.getTypeByName(type) != null) {
             ProductionBuildingType type1 = ProductionBuildingType.getTypeByName(type);
-            if (type1.getGoldRequired() < currentMatch.getCurrentMonarchy().getGold()) {
+            if (type1.getGoldRequired() > currentMatch.getCurrentMonarchy().getGold()) {
                 return "You don't have enough gold\n";
             }
-            if (type1.getWoodRequired() < currentMatch.getCurrentMonarchy().getGood(GoodsType.WOOD)) {
+            if (type1.getWoodRequired() > currentMatch.getCurrentMonarchy().getGood(GoodsType.WOOD)) {
                 return "You don't have enough wood\n";
             }
             building = new ProductionBuilding(type1, currentMatch.getCurrentUser(), currentMatch.getCurrentMonarchy(), map.getCell(x, y));
@@ -152,10 +155,10 @@ public class CoreGameMenuController {
             currentMatch.getCurrentMonarchy().getStockPile().changeGoodsCount(GoodsType.WOOD, -type1.getWoodRequired());
         } else if (CastleComponentType.getTypeByName(type) != null) {
             CastleComponentType type1 = CastleComponentType.getTypeByName(type);
-            if (type1.getStoneNeeded() < currentMatch.getCurrentMonarchy().getGood(GoodsType.STONE)) {
+            if (type1.getStoneNeeded() > currentMatch.getCurrentMonarchy().getGood(GoodsType.STONE)) {
                 return "You don't have enough stone\n";
             }
-            if (type1.getWoodNeeded() < currentMatch.getCurrentMonarchy().getGood(GoodsType.WOOD)) {
+            if (type1.getWoodNeeded() > currentMatch.getCurrentMonarchy().getGood(GoodsType.WOOD)) {
                 return "You don't have enough wood\n";
             }
             building = new CastleComponent(type1,currentMatch.getCurrentUser(), map.getCell(x, y));
