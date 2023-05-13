@@ -123,6 +123,6 @@ public class Cell implements Passable{
     public void flush() {
         building = null;
         naturalEntityType = null;
-        men.clear();
+        type = LandType.PLAIN;
     }
 }

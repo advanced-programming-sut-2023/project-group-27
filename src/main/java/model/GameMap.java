@@ -7,19 +7,17 @@ public class GameMap {
 
     private final int capacity;
     private final Cell [][] map;
-    private final Cell[] keepsLocations;
+    private final Location[] keepsLocations;
 
     public GameMap(int width, int height, String name, int capacity, Location[] keepsLocations) {
         this.width = width;
         this.height = height;
         this.capacity = capacity;
-        this.keepsLocations = new Cell[keepsLocations.length];
+        this.keepsLocations = keepsLocations;
         map = new Cell[width][height];
         for (int i = 0; i < width; i++)
             for (int j = 0; j < height; j++)
                 map[i][j] = new Cell(LandType.PLAIN, i, j);
-        for (int index = 0; index < keepsLocations.length; index++)
-            this.keepsLocations[index] = getCell(keepsLocations[index]);
         this.mapName = name;
     }
 
@@ -52,6 +50,9 @@ public class GameMap {
     }
 
     public Cell[] getKeepsLocations() {
-        return keepsLocations;
+        Cell[] cells = new Cell[keepsLocations.length];
+        for (int i = 0; i < keepsLocations.length; i++)
+            cells[i] = getCell(keepsLocations[i]);
+        return cells;
     }
 }

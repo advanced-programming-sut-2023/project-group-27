@@ -47,9 +47,6 @@ public class CoreGameStartMenuController {
     }
 
     public void run() throws IOException {
-        Controller controller = new Controller(null);
-        controller.pushData();
-        controller.fetchData();
         String gameStartMenuResult;
         while (true) {
             gameStartMenuResult = gameStartMenu.run();
@@ -104,9 +101,12 @@ public class CoreGameStartMenuController {
 
     public String showSelectedMapInfo() {
         if (selectedMap != null) {
+            int i = 0;
             String output = "name: " + selectedMap.getMapName() + " capacity: " + selectedMap.getCapacity() + "\nkeep positions:";
-            for (Cell cell : selectedMap.getKeepsLocations())
-                output += "\n" + cell.getLocation().toString();
+            for (Cell cell : selectedMap.getKeepsLocations()) {
+                i++;
+                output += "\n" + i + "- " + cell.getLocation().toString();
+            }
             return output;
         }
         return "no map selected!";
@@ -176,6 +176,8 @@ public class CoreGameStartMenuController {
     }
 
     public String assignKeepsAndStart(ArrayList<Integer> numbers) {
+        if (colors.size() != thisGamePlayers.size())
+            return "set all players' colors first.";
         if (selectedMap == null)
             return "select a map first!";
         if (numbers.size() != thisGamePlayers.size())
@@ -195,7 +197,7 @@ public class CoreGameStartMenuController {
 
 
         for (int index = 0; index < thisGamePlayers.size(); index++) {
-            mapsKeepCells[cellsToAssign.get(index)].flush();
+            //mapsKeepCells[cellsToAssign.get(index)].flush();
 
             CastleComponent keep = new CastleComponent(CastleComponentType.KEEP, thisGamePlayers.get(index), mapsKeepCells[cellsToAssign.get(index)]);
             Man lord = new Soldier(SoldierType.LORD, thisGamePlayers.get(index));

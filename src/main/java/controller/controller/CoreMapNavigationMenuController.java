@@ -65,7 +65,7 @@ public class CoreMapNavigationMenuController {
             output += "Building Type: " + cell.getBuilding().getName() + " owner: " + cell.getBuilding().getOwner().getUsername() + " hitpoints: " + cell.getBuilding().getHitpoint() + "\n";
         if (cell.getMen() != null && cell.getMen().size() != 0)
             for (Man man : cell.getMen())
-                output += "Human Type: " + man.getName() + " owner: " + man.getOwner() + " hitpoints: " + man.getHitpoint() + "\n";
+                output += "Human Type: " + man.getName() + ", owner: " + man.getOwner().getUsername() + ", hitpoints: " + man.getHitpoint() + "\n";
         return output;
     }
 }
