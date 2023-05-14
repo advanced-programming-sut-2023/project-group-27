@@ -118,7 +118,11 @@ public class GameMenu {
                 continue;
             }
             if (GameMenuRegexes.NEXT_TURN.getMatcher(command).matches()) {
-                System.out.println(controller.nextTurn());
+                output = controller.nextTurn();
+                System.out.println(output);
+                if (output.equals("Game Over")) {
+                    return "Exit";
+                }
                 continue;
             }
             if (command.equals("Exit")) {

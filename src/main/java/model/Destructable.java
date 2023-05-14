@@ -6,6 +6,10 @@ public abstract class Destructable {
         this.hitpoint = hitpoint;
     }
 
+    public void destroy() {
+        hitpoint = 0;
+    }
+
     public int getHitpoint() {
         return hitpoint;
     }

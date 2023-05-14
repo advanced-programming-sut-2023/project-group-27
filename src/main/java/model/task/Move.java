@@ -38,6 +38,9 @@ public class Move extends Task {
     }
 
     public boolean isValid() {
+        if (movable.getDestructable().getHitpoint() <= 0) {
+            return false;
+        }
         if (this.path == null || this.path.size() <= 1) {
             return false;
         }

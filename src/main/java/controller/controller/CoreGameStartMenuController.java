@@ -199,16 +199,19 @@ public class CoreGameStartMenuController {
         for (int index = 0; index < thisGamePlayers.size(); index++) {
             //mapsKeepCells[cellsToAssign.get(index)].flush();
 
-            CastleComponent keep = new CastleComponent(CastleComponentType.KEEP, thisGamePlayers.get(index), mapsKeepCells[cellsToAssign.get(index)]);
-            Man lord = new Soldier(SoldierType.LORD, thisGamePlayers.get(index));
+            User user = thisGamePlayers.get(index);
+            CastleComponent keep = new CastleComponent(CastleComponentType.KEEP, user, mapsKeepCells[cellsToAssign.get(index)]);
+            Man lord = new Soldier(SoldierType.LORD, user);
 
-            thisGamePlayers.get(index).setMonarchy(new Monarchy(thisGamePlayers.get(index),
-                    colors.get(thisGamePlayers.get(index)), selectedMap, mapsKeepCells[cellsToAssign.get(index)].getLocation()));
-            thisGamePlayers.get(index).getMonarchy().addBuilding(keep);
-            thisGamePlayers.get(index).getMonarchy().addMan(lord);
-            thisGamePlayers.get(index).getMonarchy().changeGold(1200);
-            thisGamePlayers.get(index).getMonarchy().putGood(GoodsType.WOOD, 100);
-            thisGamePlayers.get(index).getMonarchy().putGood(GoodsType.STONE, 100);
+            user.setMonarchy(new Monarchy(user,
+                    colors.get(user), selectedMap, mapsKeepCells[cellsToAssign.get(index)].getLocation()));
+            Monarchy monarchy = user.getMonarchy();
+            monarchy.addBuilding(keep);
+            monarchy.addMan(lord);
+            monarchy.setLord(lord);
+            monarchy.changeGold(1200);
+            monarchy.putGood(GoodsType.WOOD, 100);
+            monarchy.putGood(GoodsType.STONE, 100);
             mapsKeepCells[cellsToAssign.get(index)].setBuilding(keep);
             mapsKeepCells[cellsToAssign.get(index)].addMan(lord);
         }

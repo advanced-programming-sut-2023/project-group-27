@@ -72,6 +72,9 @@ public class Patrol extends Task {
         if (isInitialized && this.patrolPath == null) {
             return false;
         }
+        if (movable.getDestructable().getHitpoint() <= 0) {
+            return false;
+        }
         return true;
     }
 

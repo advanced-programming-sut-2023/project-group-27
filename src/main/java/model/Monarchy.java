@@ -17,6 +17,7 @@ public class Monarchy {
     private final MonarchyColorType color;
     private int popularity, taxRate, foodRate, gold, fearRate, religiousBuildingCount;
     private int population = 20;
+    private Man lord;
 
     public Monarchy(User king, MonarchyColorType color, GameMap gameMap, Location mainKeepLocation) {
         storages[0] = new Storage(GoodsType.getGranaryGoods(), 30000, king, gameMap.getCell(mainKeepLocation.getVicintyLocation(1, 0)), "Granary");
@@ -265,5 +266,13 @@ public class Monarchy {
         }
         this.changeGold(totalTax);
         this.popularity += calcPopularityTax();
+    }
+
+    public boolean isDead() {
+        return this.lord.getHitpoint() <= 0;
+    }
+
+    public void setLord(Man lord) {
+        this.lord = lord;
     }
 }
