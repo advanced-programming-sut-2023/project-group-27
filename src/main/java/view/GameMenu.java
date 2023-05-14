@@ -131,6 +131,10 @@ public class GameMenu {
                 }
                 continue;
             }
+            if (GameMenuRegexes.SHOW_MONARCHY.getMatcher(command).matches()) {
+                System.out.println(controller.showMonarchy());
+                continue;
+            }
             if (command.equals("Exit")) {
                 return "Exit";
             }

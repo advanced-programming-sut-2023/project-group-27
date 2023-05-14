@@ -148,4 +148,8 @@ public class GameMenuController {
     public void enterTradeMenu() {
         coreController.enterTradeMenu();
     }
+
+    public String showMonarchy() {
+        return coreController.showMonarchy();
+    }
 }

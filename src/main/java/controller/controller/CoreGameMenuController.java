@@ -259,4 +259,17 @@ public class CoreGameMenuController {
                 new CoreTradeMenuController(currentMatch, currentMatch.getCurrentUser(), scanner);
         coreTradeMenuController.run();
     }
+
+    public String showMonarchy() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Monarchy:\n");
+        builder.append("Gold: ").append(currentMatch.getCurrentMonarchy().getGold()).append("\n");
+        builder.append("Population: ").append(currentMatch.getCurrentMonarchy().getPopulation()).append("\n");
+        builder.append("Goods:\n");
+        for (Map.Entry<GoodsType, Integer> entry : currentMatch.getCurrentMonarchy().getStockPile().getMap().entrySet()) {
+            builder.append(entry.getKey().getName()).append(": ").append(entry.getValue()).append("\n");
+        }
+        builder.append("Popularity: ").append(currentMatch.getCurrentMonarchy().getPopularity()).append("\n");
+        return builder.toString();
+    }
 }

@@ -128,6 +128,7 @@ public class Match {
             runTasks();
             for (Monarchy monarchy : monarchies) {
                 if (monarchy.isDead()) {
+                    users.remove(monarchy.getKing());
                     for (Building building: monarchy.getBuildings()) {
                         building.destroy();
                         building.getCell().setBuilding(null);

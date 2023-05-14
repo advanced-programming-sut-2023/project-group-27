@@ -21,6 +21,7 @@ public enum GameMenuRegexes {
     ENTER_MAP_EDIT("\\s*enter\\s+map\\s+edit\\s*"),
     SHOW_CURRENT_PLAYER("\\s*show\\s+current\\s+player\\s*"),
     ENTER_TRADE_MENU("\\s*enter\\s+trade\\s+menu\\s*"),
+    SHOW_MONARCHY("\\s*show\\s+monarchy\\s*"),
     NEXT_TURN("\\s*next\\s+turn\\s*");
     private final Pattern pattern;
     GameMenuRegexes(String regex) {
