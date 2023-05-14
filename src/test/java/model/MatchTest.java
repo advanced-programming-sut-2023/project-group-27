@@ -23,12 +23,17 @@ class MatchTest {
         this.map = new GameMap(15, 15, "myMap", 100, locations);
         this.user1 = new User("user1", "Password@1", "user",
                 "user", "user@u.com", "a", "b");
-        user1.setMonarchy(new Monarchy(user1, MonarchyColorType.BLACK, map, locations[0]));
+        Monarchy monarchy1 = new Monarchy(user1, MonarchyColorType.BLACK, map, locations[0]);
+        monarchy1.setLord(new Soldier(SoldierType.LORD, user1));
+        user1.setMonarchy(monarchy1);
         user2 = new User("user2", "Password@1", "user",
                 "user", "user@u.com", "a", "b");
-        user2.setMonarchy(new Monarchy(user2, MonarchyColorType.BLACK, map, locations[1]));
+        Monarchy monarchy2 = new Monarchy(user2, MonarchyColorType.BLACK, map, locations[1]);
+        monarchy2.setLord(new Soldier(SoldierType.LORD, user2));
+        user2.setMonarchy(monarchy2);
         User[] users = new User[]{user1 , user2};
         this.match = new Match(map, Arrays.stream(users).toList());
+
     }
 
     @Nested

@@ -114,16 +114,35 @@ public class Match {
         return turnNumber;
     }
 
-    public void nextTurn() {
+    public String nextTurn() {
         turnNumber++;
+        if (monarchies.size() <= 1) {
+            return "Game Over";
+        }
         currentMonarchy = monarchies.get(turnNumber % monarchies.size());
         if (turnNumber % monarchies.size() == 0) {
             updateTasks();
             runTasks();
             for (Monarchy monarchy : monarchies) {
+                if (monarchy.isDead()) {
+                    monarchies.remove(monarchy);
+                    for (Building building: monarchy.getBuildings()) {
+                        building.destroy();
+                        building.getCell().setBuilding(null);
+                    }
+                    for (Man man: monarchy.getMen()) {
+                        man.destroy();
+                        currentMatchMap.getCell(man.getLocation()).getMen().remove(man);
+                    }
+                    monarchy.getKing().setHighScore(monarchy.getPopularity());
+                    break;
+                }
+            }
+            for (Monarchy monarchy : monarchies) {
                 monarchy.run();
             }
         }
+        return "Turn " + turnNumber + " : " + getCurrentUser().getUsername() + "'s turn";
     }
 
     public User getUserByName(String otherUserName) {

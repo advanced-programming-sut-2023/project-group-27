@@ -15,8 +15,9 @@ public class Monarchy {
     private final TradingSystem tradingSystem;
     private final User king;
     private final MonarchyColorType color;
-    private int popularity, taxRate, foodRate, gold, fearRate, religiousBuildingCount;
+    private int popularity, taxRate, foodRate, gold, fearRate;
     private int population = 20;
+    private Man lord;
 
     public Monarchy(User king, MonarchyColorType color, GameMap gameMap, Location mainKeepLocation) {
         storages[0] = new Storage(GoodsType.getGranaryGoods(), 30000, king, gameMap.getCell(mainKeepLocation.getVicintyLocation(1, 0)), "Granary");
@@ -165,7 +166,9 @@ public class Monarchy {
 
 
     public int calcPopularityReligion() {
-        // TODO update religiousBuildingCount when creating or destroying religious buildings
+        int religiousBuildingCount = buildings.stream().filter(building ->
+                building.getName().equals("Church") || building.getName().equals("Cathedral"))
+                .toList().size();
         return 2 * religiousBuildingCount;
     }
 
@@ -193,7 +196,24 @@ public class Monarchy {
         getTax();
         this.popularity += calcPopularityFear();
         this.popularity += calcPopularityReligion();
+        this.population += getGrowthRate();
     }
+
+    private int getGrowthRate() {
+        int div = 11;
+        div -= Math.min((foodCount() / (population * 5)), 9);
+        if (div >= 11) {
+            return 0;
+        }
+        int result = population / div;
+        int hovelCount = buildings.stream().filter(
+                building -> building.getName().equals("Hovel")
+        ).toList().size();
+        result = Math.min(result, (hovelCount * 20) - population);
+        return Math.max(result, 0);
+    }
+
+    private void populate() {}
 
     public void changePopularity(int amount) {
         this.popularity += amount;
@@ -265,5 +285,13 @@ public class Monarchy {
         }
         this.changeGold(totalTax);
         this.popularity += calcPopularityTax();
+    }
+
+    public boolean isDead() {
+        return this.lord.getHitpoint() <= 0;
+    }
+
+    public void setLord(Man lord) {
+        this.lord = lord;
     }
 }

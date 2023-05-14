@@ -247,7 +247,6 @@ public class CoreGameMenuController {
     }
 
     public String nextTurn() {
-        currentMatch.nextTurn();
-        return currentMatch.getCurrentUser().getUsername();
+        return currentMatch.nextTurn();
     }
 }
