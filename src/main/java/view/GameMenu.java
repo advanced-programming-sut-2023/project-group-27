@@ -137,6 +137,7 @@ public class GameMenu {
                 continue;
             }
             if (command.equals("Exit")) {
+                controller.finishGame();
                 return "Exit";
             }
             System.out.println("Invalid command!");

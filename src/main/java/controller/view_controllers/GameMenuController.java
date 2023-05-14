@@ -152,4 +152,8 @@ public class GameMenuController {
     public String showMonarchy() {
         return coreController.showMonarchy();
     }
+
+    public void finishGame() {
+        coreController.finishGame();
+    }
 }

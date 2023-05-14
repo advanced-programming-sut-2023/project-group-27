@@ -280,4 +280,10 @@ public class CoreGameMenuController {
         builder.append("wheat:").append(currentMatch.getCurrentMonarchy().getGood(GoodsType.WHEAT)).append("\n");
         return builder.toString();
     }
+
+    public void finishGame() {
+        for (Monarchy monarchy: currentMatch.getMonarchies()) {
+            monarchy.getKing().setHighScore(monarchy.getPopularity());
+        }
+    }
 }
