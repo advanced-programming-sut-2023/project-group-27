@@ -134,6 +134,9 @@ class CoreGameMenuControllerTest {
         void selectUnit() {
             coreGameController = new CoreGameMenuController(match, new Scanner("move unit to -x 5 -y 6\nExit"));
             coreGameController.selectUnit("5", "5", "Archer");
+            for (Monarchy matchMonarchy : match.getMonarchies()) {
+                matchMonarchy.setLord(new Soldier(SoldierType.LORD, matchMonarchy.getKing()));
+            }
             match.nextTurn();match.nextTurn();
             List<Man> men = map.getCell(5, 6).getMen();
             assertEquals(men.size(), 10);
@@ -146,6 +149,9 @@ class CoreGameMenuControllerTest {
             coreGameController = new CoreGameMenuController(match, new Scanner(
                     "patrol unit --x1 5 --y1 6 --x2 5 --y2 9\nExit"));
             coreGameController.selectUnit("5", "5", "Archer");
+            for (Monarchy matchMonarchy : match.getMonarchies()) {
+                matchMonarchy.setLord(new Soldier(SoldierType.LORD, matchMonarchy.getKing()));
+            }
             assertEquals(0, monarchy.getFoodRate());
             match.nextTurn();match.nextTurn();
             assertEquals(-2, monarchy.getFoodRate());
