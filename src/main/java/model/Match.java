@@ -126,7 +126,6 @@ public class Match {
         if (turnNumber % monarchies.size() == 0) {
             updateTasks();
             runTasks();
-
             for (Monarchy monarchy : monarchies) {
                 if (monarchy.isDead()) {
                     for (Building building: monarchy.getBuildings()) {
@@ -143,6 +142,18 @@ public class Match {
             monarchies.removeIf(Monarchy::isDead);
             for (Monarchy monarchy : monarchies) {
                 monarchy.run();
+                for (Man man: monarchy.getMen()) {
+                    if (man.getHitpoint() <= 0) {
+                        currentMatchMap.getCell(man.getLocation()).getMen().remove(man);
+                    }
+                }
+                monarchy.getMen().removeIf(m -> m.getHitpoint() <= 0);
+                for (Building building: monarchy.getBuildings()) {
+                    if (building.getHitpoint() <= 0) {
+                        currentMatchMap.getCell(building.getLocation()).setBuilding(null);
+                    }
+                }
+                monarchy.getBuildings().removeIf(b -> b.getHitpoint() <= 0);
             }
         }
         return "Turn " + (turnNumber + 1) + " : " + getCurrentUser().getUsername() + "'s turn";
