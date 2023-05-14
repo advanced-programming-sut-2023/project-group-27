@@ -144,4 +144,8 @@ public class GameMenuController {
     public String nextTurn() {
         return coreController.nextTurn();
     }
+
+    public void enterTradeMenu() {
+        coreController.enterTradeMenu();
+    }
 }
