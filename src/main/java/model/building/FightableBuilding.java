@@ -58,7 +58,6 @@ public class FightableBuilding extends Building implements Fightable {
 
     @Override
     public int getAttackRange() {
-        // TODO implement here
         return 0;
     }
 

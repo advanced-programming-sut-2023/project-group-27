@@ -32,5 +32,4 @@ class CoreSelectBuildingMenuControllerTest {
                 map.getCell(3, 3).getBuilding(), new Scanner(""), match.getCurrentMonarchy());
     }
 
-    // TODO implement tests
 }
