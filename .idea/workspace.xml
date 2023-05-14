@@ -4,8 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="fix some bugs7">
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectUnitMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectUnitMenuController.java" afterDir="false" />
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="bug fix and improvement3">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/GameMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/GoodsType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoodsType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ProductionRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ProductionRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ProductionRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ProductionRules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/CivilBuildingType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/CivilBuildingType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/ProductionBuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,6 +224,7 @@
       <workItem from="1683863209346" duration="13926000" />
       <workItem from="1683889547328" duration="2917000" />
       <workItem from="1683979354507" duration="15677000" />
+      <workItem from="1684064440214" duration="4257000" />
     </task>
     <task id="LOCAL-00017" summary="map navigation feature">
       <created>1682590232580</created>
@@ -656,22 +665,22 @@
     </pin-to-top-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/project_group_27$CoreMapEditMenuControllerTest_setTexture.ic" NAME="CoreMapEditMenuControllerTest.setTexture Coverage Results" MODIFIED="1683802972833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>controller.controller.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/project_group_27$Main.ic" NAME="Main Coverage Results" MODIFIED="1683744260592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest.ic" NAME="CoreGameMenuControllerTest Coverage Results" MODIFIED="1683744288536" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>controller.controller.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_SelectUnitTest_selectUnit2.ic" NAME="CoreGameMenuControllerTest$SelectUnitTest.selectUnit2 Coverage Results" MODIFIED="1683793514142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>controller.controller.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_SelectUnitTest_selectUnit.ic" NAME="CoreGameMenuControllerTest$SelectUnitTest.selectUnit Coverage Results" MODIFIED="1683791907745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/project_group_27$CoreMapEditMenuControllerTest_setTexture.ic" NAME="CoreMapEditMenuControllerTest.setTexture Coverage Results" MODIFIED="1683802972833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>controller.controller.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_ShopTest_showShop.ic" NAME="CoreGameMenuControllerTest$ShopTest.showShop Coverage Results" MODIFIED="1683798459321" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>controller.controller.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_SelectUnitTest_selectUnit.ic" NAME="CoreGameMenuControllerTest$SelectUnitTest.selectUnit Coverage Results" MODIFIED="1683791907745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controller.controller.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/project_group_27$All_in_AP_project_group27.ic" NAME="All in AP-project-group27 Coverage Results" MODIFIED="1683841034665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_SelectUnitTest_selectUnit2.ic" NAME="CoreGameMenuControllerTest$SelectUnitTest.selectUnit2 Coverage Results" MODIFIED="1683793514142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controller.controller.*</FILTER>
+    </SUITE>
   </component>
 </project>

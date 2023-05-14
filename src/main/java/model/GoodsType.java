@@ -75,7 +75,7 @@ public enum GoodsType {
     }
 
     public static GoodsType[] getArmouryGoods() {
-        return new GoodsType[] {BOW, CROSSBOW, PIKE, MACE, SWORD, SPEAR, LEATHER_ARMOUR};
+        return new GoodsType[] {BOW, CROSSBOW, PIKE, MACE, SWORD, SPEAR, LEATHER_ARMOUR, HORSE};
     }
 
     public static GoodsType[] getGoods() {

@@ -6,7 +6,7 @@ import model.User;
 import java.util.HashMap;
 
 public enum CivilBuildingType {
-    HOVEL("Hovel", 100, new int[] {100, 60, 20}),
+    HOVEL("Hovel", 100, new int[] {0, 30, 0}),
     CATHEDRAL("Cathedral", 1000, new int[] {100, 100, 100}),
     CHURCH("Church", 500, new int[] {25, 30, 10}),
     BARRACKS("Barracks", 700, new int[] {50, 10, 15}),

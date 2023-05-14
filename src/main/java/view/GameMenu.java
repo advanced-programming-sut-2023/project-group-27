@@ -110,7 +110,7 @@ public class GameMenu {
                 continue;
             }
             if (GameMenuRegexes.SHOW_CURRENT_PLAYER.getMatcher(command).matches()) {
-                System.out.print(controller.showCurrentPlayer());
+                System.out.println(controller.showCurrentPlayer());
                 continue;
             }
             if ((matcher = GameMenuRegexes.DROP_BUILDING.getMatcher(command)).matches()) {

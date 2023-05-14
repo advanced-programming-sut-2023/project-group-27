@@ -85,8 +85,8 @@ public class GameMenuController {
         String x = getError(!args.containsKey("x") || !args.containsKey("y"),
                 "provide x and y\n", args, 2);
         if (x != null) return x;
-        String xStr = args.get("x");
         String yStr = args.get("y");
+        String xStr = args.get("x");
         return coreController.selectBuilding(xStr, yStr);
     }
 

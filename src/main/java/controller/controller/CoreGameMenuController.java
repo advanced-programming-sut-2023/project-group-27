@@ -12,6 +12,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 import view.GameMenu;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 public class CoreGameMenuController {
@@ -139,6 +140,7 @@ public class CoreGameMenuController {
             currentMatch.getCurrentMonarchy().changeGold(-type1.getGoldNeeded());
             currentMatch.getCurrentMonarchy().getStockPile().changeGoodsCount(GoodsType.WOOD, -type1.getWoodNeeded());
             currentMatch.getCurrentMonarchy().getStockPile().changeGoodsCount(GoodsType.STONE, -type1.getStoneNeeded());
+            currentMatch.getCurrentMonarchy().getArmoury().changeGoodsCount(GoodsType.HORSE, 4);
         } else if (ProductionBuildingType.getTypeByName(type) != null) {
             ProductionBuildingType type1 = ProductionBuildingType.getTypeByName(type);
             if (type1.getGoldRequired() > currentMatch.getCurrentMonarchy().getGold()) {
@@ -173,9 +175,8 @@ public class CoreGameMenuController {
     }
 
     public String selectBuilding(String xStr , String yStr) {
-        if (!NumberUtils.isNumber(xStr) || ! NumberUtils.isNumber(yStr)) {
+        if (!NumberUtils.isNumber(xStr) || ! NumberUtils.isNumber(yStr))
             return "x and y should be integers";
-        }
         int x = Integer.parseInt(xStr), y = Integer.parseInt(yStr);
         if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         Building selectedBuilding = map.getCell(x, y).getBuilding();
@@ -190,9 +191,8 @@ public class CoreGameMenuController {
     }
 
     public String selectUnit(String xStr , String yStr , String unitType) {
-        if (!NumberUtils.isNumber(xStr) || ! NumberUtils.isNumber(yStr)) {
+        if (!NumberUtils.isNumber(xStr) || ! NumberUtils.isNumber(yStr))
             return "x and y should be integers";
-        }
         int x = Integer.parseInt(xStr), y = Integer.parseInt(yStr);
         if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         ArrayList<Selectable> theSelected = map.getCell(x , y).getSelectables();
@@ -217,9 +217,8 @@ public class CoreGameMenuController {
     }
 
     public String showMap(String xStr, String yStr) {
-        if (!NumberUtils.isNumber(xStr) || ! NumberUtils.isNumber(yStr)) {
+        if (!NumberUtils.isNumber(xStr) || ! NumberUtils.isNumber(yStr))
             return "x and y should be integers";
-        }
         int x = Integer.parseInt(xStr), y = Integer.parseInt(yStr);
         if (Utilities.XYCheck(x, y , map) != null) return Utilities.XYCheck(x, y , map);
         CoreMapNavigationMenuController coreNavigationController =
@@ -236,7 +235,10 @@ public class CoreGameMenuController {
     }
 
     public String showCurrentPlayer() {
-        return currentMatch.getCurrentUser().getNickname();
+        String output = "storages status:";
+        for (Map.Entry<GoodsType, Integer> set : currentMatch.getCurrentMonarchy().getStorage().entrySet())
+            output += "\n" + set.getKey().getName() + ":" + set.getValue();
+        return currentMatch.getCurrentUser().getNickname() + "\n" + output;
     }
 
     public void enterShop() {

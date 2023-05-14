@@ -21,18 +21,18 @@ public class ProductionBuilding extends Building{
         return productionBuildingType;
     }
 
-    public boolean canAct() {
-        for (ProductionRule productionRule : productionRules) {
-            if ((productionRule.getUsedType() != null) && monarchy.getGood(productionRule.getUsedType()) < productionRule.getResourceRequired())
-                return false;
-        }
-        return true;
+    private boolean canAct(ProductionRule productionRule) {
+        return (productionRule.getUsedType() == null) || monarchy.getGood(productionRule.getUsedType()) >= productionRule.getResourceRequired();
     }
-    //TODO use these functions based on counts needed to produce the goods
+
     public void act() {
         for (ProductionRule productionRule : productionRules) {
-            monarchy.putGood(productionRule.getUsedType(), monarchy.getGood(productionRule.getUsedType()) - productionRule.getResourceRequired());
-            monarchy.putGood(productionRule.getProducedType(), monarchy.getGood(productionRule.getProducedType()) + productionRule.getResourceProduced());
+            if (canAct((productionRule))) {
+                if (productionRule.getUsedType() != null)
+                    monarchy.putGood(productionRule.getUsedType(), monarchy.getGood(productionRule.getUsedType()) - productionRule.getResourceRequired());
+                if (productionRule.getProducedType() != null)
+                    monarchy.putGood(productionRule.getProducedType(), monarchy.getGood(productionRule.getProducedType()) + productionRule.getResourceProduced());
+            }
         }
     }
 }
