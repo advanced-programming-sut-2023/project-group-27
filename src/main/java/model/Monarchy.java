@@ -219,6 +219,10 @@ public class Monarchy {
         this.popularity += amount;
     }
 
+    public void changePopulation(int number) {
+        this.population += number;
+    }
+
     private int foodCount() {
         int totalFood = 0;
         totalFood += this.getGranary().getGoodsCount(GoodsType.BREAD);

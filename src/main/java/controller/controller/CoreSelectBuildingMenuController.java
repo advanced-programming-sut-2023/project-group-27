@@ -36,9 +36,12 @@ public class CoreSelectBuildingMenuController {
             menToBeAdded[i].setLocation(selectedBuilding.getCell().getLocation());
         }
         if (!evaluateGold(troopType, count)) return "Not enough Gold!\n";
+        if (currentMonarchy.getPopulation() < count)
+            return "not enough peasants to train!\n";
         if (!evaluateOtherRequirements(troopType, count)) return "You are short of armoury or other requirements!\n";
         takeGold(troopType, count);
         takeRequirements(troopType, count);
+        currentMonarchy.changePopulation(-count);
         currentMonarchy.addAllMen(menToBeAdded);
         selectedBuilding.getCell().addMen(menToBeAdded);
         return "troops added successfully\n";

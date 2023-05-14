@@ -173,7 +173,11 @@ public class CoreSelectUnitMenuController {
 
     public void disbandUnit() {
         int size = theSelected.size();
+        for (Selectable selectable : theSelected) {
+            currentMatch.getCurrentMonarchy().removeMan((Man) selectable);
+            map.getCell(x, y).removeMan((Man) selectable);
+        }
         theSelected.clear();
-        currentUser.getMonarchy().changePopularity(size);
+        currentUser.getMonarchy().changePopulation(size);
     }
 }

@@ -212,6 +212,8 @@ public class CoreGameStartMenuController {
             monarchy.changeGold(1200);
             monarchy.putGood(GoodsType.WOOD, 100);
             monarchy.putGood(GoodsType.STONE, 100);
+            monarchy.putGood(GoodsType.APPLE, 500);
+            monarchy.putGood(GoodsType.CHEESE, 500);
             mapsKeepCells[cellsToAssign.get(index)].setBuilding(keep);
             mapsKeepCells[cellsToAssign.get(index)].addMan(lord);
         }

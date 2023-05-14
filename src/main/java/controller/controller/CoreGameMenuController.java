@@ -153,8 +153,12 @@ public class CoreGameMenuController {
             if (!controller.controller.Utilities.canBuildOnThisType(building, map.getCell(x, y).getType())) {
                 return "You can't build on this type\n";
             }
+            if (type1.getWorkersRequired() > currentMatch.getCurrentMonarchy().getPopulation()) {
+                return "You don't have enough workers\n";
+            }
             currentMatch.getCurrentMonarchy().changeGold(-type1.getGoldRequired());
             currentMatch.getCurrentMonarchy().getStockPile().changeGoodsCount(GoodsType.WOOD, -type1.getWoodRequired());
+            currentMatch.getCurrentMonarchy().changePopulation(-type1.getWorkersRequired());
         } else if (CastleComponentType.getTypeByName(type) != null) {
             CastleComponentType type1 = CastleComponentType.getTypeByName(type);
             if (type1.getStoneNeeded() > currentMatch.getCurrentMonarchy().getGood(GoodsType.STONE)) {
