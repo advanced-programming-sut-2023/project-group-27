@@ -117,6 +117,9 @@ public class Match {
     public String nextTurn() {
         turnNumber++;
         if (monarchies.size() <= 1) {
+            for (Monarchy monarchy: monarchies) {
+                monarchy.getKing().setHighScore(monarchy.getPopularity());
+            }
             return "Game Over";
         }
         currentMonarchy = monarchies.get(turnNumber % monarchies.size());
@@ -142,7 +145,7 @@ public class Match {
                 monarchy.run();
             }
         }
-        return "Turn " + turnNumber + " : " + getCurrentUser().getUsername() + "'s turn";
+        return "Turn " + (turnNumber + 1) + " : " + getCurrentUser().getUsername() + "'s turn";
     }
 
     public User getUserByName(String otherUserName) {

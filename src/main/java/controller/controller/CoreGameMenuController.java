@@ -253,4 +253,10 @@ public class CoreGameMenuController {
     public String nextTurn() {
         return currentMatch.nextTurn();
     }
+
+    public void enterTradeMenu() {
+        CoreTradeMenuController coreTradeMenuController =
+                new CoreTradeMenuController(currentMatch, currentMatch.getCurrentUser(), scanner);
+        coreTradeMenuController.run();
+    }
 }

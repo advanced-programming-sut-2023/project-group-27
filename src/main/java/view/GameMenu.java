@@ -32,7 +32,9 @@ public class GameMenu {
                 "14. enter shop\n" +
                 "15. enter map edit\n" +
                 "16. show current player\n" +
-                "17. back\n");
+                "17. enter trade menu\n" +
+                "18. next turn\n" +
+                "19. back\n");
         while (true) {
             String command = scanner.nextLine();
             String output;
@@ -115,6 +117,10 @@ public class GameMenu {
             }
             if ((matcher = GameMenuRegexes.DROP_BUILDING.getMatcher(command)).matches()) {
                 System.out.print(controller.dropBuilding(matcher));
+                continue;
+            }
+            if (GameMenuRegexes.ENTER_TRADE_MENU.getMatcher(command).matches()) {
+                controller.enterTradeMenu();
                 continue;
             }
             if (GameMenuRegexes.NEXT_TURN.getMatcher(command).matches()) {
