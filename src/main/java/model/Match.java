@@ -142,7 +142,7 @@ public class Match {
                 monarchy.run();
             }
         }
-        return "Turn " + turnNumber + " : " + getCurrentUser().getUsername() + "'s turn";
+        return "Turn " + (turnNumber + 1) + " : " + getCurrentUser().getUsername() + "'s turn";
     }
 
     public User getUserByName(String otherUserName) {

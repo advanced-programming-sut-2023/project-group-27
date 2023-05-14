@@ -209,7 +209,7 @@ public class Monarchy {
         int hovelCount = buildings.stream().filter(
                 building -> building.getName().equals("Hovel")
         ).toList().size();
-        result = Math.min(result, (hovelCount * 20) - population);
+        result = Math.min(result, (hovelCount * 20 + 100) - population);
         return Math.max(result, 0);
     }
 
