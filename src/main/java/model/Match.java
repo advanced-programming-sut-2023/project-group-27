@@ -126,9 +126,9 @@ public class Match {
         if (turnNumber % monarchies.size() == 0) {
             updateTasks();
             runTasks();
+
             for (Monarchy monarchy : monarchies) {
                 if (monarchy.isDead()) {
-                    monarchies.remove(monarchy);
                     for (Building building: monarchy.getBuildings()) {
                         building.destroy();
                         building.getCell().setBuilding(null);
@@ -138,9 +138,9 @@ public class Match {
                         currentMatchMap.getCell(man.getLocation()).getMen().remove(man);
                     }
                     monarchy.getKing().setHighScore(monarchy.getPopularity());
-                    break;
                 }
             }
+            monarchies.removeIf(Monarchy::isDead);
             for (Monarchy monarchy : monarchies) {
                 monarchy.run();
             }
