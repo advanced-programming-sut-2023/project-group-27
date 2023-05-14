@@ -269,7 +269,15 @@ public class CoreGameMenuController {
         for (Map.Entry<GoodsType, Integer> entry : currentMatch.getCurrentMonarchy().getStockPile().getMap().entrySet()) {
             builder.append(entry.getKey().getName()).append(": ").append(entry.getValue()).append("\n");
         }
-        builder.append("Popularity: ").append(currentMatch.getCurrentMonarchy().getPopularity()).append("\n");
+        builder.append("Popularity:").append(currentMatch.getCurrentMonarchy().getPopularity()).append("\n");
+        builder.append("food rate:").append(currentMatch.getCurrentMonarchy().getFoodRate()).append("  ");
+        builder.append("tax rate:").append(currentMatch.getCurrentMonarchy().getTaxRate()).append("  ");
+        builder.append("fear rate:").append(currentMatch.getCurrentMonarchy().getFearRate()).append("\n");
+        builder.append("food:\n");
+        builder.append("apple:").append(currentMatch.getCurrentMonarchy().getGood(GoodsType.APPLE)).append("   ");
+        builder.append("meat:").append(currentMatch.getCurrentMonarchy().getGood(GoodsType.MEAT)).append("   ");
+        builder.append("cheese:").append(currentMatch.getCurrentMonarchy().getGood(GoodsType.CHEESE)).append("   ");
+        builder.append("wheat:").append(currentMatch.getCurrentMonarchy().getGood(GoodsType.WHEAT)).append("\n");
         return builder.toString();
     }
 }

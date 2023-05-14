@@ -33,8 +33,9 @@ public class GameMenu {
                 "15. enter map edit\n" +
                 "16. show current player\n" +
                 "17. enter trade menu\n" +
-                "18. next turn\n" +
-                "19. back\n");
+                "18. show monarchy\n" +
+                "19. next turn\n" +
+                "20. back\n");
         while (true) {
             String command = scanner.nextLine();
             String output;
