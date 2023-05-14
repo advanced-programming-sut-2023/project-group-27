@@ -146,6 +146,10 @@ public class Match {
                 for (Man man: monarchy.getMen()) {
                     if (man.getHitpoint() <= 0) {
                         currentMatchMap.getCell(man.getLocation()).getMen().remove(man);
+                    } else {
+                        if (man.getTask() == null && man instanceof Soldier) {
+                            man.setTask(new Search((Soldier) man, currentMatchMap, this));
+                        }
                     }
                 }
                 monarchy.getMen().removeIf(m -> m.getHitpoint() <= 0);
