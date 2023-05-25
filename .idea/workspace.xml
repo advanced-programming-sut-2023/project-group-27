@@ -186,14 +186,7 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HelloLWJGL">
-    <configuration name="Golabi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="graphics_view.Golabi" />
-      <module name="project-group-27" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.All in project-group-27">
     <configuration name="HelloJME3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="graphics_view.HelloJME3" />
       <module name="project-group-27" />
@@ -246,13 +239,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in project-group-27" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project-group-27" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in project-group-27" />
         <item itemvalue="Application.HelloLWJGL" />
         <item itemvalue="Application.HelloWorld" />
         <item itemvalue="Application.KeyboardTest" />
         <item itemvalue="Application.HelloJME3" />
-        <item itemvalue="Application.Golabi" />
       </list>
     </recent_temporary>
   </component>
