@@ -2,12 +2,10 @@ package controller.view_controllers;
 
 import controller.controller.CoreProfileMenuController;
 import model.User;
-import view.ProfileMenu;
+import console_view.ProfileMenu;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
-import controller.controller.Utilities;
-import java.util.regex.Pattern;
 
 public class ProfileMenuController {
     private final CoreProfileMenuController coreController;

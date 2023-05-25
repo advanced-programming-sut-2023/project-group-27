@@ -7,7 +7,7 @@ import model.castle_components.CastleComponent;
 import model.castle_components.CastleComponentType;
 import model.man.Man;
 import model.man.SoldierType;
-import view.MapEditMenu;
+import console_view.MapEditMenu;
 
 import java.util.Scanner;
 

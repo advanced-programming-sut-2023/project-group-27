@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,7 +28,7 @@ class CoreTradeMenuControllerTest {
         user.setMonarchy(new Monarchy(user, MonarchyColorType.BLACK, gameMap, locations[0]));
         user2.setMonarchy(new Monarchy(user2, MonarchyColorType.RED, gameMap, locations[1]));
         User[] users = new User[]{user, user2};
-        this.match = new Match(gameMap, Arrays.stream(users).toList());
+        this.match = new Match(gameMap, Arrays.stream(users).collect(Collectors.toList()));
         this.outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
     }

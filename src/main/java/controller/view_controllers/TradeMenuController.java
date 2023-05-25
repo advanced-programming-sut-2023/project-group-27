@@ -1,12 +1,9 @@
 package controller.view_controllers;
 
 import controller.controller.CoreTradeMenuController;
-import model.GoodsType;
 import model.User;
-import org.apache.commons.lang3.math.NumberUtils;
-import view.TradeMenu;
+import console_view.TradeMenu;
 
-import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;

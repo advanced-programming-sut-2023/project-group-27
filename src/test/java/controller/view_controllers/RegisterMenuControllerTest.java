@@ -1,16 +1,12 @@
 package controller.view_controllers;
 
 import controller.controller.CoreRegisterMenuController;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
-import view.enums.RegisterMenuRegexes;
+import console_view.enums.RegisterMenuRegexes;
 
-import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -5,7 +5,7 @@ import model.Cell;
 import model.GameMap;
 import model.Location;
 import model.man.Man;
-import view.MapNavigationMenu;
+import console_view.MapNavigationMenu;
 
 import java.util.Scanner;
 

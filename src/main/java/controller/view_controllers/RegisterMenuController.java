@@ -2,7 +2,7 @@ package controller.view_controllers;
 
 import controller.controller.CoreRegisterMenuController;
 import model.StrongholdCrusader;
-import view.RegisterMenu;
+import console_view.RegisterMenu;
 
 import java.util.Map;
 import java.util.Scanner;

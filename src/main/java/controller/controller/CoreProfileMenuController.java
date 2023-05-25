@@ -3,7 +3,7 @@ package controller.controller;
 import controller.view_controllers.ProfileMenuController;
 import model.StrongholdCrusader;
 import model.User;
-import view.ProfileMenu;
+import console_view.ProfileMenu;
 
 import java.util.Scanner;
 

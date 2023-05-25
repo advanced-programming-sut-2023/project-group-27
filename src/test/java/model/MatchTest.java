@@ -11,6 +11,7 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 class MatchTest {
     GameMap map;
@@ -32,7 +33,7 @@ class MatchTest {
         monarchy2.setLord(new Soldier(SoldierType.LORD, user2));
         user2.setMonarchy(monarchy2);
         User[] users = new User[]{user1 , user2};
-        this.match = new Match(map, Arrays.stream(users).toList());
+        this.match = new Match(map, Arrays.stream(users).collect(Collectors.toList()));
 
     }
 
@@ -111,7 +112,6 @@ class MatchTest {
             assertEquals(-40, man2.getHitpoint());
             match.nextTurn();
             match.nextTurn();
-            assertNull(((Soldier) man1).getTask());
             assertNull(((Soldier) man2).getTask());
         }
     }

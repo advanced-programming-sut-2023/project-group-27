@@ -4,7 +4,7 @@ import controller.controller.CoreSelectBuildingMenuController;
 import model.building.Building;
 import model.castle_components.CastleComponent;
 import model.man.SoldierType;
-import view.SelectBuildingMenu;
+import console_view.SelectBuildingMenu;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;

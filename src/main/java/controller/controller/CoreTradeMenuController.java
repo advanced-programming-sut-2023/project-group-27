@@ -3,7 +3,7 @@ package controller.controller;
 import controller.view_controllers.TradeMenuController;
 import model.*;
 import org.apache.commons.lang3.math.NumberUtils;
-import view.TradeMenu;
+import console_view.TradeMenu;
 
 import java.util.Scanner;
 

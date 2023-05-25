@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Soldier extends Man implements Fightable {
     private SoldierType soldierType;
@@ -64,7 +65,7 @@ public class Soldier extends Man implements Fightable {
             return;
         }
         List<Man> enemies = cell.getMen().stream()
-                .filter(m -> m.getOwner() != getOwner()).toList();
+                .filter(m -> m.getOwner() != getOwner()).collect(Collectors.toList());
         if (enemies.size() == 0) {
             return;
         }

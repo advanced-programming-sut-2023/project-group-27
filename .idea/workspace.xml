@@ -4,15 +4,72 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="bug fix and improvement4">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="bug fix and improvement5">
+      <change afterPath="$PROJECT_DIR$/src/main/java/graphics_view/HelloLWJGL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/graphics_view/HelloWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/BFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/BFS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameStartMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreGameStartMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreLoginMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreLoginMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapNavigationMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapNavigationMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreProfileMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreRegisterMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreRegisterMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectBuildingMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectBuildingMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectUnitMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreSelectUnitMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreShopMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreShopMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreTradeMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreTradeMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/LoginMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/LoginMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/ProfileMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/RegisterMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/RegisterMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/SelectBuildingMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/SelectBuildingMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/SelectUnitMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/SelectUnitMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/ShopMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/ShopMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/TradeMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/TradeMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Match.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Monarchy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/EngineerBuildingType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/EngineerBuildingType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/FightableBuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/FightableBuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/Soldier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/Soldier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/GameMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameStartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/GameStartMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/LoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/LoginMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MapEditMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/MapEditMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MapNavigationMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/MapNavigationMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MenuBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/MenuBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/ProfileMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/ProfileMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/RegisterMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/RegisterMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/SelectBuildingMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/SelectBuildingMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/SelectUnitMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/SelectUnitMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/ShopMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/ShopMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/TradeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/TradeMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/GameMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/enums/GameMenuRegexes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/GameStartMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/enums/GameStartMenuRegexes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/LoginMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/enums/LoginMenuRegexes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/MainMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/enums/MainMenuRegexes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/MapEditMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/enums/MapEditMenuRegexes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/MapNavigationMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/enums/MapNavigationMenuRegexes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/ProfileMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/enums/ProfileMenuRegexes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/RegisterMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/enums/RegisterMenuRegexes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/SelectBuildingMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/enums/SelectBuildingMenuRegexes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/SelectUnitMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/enums/SelectUnitMenuRegexes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/ShopMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/enums/ShopMenuRegexes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/enums/TradeMenuRegexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_view/enums/TradeMenuRegexes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/data/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/controller/CoreGameMenuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/controller/CoreGameMenuControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/controller/CoreMapEditMenuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/controller/CoreMapEditMenuControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/controller/CoreRegisterMenuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/controller/CoreRegisterMenuControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/controller/CoreSelectBuildingMenuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/controller/CoreSelectBuildingMenuControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/controller/CoreTradeMenuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/controller/CoreTradeMenuControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/view_controllers/LoginMenuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/view_controllers/LoginMenuControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/view_controllers/RegisterMenuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/view_controllers/RegisterMenuControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/MatchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/MatchTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +81,9 @@
       <list>
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="module-info" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -36,6 +94,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
@@ -89,23 +148,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mobin/IdeaProjects/project-group-27/src/main/resources/data&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "extract.method.default.visibility": "private",
+    "last_opened_file_path": "C:/Users/mobin/IdeaProjects/project-group-27/src/main/resources/data",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="Push.Settings">
     <force-push-targets>
       <force-push-target remote-path="origin" branch="dahanet_service" />
@@ -126,68 +186,73 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+  <component name="RunManager" selected="Application.HelloLWJGL">
+    <configuration name="Golabi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphics_view.Golabi" />
       <module name="project-group-27" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in AP-project-group27" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AP-project-group27" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in project-group-27" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="project-group-27" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CoreGameMenuControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HelloJME3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphics_view.HelloJME3" />
       <module name="project-group-27" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controller.controller.*" />
+          <option name="PATTERN" value="graphics_view.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="controller.controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.controller.CoreGameMenuControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CoreMapEditMenuControllerTest.setTexture" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HelloLWJGL" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphics_view.HelloLWJGL" />
       <module name="project-group-27" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controller.controller.*" />
+          <option name="PATTERN" value="graphics_view.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="controller.controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.controller.CoreMapEditMenuControllerTest" />
-      <option name="METHOD_NAME" value="setTexture" />
-      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HelloWorld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphics_view.HelloWorld" />
+      <module name="project-group-27" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="graphics_view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="KeyboardTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphics_view.KeyboardTest" />
+      <module name="project-group-27" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="graphics_view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.All in AP-project-group27" />
-        <item itemvalue="JUnit.All in project-group-27" />
-        <item itemvalue="JUnit.CoreGameMenuControllerTest" />
-        <item itemvalue="JUnit.CoreMapEditMenuControllerTest.setTexture" />
+        <item itemvalue="Application.HelloLWJGL" />
+        <item itemvalue="Application.HelloWorld" />
+        <item itemvalue="Application.KeyboardTest" />
+        <item itemvalue="Application.HelloJME3" />
+        <item itemvalue="Application.Golabi" />
       </list>
     </recent_temporary>
   </component>
@@ -222,14 +287,15 @@
       <workItem from="1683863209346" duration="13926000" />
       <workItem from="1683889547328" duration="2917000" />
       <workItem from="1683979354507" duration="15677000" />
-      <workItem from="1684064440214" duration="6777000" />
-    </task>
-    <task id="LOCAL-00018" summary="completed map navigation menu">
-      <created>1682602218553</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1682602218553</updated>
+      <workItem from="1684064440214" duration="7955000" />
+      <workItem from="1684076554429" duration="838000" />
+      <workItem from="1684078973908" duration="1243000" />
+      <workItem from="1684236905459" duration="2422000" />
+      <workItem from="1684320953420" duration="39000" />
+      <workItem from="1684704564807" duration="76000" />
+      <workItem from="1684750436745" duration="902000" />
+      <workItem from="1684772843074" duration="6215000" />
+      <workItem from="1684995564733" duration="12813000" />
     </task>
     <task id="LOCAL-00019" summary="completed some type enums">
       <created>1682605438382</created>
@@ -567,7 +633,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684069065184</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="bug fix and improvement5">
+      <created>1684071355015</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1684071355015</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -618,7 +691,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixed color code problems and enhanced show map output by adding separation" />
     <MESSAGE value="added act and canAct for productionBuildings" />
     <MESSAGE value="bug fixes" />
     <MESSAGE value="adding start game logic" />
@@ -643,7 +715,8 @@
     <MESSAGE value="fix some bugs7" />
     <MESSAGE value="bug fix and improvement3" />
     <MESSAGE value="bug fix and improvement4" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix and improvement4" />
+    <MESSAGE value="bug fix and improvement5" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix and improvement5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -673,6 +746,7 @@
     <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_ShopTest_showShop.ic" NAME="CoreGameMenuControllerTest$ShopTest.showShop Coverage Results" MODIFIED="1683798459321" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>controller.controller.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/project_group_27$All_in_project_group_27.ic" NAME="All in project-group-27 Coverage Results" MODIFIED="1684778258774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_SelectUnitTest_selectUnit.ic" NAME="CoreGameMenuControllerTest$SelectUnitTest.selectUnit Coverage Results" MODIFIED="1683791907745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>controller.controller.*</FILTER>
     </SUITE>

@@ -4,8 +4,7 @@ import controller.view_controllers.ShopMenuController;
 import model.GoodsType;
 import model.Match;
 import model.Monarchy;
-import model.StrongholdCrusader;
-import view.ShopMenu;
+import console_view.ShopMenu;
 
 import java.util.Arrays;
 import java.util.Map;

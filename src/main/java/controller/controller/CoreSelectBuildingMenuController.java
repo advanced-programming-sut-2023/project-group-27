@@ -6,7 +6,7 @@ import model.Monarchy;
 import model.building.Building;
 import model.castle_components.CastleComponent;
 import model.man.*;
-import view.SelectBuildingMenu;
+import console_view.SelectBuildingMenu;
 
 import java.util.Scanner;
 

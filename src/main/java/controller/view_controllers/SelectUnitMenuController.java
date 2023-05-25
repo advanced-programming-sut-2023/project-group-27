@@ -6,7 +6,7 @@ import model.GameMap;
 import model.Movable;
 import model.Selectable;
 import model.man.Soldier;
-import view.SelectUnitMenu;
+import console_view.SelectUnitMenu;
 
 import java.util.ArrayList;
 import java.util.Map;

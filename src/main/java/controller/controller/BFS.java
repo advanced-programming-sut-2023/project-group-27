@@ -8,6 +8,7 @@ import model.man.Man;
 import model.man.Soldier;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class BFS {
     private Location startingLocation;
@@ -45,7 +46,7 @@ public class BFS {
         while (!cells.isEmpty()) {
             Location currentLocation = cells.poll();
             List<Man> enemies = map.getCell(currentLocation).getMen().stream().filter(
-                    x -> (x.getOwner() != movable.getOwner() && x instanceof Soldier)).toList();
+                    x -> (x.getOwner() != movable.getOwner() && x instanceof Soldier)).collect(Collectors.toList());
             if (enemies.size() > 0) {
                 Random random = new Random();
                 if (target == null) {

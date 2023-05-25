@@ -2,7 +2,7 @@ package controller.controller;
 
 import controller.view_controllers.MainMenuController;
 import model.StrongholdCrusader;
-import view.MainMenu;
+import console_view.MainMenu;
 
 import java.io.IOException;
 import java.util.Scanner;
