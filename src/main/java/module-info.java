@@ -1,4 +1,4 @@
-module APGameAA {
+module APGame {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;
