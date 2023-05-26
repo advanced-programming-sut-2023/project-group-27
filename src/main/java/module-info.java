@@ -6,6 +6,8 @@ module APGameAA {
     requires com.google.common;
     requires java.desktop;
     requires commons.lang3;
+    requires org.lwjgl.glfw;
+    requires org.lwjgl.opengl;
 
 
     exports graphics_view;
