@@ -3,10 +3,7 @@ package controller.view_controllers;
 import controller.controller.CoreGameMenuController;
 import model.GameMap;
 import model.Match;
-import model.StrongholdCrusader;
-import model.User;
 import model.man.SoldierType;
-import org.apache.commons.lang3.math.NumberUtils;
 
 import java.util.Map;
 import java.util.regex.Matcher;

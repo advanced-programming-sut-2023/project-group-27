@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,7 +25,7 @@ class CoreMapEditMenuControllerTest {
                 "user", "user@u.com", "a", "b");
         user.setMonarchy(new Monarchy(user, MonarchyColorType.BLACK, map, locations[0]));
         User[] users = new User[]{user};
-        this.match = new Match(map, Arrays.stream(users).toList());
+        this.match = new Match(map, Arrays.stream(users).collect(Collectors.toList()));
         this.coreMapEditMenuController =
                 new CoreMapEditMenuController(match, null);
 

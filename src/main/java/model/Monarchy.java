@@ -6,6 +6,7 @@ import model.building.Storage;
 import model.man.Man;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Monarchy {
     private final List<Building> buildings = new ArrayList<>();
@@ -168,7 +169,7 @@ public class Monarchy {
     public int calcPopularityReligion() {
         int religiousBuildingCount = buildings.stream().filter(building ->
                 building.getName().equals("Church") || building.getName().equals("Cathedral"))
-                .toList().size();
+                .collect(Collectors.toList()).size();
         return 2 * religiousBuildingCount;
     }
 
@@ -208,7 +209,7 @@ public class Monarchy {
         int result = population / div;
         int hovelCount = buildings.stream().filter(
                 building -> building.getName().equals("Hovel")
-        ).toList().size();
+        ).collect(Collectors.toList()).size();
         result = Math.min(result, (hovelCount * 20 + 100) - population);
         return Math.max(result, 0);
     }
@@ -263,7 +264,7 @@ public class Monarchy {
         this.popularity += calcPopularityFood();
         double foodNeeded = this.getPopulation() * ((foodRate + 2) * 0.5);
         List<GoodsType> foods = Arrays.stream(GoodsType.getGranaryGoods())
-                .sorted(Comparator.comparingInt(this::getGood)).toList();
+                .sorted(Comparator.comparingInt(this::getGood)).collect(Collectors.toList());
         for (int i = 0; i < foods.size(); i++) {
             GoodsType food = foods.get(i);
             int foodAmount = getGood(food);

@@ -12,7 +12,7 @@ import model.task.AirStrike;
 import model.task.Fight;
 import model.task.Move;
 import model.task.Patrol;
-import view.SelectUnitMenu;
+import console_view.SelectUnitMenu;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -138,19 +138,19 @@ public class CoreSelectUnitMenuController {
             case "shield" :
                 if (engineerCount < 1) return "You need at least 1 engineer!";
                 break;
-            case "battering ram" :
+            case "batteringRam" :
                 if (engineerCount < 4) return "You need at least 4 engineers!";
                 if (!(priceCheck(monarchy , buildingType))) return "Not enough gold!";
                 break;
-            case "siege tower" :
+            case "siegeTower" :
                 if (engineerCount < 4) return "You need at least 4 engineers!";
                 if (!(priceCheck(monarchy , buildingType))) return "Not enough gold!";
                 break;
-            case "mobile catapult" :
+            case "mobileCatapult" :
                 if (engineerCount < 2) return "You need at least 2 engineers!";
                 if (!(priceCheck(monarchy , buildingType))) return "Not enough gold!";
                 break;
-            case "static catapult" :
+            case "staticCatapult" :
                 if (engineerCount < 3) return "You need at least 3 engineers!";
                 if (!(priceCheck(monarchy , buildingType))) return "Not enough gold!";
                 break;

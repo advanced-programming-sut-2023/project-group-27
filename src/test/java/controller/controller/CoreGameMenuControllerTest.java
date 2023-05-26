@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -49,7 +50,7 @@ class CoreGameMenuControllerTest {
         user.setMonarchy(new Monarchy(user, MonarchyColorType.BLACK, map, locations[0]));
         user2.setMonarchy(new Monarchy(user2, MonarchyColorType.RED, map, locations[1]));
         this.monarchy = user.getMonarchy();
-        this.match = new Match(this.map, Arrays.stream(users).toList());
+        this.match = new Match(this.map, Arrays.stream(users).collect(Collectors.toList()));
         this.coreGameController = new CoreGameMenuController(match, new Scanner(""));
     }
 

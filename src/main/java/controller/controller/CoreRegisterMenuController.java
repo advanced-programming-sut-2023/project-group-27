@@ -3,7 +3,7 @@ package controller.controller;
 import controller.view_controllers.RegisterMenuController;
 import model.StrongholdCrusader;
 import model.User;
-import view.RegisterMenu;
+import console_view.RegisterMenu;
 
 import java.io.IOException;
 import java.util.Scanner;

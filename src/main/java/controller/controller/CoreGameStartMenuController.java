@@ -1,6 +1,5 @@
 package controller.controller;
 
-import controller.Controller;
 import controller.view_controllers.GameStartMenuController;
 import model.*;
 import model.castle_components.CastleComponent;
@@ -8,8 +7,7 @@ import model.castle_components.CastleComponentType;
 import model.man.Man;
 import model.man.Soldier;
 import model.man.SoldierType;
-import view.GameStartMenu;
-import view.MapEditMenu;
+import console_view.GameStartMenu;
 
 import java.io.IOException;
 import java.util.ArrayList;

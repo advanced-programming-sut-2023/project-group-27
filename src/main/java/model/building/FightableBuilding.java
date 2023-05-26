@@ -6,6 +6,7 @@ import model.task.Task;
 
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class FightableBuilding extends Building implements Fightable {
     private int damage;
@@ -43,7 +44,7 @@ public class FightableBuilding extends Building implements Fightable {
             return;
         }
         List<Man> enemies = cell.getMen().stream()
-                .filter(m -> m.getOwner() != getOwner()).toList();
+                .filter(m -> m.getOwner() != getOwner()).collect(Collectors.toList());
         if (enemies.size() == 0) {
             return;
         }

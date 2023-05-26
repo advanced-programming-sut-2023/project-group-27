@@ -8,6 +8,7 @@ import model.task.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Match {
     private final GameMap currentMatchMap;
@@ -44,7 +45,7 @@ public class Match {
                 }
             }
             for (Building building : monarchy.getBuildings().stream()
-                    .filter(building -> building instanceof FightableBuilding).toList()) {
+                    .filter(building -> building instanceof FightableBuilding).collect(Collectors.toList())) {
                 FightableBuilding fightableBuilding = (FightableBuilding) building;
                 if (fightableBuilding.getTask() != null && !(fightableBuilding.getTask().isValid())) {
                     fightableBuilding.setTask(null);
@@ -57,7 +58,7 @@ public class Match {
 
     private void updateTasks() {
         ArrayList<Task> newTasks = new ArrayList<>();
-        for (Task task : taskList.stream().filter(x -> x instanceof Fight).toList()) {
+        for (Task task : taskList.stream().filter(x -> x instanceof Fight).collect(Collectors.toList())) {
             Fight fight = (Fight) task;
             Soldier target = fight.getTarget();
             if (target == null) continue;

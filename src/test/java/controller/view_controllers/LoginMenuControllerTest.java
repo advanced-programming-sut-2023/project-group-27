@@ -6,7 +6,7 @@ import model.StrongholdCrusader;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import view.enums.LoginMenuRegexes;
+import console_view.enums.LoginMenuRegexes;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

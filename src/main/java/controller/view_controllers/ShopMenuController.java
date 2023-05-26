@@ -1,9 +1,8 @@
 package controller.view_controllers;
 
-import controller.controller.CoreLoginMenuController;
 import controller.controller.CoreShopMenuController;
 import model.GoodsType;
-import view.ShopMenu;
+import console_view.ShopMenu;
 
 import java.util.Map;
 import java.util.Scanner;

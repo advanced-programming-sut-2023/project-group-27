@@ -9,7 +9,7 @@ import model.castle_components.CastleComponentType;
 import model.man.Man;
 import model.man.SoldierType;
 import org.apache.commons.lang3.math.NumberUtils;
-import view.GameMenu;
+import console_view.GameMenu;
 
 import java.util.ArrayList;
 import java.util.Map;
