@@ -71,3 +71,8 @@
     -fx-border-radius: 5;
     -fx-background-radius: 5;
 }
+
+.avatarCircle {
+    -fx-border-radius: 5;
+    -fx-border-color: black;
+}

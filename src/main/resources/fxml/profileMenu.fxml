@@ -6,54 +6,86 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.shape.Circle?>
 <TabPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="graphics_view.controller.ProfileMenuController"
+         xmlns:fx="http://javafx.com/fxml"
+         fx:controller="graphics_view.controller.ProfileMenuController"
          stylesheets="@../css/profileMenuStyles.css"
          tabClosingPolicy="UNAVAILABLE"
-            prefHeight="700.0" prefWidth="1200.0" >
+         prefHeight="700.0" prefWidth="1200.0" style="-fx-start-margin: 0">
     <Tab styleClass="Tab" id="profileHeader" text="profile" onSelectionChanged="#log">
         <Pane styleClass="profileTab">
-                <VBox styleClass="Box" layoutX="20" layoutY="130">
+            <Circle styleClass="avatarCircle" radius="50" layoutX="100" layoutY="70"/>
 
-                    <HBox styleClass="Row">
-                        <Label styleClass="IdentifierLabel" text="username"/>
-                        <Label fx:id="usernameLabel" styleClass="Label"/>
-                    </HBox>
+            <VBox styleClass="Box" layoutX="20" layoutY="130">
 
-                    <HBox styleClass="Row">
-                        <Label styleClass="IdentifierLabel" text="nickname"/>
-                        <Label fx:id="nicknameLabel" styleClass="Label"/>
-                    </HBox>
+                <HBox styleClass="Row">
+                    <Label styleClass="IdentifierLabel" text="username"/>
+                    <Label fx:id="usernameLabel" styleClass="Label"/>
+                </HBox>
 
-                    <HBox styleClass="Row">
-                        <Label styleClass="IdentifierLabel" text="password"/>
-                        <Label fx:id="passwordLabel" styleClass="Label"/>
-                    </HBox>
+                <HBox styleClass="Row">
+                    <Label styleClass="IdentifierLabel" text="nickname"/>
+                    <Label fx:id="nicknameLabel" styleClass="Label"/>
+                </HBox>
 
-                    <HBox styleClass="Row">
-                        <Label styleClass="IdentifierLabel" text="slogan"/>
-                        <Label fx:id="sloganLabel" styleClass="Label"/>
-                    </HBox>
+                <HBox styleClass="Row">
+                    <Label styleClass="IdentifierLabel" text="password"/>
+                    <Label fx:id="passwordLabel" styleClass="Label"/>
+                </HBox>
 
-                    <HBox styleClass="Row">
-                        <Label styleClass="IdentifierLabel" text="e-mail"/>
-                        <Label fx:id="emailLabel" styleClass="Label"/>
-                    </HBox>
+                <HBox styleClass="Row">
+                    <Label styleClass="IdentifierLabel" text="slogan"/>
+                    <Label fx:id="sloganLabel" styleClass="Label"/>
+                </HBox>
 
-                </VBox>
+                <HBox styleClass="Row">
+                    <Label styleClass="IdentifierLabel" text="e-mail"/>
+                    <Label fx:id="emailLabel" styleClass="Label"/>
+                </HBox>
+
+            </VBox>
+
+            <Button text="Exit" layoutX="30" layoutY="600"/>
+
         </Pane>
     </Tab>
 
     <Tab styleClass="Tab" id="scoreboardHeader" text="scoreboard">
-        <AnchorPane styleClass="scoreboardTab">
-
-        </AnchorPane>
+        <Pane styleClass="scoreboardTab">
+            <ScrollPane layoutX="600" layoutY="300">
+                <ScrollBar></ScrollBar>
+            </ScrollPane>
+        </Pane>
     </Tab>
 
     <Tab styleClass="Tab" id="modificationHeader" text="modification">
-        <AnchorPane styleClass="modificationTab">
+        <Pane styleClass="modificationTab">
+            <TabPane tabClosingPolicy="UNAVAILABLE">
+                <Tab text="username">
 
-        </AnchorPane>
+                </Tab>
+
+                <Tab text="password">
+
+                </Tab>
+
+                <Tab text="slogan">
+
+                </Tab>
+
+                <Tab text="avatar">
+
+                </Tab>
+
+                <Tab text="email">
+
+                </Tab>
+
+                <Tab text="nickname">
+
+                </Tab>
+            </TabPane>
+        </Pane>
     </Tab>
 </TabPane>
