@@ -1,0 +1,73 @@
+.Tab {
+    -fx-font-style: italic;
+    -fx-font-size: x-large;
+    -fx-font-family: "Times New Roman";
+    -fx-text-base-color: rgba(2, 248, 92, 0.9);
+}
+
+.profileTab {
+    -fx-background-image: url("../assets/profileMenu/profileTab.jpg");
+    -fx-background-size: cover;
+    -fx-padding: 100;
+}
+
+.scoreboardTab {
+    -fx-background-image: url("../assets/profileMenu/scoreboard.jpg");
+    -fx-background-size: cover;
+}
+
+.modificationTab {
+    -fx-background-image: url("../assets/profileMenu/modification.jpg");
+    -fx-background-size: cover;
+}
+
+#profileHeader {
+    -fx-background-color: #3f0408;
+}
+
+#modificationHeader {
+    -fx-background-color: #718193;
+}
+
+#scoreboardHeader {
+    -fx-background-color: #15212d;
+}
+
+.Box {
+    -fx-padding: 30;
+    -fx-spacing: 50;
+    -fx-background-color: #697582;
+    -fx-background-radius: 11;
+    -fx-border-color: black;
+    -fx-border-radius: 10;
+    -fx-border-width: 5;
+}
+
+.Label {
+    -fx-max-width: 200;
+    -fx-min-width: 200;
+    -fx-background-color: rgba(212, 234, 212, 0.36);
+    -fx-border-radius: 5;
+    -fx-font-size: x-large;
+    -fx-background-radius: 5;
+    -fx-border-color: black;
+}
+
+.IdentifierLabel {
+    -fx-font-style: italic;
+    -fx-font-size: x-large;
+    -fx-text-fill: #000000;
+    -fx-background-color: rgba(212, 234, 212, 0.36);
+    -fx-border-color: black;
+    -fx-max-width: 90;
+    -fx-border-radius: 5;
+    -fx-min-width: 90;
+    -fx-background-radius: 5;
+    -fx-alignment: center;
+}
+
+.Row {
+    -fx-spacing: 50;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}

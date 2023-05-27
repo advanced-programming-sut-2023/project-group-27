@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="graphics test">
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/graphics_view/controller/ProfileMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/profileMenu/20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/profileMenu/modification.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/profileMenu/profile.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/profileMenu/profileTab.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/profileMenu/scoreboard.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/profileMenuStyles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/profileMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/GameMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +28,8 @@
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
         <option value="module-info" />
+        <option value="CSS File" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -98,6 +106,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/mobin/IdeaProjects/project-group-27/src/main/resources/data&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -125,20 +134,7 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HelloLWJGL">
-    <configuration name="HelloJME3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="graphics_view.HelloJME3" />
-      <module name="project-group-27" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="graphics_view.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.graphics_view.view.ProfileMenu">
     <configuration name="HelloLWJGL" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="graphics_view.HelloLWJGL" />
       <module name="project-group-27" />
@@ -165,12 +161,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="KeyboardTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="graphics_view.KeyboardTest" />
+    <configuration name="ProfileMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphics_view.view.profileMenu.ProfileMenu" />
       <module name="project-group-27" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="graphics_view.*" />
+          <option name="PATTERN" value="graphics_view.view.profileMenu.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="graphics_view.view.ProfileMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphics_view.view.ProfileMenu" />
+      <module name="project-group-27" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="graphics_view.view.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -188,11 +197,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.graphics_view.view.ProfileMenu" />
+        <item itemvalue="Application.ProfileMenu" />
         <item itemvalue="Application.HelloLWJGL" />
         <item itemvalue="JUnit.All in project-group-27" />
         <item itemvalue="Application.HelloWorld" />
-        <item itemvalue="Application.KeyboardTest" />
-        <item itemvalue="Application.HelloJME3" />
       </list>
     </recent_temporary>
   </component>
@@ -237,13 +246,10 @@
       <workItem from="1684772843074" duration="6215000" />
       <workItem from="1684995564733" duration="13123000" />
       <workItem from="1685122095550" duration="2659000" />
-    </task>
-    <task id="LOCAL-00021" summary="adding selectunit required logics">
-      <created>1682694807327</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1682694807327</updated>
+      <workItem from="1685131108956" duration="636000" />
+      <workItem from="1685166338966" duration="3884000" />
+      <workItem from="1685180533470" duration="4162000" />
+      <workItem from="1685204417885" duration="7530000" />
     </task>
     <task id="LOCAL-00022" summary="adding selectunit required logics">
       <created>1682700189468</created>
@@ -581,7 +587,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685014757898</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="graphics test">
+      <created>1685131142528</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1685131142528</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -8,7 +8,8 @@ module APGameAA {
     requires commons.lang3;
 
 
-    exports graphics_view;
+    exports graphics_view.view;
+    exports graphics_view.controller;
     exports model;
     exports controller;
     opens model to com.google.gson;

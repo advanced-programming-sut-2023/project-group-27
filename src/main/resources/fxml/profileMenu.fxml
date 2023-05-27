@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="graphics_view.controller.ProfileMenuController"
+         stylesheets="@../css/profileMenuStyles.css"
+         tabClosingPolicy="UNAVAILABLE"
+            prefHeight="700.0" prefWidth="1200.0" >
+    <Tab styleClass="Tab" id="profileHeader" text="profile" onSelectionChanged="#log">
+        <Pane styleClass="profileTab">
+                <VBox styleClass="Box" layoutX="20" layoutY="130">
+
+                    <HBox styleClass="Row">
+                        <Label styleClass="IdentifierLabel" text="username"/>
+                        <Label fx:id="usernameLabel" styleClass="Label"/>
+                    </HBox>
+
+                    <HBox styleClass="Row">
+                        <Label styleClass="IdentifierLabel" text="nickname"/>
+                        <Label fx:id="nicknameLabel" styleClass="Label"/>
+                    </HBox>
+
+                    <HBox styleClass="Row">
+                        <Label styleClass="IdentifierLabel" text="password"/>
+                        <Label fx:id="passwordLabel" styleClass="Label"/>
+                    </HBox>
+
+                    <HBox styleClass="Row">
+                        <Label styleClass="IdentifierLabel" text="slogan"/>
+                        <Label fx:id="sloganLabel" styleClass="Label"/>
+                    </HBox>
+
+                    <HBox styleClass="Row">
+                        <Label styleClass="IdentifierLabel" text="e-mail"/>
+                        <Label fx:id="emailLabel" styleClass="Label"/>
+                    </HBox>
+
+                </VBox>
+        </Pane>
+    </Tab>
+
+    <Tab styleClass="Tab" id="scoreboardHeader" text="scoreboard">
+        <AnchorPane styleClass="scoreboardTab">
+
+        </AnchorPane>
+    </Tab>
+
+    <Tab styleClass="Tab" id="modificationHeader" text="modification">
+        <AnchorPane styleClass="modificationTab">
+
+        </AnchorPane>
+    </Tab>
+</TabPane>
