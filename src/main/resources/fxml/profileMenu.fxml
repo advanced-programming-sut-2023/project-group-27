@@ -10,10 +10,11 @@
 <TabPane xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml"
          fx:controller="graphics_view.controller.ProfileMenuController"
+         fx:id="mainTabPane"
          stylesheets="@../css/profileMenuStyles.css"
          tabClosingPolicy="UNAVAILABLE"
          prefHeight="700.0" prefWidth="1200.0" style="-fx-start-margin: 0">
-    <Tab styleClass="Tab" id="profileHeader" text="profile" onSelectionChanged="#log">
+    <Tab fx:id="profileTab" styleClass="Tab" id="profileHeader" text="profile" onSelectionChanged="#log">
         <Pane styleClass="profileTab">
             <Circle styleClass="avatarCircle" radius="50" layoutX="100" layoutY="70"/>
 
@@ -27,11 +28,6 @@
                 <HBox styleClass="Row">
                     <Label styleClass="IdentifierLabel" text="nickname"/>
                     <Label fx:id="nicknameLabel" styleClass="Label"/>
-                </HBox>
-
-                <HBox styleClass="Row">
-                    <Label styleClass="IdentifierLabel" text="password"/>
-                    <Label fx:id="passwordLabel" styleClass="Label"/>
                 </HBox>
 
                 <HBox styleClass="Row">
@@ -58,7 +54,7 @@
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
                         <VBox>
                             <Label fx:id="usernameEvaluation" text="good!"/>
-                            <TextField fx:id="username" promptText="new username"/>
+                            <TextField fx:id="usernameEvaluationText" promptText="new username"/>
                         </VBox>
 
                         <Button text="change"/>
@@ -79,7 +75,7 @@
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
                         <VBox>
                             <Label fx:id="sloganEvaluation" text="good!"/>
-                            <TextField fx:id="slogan" promptText="new slogan"/>
+                            <TextField fx:id="sloganEvaluationText" promptText="new slogan"/>
                         </VBox>
                         <HBox spacing="20">
                             <Button text="change"/>
@@ -99,7 +95,7 @@
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
                         <VBox>
                             <Label fx:id="emailEvaluation" text="good!"/>
-                            <TextField fx:id="email" promptText="new email"/>
+                            <TextField fx:id="emailEvaluationText" promptText="new email"/>
                         </VBox>
 
                         <Button text="change"/>
@@ -112,7 +108,7 @@
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
                         <VBox>
                             <Label fx:id="nicknameEvaluation" text="good!"/>
-                            <TextField fx:id="nickname" promptText="new nickname"/>
+                            <TextField fx:id="nicknameEvaluationText" promptText="new nickname"/>
                         </VBox>
 
                         <Button text="change"/>

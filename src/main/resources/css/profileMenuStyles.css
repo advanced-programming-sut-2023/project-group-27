@@ -46,6 +46,7 @@
 .Label {
     -fx-max-width: 200;
     -fx-min-width: 200;
+    -fx-alignment: center;
     -fx-background-color: rgba(212, 234, 212, 0.36);
     -fx-border-radius: 5;
     -fx-font-size: x-large;

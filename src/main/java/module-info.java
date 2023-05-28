@@ -14,4 +14,5 @@ module APGameAA {
     exports controller;
     opens model to com.google.gson;
     opens graphics_view to com.google.gson, javafx.fxml;
+    opens graphics_view.controller to javafx.fxml;
 }
