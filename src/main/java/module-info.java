@@ -10,9 +10,11 @@ module APGameAA {
     requires org.lwjgl.opengl;
 
 
-    exports graphics_view;
+    exports graphics_view.view;
+    exports graphics_view.controller;
     exports model;
     exports controller;
     opens model to com.google.gson;
     opens graphics_view to com.google.gson, javafx.fxml;
+    opens graphics_view.controller to javafx.fxml;
 }
