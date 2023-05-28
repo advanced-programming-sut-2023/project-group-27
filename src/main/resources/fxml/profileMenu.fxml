@@ -67,7 +67,11 @@
             </Tab>
 
             <Tab text="password">
-
+                <Pane >
+                    <VBox styleClass="Box" layoutX="50" layoutY="200">
+                        <Button text="new password"/>
+                    </VBox>
+                </Pane>
             </Tab>
 
             <Tab text="slogan">
