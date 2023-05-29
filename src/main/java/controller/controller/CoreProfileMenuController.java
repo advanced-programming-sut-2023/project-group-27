@@ -129,4 +129,16 @@ public class CoreProfileMenuController {
         loggedInUser.setEmail(newEmail);
         return "Successful\n";
     }
+
+    public String evaluateEmail(String eMail) {
+        if (Utilities.validateEmail(eMail) != null) {
+            return Utilities.validateEmail(eMail);
+        }
+        if (StrongholdCrusader.getAllUsers().values().stream()
+                .anyMatch(user -> user.getEmail().equals(eMail))) {
+            return "Email already exists\n";
+        }
+
+        return "okay!";
+    }
 }

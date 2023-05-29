@@ -49,7 +49,7 @@
 
     <Tab styleClass="Tab" id="modificationHeader" text="modification">
         <TabPane tabClosingPolicy="UNAVAILABLE" styleClass="modificationTab">
-            <Tab text="username">
+            <Tab styleClass="Tab" text="username">
                 <Pane >
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
                         <VBox>
@@ -62,7 +62,7 @@
                 </Pane>
             </Tab>
 
-            <Tab text="password">
+            <Tab styleClass="Tab" text="password">
                 <Pane >
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
                         <Button text="new password"/>
@@ -70,7 +70,7 @@
                 </Pane>
             </Tab>
 
-            <Tab text="slogan">
+            <Tab styleClass="Tab" text="slogan">
                 <Pane>
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
                         <VBox>
@@ -86,32 +86,32 @@
                 </Pane>
             </Tab>
 
-            <Tab text="avatar">
+            <Tab styleClass="Tab" text="avatar">
 
             </Tab>
 
-            <Tab text="email">
+            <Tab styleClass="Tab" text="email">
                 <Pane >
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
                         <VBox>
-                            <Label fx:id="emailEvaluation" text="good!"/>
-                            <TextField fx:id="emailEvaluationText" promptText="new email"/>
+                            <Label fx:id="emailEvaluation"/>
+                            <TextField fx:id="emailField" promptText="new email"/>
                         </VBox>
 
-                        <Button text="change"/>
+                        <Button text="change" onMouseClicked="#changeEmail"/>
                     </VBox>
                 </Pane>
             </Tab>
 
-            <Tab text="nickname">
+            <Tab styleClass="Tab" text="nickname">
                 <Pane >
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
                         <VBox>
-                            <Label fx:id="nicknameEvaluation" text="good!"/>
-                            <TextField fx:id="nicknameEvaluationText" promptText="new nickname"/>
+                            <Label fx:id="nicknameEvaluation"/>
+                            <TextField fx:id="nicknameField" promptText="new nickname"/>
                         </VBox>
 
-                        <Button text="change"/>
+                        <Button text="change" onMouseClicked="#changeNickName"/>
                     </VBox>
                 </Pane>
             </Tab>

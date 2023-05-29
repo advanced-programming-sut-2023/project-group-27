@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import model.StrongholdCrusader;
 import model.User;
 
@@ -28,11 +29,11 @@ public class ProfileMenuController implements Initializable {
     @FXML
     private Label emailEvaluation;
     @FXML
-    private TextField emailEvaluationText;
+    private TextField emailField;
     @FXML
     private Label nicknameEvaluation;
     @FXML
-    private TextField nicknameEvaluationText;
+    private TextField nicknameField;
     @FXML
     private Label usernameLabel;
     @FXML
@@ -63,21 +64,40 @@ public class ProfileMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         StrongholdCrusader.setLoggedInUser(currentUser);
         controller = new CoreProfileMenuController(null);
-        usernameField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                if (usernameField.getText().isEmpty())
-                    usernameEvaluation.setText("");
-                else
-                    usernameEvaluation.setText(controller.evaluateUsername(usernameField.getText()));
+
+        usernameField.textProperty().addListener((observableValue, s, t1) -> {
+            if (usernameField.getText().isEmpty())
+                usernameEvaluation.setText("");
+            else {
+                usernameEvaluation.setText(controller.evaluateUsername(usernameField.getText()));
+                usernameEvaluation.setTextFill(Color.RED);
+                if (usernameEvaluation.getText().equals("okay!"))
+                    usernameEvaluation.setTextFill(Color.GREEN);
             }
         });
 
-        sloganField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                if (!sloganField.getText().isEmpty())
-                    sloganEvaluation.setText("okay!");
+        sloganField.textProperty().addListener((observableValue, s, t1) -> {
+            if (!sloganField.getText().isEmpty()) {
+                sloganEvaluation.setText("okay!");
+                sloganEvaluation.setTextFill(Color.GREEN);
+            }
+        });
+
+        nicknameField.textProperty().addListener((observableValue, s, t1) -> {
+            if (!nicknameField.getText().isEmpty()) {
+                nicknameEvaluation.setText("okay!");
+                nicknameEvaluation.setTextFill(Color.GREEN);
+            }
+        });
+
+        emailField.textProperty().addListener((observableValue, s, t1) -> {
+            if (emailField.getText().isEmpty())
+                emailEvaluation.setText("");
+            else {
+                emailEvaluation.setText(controller.evaluateEmail(emailField.getText()));
+                emailEvaluation.setTextFill(Color.RED);
+                if (emailEvaluation.getText().equals("okay!"))
+                    emailEvaluation.setTextFill(Color.GREEN);
             }
         });
     }
@@ -94,7 +114,7 @@ public class ProfileMenuController implements Initializable {
     }
 
     public void clearSlogan(MouseEvent mouseEvent) {
-        currentUser.setSlogan("");
+        controller.removeSlogan();
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("Slogan Cleared Successfully!");
@@ -112,5 +132,30 @@ public class ProfileMenuController implements Initializable {
         alert.setHeaderText("Slogan Changed Successfully!");
         alert.showAndWait();
         sloganField.clear();
+    }
+
+
+    public void changeNickName(MouseEvent mouseEvent) {
+        if (!nicknameEvaluation.getText().equals("okay!"))
+            return;
+
+        controller.changeNickname(nicknameField.getText());
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Nickname Changed Successfully!");
+        alert.showAndWait();
+        nicknameField.clear();
+    }
+
+    public void changeEmail(MouseEvent mouseEvent) {
+        if (!emailEvaluation.getText().equals("okay!"))
+            return;
+
+        controller.changeEmail(emailField.getText());
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Email Changed Successfully!");
+        alert.showAndWait();
+        emailField.clear();
     }
 }

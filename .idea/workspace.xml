@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="captcha added2">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreProfileMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/ProfileMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/profileMenuStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/profileMenuStyles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/profileMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/profileMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -245,13 +246,7 @@
       <workItem from="1685180533470" duration="4162000" />
       <workItem from="1685204417885" duration="11488000" />
       <workItem from="1685239504222" duration="10136000" />
-    </task>
-    <task id="LOCAL-00026" summary="select building logic">
-      <created>1682876198871</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1682876198871</updated>
+      <workItem from="1685392898477" duration="3433000" />
     </task>
     <task id="LOCAL-00027" summary="select building logic">
       <created>1682878727643</created>
@@ -589,7 +584,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685268680945</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="functionality">
+      <created>1685380811487</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1685380811488</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -670,7 +672,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="adding start game logic" />
     <MESSAGE value="adding start game logic3" />
     <MESSAGE value="adding start game logic4" />
     <MESSAGE value="adding start game logic5" />
@@ -695,7 +696,8 @@
     <MESSAGE value="bug fix and improvement5" />
     <MESSAGE value="graphics test" />
     <MESSAGE value="captcha added" />
-    <option name="LAST_COMMIT_MESSAGE" value="captcha added" />
+    <MESSAGE value="functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
