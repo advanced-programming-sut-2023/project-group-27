@@ -42,6 +42,19 @@ public class CoreProfileMenuController {
         return "Successful\n";
     }
 
+    public String evaluateUsername(String username) {
+        if (username.equals(loggedInUser.getUsername()))
+            return "Username can not be the same as old username\n";
+        if (username.equals(""))
+            return "empty field\n";
+        if (!username.matches("[0-9a-zA-Z_]+"))
+            return "Invalid username format\n";
+        if (StrongholdCrusader.getAllUsers().containsKey(username))
+            return "username already exists\n";
+
+        return "okay!";
+    }
+
     public void changeNickname(String nickname) {
         loggedInUser.setNickname(nickname);
     }

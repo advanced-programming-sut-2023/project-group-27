@@ -53,11 +53,11 @@
                 <Pane >
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
                         <VBox>
-                            <Label fx:id="usernameEvaluation" text="good!"/>
-                            <TextField fx:id="usernameEvaluationText" promptText="new username"/>
+                            <Label fx:id="usernameEvaluation"/>
+                            <TextField fx:id="usernameField" promptText="new username"/>
                         </VBox>
 
-                        <Button text="change"/>
+                        <Button text="change" onMouseClicked="#changeUsername"/>
                     </VBox>
                 </Pane>
             </Tab>
@@ -74,12 +74,12 @@
                 <Pane>
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
                         <VBox>
-                            <Label fx:id="sloganEvaluation" text="good!"/>
-                            <TextField fx:id="sloganEvaluationText" promptText="new slogan"/>
+                            <Label fx:id="sloganEvaluation"/>
+                            <TextField fx:id="sloganField" promptText="new slogan"/>
                         </VBox>
                         <HBox spacing="20">
-                            <Button text="change"/>
-                            <Button text="clear slogan"/>
+                            <Button text="change" onMouseClicked="#changeSlogan"/>
+                            <Button text="clear slogan" onMouseClicked="#clearSlogan"/>
                         </HBox>
 
                     </VBox>
