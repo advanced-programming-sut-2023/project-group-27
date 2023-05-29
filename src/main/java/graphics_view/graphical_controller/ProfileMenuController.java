@@ -1,4 +1,4 @@
-package graphics_view.controller;
+package graphics_view.graphical_controller;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;

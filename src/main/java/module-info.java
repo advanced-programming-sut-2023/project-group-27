@@ -11,10 +11,10 @@ module APGame {
 
 
     exports graphics_view.view;
-    exports graphics_view.controller;
+    exports graphics_view.graphical_controller;
     exports model;
     exports controller;
     opens model to com.google.gson;
-    opens graphics_view to com.google.gson, javafx.fxml;
-    opens graphics_view.controller to javafx.fxml;
+    opens graphics_view.graphical_controller to javafx.fxml;
+    opens graphics_view.view to com.google.gson, javafx.fxml;
 }

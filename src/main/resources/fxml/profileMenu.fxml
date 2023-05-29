@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Circle?>
 <TabPane xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml"
-         fx:controller="graphics_view.controller.ProfileMenuController"
+         fx:controller="graphics_view.graphical_controller.ProfileMenuController"
          fx:id="mainTabPane"
          stylesheets="@../css/profileMenuStyles.css"
          tabClosingPolicy="UNAVAILABLE"
