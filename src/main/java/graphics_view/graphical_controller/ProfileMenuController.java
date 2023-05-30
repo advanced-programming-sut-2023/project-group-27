@@ -1,17 +1,26 @@
 package graphics_view.graphical_controller;
 
 import controller.controller.CoreProfileMenuController;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import graphics_view.view.Captcha;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 import model.StrongholdCrusader;
 import model.User;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,7 +54,13 @@ public class ProfileMenuController implements Initializable {
     @FXML
     private TabPane mainTabPane;
 
-
+    private TextField currentPassword;
+    Label newPasswordEvaluation;
+    PasswordField newPassword;
+    Captcha captcha;
+    Rectangle captchaRectangle;
+    TextField captchaValue;
+    Button resetCaptcha;
     private User currentUser = new User(
             "arshia", "Arshia@1", "arshi", "yoyo", "a@b.c", "dsa", "dsa");
     private CoreProfileMenuController controller;
@@ -157,5 +172,42 @@ public class ProfileMenuController implements Initializable {
         alert.setHeaderText("Email Changed Successfully!");
         alert.showAndWait();
         emailField.clear();
+    }
+
+    public void showNewPasswordDialog(MouseEvent mouseEvent) {
+        Dialog<Object> dialog = new Dialog<>();
+    }
+
+    private VBox getNewPasswordFields() {
+        VBox vBox = new VBox();
+        vBox.setSpacing(10);
+        currentPassword = new PasswordField();
+        currentPassword.setPromptText("current password");
+        VBox vBox1 = new VBox();
+        newPasswordEvaluation = new Label();
+        newPassword = new PasswordField();
+        newPassword.setPromptText("new password");
+        vBox1.getChildren().addAll(newPasswordEvaluation, newPassword);
+
+
+        captcha = new Captcha();
+
+        captchaRectangle = new Rectangle();
+
+        HBox hBox = new HBox();
+        hBox.setSpacing(10);
+        captchaValue = new TextField();
+        captchaValue.setPromptText("captcha");
+        resetCaptcha = new Button("reset");
+        hBox.getChildren().addAll(captchaValue, resetCaptcha);
+
+        vBox.getChildren().addAll(currentPassword, vBox1, captchaRectangle, hBox);
+        return vBox;
+    }
+
+    private void resetCaptcha() {
+        captcha.refresh();
+        captchaValue.clear();
+        captchaRectangle.setFill(new ImagePattern(captcha.getCaptcha()));
     }
 }

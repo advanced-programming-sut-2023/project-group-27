@@ -65,7 +65,7 @@
             <Tab styleClass="Tab" text="password">
                 <Pane >
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
-                        <Button text="new password"/>
+                        <Button text="new password" onMouseClicked="#showNewPasswordDialog"/>
                     </VBox>
                 </Pane>
             </Tab>
