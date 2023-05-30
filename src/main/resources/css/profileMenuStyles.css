@@ -76,5 +76,13 @@
 
 .avatarCircle {
     -fx-border-radius: 5;
-    -fx-border-color: black;
+}
+
+.DropArea {
+    -fx-min-height: 50;
+    -fx-min-width: 100;
+    -fx-alignment: center;
+    -fx-border-color: green;
+    -fx-background-color: red;
+    -fx-text-fill: black;
 }

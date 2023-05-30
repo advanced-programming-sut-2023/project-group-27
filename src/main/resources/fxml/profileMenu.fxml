@@ -16,7 +16,7 @@
          prefHeight="700.0" prefWidth="1200.0" style="-fx-start-margin: 0">
     <Tab fx:id="profileTab" styleClass="Tab" id="profileHeader" text="profile" onSelectionChanged="#log">
         <Pane styleClass="profileTab">
-            <Circle styleClass="avatarCircle" radius="50" layoutX="100" layoutY="70"/>
+            <Circle fx:id="avatarCircle" styleClass="avatarCircle" radius="50" layoutX="100" layoutY="70"/>
 
             <VBox styleClass="Box" layoutX="20" layoutY="130">
 
@@ -87,11 +87,19 @@
             </Tab>
 
             <Tab styleClass="Tab" text="avatar">
-
+                <Pane>
+                    <VBox styleClass="Box" layoutX="50" layoutY="200">
+                        <Button text="choose file" onMouseClicked="#chooseFile"/>
+                        <HBox styleClass="Row">
+                            <Label fx:id="dropDestination" styleClass="DropArea" text="drag here"/>
+                            <Button text="apply" onMouseClicked="#handleReadyFile"/>
+                        </HBox>
+                    </VBox>
+                </Pane>
             </Tab>
 
             <Tab styleClass="Tab" text="email">
-                <Pane >
+                <Pane>
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
                         <VBox>
                             <Label fx:id="emailEvaluation"/>

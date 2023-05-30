@@ -17,20 +17,28 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.StrongholdCrusader;
 import model.User;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ProfileMenuController implements Initializable {
+    @FXML
+    private Label dropDestination;
+    @FXML
+    private Circle avatarCircle;
     @FXML
     private Tab profileTab;
     @FXML
@@ -68,6 +76,7 @@ public class ProfileMenuController implements Initializable {
     private TextField captchaValue;
     private Button resetCaptcha;
     private Stage stage;
+    private File currentFileTOBeApplied;
     private User currentUser = new User(
             "arshia", "Arshia@1", "arshi", "yoyo", "a@b.c", "dsa", "dsa");
     private CoreProfileMenuController controller;
@@ -78,7 +87,7 @@ public class ProfileMenuController implements Initializable {
             nicknameLabel.setText(currentUser.getNickname());
             sloganLabel.setText((currentUser.getSlogan().isEmpty()) ? "no slogan!" : currentUser.getSlogan());
             emailLabel.setText(currentUser.getEmail());
-
+            avatarCircle.setFill(new ImagePattern(currentUser.getAvatar()));
         }
     }
 
@@ -288,5 +297,28 @@ public class ProfileMenuController implements Initializable {
 
             }
         });
+    }
+
+    private void addDropFeature() {
+        dropDestination.setOnDragDropped(new EventHandler<DragEvent>() {
+            @Override
+            public void handle(DragEvent dragEvent) {
+                if (dragEvent.getGestureSource() != dropDestination)
+                    dragEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+
+                File[] files = dragEvent.getDragboard().getFiles().toArray(new File[0]);
+                if (files.length != 1 || !files[0].getName().matches(".*\\.((jpg)|(png))"))
+                    return;
+
+                currentFileTOBeApplied = files[0];
+                dropDestination.setText(currentFileTOBeApplied.getName());
+            }
+        });
+    }
+
+    public void chooseFile(MouseEvent mouseEvent) {
+    }
+
+    public void handleReadyFile(MouseEvent mouseEvent) {
     }
 }
