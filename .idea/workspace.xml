@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="functionality 5">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="functionality 7">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/avatars/external/33222177.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/ProfileMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/profileMenuStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/profileMenuStyles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/profileMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/profileMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,14 +247,7 @@
       <workItem from="1685204417885" duration="11488000" />
       <workItem from="1685239504222" duration="10136000" />
       <workItem from="1685392898477" duration="4160000" />
-      <workItem from="1685429608241" duration="16355000" />
-    </task>
-    <task id="LOCAL-00031" summary="added match class and fixed problems">
-      <created>1683060476334</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1683060476334</updated>
+      <workItem from="1685429608241" duration="20774000" />
     </task>
     <task id="LOCAL-00032" summary="parts of map editing features">
       <created>1683200456345</created>
@@ -589,7 +585,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685463465505</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="functionality 6">
+      <created>1685466010750</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1685466010750</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -670,8 +673,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="adding start game logic7" />
-    <MESSAGE value="adding start game logic8" />
     <MESSAGE value="adding start game logic9" />
     <MESSAGE value="map bug fixes" />
     <MESSAGE value="map config menu added" />
@@ -695,7 +696,9 @@
     <MESSAGE value="functionality 3" />
     <MESSAGE value="functionality 4" />
     <MESSAGE value="functionality 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="functionality 5" />
+    <MESSAGE value="functionality 6" />
+    <MESSAGE value="functionality 7" />
+    <option name="LAST_COMMIT_MESSAGE" value="functionality 7" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

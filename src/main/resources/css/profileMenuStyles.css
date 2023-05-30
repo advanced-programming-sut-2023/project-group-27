@@ -86,3 +86,22 @@
     -fx-background-color: red;
     -fx-text-fill: black;
 }
+
+.ScrollPane {
+    -fx-max-width: 400;
+    -fx-min-width: 400;
+    -fx-max-height: 300;
+    -fx-min-height: 300;
+    -fx-border-radius: 5;
+}
+
+.PlayerStatsBar {
+    -fx-background-color: grey;
+    -fx-max-width: 400;
+    -fx-min-width: 400;
+
+    -fx-max-height: 150;
+    -fx-min-height: 150;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}

@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 <TabPane xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml"
          fx:controller="graphics_view.graphical_controller.ProfileMenuController"
@@ -89,10 +90,17 @@
             <Tab styleClass="Tab" text="avatar">
                 <Pane>
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
-                        <Button text="choose file" onMouseClicked="#chooseFile"/>
+                        <HBox styleClass="Row">
+                            <Label fx:id="fileChooserLabel" text="no file chosen" styleClass="DropArea"/>
+                            <VBox spacing="10">
+                                <Button text="choose" onMouseClicked="#chooseFile" maxWidth="60" minWidth="60"/>
+                                <Button text="apply" onMouseClicked="#handleChosenFile" maxWidth="60" minWidth="60"/>
+                            </VBox>
+                        </HBox>
+
                         <HBox styleClass="Row">
                             <Label fx:id="dropDestination" styleClass="DropArea" text="drag here"/>
-                            <Button text="apply" onMouseClicked="#handleReadyFile"/>
+                            <Button text="apply" onMouseClicked="#handleDroppedFile" maxWidth="60" minWidth="60"/>
                         </HBox>
                     </VBox>
                 </Pane>
@@ -128,8 +136,10 @@
 
     <Tab styleClass="Tab" id="scoreboardHeader" text="scoreboard">
         <Pane styleClass="scoreboardTab">
-            <ScrollPane layoutX="600" layoutY="300">
-                <ScrollBar/>
+            <ScrollPane layoutX="400" layoutY="200" hbarPolicy="NEVER" vbarPolicy="ALWAYS" styleClass="ScrollPane">
+                <VBox fx:id="playersVBox" spacing="20">
+
+                </VBox>
             </ScrollPane>
         </Pane>
     </Tab>

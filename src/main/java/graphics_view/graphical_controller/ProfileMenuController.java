@@ -13,10 +13,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
@@ -26,15 +24,24 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.StrongholdCrusader;
 import model.User;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class ProfileMenuController implements Initializable {
+    @FXML
+    private VBox playersVBox;
+    @FXML
+    private Label fileChooserLabel;
     @FXML
     private Label dropDestination;
     @FXML
@@ -77,6 +84,7 @@ public class ProfileMenuController implements Initializable {
     private Button resetCaptcha;
     private Stage stage;
     private File currentFileTOBeApplied;
+    private File currentFileTOBeApplied2;
     private User currentUser = new User(
             "arshia", "Arshia@1", "arshi", "yoyo", "a@b.c", "dsa", "dsa");
     private CoreProfileMenuController controller;
@@ -319,8 +327,8 @@ public class ProfileMenuController implements Initializable {
 
                 File[] files = dragEvent.getDragboard().getFiles().toArray(new File[0]);
 
-                currentFileTOBeApplied = files[0];
-                dropDestination.setText(currentFileTOBeApplied.getName());
+                currentFileTOBeApplied2 = files[0];
+                dropDestination.setText(currentFileTOBeApplied2.getName());
                 dropDestination.setStyle("-fx-background-color: green");
                 dragEvent.setDropCompleted(true);
             }
@@ -328,9 +336,60 @@ public class ProfileMenuController implements Initializable {
     }
 
     public void chooseFile(MouseEvent mouseEvent) {
-
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("png Files", "*.png")
+                ,new FileChooser.ExtensionFilter("jpg Files", "*.jpg"));
+        currentFileTOBeApplied = fileChooser.showOpenDialog(new Stage());
+        if (currentFileTOBeApplied == null) return;
+        fileChooserLabel.setText(currentFileTOBeApplied.getName());
     }
 
-    public void handleReadyFile(MouseEvent mouseEvent) {
+    public void handleDroppedFile(MouseEvent mouseEvent) {
+        if (currentFileTOBeApplied2 == null) return;
+
+        saveFileAndApply(currentFileTOBeApplied2);
+        currentFileTOBeApplied2 = null;
+        dropDestination.setText("drop here");
+        dropDestination.setStyle("-fx-background-color: red");
+        showSuccessPopUp();
+    }
+
+    public void handleChosenFile(MouseEvent mouseEvent) {
+        if (currentFileTOBeApplied == null) return;
+
+        saveFileAndApply(currentFileTOBeApplied);
+        currentFileTOBeApplied = null;
+        fileChooserLabel.setText("no file chosen");
+        showSuccessPopUp();
+    }
+
+    private void showSuccessPopUp() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("avatar changed successfully!");
+        alert.showAndWait();
+    }
+
+    private void saveFileAndApply(File file) {
+        String noise = Integer.toString(new Random(23123).nextInt(10000)+ 1);
+        File file1 = new File("./src/main/resources/assets/avatars/external/", noise + file.getName());
+        File file2 = new File("./target/classes/assets/avatars/external/", noise + file.getName());
+        try {
+            file1.createNewFile();
+            file2.createNewFile();
+        } catch (IOException ignored) {
+        }
+        try {
+            BufferedImage bufferedImage = ImageIO.read(file);
+            ImageIO.write(bufferedImage, "jpg", file1);
+            ImageIO.write(bufferedImage, "jpg", file2);
+        } catch (Exception ignored) {
+        }
+        try {
+            BufferedImage bufferedImage = ImageIO.read(file);
+            ImageIO.write(bufferedImage, "png", file1);
+            ImageIO.write(bufferedImage, "png", file2);
+        } catch (Exception e) {
+        }
+        currentUser.setImagePath("/assets/avatars/external/" + noise + file.getName());
     }
 }
