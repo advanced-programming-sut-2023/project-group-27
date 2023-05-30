@@ -35,6 +35,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -88,6 +89,7 @@ public class ProfileMenuController implements Initializable {
     private Stage stage;
     private File currentFileTOBeApplied;
     private File currentFileTOBeApplied2;
+    private Circle specialCircle;
     private User currentUser = new User(
             "arshia", "Arshia@1", "arshi", "yoyo", "a@b.c", "dsa", "dsa");
     private CoreProfileMenuController controller;
@@ -405,6 +407,7 @@ public class ProfileMenuController implements Initializable {
 
     public void scoreboardTabLog(Event event) {
         if (mainTabPane.getSelectionModel().getSelectedItem() == scoreboardTab) {
+            playersVBox.getChildren().clear();
             Object[] users = StrongholdCrusader.getAllSortedUsers();
             for (int index = 0; index < Math.min(10, users.length); index++) {
                 playersVBox.getChildren().add(getPLayerDataHBox((User) users[index]));
@@ -423,10 +426,13 @@ public class ProfileMenuController implements Initializable {
                 "-fx-spacing: 20;\n" +
                 "-fx-border-radius: 8;\n" +
                 " -fx-background-radius: 8;");
+
         hBox.setAlignment(Pos.CENTER);
         Circle circle = new Circle(50);
         circle.setFill(new ImagePattern(user.getAvatar()));
-        //TODO add profile photo copy
+        addProfileAdaptEvent(circle, user);
+
+        if (user == currentUser) specialCircle = circle;
 
         Label label = new Label(user.getUsername());
         label.setStyle("-fx-font-size: xx-large");
@@ -438,5 +444,27 @@ public class ProfileMenuController implements Initializable {
         label2.setMaxWidth(100);
         hBox.getChildren().addAll(circle, label, label2);
         return hBox;
+    }
+
+    private void addProfileAdaptEvent(Circle circle, User user) {
+        circle.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if (currentUser == user) return;
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Profile Avatar Change");
+                alert.setHeaderText("Adapting this avatar");
+                alert.setContentText("This avatar will be copied for you. okay?");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.get() == ButtonType.OK) {
+                    currentUser.setImagePath(user.getImagePath());
+
+                    if (specialCircle != null)
+                        specialCircle.setFill(new ImagePattern(currentUser.getAvatar()));
+                }
+            }
+        });
     }
 }

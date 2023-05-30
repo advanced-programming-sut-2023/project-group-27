@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="functionality 8">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/avatars/external/33223855.png" afterDir="false" />
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="functionality 9">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/ProfileMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/StrongholdCrusader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/StrongholdCrusader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/profileMenuStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/profileMenuStyles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/profileMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/profileMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,14 +245,7 @@
       <workItem from="1685204417885" duration="11488000" />
       <workItem from="1685239504222" duration="10136000" />
       <workItem from="1685392898477" duration="4160000" />
-      <workItem from="1685429608241" duration="23631000" />
-    </task>
-    <task id="LOCAL-00033" summary="parts of map editing features">
-      <created>1683207417142</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1683207417142</updated>
+      <workItem from="1685429608241" duration="25061000" />
     </task>
     <task id="LOCAL-00034" summary="map editing core logics and other changes">
       <created>1683224614842</created>
@@ -593,7 +583,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685470318927</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="functionality 9">
+      <created>1685474944220</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1685474944220</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -674,7 +671,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="map bug fixes" />
     <MESSAGE value="map config menu added" />
     <MESSAGE value="bug fix and improvement" />
     <MESSAGE value="bug fix and improvement2" />
@@ -699,7 +695,8 @@
     <MESSAGE value="functionality 6" />
     <MESSAGE value="functionality 7" />
     <MESSAGE value="functionality 8" />
-    <option name="LAST_COMMIT_MESSAGE" value="functionality 8" />
+    <MESSAGE value="functionality 9" />
+    <option name="LAST_COMMIT_MESSAGE" value="functionality 9" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

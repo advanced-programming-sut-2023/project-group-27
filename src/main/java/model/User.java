@@ -126,4 +126,8 @@ public class User implements Comparable<User>{
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
+
+    public String getImagePath() {
+        return imagePath;
+    }
 }
