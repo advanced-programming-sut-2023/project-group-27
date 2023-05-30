@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="functionality 4">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="functionality 5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/ProfileMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/profileMenuStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/profileMenuStyles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/profileMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/profileMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,14 +244,7 @@
       <workItem from="1685204417885" duration="11488000" />
       <workItem from="1685239504222" duration="10136000" />
       <workItem from="1685392898477" duration="4160000" />
-      <workItem from="1685429608241" duration="13573000" />
-    </task>
-    <task id="LOCAL-00030" summary="finalized selectBuildinbg Menu">
-      <created>1682948974917</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1682948974917</updated>
+      <workItem from="1685429608241" duration="16355000" />
     </task>
     <task id="LOCAL-00031" summary="added match class and fixed problems">
       <created>1683060476334</created>
@@ -592,7 +582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685448572806</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="functionality 5">
+      <created>1685463465505</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1685463465505</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -673,7 +670,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="adding start game logic6" />
     <MESSAGE value="adding start game logic7" />
     <MESSAGE value="adding start game logic8" />
     <MESSAGE value="adding start game logic9" />
@@ -698,7 +694,8 @@
     <MESSAGE value="functionality 2" />
     <MESSAGE value="functionality 3" />
     <MESSAGE value="functionality 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="functionality 4" />
+    <MESSAGE value="functionality 5" />
+    <option name="LAST_COMMIT_MESSAGE" value="functionality 5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

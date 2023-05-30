@@ -96,6 +96,8 @@ public class ProfileMenuController implements Initializable {
         StrongholdCrusader.setLoggedInUser(currentUser);
         controller = new CoreProfileMenuController(null);
 
+        addDropFeature();
+
         usernameField.textProperty().addListener((observableValue, s, t1) -> {
             if (usernameField.getText().isEmpty())
                 usernameEvaluation.setText("");
@@ -300,23 +302,33 @@ public class ProfileMenuController implements Initializable {
     }
 
     private void addDropFeature() {
+
+        dropDestination.setOnDragOver(event -> {
+            if (event.getGestureSource() != dropDestination
+                    && event.getDragboard().hasFiles()
+                    && event.getDragboard().getFiles().size() == 1
+                    && event.getDragboard().getFiles().get(0).getName().matches(".*\\.((jpg)|(png))")) {
+                event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+            }
+            event.consume();
+        });
+
         dropDestination.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent dragEvent) {
-                if (dragEvent.getGestureSource() != dropDestination)
-                    dragEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
 
                 File[] files = dragEvent.getDragboard().getFiles().toArray(new File[0]);
-                if (files.length != 1 || !files[0].getName().matches(".*\\.((jpg)|(png))"))
-                    return;
 
                 currentFileTOBeApplied = files[0];
                 dropDestination.setText(currentFileTOBeApplied.getName());
+                dropDestination.setStyle("-fx-background-color: green");
+                dragEvent.setDropCompleted(true);
             }
         });
     }
 
     public void chooseFile(MouseEvent mouseEvent) {
+
     }
 
     public void handleReadyFile(MouseEvent mouseEvent) {
