@@ -42,6 +42,19 @@ public class CoreProfileMenuController {
         return "Successful\n";
     }
 
+    public String evaluateUsername(String username) {
+        if (username.equals(loggedInUser.getUsername()))
+            return "Username can not be the same as old username\n";
+        if (username.equals(""))
+            return "empty field\n";
+        if (!username.matches("[0-9a-zA-Z_]+"))
+            return "Invalid username format\n";
+        if (StrongholdCrusader.getAllUsers().containsKey(username))
+            return "username already exists\n";
+
+        return "okay!";
+    }
+
     public void changeNickname(String nickname) {
         loggedInUser.setNickname(nickname);
     }
@@ -115,5 +128,24 @@ public class CoreProfileMenuController {
         }
         loggedInUser.setEmail(newEmail);
         return "Successful\n";
+    }
+
+    public String evaluateEmail(String eMail) {
+        if (Utilities.validateEmail(eMail) != null) {
+            return Utilities.validateEmail(eMail);
+        }
+        if (StrongholdCrusader.getAllUsers().values().stream()
+                .anyMatch(user -> user.getEmail().equals(eMail))) {
+            return "Email already exists\n";
+        }
+
+        return "okay!";
+    }
+
+    public String evaluatePassword(String password) {
+        if (Utilities.validatePassword(password) != null)
+            return Utilities.validatePassword(password);
+
+        return "okay!";
     }
 }

@@ -1,9 +1,6 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class StrongholdCrusader {
     private static User loggedInUser;
@@ -55,6 +52,10 @@ public class StrongholdCrusader {
 
     public static HashMap<String, GameMap> getAllStaticMaps() {
         return allStaticMaps;
+    }
+
+    public static Object[] getAllSortedUsers() {
+        return Arrays.stream(getAllUsersList()).sorted(Comparator.naturalOrder()).toArray();
     }
 
     public User getUserByUsername(String username) {

@@ -26,7 +26,7 @@
 }
 
 #modificationHeader {
-    -fx-background-color: #718193;
+    -fx-background-color: #d6d6d6;
 }
 
 #scoreboardHeader {
@@ -47,6 +47,7 @@
     -fx-max-width: 200;
     -fx-min-width: 200;
     -fx-alignment: center;
+    -fx-text-fill: #e8dfdf;
     -fx-background-color: rgba(212, 234, 212, 0.36);
     -fx-border-radius: 5;
     -fx-font-size: x-large;
@@ -75,5 +76,21 @@
 
 .avatarCircle {
     -fx-border-radius: 5;
-    -fx-border-color: black;
+}
+
+.DropArea {
+    -fx-min-height: 50;
+    -fx-min-width: 100;
+    -fx-alignment: center;
+    -fx-border-color: green;
+    -fx-background-color: red;
+    -fx-text-fill: black;
+}
+
+.ScrollPane {
+    -fx-max-width: 415;
+    -fx-min-width: 415;
+    -fx-max-height: 300;
+    -fx-min-height: 300;
+    -fx-border-radius: 5;
 }

@@ -1,6 +1,8 @@
 package model;
 
 import controller.controller.Utilities;
+import graphics_view.view.ProfileMenu;
+import javafx.scene.image.Image;
 
 public class User implements Comparable<User>{
     private String username;
@@ -13,6 +15,7 @@ public class User implements Comparable<User>{
     private String securityA;
     private Monarchy monarchy;
     private boolean stayLoggedIn;
+    private String imagePath;
 
     public User(String username, String password, String nickname, String slogan, String email, String securityQ, String securityA) {
         this.username = username;
@@ -24,6 +27,7 @@ public class User implements Comparable<User>{
         this.securityQ = securityQ;
         this.securityA = Utilities.encryptString(securityA);
         stayLoggedIn = false;
+        imagePath = "/assets/avatars/guest.jpg";
     }
 
     public int getHighScore() {
@@ -113,5 +117,17 @@ public class User implements Comparable<User>{
             return o.highScore - this.highScore;
         }
         return this.username.compareTo(o.username);
+    }
+
+    public Image getAvatar() {
+        return new Image(ProfileMenu.class.getResource(imagePath).toExternalForm());
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getImagePath() {
+        return imagePath;
     }
 }

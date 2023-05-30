@@ -32,7 +32,7 @@ public class Utilities {
             return "Password is too short\n";
         }
         if (!newPassword.matches(".*[0-9].*") || !newPassword.matches(".*[A-Z].*") || !newPassword.matches(".*[a-z].*")) {
-            return "Password must contain at least one uppercase letter, one lowercase letter and one digit\n";
+            return "Password must contain at least one uppercase letter,one lowercase letter and one digit\n";
         }
         if (newPassword.matches("[0-9a-zA-Z_]+")) {
             return "Password must contain at least one special character\n";

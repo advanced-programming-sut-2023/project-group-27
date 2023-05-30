@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 <TabPane xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml"
          fx:controller="graphics_view.graphical_controller.ProfileMenuController"
@@ -16,7 +17,7 @@
          prefHeight="700.0" prefWidth="1200.0" style="-fx-start-margin: 0">
     <Tab fx:id="profileTab" styleClass="Tab" id="profileHeader" text="profile" onSelectionChanged="#log">
         <Pane styleClass="profileTab">
-            <Circle styleClass="avatarCircle" radius="50" layoutX="100" layoutY="70"/>
+            <Circle fx:id="avatarCircle" styleClass="avatarCircle" radius="50" layoutX="100" layoutY="70"/>
 
             <VBox styleClass="Box" layoutX="20" layoutY="130">
 
@@ -49,79 +50,96 @@
 
     <Tab styleClass="Tab" id="modificationHeader" text="modification">
         <TabPane tabClosingPolicy="UNAVAILABLE" styleClass="modificationTab">
-            <Tab text="username">
+            <Tab styleClass="Tab" text="username">
                 <Pane >
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
                         <VBox>
-                            <Label fx:id="usernameEvaluation" text="good!"/>
-                            <TextField fx:id="usernameEvaluationText" promptText="new username"/>
+                            <Label fx:id="usernameEvaluation"/>
+                            <TextField fx:id="usernameField" promptText="new username"/>
                         </VBox>
 
-                        <Button text="change"/>
+                        <Button text="change" onMouseClicked="#changeUsername"/>
                     </VBox>
                 </Pane>
             </Tab>
 
-            <Tab text="password">
+            <Tab styleClass="Tab" text="password">
                 <Pane >
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
-                        <Button text="new password"/>
+                        <Button text="new password" onMouseClicked="#showNewPasswordDialog"/>
                     </VBox>
                 </Pane>
             </Tab>
 
-            <Tab text="slogan">
+            <Tab styleClass="Tab" text="slogan">
                 <Pane>
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
                         <VBox>
-                            <Label fx:id="sloganEvaluation" text="good!"/>
-                            <TextField fx:id="sloganEvaluationText" promptText="new slogan"/>
+                            <Label fx:id="sloganEvaluation"/>
+                            <TextField fx:id="sloganField" promptText="new slogan"/>
                         </VBox>
                         <HBox spacing="20">
-                            <Button text="change"/>
-                            <Button text="clear slogan"/>
+                            <Button text="change" onMouseClicked="#changeSlogan"/>
+                            <Button text="clear slogan" onMouseClicked="#clearSlogan"/>
                         </HBox>
 
                     </VBox>
                 </Pane>
             </Tab>
 
-            <Tab text="avatar">
-
-            </Tab>
-
-            <Tab text="email">
-                <Pane >
+            <Tab styleClass="Tab" text="avatar">
+                <Pane>
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
-                        <VBox>
-                            <Label fx:id="emailEvaluation" text="good!"/>
-                            <TextField fx:id="emailEvaluationText" promptText="new email"/>
-                        </VBox>
+                        <HBox styleClass="Row">
+                            <Label fx:id="fileChooserLabel" text="no file chosen" styleClass="DropArea"/>
+                            <VBox spacing="10">
+                                <Button text="choose" onMouseClicked="#chooseFile" maxWidth="60" minWidth="60"/>
+                                <Button text="apply" onMouseClicked="#handleChosenFile" maxWidth="60" minWidth="60"/>
+                            </VBox>
+                        </HBox>
 
-                        <Button text="change"/>
+                        <HBox styleClass="Row">
+                            <Label fx:id="dropDestination" styleClass="DropArea" text="drag here"/>
+                            <Button text="apply" onMouseClicked="#handleDroppedFile" maxWidth="60" minWidth="60"/>
+                        </HBox>
                     </VBox>
                 </Pane>
             </Tab>
 
-            <Tab text="nickname">
+            <Tab styleClass="Tab" text="email">
+                <Pane>
+                    <VBox styleClass="Box" layoutX="50" layoutY="200">
+                        <VBox>
+                            <Label fx:id="emailEvaluation"/>
+                            <TextField fx:id="emailField" promptText="new email"/>
+                        </VBox>
+
+                        <Button text="change" onMouseClicked="#changeEmail"/>
+                    </VBox>
+                </Pane>
+            </Tab>
+
+            <Tab styleClass="Tab" text="nickname">
                 <Pane >
                     <VBox styleClass="Box" layoutX="50" layoutY="200">
                         <VBox>
-                            <Label fx:id="nicknameEvaluation" text="good!"/>
-                            <TextField fx:id="nicknameEvaluationText" promptText="new nickname"/>
+                            <Label fx:id="nicknameEvaluation"/>
+                            <TextField fx:id="nicknameField" promptText="new nickname"/>
                         </VBox>
 
-                        <Button text="change"/>
+                        <Button text="change" onMouseClicked="#changeNickName"/>
                     </VBox>
                 </Pane>
             </Tab>
         </TabPane>
     </Tab>
 
-    <Tab styleClass="Tab" id="scoreboardHeader" text="scoreboard">
+    <Tab fx:id="scoreboardTab" styleClass="Tab" id="scoreboardHeader" text="scoreboard" onSelectionChanged="#scoreboardTabLog">
         <Pane styleClass="scoreboardTab">
-            <ScrollPane layoutX="600" layoutY="300">
-                <ScrollBar/>
+            <ScrollPane layoutX="385" layoutY="200" hbarPolicy="NEVER" vbarPolicy="ALWAYS" styleClass="ScrollPane">
+                <VBox fx:id="playersVBox" spacing="20">
+
+                </VBox>
             </ScrollPane>
         </Pane>
     </Tab>
