@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -38,6 +39,8 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 public class ProfileMenuController implements Initializable {
+    @FXML
+    private Tab scoreboardTab;
     @FXML
     private VBox playersVBox;
     @FXML
@@ -102,6 +105,13 @@ public class ProfileMenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         StrongholdCrusader.setLoggedInUser(currentUser);
+        currentUser.setHighScore(50);
+        User user1 = new User(
+                "alex", "Arshia@1", "ali", "yoyo", "a@b.c", "dsa", "dsa");
+        user1.setHighScore(30);
+        StrongholdCrusader.addUser(currentUser);
+        StrongholdCrusader.addUser(user1);
+
         controller = new CoreProfileMenuController(null);
 
         addDropFeature();
@@ -391,5 +401,42 @@ public class ProfileMenuController implements Initializable {
         } catch (Exception e) {
         }
         currentUser.setImagePath("/assets/avatars/external/" + noise + file.getName());
+    }
+
+    public void scoreboardTabLog(Event event) {
+        if (mainTabPane.getSelectionModel().getSelectedItem() == scoreboardTab) {
+            Object[] users = StrongholdCrusader.getAllSortedUsers();
+            for (int index = 0; index < Math.min(10, users.length); index++) {
+                playersVBox.getChildren().add(getPLayerDataHBox((User) users[index]));
+            }
+        }
+    }
+
+    private HBox getPLayerDataHBox(User user) {
+        HBox hBox = new HBox();
+        hBox.setStyle(
+                "-fx-background-color: grey;\n" +
+                "-fx-max-width: 400;\n" +
+                "-fx-min-width: 400;\n" +
+                "-fx-max-height: 110;\n" +
+                "-fx-min-height: 110;\n" +
+                "-fx-spacing: 20;\n" +
+                "-fx-border-radius: 8;\n" +
+                " -fx-background-radius: 8;");
+        hBox.setAlignment(Pos.CENTER);
+        Circle circle = new Circle(50);
+        circle.setFill(new ImagePattern(user.getAvatar()));
+        //TODO add profile photo copy
+
+        Label label = new Label(user.getUsername());
+        label.setStyle("-fx-font-size: xx-large");
+        Label label2 = new Label(Integer.toString(user.getHighScore()));
+        label2.setStyle("-fx-font-size: xx-large");
+        label.setMinWidth(100);
+        label.setMaxWidth(100);
+        label2.setMinWidth(100);
+        label2.setMaxWidth(100);
+        hBox.getChildren().addAll(circle, label, label2);
+        return hBox;
     }
 }
