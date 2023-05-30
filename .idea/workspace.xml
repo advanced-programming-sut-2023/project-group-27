@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="functionality 2">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="functionality 3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreProfileMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/Utilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/ProfileMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/view/Captcha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/view/Captcha.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lwjglTest" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -244,13 +247,7 @@
       <workItem from="1685204417885" duration="11488000" />
       <workItem from="1685239504222" duration="10136000" />
       <workItem from="1685392898477" duration="4160000" />
-    </task>
-    <task id="LOCAL-00028" summary="select building logic">
-      <created>1682879919543</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1682879919543</updated>
+      <workItem from="1685429608241" duration="8591000" />
     </task>
     <task id="LOCAL-00029" summary="select building logic">
       <created>1682885785918</created>
@@ -588,7 +585,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685396858431</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="functionality 3">
+      <created>1685426498503</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1685426498504</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -669,7 +673,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="adding start game logic4" />
     <MESSAGE value="adding start game logic5" />
     <MESSAGE value="adding start game logic6" />
     <MESSAGE value="adding start game logic7" />
@@ -694,7 +697,8 @@
     <MESSAGE value="captcha added" />
     <MESSAGE value="functionality" />
     <MESSAGE value="functionality 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="functionality 2" />
+    <MESSAGE value="functionality 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="functionality 3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

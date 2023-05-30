@@ -141,4 +141,11 @@ public class CoreProfileMenuController {
 
         return "okay!";
     }
+
+    public String evaluatePassword(String password) {
+        if (Utilities.validatePassword(password) != null)
+            return Utilities.validatePassword(password);
+
+        return "okay!";
+    }
 }

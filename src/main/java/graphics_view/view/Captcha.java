@@ -11,11 +11,10 @@ public class Captcha {
                     "5463", "5771", "6426", "6601",
                     "6960", "3847", "7415", "7609",
                     "8003", "8555", "8692", "9386"};
+    private static Random random = new Random(1000);
 
     private static String getRandomValue() {
-        Random random = new Random(1000);
-
-        return captchas[ random.nextInt(captchas.length)];
+        return captchas[random.nextInt(captchas.length)];
     }
 
     private String value;
