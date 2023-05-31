@@ -102,6 +102,11 @@
                             <Label fx:id="dropDestination" styleClass="DropArea" text="drag here"/>
                             <Button text="apply" onMouseClicked="#handleDroppedFile" maxWidth="60" minWidth="60"/>
                         </HBox>
+
+                        <HBox styleClass="Row">
+                            <Circle radius="50" fx:id="defaultAvatarToggle" onMouseClicked="#toggleDefaultAvatar"/>
+                            <Button text="apply" onMouseClicked="#handleDefaultAvatar" maxWidth="60" minWidth="60"/>
+                        </HBox>
                     </VBox>
                 </Pane>
             </Tab>

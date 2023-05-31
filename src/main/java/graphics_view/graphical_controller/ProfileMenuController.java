@@ -2,6 +2,7 @@ package graphics_view.graphical_controller;
 
 import controller.controller.CoreProfileMenuController;
 import graphics_view.view.Captcha;
+import graphics_view.view.ProfileMenu;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
@@ -16,6 +17,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
@@ -40,6 +42,8 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 public class ProfileMenuController implements Initializable {
+    @FXML
+    private Circle defaultAvatarToggle;
     @FXML
     private Tab scoreboardTab;
     @FXML
@@ -90,6 +94,8 @@ public class ProfileMenuController implements Initializable {
     private File currentFileTOBeApplied;
     private File currentFileTOBeApplied2;
     private Circle specialCircle;
+    private int defaultAvatar = 1;
+    private final int totalDefaultAvatars = 8;
     private User currentUser = new User(
             "arshia", "Arshia@1", "arshi", "yoyo", "a@b.c", "dsa", "dsa");
     private CoreProfileMenuController controller;
@@ -116,6 +122,8 @@ public class ProfileMenuController implements Initializable {
 
         controller = new CoreProfileMenuController(null);
 
+        defaultAvatarToggle.setFill(new ImagePattern(new Image(ProfileMenu.class.getResource(
+                "/assets/avatars/default/" + defaultAvatar + ".png").toExternalForm())));
         addDropFeature();
 
         usernameField.textProperty().addListener((observableValue, s, t1) -> {
@@ -466,5 +474,24 @@ public class ProfileMenuController implements Initializable {
                 }
             }
         });
+    }
+
+    public void toggleDefaultAvatar(MouseEvent mouseEvent) {
+        defaultAvatar++;
+        if (defaultAvatar == totalDefaultAvatars + 1) defaultAvatar = 1;
+        defaultAvatarToggle.setFill(
+                new ImagePattern(new Image(ProfileMenu.class.getResource(
+                        "/assets/avatars/default/" + defaultAvatar + ".png").toExternalForm())));
+    }
+
+    public void handleDefaultAvatar(MouseEvent mouseEvent) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Profile Avatar Change");
+        alert.setHeaderText("Choosing Default Avatar");
+        alert.setContentText("This will be your avatar!");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == ButtonType.OK)
+            currentUser.setImagePath("/assets/avatars/default/" + defaultAvatar + ".png");
     }
 }
