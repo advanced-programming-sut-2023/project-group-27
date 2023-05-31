@@ -23,6 +23,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -102,6 +104,8 @@ public class ProfileMenuController implements Initializable {
     private User currentUser = new User(
             "arshia", "Arshia@1", "arshi", "yoyo", "a@b.c", "dsa", "dsa");
     private CoreProfileMenuController controller;
+    private final Media media= new Media(ProfileMenu.class.getResource("/assets/tracks/profileMenu.mp3").toExternalForm());
+    private final MediaPlayer mediaPlayer = new MediaPlayer(media);
 
     public void log(Event event) {
         if (mainTabPane.getSelectionModel().getSelectedItem() == profileTab) {
@@ -124,6 +128,8 @@ public class ProfileMenuController implements Initializable {
         StrongholdCrusader.addUser(user1);
 
         controller = new CoreProfileMenuController(null);
+        mediaPlayer.setCycleCount(-1);
+        mediaPlayer.play();
 
         defaultAvatarToggle.setFill(new ImagePattern(new Image(ProfileMenu.class.getResource(
                 "/assets/avatars/default/" + defaultAvatar + ".png").toExternalForm())));
@@ -450,8 +456,8 @@ public class ProfileMenuController implements Initializable {
                 "-fx-background-color: grey;\n" +
                 "-fx-max-width: 400;\n" +
                 "-fx-min-width: 400;\n" +
-                "-fx-max-height: 210;\n" +
-                "-fx-min-height: 210;\n" +
+                "-fx-max-height: 110;\n" +
+                "-fx-min-height: 110;\n" +
                 "-fx-spacing: 20;\n" +
                 "-fx-border-radius: 8;\n" +
                 " -fx-background-radius: 8;");

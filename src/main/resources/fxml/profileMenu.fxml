@@ -89,7 +89,7 @@
 
             <Tab styleClass="Tab" text="avatar">
                 <Pane>
-                    <VBox styleClass="Box" layoutX="50" layoutY="200">
+                    <VBox styleClass="Box" layoutX="50" layoutY="150">
                         <HBox styleClass="Row">
                             <Label fx:id="fileChooserLabel" text="no file chosen" styleClass="DropArea"/>
                             <VBox spacing="10">
