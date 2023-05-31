@@ -89,7 +89,7 @@
 
             <Tab styleClass="Tab" text="avatar">
                 <Pane>
-                    <VBox styleClass="Box" layoutX="50" layoutY="200">
+                    <VBox styleClass="Box" layoutX="50" layoutY="150">
                         <HBox styleClass="Row">
                             <Label fx:id="fileChooserLabel" text="no file chosen" styleClass="DropArea"/>
                             <VBox spacing="10">
@@ -101,6 +101,11 @@
                         <HBox styleClass="Row">
                             <Label fx:id="dropDestination" styleClass="DropArea" text="drag here"/>
                             <Button text="apply" onMouseClicked="#handleDroppedFile" maxWidth="60" minWidth="60"/>
+                        </HBox>
+
+                        <HBox styleClass="Row">
+                            <Circle radius="50" fx:id="defaultAvatarToggle" onMouseClicked="#toggleDefaultAvatar"/>
+                            <Button text="apply" onMouseClicked="#handleDefaultAvatar" maxWidth="60" minWidth="60"/>
                         </HBox>
                     </VBox>
                 </Pane>
@@ -136,7 +141,7 @@
 
     <Tab fx:id="scoreboardTab" styleClass="Tab" id="scoreboardHeader" text="scoreboard" onSelectionChanged="#scoreboardTabLog">
         <Pane styleClass="scoreboardTab">
-            <ScrollPane layoutX="385" layoutY="200" hbarPolicy="NEVER" vbarPolicy="ALWAYS" styleClass="ScrollPane">
+            <ScrollPane fx:id="playerScrollBox" layoutX="385" layoutY="200" hbarPolicy="NEVER" vbarPolicy="ALWAYS" styleClass="ScrollPane">
                 <VBox fx:id="playersVBox" spacing="20">
 
                 </VBox>

@@ -2,6 +2,7 @@ package graphics_view.graphical_controller;
 
 import controller.controller.CoreProfileMenuController;
 import graphics_view.view.Captcha;
+import graphics_view.view.ProfileMenu;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
@@ -16,11 +17,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -40,6 +44,10 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 public class ProfileMenuController implements Initializable {
+    @FXML
+    private ScrollPane playerScrollBox;
+    @FXML
+    private Circle defaultAvatarToggle;
     @FXML
     private Tab scoreboardTab;
     @FXML
@@ -90,9 +98,14 @@ public class ProfileMenuController implements Initializable {
     private File currentFileTOBeApplied;
     private File currentFileTOBeApplied2;
     private Circle specialCircle;
+    private int defaultAvatar = 1;
+    private final int totalDefaultAvatars = 8;
+    Object[] users;
     private User currentUser = new User(
             "arshia", "Arshia@1", "arshi", "yoyo", "a@b.c", "dsa", "dsa");
     private CoreProfileMenuController controller;
+    private final Media media= new Media(ProfileMenu.class.getResource("/assets/tracks/profileMenu.mp3").toExternalForm());
+    private final MediaPlayer mediaPlayer = new MediaPlayer(media);
 
     public void log(Event event) {
         if (mainTabPane.getSelectionModel().getSelectedItem() == profileTab) {
@@ -115,7 +128,11 @@ public class ProfileMenuController implements Initializable {
         StrongholdCrusader.addUser(user1);
 
         controller = new CoreProfileMenuController(null);
+        mediaPlayer.setCycleCount(-1);
+        mediaPlayer.play();
 
+        defaultAvatarToggle.setFill(new ImagePattern(new Image(ProfileMenu.class.getResource(
+                "/assets/avatars/default/" + defaultAvatar + ".png").toExternalForm())));
         addDropFeature();
 
         usernameField.textProperty().addListener((observableValue, s, t1) -> {
@@ -153,6 +170,24 @@ public class ProfileMenuController implements Initializable {
                     emailEvaluation.setTextFill(Color.GREEN);
             }
         });
+
+        playerScrollBox.vvalueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                if (t1.doubleValue() >= 0.9)
+                    loadNextGroupOfPlayers();
+            }
+        });
+    }
+
+    private void loadNextGroupOfPlayers() {
+        if (playersVBox.getChildren().size() == users.length)
+            return;
+
+        int size = playersVBox.getChildren().size();
+        for (int index = size; index < size + Math.min(10, users.length - size); index++)
+            playersVBox.getChildren().add(getPLayerDataHBox((User) users[index]));
+
     }
 
     public void changeUsername(MouseEvent mouseEvent) {
@@ -408,10 +443,10 @@ public class ProfileMenuController implements Initializable {
     public void scoreboardTabLog(Event event) {
         if (mainTabPane.getSelectionModel().getSelectedItem() == scoreboardTab) {
             playersVBox.getChildren().clear();
-            Object[] users = StrongholdCrusader.getAllSortedUsers();
-            for (int index = 0; index < Math.min(10, users.length); index++) {
+            users = StrongholdCrusader.getAllSortedUsers();
+
+            for (int index = 0; index < Math.min(10, users.length); index++)
                 playersVBox.getChildren().add(getPLayerDataHBox((User) users[index]));
-            }
         }
     }
 
@@ -466,5 +501,24 @@ public class ProfileMenuController implements Initializable {
                 }
             }
         });
+    }
+
+    public void toggleDefaultAvatar(MouseEvent mouseEvent) {
+        defaultAvatar++;
+        if (defaultAvatar == totalDefaultAvatars + 1) defaultAvatar = 1;
+        defaultAvatarToggle.setFill(
+                new ImagePattern(new Image(ProfileMenu.class.getResource(
+                        "/assets/avatars/default/" + defaultAvatar + ".png").toExternalForm())));
+    }
+
+    public void handleDefaultAvatar(MouseEvent mouseEvent) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Profile Avatar Change");
+        alert.setHeaderText("Choosing Default Avatar");
+        alert.setContentText("This will be your avatar!");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == ButtonType.OK)
+            currentUser.setImagePath("/assets/avatars/default/" + defaultAvatar + ".png");
     }
 }
