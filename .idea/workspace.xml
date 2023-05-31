@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="functionality 12">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="functionality 13">
+      <change afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/MainMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/graphics_view/view/MainMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mainMenu/background.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/mainMenuStyles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/mainMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/ProfileMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/profileMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/profileMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +24,9 @@
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
         <option value="module-info" />
-        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -127,7 +130,7 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.graphics_view.view.ProfileMenu">
+  <component name="RunManager" selected="Application.MainMenu">
     <configuration name="HelloLWJGL" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="graphics_view.HelloLWJGL" />
       <module name="project-group-27" />
@@ -141,8 +144,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HelloWorld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="graphics_view.HelloWorld" />
+    <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphics_view.view.MainMenu" />
       <module name="project-group-27" />
       <extension name="coverage">
         <pattern>
@@ -190,11 +193,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainMenu" />
         <item itemvalue="Application.graphics_view.view.ProfileMenu" />
         <item itemvalue="Application.ProfileMenu" />
         <item itemvalue="Application.HelloLWJGL" />
         <item itemvalue="JUnit.All in project-group-27" />
-        <item itemvalue="Application.HelloWorld" />
       </list>
     </recent_temporary>
   </component>
@@ -246,14 +249,7 @@
       <workItem from="1685239504222" duration="10136000" />
       <workItem from="1685392898477" duration="4160000" />
       <workItem from="1685429608241" duration="25743000" />
-      <workItem from="1685536127986" duration="8353000" />
-    </task>
-    <task id="LOCAL-00037" summary="map editing controller and other changes">
-      <created>1683470830246</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1683470830246</updated>
+      <workItem from="1685536127986" duration="10539000" />
     </task>
     <task id="LOCAL-00038" summary="map editing controller and other changes">
       <created>1683486192376</created>
@@ -591,7 +587,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685545438379</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="functionality 13">
+      <created>1685547207690</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1685547207691</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -672,7 +675,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix" />
     <MESSAGE value="fix some bugs" />
     <MESSAGE value="fix some bugs2" />
     <MESSAGE value="fix some bugs3" />
@@ -697,7 +699,8 @@
     <MESSAGE value="functionality 10" />
     <MESSAGE value="functionality 11" />
     <MESSAGE value="functionality 12" />
-    <option name="LAST_COMMIT_MESSAGE" value="functionality 12" />
+    <MESSAGE value="functionality 13" />
+    <option name="LAST_COMMIT_MESSAGE" value="functionality 13" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

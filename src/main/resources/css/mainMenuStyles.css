@@ -1,0 +1,5 @@
+.MainMenuPane {
+    -fx-background-image: url("../assets/mainMenu/background.jpg");
+    -fx-background-size: cover;
+    -fx-padding: 100;
+}
