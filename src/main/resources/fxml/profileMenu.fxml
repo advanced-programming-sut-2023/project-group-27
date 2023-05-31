@@ -141,7 +141,7 @@
 
     <Tab fx:id="scoreboardTab" styleClass="Tab" id="scoreboardHeader" text="scoreboard" onSelectionChanged="#scoreboardTabLog">
         <Pane styleClass="scoreboardTab">
-            <ScrollPane layoutX="385" layoutY="200" hbarPolicy="NEVER" vbarPolicy="ALWAYS" styleClass="ScrollPane">
+            <ScrollPane fx:id="playerScrollBox" layoutX="385" layoutY="200" hbarPolicy="NEVER" vbarPolicy="ALWAYS" styleClass="ScrollPane">
                 <VBox fx:id="playersVBox" spacing="20">
 
                 </VBox>

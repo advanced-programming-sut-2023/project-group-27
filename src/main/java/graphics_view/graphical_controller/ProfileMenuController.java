@@ -43,6 +43,8 @@ import java.util.ResourceBundle;
 
 public class ProfileMenuController implements Initializable {
     @FXML
+    private ScrollPane playerScrollBox;
+    @FXML
     private Circle defaultAvatarToggle;
     @FXML
     private Tab scoreboardTab;
@@ -96,6 +98,7 @@ public class ProfileMenuController implements Initializable {
     private Circle specialCircle;
     private int defaultAvatar = 1;
     private final int totalDefaultAvatars = 8;
+    Object[] users;
     private User currentUser = new User(
             "arshia", "Arshia@1", "arshi", "yoyo", "a@b.c", "dsa", "dsa");
     private CoreProfileMenuController controller;
@@ -161,6 +164,24 @@ public class ProfileMenuController implements Initializable {
                     emailEvaluation.setTextFill(Color.GREEN);
             }
         });
+
+        playerScrollBox.vvalueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                if (t1.doubleValue() >= 0.9)
+                    loadNextGroupOfPlayers();
+            }
+        });
+    }
+
+    private void loadNextGroupOfPlayers() {
+        if (playersVBox.getChildren().size() == users.length)
+            return;
+
+        int size = playersVBox.getChildren().size();
+        for (int index = size; index < size + Math.min(10, users.length - size); index++)
+            playersVBox.getChildren().add(getPLayerDataHBox((User) users[index]));
+
     }
 
     public void changeUsername(MouseEvent mouseEvent) {
@@ -416,10 +437,10 @@ public class ProfileMenuController implements Initializable {
     public void scoreboardTabLog(Event event) {
         if (mainTabPane.getSelectionModel().getSelectedItem() == scoreboardTab) {
             playersVBox.getChildren().clear();
-            Object[] users = StrongholdCrusader.getAllSortedUsers();
-            for (int index = 0; index < Math.min(10, users.length); index++) {
+            users = StrongholdCrusader.getAllSortedUsers();
+
+            for (int index = 0; index < Math.min(10, users.length); index++)
                 playersVBox.getChildren().add(getPLayerDataHBox((User) users[index]));
-            }
         }
     }
 
@@ -429,8 +450,8 @@ public class ProfileMenuController implements Initializable {
                 "-fx-background-color: grey;\n" +
                 "-fx-max-width: 400;\n" +
                 "-fx-min-width: 400;\n" +
-                "-fx-max-height: 110;\n" +
-                "-fx-min-height: 110;\n" +
+                "-fx-max-height: 210;\n" +
+                "-fx-min-height: 210;\n" +
                 "-fx-spacing: 20;\n" +
                 "-fx-border-radius: 8;\n" +
                 " -fx-background-radius: 8;");
