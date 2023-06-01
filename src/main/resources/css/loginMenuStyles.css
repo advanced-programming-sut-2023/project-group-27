@@ -1,0 +1,9 @@
+.LoginMenuPane {
+    -fx-background-image: url("../assets/loginMenu/background.jpg");
+    -fx-background-size: cover;
+    -fx-padding: 100;
+}
+
+.Text {
+    -fx-text-fill: white;
+}

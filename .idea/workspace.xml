@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="functionality 13">
-      <change afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/MainMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/graphics_view/view/MainMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mainMenu/background.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/css/mainMenuStyles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/mainMenu.fxml" afterDir="false" />
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="initialized RegisterMenu">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/loginMenuStyles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/view/LoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/view/LoginMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/LoginMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/LoginMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="profMenu" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -130,7 +129,7 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainMenu">
+  <component name="RunManager" selected="Application.LoginMenu">
     <configuration name="HelloLWJGL" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="graphics_view.HelloLWJGL" />
       <module name="project-group-27" />
@@ -144,9 +143,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LoginMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphics_view.view.LoginMenu" />
+      <module name="AP-project-group27" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="graphics_view.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="graphics_view.view.MainMenu" />
-      <module name="project-group-27" />
+      <module name="AP-project-group27" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="graphics_view.view.*" />
@@ -172,7 +184,7 @@
     </configuration>
     <configuration name="graphics_view.view.ProfileMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="graphics_view.view.ProfileMenu" />
-      <module name="project-group-27" />
+      <module name="AP-project-group27" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="graphics_view.view.*" />
@@ -183,21 +195,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in project-group-27" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="project-group-27" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.LoginMenu" />
         <item itemvalue="Application.MainMenu" />
         <item itemvalue="Application.graphics_view.view.ProfileMenu" />
         <item itemvalue="Application.ProfileMenu" />
         <item itemvalue="Application.HelloLWJGL" />
-        <item itemvalue="JUnit.All in project-group-27" />
       </list>
     </recent_temporary>
   </component>
@@ -723,22 +727,22 @@
     </pin-to-top-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/project_group_27$Main.ic" NAME="Main Coverage Results" MODIFIED="1683744260592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest.ic" NAME="CoreGameMenuControllerTest Coverage Results" MODIFIED="1683744288536" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>controller.controller.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/project_group_27$CoreMapEditMenuControllerTest_setTexture.ic" NAME="CoreMapEditMenuControllerTest.setTexture Coverage Results" MODIFIED="1683802972833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>controller.controller.*</FILTER>
-    </SUITE>
+    <SUITE FILE_PATH="coverage/project_group_27$All_in_AP_project_group27.ic" NAME="All in AP-project-group27 Coverage Results" MODIFIED="1684252129968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_ShopTest_showShop.ic" NAME="CoreGameMenuControllerTest$ShopTest.showShop Coverage Results" MODIFIED="1683798459321" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>controller.controller.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest.ic" NAME="CoreGameMenuControllerTest Coverage Results" MODIFIED="1683744288536" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controller.controller.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/project_group_27$All_in_project_group_27.ic" NAME="All in project-group-27 Coverage Results" MODIFIED="1684778258774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/project_group_27$Main.ic" NAME="Main Coverage Results" MODIFIED="1684002436678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_SelectUnitTest_selectUnit2.ic" NAME="CoreGameMenuControllerTest$SelectUnitTest.selectUnit2 Coverage Results" MODIFIED="1683793514142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controller.controller.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_SelectUnitTest_selectUnit.ic" NAME="CoreGameMenuControllerTest$SelectUnitTest.selectUnit Coverage Results" MODIFIED="1683791907745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>controller.controller.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/project_group_27$All_in_AP_project_group27.ic" NAME="All in AP-project-group27 Coverage Results" MODIFIED="1683841034665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_SelectUnitTest_selectUnit2.ic" NAME="CoreGameMenuControllerTest$SelectUnitTest.selectUnit2 Coverage Results" MODIFIED="1683793514142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/project_group_27$CoreMapEditMenuControllerTest_setTexture.ic" NAME="CoreMapEditMenuControllerTest.setTexture Coverage Results" MODIFIED="1683802972833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>controller.controller.*</FILTER>
     </SUITE>
   </component>
