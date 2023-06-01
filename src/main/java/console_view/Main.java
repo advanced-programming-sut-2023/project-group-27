@@ -12,7 +12,7 @@ public class Main {
         Utilities.init();
         Scanner scanner = new Scanner(System.in);
         Controller controller = new Controller(scanner);
-        controller.fetchData();
+        Controller.fetchData();
         ///////////////////////////////
         Controller control = new Controller(scanner);
         GameMap map = new GameMap(
@@ -27,9 +27,9 @@ public class Main {
         }
         StrongholdCrusader.getAllStaticMaps().clear();
         StrongholdCrusader.addStaticMap(map);
-        control.pushData();
+        Controller.pushData();
         ///////////////////////////////
         controller.run();
-        controller.pushData();
+        Controller.pushData();
     }
 }

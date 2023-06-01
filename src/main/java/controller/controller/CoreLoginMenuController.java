@@ -1,5 +1,6 @@
 package controller.controller;
 
+import controller.Controller;
 import controller.view_controllers.LoginMenuController;
 import model.StrongholdCrusader;
 import model.User;
@@ -74,8 +75,8 @@ public class CoreLoginMenuController {
         delayStart = 0;
     }
 
-    public void exit() {
-        //TODO implement saving game data
+    public void exit() throws IOException {
+        Controller.pushData();
         System.exit(0);
     }
 }

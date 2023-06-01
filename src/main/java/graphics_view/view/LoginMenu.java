@@ -1,5 +1,6 @@
 package graphics_view.view;
 
+import controller.Controller;
 import graphics_view.graphical_controller.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.stage.Stage;
 import model.StrongholdCrusader;
 import model.User;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 
 public class LoginMenu extends Application {
@@ -34,10 +36,8 @@ public class LoginMenu extends Application {
         controller.setScene(scene);
     }
 
-    public static void main(String[] args) {
-        //TODO remove dummy add user
-        StrongholdCrusader.addUser(new User("mazdak", "Password",
-                "maz", "", "", "qqq", "aaa"));
+    public static void main(String[] args) throws FileNotFoundException {
+        Controller.fetchData();
         launch(args);
     }
 }

@@ -151,7 +151,7 @@ public class LoginController {
         new LoginMenu().start(LoginMenu.getStage());
     }
 
-    public void exit(MouseEvent mouseEvent) {
+    public void exit(MouseEvent mouseEvent) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Exit");
         alert.setHeaderText("Exit Confirmation");
