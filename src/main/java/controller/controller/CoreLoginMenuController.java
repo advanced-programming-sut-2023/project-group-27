@@ -23,7 +23,7 @@ public class CoreLoginMenuController {
         return loginController;
     }
 
-    public String run () throws IOException {
+    public String run() throws IOException {
         String loginMenuResult, utilityResult;
         while (true) {
             loginMenuResult = loginMenu.run();
@@ -40,10 +40,11 @@ public class CoreLoginMenuController {
             }
         }
     }
+
     private static int delay = 0;
     private static long delayStart;
 
-    public String login(String username, String password , boolean stayLoggedIn) {
+    public String login(String username, String password, boolean stayLoggedIn) {
         long currentTime = System.currentTimeMillis();
         if ((currentTime - delayStart) / 1000 < delay)
             return "You need to wait another " + (delay - (currentTime - delayStart) / 1000) + " seconds to login!";
@@ -61,7 +62,7 @@ public class CoreLoginMenuController {
         return "User logged in successfully!";
     }
 
-    public String forgetPassword(User user , String newPassword) {
+    public String forgetPassword(User user, String newPassword) {
         String validateResult = Utilities.validatePassword(newPassword);
         if (validateResult != null) return validateResult;
         user.setPassword(newPassword);
@@ -71,5 +72,10 @@ public class CoreLoginMenuController {
     public static void resetDelay() {
         delay = 0;
         delayStart = 0;
+    }
+
+    public void exit() {
+        //TODO implement saving game data
+        System.exit(0);
     }
 }

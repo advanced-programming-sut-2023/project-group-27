@@ -26,6 +26,7 @@
                              styleClass="Text"/>
             </HBox>
             <Button text="Reset" onMouseClicked="#reset"/>
+            <Button text="Exit" onMouseClicked="#exit"/>
         </VBox>
     </center>
 
