@@ -34,7 +34,7 @@ public class Controller {
         coreRegisterMenuController.run();
     }
 
-    public void fetchData() throws FileNotFoundException {
+    public static void fetchData() throws FileNotFoundException {
         File dataFile = new File("src/main/resources/data/data.json");
         Scanner dataScanner = new Scanner(dataFile);
         if (!dataScanner.hasNextLine()) return;
@@ -51,7 +51,7 @@ public class Controller {
         StrongholdCrusader.addAllStaticMaps(gameMapsToBeAdded1);
     }
 
-    public void pushData() throws IOException {
+    public static void pushData() throws IOException {
         ArrayList<User> users = new ArrayList<>(StrongholdCrusader.getAllUsers().values());
         ArrayList<GameMap> gameMaps = new ArrayList<>(StrongholdCrusader.getAllStaticMaps().values());
         Data dataToBePushed = new Data(users, gameMaps);
