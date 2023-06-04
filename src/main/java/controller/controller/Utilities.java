@@ -1,6 +1,7 @@
 package controller.controller;
 
 import com.google.common.hash.Hashing;
+import javafx.stage.Stage;
 import model.*;
 import model.building.Building;
 import model.building.CivilBuildingType;
@@ -17,6 +18,7 @@ import java.util.*;
 
 public class Utilities {
     static private List<String> sampleSlogans = new ArrayList<>();
+    private static Stage stage;
     static {
         sampleSlogans = Arrays.asList(
                 "I shall have my revenge, in this life or the next.",
@@ -137,5 +139,13 @@ public class Utilities {
                 landType.equals(LandType.OIl) ^ building.getName().equals("PitchRig"))
             return false;
         return !building.getName().endsWith("Farm") || (landType.equals(LandType.GRASS) || landType.equals(LandType.DENSEMEADOW));
+    }
+
+    public static Stage getStage() {
+        return stage;
+    }
+
+    public static void setStage(Stage stage) {
+        Utilities.stage = stage;
     }
 }

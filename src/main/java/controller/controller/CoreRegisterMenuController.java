@@ -45,7 +45,7 @@ public class CoreRegisterMenuController {
             return "Please fill required fields\n";
         }
         if (slogan != null && slogan.equals("")) {
-            return "If you provide '-s' then you should provide some input for it\n";
+            return "If you wanna have slogan then you should provide some input for it\n";
         }
         if (slogan == null) {
             slogan = "";

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="graphics_view.graphical_controller.SecurityQuestionController"
+            stylesheets="@../css/registerMenuStyles.css"
+            styleClass="RegisterMenuPane"
+            prefHeight="700.0" prefWidth="1200.0">
+    <top>
+        <Label text="Security Question" BorderPane.alignment="CENTER">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+        </Label>
+    </top>
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <ListView fx:id="securityQuestions" maxWidth="300"/>
+            <TextField promptText="security answer" fx:id="securityAnswer" maxWidth="300"/>
+            <Button text="Register" onMouseClicked="#register"/>
+        </VBox>
+    </center>
+</BorderPane>
