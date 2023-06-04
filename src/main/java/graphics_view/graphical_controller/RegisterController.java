@@ -2,6 +2,7 @@ package graphics_view.graphical_controller;
 
 import controller.controller.CoreRegisterMenuController;
 import controller.controller.Utilities;
+import graphics_view.view.InitialMenu;
 import graphics_view.view.SecurityQuestionMenu;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -51,15 +52,15 @@ public class RegisterController {
         randomSlogan.visibleProperty().bind(activateSlogan.selectedProperty());
     }
 
-    public void randomPassword(MouseEvent mouseEvent) {
+    public void randomPassword() {
         maskedPassword.setText(Utilities.randomPassword());
     }
 
-    public void randomSlogan(MouseEvent mouseEvent) {
+    public void randomSlogan() {
         slogan.setText(Utilities.randomSlogan());
     }
 
-    public void register(MouseEvent mouseEvent) {
+    public void register() {
         String output = controller.initializeUser(
                 username.getText(), maskedPassword.getText(), email.getText(), nickname.getText(),
                 activateSlogan.isSelected() ? slogan.getText() : null);
@@ -82,5 +83,9 @@ public class RegisterController {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void backToInitialMenu() throws Exception {
+        new InitialMenu().start(Utilities.getStage());
     }
 }

@@ -1,10 +1,10 @@
-.RegisterMenuPane {
-    -fx-background-image: url("../assets/registerMenu/background.jpg");
+.InitialMenuPane {
+    -fx-background-image: url("../assets/initialMenu/background.jpg");
     -fx-background-size: cover;
     -fx-padding: 100;
 }
 
-.Label {
+.Text {
     -fx-text-fill: white;
     -fx-font-size: 40;
 }
