@@ -1,0 +1,10 @@
+.InitialMenuPane {
+    -fx-background-image: url("../assets/initialMenu/background.jpg");
+    -fx-background-size: cover;
+    -fx-padding: 100;
+}
+
+.Text {
+    -fx-text-fill: white;
+    -fx-font-size: 40;
+}
