@@ -6,4 +6,10 @@
 
 .Text {
     -fx-text-fill: white;
+    -fx-font-size: 18;
+}
+
+.Label {
+    -fx-text-fill: white;
+    -fx-font-size: 40;
 }

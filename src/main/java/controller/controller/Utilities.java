@@ -19,6 +19,7 @@ import java.util.*;
 public class Utilities {
     static private List<String> sampleSlogans = new ArrayList<>();
     private static Stage stage;
+
     static {
         sampleSlogans = Arrays.asList(
                 "I shall have my revenge, in this life or the next.",
@@ -29,6 +30,7 @@ public class Utilities {
                 "War wins land, Peace wins People"
         );
     }
+
     public static String validatePassword(String newPassword) {
         if (newPassword.length() < 6) {
             return "Password is too short";

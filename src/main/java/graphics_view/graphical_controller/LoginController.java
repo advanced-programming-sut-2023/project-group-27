@@ -2,6 +2,7 @@ package graphics_view.graphical_controller;
 
 import controller.controller.CoreLoginMenuController;
 import controller.controller.Utilities;
+import graphics_view.view.InitialMenu;
 import graphics_view.view.LoginMenu;
 import graphics_view.view.MainMenu;
 import javafx.fxml.FXML;
@@ -11,7 +12,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -64,7 +64,7 @@ public class LoginController {
         if (this.scene == null) System.out.println("null scene");
     }
 
-    public void login(MouseEvent mouseEvent) throws Exception {
+    public void login() throws Exception {
         String username = this.username.getText();
         String password = this.password.getText();
         String result = controller.login(username, password, stayLoggedIn);
@@ -76,7 +76,7 @@ public class LoginController {
         }
     }
 
-    public void forgotPassword(MouseEvent mouseEvent) throws IOException {
+    public void forgotPassword() throws IOException {
         URL url = getClass().getResource("/fxml/ForgetPassword.fxml");
         BorderPane pane = FXMLLoader.load(url);
         Scene forgetPasswordScene = new Scene(pane);
@@ -89,11 +89,11 @@ public class LoginController {
         password.setText("");
     }
 
-    public void stayLoggedIn(MouseEvent mouseEvent) {
+    public void stayLoggedIn() {
         stayLoggedIn = !stayLoggedIn;
     }
 
-    public void checkUsername(MouseEvent mouseEvent) {
+    public void checkUsername() {
         String username = this.username.getText();
         errorTextFP.setFill(Color.WHITE);
         if (!StrongholdCrusader.getAllUsers().containsKey(username))
@@ -107,7 +107,7 @@ public class LoginController {
         }
     }
 
-    public void checkAnswer(MouseEvent mouseEvent) {
+    public void checkAnswer() {
         errorTextFP.setFill(Color.WHITE);
         if (!userValid) {
             errorTextFP.setText("Please Fill The Field Above!");
@@ -123,7 +123,7 @@ public class LoginController {
         }
     }
 
-    public void changePassword(MouseEvent mouseEvent) throws Exception {
+    public void changePassword() throws Exception {
         if (!answerValid) {
             errorTextFP.setText("Please Fill The Field Above!");
             return;
@@ -147,11 +147,11 @@ public class LoginController {
         }
     }
 
-    public void back(MouseEvent mouseEvent) throws Exception {
-        new LoginMenu().start(LoginMenu.getStage());
+    public void back() throws Exception {
+        new LoginMenu().start(Utilities.getStage());
     }
 
-    public void exit(MouseEvent mouseEvent) throws IOException {
+    public void exit() throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Exit");
         alert.setHeaderText("Exit Confirmation");
@@ -162,5 +162,9 @@ public class LoginController {
 
     public void showCaptcha() {
         //TODO implement captcha
+    }
+
+    public void backToInitialMenu() throws Exception {
+        new InitialMenu().start(Utilities.getStage());
     }
 }

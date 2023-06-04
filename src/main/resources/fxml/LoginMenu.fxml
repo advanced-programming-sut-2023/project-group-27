@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
@@ -16,17 +15,22 @@
 
     <center>
         <VBox alignment="CENTER" spacing="20">
+            <Label text="Login Menu" styleClass="Label" BorderPane.alignment="CENTER"/>
             <TextField promptText="username" fx:id="username" maxWidth="300"/>
             <PasswordField promptText="password" fx:id="password" maxWidth="300"/>
             <Text fx:id="errorText" styleClass="Text" text=" "/>
             <HBox alignment="CENTER" spacing="20">
                 <Button text="Forgot Password" onMouseClicked="#forgotPassword"/>
                 <Button text="Login" onMouseClicked="#login"/>
-                <RadioButton text="Stay Logged In" onMouseClicked="#stayLoggedIn"
-                             styleClass="Text"/>
+                <CheckBox text="Stay Logged In" onMouseClicked="#stayLoggedIn"
+                textFill="white">
+                    <font>
+                        <Font size="14"/>
+                    </font>
+                </CheckBox>
             </HBox>
             <Button text="Reset" onMouseClicked="#reset"/>
-            <Button text="Exit" onMouseClicked="#exit"/>
+            <Button text="Back" onMouseClicked="#backToInitialMenu"/>
         </VBox>
     </center>
 
