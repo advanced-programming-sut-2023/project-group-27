@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<?import javafx.scene.text.Font?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="graphics_view.graphical_controller.RegisterController"
@@ -14,11 +9,7 @@
             styleClass="RegisterMenuPane"
             prefHeight="700.0" prefWidth="1200.0">
     <top>
-        <Label text="Register" BorderPane.alignment="CENTER">
-            <font>
-                <Font name="System Bold" size="18.0"/>
-            </font>
-        </Label>
+        <Label text="Register Menu" BorderPane.alignment="CENTER" styleClass="Label"/>
     </top>
     <center>
         <VBox alignment="CENTER" spacing="20">
@@ -40,6 +31,7 @@
                 <CheckBox text="I want slogan" textFill="seashell" fx:id="activateSlogan"/>
             </HBox>
             <Button text="Register" onMouseClicked="#register"/>
+            <Button text="Back" onMouseClicked="#backToInitialMenu"/>
         </VBox>
     </center>
 </BorderPane>

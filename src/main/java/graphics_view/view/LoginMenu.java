@@ -14,15 +14,9 @@ import java.io.FileNotFoundException;
 import java.net.URL;
 
 public class LoginMenu extends Application {
-    private static Stage stage;
-
-    public static Stage getStage() {
-        return stage;
-    }
 
     @Override
     public void start(Stage stage) throws Exception {
-        LoginMenu.stage = stage;
         URL url = getClass().getResource("/fxml/LoginMenu.fxml");
         FXMLLoader loader = new FXMLLoader(url);
         BorderPane loginPane = loader.load();
@@ -34,10 +28,5 @@ public class LoginMenu extends Application {
         stage.show();
         controller.setStage(stage);
         controller.setScene(scene);
-    }
-
-    public static void main(String[] args) throws FileNotFoundException {
-        Controller.fetchData();
-        launch(args);
     }
 }

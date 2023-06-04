@@ -4,6 +4,7 @@
     -fx-padding: 100;
 }
 
-.Text {
+.Label {
     -fx-text-fill: white;
+    -fx-font-size: 40;
 }
