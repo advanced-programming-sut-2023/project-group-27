@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="graphics_view.graphical_controller.GameStartController"
+            stylesheets="@../css/gameStartStyles.css"
+            prefHeight="700.0" prefWidth="1200.0">
+    <VBox fx:id="allPlayers" styleClass="Box" layoutX="100" layoutY="100"/>
+    <VBox styleClass="Box" layoutX="300" layoutY="100">
+
+    </VBox>
+    <VBox styleClass="Box" alignment="CENTER" layoutX="800" layoutY="100">
+        <Button text="toggle map" onMouseClicked="#toggleMap"/>
+        <TilePane fx:id="miniMap"/>
+    </VBox>
+
+</Pane>

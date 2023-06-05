@@ -219,4 +219,36 @@ public class CoreGameStartMenuController {
         match = new Match(selectedMap, thisGamePlayers);
         return "Start Game";
     }
+
+    public GameMap[] getAllMaps() {
+        return allMaps;
+    }
+
+    public MonarchyColorType[] getColorTypes() {
+        return colorTypes;
+    }
+
+    public ArrayList<User> getThisGamePlayers() {
+        return thisGamePlayers;
+    }
+
+    public HashMap<User, MonarchyColorType> getColors() {
+        return colors;
+    }
+
+    public HashMap<User, Cell> getKeepCells() {
+        return keepCells;
+    }
+
+    public User[] getAllUsers() {
+        return allUsers;
+    }
+
+    public GameMap getSelectedMap() {
+        return selectedMap;
+    }
+
+    public Match getMatch() {
+        return match;
+    }
 }
