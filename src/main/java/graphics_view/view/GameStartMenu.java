@@ -10,8 +10,10 @@ import javafx.stage.Stage;
 import model.StrongholdCrusader;
 
 public class GameStartMenu extends Application {
+    public static Stage stage;
     @Override
     public void start(Stage stage) throws Exception {
+        this.stage = stage;
         Controller.fetchData();
         StrongholdCrusader.setLoggedInUser(StrongholdCrusader.getAllUsersList()[0]);
 

@@ -10,19 +10,20 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="graphics_view.graphical_controller.GameStartController"
             stylesheets="@../css/gameStartStyles.css"
+            styleClass="Back"
             prefHeight="700.0" prefWidth="1200.0">
-    <ScrollPane fx:id="allUsers" layoutX="100" layoutY="100" hbarPolicy="NEVER">
+    <ScrollPane fx:id="allUsers" layoutX="10" layoutY="100" hbarPolicy="NEVER">
         <VBox styleClass="Box" fx:id="allUsersVBox"/>
     </ScrollPane>
 
-    <VBox fx:id="selectedPlayers" styleClass="Box" layoutX="300" layoutY="100"/>
+    <VBox fx:id="selectedPlayers" styleClass="Box" layoutX="160" layoutY="100"/>
 
-    <VBox styleClass="Box" alignment="CENTER" layoutX="400" layoutY="1">
+    <VBox styleClass="Box" layoutX="450" layoutY="1">
         <Button text="toggle map" onMouseClicked="#toggleMap"/>
         <Label fx:id="miniMapInfo"/>
         <TilePane fx:id="miniMap"/>
     </VBox>
 
-    <Button text="start" onMouseClicked="#start" layoutY="600" layoutX="1100"/>
-    <Button text="exit" onMouseClicked="#exit" layoutX="1000" layoutY="600"/>
+    <Button text="start" onMouseClicked="#start" layoutY="600" layoutX="100"/>
+    <Button text="exit" onMouseClicked="#exit" layoutX="50" layoutY="600"/>
 </Pane>

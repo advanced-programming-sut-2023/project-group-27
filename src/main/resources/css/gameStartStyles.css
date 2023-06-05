@@ -8,3 +8,8 @@
     -fx-border-width: 5;
     -fx-alignment: center;
 }
+
+.Back {
+    -fx-background-image: url("../assets/gameStartMenu/back.jpg");
+    -fx-background-size: cover;
+}

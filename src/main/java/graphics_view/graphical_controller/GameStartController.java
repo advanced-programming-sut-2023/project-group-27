@@ -1,6 +1,7 @@
 package graphics_view.graphical_controller;
 
 import controller.controller.CoreGameStartMenuController;
+import graphics_view.view.GameStartMenu;
 import graphics_view.view.MainMenu;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.*;
@@ -18,6 +20,7 @@ import model.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class GameStartController implements Initializable {
@@ -90,7 +93,7 @@ public class GameStartController implements Initializable {
             HBox hBox = new HBox();
             Button button1 = new Button();
             if (!colors.containsKey(user)) {
-                MonarchyColorType monarchyColorType = getFreeColorType();
+                MonarchyColorType monarchyColorType = getFreeColorType(null);
                 controller.setColor(finalIndex, monarchyColorType);
             }
             button1.setText(colors.get(user).getColorName());
@@ -98,7 +101,7 @@ public class GameStartController implements Initializable {
 
             Button button2 = new Button();
             if (!playersKeeps.containsKey(user)) {
-                Integer integer = getFreeKeepLocation();
+                Integer integer = getFreeKeepLocation(null);
                 playersKeeps.put(user, integer);
             }
             button2.setText(keepsLocations[playersKeeps.get(user)].getLocation().toString());
@@ -110,7 +113,7 @@ public class GameStartController implements Initializable {
     }
 
     private void toggleKeep(User user, Button button) {
-        Integer integer = getFreeKeepLocation();
+        Integer integer = getFreeKeepLocation(playersKeeps.getOrDefault(user, null));
         if (integer == null) return;
 
         playersKeeps.remove(user);
@@ -119,7 +122,7 @@ public class GameStartController implements Initializable {
     }
 
     private void toggleColor(User user, Button button) {
-        MonarchyColorType monarchyColorType = getFreeColorType();
+        MonarchyColorType monarchyColorType = getFreeColorType(getColorIndex(colors.get(user)));
         if (monarchyColorType == null) return;
 
         colors.remove(user);
@@ -127,15 +130,31 @@ public class GameStartController implements Initializable {
         button.setText(monarchyColorType.getColorName());
     }
 
-    private MonarchyColorType getFreeColorType() {
-        for (MonarchyColorType monarchyColorType : monarchyColorTypes)
-            if (!colors.containsValue(monarchyColorType)) return monarchyColorType;
+    private Integer getColorIndex(MonarchyColorType monarchyColorType) {
+        for (int i = 0; i < monarchyColorTypes.length; i++)
+            if (monarchyColorTypes[i].equals(monarchyColorType)) return i;
+        return 0;
+    }
+
+    private MonarchyColorType getFreeColorType(Integer index) {
+        int i = 0;
+        for (MonarchyColorType monarchyColorType : monarchyColorTypes) {
+            if (!colors.containsValue(monarchyColorType) && (index == null || index < i)) return monarchyColorType;
+            i++;
+        }
+        i = 0;
+        for (MonarchyColorType monarchyColorType : monarchyColorTypes) {
+            if (!colors.containsValue(monarchyColorType) && (index == null || index > i)) return monarchyColorType;
+            i++;
+        }
         return null;
     }
 
-    private Integer getFreeKeepLocation() {
+    private Integer getFreeKeepLocation(Integer current) {
         for (int i = 0; i < keepsLocations.length; i++)
-            if (!playersKeeps.containsValue(i)) return i;
+            if (!playersKeeps.containsValue(i) && (current == null || current < i)) return i;
+        for (int i = 0; i < keepsLocations.length; i++)
+            if (!playersKeeps.containsValue(i) && (current == null || current > i)) return i;
         return null;
     }
 
@@ -167,17 +186,25 @@ public class GameStartController implements Initializable {
             for (int j = 0; j < selectedMap.getHeight(); j++) {
                 Rectangle rectangle = new Rectangle(1, 1);
                 rectangle.setFill(selectedMap.getCell(j, i).getType().getColor());
+                if (new ArrayList<Cell>(List.of(selectedMap.getKeepsLocations())).contains(selectedMap.getCell(j, i)))
+                    rectangle.setFill(Color.RED);
                 miniMap.getChildren().add(rectangle);
             }
         }
     }
 
     public void start(MouseEvent mouseEvent) {
-        //TODO start game;
+        if (thisGamePlayers.size() < 2) return;
+        ArrayList<Integer> keeps = new ArrayList<>();
+        for (User user : thisGamePlayers)
+            keeps.add(playersKeeps.get(user) + 1);
+        controller.assignKeepsAndStart(keeps);
+
+        //TODO link to main game
+        // use match to build the game now
     }
 
     public void exit(MouseEvent mouseEvent) throws Exception {
-        new MainMenu().start(new Stage());
-        //TODO link current stage;
+        new MainMenu().start(GameStartMenu.stage);
     }
 }
