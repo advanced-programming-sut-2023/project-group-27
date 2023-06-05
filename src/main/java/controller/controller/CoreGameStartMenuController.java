@@ -217,6 +217,7 @@ public class CoreGameStartMenuController {
         }
 
         match = new Match(selectedMap, thisGamePlayers);
+        StrongholdCrusader.setCurrentMatch(match);
         return "Start Game";
     }
 

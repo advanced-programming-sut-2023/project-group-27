@@ -78,7 +78,7 @@ public class CoreTradeMenuController {
             return "goods amount must be positive\n";
         }
         TradingSystem tradingSystem = otherUser.getMonarchy().getTradingSystem();
-        tradingSystem.addTrade(loggedInUser, type, goodsAmountInt, priceInt, massage);
+        tradingSystem.addTrade(otherUser, loggedInUser, type, goodsAmountInt, priceInt, massage);
         return "trade request sent\n";
     }
 }

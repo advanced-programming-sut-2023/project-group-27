@@ -5,6 +5,7 @@ import java.util.*;
 public class StrongholdCrusader {
     private static User loggedInUser;
     private static User currentUser;
+    private static Match currentMatch;
     private static final HashMap<String , GameMap> allMaps = new HashMap<>();
     private static final HashMap<String , User> allUsers = new HashMap<>();
     private static final HashMap<String, GameMap> allStaticMaps = new HashMap<>();
@@ -56,6 +57,14 @@ public class StrongholdCrusader {
 
     public static Object[] getAllSortedUsers() {
         return Arrays.stream(getAllUsersList()).sorted(Comparator.naturalOrder()).toArray();
+    }
+
+
+    public static Match getCurrentMatch() {
+        return currentMatch;
+    }
+    public static void setCurrentMatch(Match match) {
+        currentMatch = match;
     }
 
     public User getUserByUsername(String username) {
