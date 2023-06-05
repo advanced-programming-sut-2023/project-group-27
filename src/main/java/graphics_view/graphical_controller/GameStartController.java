@@ -1,7 +1,7 @@
 package graphics_view.graphical_controller;
 
 import controller.controller.CoreGameStartMenuController;
-import javafx.event.EventHandler;
+import graphics_view.view.MainMenu;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -9,15 +9,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import model.*;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.concurrent.CancellationException;
 
 public class GameStartController implements Initializable {
     private final CoreGameStartMenuController controller =
@@ -28,6 +28,8 @@ public class GameStartController implements Initializable {
     private final HashMap<User, MonarchyColorType> colors;
     private final User[] allUsersList;
     private final HashMap<User, Integer> playersKeeps;
+    @FXML
+    private TilePane miniMap;
     private Cell[] keepsLocations;
     @FXML
     private VBox selectedPlayers;
@@ -54,7 +56,7 @@ public class GameStartController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO show mini map at beginning too
+        updateMiniMap();
         mountAllUsers();
     }
 
@@ -148,5 +150,19 @@ public class GameStartController implements Initializable {
                 controller.removePlayer(i);
             updateSelectedPlayers();
         }
+    }
+
+    private void updateMiniMap() {
+        miniMapInfo.setText(selectedMap.getMapName() + "\n" + selectedMap.getCapacity());
+
+    }
+
+    public void start(MouseEvent mouseEvent) {
+        //TODO start game;
+    }
+
+    public void exit(MouseEvent mouseEvent) throws Exception {
+        new MainMenu().start(new Stage());
+        //TODO link current stage;
     }
 }

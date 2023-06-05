@@ -11,7 +11,7 @@
             fx:controller="graphics_view.graphical_controller.GameStartController"
             stylesheets="@../css/gameStartStyles.css"
             prefHeight="700.0" prefWidth="1200.0">
-    <ScrollPane fx:id="allUsers" styleClass="Box" layoutX="100" layoutY="100">
+    <ScrollPane fx:id="allUsers" styleClass="Box" layoutX="100" layoutY="100" hbarPolicy="NEVER">
         <VBox fx:id="allUsersVBox"/>
     </ScrollPane>
 
@@ -23,4 +23,6 @@
         <TilePane fx:id="miniMap"/>
     </VBox>
 
+    <Button text="start" onMouseClicked="#start" layoutY="600" layoutX="1100"/>
+    <Button text="exit" onMouseClicked="#exit" layoutX="1000" layoutY="600"/>
 </Pane>
