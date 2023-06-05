@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="500" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics_view.graphical_controller.ShopController">
+   <center>
+      <ScrollPane>
+         <content>
+            <VBox alignment="CENTER" spacing="10">
+               <children>
+                   <Label text="Shop Menu" />
+                  <GridPane fx:id="gridPane" alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                        <RowConstraints />
+                    </rowConstraints>
+                     <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="9" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="10" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="11" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="12" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="13" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="14" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="15" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="16" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="17" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="18" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="19" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="20" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Buy" GridPane.columnIndex="5" GridPane.rowIndex="21" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="8" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="9" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="10" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="11" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="12" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="13" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="14" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="15" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="16" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="17" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="18" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="19" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="20" />
+                         <Button alignment="CENTER" mnemonicParsing="false" text="Sell" GridPane.columnIndex="6" GridPane.rowIndex="21" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="7" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="8" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="9" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="10" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="11" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="12" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="13" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="14" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="15" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="16" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="17" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="18" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="19" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="20" />
+                        <Slider GridPane.columnIndex="4" GridPane.rowIndex="21" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="11" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="12" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="13" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="14" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="15" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="16" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="17" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="18" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="19" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="20" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="21" />
+
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="18" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="19" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="20" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="21" />
+
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="14" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="15" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="16" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="17" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="18" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="19" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="20" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="2" GridPane.rowIndex="21" />
+
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="12" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="13" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="14" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="15" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="16" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="17" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="18" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="19" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="20" />
+                         <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="21" />
+                        <Label text="Goods Name" GridPane.columnIndex="0"/>
+                        <Label text="Owned" GridPane.columnIndex="1"/>
+                        <Label text="Buy Price" GridPane.columnIndex="2"/>
+                        <Label text="Sell Price" GridPane.columnIndex="3"/>
+                        <Label text="Amount" GridPane.columnIndex="4"/>
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
