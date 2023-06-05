@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="g start">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="g start1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameStartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameStartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/GameStartMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/GameStartMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,14 +251,7 @@
       <workItem from="1685392898477" duration="4160000" />
       <workItem from="1685429608241" duration="25743000" />
       <workItem from="1685536127986" duration="10539000" />
-      <workItem from="1685973181692" duration="3639000" />
-    </task>
-    <task id="LOCAL-00040" summary="added act and canAct for productionBuildings">
-      <created>1683644388569</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1683644388569</updated>
+      <workItem from="1685973181692" duration="6507000" />
     </task>
     <task id="LOCAL-00041" summary="bug fixes">
       <created>1683644683037</created>
@@ -597,7 +589,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685954391235</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="g start1">
+      <created>1685976900791</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1685976900791</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -678,7 +677,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix some bugs3" />
     <MESSAGE value="fix some bugs4" />
     <MESSAGE value="fix some bugs5" />
     <MESSAGE value="fix some bugs6" />
@@ -703,7 +701,8 @@
     <MESSAGE value="functionality 13" />
     <MESSAGE value="added static graphic to LoginMenu" />
     <MESSAGE value="g start" />
-    <option name="LAST_COMMIT_MESSAGE" value="g start" />
+    <MESSAGE value="g start1" />
+    <option name="LAST_COMMIT_MESSAGE" value="g start1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

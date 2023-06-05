@@ -27,7 +27,8 @@ public class GameStartController implements Initializable {
     private final ArrayList<User> thisGamePlayers;
     private final HashMap<User, MonarchyColorType> colors;
     private final User[] allUsersList;
-    private final HashMap<User, Cell> keepsCells;
+    private final HashMap<User, Integer> playersKeeps;
+    private Cell[] keepsLocations;
     @FXML
     private VBox selectedPlayers;
     @FXML
@@ -45,9 +46,10 @@ public class GameStartController implements Initializable {
         this.thisGamePlayers = controller.getThisGamePlayers();
         this.colors = controller.getColors();
         this.allUsersList = controller.getAllUsers();
-        this.keepsCells = controller.getKeepCells();
         controller.selectMap(0);
         this.selectedMap = controller.getSelectedMap();
+        this.playersKeeps = new HashMap<>();
+        keepsLocations = selectedMap.getKeepsLocations();
     }
 
     @Override
@@ -83,19 +85,54 @@ public class GameStartController implements Initializable {
 
             HBox hBox = new HBox();
             Button button1 = new Button();
-            if (colors.containsKey(user))
-                button1.setText(colors.get(user).getColorName());
-            else {
+            if (!colors.containsKey(user)) {
                 MonarchyColorType monarchyColorType = getFreeColorType();
                 controller.setColor(finalIndex, monarchyColorType);
             }
-            button1.setOnMouseClicked(mouseEvent -> toggleColor());
+            button1.setText(colors.get(user).getColorName());
+            button1.setOnMouseClicked(mouseEvent -> toggleColor(user, button1));
 
             Button button2 = new Button();
+            if (!playersKeeps.containsKey(user)) {
+                Integer integer = getFreeKeepLocation();
+                playersKeeps.put(user, integer);
+            }
+            button2.setText(keepsLocations[playersKeeps.get(user)].getLocation().toString());
+            button2.setOnMouseClicked(mouseEvent -> toggleKeep(user, button2));
             hBox.getChildren().addAll(button, button1, button2);
             allUsersVBox.getChildren().add(hBox);
             index++;
         }
+    }
+
+    private void toggleKeep(User user, Button button) {
+        Integer integer = getFreeKeepLocation();
+        if (integer == null) return;
+
+        playersKeeps.remove(user);
+        playersKeeps.put(user, integer);
+        button.setText(keepsLocations[integer].getLocation().toString());
+    }
+
+    private void toggleColor(User user, Button button) {
+        MonarchyColorType monarchyColorType = getFreeColorType();
+        if (monarchyColorType == null) return;
+
+        colors.remove(user);
+        colors.put(user, monarchyColorType);
+        button.setText(monarchyColorType.getColorName());
+    }
+
+    private MonarchyColorType getFreeColorType() {
+        for (MonarchyColorType monarchyColorType : monarchyColorTypes)
+            if (!colors.containsValue(monarchyColorType)) return monarchyColorType;
+        return null;
+    }
+
+    private Integer getFreeKeepLocation() {
+        for (int i = 0; i < keepsLocations.length; i++)
+            if (!playersKeeps.containsValue(i)) return i;
+        return null;
     }
 
     public void toggleMap(MouseEvent mouseEvent) {
@@ -103,6 +140,9 @@ public class GameStartController implements Initializable {
         controller.selectMap(selectedMapIndex + 1);
         selectedMap = controller.getSelectedMap();
         updateMiniMap();
+        keepsLocations = selectedMap.getKeepsLocations();
+        playersKeeps.clear();
+        updateSelectedPlayers();
         if (selectedMap.getCapacity() < thisGamePlayers.size()) {
             for (int i = thisGamePlayers.size(); i >= selectedMap.getCapacity(); i--)
                 controller.removePlayer(i);
