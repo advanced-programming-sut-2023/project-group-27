@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.*;
 
@@ -48,7 +49,7 @@ public class GameStartController implements Initializable {
         this.thisGamePlayers = controller.getThisGamePlayers();
         this.colors = controller.getColors();
         this.allUsersList = controller.getAllUsers();
-        controller.selectMap(0);
+        controller.selectMap(1);
         this.selectedMap = controller.getSelectedMap();
         this.playersKeeps = new HashMap<>();
         keepsLocations = selectedMap.getKeepsLocations();
@@ -69,6 +70,7 @@ public class GameStartController implements Initializable {
                 controller.addPlayer(finalIndex);
                 updateSelectedPlayers();
             });
+            button.setMinWidth(100);
             allUsersVBox.getChildren().add(button);
             index++;
         }
@@ -102,7 +104,7 @@ public class GameStartController implements Initializable {
             button2.setText(keepsLocations[playersKeeps.get(user)].getLocation().toString());
             button2.setOnMouseClicked(mouseEvent -> toggleKeep(user, button2));
             hBox.getChildren().addAll(button, button1, button2);
-            allUsersVBox.getChildren().add(hBox);
+            selectedPlayers.getChildren().add(hBox);
             index++;
         }
     }
@@ -153,8 +155,21 @@ public class GameStartController implements Initializable {
     }
 
     private void updateMiniMap() {
-        miniMapInfo.setText(selectedMap.getMapName() + "\n" + selectedMap.getCapacity());
-
+        miniMap.setPrefColumns(selectedMap.getWidth());
+        miniMap.setPrefRows(selectedMap.getHeight());
+        miniMap.setPrefTileWidth(1.0);
+        miniMap.setPrefTileHeight(1.0);
+        miniMap.setHgap(0);
+        miniMap.setVgap(0);
+        miniMap.getChildren().clear();
+        miniMapInfo.setText(selectedMap.getMapName() + ": " + selectedMap.getCapacity());
+        for (int i = selectedMap.getHeight() - 1; i >= 0 ;i--) {
+            for (int j = 0; j < selectedMap.getHeight(); j++) {
+                Rectangle rectangle = new Rectangle(1, 1);
+                rectangle.setFill(selectedMap.getCell(j, i).getType().getColor());
+                miniMap.getChildren().add(rectangle);
+            }
+        }
     }
 
     public void start(MouseEvent mouseEvent) {

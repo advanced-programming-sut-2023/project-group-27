@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="g start2">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="g start3">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameStartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameStartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/view/GameStartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/view/GameStartMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/LandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/LandType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/gameStartStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/gameStartStyles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/GameStartMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/GameStartMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,9 +130,9 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LoginMenu">
-    <configuration name="HelloLWJGL" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="graphics_view.HelloLWJGL" />
+  <component name="RunManager" selected="Application.GameStartMenu">
+    <configuration name="GameStartMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphics_view.view.GameStartMenu" />
       <module name="project-group-27" />
       <extension name="coverage">
         <pattern>
@@ -194,11 +198,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GameStartMenu" />
         <item itemvalue="Application.LoginMenu" />
         <item itemvalue="Application.MainMenu" />
         <item itemvalue="Application.graphics_view.view.ProfileMenu" />
         <item itemvalue="Application.ProfileMenu" />
-        <item itemvalue="Application.HelloLWJGL" />
       </list>
     </recent_temporary>
   </component>
@@ -251,14 +255,7 @@
       <workItem from="1685392898477" duration="4160000" />
       <workItem from="1685429608241" duration="25743000" />
       <workItem from="1685536127986" duration="10539000" />
-      <workItem from="1685973181692" duration="7838000" />
-    </task>
-    <task id="LOCAL-00042" summary="adding start game logic">
-      <created>1683735998323</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1683735998323</updated>
+      <workItem from="1685973181692" duration="10736000" />
     </task>
     <task id="LOCAL-00043" summary="adding start game logic">
       <created>1683736841416</created>
@@ -596,7 +593,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685981053734</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="g start3">
+      <created>1685982951771</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1685982951771</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -677,7 +681,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix some bugs5" />
     <MESSAGE value="fix some bugs6" />
     <MESSAGE value="fix some bugs7" />
     <MESSAGE value="bug fix and improvement3" />
@@ -702,7 +705,8 @@
     <MESSAGE value="g start" />
     <MESSAGE value="g start1" />
     <MESSAGE value="g start2" />
-    <option name="LAST_COMMIT_MESSAGE" value="g start2" />
+    <MESSAGE value="g start3" />
+    <option name="LAST_COMMIT_MESSAGE" value="g start3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

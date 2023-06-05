@@ -1,9 +1,10 @@
 .Box {
-    -fx-padding: 30;
-    -fx-spacing: 50;
+    -fx-padding: 10;
+    -fx-spacing: 5;
     -fx-background-color: #697582;
     -fx-background-radius: 11;
     -fx-border-color: black;
     -fx-border-radius: 10;
     -fx-border-width: 5;
+    -fx-alignment: center;
 }

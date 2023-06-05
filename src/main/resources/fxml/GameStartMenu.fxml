@@ -11,13 +11,13 @@
             fx:controller="graphics_view.graphical_controller.GameStartController"
             stylesheets="@../css/gameStartStyles.css"
             prefHeight="700.0" prefWidth="1200.0">
-    <ScrollPane fx:id="allUsers" styleClass="Box" layoutX="100" layoutY="100" hbarPolicy="NEVER">
-        <VBox fx:id="allUsersVBox"/>
+    <ScrollPane fx:id="allUsers" layoutX="100" layoutY="100" hbarPolicy="NEVER">
+        <VBox styleClass="Box" fx:id="allUsersVBox"/>
     </ScrollPane>
 
     <VBox fx:id="selectedPlayers" styleClass="Box" layoutX="300" layoutY="100"/>
 
-    <VBox styleClass="Box" alignment="CENTER" layoutX="800" layoutY="100">
+    <VBox styleClass="Box" alignment="CENTER" layoutX="400" layoutY="1">
         <Button text="toggle map" onMouseClicked="#toggleMap"/>
         <Label fx:id="miniMapInfo"/>
         <TilePane fx:id="miniMap"/>
