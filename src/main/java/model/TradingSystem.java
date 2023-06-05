@@ -1,7 +1,5 @@
 package model;
 
-import org.apache.commons.lang3.math.NumberUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +7,8 @@ public class TradingSystem {
     private int idCounter = 1;
     private final User systemOwner;
     private final List<Trade> newTrades = new ArrayList<>();
-    private final List<Trade> awaitingTrades = new ArrayList<>();
-    private final List<Trade> history = new ArrayList<>();
+    private final List<Trade> incomingTrades = new ArrayList<>();
+    private final List<Trade> outgoingTrades = new ArrayList<>();
 
     public TradingSystem(User systemOwner) {
         this.systemOwner = systemOwner;
@@ -19,21 +17,21 @@ public class TradingSystem {
     private int generateId() {
         return 1000 + idCounter++;
     }
-    public void addTrade(User owner, GoodsType type, int amount, int price, String comment) {
-        Trade trade = new Trade(generateId(), owner, type, amount, price, comment);
+    public void addTrade(User otherUser, User owner, GoodsType type, int amount, int price, String comment) {
+        Trade trade = new Trade(generateId(), otherUser, owner, type, amount, price, comment);
         owner.getMonarchy().getTradingSystem().addToHistory(trade);
         newTrades.add(trade);
     }
 
     private void addToHistory(Trade trade) {
-        history.add(trade);
+        outgoingTrades.add(trade);
     }
 
     public String notifications() {
         StringBuilder result = new StringBuilder();
         for (Trade trade : newTrades) {
             result.append(trade.toString()).append("\n");
-            awaitingTrades.add(trade);
+            incomingTrades.add(trade);
         }
         newTrades.clear();
         return result.toString();
@@ -41,7 +39,7 @@ public class TradingSystem {
 
     public String acceptTrade(int id) {
         Trade trade = null;
-        for (Trade awaitingTrade : awaitingTrades) {
+        for (Trade awaitingTrade : incomingTrades) {
             if (awaitingTrade.getId() == id) {
                 trade = awaitingTrade;
                 break;
@@ -67,14 +65,12 @@ public class TradingSystem {
         systemOwnerMonarchy.putGood(trade.getType(),
                 systemOwnerMonarchy.getGood(trade.getType())
                         - trade.getAmount());
-        awaitingTrades.remove(trade);
-        history.add(trade);
         return "trade accepted\n";
     }
 
     public String showHistory(){
         StringBuilder result = new StringBuilder();
-        for (Trade trade : history) {
+        for (Trade trade : outgoingTrades) {
             result.append(trade.toString()).append("\n");
         }
         return result.toString();
@@ -82,9 +78,17 @@ public class TradingSystem {
 
     public String showAwaitingTrades(){
         StringBuilder result = new StringBuilder();
-        for (Trade trade : awaitingTrades) {
+        for (Trade trade : incomingTrades) {
             result.append(trade.toString()).append("\n");
         }
         return result.toString();
+    }
+
+    public List<Trade> getIncomingTrades() {
+        return incomingTrades;
+    }
+
+    public List<Trade> getOutgoingTrades() {
+        return outgoingTrades;
     }
 }

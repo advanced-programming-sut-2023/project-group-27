@@ -1,5 +1,6 @@
 package graphics_view.view;
 
+import controller.controller.CoreTradeMenuController;
 import controller.controller.Utilities;
 import graphics_view.graphical_controller.SecurityQuestionController;
 import graphics_view.graphical_controller.TradeController;
@@ -27,6 +28,14 @@ public class TradeMenu extends Application {
         user2.setMonarchy(new Monarchy(user2, MonarchyColorType.RED, gameMap, locations[1]));
         User[] users = new User[]{user, user2};
         this.match = new Match(gameMap, Arrays.stream(users).collect(Collectors.toList()));
+        CoreTradeMenuController controller1 = new CoreTradeMenuController(match, user, null);
+        CoreTradeMenuController controller2 = new CoreTradeMenuController(match, user2, null);
+        controller1.tradeRequest(user2.getUsername(), "Wheat", "1", "1", "hi");
+        controller1.tradeRequest(user2.getUsername(), "Bread", "1", "1", "hi bitch");
+        controller2.tradeRequest(user.getUsername(), "Wheat", "1", "1", "hey");
+        controller2.tradeRequest(user.getUsername(), "Bread", "1", "1", "hey bitch");
+        System.out.println("1## " + user.getMonarchy().getTradingSystem().notifications());
+        System.out.println("2%% " + user2.getMonarchy().getTradingSystem().notifications());
     }
 //    public TradeMenu(User loggedInUser, Match match) {
 //        this.loggedInUser = loggedInUser;

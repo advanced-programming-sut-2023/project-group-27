@@ -10,9 +10,11 @@ public class Trade {
     private String comment;
     private GoodsType type;
     private String state;
+    private User target;
 
-    public Trade(int id, User owner, GoodsType type, int amount, int price, String comment) {
+    public Trade(int id, User otherUser, User owner, GoodsType type, int amount, int price, String comment) {
         this.id = id;
+        this.target = otherUser;
         this.owner = owner;
         this.amount = amount;
         this.price = price;
@@ -47,6 +49,10 @@ public class Trade {
 
     public String getState() {
         return state;
+    }
+
+    public User getTarget() {
+        return target;
     }
 
     public void setStateToDone() {

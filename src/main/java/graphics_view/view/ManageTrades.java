@@ -5,6 +5,7 @@ import graphics_view.graphical_controller.TradeController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.Match;
@@ -25,7 +26,7 @@ public class ManageTrades extends Application {
     public void start(Stage stage) throws Exception {
         URL url = getClass().getResource("/fxml/ManageTrades.fxml");
         FXMLLoader loader = new FXMLLoader(url);
-        BorderPane borderPane = loader.load();
+        TabPane borderPane = loader.load();
         ((ManageTradeController) loader.getController()).init(loggedInUser, match);
         Scene scene = new Scene(borderPane);
         stage.setScene(scene);
