@@ -1,0 +1,22 @@
+.TradeMenuPane {
+    -fx-background-image: url("../assets/tradeMenu/background.jpg");
+    -fx-background-size: cover;
+    -fx-padding: 100;
+}
+
+.CreateTrade {
+    -fx-background-image: url("../assets/tradeMenu/menu_image.jpg");
+    -fx-background-size: cover;
+    -fx-padding: 100;
+}
+
+.ManageTrade {
+    -fx-background-image: url("../assets/tradeMenu/menu_image.jpg");
+    -fx-background-size: cover;
+    -fx-padding: 100;
+}
+
+.Label {
+    -fx-text-fill: white;
+    -fx-font-size: 40;
+}
