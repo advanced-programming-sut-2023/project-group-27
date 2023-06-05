@@ -3,12 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="500" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane prefHeight="500" minWidth="800"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="graphics_view.graphical_controller.ShopController">
     <center>
         <ScrollPane>
-            <VBox alignment="CENTER" spacing="10">
-                <Label text="Shop Menu"/>
+            <VBox alignment="CENTER" spacing="10" stylesheets="@../css/shopMenuStyles.css" styleClass="GridPane">
+                <Label text="Shop Menu" styleClass="Title"/>
                 <GridPane fx:id="gridPane" alignment="CENTER">
                     <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0"
@@ -218,27 +219,27 @@
                         <Slider/>
                         <Label/>
                     </HBox>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="11"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="12"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="13"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="14"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="15"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="16"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="17"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="18"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="19"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="20"/>
-                    <Label text="Goods" textFill="black" GridPane.columnIndex="0" GridPane.rowIndex="21"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="11"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="12"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="13"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="14"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="15"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="16"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="17"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="18"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="19"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="20"/>
+                    <Label text="Goods" styleClass="Text" GridPane.columnIndex="0" GridPane.rowIndex="21"/>
 
                     <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                     <Label text="Goods" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
@@ -305,12 +306,13 @@
                     <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="19"/>
                     <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="20"/>
                     <Label text="Goods" textFill="black" GridPane.columnIndex="3" GridPane.rowIndex="21"/>
-                    <Label text="Goods Name" GridPane.columnIndex="0"/>
-                    <Label text="Owned" GridPane.columnIndex="1"/>
-                    <Label text="Buy Price" GridPane.columnIndex="2"/>
-                    <Label text="Sell Price" GridPane.columnIndex="3"/>
-                    <Label text="Amount" GridPane.columnIndex="4"/>
+                    <Label text="Goods Name" GridPane.columnIndex="0" styleClass="Text"/>
+                    <Label text="Owned" GridPane.columnIndex="1" styleClass="Text"/>
+                    <Label text="Buy Price" GridPane.columnIndex="2" styleClass="Text"/>
+                    <Label text="Sell Price" GridPane.columnIndex="3" styleClass="Text"/>
+                    <Label text="Amount" GridPane.columnIndex="4" styleClass="Text"/>
                 </GridPane>
+                <Button text="Exit" onMouseClicked="#exitShop"/>
             </VBox>
         </ScrollPane>
     </center>

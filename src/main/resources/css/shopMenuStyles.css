@@ -1,0 +1,15 @@
+.GridPane {
+    -fx-background-image: url("../assets/shopMenu/backgorund.jpg");
+    -fx-background-size: cover;
+    -fx-padding: 100;
+}
+
+.Title {
+    -fx-font-size: 40;
+    -fx-text-fill: blue;
+}
+
+.Text {
+    -fx-font-size: 15;
+    -fx-text-fill: blue;
+}

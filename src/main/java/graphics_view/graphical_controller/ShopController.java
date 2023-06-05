@@ -1,17 +1,20 @@
 package graphics_view.graphical_controller;
 
 import controller.controller.CoreShopMenuController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import model.GoodsType;
-import model.StrongholdCrusader;
-import model.User;
+import model.*;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class ShopController {
     private final CoreShopMenuController controller;
@@ -115,5 +118,9 @@ public class ShopController {
             }
         }
         return null;
+    }
+
+    public void exitShop(MouseEvent mouseEvent) {
+        Platform.exit();
     }
 }
