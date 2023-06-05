@@ -1,0 +1,15 @@
+.Box {
+    -fx-padding: 10;
+    -fx-spacing: 5;
+    -fx-background-color: #697582;
+    -fx-background-radius: 11;
+    -fx-border-color: black;
+    -fx-border-radius: 10;
+    -fx-border-width: 5;
+    -fx-alignment: center;
+}
+
+.Back {
+    -fx-background-image: url("../assets/gameStartMenu/back.jpg");
+    -fx-background-size: cover;
+}

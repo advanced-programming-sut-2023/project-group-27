@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="fixed json file">
-      <change afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/ShopController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/graphics_view/view/ShopMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/ShopMenu.fxml" afterDir="false" />
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="g start4">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/gameStartMenu/back.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameStartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameStartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/gameStartStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/gameStartStyles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/GameStartMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/GameStartMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,16 +23,16 @@
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
         <option value="module-info" />
-        <option value="CSS File" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="profMenuCompletion" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -129,7 +130,20 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ShopMenu">
+  <component name="RunManager" selected="Application.GameStartMenu">
+    <configuration name="GameStartMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphics_view.view.GameStartMenu" />
+      <module name="project-group-27" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="graphics_view.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LoginMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="graphics_view.view.LoginMenu" />
       <module name="AP-project-group27" />
@@ -197,11 +211,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ShopMenu" />
-        <item itemvalue="Application.RegisterMenu" />
-        <item itemvalue="Application.ProfileMenu" />
-        <item itemvalue="Application.MainMenu" />
+        <item itemvalue="Application.GameStartMenu" />
         <item itemvalue="Application.LoginMenu" />
+        <item itemvalue="Application.MainMenu" />
+        <item itemvalue="Application.graphics_view.view.ProfileMenu" />
+        <item itemvalue="Application.ProfileMenu" />
       </list>
     </recent_temporary>
   </component>
@@ -254,9 +268,21 @@
       <workItem from="1685392898477" duration="4160000" />
       <workItem from="1685429608241" duration="25743000" />
       <workItem from="1685536127986" duration="10539000" />
-      <workItem from="1685891215171" duration="3227000" />
-      <workItem from="1685942885183" duration="298000" />
-      <workItem from="1685945993042" duration="10229000" />
+      <workItem from="1685973181692" duration="14085000" />
+    </task>
+    <task id="LOCAL-00044" summary="adding start game logic4">
+      <created>1683740904844</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1683740904844</updated>
+    </task>
+    <task id="LOCAL-00045" summary="adding start game logic5">
+      <created>1683744451174</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1683744451174</updated>
     </task>
     <task id="LOCAL-00046" summary="adding start game logic6">
       <created>1683866451962</created>
@@ -552,56 +578,42 @@
       <option name="project" value="LOCAL" />
       <updated>1685637221533</updated>
     </task>
-    <task id="LOCAL-00088" summary="test branch for lwjgl">
-      <created>1685885287642</created>
+    <task id="LOCAL-00088" summary="g start">
+      <created>1685954391234</created>
       <option name="number" value="00088" />
       <option name="presentableId" value="LOCAL-00088" />
       <option name="project" value="LOCAL" />
-      <updated>1685885287643</updated>
+      <updated>1685954391235</updated>
     </task>
-    <task id="LOCAL-00089" summary="added InitialMenu">
-      <created>1685887188551</created>
+    <task id="LOCAL-00089" summary="g start1">
+      <created>1685976900791</created>
       <option name="number" value="00089" />
       <option name="presentableId" value="LOCAL-00089" />
       <option name="project" value="LOCAL" />
-      <updated>1685887188551</updated>
+      <updated>1685976900791</updated>
     </task>
-    <task id="LOCAL-00090" summary="changed visuals">
-      <created>1685889786928</created>
+    <task id="LOCAL-00090" summary="g start2">
+      <created>1685981053734</created>
       <option name="number" value="00090" />
       <option name="presentableId" value="LOCAL-00090" />
       <option name="project" value="LOCAL" />
-      <updated>1685889786928</updated>
+      <updated>1685981053734</updated>
     </task>
-    <task id="LOCAL-00091" summary="changed visuals">
-      <created>1685890266432</created>
+    <task id="LOCAL-00091" summary="g start3">
+      <created>1685982951771</created>
       <option name="number" value="00091" />
       <option name="presentableId" value="LOCAL-00091" />
       <option name="project" value="LOCAL" />
-      <updated>1685890266432</updated>
+      <updated>1685982951771</updated>
     </task>
-    <task id="LOCAL-00092" summary="changed visuals">
-      <created>1685890360946</created>
+    <task id="LOCAL-00092" summary="g start4">
+      <created>1685987784820</created>
       <option name="number" value="00092" />
       <option name="presentableId" value="LOCAL-00092" />
       <option name="project" value="LOCAL" />
-      <updated>1685890360946</updated>
+      <updated>1685987784820</updated>
     </task>
-    <task id="LOCAL-00093" summary="changed visuals">
-      <created>1685890420833</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1685890420833</updated>
-    </task>
-    <task id="LOCAL-00094" summary="fixed json file">
-      <created>1685890576182</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1685890576182</updated>
-    </task>
-    <option name="localTasksCounter" value="95" />
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -687,11 +699,12 @@
     <MESSAGE value="functionality 12" />
     <MESSAGE value="functionality 13" />
     <MESSAGE value="added static graphic to LoginMenu" />
-    <MESSAGE value="test branch for lwjgl" />
-    <MESSAGE value="added InitialMenu" />
-    <MESSAGE value="changed visuals" />
-    <MESSAGE value="fixed json file" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed json file" />
+    <MESSAGE value="g start" />
+    <MESSAGE value="g start1" />
+    <MESSAGE value="g start2" />
+    <MESSAGE value="g start3" />
+    <MESSAGE value="g start4" />
+    <option name="LAST_COMMIT_MESSAGE" value="g start4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -714,22 +727,22 @@
     </pin-to-top-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/project_group_27$All_in_AP_project_group27.ic" NAME="All in AP-project-group27 Coverage Results" MODIFIED="1684252129968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_ShopTest_showShop.ic" NAME="CoreGameMenuControllerTest$ShopTest.showShop Coverage Results" MODIFIED="1683798459321" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>controller.controller.*</FILTER>
-    </SUITE>
+    <SUITE FILE_PATH="coverage/project_group_27$Main.ic" NAME="Main Coverage Results" MODIFIED="1683744260592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest.ic" NAME="CoreGameMenuControllerTest Coverage Results" MODIFIED="1683744288536" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>controller.controller.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/project_group_27$All_in_project_group_27.ic" NAME="All in project-group-27 Coverage Results" MODIFIED="1684778258774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/project_group_27$Main.ic" NAME="Main Coverage Results" MODIFIED="1684002436678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_SelectUnitTest_selectUnit2.ic" NAME="CoreGameMenuControllerTest$SelectUnitTest.selectUnit2 Coverage Results" MODIFIED="1683793514142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/project_group_27$CoreMapEditMenuControllerTest_setTexture.ic" NAME="CoreMapEditMenuControllerTest.setTexture Coverage Results" MODIFIED="1683802972833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>controller.controller.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_ShopTest_showShop.ic" NAME="CoreGameMenuControllerTest$ShopTest.showShop Coverage Results" MODIFIED="1683798459321" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controller.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/project_group_27$All_in_project_group_27.ic" NAME="All in project-group-27 Coverage Results" MODIFIED="1684778258774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_SelectUnitTest_selectUnit.ic" NAME="CoreGameMenuControllerTest$SelectUnitTest.selectUnit Coverage Results" MODIFIED="1683791907745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>controller.controller.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/project_group_27$CoreMapEditMenuControllerTest_setTexture.ic" NAME="CoreMapEditMenuControllerTest.setTexture Coverage Results" MODIFIED="1683802972833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/project_group_27$All_in_AP_project_group27.ic" NAME="All in AP-project-group27 Coverage Results" MODIFIED="1683841034665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/project_group_27$CoreGameMenuControllerTest_SelectUnitTest_selectUnit2.ic" NAME="CoreGameMenuControllerTest$SelectUnitTest.selectUnit2 Coverage Results" MODIFIED="1683793514142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>controller.controller.*</FILTER>
     </SUITE>
   </component>
