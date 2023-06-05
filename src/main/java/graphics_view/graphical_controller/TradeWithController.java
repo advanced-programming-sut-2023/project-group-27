@@ -79,7 +79,7 @@ public class TradeWithController {
     }
 
     public void back(javafx.scene.input.MouseEvent mouseEvent) throws Exception {
-//        new TradeMenu(loggedInUser, match).start(controller.controller.Utilities.getStage());
+        new TradeMenu(loggedInUser, match).start(Utilities.getStage());
     }
 
     public void next(javafx.scene.input.MouseEvent mouseEvent) throws Exception {

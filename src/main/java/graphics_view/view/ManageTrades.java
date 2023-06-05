@@ -26,7 +26,7 @@ public class ManageTrades extends Application {
     public void start(Stage stage) throws Exception {
         URL url = getClass().getResource("/fxml/ManageTrades.fxml");
         FXMLLoader loader = new FXMLLoader(url);
-        TabPane borderPane = loader.load();
+        BorderPane borderPane = loader.load();
         ((ManageTradeController) loader.getController()).init(loggedInUser, match);
         Scene scene = new Scene(borderPane);
         stage.setScene(scene);

@@ -59,6 +59,10 @@ public class Trade {
         state = "done";
     }
 
+    public void setStateToRejected() {
+        state = "rejected";
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();

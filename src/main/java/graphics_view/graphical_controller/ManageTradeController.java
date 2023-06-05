@@ -1,6 +1,10 @@
 package graphics_view.graphical_controller;
 
 import controller.controller.CoreTradeMenuController;
+import controller.controller.Utilities;
+import graphics_view.view.TradeMenu;
+import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -56,6 +60,7 @@ public class ManageTradeController {
                                 new javafx.scene.layout.CornerRadii(20), null)));
                 hBox.getChildren().remove(buttonAccept);
                 hBox.getChildren().remove(buttonReject);
+                label1.setText("State: done");
             });
             buttonReject.setBackground(new javafx.scene.layout.Background(
                     new javafx.scene.layout.BackgroundFill(Color.RED,
@@ -68,11 +73,13 @@ public class ManageTradeController {
                                 new javafx.scene.layout.CornerRadii(20), null)));
                 hBox.getChildren().remove(buttonAccept);
                 hBox.getChildren().remove(buttonReject);
+                trade.setStateToRejected();
+                label1.setText("State: " + trade.getState());
             });
             hBox.getChildren().add(label);
             hBox.getChildren().add(label1);
             hBox.getChildren().add(label2);
-            if (!trade.getState().equals("awaiting")){
+            if (trade.getState().equals("awaiting")){
                 hBox.getChildren().add(buttonAccept);
                 hBox.getChildren().add(buttonReject);
             }
@@ -85,11 +92,25 @@ public class ManageTradeController {
 
         for (Trade trade : tradingSystem.getOutgoingTrades()) {
             HBox hBox = new HBox();
+            hBox.setMinHeight(50);
+            hBox.setSpacing(20);
+            hBox.setAlignment(Pos.CENTER);
+            hBox.setBorder(new javafx.scene.layout.Border(
+                    new javafx.scene.layout.BorderStroke(Color.BLACK,
+                            javafx.scene.layout.BorderStrokeStyle.SOLID,
+                            new javafx.scene.layout.CornerRadii(20),
+                            new javafx.scene.layout.BorderWidths(2))));
             Label label = new Label("You requested " + trade.getTarget().getUsername()
                     + " for " + trade.getAmount() + " " + trade.getType().getName()
                     + " in exchange of " + trade.getPrice() + "$");
+            label.setMaxWidth(300);
+            label.setMinWidth(300);
             Label label1 = new Label("State: " + trade.getState());
+            label1.setMaxWidth(150);
+            label1.setMinWidth(150);
             Label label2 = new Label("you said " + trade.getComment());
+            label2.setMaxWidth(300);
+            label2.setMinWidth(300);
             hBox.getChildren().add(label);
             hBox.getChildren().add(label1);
             hBox.getChildren().add(label2);
@@ -101,4 +122,7 @@ public class ManageTradeController {
 
     }
 
+    public void back(ActionEvent event) throws Exception {
+        new TradeMenu(loggedInUser, match).start(Utilities.getStage());
+    }
 }

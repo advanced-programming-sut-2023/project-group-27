@@ -6,25 +6,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="graphics_view.graphical_controller.ManageTradeController"
             stylesheets="@../css/tradeMenu.css"
             styleClass="ManageTrade"
             prefHeight="700.0" prefWidth="1200.0">
-    <Tab text="Incoming Requests">
-        <Pane maxWidth="700">
-            <VBox fx:id="incomingVBox">
+    <center>
+        <TabPane>
+            <Tab text="Incoming Requests">
+                <Pane maxWidth="700">
+                    <VBox fx:id="incomingVBox">
 
-            </VBox>
-        </Pane>
-    </Tab>
+                    </VBox>
+                </Pane>
+            </Tab>
 
-    <Tab text="Outgoing Requests">
-        <Pane>
-            <VBox fx:id="outgoingVBox">
+            <Tab text="Outgoing Requests">
+                <Pane>
+                    <VBox fx:id="outgoingVBox">
 
-            </VBox>
-        </Pane>
-    </Tab>
-</TabPane>
+                    </VBox>
+                </Pane>
+            </Tab>
+        </TabPane>
+    </center>
+
+    <bottom>
+        <Button fx:id="backButton" text="Back" onAction="#back"/>
+    </bottom>
+</BorderPane>
