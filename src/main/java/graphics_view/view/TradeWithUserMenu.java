@@ -31,7 +31,7 @@ public class TradeWithUserMenu extends Application {
         URL url = getClass().getResource("/fxml/TradeWith.fxml");
         FXMLLoader loader = new FXMLLoader(url);
         BorderPane borderPane = loader.load();
-        ((TradeWithController) loader.getController()).init(loggedInUser, user, match);
+        ((TradeWithController) loader.getController()).init(loggedInUser, user, match, borderPane);
         Scene scene = new Scene(borderPane);
         stage.setScene(scene);
         stage.show();
