@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.*;
+import model.man.Soldier;
+import model.man.SoldierType;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -22,7 +24,9 @@ public class GameMenu extends Application {
         User user = new User("user", "Password@1", "n", "s", "e", "a", "b");
         User user2 = new User("user2", "Password@1", "n", "s", "e", "a", "b");
         user.setMonarchy(new Monarchy(user, MonarchyColorType.BLACK, gameMap, locations[0]));
+        user.getMonarchy().setLord(new Soldier(SoldierType.LORD, user));
         user2.setMonarchy(new Monarchy(user2, MonarchyColorType.RED, gameMap, locations[1]));
+        user2.getMonarchy().setLord(new Soldier(SoldierType.LORD, user2));
         User[] users = new User[]{user, user2};
         this.match = new Match(gameMap, Arrays.stream(users).collect(Collectors.toList()));
     }
