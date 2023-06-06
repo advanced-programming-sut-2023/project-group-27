@@ -118,6 +118,7 @@ public class ShopController {
             if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row) {
                 return node;
             }
+
         }
         return null;
     }
