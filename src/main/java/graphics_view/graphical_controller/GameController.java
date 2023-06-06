@@ -5,6 +5,7 @@ import controller.controller.Utilities;
 import graphics_view.view.ShopMenu;
 import graphics_view.view.TradeMenu;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -72,8 +73,8 @@ public class GameController {
 
     public void mountCellData(StackPane tile, Cell cell) {
         //TODO add getPicture() method to model entities.
-//        tile.getChildren().add(cell.getType().getPicture());
-//        tile.getChildren().add(cell.getNaturalEntityType().getPicture());
+        tile.setBackground(new Background(new BackgroundFill(cell.getType().getColor(), CornerRadii.EMPTY, Insets.EMPTY)));
+        tile.getChildren().add(cell.getNaturalEntityType().getPicture());
 //        tile.getChildren().add(cell.getBuilding().getPicture());
 //        tile.getChildren().add(cell.getMen().get(0).getPicture());
         defineClickEvents(tile);
