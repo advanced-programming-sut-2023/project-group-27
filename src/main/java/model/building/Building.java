@@ -16,12 +16,12 @@ public class Building extends Destructable implements Passable {
         pictures.put("Barracks", "Barracks.png");
         pictures.put("MercenaryPost", "MercenaryPost.png");
         pictures.put("EngineersGuild", "EngineersGuild.gif");
-        pictures.put("batteringRam",);
-        pictures.put("siegeTower",);
-        pictures.put("fireThrower",);
-        pictures.put("staticCatapult",);
-        pictures.put("mobileCatapult",);
-        pictures.put("shield",);
+        pictures.put("batteringRam", "EngineersGuild.gif");
+        pictures.put("siegeTower", "EngineersGuild.gif"); //TODO search for good asset
+        pictures.put("fireThrower", "EngineersGuild.gif");
+        pictures.put("staticCatapult", "EngineersGuild.gif");
+        pictures.put("mobileCatapult", "EngineersGuild.gif");
+        pictures.put("shield", "EngineersGuild.gif");
         pictures.put("AppleFarm", "AppleFarm.gif");
         pictures.put("DairyFarm", "DairyFarm.gif");
         pictures.put("HopsFarm", "HopsFarm.gif");
@@ -38,7 +38,7 @@ public class Building extends Destructable implements Passable {
         pictures.put("PoluternerWorkShop", "PoluternerWorkShop.gif");
         pictures.put("FletcherWorkShop", "FletcherWorkShop.gif");
         pictures.put("BlackSmith", "BlackSmith.gif");
-        pictures.put("Inn",);
+        pictures.put("Inn", "Inn.gif");
         pictures.put("Granary", "Granary.gif");
         pictures.put("StockPile", "StockPile.gif");
         pictures.put("Armoury", "Armoury.png");
@@ -49,9 +49,9 @@ public class Building extends Destructable implements Passable {
         pictures.put("DefensiveTower", "DefensiveTower.png");
         pictures.put("SquareTower", "SquareTower.png");
         pictures.put("CircleTower", "CircleTower.png");
-        pictures.put("ChangingBridge", );
-        pictures.put("Wall", );
-        pictures.put("ShortWall", );
+        pictures.put("ChangingBridge", "Bridge.png");
+        pictures.put("Wall", "Wall.png");
+        pictures.put("ShortWall", "Wall.png");
     }
     private boolean isActive;
     private String name;

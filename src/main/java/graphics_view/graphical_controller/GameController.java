@@ -78,7 +78,8 @@ public class GameController {
             tile.getChildren().add(cell.getNaturalEntityType().getPicture());
         if (cell.getBuilding() != null)
             tile.getChildren().add(cell.getBuilding().getPicture());
-//        tile.getChildren().add(cell.getMen().get(0).getPicture());
+        if (cell.getMen().size() != 0)
+            tile.getChildren().add(cell.getMen().get(0).getPicture());
         defineClickEvents(tile);
     }
 
