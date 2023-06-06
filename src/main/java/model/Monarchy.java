@@ -5,6 +5,8 @@ import model.building.ProductionBuilding;
 import model.building.Storage;
 import model.man.Man;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -16,7 +18,8 @@ public class Monarchy {
     private final TradingSystem tradingSystem;
     private final User king;
     private final MonarchyColorType color;
-    private int popularity, taxRate, foodRate, gold, fearRate;
+    private int popularity, taxRate, foodRate, fearRate;
+    private double gold;
     private int population = 20;
     private Man lord;
 
@@ -53,7 +56,7 @@ public class Monarchy {
         return king;
     }
 
-    public int getGold() {
+    public double getGold() {
         return gold;
     }
 
@@ -61,7 +64,7 @@ public class Monarchy {
         return population;
     }
 
-    public void changeGold(int amount) {
+    public void changeGold(double amount) {
         gold += amount;
     }
 
@@ -129,7 +132,11 @@ public class Monarchy {
 
     public int calcPopularity() {
         int result = 0;
-        return 0;
+        result += calcPopularityFood();
+        result += calcPopularityTax();
+        result += calcPopularityReligion();
+        result += calcPopularityFear();
+        return result;
     }
 
     public void addBuilding(Building building) {
@@ -160,9 +167,9 @@ public class Monarchy {
             return taxRate * -2 + 1;
         }
         if (taxRate <= 4) {
-            return taxRate * 2;
+            return taxRate * -2;
         }
-        return taxRate * 4 - 8;
+        return taxRate * -4 - 8;
     }
 
 
@@ -175,7 +182,7 @@ public class Monarchy {
 
 
     public int calcPopularityFear() {
-        int result = 2 * fearRate;
+        int result = -2 * fearRate;
         for (Building building : buildings) {
             Location location = building.getLocation();
             Location castleLocation = new Location(0, 0);
@@ -200,7 +207,7 @@ public class Monarchy {
         this.population += getGrowthRate();
     }
 
-    private int getGrowthRate() {
+    public int getGrowthRate() {
         int div = 11;
         div -= Math.min((foodCount() / (population * 5)), 9);
         if (div >= 11) {
@@ -281,15 +288,22 @@ public class Monarchy {
     }
 
     private void getTax() {
-        int totalTax = 0;
+        double totalTax = getTotalTax();
+        this.changeGold(totalTax);
+        this.popularity += calcPopularityTax();
+    }
+
+    public double getTotalTax() {
+        double totalTax = 0;
         if (taxRate < 0) {
             totalTax += (taxRate * (0.2) - 0.4) * this.getPopulation();
         }
         if (taxRate > 0) {
             totalTax += (taxRate * (0.2) + 0.4) * this.getPopulation();
         }
-        this.changeGold(totalTax);
-        this.popularity += calcPopularityTax();
+        return BigDecimal.valueOf(totalTax)
+                .setScale(3, RoundingMode.HALF_UP)
+                .doubleValue();
     }
 
     public boolean isDead() {
@@ -298,5 +312,9 @@ public class Monarchy {
 
     public void setLord(Man lord) {
         this.lord = lord;
+    }
+
+    public int getFood() {
+        return getGood(GoodsType.BREAD) + getGood(GoodsType.MEAT) + getGood(GoodsType.APPLE) + getGood(GoodsType.CHEESE);
     }
 }
