@@ -183,7 +183,7 @@ public class GameStartController implements Initializable {
         miniMap.getChildren().clear();
         miniMapInfo.setText(selectedMap.getMapName() + ": " + selectedMap.getCapacity());
         for (int i = selectedMap.getHeight() - 1; i >= 0 ;i--) {
-            for (int j = 0; j < selectedMap.getHeight(); j++) {
+            for (int j = 0; j < selectedMap.getWidth(); j++) {
                 Rectangle rectangle = new Rectangle(1, 1);
                 rectangle.setFill(selectedMap.getCell(j, i).getType().getColor());
                 if (new ArrayList<Cell>(List.of(selectedMap.getKeepsLocations())).contains(selectedMap.getCell(j, i)))

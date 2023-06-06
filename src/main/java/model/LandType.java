@@ -15,7 +15,7 @@ public enum LandType implements Passable{
     DENSEMEADOW("DenseMeadow", true, "\u001B[48;5;22m", true, Color.rgb(4,84, 86)),
     OIl("Oil", true, "\u001B[48;5;231m", false, Color.rgb(253,255, 155)),
     MARSH("Marsh", true, "\u001B[48;5;3m", false, Color.rgb(16,39, 58)),
-    SHALLOWWATER("ShallowWater", true, "\u001B[48;5;75m", false, Color.rgb(0,0, 255)),
+    SHALLOWWATER("ShallowWater", true, "\u001B[48;5;75m", false, Color.rgb(43,43, 194)),
     RIVER("River", false, "\u001B[48;5;14m", false, Color.rgb(0,0, 255)),
     SMALLLAKE("SmallLake", false, "\u001B[48;5;33m", false, Color.rgb(0,0, 255)),
     LAKE("Lake", false, "\u001B[48;5;26m", false, Color.rgb(0,0, 255)),

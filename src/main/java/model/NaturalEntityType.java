@@ -1,27 +1,32 @@
 package model;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.util.HashMap;
 
 public enum NaturalEntityType implements Passable {
-    DESSERT_SHRUB("DessertPalm", "\u001B[38;5;m", true),
-    CHERRY_PALM("CherryPalm", "\u001B[31m", true),
-    OLIVE_TREE("OliveTree", "\u001B[38;5;178m", true),
-    COCONUT_PALM("CoconutPalm", "\u001B[37m", true),
-    DATES_PALM("DatesPalm", "\u001B[38;5;237m", true),
-    ROCK_NORTH("RocktoNorth", "\u001B[38;5;232m", false),
-    ROCK_SOUTH("RocktoSouth", "\u001B[38;5;232m", false),
-    ROCK_WEST("RocktoWest", "\u001B[38;5;232m", false),
-    ROCK_EAST("RocktoEast", "\u001B[38;5;232m", false);
+    DESSERT_SHRUB("DessertPalm", "\u001B[38;5;m", true, "1.png"),
+    CHERRY_PALM("CherryPalm", "\u001B[31m", true, "2.png"),
+    OLIVE_TREE("OliveTree", "\u001B[38;5;178m", true, "3.png"),
+    COCONUT_PALM("CoconutPalm", "\u001B[37m", true, "4.png"),
+    DATES_PALM("DatesPalm", "\u001B[38;5;237m", true, "5.png"),
+    ROCK_NORTH("RocktoNorth", "\u001B[38;5;232m", false, "north.png"),
+    ROCK_SOUTH("RocktoSouth", "\u001B[38;5;232m", false, "south.png"),
+    ROCK_WEST("RocktoWest", "\u001B[38;5;232m", false, "west.png"),
+    ROCK_EAST("RocktoEast", "\u001B[38;5;232m", false, "east.png");
 
     private static final HashMap<String, NaturalEntityType> map = new HashMap<>();
     private final String entityName;
     private final String ANSI_COLOR;
     private final boolean passability;
+    private final String picture;
 
-    NaturalEntityType(String EntityName, String ANSI_COLOR, boolean passability) {
+    NaturalEntityType(String EntityName, String ANSI_COLOR, boolean passability, String picture) {
         this.entityName = EntityName;
         this.ANSI_COLOR = ANSI_COLOR;
         this.passability = passability;
+        this.picture = picture;
     }
 
     public static void init() {
@@ -42,7 +47,9 @@ public enum NaturalEntityType implements Passable {
         return entityName;
     }
 
-
+    public ImageView getPicture() {
+        return new ImageView(new Image(getClass().getResource("/assets/nauralEntity/" + picture).toExternalForm()));
+    }
     @Override
     public boolean isPassable(Movable movable) {
         return this.passability;

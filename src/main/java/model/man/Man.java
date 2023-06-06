@@ -1,7 +1,11 @@
 package model.man;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.*;
 import model.task.Task;
+
+import java.util.HashMap;
 
 public abstract class Man extends Destructable implements Movable {
     private final String name;
@@ -9,6 +13,27 @@ public abstract class Man extends Destructable implements Movable {
     private Task task;
     private Location location;
     private final Double movementSpeed;
+    protected static HashMap<String, String> pictures = new HashMap<>();
+    static {
+        pictures.put("SpearMan", "");
+        pictures.put("PikeMan", "");
+        pictures.put("MaceMan", "");
+        pictures.put("SwordsMan", "");
+        pictures.put("Knight", "");
+        pictures.put("BlackMOnk", "");
+        pictures.put("LadderMan", "");
+        pictures.put("Slave", "");
+        pictures.put("Assassin", "");
+        pictures.put("ArabSwordsMan", "");
+        pictures.put("Archer", "");
+        pictures.put("CrossBowMan", "");
+        pictures.put("ArcherBow", "");
+        pictures.put("Slinger", "");
+        pictures.put("HorseArcher", "");
+        pictures.put("FireThrower", "");
+        pictures.put("Engineer", "");
+        pictures.put("Lord", "");
+    }
 
     public Man(int hitpoint, String name, User owner, Double movementSpeed) {
         super(hitpoint);
@@ -53,5 +78,9 @@ public abstract class Man extends Destructable implements Movable {
 
     public Task getTask() {
         return task;
+    }
+
+    public ImageView getPicture() {
+        return new ImageView(new Image(getClass().getResource("/assets/men/" + pictures.get(name)).toExternalForm()));
     }
 }

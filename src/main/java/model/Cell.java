@@ -1,5 +1,6 @@
 package model;
 
+import javafx.scene.layout.StackPane;
 import model.building.Building;
 import model.building.FightableBuilding;
 import model.man.Man;
@@ -14,7 +15,6 @@ public class Cell implements Passable{
     private final ArrayList<Man> men;
     private final ArrayList<Selectable> selectables;
     private final Location location;
-
     public Cell(LandType type, int xCoordinate, int yCoordinate) {
         selectables = new ArrayList<>();
         men = new ArrayList<>();
