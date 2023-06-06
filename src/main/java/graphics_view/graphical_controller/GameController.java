@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import model.Cell;
 import model.GameMap;
 import model.GoodsType;
@@ -258,11 +259,11 @@ public class GameController {
     }
 
     public void enterTrade(MouseEvent mouseEvent) throws Exception {
-        new TradeMenu(match.getCurrentUser(), match).start(Utilities.getStage());
+        new TradeMenu(match.getCurrentUser(), match).start(new Stage());
     }
 
     public void enterShop(MouseEvent mouseEvent) throws Exception {
-        new ShopMenu().start(Utilities.getStage());
+        new ShopMenu().start(new Stage());
     }
 
     public void nextTurn(MouseEvent mouseEvent) {

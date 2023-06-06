@@ -123,6 +123,8 @@ public class ShopController {
     }
 
     public void exitShop(MouseEvent mouseEvent) {
+
         Platform.exit();
+        //TODO fix this shit
     }
 }
