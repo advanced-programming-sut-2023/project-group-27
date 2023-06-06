@@ -74,8 +74,10 @@ public class GameController {
     public void mountCellData(StackPane tile, Cell cell) {
         //TODO add getPicture() method to model entities.
         tile.setBackground(new Background(new BackgroundFill(cell.getType().getColor(), CornerRadii.EMPTY, Insets.EMPTY)));
-        tile.getChildren().add(cell.getNaturalEntityType().getPicture());
-//        tile.getChildren().add(cell.getBuilding().getPicture());
+        if (cell.getNaturalEntityType() != null)
+            tile.getChildren().add(cell.getNaturalEntityType().getPicture());
+        if (cell.getBuilding() != null)
+            tile.getChildren().add(cell.getBuilding().getPicture());
 //        tile.getChildren().add(cell.getMen().get(0).getPicture());
         defineClickEvents(tile);
     }

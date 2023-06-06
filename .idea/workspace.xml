@@ -4,20 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="implementing game map2">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/naturalEntity/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/naturalEntity/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/naturalEntity/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/naturalEntity/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/naturalEntity/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/naturalEntity/east.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/naturalEntity/north.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/naturalEntity/south.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/naturalEntity/west.png" afterDir="false" />
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="implementing game map3">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/AppleFarm.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/Armourer.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/Armoury.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/Barracks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/BigKeep.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/BlackSmith.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/DairyFarm.gif.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/EngineersGuild.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/FletcherWorkShop.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/Granary.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/HintingPost.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/HopsFarm.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/Hovel.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/IronMine.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/Keep.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/MercenaryPost.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/Mill.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/PitchRig.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/PoluternerWorkShop.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/Quarry.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/StockPile.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/WheatFarm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/buildings/WoodCutter.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/LandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/LandType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/NaturalEntityType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/NaturalEntityType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/building/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/Building.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,14 +277,7 @@
       <workItem from="1685429608241" duration="25743000" />
       <workItem from="1685536127986" duration="10539000" />
       <workItem from="1685973181692" duration="14085000" />
-      <workItem from="1686040190958" duration="7384000" />
-    </task>
-    <task id="LOCAL-00046" summary="adding start game logic6">
-      <created>1683866451962</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1683866451962</updated>
+      <workItem from="1686040190958" duration="12630000" />
     </task>
     <task id="LOCAL-00047" summary="adding start game logic7">
       <created>1683868892621</created>
@@ -609,7 +615,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686043600405</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="implementing game map3">
+      <created>1686049365479</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1686049365479</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -674,7 +687,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="bug fix and improvement4" />
     <MESSAGE value="bug fix and improvement5" />
     <MESSAGE value="graphics test" />
     <MESSAGE value="captcha added" />
@@ -699,7 +711,8 @@
     <MESSAGE value="g start4" />
     <MESSAGE value="implementing game map." />
     <MESSAGE value="implementing game map2" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementing game map2" />
+    <MESSAGE value="implementing game map3" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementing game map3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
