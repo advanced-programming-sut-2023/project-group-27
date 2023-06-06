@@ -14,6 +14,9 @@ import model.Cell;
 import model.GameMap;
 import model.Match;
 
+import java.util.HashMap;
+import java.util.Stack;
+
 public class GameController {
     @FXML
     private Pane infoPane;
@@ -29,8 +32,8 @@ public class GameController {
     private Match match;
     private CoreGameMenuController controller;
     private double tileSize = 30.0;
-    GameMap mapData = match.getCurrentMatchMap();
-
+    private GameMap mapData = match.getCurrentMatchMap();
+    private HashMap<Cell, StackPane> stackHashMap = new HashMap<>();
     public void init(Match match) {
         this.match = match;
         this.controller = new CoreGameMenuController(match, null);
@@ -52,6 +55,7 @@ public class GameController {
             for (int j = 0; j < selectedMap.getWidth(); j++) {
                 StackPane tile = getTile(selectedMap.getCell(j, i));
                 gameMap.getChildren().add(tile);
+                stackHashMap.put(selectedMap.getCell(j, i), tile);
             }
         }
     }
@@ -80,7 +84,7 @@ public class GameController {
     }
 
     private StackPane getTileByLocation(int x, int y) {
-        return mapData.getCell(x, y).getStackPane();
+        return stackHashMap.get(mapData.getCell(x, y));
     }
 
     public void enterTrade(MouseEvent mouseEvent) throws Exception {
