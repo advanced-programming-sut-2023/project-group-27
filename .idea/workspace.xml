@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="implementing game map4">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="implementing game map6">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/building/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/Building.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/Man.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/Man.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/buildings/HintingPost.gif" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,21 +254,7 @@
       <workItem from="1685429608241" duration="25743000" />
       <workItem from="1685536127986" duration="10539000" />
       <workItem from="1685973181692" duration="14085000" />
-      <workItem from="1686040190958" duration="14575000" />
-    </task>
-    <task id="LOCAL-00049" summary="adding start game logic9">
-      <created>1683873026192</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1683873026192</updated>
-    </task>
-    <task id="LOCAL-00050" summary="map bug fixes">
-      <created>1683874834577</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1683874834578</updated>
+      <workItem from="1686040190958" duration="17193000" />
     </task>
     <task id="LOCAL-00051" summary="map config menu added">
       <created>1683897871896</created>
@@ -600,7 +585,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686056934570</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="implementing game map5">
+      <created>1686059146938</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1686059146938</updated>
+    </task>
+    <task id="LOCAL-00099" summary="implementing game map6">
+      <created>1686065372519</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1686065372519</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -665,8 +664,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="graphics test" />
-    <MESSAGE value="captcha added" />
     <MESSAGE value="functionality" />
     <MESSAGE value="functionality 2" />
     <MESSAGE value="functionality 3" />
@@ -690,7 +687,9 @@
     <MESSAGE value="implementing game map2" />
     <MESSAGE value="implementing game map3" />
     <MESSAGE value="implementing game map4" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementing game map4" />
+    <MESSAGE value="implementing game map5" />
+    <MESSAGE value="implementing game map6" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementing game map6" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
