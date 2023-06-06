@@ -16,12 +16,12 @@ public class Building extends Destructable implements Passable {
         pictures.put("Barracks", "Barracks.png");
         pictures.put("MercenaryPost", "MercenaryPost.png");
         pictures.put("EngineersGuild", "EngineersGuild.gif");
-        pictures.put("batteringRam", "EngineersGuild.gif");
-        pictures.put("siegeTower", "EngineersGuild.gif"); //TODO search for good asset
-        pictures.put("fireThrower", "EngineersGuild.gif");
-        pictures.put("staticCatapult", "EngineersGuild.gif");
-        pictures.put("mobileCatapult", "EngineersGuild.gif");
-        pictures.put("shield", "EngineersGuild.gif");
+        pictures.put("batteringRam", "batteringRam.png");
+        pictures.put("siegeTower", "SiegeTower.png");
+        pictures.put("fireThrower", "FireThrower.png");
+        pictures.put("staticCatapult", "Catapult.png");
+        pictures.put("mobileCatapult", "MobileCatapult.png");
+        pictures.put("shield", "Shield.png");
         pictures.put("AppleFarm", "AppleFarm.gif");
         pictures.put("DairyFarm", "DairyFarm.gif");
         pictures.put("HopsFarm", "HopsFarm.gif");
