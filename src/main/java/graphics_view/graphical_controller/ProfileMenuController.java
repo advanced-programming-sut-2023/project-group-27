@@ -1,7 +1,9 @@
 package graphics_view.graphical_controller;
 
 import controller.controller.CoreProfileMenuController;
+import controller.controller.Utilities;
 import graphics_view.view.Captcha;
+import graphics_view.view.MainMenu;
 import graphics_view.view.ProfileMenu;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -100,9 +102,8 @@ public class ProfileMenuController implements Initializable {
     private Circle specialCircle;
     private int defaultAvatar = 1;
     private final int totalDefaultAvatars = 8;
-    Object[] users;
-    private User currentUser = new User(
-            "arshia", "Arshia@1", "arshi", "yoyo", "a@b.c", "dsa", "dsa");
+    private Object[] users;
+    private User currentUser = StrongholdCrusader.getLoggedInUser();
     private CoreProfileMenuController controller;
     private final Media media= new Media(ProfileMenu.class.getResource("/assets/tracks/profileMenu.mp3").toExternalForm());
     private final MediaPlayer mediaPlayer = new MediaPlayer(media);
@@ -119,14 +120,6 @@ public class ProfileMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        StrongholdCrusader.setLoggedInUser(currentUser);
-        currentUser.setHighScore(50);
-        User user1 = new User(
-                "alex", "Arshia@1", "ali", "yoyo", "a@b.c", "dsa", "dsa");
-        user1.setHighScore(30);
-        StrongholdCrusader.addUser(currentUser);
-        StrongholdCrusader.addUser(user1);
-
         controller = new CoreProfileMenuController(null);
         mediaPlayer.setCycleCount(-1);
         mediaPlayer.play();
@@ -520,5 +513,9 @@ public class ProfileMenuController implements Initializable {
 
         if (result.get() == ButtonType.OK)
             currentUser.setImagePath("/assets/avatars/default/" + defaultAvatar + ".png");
+    }
+
+    public void exit(MouseEvent mouseEvent) throws Exception {
+        new MainMenu().start(Utilities.getStage());
     }
 }

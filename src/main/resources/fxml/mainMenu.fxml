@@ -6,11 +6,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="graphics_view.graphical_controller.MainMenuController"
             stylesheets="@../css/mainMenuStyles.css"
             styleClass="MainMenuPane"
             prefHeight="700.0" prefWidth="1200.0">
-    <Button text="profile" onMouseClicked="#enterProfileMenu"/>
-</Pane>
+    <center>
+        <VBox alignment="CENTER" spacing="50">
+            <Button text="profile" onMouseClicked="#enterProfileMenu"/>
+            <Button text="start" onMouseClicked="#enterGameStartMenu"/>
+            <Button text="log out" onMouseClicked="#logOut"/>
+            <Button text="exit" onMouseClicked="#exit"/>
+        </VBox>
+    </center>
+</BorderPane>

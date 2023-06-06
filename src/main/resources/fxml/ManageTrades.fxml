@@ -13,7 +13,7 @@
             styleClass="ManageTrade"
             prefHeight="700.0" prefWidth="1200.0">
     <center>
-        <TabPane>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
             <Tab text="Incoming Requests">
                 <Pane maxWidth="700">
                     <VBox fx:id="incomingVBox">

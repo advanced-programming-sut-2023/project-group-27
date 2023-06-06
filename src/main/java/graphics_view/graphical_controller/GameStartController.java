@@ -1,6 +1,7 @@
 package graphics_view.graphical_controller;
 
 import controller.controller.CoreGameStartMenuController;
+import graphics_view.view.GameMenu;
 import graphics_view.view.GameStartMenu;
 import graphics_view.view.MainMenu;
 import javafx.fxml.FXML;
@@ -193,15 +194,14 @@ public class GameStartController implements Initializable {
         }
     }
 
-    public void start(MouseEvent mouseEvent) {
+    public void start(MouseEvent mouseEvent) throws Exception {
         if (thisGamePlayers.size() < 2) return;
         ArrayList<Integer> keeps = new ArrayList<>();
         for (User user : thisGamePlayers)
             keeps.add(playersKeeps.get(user) + 1);
         controller.assignKeepsAndStart(keeps);
 
-        //TODO link to main game
-        // use match to build the game now
+        new GameMenu(controller.getMatch()).start(GameStartMenu.stage);
     }
 
     public void exit(MouseEvent mouseEvent) throws Exception {
