@@ -6,8 +6,6 @@ import graphics_view.view.Captcha;
 import graphics_view.view.InitialMenu;
 import graphics_view.view.LoginMenu;
 import graphics_view.view.MainMenu;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;

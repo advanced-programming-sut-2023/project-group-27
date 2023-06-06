@@ -40,7 +40,7 @@ public class Building extends Destructable implements Passable {
         pictures.put("BlackSmith", "BlackSmith.gif");
         pictures.put("Inn", "Inn.gif");
         pictures.put("Granary", "Granary.gif");
-        pictures.put("StockPile", "StockPile.gif");
+        pictures.put("Stockpile", "StockPile.gif");
         pictures.put("Armoury", "Armoury.png");
         pictures.put("Keep", "Keep.png");
         pictures.put("BigKeep", "BigKeep.png");

@@ -4,7 +4,6 @@ import java.util.*;
 
 public class StrongholdCrusader {
     private static User loggedInUser;
-    private static User currentUser;
     private static Match currentMatch;
     private static final HashMap<String , GameMap> allMaps = new HashMap<>();
     private static final HashMap<String , User> allUsers = new HashMap<>();
@@ -31,14 +30,6 @@ public class StrongholdCrusader {
 
     public static void setLoggedInUser(User loggedInUser) {
         StrongholdCrusader.loggedInUser = loggedInUser;
-    }
-
-    public static User getCurrentUser() {
-        return currentUser;
-    }
-
-    public static void setCurrentUser(User currentUser) {
-        StrongholdCrusader.currentUser = currentUser;
     }
 
     public static void reset() {

@@ -48,7 +48,7 @@ public enum NaturalEntityType implements Passable {
     }
 
     public ImageView getPicture() {
-        return new ImageView(new Image(getClass().getResource("/assets/nauralEntity/" + picture).toExternalForm()));
+        return new ImageView(new Image(getClass().getResource("/assets/naturalEntity/" + picture).toExternalForm()));
     }
     @Override
     public boolean isPassable(Movable movable) {

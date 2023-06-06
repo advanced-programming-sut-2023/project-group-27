@@ -10,6 +10,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.StrongholdCrusader;
+import model.User;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,13 +22,16 @@ public class InitialMenu extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Utilities.setStage(stage);
+        if (stayLoggedInCheck() != null) {
+            new MainMenu().start(stage);
+            return;
+        }
         URL url = getClass().getResource("/fxml/InitialMenu.fxml");
         BorderPane borderPane = FXMLLoader.load(url);
         Scene scene = new Scene(borderPane);
         stage.setScene(scene);
         stage.show();
     }
-
     public void enterLoginMenu() throws Exception {
         new LoginMenu().start(Utilities.getStage());
     }
@@ -50,5 +55,15 @@ public class InitialMenu extends Application {
     public static void main(String[] args) throws FileNotFoundException {
         Controller.fetchData();
         launch(args);
+    }
+
+    private User stayLoggedInCheck(){
+        for (User user : StrongholdCrusader.getAllUsers().values())
+            if (user.isStayLoggedIn()) {
+                StrongholdCrusader.setLoggedInUser(user);
+                return user;
+            }
+
+        return null;
     }
 }

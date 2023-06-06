@@ -43,7 +43,7 @@
 
             </VBox>
 
-            <Button text="Exit" layoutX="30" layoutY="600"/>
+            <Button text="Exit" layoutX="30" layoutY="600" onMouseClicked="#exit"/>
 
         </Pane>
     </Tab>

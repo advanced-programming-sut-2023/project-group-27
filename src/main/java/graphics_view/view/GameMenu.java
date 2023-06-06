@@ -18,21 +18,21 @@ import java.util.stream.Collectors;
 
 public class GameMenu extends Application {
     private Match match;
-    {
-        Location[] locations = new Location[] {new Location(1, 1), new Location(10, 10)};
-        GameMap gameMap = new GameMap(100, 100, "myMap", 100, locations);
-        User user = new User("user", "Password@1", "n", "s", "e", "a", "b");
-        User user2 = new User("user2", "Password@1", "n", "s", "e", "a", "b");
-        user.setMonarchy(new Monarchy(user, MonarchyColorType.BLACK, gameMap, locations[0]));
-        user.getMonarchy().setLord(new Soldier(SoldierType.LORD, user));
-        user2.setMonarchy(new Monarchy(user2, MonarchyColorType.RED, gameMap, locations[1]));
-        user2.getMonarchy().setLord(new Soldier(SoldierType.LORD, user2));
-        User[] users = new User[]{user, user2};
-        this.match = new Match(gameMap, Arrays.stream(users).collect(Collectors.toList()));
-    }
-//    public GameMenu(Match match) {
-//        this.match = match;
+//    {
+//        Location[] locations = new Location[] {new Location(1, 1), new Location(10, 10)};
+//        GameMap gameMap = new GameMap(100, 100, "myMap", 100, locations);
+//        User user = new User("user", "Password@1", "n", "s", "e", "a", "b");
+//        User user2 = new User("user2", "Password@1", "n", "s", "e", "a", "b");
+//        user.setMonarchy(new Monarchy(user, MonarchyColorType.BLACK, gameMap, locations[0]));
+//        user.getMonarchy().setLord(new Soldier(SoldierType.LORD, user));
+//        user2.setMonarchy(new Monarchy(user2, MonarchyColorType.RED, gameMap, locations[1]));
+//        user2.getMonarchy().setLord(new Soldier(SoldierType.LORD, user2));
+//        User[] users = new User[]{user, user2};
+//        this.match = new Match(gameMap, Arrays.stream(users).collect(Collectors.toList()));
 //    }
+    public GameMenu(Match match) {
+        this.match = match;
+    }
 
     @Override
     public void start(Stage stage) throws Exception {

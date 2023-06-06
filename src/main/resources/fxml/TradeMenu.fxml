@@ -24,6 +24,7 @@
         <VBox alignment="CENTER" spacing="20">
             <Button text="Create new trade request" prefHeight="100" prefWidth="300" onMouseClicked="#create"/>
             <Button text="View trade requests" prefHeight="100" prefWidth="300" onMouseClicked="#manage"/>
+            <Button text="Exit" prefHeight="100" prefWidth="300" onMouseClicked="#exit"/>
         </VBox>
     </center>
 </BorderPane>

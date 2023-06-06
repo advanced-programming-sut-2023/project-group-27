@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import model.Cell;
 import model.GameMap;
 import model.GoodsType;
@@ -38,10 +39,11 @@ public class GameController {
     private VBox rateInfo, popularityInfo, foodInfo, goldPopulationInfo;
     private CoreGameMenuController controller;
     private double tileSize = 30.0;
-    private GameMap mapData = match.getCurrentMatchMap();
+    private GameMap mapData;
     private HashMap<Cell, StackPane> stackHashMap = new HashMap<>();
     public void init(Match match) {
         this.match = match;
+        mapData = match.getCurrentMatchMap();
         this.controller = new CoreGameMenuController(match, null);
         initiateGameMap();
         HBox hBox = new HBox();
@@ -58,18 +60,20 @@ public class GameController {
     }
 
     private void initiateGameMap() {
-        gameMap.setVgap(0);
-        gameMap.setHgap(0);
+        gameMap.setVgap(1);
+        gameMap.setHgap(1);
         gameMap.setPrefRows(mapData.getHeight());
         gameMap.setPrefColumns(mapData.getWidth());
         gameMap.setPrefTileHeight(tileSize);
         gameMap.setPrefTileWidth(tileSize);
+        gameMap.setLayoutX(0);
+        gameMap.setLayoutY(0);
         mountTiles(mapData);
     }
 
     private void mountTiles(GameMap selectedMap) {
-        for (int i = selectedMap.getHeight() - 1; i >= 0 ;i--) {
-            for (int j = 0; j < selectedMap.getWidth(); j++) {
+        for (int i = selectedMap.getHeight() / 10 - 1; i >= 0 ;i--) {
+            for (int j = 0; j < selectedMap.getWidth() / 10; j++) {
                 StackPane tile = getTile(selectedMap.getCell(j, i));
                 gameMap.getChildren().add(tile);
                 stackHashMap.put(selectedMap.getCell(j, i), tile);
@@ -89,6 +93,7 @@ public class GameController {
 
     public void mountCellData(StackPane tile, Cell cell) {
         //TODO add getPicture() method to model entities.
+
         tile.setBackground(new Background(new BackgroundFill(cell.getType().getColor(), CornerRadii.EMPTY, Insets.EMPTY)));
         if (cell.getNaturalEntityType() != null)
             tile.getChildren().add(cell.getNaturalEntityType().getPicture());
@@ -254,11 +259,11 @@ public class GameController {
     }
 
     public void enterTrade(MouseEvent mouseEvent) throws Exception {
-        new TradeMenu(match.getCurrentUser(), match).start(Utilities.getStage());
+        new TradeMenu(match.getCurrentUser(), match).start(new Stage());
     }
 
     public void enterShop(MouseEvent mouseEvent) throws Exception {
-        new ShopMenu().start(Utilities.getStage());
+        new ShopMenu().start(new Stage());
     }
 
     public void nextTurn(MouseEvent mouseEvent) {
