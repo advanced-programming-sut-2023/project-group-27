@@ -2,18 +2,24 @@ package graphics_view.graphical_controller;
 
 import controller.controller.CoreLoginMenuController;
 import controller.controller.Utilities;
+import graphics_view.view.Captcha;
 import graphics_view.view.InitialMenu;
 import graphics_view.view.LoginMenu;
 import graphics_view.view.MainMenu;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.StrongholdCrusader;
@@ -45,6 +51,11 @@ public class LoginController {
     private boolean stayLoggedIn;
     private boolean userValid;
     private boolean answerValid;
+    private Captcha captcha;
+    private Rectangle captchaRectangle;
+    private TextField captchaValue;
+    private Button resetCaptcha;
+    private boolean captchaComplete;
     private final CoreLoginMenuController controller;
 
     public LoginController() {
@@ -52,6 +63,7 @@ public class LoginController {
         stayLoggedIn = false;
         userValid = false;
         answerValid = false;
+        captchaComplete = false;
     }
 
     public void setStage(Stage stage) {
@@ -65,11 +77,57 @@ public class LoginController {
     }
 
     public void login() throws Exception {
+        showCaptcha();
+        if (!captchaComplete) {
+            errorText.setText("Please Complete Captcha");
+            errorText.setFill(Color.WHITE);
+        }
+    }
+
+    private void showCaptcha() {
+        VBox vBox = new VBox();
+        vBox.setPadding(new Insets(10));
+        vBox.setSpacing(10);
+        captcha = new Captcha();
+        captchaRectangle = new Rectangle(150 , 50);
+        captchaRectangle.setFill(new ImagePattern(captcha.getCaptcha()));
+        HBox hBox = new HBox();
+        hBox.setSpacing(10);
+        captchaValue = new TextField();
+        captchaValue.setPromptText("captcha");
+        resetCaptcha = new Button("reset");
+        hBox.getChildren().addAll(captchaValue, resetCaptcha);
+        Button login = new Button("Login");
+        stage = new Stage();
+        login.setOnAction(actionEvent -> {
+            if (!captchaValue.getText().equals(captcha.getValue())) {
+                resetCaptchaPicture();
+            }
+            else {
+                captchaComplete = true;
+                stage.close();
+                try {
+                    continueLogin();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        vBox.getChildren().addAll(captchaRectangle , hBox , login);
+        vBox.setAlignment(Pos.CENTER);
+        setResetCaptchaEvent();
+        Scene scene = new Scene(vBox);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    private void continueLogin() throws Exception {
         String username = this.username.getText();
         String password = this.password.getText();
         String result = controller.login(username, password, stayLoggedIn);
         if (result.equals("User logged in successfully!")) {
-            new MainMenu().start(new Stage());
+            new MainMenu().start(Utilities.getStage());
         } else {
             errorText.setText(result);
             errorText.setFill(Color.WHITE);
@@ -160,9 +218,18 @@ public class LoginController {
         if (result.get() == ButtonType.OK) controller.exit();
     }
 
-    public void showCaptcha() {
-        //TODO implement captcha
+    private void resetCaptchaPicture() {
+        captcha.refresh();
+        captchaValue.clear();
+        captchaRectangle.setFill(new ImagePattern(captcha.getCaptcha()));
     }
+
+    private void setResetCaptchaEvent() {
+        resetCaptcha.setOnMouseClicked(mouseEvent -> resetCaptchaPicture());
+    }
+
+
+
 
     public void backToInitialMenu() throws Exception {
         new InitialMenu().start(Utilities.getStage());
