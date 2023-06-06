@@ -4,14 +4,14 @@ import controller.controller.CoreGameMenuController;
 import controller.controller.Utilities;
 import graphics_view.view.ShopMenu;
 import graphics_view.view.TradeMenu;
-import javafx.fxml.FXML
-import javafx.geometry.Insets
+import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*
+import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import model.Cell;
 import model.GameMap;
