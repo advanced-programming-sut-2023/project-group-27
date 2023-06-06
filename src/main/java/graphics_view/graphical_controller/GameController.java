@@ -44,6 +44,17 @@ public class GameController {
         this.match = match;
         this.controller = new CoreGameMenuController(match, null);
         initiateGameMap();
+        HBox hBox = new HBox();
+        hBox.setSpacing(35);
+        rateInfo = new VBox();
+        popularityInfo = new VBox();
+        foodInfo = new VBox();
+        goldPopulationInfo = new VBox();
+        hBox.getChildren().addAll(rateInfo, popularityInfo, foodInfo, goldPopulationInfo);
+        infoPane.getChildren().add(hBox);
+        refreshRateInfoPane();
+        hBox.setLayoutX(320);
+        hBox.setLayoutY(80);
     }
 
     private void initiateGameMap() {
@@ -86,17 +97,6 @@ public class GameController {
         if (cell.getMen().size() != 0)
             tile.getChildren().add(cell.getMen().get(0).getPicture());
         defineClickEvents(tile);
-        HBox hBox = new HBox();
-        hBox.setSpacing(35);
-        rateInfo = new VBox();
-        popularityInfo = new VBox();
-        foodInfo = new VBox();
-        goldPopulationInfo = new VBox();
-        hBox.getChildren().addAll(rateInfo, popularityInfo, foodInfo, goldPopulationInfo);
-        infoPane.getChildren().add(hBox);
-        refreshRateInfoPane();
-        hBox.setLayoutX(320);
-        hBox.setLayoutY(80);
     }
 
     public void refreshRateInfoPane() {
