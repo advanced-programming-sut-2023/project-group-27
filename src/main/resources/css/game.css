@@ -1,0 +1,13 @@
+.InfoPane {
+    -fx-background-image: url("../assets/game/menu2.png");
+    -fx-background-size: cover;
+    -fx-padding: 100;
+}
+
+.MainPane {
+    -fx-background-color: #b2693b;
+}
+
+.MapPane {
+    -fx-background-color: #ffa503;
+}

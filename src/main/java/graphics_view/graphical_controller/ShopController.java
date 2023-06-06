@@ -22,11 +22,13 @@ public class ShopController {
     private GridPane gridPane;
     private Slider slider;
     private final User currentUser;
+    private final Match match;
 
     public ShopController() {
-        controller = new CoreShopMenuController(
-                StrongholdCrusader.getCurrentMatch() ,null);
-        currentUser = StrongholdCrusader.getCurrentUser();
+        // TODO : update match in StrongHoldCrusader
+        match = StrongholdCrusader.getCurrentMatch();
+        controller = new CoreShopMenuController(match ,null);
+        currentUser = match.getCurrentUser();
     }
 
     public void initialize() {
