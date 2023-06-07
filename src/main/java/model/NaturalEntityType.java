@@ -2,6 +2,7 @@ package model;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 import java.util.HashMap;
 
@@ -47,9 +48,14 @@ public enum NaturalEntityType implements Passable {
         return entityName;
     }
 
-    public ImageView getPicture() {
-        return new ImageView(new Image(getClass().getResource("/assets/naturalEntity/" + picture).toExternalForm()));
+    public ImageView getPicture(Pane pane) {
+        Image image = new Image(getClass().getResource("/assets/naturalEntity/" + picture).toExternalForm());
+        ImageView imageView = new ImageView(image);
+        imageView.fitHeightProperty().bind(pane.heightProperty());
+        imageView.fitWidthProperty().bind(pane.widthProperty());
+        return imageView;
     }
+
     @Override
     public boolean isPassable(Movable movable) {
         return this.passability;

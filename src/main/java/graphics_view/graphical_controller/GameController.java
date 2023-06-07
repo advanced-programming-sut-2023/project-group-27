@@ -14,11 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import model.Cell;
-import model.GameMap;
-import model.GoodsType;
-import model.Match;
-import model.Monarchy;
+import model.*;
 
 import java.util.HashMap;
 import java.util.Stack;
@@ -62,8 +58,8 @@ public class GameController {
     private void initiateGameMap() {
         gameMap.setVgap(1);
         gameMap.setHgap(1);
-        gameMap.setPrefRows(mapData.getHeight());
-        gameMap.setPrefColumns(mapData.getWidth());
+        gameMap.setPrefRows(mapData.getHeight() / 10);
+        gameMap.setPrefColumns(mapData.getWidth() / 10);
         gameMap.setPrefTileHeight(tileSize);
         gameMap.setPrefTileWidth(tileSize);
         gameMap.setLayoutX(0);
@@ -96,11 +92,11 @@ public class GameController {
 
         tile.setBackground(new Background(new BackgroundFill(cell.getType().getColor(), CornerRadii.EMPTY, Insets.EMPTY)));
         if (cell.getNaturalEntityType() != null)
-            tile.getChildren().add(cell.getNaturalEntityType().getPicture());
+            tile.getChildren().add(cell.getNaturalEntityType().getPicture(tile));
         if (cell.getBuilding() != null)
-            tile.getChildren().add(cell.getBuilding().getPicture());
+            tile.getChildren().add(cell.getBuilding().getPicture(tile));
         if (cell.getMen().size() != 0)
-            tile.getChildren().add(cell.getMen().get(0).getPicture());
+            tile.getChildren().add(cell.getMen().get(0).getPicture(tile));
         defineClickEvents(tile);
     }
 

@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="implementing game map6">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="implementing game map9">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/NaturalEntityType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/NaturalEntityType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/building/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/building/Building.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/buildings/HintingPost.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/man/Man.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/man/Man.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +130,7 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GameStartMenu">
+  <component name="RunManager" selected="Application.InitialMenu">
     <configuration name="GameMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="graphics_view.view.GameMenu" />
       <module name="project-group-27" />
@@ -144,6 +146,19 @@
     </configuration>
     <configuration name="GameStartMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="graphics_view.view.GameStartMenu" />
+      <module name="project-group-27" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="graphics_view.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InitialMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphics_view.view.InitialMenu" />
       <module name="project-group-27" />
       <extension name="coverage">
         <pattern>
@@ -181,26 +196,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProfileMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="graphics_view.view.profileMenu.ProfileMenu" />
-      <module name="project-group-27" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="graphics_view.view.profileMenu.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GameStartMenu" />
+        <item itemvalue="Application.InitialMenu" />
         <item itemvalue="Application.GameMenu" />
+        <item itemvalue="Application.GameStartMenu" />
         <item itemvalue="Application.LoginMenu" />
         <item itemvalue="Application.MainMenu" />
-        <item itemvalue="Application.ProfileMenu" />
       </list>
     </recent_temporary>
   </component>
@@ -255,48 +257,7 @@
       <workItem from="1685536127986" duration="10539000" />
       <workItem from="1685973181692" duration="14085000" />
       <workItem from="1686040190958" duration="17193000" />
-    </task>
-    <task id="LOCAL-00051" summary="map config menu added">
-      <created>1683897871896</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1683897871896</updated>
-    </task>
-    <task id="LOCAL-00052" summary="bug fix and improvement">
-      <created>1683901264701</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1683901264701</updated>
-    </task>
-    <task id="LOCAL-00053" summary="bug fix and improvement2">
-      <created>1683907304745</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1683907304745</updated>
-    </task>
-    <task id="LOCAL-00054" summary="bug fix and improvement3">
-      <created>1683909851287</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1683909851287</updated>
-    </task>
-    <task id="LOCAL-00055" summary="bug fix and improvement3">
-      <created>1683916847100</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1683916847100</updated>
-    </task>
-    <task id="LOCAL-00056" summary="bug fix and improvement3">
-      <created>1683918857886</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1683918857886</updated>
+      <workItem from="1686125795579" duration="959000" />
     </task>
     <task id="LOCAL-00057" summary="bug fix and improvement3">
       <created>1683921502740</created>
@@ -599,7 +560,49 @@
       <option name="project" value="LOCAL" />
       <updated>1686065372519</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="implementing game map8">
+      <created>1686084493906</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1686084493907</updated>
+    </task>
+    <task id="LOCAL-00101" summary="implementing game map9">
+      <created>1686085464173</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1686085464173</updated>
+    </task>
+    <task id="LOCAL-00102" summary="implementing game map9">
+      <created>1686085780688</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1686085780688</updated>
+    </task>
+    <task id="LOCAL-00103" summary="implementing game map9">
+      <created>1686085790660</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1686085790660</updated>
+    </task>
+    <task id="LOCAL-00104" summary="implementing game map9">
+      <created>1686085802063</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1686085802063</updated>
+    </task>
+    <task id="LOCAL-00105" summary="implementing game map9">
+      <created>1686085815325</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1686085815325</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,8 +667,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="functionality" />
-    <MESSAGE value="functionality 2" />
     <MESSAGE value="functionality 3" />
     <MESSAGE value="functionality 4" />
     <MESSAGE value="functionality 5" />
@@ -689,7 +690,9 @@
     <MESSAGE value="implementing game map4" />
     <MESSAGE value="implementing game map5" />
     <MESSAGE value="implementing game map6" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementing game map6" />
+    <MESSAGE value="implementing game map8" />
+    <MESSAGE value="implementing game map9" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementing game map9" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
