@@ -13,8 +13,7 @@ import javafx.scene.ParallelCamera;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
+import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -24,6 +23,8 @@ import java.util.HashMap;
 import java.util.Stack;
 
 public class GameController {
+    @FXML
+    private Pane mainPane;
     @FXML
     private Pane infoPane;
     @FXML
@@ -41,6 +42,7 @@ public class GameController {
     private double tileSize = 30.0;
     private GameMap mapData;
     private HashMap<Cell, StackPane> stackHashMap = new HashMap<>();
+    private double x = -1, y = -1;
     public void init(Match match) {
         this.match = match;
         mapData = match.getCurrentMatchMap();
@@ -71,21 +73,57 @@ public class GameController {
         mountTiles(mapData);
 
         mountZoomFeature();
+        mountNavigationFeature();
+    }
+
+    private void mountNavigationFeature() {
+        mainPane.setOnMouseDragged(mouseEvent -> {
+            if (mouseEvent.getButton() != MouseButton.SECONDARY) return;
+
+            int amount = 10;
+
+            if (mouseEvent.getX() > x + tileSize) {
+                if (true)//gameMap.getLayoutX() + amount <= 0)
+                    gameMap.setLayoutX(gameMap.getLayoutX() + amount);
+                else
+                    gameMap.setLayoutX(0);
+            } else if (mouseEvent.getX() < x - tileSize) {
+                if (gameMap.getLayoutX() - amount + gameMap.getWidth() * gameMap.getScaleX() >= 1200)
+                    gameMap.setLayoutX(gameMap.getLayoutX() - amount);
+                else
+                    gameMap.setLayoutX(1200 - gameMap.getWidth() * gameMap.getScaleX());
+            }
+            if (mouseEvent.getY() > y + tileSize) {
+                if (true)//gameMap.getLayoutY() + amount <= 0)
+                    gameMap.setLayoutY(gameMap.getLayoutY() + amount);
+                else
+                    gameMap.setLayoutX(0);
+            } else if (mouseEvent.getY() < y - tileSize){
+                if (gameMap.getLayoutY() - amount + gameMap.getHeight() * gameMap.getScaleX() >= 500)
+                    gameMap.setLayoutY(gameMap.getLayoutY() - amount);
+                else
+                    gameMap.setLayoutY(500 - gameMap.getHeight() * gameMap.getScaleX());
+            }
+        });
+
+        mainPane.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                x = mouseEvent.getX();
+                y = mouseEvent.getY();
+            }
+        });
     }
 
     private void mountZoomFeature() {
         int maxZoom = 5;
-        gameMap.setOnScroll(new EventHandler<ScrollEvent>() {
-            @Override
-            public void handle(ScrollEvent scrollEvent) {
-                if (scrollEvent.getDeltaY() >= 0) {
-                    gameMap.setScaleX(gameMap.getScaleX() + ((gameMap.getScaleX() + 1 > maxZoom) ? 0 : 1));
-                    gameMap.setScaleY(gameMap.getScaleY() + ((gameMap.getScaleY() + 1 > maxZoom) ? 0 : 1));
-                }
-                else {
-                    gameMap.setScaleX(gameMap.getScaleX() - ((gameMap.getScaleX() - 1 < 1) ? 0 : 1));
-                    gameMap.setScaleY(gameMap.getScaleY() - ((gameMap.getScaleY() - 1 < 1) ? 0 : 1));
-                }
+        gameMap.setOnScroll(scrollEvent -> {
+            if (scrollEvent.getDeltaY() >= 0) {
+                gameMap.setScaleX(gameMap.getScaleX() + ((gameMap.getScaleX() + 1 > maxZoom) ? 0 : 1));
+                gameMap.setScaleY(gameMap.getScaleY() + ((gameMap.getScaleY() + 1 > maxZoom) ? 0 : 1));
+            } else {
+                gameMap.setScaleX(gameMap.getScaleX() - ((gameMap.getScaleX() - 1 < 1) ? 0 : 1));
+                gameMap.setScaleY(gameMap.getScaleY() - ((gameMap.getScaleY() - 1 < 1) ? 0 : 1));
             }
         });
     }
