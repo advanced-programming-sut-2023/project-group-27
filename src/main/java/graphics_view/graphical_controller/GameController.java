@@ -4,13 +4,17 @@ import controller.controller.CoreGameMenuController;
 import controller.controller.Utilities;
 import graphics_view.view.ShopMenu;
 import graphics_view.view.TradeMenu;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Camera;
+import javafx.scene.ParallelCamera;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -65,7 +69,27 @@ public class GameController {
         gameMap.setLayoutX(0);
         gameMap.setLayoutY(0);
         mountTiles(mapData);
+
+        mountZoomFeature();
     }
+
+    private void mountZoomFeature() {
+        int maxZoom = 5;
+        gameMap.setOnScroll(new EventHandler<ScrollEvent>() {
+            @Override
+            public void handle(ScrollEvent scrollEvent) {
+                if (scrollEvent.getDeltaY() >= 0) {
+                    gameMap.setScaleX(gameMap.getScaleX() + ((gameMap.getScaleX() + 1 > maxZoom) ? 0 : 1));
+                    gameMap.setScaleY(gameMap.getScaleY() + ((gameMap.getScaleY() + 1 > maxZoom) ? 0 : 1));
+                }
+                else {
+                    gameMap.setScaleX(gameMap.getScaleX() - ((gameMap.getScaleX() - 1 < 1) ? 0 : 1));
+                    gameMap.setScaleY(gameMap.getScaleY() - ((gameMap.getScaleY() - 1 < 1) ? 0 : 1));
+                }
+            }
+        });
+    }
+
 
     private void mountTiles(GameMap selectedMap) {
         for (int i = selectedMap.getHeight() / 10 - 1; i >= 0 ;i--) {
