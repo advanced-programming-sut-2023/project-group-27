@@ -2,6 +2,7 @@ package model.man;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import model.*;
 import model.task.Task;
 
@@ -59,7 +60,11 @@ public abstract class Man extends Destructable implements Movable {
         return task;
     }
 
-    public ImageView getPicture() {
-        return new ImageView(new Image(getClass().getResource("/assets/men/" + name + ".png").toExternalForm()));
+    public ImageView getPicture(Pane pane) {
+        Image image = new Image(getClass().getResource("/assets/men/" + name + ".png").toExternalForm());
+        ImageView imageView = new ImageView(image);
+        imageView.fitHeightProperty().bind(pane.heightProperty());
+        imageView.fitWidthProperty().bind(pane.widthProperty());
+        return imageView;
     }
 }

@@ -2,6 +2,7 @@ package model.building;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import model.*;
 
 import java.util.HashMap;
@@ -94,7 +95,11 @@ public class Building extends Destructable implements Passable {
         return cell.getLocation();
     }
 
-    public ImageView getPicture() {
-        return new ImageView(new Image(getClass().getResource("/assets/buildings/" + pictures.get(this.name)).toExternalForm()));
+    public ImageView getPicture(Pane pane) {
+        Image image = new Image(getClass().getResource("/assets/buildings/" + pictures.get(this.name)).toExternalForm());
+        ImageView imageView = new ImageView(image);
+        imageView.fitHeightProperty().bind(pane.heightProperty());
+        imageView.fitWidthProperty().bind(pane.widthProperty());
+        return imageView;
     }
 }
