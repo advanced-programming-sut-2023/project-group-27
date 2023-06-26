@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="moveEnhanced">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="zoomOut borderBug Fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" afterDir="false" />
     </list>
@@ -257,14 +257,7 @@
       <workItem from="1685973181692" duration="14085000" />
       <workItem from="1686040190958" duration="17193000" />
       <workItem from="1686125795579" duration="15880000" />
-      <workItem from="1687763468100" duration="12539000" />
-    </task>
-    <task id="LOCAL-00064" summary="fix some bugs6">
-      <created>1683990278915</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1683990278915</updated>
+      <workItem from="1687763468100" duration="16631000" />
     </task>
     <task id="LOCAL-00065" summary="fix some bugs7">
       <created>1683995240601</created>
@@ -602,7 +595,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687774918736</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="zoomOut borderBug Fix">
+      <created>1687776545632</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1687776545632</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -667,7 +667,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="functionality 8" />
     <MESSAGE value="functionality 9" />
     <MESSAGE value="functionality 10" />
     <MESSAGE value="functionality 11" />
@@ -692,7 +691,8 @@
     <MESSAGE value="debug debug" />
     <MESSAGE value="zoomEnhanced" />
     <MESSAGE value="moveEnhanced" />
-    <option name="LAST_COMMIT_MESSAGE" value="moveEnhanced" />
+    <MESSAGE value="zoomOut borderBug Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="zoomOut borderBug Fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

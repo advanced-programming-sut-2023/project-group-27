@@ -148,7 +148,6 @@ public class GameController {
         gameMap.setLayoutX(0);
         gameMap.setLayoutY(0);
         mountTiles(mapData);
-
         mountZoomFeature();
         mountNavigationFeature();
     }
@@ -234,8 +233,7 @@ public class GameController {
     }
 
     public void mountCellData(StackPane tile, Cell cell) {
-        //TODO add getPicture() method to model entities.
-
+        tile.getChildren().clear();
         tile.setBackground(new Background(new BackgroundFill(cell.getType().getColor(), CornerRadii.EMPTY, Insets.EMPTY)));
         if (cell.getNaturalEntityType() != null)
             tile.getChildren().add(cell.getNaturalEntityType().getPicture(tile));
