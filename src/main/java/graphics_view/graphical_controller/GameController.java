@@ -91,26 +91,22 @@ public class GameController {
             int amount = 10;
 
             if (mouseEvent.getX() > x + tileSize) {
-                if (true)//gameMap.getLayoutX() + amount <= 0)
-                    gameMap.setLayoutX(gameMap.getLayoutX() + amount);
-                else
-                    gameMap.setLayoutX(0);
+                gameMap.setLayoutX(Math.min(gameMap.getLayoutX() + amount, gameMap.getWidth() / 2 * (gameMap.getScaleX() - 1)));
             } else if (mouseEvent.getX() < x - tileSize) {
-                if (gameMap.getLayoutX() - amount + gameMap.getWidth() * gameMap.getScaleX() >= 1200)
-                    gameMap.setLayoutX(gameMap.getLayoutX() - amount);
-                else
-                    gameMap.setLayoutX(1200 - gameMap.getWidth() * gameMap.getScaleX());
+                gameMap.setLayoutX(
+                        Math.max(
+                            gameMap.getLayoutX() - amount
+                            , 1200 - gameMap.getWidth() * gameMap.getScaleX() + gameMap.getWidth() / 2 * (gameMap.getScaleX() - 1))
+                        );
             }
             if (mouseEvent.getY() > y + tileSize) {
-                if (true)//gameMap.getLayoutY() + amount <= 0)
-                    gameMap.setLayoutY(gameMap.getLayoutY() + amount);
-                else
-                    gameMap.setLayoutX(0);
+                gameMap.setLayoutY(Math.min(gameMap.getLayoutY() + amount, gameMap.getHeight() / 2 * (gameMap.getScaleY() - 1)));
             } else if (mouseEvent.getY() < y - tileSize){
-                if (gameMap.getLayoutY() - amount + gameMap.getHeight() * gameMap.getScaleX() >= 500)
-                    gameMap.setLayoutY(gameMap.getLayoutY() - amount);
-                else
-                    gameMap.setLayoutY(500 - gameMap.getHeight() * gameMap.getScaleX());
+                gameMap.setLayoutY(
+                        Math.max(
+                                gameMap.getLayoutY() - amount
+                                , 500 - gameMap.getHeight() * gameMap.getScaleY() + gameMap.getHeight() / 2 * (gameMap.getScaleY() - 1))
+                );
             }
         });
 
@@ -127,11 +123,11 @@ public class GameController {
         int maxZoom = 5;
         gameMap.setOnScroll(scrollEvent -> {
             if (scrollEvent.getDeltaY() >= 0) {
-                gameMap.setScaleX(gameMap.getScaleX() + ((gameMap.getScaleX() + 1 > maxZoom) ? 0 : 1));
-                gameMap.setScaleY(gameMap.getScaleY() + ((gameMap.getScaleY() + 1 > maxZoom) ? 0 : 1));
+                gameMap.setScaleX(gameMap.getScaleX() + ((gameMap.getScaleX() + 0.1 > maxZoom) ? 0 : 0.1));
+                gameMap.setScaleY(gameMap.getScaleY() + ((gameMap.getScaleY() + 0.1 > maxZoom) ? 0 : 0.1));
             } else {
-                gameMap.setScaleX(gameMap.getScaleX() - ((gameMap.getScaleX() - 1 < 1) ? 0 : 1));
-                gameMap.setScaleY(gameMap.getScaleY() - ((gameMap.getScaleY() - 1 < 1) ? 0 : 1));
+                gameMap.setScaleX(gameMap.getScaleX() - ((gameMap.getScaleX() - 0.1 < 1) ? 0 : 0.1));
+                gameMap.setScaleY(gameMap.getScaleY() - ((gameMap.getScaleY() - 0.1 < 1) ? 0 : 0.1));
             }
         });
     }
