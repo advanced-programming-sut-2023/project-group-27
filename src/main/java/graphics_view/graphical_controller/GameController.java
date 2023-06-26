@@ -91,21 +91,21 @@ public class GameController {
             int amount = 10;
 
             if (mouseEvent.getX() > x + tileSize) {
-                gameMap.setLayoutX(Math.min(gameMap.getLayoutX() + amount, gameMap.getWidth() / 2 * (gameMap.getScaleX() - 1)));
+                gameMap.setLayoutX(Math.min(gameMap.getLayoutX() + amount, (gameMap.getWidth() / 2) * (gameMap.getScaleX() - 1)));
             } else if (mouseEvent.getX() < x - tileSize) {
                 gameMap.setLayoutX(
                         Math.max(
                             gameMap.getLayoutX() - amount
-                            , 1200 - gameMap.getWidth() * gameMap.getScaleX() + gameMap.getWidth() / 2 * (gameMap.getScaleX() - 1))
+                            , 1200 - gameMap.getWidth() * gameMap.getScaleX() + (gameMap.getWidth() / 2) * (gameMap.getScaleX() - 1))
                         );
             }
             if (mouseEvent.getY() > y + tileSize) {
-                gameMap.setLayoutY(Math.min(gameMap.getLayoutY() + amount, gameMap.getHeight() / 2 * (gameMap.getScaleY() - 1)));
+                gameMap.setLayoutY(Math.min(gameMap.getLayoutY() + amount, (gameMap.getHeight() / 2) * (gameMap.getScaleY() - 1)));
             } else if (mouseEvent.getY() < y - tileSize){
                 gameMap.setLayoutY(
                         Math.max(
                                 gameMap.getLayoutY() - amount
-                                , 500 - gameMap.getHeight() * gameMap.getScaleY() + gameMap.getHeight() / 2 * (gameMap.getScaleY() - 1))
+                                , 500 - gameMap.getHeight() * gameMap.getScaleY() + (gameMap.getHeight() / 2) * (gameMap.getScaleY() - 1))
                 );
             }
         });
@@ -128,6 +128,16 @@ public class GameController {
             } else {
                 gameMap.setScaleX(gameMap.getScaleX() - ((gameMap.getScaleX() - 0.1 < 1) ? 0 : 0.1));
                 gameMap.setScaleY(gameMap.getScaleY() - ((gameMap.getScaleY() - 0.1 < 1) ? 0 : 0.1));
+
+                if (gameMap.getLayoutX() > (gameMap.getWidth() / 2) * (gameMap.getScaleX() - 1))
+                    gameMap.setLayoutX((gameMap.getWidth() / 2) * (gameMap.getScaleX() - 1));
+                else if (gameMap.getLayoutX() < 1200 - gameMap.getWidth() * gameMap.getScaleX() + gameMap.getWidth() / 2 * (gameMap.getScaleX() - 1))
+                    gameMap.setLayoutX(1200 - gameMap.getWidth() * gameMap.getScaleX() + gameMap.getWidth() / 2 * (gameMap.getScaleX() - 1));
+
+                if (gameMap.getLayoutY() > (gameMap.getHeight() / 2) * (gameMap.getScaleY() - 1))
+                    gameMap.setLayoutY((gameMap.getHeight() / 2) * (gameMap.getScaleY() - 1));
+                else if (gameMap.getLayoutY() < 500 - gameMap.getHeight() * gameMap.getScaleY() + gameMap.getHeight() / 2 * (gameMap.getScaleY() - 1))
+                    gameMap.setLayoutY(500 - gameMap.getHeight() * gameMap.getScaleY() + gameMap.getHeight() / 2 * (gameMap.getScaleY() - 1));
             }
         });
     }
