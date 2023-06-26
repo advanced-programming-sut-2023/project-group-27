@@ -14,8 +14,6 @@ public class GameStartMenu extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        Controller.fetchData();
-        StrongholdCrusader.setLoggedInUser(StrongholdCrusader.getAllUsersList()[0]);
 
         Pane Pane = FXMLLoader.load(ProfileMenu.class.getResource("/fxml/GameStartMenu.fxml"));
 
