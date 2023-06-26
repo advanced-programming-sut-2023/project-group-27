@@ -2,6 +2,7 @@ package graphics_view.graphical_controller;
 
 import controller.controller.CoreGameMenuController;
 import controller.controller.CoreMapEditMenuController;
+import controller.view_controllers.Utilities;
 import graphics_view.view.ShopMenu;
 import graphics_view.view.TradeMenu;
 import javafx.beans.value.ChangeListener;
@@ -560,7 +561,27 @@ public class GameController {
     }
 
     public void dropBuilding(MouseEvent mouseEvent) {
-        // TODO implement here
+        Cell cellToModify = tileToCell.get(selectedTiles.get(0));
+        VBox vBox = new VBox();
+        TilePane selectionTilePane = new TilePane();
+        selectionTilePane.setPrefColumns(10);
+        HashMap<Object, String> buildingsData = Utilities.getAllBuildingNames();
+        for (Map.Entry<Object, String> buildingType : buildingsData.entrySet()) {
+            Button button = new Button(buildingType.getValue());
+            selectionTilePane.getChildren().add(button);
+
+            button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    Alert result = new Alert(Alert.AlertType.INFORMATION);
+                    result.setContentText(coreMapEditMenuController.dropBuilding(cellToModify.getLocation(), buildingType.getKey()));
+                    mountCellData(selectedTiles.get(0), cellToModify);
+                    result.showAndWait();
+                }
+            });
+        }
+        vBox.getChildren().add(selectionTilePane);
+        popUpHandler(vBox);
     }
 
     public void dropUnit(MouseEvent mouseEvent) {
@@ -583,11 +604,22 @@ public class GameController {
                 }
             });
         }
+        Button button = new Button("reset tile");
+        vBox.getChildren().add(button);
+        button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Alert result = new Alert(Alert.AlertType.INFORMATION);
+                result.setContentText(coreMapEditMenuController.clear(cellToModify.getLocation()));
+                mountCellData(selectedTiles.get(0), cellToModify);
+                result.showAndWait();
+            }
+        });
         popUpHandler(vBox);
     }
 
     private void popUpHandler(VBox vBox) {
-        vBox.setSpacing(10);
+        vBox.setSpacing(3);
         vBox.setAlignment(Pos.CENTER);
         Scene scene = new Scene(vBox);
         Stage stage = new Stage();

@@ -17,7 +17,7 @@ public enum NaturalEntityType implements Passable {
     ROCK_SOUTH("RocktoSouth", "\u001B[38;5;232m", false, "south.png", "s"),
     ROCK_WEST("RocktoWest", "\u001B[38;5;232m", false, "west.png", "w"),
     ROCK_EAST("RocktoEast", "\u001B[38;5;232m", false, "east.png", "e"),
-    ROCK_RANDOM("RandomROck", "", false, "", "r");
+    ROCK_RANDOM("RandomRock", "", false, "", "r");
 
     private static final HashMap<String, NaturalEntityType> map = new HashMap<>();
     private final String entityName;
