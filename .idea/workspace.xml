@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="zoomEnhanced">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="moveEnhanced">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" afterDir="false" />
     </list>
@@ -29,11 +29,12 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="debugYousef" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="SOFT" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
@@ -256,14 +257,7 @@
       <workItem from="1685973181692" duration="14085000" />
       <workItem from="1686040190958" duration="17193000" />
       <workItem from="1686125795579" duration="15880000" />
-      <workItem from="1687763468100" duration="11216000" />
-    </task>
-    <task id="LOCAL-00063" summary="fix some bugs5">
-      <created>1683988938905</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1683988938905</updated>
+      <workItem from="1687763468100" duration="12539000" />
     </task>
     <task id="LOCAL-00064" summary="fix some bugs6">
       <created>1683990278915</created>
@@ -601,7 +595,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687766618391</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="moveEnhanced">
+      <created>1687774918736</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1687774918736</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -666,7 +667,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="functionality 7" />
     <MESSAGE value="functionality 8" />
     <MESSAGE value="functionality 9" />
     <MESSAGE value="functionality 10" />
@@ -691,7 +691,8 @@
     <MESSAGE value="navigation feature" />
     <MESSAGE value="debug debug" />
     <MESSAGE value="zoomEnhanced" />
-    <option name="LAST_COMMIT_MESSAGE" value="zoomEnhanced" />
+    <MESSAGE value="moveEnhanced" />
+    <option name="LAST_COMMIT_MESSAGE" value="moveEnhanced" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
