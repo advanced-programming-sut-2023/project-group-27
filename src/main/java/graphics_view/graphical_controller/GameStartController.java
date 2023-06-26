@@ -63,6 +63,7 @@ public class GameStartController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateMiniMap();
         mountAllUsers();
+        updateSelectedPlayers();
     }
 
     private void mountAllUsers() {

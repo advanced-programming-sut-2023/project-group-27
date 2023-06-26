@@ -11,49 +11,61 @@ import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import model.*;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import model.GoodsType;
+import model.Match;
+import model.StrongholdCrusader;
+import model.User;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 public class ShopController {
     private final CoreShopMenuController controller;
     @FXML
+    private VBox vBox;
+    @FXML
     private GridPane gridPane;
-    private Slider slider;
+    @FXML
+    private Button closeButton;
+    private Label goldAmount;
     private final User currentUser;
-    private final Match match;
+    private final ArrayList<Row> allRows;
 
     public ShopController() {
         // TODO : update match in StrongHoldCrusader
-        match = StrongholdCrusader.getCurrentMatch();
-        controller = new CoreShopMenuController(match ,null);
+        Match match = StrongholdCrusader.getCurrentMatch();
+        controller = new CoreShopMenuController(match,null);
         currentUser = match.getCurrentUser();
+        allRows = new ArrayList<>();
     }
 
     public void initialize() {
+        goldAmount = (Label) vBox.getChildren().get(1);
+        goldAmount.setText(currentUser.getUsername() + "'s Gold = " + currentUser.getMonarchy().getGold());
         int i = 1;
         for (GoodsType type : GoodsType.values()) {
-            Node node = getNodeFromGridPane(gridPane, 0, i); //goods name
-            assert node != null;
-            ((Label) node).setText(type.getName());
+            Node name = getNodeFromGridPane(gridPane, 0, i); //goods name
+            assert name != null;
+            ((Label) name).setText(type.getName());
 
-            node = getNodeFromGridPane(gridPane, 1, i); //owned amount
-            assert node != null;
-            ((Label) node).setText(Integer.toString(currentUser.getMonarchy().getGood(type)));
+            Node owned = getNodeFromGridPane(gridPane, 1, i); //owned amount
+            assert owned != null;
+            ((Label) owned).setText(Integer.toString(currentUser.getMonarchy().getGood(type)));
+            Label ownedAmount = (Label) owned;
 
-            node = getNodeFromGridPane(gridPane, 2, i); //buy price
-            assert node != null;
-            ((Label) node).setText(Integer.toString(type.getShopBuyPrice()));
+            Node buyPrice = getNodeFromGridPane(gridPane, 2, i); //buy price
+            assert buyPrice != null;
+            ((Label) buyPrice).setText(Integer.toString(type.getShopBuyPrice()));
 
-            node = getNodeFromGridPane(gridPane, 3, i); //sell price
-            assert node != null;
-            ((Label) node).setText(Integer.toString(type.getShopSellPrice()));
+            Node sellPrice = getNodeFromGridPane(gridPane, 3, i); //sell price
+            assert sellPrice != null;
+            ((Label) sellPrice).setText(Integer.toString(type.getShopSellPrice()));
 
-            node = getNodeFromGridPane(gridPane, 4, i); //amount slider
-            assert node != null;
-            slider = (Slider) ((HBox) node).getChildren().get(0);
-            Label label = (Label) ((HBox) node).getChildren().get(1);
+            Node amountSlider = getNodeFromGridPane(gridPane, 4, i); //amount slider
+            assert amountSlider != null;
+            Slider slider = (Slider) ((HBox) amountSlider).getChildren().get(0);
+            Label label = (Label) ((HBox) amountSlider).getChildren().get(1);
             slider.setMaxWidth(130);
             slider.setMax(20);
             slider.setMin(0);
@@ -63,21 +75,37 @@ public class ShopController {
             slider.setShowTickLabels(true);
             slider.setShowTickMarks(true);
             slider.setSnapToTicks(true);
+
             slider.valueProperty().addListener(
                     (observable, oldValue, newValue) ->
             label.setText(Integer.toString((int) Math.floor(newValue.doubleValue()))));
 
-            node = getNodeFromGridPane(gridPane , 5 , i); //buy
+            Node node = getNodeFromGridPane(gridPane , 5 , i); //buy button
             assert node != null;
-            ((Button) node).setOnAction(actionEvent -> {
-                int amount = (int) Math.floor(slider.getValue());
-                String result = controller.buy(type , amount);
+            Button buyButton = (Button) node;
+
+            node = getNodeFromGridPane(gridPane , 6 , i); //sell button
+            assert node != null;
+            Button sellButton = (Button) node;
+            Row row = new Row(buyButton, sellButton, slider, ownedAmount, type);
+            allRows.add(row);
+            i++;
+        }
+        startShop();
+    }
+
+    private void startShop() {
+        for (Row row : allRows) {
+            row.buyButton.setOnAction(actionEvent -> {
+                int amount = (int) Math.floor(row.amountSlider.getValue());
+                String result = controller.buy(row.type , amount);
                 Alert alert;
                 if (result.equals("Buy successful!")) {
                     alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Success");
                     alert.setHeaderText("Buy Successful");
-                    alert.setContentText(type.getName() + " Bought Successfully!");
+                    alert.setContentText(row.type.getName() + " Bought Successfully!");
+                    row.ownedAmount.setText(Integer.toString(currentUser.getMonarchy().getGood(row.type)));
                 }
                 else {
                     alert = new Alert(Alert.AlertType.ERROR);
@@ -86,19 +114,19 @@ public class ShopController {
                     alert.setContentText(result);
                 }
                 alert.showAndWait();
+                goldAmount.setText(currentUser.getUsername() + "'s Gold = " + currentUser.getMonarchy().getGold());
             });
 
-            node = getNodeFromGridPane(gridPane , 6 , i); //sell
-            assert node != null;
-            ((Button) node).setOnAction(actionEvent -> {
-                int amount = (int) Math.floor(slider.getValue());
-                String result = controller.sell(type , amount);
+            row.sellButton.setOnAction(actionEvent -> {
+                int amount = (int) Math.floor(row.amountSlider.getValue());
+                String result = controller.sell(row.type , amount);
                 Alert alert;
                 if (result.equals("Sell successful!")) {
                     alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Success");
                     alert.setHeaderText("Sell Successful");
-                    alert.setContentText(type.getName() + " Sold Successfully!");
+                    alert.setContentText(row.type.getName() + " Sold Successfully!");
+                    row.ownedAmount.setText(Integer.toString(currentUser.getMonarchy().getGood(row.type)));
                 }
                 else {
                     alert = new Alert(Alert.AlertType.ERROR);
@@ -107,9 +135,9 @@ public class ShopController {
                     alert.setContentText(result);
                 }
                 alert.showAndWait();
+                goldAmount.setText(currentUser.getUsername() + "'s Gold = " + currentUser.getMonarchy().getGold());
             });
 
-            i++;
         }
     }
 
@@ -123,8 +151,23 @@ public class ShopController {
     }
 
     public void exitShop(MouseEvent mouseEvent) {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
 
-        Platform.exit();
-        //TODO fix this shit
+    private class Row {
+        private final Button buyButton;
+        private final Button sellButton;
+        private final Slider amountSlider;
+        private final Label ownedAmount;
+        private final GoodsType type;
+
+        public Row(Button buyButton, Button sellButton, Slider amountSlider, Label ownedAmount, GoodsType type) {
+            this.buyButton = buyButton;
+            this.sellButton = sellButton;
+            this.amountSlider = amountSlider;
+            this.ownedAmount = ownedAmount;
+            this.type = type;
+        }
     }
 }
