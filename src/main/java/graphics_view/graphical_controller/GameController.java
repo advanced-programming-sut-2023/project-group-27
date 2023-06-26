@@ -1,31 +1,25 @@
 package graphics_view.graphical_controller;
 
-import com.google.gson.JsonArray;
 import controller.controller.CoreGameMenuController;
-import controller.controller.Utilities;
 import graphics_view.view.ShopMenu;
 import graphics_view.view.TradeMenu;
-import javafx.collections.MapChangeListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Camera;
-import javafx.scene.ParallelCamera;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
+import javafx.scene.control.TextField;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.*;
+import model.man.Man;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class GameController {
     @FXML
@@ -40,13 +34,16 @@ public class GameController {
     private Button enterShopMenu;
     @FXML
     private TilePane gameMap;
+    private HBox monarchyInfo = new HBox();
+    private HBox selectedTilesInfo = new HBox();
 
     private Match match;
     private VBox rateInfo, popularityInfo, foodInfo, goldPopulationInfo;
     private CoreGameMenuController controller;
     private double tileSize = 30.0;
     private GameMap mapData;
-    private HashMap<Cell, StackPane> stackHashMap = new HashMap<>();
+    private final HashMap<Cell, StackPane> cellToTile = new HashMap<>();
+    private final HashMap<StackPane, Cell> tileToCell = new HashMap<>();
     private double x = -1, y = -1;
     StackPane origin = null, destination = null;
     private List<StackPane> selectedTiles = new ArrayList<>();
@@ -56,18 +53,90 @@ public class GameController {
         mapData = match.getCurrentMatchMap();
         this.controller = new CoreGameMenuController(match, null);
         initiateGameMap();
-        HBox hBox = new HBox();
-        hBox.setSpacing(35);
+        monarchyInfo.setSpacing(35);
         rateInfo = new VBox();
         popularityInfo = new VBox();
         foodInfo = new VBox();
         goldPopulationInfo = new VBox();
-        hBox.getChildren().addAll(rateInfo, popularityInfo, foodInfo, goldPopulationInfo);
-        infoPane.getChildren().add(hBox);
+        monarchyInfo.getChildren().addAll(rateInfo, popularityInfo, foodInfo, goldPopulationInfo);
+        infoPane.getChildren().add(monarchyInfo);
         refreshRateInfoPane();
-        hBox.setLayoutX(320);
-        hBox.setLayoutY(80);
+        monarchyInfo.setLayoutX(320);
+        monarchyInfo.setLayoutY(80);
+        selectedTilesInfo.setLayoutX(320);
+        selectedTilesInfo.setLayoutY(80);
     }
+
+    private void refreshSelectedTilesInfo(List<StackPane> tiles) {
+        List<Man> allMen = new ArrayList<>();
+        for (StackPane tile : tiles) {
+            Cell cell = tileToCell.get(tile);
+            allMen.addAll(cell.getMen());
+        }
+        allMen.removeIf(x -> x.getOwner() != match.getCurrentUser());
+        HashMap<Man, Integer> manCount = new HashMap<>();
+        for (Man man: allMen) {
+            manCount.put(man, manCount.getOrDefault(man, 0) + 1);
+        }
+
+        if (selectedTilesInfo == null) {
+            selectedTilesInfo = new HBox();
+            selectedTilesInfo.setSpacing(35);
+            selectedTilesInfo.setLayoutX(320);
+            selectedTilesInfo.setLayoutY(80);
+        } else {
+            selectedTilesInfo.getChildren().clear();
+        }
+
+        VBox soldiers = new VBox();
+        soldiers.getChildren().add(new Label("units to be selected:"));
+        List<Map.Entry> soldierList = new ArrayList<>(manCount.entrySet());
+        Collections.sort(soldierList, Comparator.comparingInt(x -> (int) x.getValue()));
+        for (Map.Entry entry : soldierList) {
+            HBox hBox = new HBox();
+            hBox.setSpacing(5);
+            hBox.setAlignment(Pos.CENTER);
+            soldiers.getChildren().add(hBox);
+            Man man = (Man) entry.getKey();
+            int val = (int) entry.getValue();
+            Label label = new Label(man.getName() + " : " + val);
+            hBox.getChildren().add(label);
+            TextField count = new TextField();
+            count.setMaxWidth(50);
+            count.textProperty().addListener(new ChangeListener<String>() {
+                @Override
+                public void changed(
+                        ObservableValue<? extends String> observable,
+                        String oldValue, String newValue) {
+                    if (!newValue.matches("\\d*")) {
+                        count.setText(newValue.replaceAll("[^\\d]", ""));
+                    }
+                }
+            });
+            hBox.getChildren().add(count);
+            Button button = new Button("Select");
+            button.setOnAction(event -> {
+                int cnt = Integer.parseInt(count.getText());
+                count.setText("");
+                if (cnt <= 0 || cnt > val) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("invalid number");
+                    alert.showAndWait();
+                    return;
+                }
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setContentText(cnt + man.getName() + "are selected");
+                alert.showAndWait();
+                // TODO clear recently selected units
+                // TODO add new selected units
+            });
+            hBox.getChildren().add(button);
+        }
+        infoPane.getChildren().clear();
+        infoPane.getChildren().add(selectedTilesInfo);
+        selectedTilesInfo.getChildren().add(soldiers);
+    }
+
 
     private void initiateGameMap() {
         gameMap.setVgap(1);
@@ -142,7 +211,8 @@ public class GameController {
             for (int j = 0; j < selectedMap.getWidth() / 10; j++) {
                 StackPane tile = getTile(selectedMap.getCell(j, i));
                 gameMap.getChildren().add(tile);
-                stackHashMap.put(selectedMap.getCell(j, i), tile);
+                cellToTile.put(selectedMap.getCell(j, i), tile);
+                tileToCell.put(tile, selectedMap.getCell(j, i));
             }
         }
     }
@@ -355,6 +425,7 @@ public class GameController {
                             }
                         }
                     }
+                    refreshSelectedTilesInfo(selectedTiles);
                     origin = null;
                 }
             }
@@ -365,12 +436,13 @@ public class GameController {
                 selectedTiles.clear();
                 tile.setStyle("-fx-border-color: red");
                 selectedTiles.add(tile);
+                refreshSelectedTilesInfo(selectedTiles);
             }
         });
     }
 
     private StackPane getTileByLocation(int x, int y) {
-        return stackHashMap.get(mapData.getCell(x, y));
+        return cellToTile.get(mapData.getCell(x, y));
     }
 
     public void enterTrade(MouseEvent mouseEvent) throws Exception {
