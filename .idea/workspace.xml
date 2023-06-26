@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="zoomOut borderBug Fix">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="pop up handler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Cell.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="boom" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -259,13 +257,6 @@
       <workItem from="1686040190958" duration="17193000" />
       <workItem from="1686125795579" duration="15880000" />
       <workItem from="1687763468100" duration="16631000" />
-    </task>
-    <task id="LOCAL-00065" summary="fix some bugs7">
-      <created>1683995240601</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1683995240602</updated>
     </task>
     <task id="LOCAL-00066" summary="bug fix and improvement4">
       <created>1684069065184</created>
@@ -603,7 +594,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687776545632</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="pop up handler">
+      <created>1687786842533</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1687786842533</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -668,7 +666,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="functionality 9" />
     <MESSAGE value="functionality 10" />
     <MESSAGE value="functionality 11" />
     <MESSAGE value="functionality 12" />
@@ -693,7 +690,8 @@
     <MESSAGE value="zoomEnhanced" />
     <MESSAGE value="moveEnhanced" />
     <MESSAGE value="zoomOut borderBug Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="zoomOut borderBug Fix" />
+    <MESSAGE value="pop up handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="pop up handler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -126,7 +126,7 @@ public class Cell implements Passable{
         if (this.getNaturalEntityType() != null)
             output += "NaturalEntity(Tree or Rocks) Type: " + this.getNaturalEntityType().getNaturalEntityName() + "\n";
         if (this.getBuilding() != null)
-            output += "Building Type: " + this.getBuilding().getName() + ", owner: " + ", hitpoints: " + this.getBuilding().getHitpoint() + "\n";
+            output += "Building Type: " + this.getBuilding().getName() + ", owner: " + this.getBuilding().getOwner().getUsername() + ", hitpoints: " + this.getBuilding().getHitpoint() + "\n";
         if (this.getMen() != null && this.getMen().size() != 0)
             for (Man man : this.getMen())
                 output += "Human Type: " + man.getName() + ", owner: " + man.getOwner().getUsername() + ", hitpoints: " + man.getHitpoint() + "\n";
