@@ -9,14 +9,14 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import javafx.util.Duration;
 import model.*;
+import model.Cell;
 import model.man.Man;
 
 import java.util.*;
@@ -396,6 +396,19 @@ public class GameController {
     }
 
     private void defineClickEvents(StackPane tile) {
+        Tooltip tooltip = new Tooltip();
+        tooltip.setShowDelay(Duration.millis(1500));
+        tooltip.setShowDuration(Duration.INDEFINITE);
+        tooltip.setHideOnEscape(true);
+        tooltip.setHideDelay(Duration.ZERO);
+        Tooltip.install(tile, tooltip);
+        tooltip.setOnShowing(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                tooltip.setText(tileToCell.get(tile).showDetails());
+            }
+        });
+
         tile.setOnMouseClicked(event -> {
             if (event.getButton() != MouseButton.PRIMARY)return;
             int rows = gameMap.getPrefRows();
