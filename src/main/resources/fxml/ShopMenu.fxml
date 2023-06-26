@@ -8,8 +8,9 @@
             fx:controller="graphics_view.graphical_controller.ShopController">
     <center>
         <ScrollPane>
-            <VBox alignment="CENTER" spacing="10" stylesheets="@../css/shopMenuStyles.css" styleClass="GridPane">
+            <VBox fx:id="vBox" alignment="CENTER" spacing="10" stylesheets="@../css/shopMenuStyles.css" styleClass="GridPane">
                 <Label text="Shop Menu" styleClass="Title"/>
+                <Label text="Gold = 0" styleClass="Text"/>
                 <GridPane fx:id="gridPane" alignment="CENTER">
                     <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0"

@@ -11,6 +11,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import model.*;
 
 import java.util.Arrays;
@@ -18,6 +19,8 @@ import java.util.stream.Collectors;
 
 public class ShopController {
     private final CoreShopMenuController controller;
+    @FXML
+    private VBox vBox;
     @FXML
     private GridPane gridPane;
     private Slider slider;
@@ -32,28 +35,30 @@ public class ShopController {
     }
 
     public void initialize() {
+        Label goldAmount = (Label) vBox.getChildren().get(1);
+        goldAmount.setText(currentUser.getUsername() + "'s Gold = " + currentUser.getMonarchy().getGold());
         int i = 1;
         for (GoodsType type : GoodsType.values()) {
-            Node node = getNodeFromGridPane(gridPane, 0, i); //goods name
-            assert node != null;
-            ((Label) node).setText(type.getName());
+            Node name = getNodeFromGridPane(gridPane, 0, i); //goods name
+            assert name != null;
+            ((Label) name).setText(type.getName());
 
-            node = getNodeFromGridPane(gridPane, 1, i); //owned amount
-            assert node != null;
-            ((Label) node).setText(Integer.toString(currentUser.getMonarchy().getGood(type)));
+            Node owned = getNodeFromGridPane(gridPane, 1, i); //owned amount
+            assert owned != null;
+            ((Label) owned).setText(Integer.toString(currentUser.getMonarchy().getGood(type)));
 
-            node = getNodeFromGridPane(gridPane, 2, i); //buy price
-            assert node != null;
-            ((Label) node).setText(Integer.toString(type.getShopBuyPrice()));
+            Node buyPrice = getNodeFromGridPane(gridPane, 2, i); //buy price
+            assert buyPrice != null;
+            ((Label) buyPrice).setText(Integer.toString(type.getShopBuyPrice()));
 
-            node = getNodeFromGridPane(gridPane, 3, i); //sell price
-            assert node != null;
-            ((Label) node).setText(Integer.toString(type.getShopSellPrice()));
+            Node sellPrice = getNodeFromGridPane(gridPane, 3, i); //sell price
+            assert sellPrice != null;
+            ((Label) sellPrice).setText(Integer.toString(type.getShopSellPrice()));
 
-            node = getNodeFromGridPane(gridPane, 4, i); //amount slider
-            assert node != null;
-            slider = (Slider) ((HBox) node).getChildren().get(0);
-            Label label = (Label) ((HBox) node).getChildren().get(1);
+            Node amountSlider = getNodeFromGridPane(gridPane, 4, i); //amount slider
+            assert amountSlider != null;
+            slider = (Slider) ((HBox) amountSlider).getChildren().get(0);
+            Label label = (Label) ((HBox) amountSlider).getChildren().get(1);
             slider.setMaxWidth(130);
             slider.setMax(20);
             slider.setMin(0);
@@ -67,7 +72,7 @@ public class ShopController {
                     (observable, oldValue, newValue) ->
             label.setText(Integer.toString((int) Math.floor(newValue.doubleValue()))));
 
-            node = getNodeFromGridPane(gridPane , 5 , i); //buy
+            Node node = getNodeFromGridPane(gridPane , 5 , i); //buy
             assert node != null;
             ((Button) node).setOnAction(actionEvent -> {
                 int amount = (int) Math.floor(slider.getValue());
@@ -78,6 +83,7 @@ public class ShopController {
                     alert.setTitle("Success");
                     alert.setHeaderText("Buy Successful");
                     alert.setContentText(type.getName() + " Bought Successfully!");
+                    ((Label) owned).setText(Integer.toString(currentUser.getMonarchy().getGood(type) + amount));
                 }
                 else {
                     alert = new Alert(Alert.AlertType.ERROR);
@@ -86,6 +92,7 @@ public class ShopController {
                     alert.setContentText(result);
                 }
                 alert.showAndWait();
+                goldAmount.setText(currentUser.getUsername() + "'s Gold = " + currentUser.getMonarchy().getGold());
             });
 
             node = getNodeFromGridPane(gridPane , 6 , i); //sell
@@ -99,6 +106,7 @@ public class ShopController {
                     alert.setTitle("Success");
                     alert.setHeaderText("Sell Successful");
                     alert.setContentText(type.getName() + " Sold Successfully!");
+                    ((Label) owned).setText(Integer.toString(currentUser.getMonarchy().getGood(type) - amount));
                 }
                 else {
                     alert = new Alert(Alert.AlertType.ERROR);
@@ -107,6 +115,7 @@ public class ShopController {
                     alert.setContentText(result);
                 }
                 alert.showAndWait();
+                goldAmount.setText(currentUser.getUsername() + "'s Gold = " + currentUser.getMonarchy().getGold());
             });
 
             i++;
