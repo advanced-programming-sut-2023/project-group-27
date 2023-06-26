@@ -26,8 +26,8 @@ public class CoreSelectUnitMenuController {
     private final ArrayList<Selectable> theSelected;
     private final SelectUnitMenu selectUnitMenu;
     private final SelectUnitMenuController selectUnitController;
-    private final int x;
-    private final int y;
+    private int x;
+    private int y;
     private final SoldierType type;
     public CoreSelectUnitMenuController(ArrayList<Selectable> theSelected , Match match , Scanner scanner, User currentUser, GameMap map, int x, int y, SoldierType type) {
         this.scanner = scanner;
@@ -37,6 +37,17 @@ public class CoreSelectUnitMenuController {
         this.map = map;
         this.x = x;
         this.y = y;
+        this.type = type;
+        selectUnitController = new SelectUnitMenuController(theSelected, this, map, scanner);
+        selectUnitMenu = selectUnitController.getUnitMenu();
+    }
+
+    public CoreSelectUnitMenuController(ArrayList<Selectable> theSelected , Match match , Scanner scanner, User currentUser, GameMap map, SoldierType type) {
+        this.scanner = scanner;
+        this.currentMatch = match;
+        this.theSelected = theSelected;
+        this.currentUser = currentUser;
+        this.map = map;
         this.type = type;
         selectUnitController = new SelectUnitMenuController(theSelected, this, map, scanner);
         selectUnitMenu = selectUnitController.getUnitMenu();
@@ -96,7 +107,7 @@ public class CoreSelectUnitMenuController {
     }
 
     public String attackByXY(int x, int y) {
-        if (type.range == null) return "Selected unit is not ranged!";
+        if (type.range == 0) return "Selected unit is not ranged!";
         ArrayList<Selectable> selectableEnemies = map.getCell(x , y).getSelectables();
         for (Selectable selectable : selectableEnemies) {
             if (selectable instanceof Man) {
