@@ -119,11 +119,11 @@ public class GameController {
         int maxZoom = 5;
         gameMap.setOnScroll(scrollEvent -> {
             if (scrollEvent.getDeltaY() >= 0) {
-                gameMap.setScaleX(gameMap.getScaleX() + ((gameMap.getScaleX() + 1 > maxZoom) ? 0 : 1));
-                gameMap.setScaleY(gameMap.getScaleY() + ((gameMap.getScaleY() + 1 > maxZoom) ? 0 : 1));
+                gameMap.setScaleX(gameMap.getScaleX() + ((gameMap.getScaleX() + 0.1 > maxZoom) ? 0 : 0.1));
+                gameMap.setScaleY(gameMap.getScaleY() + ((gameMap.getScaleY() + 0.1 > maxZoom) ? 0 : 0.1));
             } else {
-                gameMap.setScaleX(gameMap.getScaleX() - ((gameMap.getScaleX() - 1 < 1) ? 0 : 1));
-                gameMap.setScaleY(gameMap.getScaleY() - ((gameMap.getScaleY() - 1 < 1) ? 0 : 1));
+                gameMap.setScaleX(gameMap.getScaleX() - ((gameMap.getScaleX() - 0.1 < 1) ? 0 : 0.1));
+                gameMap.setScaleY(gameMap.getScaleY() - ((gameMap.getScaleY() - 0.1 < 1) ? 0 : 0.1));
             }
         });
     }
