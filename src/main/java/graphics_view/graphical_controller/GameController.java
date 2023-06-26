@@ -1,9 +1,11 @@
 package graphics_view.graphical_controller;
 
+import com.google.gson.JsonArray;
 import controller.controller.CoreGameMenuController;
 import controller.controller.Utilities;
 import graphics_view.view.ShopMenu;
 import graphics_view.view.TradeMenu;
+import javafx.collections.MapChangeListener;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -15,11 +17,14 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Stack;
 
 public class GameController {
@@ -43,6 +48,9 @@ public class GameController {
     private GameMap mapData;
     private HashMap<Cell, StackPane> stackHashMap = new HashMap<>();
     private double x = -1, y = -1;
+    StackPane origin = null, destination = null;
+    private List<StackPane> selectedTiles = new ArrayList<>();
+
     public void init(Match match) {
         this.match = match;
         mapData = match.getCurrentMatchMap();
@@ -309,7 +317,99 @@ public class GameController {
     }
 
     private void defineClickEvents(StackPane tile) {
-        //TODO define events such as select, etc...
+//        tile.setOnMouseClicked(event -> {
+//            if (event.getButton() != MouseButton.PRIMARY)return;
+//            for (StackPane selectedTile : selectedTiles) {
+//                selectedTile.setStyle("-fx-border-color: black");
+//            }
+//            selectedTiles.clear();
+//            selectedTiles.add(tile);
+//        });
+
+        tile.setOnMouseClicked(event -> {
+            if (event.getButton() != MouseButton.PRIMARY)return;
+            int rows = gameMap.getPrefRows();
+            int columns = gameMap.getPrefColumns();
+            if (event.getClickCount() == 2) {
+                if (origin == null) {
+                    for (StackPane selectedTile : selectedTiles) {
+                        selectedTile.setStyle("-fx-border-color: transparent");
+                    }
+                    selectedTiles.clear();
+                    origin = tile;
+                    System.out.println(tile);
+                } else {
+                    for (StackPane selectedTile : selectedTiles) {
+                        selectedTile.setStyle("-fx-border-color: transparent");
+                    }
+                    selectedTiles.clear();
+                    destination = tile;
+                    System.out.println(tile);
+                    int index = gameMap.getChildren().indexOf(origin);
+                    int x1 = index % columns;
+                    int y1 = rows - (index / columns) - 1;
+                    index = gameMap.getChildren().indexOf(destination);
+                    int x2 = index % columns;
+                    int y2 = rows - (index / columns) - 1;
+                    int xMin = Math.min(x1, x2);
+                    int xMax = Math.max(x1, x2);
+                    int yMin = Math.min(y1, y2);
+                    int yMax = Math.max(y1, y2);
+                    for (int i = xMin; i <= xMax; i++) {
+                        for (int j = yMin; j <= yMax; j++) {
+                            StackPane tileInRange = getTileByLocation(i, j);
+                            if (tileInRange != null) {
+                                tileInRange.setStyle("-fx-border-color: red");
+                                selectedTiles.add(tileInRange);
+                            }
+                        }
+                    }
+                    origin = null;
+                }
+            }
+            if (event.getClickCount() == 1) {
+                for (StackPane selectedTile : selectedTiles) {
+                    selectedTile.setStyle("-fx-border-color: transparent");
+                }
+                selectedTiles.clear();
+//                if (origin != null) {
+//                    origin = null;
+//                }
+                tile.setStyle("-fx-border-color: red");
+                selectedTiles.add(tile);
+            }
+        });
+
+//        tile.setOnMouseReleased(event -> {
+//            if (event.getButton() != MouseButton.PRIMARY)return;
+//            int rows = gameMap.getPrefRows();
+//            int columns = gameMap.getPrefColumns();
+//            destination = tile;
+//            System.out.println(tile);
+//            // select tiles in range between origin and destination
+//            if (origin != null) {
+//                int index = gameMap.getChildren().indexOf(origin);
+//                int x1 = index % columns;
+//                int y1 = rows - (index / columns) - 1;
+//                index = gameMap.getChildren().indexOf(destination);
+//                int x2 = index % columns;
+//                int y2 = rows - (index / columns) - 1;
+//                int xMin = Math.min(x1, x2);
+//                int xMax = Math.max(x1, x2);
+//                int yMin = Math.min(y1, y2);
+//                int yMax = Math.max(y1, y2);
+//                for (int i = xMin; i <= xMax; i++) {
+//                    for (int j = yMin; j <= yMax; j++) {
+//                        StackPane tileInRange = getTileByLocation(i, j);
+//                        if (tileInRange != null) {
+//                            tileInRange.setBorder(new Border(new BorderStroke(Color.RED,
+//                                    BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5))));
+//                            selectedTiles.add(tileInRange);
+//                        }
+//                    }
+//                }
+//            }
+//        });
     }
 
     private StackPane getTileByLocation(int x, int y) {
