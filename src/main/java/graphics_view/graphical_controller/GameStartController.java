@@ -25,8 +25,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class GameStartController implements Initializable {
-    private final CoreGameStartMenuController controller =
-            new CoreGameStartMenuController(null, StrongholdCrusader.getLoggedInUser());
+    private final CoreGameStartMenuController controller;
     private final GameMap[] allMaps;
     private final MonarchyColorType[] monarchyColorTypes;
     private final ArrayList<User> thisGamePlayers;
@@ -48,6 +47,7 @@ public class GameStartController implements Initializable {
     private int selectedMapIndex = 0;
 
     public GameStartController() {
+        controller = new CoreGameStartMenuController(null, StrongholdCrusader.getLoggedInUser());
         this.allMaps = controller.getAllMaps();
         this.monarchyColorTypes = controller.getColorTypes();
         this.thisGamePlayers = controller.getThisGamePlayers();
