@@ -317,15 +317,6 @@ public class GameController {
     }
 
     private void defineClickEvents(StackPane tile) {
-//        tile.setOnMouseClicked(event -> {
-//            if (event.getButton() != MouseButton.PRIMARY)return;
-//            for (StackPane selectedTile : selectedTiles) {
-//                selectedTile.setStyle("-fx-border-color: black");
-//            }
-//            selectedTiles.clear();
-//            selectedTiles.add(tile);
-//        });
-
         tile.setOnMouseClicked(event -> {
             if (event.getButton() != MouseButton.PRIMARY)return;
             int rows = gameMap.getPrefRows();
@@ -372,44 +363,10 @@ public class GameController {
                     selectedTile.setStyle("-fx-border-color: transparent");
                 }
                 selectedTiles.clear();
-//                if (origin != null) {
-//                    origin = null;
-//                }
                 tile.setStyle("-fx-border-color: red");
                 selectedTiles.add(tile);
             }
         });
-
-//        tile.setOnMouseReleased(event -> {
-//            if (event.getButton() != MouseButton.PRIMARY)return;
-//            int rows = gameMap.getPrefRows();
-//            int columns = gameMap.getPrefColumns();
-//            destination = tile;
-//            System.out.println(tile);
-//            // select tiles in range between origin and destination
-//            if (origin != null) {
-//                int index = gameMap.getChildren().indexOf(origin);
-//                int x1 = index % columns;
-//                int y1 = rows - (index / columns) - 1;
-//                index = gameMap.getChildren().indexOf(destination);
-//                int x2 = index % columns;
-//                int y2 = rows - (index / columns) - 1;
-//                int xMin = Math.min(x1, x2);
-//                int xMax = Math.max(x1, x2);
-//                int yMin = Math.min(y1, y2);
-//                int yMax = Math.max(y1, y2);
-//                for (int i = xMin; i <= xMax; i++) {
-//                    for (int j = yMin; j <= yMax; j++) {
-//                        StackPane tileInRange = getTileByLocation(i, j);
-//                        if (tileInRange != null) {
-//                            tileInRange.setBorder(new Border(new BorderStroke(Color.RED,
-//                                    BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5))));
-//                            selectedTiles.add(tileInRange);
-//                        }
-//                    }
-//                }
-//            }
-//        });
     }
 
     private StackPane getTileByLocation(int x, int y) {
