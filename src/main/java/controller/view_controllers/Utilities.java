@@ -1,6 +1,7 @@
 package controller.view_controllers;
 
 import model.GameMap;
+import model.building.CivilBuilding;
 import model.building.CivilBuildingType;
 import model.building.ProductionBuildingType;
 import model.castle_components.CastleComponentType;
@@ -71,5 +72,16 @@ public class Utilities {
                     (map.getHeight() - 1) + "\n";
         }
         return null;
+    }
+
+    public static HashMap<Object, String> getAllBuildingNames() {
+        HashMap<Object, String> output = new HashMap<>();
+        for (CastleComponentType value : CastleComponentType.values())
+            output.put(value, value.getName());
+        for (ProductionBuildingType value : ProductionBuildingType.values())
+            output.put(value, value.getName());
+        for (CivilBuildingType value : CivilBuildingType.values())
+            output.put(value, value.getName());
+        return output;
     }
 }
