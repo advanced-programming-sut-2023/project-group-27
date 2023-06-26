@@ -1,6 +1,7 @@
 package graphics_view.graphical_controller;
 
 import controller.controller.CoreGameMenuController;
+import controller.controller.CoreMapEditMenuController;
 import controller.controller.CoreSelectUnitMenuController;
 import graphics_view.view.ShopMenu;
 import graphics_view.view.TradeMenu;
@@ -10,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
@@ -25,9 +27,16 @@ import model.task.Move;
 import java.util.*;
 
 public class GameController {
-    public Button dropBuilding;
-    public Button dropUnit;
-    public Button setTexture;
+    @FXML
+    private Button dropRock;
+    @FXML
+    private Button dropTree;
+    @FXML
+    private Button dropBuilding;
+    @FXML
+    private Button dropUnit;
+    @FXML
+    private Button setTexture;
     @FXML
     private Pane mainPane;
     @FXML
@@ -53,6 +62,7 @@ public class GameController {
     private double x = -1, y = -1;
     StackPane origin = null, destination = null;
     private List<StackPane> selectedTiles = new ArrayList<>();
+    private CoreMapEditMenuController coreMapEditMenuController;
     private CoreSelectUnitMenuController unitController;
     private ArrayList<Selectable> selectedUnits = new ArrayList<>();
     private boolean unitSelected;
@@ -61,6 +71,7 @@ public class GameController {
 
     public void init(Match match) {
         this.match = match;
+        coreMapEditMenuController = new CoreMapEditMenuController(match, null);
         mapData = match.getCurrentMatchMap();
         this.controller = new CoreGameMenuController(match, null);
         initiateGameMap();
@@ -160,8 +171,8 @@ public class GameController {
             });
             hBox.getChildren().add(button);
         }
-        while (infoPane.getChildren().size() > 6) {
-            infoPane.getChildren().remove(6);
+        while (infoPane.getChildren().size() > 8) {
+            infoPane.getChildren().remove(8);
         }
         infoPane.getChildren().add(selectedTilesInfo);
         selectedTilesInfo.getChildren().add(soldiers);
@@ -361,8 +372,8 @@ public class GameController {
     }
 
     public void refreshRateInfoPane() {
-        while (infoPane.getChildren().size() > 6) {
-            infoPane.getChildren().remove(6);
+        while (infoPane.getChildren().size() > 8) {
+            infoPane.getChildren().remove(8);
         }
         infoPane.getChildren().add(monarchyInfo);
         Monarchy monarchy = match.getCurrentUser().getMonarchy();
@@ -640,6 +651,10 @@ public class GameController {
         dropUnit.setManaged(true);
         setTexture.setManaged(true);
         setTexture.setVisible(true);
+        dropTree.setManaged(true);
+        dropTree.setVisible(true);
+        dropRock.setManaged(true);
+        dropRock.setVisible(true);
     }
 
     private void disableButtons() {
@@ -649,6 +664,10 @@ public class GameController {
         dropUnit.setManaged(false);
         setTexture.setManaged(false);
         setTexture.setVisible(false);
+        dropTree.setManaged(false);
+        dropTree.setVisible(false);
+        dropRock.setManaged(false);
+        dropRock.setVisible(false);
     }
 
     public void dropBuilding(MouseEvent mouseEvent) {
@@ -660,6 +679,70 @@ public class GameController {
     }
 
     public void setTexture(MouseEvent mouseEvent) {
-        // TODO implement here
+        Cell cellToModify = tileToCell.get(selectedTiles.get(0));
+        VBox vBox = new VBox();
+        for (LandType landType : LandType.values()) {
+            Button button = new Button(landType.getTypeName());
+            vBox.getChildren().add(button);
+            button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    Alert result = new Alert(Alert.AlertType.INFORMATION);
+                    result.setContentText(coreMapEditMenuController.setTexture(cellToModify.getLocation(), landType));
+                    mountCellData(selectedTiles.get(0), cellToModify);
+                    result.showAndWait();
+                }
+            });
+        }
+        popUpHandler(vBox);
+    }
+
+    private void popUpHandler(VBox vBox) {
+        vBox.setSpacing(10);
+        vBox.setAlignment(Pos.CENTER);
+        Scene scene = new Scene(vBox);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void dropTree(MouseEvent mouseEvent) {
+        Cell cellToModify = tileToCell.get(selectedTiles.get(0));
+        VBox vBox = new VBox();
+        for (NaturalEntityType treeType : NaturalEntityType.getTreeTypes()) {
+            Button button = new Button(treeType.getNaturalEntityName());
+            vBox.getChildren().add(button);
+
+            button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    Alert result = new Alert(Alert.AlertType.INFORMATION);
+                    result.setContentText(coreMapEditMenuController.dropTree(cellToModify.getLocation(), treeType));
+                    mountCellData(selectedTiles.get(0), cellToModify);
+                    result.showAndWait();
+                }
+            });
+        }
+        popUpHandler(vBox);
+    }
+
+    public void dropRock(MouseEvent mouseEvent) {
+        Cell cellToModify = tileToCell.get(selectedTiles.get(0));
+        VBox vBox = new VBox();
+        for (NaturalEntityType rockType: NaturalEntityType.getRockTypes()) {
+            Button button = new Button(rockType.getNaturalEntityName());
+            vBox.getChildren().add(button);
+
+            button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    Alert result = new Alert(Alert.AlertType.INFORMATION);
+                    result.setContentText(coreMapEditMenuController.dropRock(cellToModify.getLocation(), rockType.getDirection()));
+                    mountCellData(selectedTiles.get(0), cellToModify);
+                    result.showAndWait();
+                }
+            });
+        }
+        popUpHandler(vBox);
     }
 }
