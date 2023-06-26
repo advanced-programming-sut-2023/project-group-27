@@ -59,7 +59,6 @@ public class GameController {
         foodInfo = new VBox();
         goldPopulationInfo = new VBox();
         monarchyInfo.getChildren().addAll(rateInfo, popularityInfo, foodInfo, goldPopulationInfo);
-        infoPane.getChildren().add(monarchyInfo);
         refreshRateInfoPane();
         monarchyInfo.setLayoutX(320);
         monarchyInfo.setLayoutY(80);
@@ -132,7 +131,9 @@ public class GameController {
             });
             hBox.getChildren().add(button);
         }
-        infoPane.getChildren().clear();
+        while (infoPane.getChildren().size() > 3) {
+            infoPane.getChildren().remove(3);
+        }
         infoPane.getChildren().add(selectedTilesInfo);
         selectedTilesInfo.getChildren().add(soldiers);
     }
@@ -245,6 +246,10 @@ public class GameController {
     }
 
     public void refreshRateInfoPane() {
+        while (infoPane.getChildren().size() > 3) {
+            infoPane.getChildren().remove(3);
+        }
+        infoPane.getChildren().add(monarchyInfo);
         Monarchy monarchy = match.getCurrentUser().getMonarchy();
         rateInfo.getChildren().clear();
         HBox taxInfo = new HBox();
@@ -398,7 +403,7 @@ public class GameController {
             if (event.getClickCount() == 2) {
                 if (origin == null) {
                     for (StackPane selectedTile : selectedTiles) {
-                        selectedTile.setStyle("-fx-border-color: transparent");
+                        selectedTile.setStyle("-fx-border-color: #41bcef");
                     }
                     selectedTiles.clear();
                     origin = tile;
@@ -434,6 +439,12 @@ public class GameController {
                 }
             }
             if (event.getClickCount() == 1) {
+                if (selectedTiles.contains(tile) && selectedTiles.size() == 1) {
+                    tile.setStyle("-fx-border-color: transparent");
+                    selectedTiles.remove(tile);
+                    refreshRateInfoPane();
+                    return;
+                }
                 for (StackPane selectedTile : selectedTiles) {
                     selectedTile.setStyle("-fx-border-color: transparent");
                 }
