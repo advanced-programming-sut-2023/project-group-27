@@ -313,7 +313,7 @@
                     <Label text="Sell Price" GridPane.columnIndex="3" styleClass="Text"/>
                     <Label text="Amount" GridPane.columnIndex="4" styleClass="Text"/>
                 </GridPane>
-                <Button text="Exit" onMouseClicked="#exitShop"/>
+                <Button fx:id="closeButton" text="Exit" onMouseClicked="#exitShop"/>
             </VBox>
         </ScrollPane>
     </center>
