@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="cheatBarFunctionality2">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" afterDir="false" />
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="cheatBarFunctionality3">
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="cheatBarFunctionality" />
+        <entry key="$PROJECT_DIR$" value="cheatBarFunctionality2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -259,14 +258,7 @@
       <workItem from="1686125795579" duration="15880000" />
       <workItem from="1687763468100" duration="16631000" />
       <workItem from="1687800545423" duration="4795000" />
-      <workItem from="1687833670345" duration="2965000" />
-    </task>
-    <task id="LOCAL-00069" summary="graphics test">
-      <created>1685014757898</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1685014757898</updated>
+      <workItem from="1687833670345" duration="3396000" />
     </task>
     <task id="LOCAL-00070" summary="graphics test">
       <created>1685131142528</created>
@@ -604,7 +596,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687803876993</updated>
     </task>
-    <option name="localTasksCounter" value="118" />
+    <task id="LOCAL-00118" summary="cheatBarFunctionality3">
+      <created>1687840032719</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1687840032719</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -669,7 +668,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="functionality 13" />
     <MESSAGE value="added static graphic to LoginMenu" />
     <MESSAGE value="g start" />
     <MESSAGE value="g start1" />
@@ -694,7 +692,8 @@
     <MESSAGE value="debug" />
     <MESSAGE value="cheatBarFunctionality" />
     <MESSAGE value="cheatBarFunctionality2" />
-    <option name="LAST_COMMIT_MESSAGE" value="cheatBarFunctionality2" />
+    <MESSAGE value="cheatBarFunctionality3" />
+    <option name="LAST_COMMIT_MESSAGE" value="cheatBarFunctionality3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -533,6 +533,7 @@ public class GameController {
     public void nextTurn(MouseEvent mouseEvent) {
         controller.nextTurn();
         this.controller = new CoreGameMenuController(match, null);
+        this.coreMapEditMenuController = new CoreMapEditMenuController(match, null);
         refreshRateInfoPane();
     }
 
