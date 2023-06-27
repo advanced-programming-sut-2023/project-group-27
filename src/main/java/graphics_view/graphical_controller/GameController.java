@@ -107,6 +107,7 @@ public class GameController {
                     count++;
                 }
             }
+            if (count == 0)continue;
             manCount.put(type, count);
         }
 
