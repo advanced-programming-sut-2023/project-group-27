@@ -1,6 +1,8 @@
 package controller.controller;
 
 import com.google.common.hash.Hashing;
+import graphics_view.graphical_controller.GameController;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import model.*;
 import model.building.Building;
@@ -19,6 +21,8 @@ import java.util.*;
 public class Utilities {
     static private List<String> sampleSlogans = new ArrayList<>();
     private static Stage stage;
+    private static TilePane gameMap;
+    private static GameController gameController;
 
     static {
         sampleSlogans = Arrays.asList(
@@ -29,6 +33,22 @@ public class Utilities {
                 "Better to die than to be a coward",
                 "War wins land, Peace wins People"
         );
+    }
+
+    public static TilePane getGameMap() {
+        return gameMap;
+    }
+
+    public static GameController getGameController() {
+        return gameController;
+    }
+
+    public static void setGameController(GameController gameController) {
+        Utilities.gameController = gameController;
+    }
+
+    public static void setGameMap(TilePane gameMap) {
+        Utilities.gameMap = gameMap;
     }
 
     public static String validatePassword(String newPassword) {

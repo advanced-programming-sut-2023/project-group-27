@@ -98,6 +98,8 @@ public class GameController {
         selectedTilesInfo.setLayoutY(80);
         unitSelected = false;
         selectedTilesInfo.setSpacing(35);
+        Utilities.setGameMap(gameMap);
+        Utilities.setGameController(this);
     }
 
     private void refreshSelectedTilesInfo(List<StackPane> tiles) {

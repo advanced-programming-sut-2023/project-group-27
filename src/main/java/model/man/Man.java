@@ -16,18 +16,12 @@ public abstract class Man extends Destructable implements Movable {
     private Task task;
     private Location location;
     private final Double movementSpeed;
-    private final ArrayList<Image> moveImages;
 
     public Man(int hitpoint, String name, User owner, Double movementSpeed) {
         super(hitpoint);
         this.movementSpeed = movementSpeed;
         this.name = name;
         this.owner = owner;
-        this.moveImages = new ArrayList<>();
-        for (int i = 1 ; i <= 3 ; i++) {
-            moveImages.add(new Image(
-                    Man.class.getResource("/assets/men/" + name + i + ".png").toExternalForm()));
-        }
     }
 
     public void setLocation(Location location) {
@@ -44,7 +38,6 @@ public abstract class Man extends Destructable implements Movable {
                 GameController.cellToTile.get(origin) ,
                 GameController.cellToTile.get(cell));
         animation.play();
-        animation.setOnFinished(actionEvent -> cell.addMan(Man.this));
     }
 
     @Override
@@ -83,6 +76,11 @@ public abstract class Man extends Destructable implements Movable {
 
     @Override
     public ArrayList<Image> getMoveImages() {
+        ArrayList<Image> moveImages = new ArrayList<>();
+        for (int i = 1 ; i <= 1 ; i++) {
+            moveImages.add(new Image(
+                    Man.class.getResource("/assets/men/" + name + ".png").toExternalForm()));
+        }
         return moveImages;
     }
 }
