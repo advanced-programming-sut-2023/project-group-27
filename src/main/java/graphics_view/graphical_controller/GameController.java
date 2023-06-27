@@ -1,10 +1,10 @@
 package graphics_view.graphical_controller;
 
-import controller.controller.CoreGameMenuController;
-import controller.controller.CoreMapEditMenuController;
-import controller.controller.Utilities;
+import controller.controller.*;
+
 import static controller.view_controllers.Utilities.getAllBuildingNames;
-import controller.controller.CoreSelectUnitMenuController;
+
+import graphics_view.view.InitialMenu;
 import graphics_view.view.ShopMenu;
 import graphics_view.view.TradeMenu;
 import javafx.beans.value.ChangeListener;
@@ -13,6 +13,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -26,10 +27,8 @@ import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import model.*;
 import model.Cell;
-import model.building.Building;
-import model.building.CivilBuildingType;
-import model.building.EngineerBuildingType;
-import model.building.ProductionBuildingType;
+import model.building.*;
+import model.castle_components.CastleComponent;
 import model.man.Man;
 import model.man.SoldierType;
 
@@ -78,6 +77,7 @@ public class GameController {
     private boolean unitSelected;
     private Cell targetCell;
     private String taskName;
+    private CoreSelectBuildingMenuController coreSelectBuildingMenuController;
 
     public void init(Match match) {
         this.match = match;
@@ -211,8 +211,7 @@ public class GameController {
             hBox.getChildren().add(e);
             Button button = new Button("Select");
             button.setOnAction(event -> {
-                // TODO clear recently selected buildings
-                // TODO add new selected buildings
+                handleSelectedBuildingRequests(cell, cell.getBuilding());
             });
             hBox.getChildren().add(button);
             hBox.setSpacing(5);
@@ -223,6 +222,54 @@ public class GameController {
         scrollBuildings.setMinWidth(180);
         scrollBuildings.setMaxHeight(120);
         selectedTilesInfo.getChildren().add(scrollBuildings);
+    }
+
+    private void handleSelectedBuildingRequests(Cell cell, Building building) {
+        coreSelectBuildingMenuController = new CoreSelectBuildingMenuController(
+                building, null, match.getCurrentMonarchy());
+        VBox vBox = new VBox();
+        if (building instanceof CastleComponent) {
+            Button button = new Button("repair");
+            vBox.getChildren().add(button);
+            button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText(coreSelectBuildingMenuController.repair());
+                    alert.showAndWait();
+                }
+            });
+        }
+        else if (building instanceof CivilBuilding
+                && ((CivilBuilding) building).getCivilType() == CivilBuildingType.BARRACKS) {
+            handleUnitCreationBuilding(vBox, SoldierType.getSpecifiedTroops("european"), cell);
+        }
+        else if (building instanceof CivilBuilding
+                && ((CivilBuilding) building).getCivilType() == CivilBuildingType.MERCENARY_POST) {
+            handleUnitCreationBuilding(vBox, SoldierType.getSpecifiedTroops("arab"), cell);
+        }
+        else return;
+        popUpHandler(vBox);
+    }
+
+    private void handleUnitCreationBuilding(VBox vBox, ArrayList<SoldierType> list, Cell cell) {
+        count = 1;
+        for (SoldierType soldierType : list) {
+            Button button = new Button(soldierType.getName());
+            vBox.getChildren().add(button);
+
+            button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText(coreSelectBuildingMenuController.createUnit(soldierType, count));
+                    mountCellData(cellToTile.get(cell), cell);
+                    alert.showAndWait();
+                }
+            });
+        }
+
+        vBox.getChildren().add(getNumberButton());
     }
 
     private void assignTask(SoldierType type) {
@@ -769,17 +816,23 @@ public class GameController {
             });
         }
 
+
+        vBox.getChildren().add(getNumberButton());
+        popUpHandler(vBox);
+    }
+
+    private Button getNumberButton() {
+        int max = 21;
         Button number = new Button(String.valueOf(count));
         number.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 count++;
-                if (count == 31) count = 1;
+                if (count == (max + 1)) count = 1;
                 number.setText(String.valueOf(count));
             }
         });
-        vBox.getChildren().add(number);
-        popUpHandler(vBox);
+        return number;
     }
 
     public void setTexture(MouseEvent mouseEvent) {
@@ -813,10 +866,14 @@ public class GameController {
     }
 
     private void popUpHandler(VBox vBox) {
-        vBox.setSpacing(3);
+        vBox.setSpacing(10);
         vBox.setAlignment(Pos.CENTER);
+        vBox.setMinWidth(200);
+        vBox.setMinHeight(200);
         Scene scene = new Scene(vBox);
         Stage stage = new Stage();
+        stage.getIcons().add(new Image(InitialMenu.class.getResource("/assets/logo.jpeg").toExternalForm()));
+        stage.setTitle("StrongHold Crusader");
         stage.setScene(scene);
         stage.show();
     }
@@ -863,6 +920,7 @@ public class GameController {
 
     public void enterBuild(MouseEvent mouseEvent) {
         TabPane pane = new TabPane();
+        pane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         Tab civilTab = new Tab("civil");
         Tab engineerTab = new Tab("engineer");
         Tab producerTab = new Tab("producer");
