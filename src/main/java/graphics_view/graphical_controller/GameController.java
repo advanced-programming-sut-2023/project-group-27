@@ -14,6 +14,8 @@ import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import javafx.util.Duration;
 import model.*;
 import model.Cell;
 import model.man.Man;
@@ -23,6 +25,9 @@ import model.task.Move;
 import java.util.*;
 
 public class GameController {
+    public Button dropBuilding;
+    public Button dropUnit;
+    public Button setTexture;
     @FXML
     private Pane mainPane;
     @FXML
@@ -71,6 +76,7 @@ public class GameController {
         selectedTilesInfo.setLayoutX(320);
         selectedTilesInfo.setLayoutY(80);
         unitSelected = false;
+        selectedTilesInfo.setSpacing(35);
     }
 
     private void refreshSelectedTilesInfo(List<StackPane> tiles) {
@@ -106,9 +112,10 @@ public class GameController {
             Man man = (Man) entry.getKey();
             int val = (int) entry.getValue();
             Label label = new Label(man.getName() + " : " + val);
+            label.setMinWidth(70);
             hBox.getChildren().add(label);
             TextField count = new TextField();
-            count.setMaxWidth(50);
+            count.setPrefWidth(25);
             count.textProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(
@@ -153,11 +160,36 @@ public class GameController {
             });
             hBox.getChildren().add(button);
         }
-        while (infoPane.getChildren().size() > 3) {
-            infoPane.getChildren().remove(3);
+        while (infoPane.getChildren().size() > 6) {
+            infoPane.getChildren().remove(6);
         }
         infoPane.getChildren().add(selectedTilesInfo);
         selectedTilesInfo.getChildren().add(soldiers);
+
+        VBox buildings = new VBox();
+        buildings.getChildren().add(new Label("buildings to be selected:"));
+        for (StackPane selectedTile: selectedTiles) {
+            Cell cell = tileToCell.get(selectedTile);
+            if (cell.getBuilding() == null || cell.getBuilding().getOwner() != match.getCurrentUser()) {
+                continue;
+            }
+            HBox hBox = new HBox();
+            hBox.setSpacing(5);
+            hBox.setAlignment(Pos.CENTER);
+            Label e = new Label(cell.getBuilding().getName());
+            e.setMinWidth(65);
+            hBox.getChildren().add(e);
+            Button button = new Button("Select");
+            button.setOnAction(event -> {
+                // TODO clear recently selected buildings
+                // TODO add new selected buildings
+            });
+            hBox.getChildren().add(button);
+            hBox.setSpacing(5);
+            hBox.setAlignment(Pos.CENTER);
+            buildings.getChildren().add(hBox);
+        }
+        selectedTilesInfo.getChildren().add(buildings);
     }
 
     private void assignTask(SoldierType type) {
@@ -330,8 +362,8 @@ public class GameController {
     }
 
     public void refreshRateInfoPane() {
-        while (infoPane.getChildren().size() > 3) {
-            infoPane.getChildren().remove(3);
+        while (infoPane.getChildren().size() > 6) {
+            infoPane.getChildren().remove(6);
         }
         infoPane.getChildren().add(monarchyInfo);
         Monarchy monarchy = match.getCurrentUser().getMonarchy();
@@ -480,6 +512,19 @@ public class GameController {
     }
 
     private void defineClickEvents(StackPane tile) {
+        Tooltip tooltip = new Tooltip();
+        tooltip.setShowDelay(Duration.millis(1500));
+        tooltip.setShowDuration(Duration.INDEFINITE);
+        tooltip.setHideOnEscape(true);
+        tooltip.setHideDelay(Duration.ZERO);
+        Tooltip.install(tile, tooltip);
+        tooltip.setOnShowing(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                tooltip.setText(tileToCell.get(tile).showDetails());
+            }
+        });
+
         tile.setOnMouseClicked(event -> {
             if (event.getButton() != MouseButton.PRIMARY)return;
             int rows = gameMap.getPrefRows();
@@ -489,6 +534,7 @@ public class GameController {
                     for (StackPane selectedTile : selectedTiles) {
                         selectedTile.setStyle("-fx-border-color: #41bcef");
                     }
+                    disableButtons();
                     selectedTiles.clear();
                     origin = tile;
                     System.out.println(tile);
@@ -526,6 +572,7 @@ public class GameController {
                 if (selectedTiles.contains(tile) && selectedTiles.size() == 1) {
                     tile.setStyle("-fx-border-color: transparent");
                     selectedTiles.remove(tile);
+                    disableButtons();
                     refreshRateInfoPane();
                     return;
                 }
@@ -536,6 +583,9 @@ public class GameController {
                 tile.setStyle("-fx-border-color: red");
                 selectedTiles.add(tile);
                 refreshSelectedTilesInfo(selectedTiles);
+                if (origin == null) {
+                    enableButtons();
+                }
             }
             else if (event.getClickCount() == 1) {
                 if (taskName == null) return;
@@ -584,5 +634,35 @@ public class GameController {
         controller.nextTurn();
         this.controller = new CoreGameMenuController(match, null);
         refreshRateInfoPane();
+    }
+
+    private void enableButtons() {
+        dropBuilding.setManaged(true);
+        dropBuilding.setVisible(true);
+        dropUnit.setVisible(true);
+        dropUnit.setManaged(true);
+        setTexture.setManaged(true);
+        setTexture.setVisible(true);
+    }
+
+    private void disableButtons() {
+        dropBuilding.setManaged(false);
+        dropBuilding.setVisible(false);
+        dropUnit.setVisible(false);
+        dropUnit.setManaged(false);
+        setTexture.setManaged(false);
+        setTexture.setVisible(false);
+    }
+
+    public void dropBuilding(MouseEvent mouseEvent) {
+        // TODO implement here
+    }
+
+    public void dropUnit(MouseEvent mouseEvent) {
+        // TODO implement here
+    }
+
+    public void setTexture(MouseEvent mouseEvent) {
+        // TODO implement here
     }
 }
