@@ -1,11 +1,14 @@
 package model.task;
 
+import controller.view_controllers.Utilities;
+import graphics_view.graphical_controller.GameController;
 import graphics_view.view.animations.AirStrikeAnimation;
-import model.Destructable;
-import model.Fightable;
+import model.*;
 import model.building.FightableBuilding;
 import model.man.Soldier;
 import model.man.SoldierType;
+
+import java.util.Map;
 
 public class AirStrike extends Task{
     private final Fightable fightable;
@@ -22,7 +25,9 @@ public class AirStrike extends Task{
         this.target = target;
         this.x = x;
         this.y = y;
-        animation = new AirStrikeAnimation();
+        GameMap map = StrongholdCrusader.getCurrentMatch().getCurrentMatchMap();
+        animation = new AirStrikeAnimation(GameController.cellToTile.get(map.getCell(fightable.getLocation())) ,
+                GameController.cellToTile.get(map.getCell(target.getLocation())));
     }
 
     public AirStrike(Fightable fightable, SoldierType type , int x , int y) {
@@ -30,7 +35,9 @@ public class AirStrike extends Task{
         this.type = type;
         this.x = x;
         this.y = y;
-        animation = new AirStrikeAnimation();
+        GameMap map = StrongholdCrusader.getCurrentMatch().getCurrentMatchMap();
+        animation = new AirStrikeAnimation(GameController.cellToTile.get(map.getCell(fightable.getLocation())) ,
+                GameController.cellToTile.get(map.getCell(new Location(x , y))));
     }
 
     @Override
@@ -42,7 +49,11 @@ public class AirStrike extends Task{
             isValid = false;
             return;
         }
-        if (target == null ) return; //TODO simply play animation
+        if (target == null ) {
+            animation.play();
+            return;
+        }
+        animation.play();
         if (target.getHitpoint() <= 0) return;
         if (fightable instanceof Soldier) {
             target.setHitpoint(target.getHitpoint() - ((Soldier) fightable).getDamage());
