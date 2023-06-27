@@ -22,6 +22,7 @@ import javafx.util.Duration;
 import model.*;
 import model.Cell;
 import model.man.Man;
+import model.man.Soldier;
 import model.man.SoldierType;
 import model.task.Move;
 
@@ -98,9 +99,15 @@ public class GameController {
             allMen.addAll(cell.getMen());
         }
         allMen.removeIf(x -> x.getOwner() != match.getCurrentUser());
-        HashMap<Man, Integer> manCount = new HashMap<>();
-        for (Man man: allMen) {
-            manCount.put(man, manCount.getOrDefault(man, 0) + 1);
+        HashMap<SoldierType, Integer> manCount = new HashMap<>();
+        for (SoldierType type: SoldierType.values()) {
+            int count = 0;
+            for (Man man: allMen) {
+                if (man.getName().equals(type.getName())) {
+                    count++;
+                }
+            }
+            manCount.put(type, count);
         }
 
         if (selectedTilesInfo == null) {
@@ -121,9 +128,9 @@ public class GameController {
             hBox.setSpacing(5);
             hBox.setAlignment(Pos.CENTER);
             soldiers.getChildren().add(hBox);
-            Man man = (Man) entry.getKey();
+            SoldierType type = (SoldierType) entry.getKey();
             int val = (int) entry.getValue();
-            Label label = new Label(man.getName() + " : " + val);
+            Label label = new Label(type.getName() + " : " + val);
             label.setMinWidth(70);
             hBox.getChildren().add(label);
             TextField count = new TextField();
@@ -156,16 +163,15 @@ public class GameController {
                     return;
                 }
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setContentText(cnt + " " + man.getName() + " selected");
+                alert.setContentText(cnt + " " + type.getName() + " selected");
                 alert.showAndWait();
                 unitSelected = true;
 
                 selectedUnits.clear();
-                SoldierType type = SoldierType.getTypeByName(man.getName());
                 int i = 0;
-                for (Man man1 : allMen) {
+                for (Man man : allMen) {
                     if (i == cnt) break;
-                    if (man1.getName().equals(man.getName())) selectedUnits.add(man1);
+                    if (man.getName().equals(type.getName())) selectedUnits.add(man);
                     i++;
                 }
                 assignTask(type);
@@ -534,6 +540,14 @@ public class GameController {
             public void handle(WindowEvent windowEvent) {
                 tooltip.setText(tileToCell.get(tile).showDetails());
             }
+        });
+
+        tile.setOnDragOver(event -> {
+            if (event.getGestureSource() != tile && event.getDragboard().hasString()) {
+                event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+
+            }
+            event.consume();
         });
 
         tile.setOnMouseClicked(event -> {
