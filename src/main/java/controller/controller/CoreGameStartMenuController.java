@@ -201,16 +201,16 @@ public class CoreGameStartMenuController {
             CastleComponent keep = new CastleComponent(CastleComponentType.KEEP, user, mapsKeepCells[cellsToAssign.get(index)]);
             Man lord = new Soldier(SoldierType.LORD, user);
             // TODO remove extra men
-            Man swordsMan = new Soldier(SoldierType.SWORDSMAN, user);
-            Man archer = new Soldier(SoldierType.ARCHER, user);
+            //Man swordsMan = new Soldier(SoldierType.SWORDSMAN, user);
+            //Man archer = new Soldier(SoldierType.ARCHER, user);
 
             user.setMonarchy(new Monarchy(user,
                     colors.get(user), selectedMap, mapsKeepCells[cellsToAssign.get(index)].getLocation()));
             Monarchy monarchy = user.getMonarchy();
             monarchy.addBuilding(keep);
             monarchy.addMan(lord);
-            monarchy.addMan(swordsMan);
-            monarchy.addMan(archer);
+            //monarchy.addMan(swordsMan);
+            //monarchy.addMan(archer);
             monarchy.setLord(lord);
             monarchy.changeGold(1200);
             monarchy.putGood(GoodsType.WOOD, 100);
@@ -221,8 +221,8 @@ public class CoreGameStartMenuController {
             mapsKeepCells[cellsToAssign.get(index)].addMan(lord);
             int x = mapsKeepCells[cellsToAssign.get(index)].getLocation().x;
             int y = mapsKeepCells[cellsToAssign.get(index)].getLocation().y;
-            selectedMap.getCell(x, y-1).addMan(swordsMan);
-            selectedMap.getCell(x, y+1).addMan(archer);
+            //selectedMap.getCell(x, y-1).addMan(swordsMan);
+            //selectedMap.getCell(x, y+1).addMan(archer);
         }
 
         match = new Match(selectedMap, thisGamePlayers);

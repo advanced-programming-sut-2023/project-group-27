@@ -4,6 +4,7 @@ import controller.controller.*;
 
 import static controller.view_controllers.Utilities.getAllBuildingNames;
 
+import graphics_view.view.InitialMenu;
 import graphics_view.view.ShopMenu;
 import graphics_view.view.TradeMenu;
 import javafx.beans.value.ChangeListener;
@@ -241,17 +242,17 @@ public class GameController {
         }
         else if (building instanceof CivilBuilding
                 && ((CivilBuilding) building).getCivilType() == CivilBuildingType.BARRACKS) {
-            handleUnitCreationBuilding(vBox, SoldierType.getSpecifiedTroops("european"));
+            handleUnitCreationBuilding(vBox, SoldierType.getSpecifiedTroops("european"), cell);
         }
         else if (building instanceof CivilBuilding
                 && ((CivilBuilding) building).getCivilType() == CivilBuildingType.MERCENARY_POST) {
-            handleUnitCreationBuilding(vBox, SoldierType.getSpecifiedTroops("arab"));
+            handleUnitCreationBuilding(vBox, SoldierType.getSpecifiedTroops("arab"), cell);
         }
         else return;
         popUpHandler(vBox);
     }
 
-    private void handleUnitCreationBuilding(VBox vBox, ArrayList<SoldierType> list) {
+    private void handleUnitCreationBuilding(VBox vBox, ArrayList<SoldierType> list, Cell cell) {
         count = 1;
         for (SoldierType soldierType : list) {
             Button button = new Button(soldierType.getName());
@@ -262,6 +263,7 @@ public class GameController {
                 public void handle(MouseEvent mouseEvent) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setContentText(coreSelectBuildingMenuController.createUnit(soldierType, count));
+                    mountCellData(cellToTile.get(cell), cell);
                     alert.showAndWait();
                 }
             });
@@ -818,12 +820,13 @@ public class GameController {
     }
 
     private Button getNumberButton() {
+        int max = 21;
         Button number = new Button(String.valueOf(count));
         number.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 count++;
-                if (count == 31) count = 1;
+                if (count == (max + 1)) count = 1;
                 number.setText(String.valueOf(count));
             }
         });
@@ -861,10 +864,14 @@ public class GameController {
     }
 
     private void popUpHandler(VBox vBox) {
-        vBox.setSpacing(3);
+        vBox.setSpacing(10);
         vBox.setAlignment(Pos.CENTER);
+        vBox.setMinWidth(200);
+        vBox.setMinHeight(200);
         Scene scene = new Scene(vBox);
         Stage stage = new Stage();
+        stage.getIcons().add(new Image(InitialMenu.class.getResource("/assets/logo.jpeg").toExternalForm()));
+        stage.setTitle("StrongHold Crusader");
         stage.setScene(scene);
         stage.show();
     }

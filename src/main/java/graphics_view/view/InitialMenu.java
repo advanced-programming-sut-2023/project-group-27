@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -22,6 +23,8 @@ public class InitialMenu extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Utilities.setStage(stage);
+        stage.getIcons().add(new Image(InitialMenu.class.getResource("/assets/logo.jpeg").toExternalForm()));
+        stage.setTitle("StrongHold Crusader");
         Utilities.init();
         if (stayLoggedInCheck() != null) {
             new MainMenu().start(stage);
