@@ -248,6 +248,13 @@ public class GameController {
                 && ((CivilBuilding) building).getCivilType() == CivilBuildingType.MERCENARY_POST) {
             handleUnitCreationBuilding(vBox, SoldierType.getSpecifiedTroops("arab"), cell);
         }
+        else if (building instanceof Storage) {
+            for (Map.Entry<GoodsType, Integer> goodsTypeIntegerEntry : ((Storage) building).getMap().entrySet()) {
+                Label label = new Label(
+                        goodsTypeIntegerEntry.getKey().getName() + " : " + goodsTypeIntegerEntry.getValue());
+                vBox.getChildren().add(label);
+            }
+        }
         else return;
         popUpHandler(vBox);
     }
