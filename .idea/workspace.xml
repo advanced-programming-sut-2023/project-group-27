@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="cheatBarFunctionality">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="cheatBarFunctionality2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/view_controllers/Utilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/NaturalEntityType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/NaturalEntityType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,14 +258,8 @@
       <workItem from="1686040190958" duration="17193000" />
       <workItem from="1686125795579" duration="15880000" />
       <workItem from="1687763468100" duration="16631000" />
-      <workItem from="1687800545423" duration="4523000" />
-    </task>
-    <task id="LOCAL-00068" summary="graphics test">
-      <created>1685014603857</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1685014603858</updated>
+      <workItem from="1687800545423" duration="4795000" />
+      <workItem from="1687833670345" duration="2965000" />
     </task>
     <task id="LOCAL-00069" summary="graphics test">
       <created>1685014757898</created>
@@ -605,7 +597,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687800095249</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="cheatBarFunctionality2">
+      <created>1687803876992</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1687803876993</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -670,7 +669,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="functionality 12" />
     <MESSAGE value="functionality 13" />
     <MESSAGE value="added static graphic to LoginMenu" />
     <MESSAGE value="g start" />
@@ -695,7 +693,8 @@
     <MESSAGE value="pop up handler" />
     <MESSAGE value="debug" />
     <MESSAGE value="cheatBarFunctionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="cheatBarFunctionality" />
+    <MESSAGE value="cheatBarFunctionality2" />
+    <option name="LAST_COMMIT_MESSAGE" value="cheatBarFunctionality2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -21,6 +21,7 @@ import javafx.util.Duration;
 import model.*;
 import model.Cell;
 import model.man.Man;
+import model.man.SoldierType;
 
 import java.util.*;
 
@@ -61,6 +62,7 @@ public class GameController {
     StackPane origin = null, destination = null;
     private List<StackPane> selectedTiles = new ArrayList<>();
     private CoreMapEditMenuController coreMapEditMenuController;
+    private int count;
 
     public void init(Match match) {
         this.match = match;
@@ -585,7 +587,38 @@ public class GameController {
     }
 
     public void dropUnit(MouseEvent mouseEvent) {
-        // TODO implement here
+        count = 1;
+        Cell cellToModify = tileToCell.get(selectedTiles.get(0));
+        TilePane selectionTilePane = new TilePane();
+        selectionTilePane.setPrefColumns(10);
+        VBox vBox = new VBox();
+        vBox.getChildren().add(selectionTilePane);
+        for (SoldierType soldierType : SoldierType.values()) {
+            Button button = new Button(soldierType.getName());
+            selectionTilePane.getChildren().add(button);
+            button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    Alert result = new Alert(Alert.AlertType.INFORMATION);
+                    result.setContentText(
+                            coreMapEditMenuController.dropUnit(cellToModify.getLocation(), soldierType, count));
+                    mountCellData(selectedTiles.get(0), cellToModify);
+                    result.showAndWait();
+                }
+            });
+        }
+
+        Button number = new Button(String.valueOf(count));
+        number.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                count++;
+                if (count == 31) count = 1;
+                number.setText(String.valueOf(count));
+            }
+        });
+        vBox.getChildren().add(number);
+        popUpHandler(vBox);
     }
 
     public void setTexture(MouseEvent mouseEvent) {
