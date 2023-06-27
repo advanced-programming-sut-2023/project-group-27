@@ -1,7 +1,6 @@
 package model.task;
 
 import controller.controller.BFS;
-import graphics_view.view.animations.PatrolAnimation;
 import model.GameMap;
 import model.Location;
 import model.Movable;
@@ -15,7 +14,6 @@ public class Patrol extends Task {
     private final GameMap map;
     double reminder, movementSpeed;
     private Boolean isInitialized = false;
-    private final PatrolAnimation animation;
 
     public Patrol(GameMap map, Movable movable, int x1, int y1, int x2, int y2) {
         this.movementSpeed = movable.getMovementSpeed();
@@ -25,7 +23,6 @@ public class Patrol extends Task {
         destination2 = map.getCell(x2, y2).getLocation();
         BFS bfs = new BFS(map, movable);
         initialPath = bfs.pathTo(destination1);
-        animation = new PatrolAnimation();
     }
 
     @Override
