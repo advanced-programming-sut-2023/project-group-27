@@ -1,6 +1,7 @@
 package model.task;
 
 import controller.controller.BFS;
+import graphics_view.view.animations.MoveAnimation;
 import model.GameMap;
 import model.Location;
 import model.Movable;
@@ -14,6 +15,18 @@ public class Move extends Task {
     private double reminder;
     private final double movementSpeed;
     private final Movable movable;
+    private final MoveAnimation animation;
+
+    public Move(GameMap map, Movable movable, int destinationX, int destinationY) {
+        this.movementSpeed = movable.getMovementSpeed();
+        Location origin = movable.getLocation();
+        Location destination = new Location(destinationX, destinationY);
+        this.map = map;
+        this.bfs = new BFS(map, movable);
+        this.path = this.bfs.pathTo(destination);
+        this.movable = movable;
+        animation = new MoveAnimation();
+    }
 
     @Override
     public void run() {
@@ -45,16 +58,6 @@ public class Move extends Task {
             return false;
         }
         return true;
-    }
-
-     public Move(GameMap map, Movable movable, int destinationX, int destinationY) {
-        this.movementSpeed = movable.getMovementSpeed();
-        Location origin = movable.getLocation();
-        Location destination = new Location(destinationX, destinationY);
-        this.map = map;
-        this.bfs = new BFS(map, movable);
-        this.path = this.bfs.pathTo(destination);
-        this.movable = movable;
     }
 
     public Movable getOwner() {

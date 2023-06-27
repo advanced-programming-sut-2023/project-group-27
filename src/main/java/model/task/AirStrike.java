@@ -1,5 +1,6 @@
 package model.task;
 
+import graphics_view.view.animations.AirStrikeAnimation;
 import model.Destructable;
 import model.Fightable;
 import model.building.FightableBuilding;
@@ -13,6 +14,7 @@ public class AirStrike extends Task{
     private final int x;
     private final int y;
     private boolean isValid = true;
+    private final AirStrikeAnimation animation;
 
     public AirStrike(Fightable fightable, SoldierType type, Destructable target , int x , int y) {
         this.fightable = fightable;
@@ -20,6 +22,7 @@ public class AirStrike extends Task{
         this.target = target;
         this.x = x;
         this.y = y;
+        animation = new AirStrikeAnimation();
     }
 
     public AirStrike(Fightable fightable, SoldierType type , int x , int y) {
@@ -27,6 +30,7 @@ public class AirStrike extends Task{
         this.type = type;
         this.x = x;
         this.y = y;
+        animation = new AirStrikeAnimation();
     }
 
     @Override

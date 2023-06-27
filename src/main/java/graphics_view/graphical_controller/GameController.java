@@ -329,7 +329,6 @@ public class GameController {
         unitController.attackByXY(targetCell.getXCoordinate() , targetCell.getYCoordinate());
         System.out.println("Air Strike!!");
         unitSelected = false;
-        //TODO find why task is null
     }
 
 
