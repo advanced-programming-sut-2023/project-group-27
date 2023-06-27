@@ -79,7 +79,7 @@ public class TradeWithController {
     }
 
     public void back(javafx.scene.input.MouseEvent mouseEvent) throws Exception {
-        new TradeMenu(loggedInUser, match).start(Utilities.getStage());
+        new TradeMenu(loggedInUser, match).start(TradeMenu.getStage());
     }
 
     public void next(javafx.scene.input.MouseEvent mouseEvent) throws Exception {
@@ -179,6 +179,6 @@ public class TradeWithController {
                 BorderStrokeStyle.SOLID, new CornerRadii(20), BorderWidths.DEFAULT)));
         popup.getContent().add(vBox);
 
-        popup.show(Utilities.getStage());
+        popup.show(TradeMenu.getStage());
     }
 }

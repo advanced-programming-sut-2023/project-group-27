@@ -1,6 +1,7 @@
 package graphics_view.graphical_controller;
 
 import controller.controller.Utilities;
+import graphics_view.view.TradeMenu;
 import graphics_view.view.TradeWithUserMenu;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -31,6 +32,6 @@ public class CreateTradeController {
                 : match.getMonarchies().stream().filter(
                         monarchy -> monarchy.getKing().getUsername().equals(userList.getSelectionModel().getSelectedItem()))
                 .findFirst().get().getKing();
-        new TradeWithUserMenu(loggedInUser, user, match).start(Utilities.getStage());
+        new TradeWithUserMenu(loggedInUser, user, match).start(TradeMenu.getStage());
     }
 }

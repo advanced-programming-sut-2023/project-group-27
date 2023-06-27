@@ -4,6 +4,7 @@ import controller.controller.CoreTradeMenuController;
 import controller.controller.Utilities;
 import graphics_view.view.CreateTradeMenu;
 import graphics_view.view.ManageTrades;
+import graphics_view.view.TradeMenu;
 import javafx.application.Platform;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
@@ -24,14 +25,14 @@ public class TradeController {
 
 
     public void create(MouseEvent mouseEvent) throws Exception {
-        new CreateTradeMenu(loggedInUser, match).start(Utilities.getStage());
+        new CreateTradeMenu(loggedInUser, match).start(TradeMenu.getStage());
     }
 
     public void manage(MouseEvent mouseEvent) throws Exception {
-        new ManageTrades(loggedInUser, match).start(Utilities.getStage());
+        new ManageTrades(loggedInUser, match).start(TradeMenu.getStage());
     }
 
     public void exit(MouseEvent mouseEvent) {
-        Platform.exit();
+        TradeMenu.getStage().close();
     }
 }

@@ -31,5 +31,6 @@ public class ManageTrades extends Application {
         Scene scene = new Scene(borderPane);
         stage.setScene(scene);
         stage.show();
+
     }
 }

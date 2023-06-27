@@ -461,7 +461,9 @@ public class GameController {
             refreshPopularityInfo();
         });
         foodInfo.getChildren().addAll(DFoodButton, foodLabel, IFoodButton);
-        rateInfo.getChildren().addAll(fearInfo, taxInfo, foodInfo);
+        Button refreshButton = new Button("refresh");
+        refreshButton.setOnAction(event -> refreshRateInfoPane());
+        rateInfo.getChildren().addAll(fearInfo, taxInfo, foodInfo, refreshButton);
         refreshPopularityInfo();
     }
 

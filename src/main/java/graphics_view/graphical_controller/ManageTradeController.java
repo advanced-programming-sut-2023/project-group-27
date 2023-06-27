@@ -3,8 +3,10 @@ package graphics_view.graphical_controller;
 import controller.controller.CoreTradeMenuController;
 import controller.controller.Utilities;
 import graphics_view.view.TradeMenu;
+import javafx.application.Preloader;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -23,6 +25,10 @@ public class ManageTradeController {
     private CoreTradeMenuController controller;
 
     public void init(User loggedInUser, Match match) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("new incoming trades:");
+        alert.setContentText(loggedInUser.getMonarchy().getTradingSystem().notifications());
+        alert.showAndWait();
         this.loggedInUser = loggedInUser;
         this.match = match;
         this.controller = new CoreTradeMenuController(match, loggedInUser, null);
@@ -119,10 +125,9 @@ public class ManageTradeController {
                     new javafx.scene.layout.CornerRadii(20), null)));
             outgoingVBox.getChildren().add(hBox);
         }
-
     }
 
     public void back(ActionEvent event) throws Exception {
-        new TradeMenu(loggedInUser, match).start(Utilities.getStage());
+        new TradeMenu(loggedInUser, match).start(TradeMenu.getStage());
     }
 }
