@@ -1,10 +1,9 @@
 package graphics_view.graphical_controller;
 
-import controller.controller.CoreGameMenuController;
-import controller.controller.CoreMapEditMenuController;
-import controller.controller.Utilities;
+import controller.controller.*;
+
 import static controller.view_controllers.Utilities.getAllBuildingNames;
-import controller.controller.CoreSelectUnitMenuController;
+
 import graphics_view.view.ShopMenu;
 import graphics_view.view.TradeMenu;
 import javafx.beans.value.ChangeListener;
@@ -26,10 +25,8 @@ import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import model.*;
 import model.Cell;
-import model.building.Building;
-import model.building.CivilBuildingType;
-import model.building.EngineerBuildingType;
-import model.building.ProductionBuildingType;
+import model.building.*;
+import model.castle_components.CastleComponent;
 import model.man.Man;
 import model.man.SoldierType;
 
@@ -78,6 +75,7 @@ public class GameController {
     private boolean unitSelected;
     private Cell targetCell;
     private String taskName;
+    private CoreSelectBuildingMenuController coreSelectBuildingMenuController;
 
     public void init(Match match) {
         this.match = match;
@@ -211,8 +209,7 @@ public class GameController {
             hBox.getChildren().add(e);
             Button button = new Button("Select");
             button.setOnAction(event -> {
-                // TODO clear recently selected buildings
-                // TODO add new selected buildings
+                handleSelectedBuildingRequests(cell, cell.getBuilding());
             });
             hBox.getChildren().add(button);
             hBox.setSpacing(5);
@@ -223,6 +220,34 @@ public class GameController {
         scrollBuildings.setMinWidth(180);
         scrollBuildings.setMaxHeight(120);
         selectedTilesInfo.getChildren().add(scrollBuildings);
+    }
+
+    private void handleSelectedBuildingRequests(Cell cell, Building building) {
+        coreSelectBuildingMenuController = new CoreSelectBuildingMenuController(
+                building, null, match.getCurrentMonarchy());
+        VBox vBox = new VBox();
+        if (building instanceof CastleComponent) {
+            Button button = new Button("repair");
+            vBox.getChildren().add(button);
+            button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText(coreSelectBuildingMenuController.repair());
+                    alert.showAndWait();
+                }
+            });
+        }
+        else if (building instanceof CivilBuilding
+                && ((CivilBuilding) building).getCivilType() == CivilBuildingType.BARRACKS) {
+
+        }
+        else if (building instanceof CivilBuilding
+                && ((CivilBuilding) building).getCivilType() == CivilBuildingType.MERCENARY_POST) {
+
+        }
+        else return;
+        popUpHandler(vBox);
     }
 
     private void assignTask(SoldierType type) {
@@ -861,6 +886,7 @@ public class GameController {
 
     public void enterBuild(MouseEvent mouseEvent) {
         TabPane pane = new TabPane();
+        pane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         Tab civilTab = new Tab("civil");
         Tab engineerTab = new Tab("engineer");
         Tab producerTab = new Tab("producer");

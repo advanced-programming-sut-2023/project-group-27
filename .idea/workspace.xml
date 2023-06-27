@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="cheatBarFunctionality3">
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/controller/CoreMapEditMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +29,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="cheatBarFunctionality2" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="SOFT" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
@@ -258,14 +258,7 @@
       <workItem from="1686125795579" duration="15880000" />
       <workItem from="1687763468100" duration="16631000" />
       <workItem from="1687800545423" duration="4795000" />
-      <workItem from="1687833670345" duration="3396000" />
-    </task>
-    <task id="LOCAL-00070" summary="graphics test">
-      <created>1685131142528</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1685131142528</updated>
+      <workItem from="1687833670345" duration="11228000" />
     </task>
     <task id="LOCAL-00071" summary="graphics test">
       <created>1685212436469</created>
@@ -603,7 +596,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687840032719</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="cheatBarFunctionality3">
+      <created>1687840551337</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1687840551337</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
