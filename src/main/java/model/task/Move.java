@@ -15,7 +15,6 @@ public class Move extends Task {
     private double reminder;
     private final double movementSpeed;
     private final Movable movable;
-    private final MoveAnimation animation;
 
     public Move(GameMap map, Movable movable, int destinationX, int destinationY) {
         this.movementSpeed = movable.getMovementSpeed();
@@ -25,7 +24,6 @@ public class Move extends Task {
         this.bfs = new BFS(map, movable);
         this.path = this.bfs.pathTo(destination);
         this.movable = movable;
-        animation = new MoveAnimation();
     }
 
     @Override
@@ -44,7 +42,8 @@ public class Move extends Task {
                 break;
             }
         }
-        this.movable.move(map.getCell(path.get(Math.min(range, path.size() - 1))), map);
+        Location location = path.get(Math.min(range, path.size() - 1));
+        this.movable.move(map.getCell(location), map);
         for (int i = 0; i < Math.min(range, path.size() - 1); i++) {
             path.removeFirst();
         }

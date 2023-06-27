@@ -1,12 +1,14 @@
 package model.man;
 
+import graphics_view.graphical_controller.GameController;
+import graphics_view.view.animations.MoveAnimation;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import model.*;
 import model.task.Task;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public abstract class Man extends Destructable implements Movable {
     private final String name;
@@ -14,12 +16,18 @@ public abstract class Man extends Destructable implements Movable {
     private Task task;
     private Location location;
     private final Double movementSpeed;
+    private final ArrayList<Image> moveImages;
 
     public Man(int hitpoint, String name, User owner, Double movementSpeed) {
         super(hitpoint);
         this.movementSpeed = movementSpeed;
         this.name = name;
         this.owner = owner;
+        this.moveImages = new ArrayList<>();
+        for (int i = 1 ; i <= 3 ; i++) {
+            moveImages.add(new Image(
+                    Man.class.getResource("/assets/men/" + name + i + ".png").toExternalForm()));
+        }
     }
 
     public void setLocation(Location location) {
@@ -31,7 +39,12 @@ public abstract class Man extends Destructable implements Movable {
         if (location == null)return;
         Cell origin = map.getCell(location);
         origin.removeMan(this);
-        cell.addMan(this);
+        //TODO mount cell in here
+        MoveAnimation animation = new MoveAnimation(this ,
+                GameController.cellToTile.get(origin) ,
+                GameController.cellToTile.get(cell));
+        animation.play();
+        animation.setOnFinished(actionEvent -> cell.addMan(Man.this));
     }
 
     @Override
@@ -66,5 +79,10 @@ public abstract class Man extends Destructable implements Movable {
         imageView.fitHeightProperty().bind(pane.heightProperty());
         imageView.fitWidthProperty().bind(pane.widthProperty());
         return imageView;
+    }
+
+    @Override
+    public ArrayList<Image> getMoveImages() {
+        return moveImages;
     }
 }
