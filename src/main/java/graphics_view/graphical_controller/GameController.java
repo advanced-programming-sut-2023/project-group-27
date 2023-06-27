@@ -3,6 +3,7 @@ package graphics_view.graphical_controller;
 import controller.controller.CoreGameMenuController;
 import controller.controller.CoreMapEditMenuController;
 import controller.view_controllers.Utilities;
+import controller.controller.CoreSelectUnitMenuController;
 import graphics_view.view.ShopMenu;
 import graphics_view.view.TradeMenu;
 import javafx.beans.value.ChangeListener;
@@ -21,7 +22,9 @@ import javafx.util.Duration;
 import model.*;
 import model.Cell;
 import model.man.Man;
+import model.man.Soldier;
 import model.man.SoldierType;
+import model.task.Move;
 
 import java.util.*;
 
@@ -63,6 +66,11 @@ public class GameController {
     private List<StackPane> selectedTiles = new ArrayList<>();
     private CoreMapEditMenuController coreMapEditMenuController;
     private int count;
+    private CoreSelectUnitMenuController unitController;
+    private ArrayList<Selectable> selectedUnits = new ArrayList<>();
+    private boolean unitSelected;
+    private Cell targetCell;
+    private String taskName;
 
     public void init(Match match) {
         this.match = match;
@@ -81,6 +89,7 @@ public class GameController {
         monarchyInfo.setLayoutY(80);
         selectedTilesInfo.setLayoutX(320);
         selectedTilesInfo.setLayoutY(80);
+        unitSelected = false;
         selectedTilesInfo.setSpacing(35);
     }
 
@@ -91,9 +100,15 @@ public class GameController {
             allMen.addAll(cell.getMen());
         }
         allMen.removeIf(x -> x.getOwner() != match.getCurrentUser());
-        HashMap<Man, Integer> manCount = new HashMap<>();
-        for (Man man: allMen) {
-            manCount.put(man, manCount.getOrDefault(man, 0) + 1);
+        HashMap<SoldierType, Integer> manCount = new HashMap<>();
+        for (SoldierType type: SoldierType.values()) {
+            int count = 0;
+            for (Man man: allMen) {
+                if (man.getName().equals(type.getName())) {
+                    count++;
+                }
+            }
+            manCount.put(type, count);
         }
 
         if (selectedTilesInfo == null) {
@@ -114,9 +129,9 @@ public class GameController {
             hBox.setSpacing(5);
             hBox.setAlignment(Pos.CENTER);
             soldiers.getChildren().add(hBox);
-            Man man = (Man) entry.getKey();
+            SoldierType type = (SoldierType) entry.getKey();
             int val = (int) entry.getValue();
-            Label label = new Label(man.getName() + " : " + val);
+            Label label = new Label(type.getName() + " : " + val);
             label.setMinWidth(70);
             hBox.getChildren().add(label);
             TextField count = new TextField();
@@ -134,6 +149,12 @@ public class GameController {
             hBox.getChildren().add(count);
             Button button = new Button("Select");
             button.setOnAction(event -> {
+                if (count.getText().equals("")) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("invalid number");
+                    alert.showAndWait();
+                    return;
+                }
                 int cnt = Integer.parseInt(count.getText());
                 count.setText("");
                 if (cnt <= 0 || cnt > val) {
@@ -143,10 +164,18 @@ public class GameController {
                     return;
                 }
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setContentText(cnt + man.getName() + "are selected");
+                alert.setContentText(cnt + " " + type.getName() + " selected");
                 alert.showAndWait();
-                // TODO clear recently selected units
-                // TODO add new selected units
+                unitSelected = true;
+
+                selectedUnits.clear();
+                int i = 0;
+                for (Man man : allMen) {
+                    if (i == cnt) break;
+                    if (man.getName().equals(type.getName())) selectedUnits.add(man);
+                    i++;
+                }
+                assignTask(type);
             });
             hBox.getChildren().add(button);
         }
@@ -181,6 +210,67 @@ public class GameController {
         }
         selectedTilesInfo.getChildren().add(buildings);
     }
+
+    private void assignTask(SoldierType type) {
+        unitController = new CoreSelectUnitMenuController(selectedUnits , match , null ,
+                match.getCurrentUser() , mapData , type);
+        mainPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if (selectedUnits.size() == 0) return;
+                String keyName = keyEvent.getCode().getName();
+                switch (keyName) {
+                    case "M":
+                        taskName = "move";
+                        break;
+                    case "F":
+                        taskName = "attack";
+                        break;
+                    case "P":
+                        taskName = "patrol";
+                        break;
+                    case "A":
+                        if (type.range == 0) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Error");
+                            alert.setHeaderText("Invalid Command");
+                            alert.setContentText("The selected unit is unable to do this task");
+                            alert.showAndWait();
+                            return;
+                        }
+                        taskName = "air strike";
+                        break;
+                }
+            }
+        });
+    }
+
+    private void initMove(Cell targetCell) {
+        unitController.moveTo(targetCell.getXCoordinate() , targetCell.getYCoordinate());
+        System.out.println("Move!!");
+        unitSelected = false;
+    }
+
+    private void initAttack(Cell targetCell) {
+        unitController.attackByEnemy(targetCell.getXCoordinate() , targetCell.getYCoordinate());
+        System.out.println("Attack!!");
+        unitSelected = false;
+    }
+
+    private void initPatrol(Cell targetCell1 , Cell targetCell2) {
+        unitController.patrol(targetCell1.getXCoordinate() , targetCell1.getYCoordinate() ,
+                targetCell2.getXCoordinate() , targetCell2.getYCoordinate());
+        System.out.println("Patrol!!");
+        unitSelected = false;
+    }
+    private void initAirStrike(Cell targetCell) {
+        unitController.attackByXY(targetCell.getXCoordinate() , targetCell.getYCoordinate());
+        System.out.println("Air Strike!!");
+        unitSelected = false;
+        //TODO find why task is null
+    }
+
+
 
 
     private void initiateGameMap() {
@@ -453,6 +543,14 @@ public class GameController {
             }
         });
 
+        tile.setOnDragOver(event -> {
+            if (event.getGestureSource() != tile && event.getDragboard().hasString()) {
+                event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+
+            }
+            event.consume();
+        });
+
         tile.setOnMouseClicked(event -> {
             if (event.getButton() != MouseButton.PRIMARY)return;
             int rows = gameMap.getPrefRows();
@@ -496,7 +594,7 @@ public class GameController {
                     origin = null;
                 }
             }
-            if (event.getClickCount() == 1) {
+            if (event.getClickCount() == 1 && !unitSelected) {
                 if (selectedTiles.contains(tile) && selectedTiles.size() == 1) {
                     tile.setStyle("-fx-border-color: transparent");
                     selectedTiles.remove(tile);
@@ -513,6 +611,32 @@ public class GameController {
                 refreshSelectedTilesInfo(selectedTiles);
                 if (origin == null) {
                     enableButtons();
+                }
+            }
+            else if (event.getClickCount() == 1) {
+                if (taskName == null) return;
+                if (taskName.equals("move")) {
+                    targetCell = tileToCell.get(tile);
+                    initMove(targetCell);
+                    targetCell = null;
+                }
+                else if (taskName.equals("attack")) {
+                    targetCell = tileToCell.get(tile);
+                    initAttack(targetCell);
+                    targetCell = null;
+                }
+                else if (taskName.equals("patrol")) {
+                    if (targetCell == null) targetCell = tileToCell.get(tile);
+                    else {
+                        Cell targetCell2 = tileToCell.get(tile);
+                        initPatrol(targetCell , targetCell2);
+                        targetCell = null;
+                    }
+                }
+                else if (taskName.equals("air strike")) {
+                    targetCell = tileToCell.get(tile);
+                    initAirStrike(targetCell);
+                    targetCell = null;
                 }
             }
         });
