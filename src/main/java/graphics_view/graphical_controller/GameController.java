@@ -576,9 +576,8 @@ public class GameController {
                     alert.setTitle("Error");
                     alert.setContentText(log);
                     alert.showAndWait();
-                } else {
-                    mountCellData(cellToTile.get(cell), cell);
                 }
+                mountCellData(cellToTile.get(cell), cell);
                 event.consume();
             }
             event.consume();
