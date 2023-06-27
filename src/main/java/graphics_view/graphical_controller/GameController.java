@@ -12,6 +12,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -240,14 +241,33 @@ public class GameController {
         }
         else if (building instanceof CivilBuilding
                 && ((CivilBuilding) building).getCivilType() == CivilBuildingType.BARRACKS) {
-
+            handleUnitCreationBuilding(vBox, SoldierType.getSpecifiedTroops("european"));
         }
         else if (building instanceof CivilBuilding
                 && ((CivilBuilding) building).getCivilType() == CivilBuildingType.MERCENARY_POST) {
-
+            handleUnitCreationBuilding(vBox, SoldierType.getSpecifiedTroops("arab"));
         }
         else return;
         popUpHandler(vBox);
+    }
+
+    private void handleUnitCreationBuilding(VBox vBox, ArrayList<SoldierType> list) {
+        count = 1;
+        for (SoldierType soldierType : list) {
+            Button button = new Button(soldierType.getName());
+            vBox.getChildren().add(button);
+
+            button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText(coreSelectBuildingMenuController.createUnit(soldierType, count));
+                    alert.showAndWait();
+                }
+            });
+        }
+
+        vBox.getChildren().add(getNumberButton());
     }
 
     private void assignTask(SoldierType type) {
@@ -792,6 +812,12 @@ public class GameController {
             });
         }
 
+
+        vBox.getChildren().add(getNumberButton());
+        popUpHandler(vBox);
+    }
+
+    private Button getNumberButton() {
         Button number = new Button(String.valueOf(count));
         number.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -801,8 +827,7 @@ public class GameController {
                 number.setText(String.valueOf(count));
             }
         });
-        vBox.getChildren().add(number);
-        popUpHandler(vBox);
+        return number;
     }
 
     public void setTexture(MouseEvent mouseEvent) {

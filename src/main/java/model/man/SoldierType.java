@@ -2,6 +2,8 @@ package model.man;
 
 import model.GoodsType;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public enum SoldierType {
@@ -52,6 +54,14 @@ public enum SoldierType {
         this.requirements = requirements;
     }
 
+    public static ArrayList<SoldierType> getSpecifiedTroops(String input) {
+        ArrayList<SoldierType> output = new ArrayList<>();
+        for (SoldierType soldierType : map.values()) {
+            if (soldierType.getNationality().equals(input))
+                output.add(soldierType);
+        }
+        return output;
+    }
     public static void init() {
         for (SoldierType type : values()) {
             if (type.equals(LORD)) continue;
