@@ -143,8 +143,6 @@ public class GameController {
 
                 selectedUnits.clear();
                 SoldierType type = SoldierType.getTypeByName(man.getName());
-                type = SoldierType.ARCHER;
-                System.out.println(man.getName());
                 int i = 0;
                 for (Man man1 : allMen) {
                     if (i == cnt) break;
@@ -181,12 +179,13 @@ public class GameController {
                         taskName = "patrol";
                         break;
                     case "A":
-                        if (type.range == 0) {
+                        if (type == null || type.range == 0) {
                             Alert alert = new Alert(Alert.AlertType.ERROR);
                             alert.setTitle("Error");
                             alert.setHeaderText("Invalid Command");
                             alert.setContentText("The selected unit is unable to do this task");
                             alert.showAndWait();
+                            unitSelected = false;
                             return;
                         }
                         taskName = "air strike";
