@@ -9,7 +9,7 @@ import model.man.SoldierType;
 public class AirStrike extends Task{
     private final Fightable fightable;
     private final SoldierType type;
-    private final Destructable target;
+    private Destructable target;
     private final int x;
     private final int y;
     private boolean isValid = true;
@@ -18,6 +18,13 @@ public class AirStrike extends Task{
         this.fightable = fightable;
         this.type = type;
         this.target = target;
+        this.x = x;
+        this.y = y;
+    }
+
+    public AirStrike(Fightable fightable, SoldierType type , int x , int y) {
+        this.fightable = fightable;
+        this.type = type;
         this.x = x;
         this.y = y;
     }
@@ -31,6 +38,7 @@ public class AirStrike extends Task{
             isValid = false;
             return;
         }
+        if (target == null ) return; //TODO simply play animation
         if (target.getHitpoint() <= 0) return;
         if (fightable instanceof Soldier) {
             target.setHitpoint(target.getHitpoint() - ((Soldier) fightable).getDamage());

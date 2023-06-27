@@ -120,11 +120,20 @@ public class CoreSelectUnitMenuController {
             }
         }
         Random random = new Random();
-        for (Selectable selectable : theSelected) {
-            AirStrike airStrike = new AirStrike((Fightable) selectable, type,
-                    (Destructable) selectableEnemies.get(random.nextInt() % selectableEnemies.size()), x, y);
-            currentMatch.addTask(airStrike);
-            ((Man) selectable).setTask(airStrike);
+        if (selectableEnemies.size() == 0) {
+            for (Selectable selectable : theSelected) {
+                AirStrike airStrike = new AirStrike((Fightable) selectable, type, x, y);
+                currentMatch.addTask(airStrike);
+                ((Man) selectable).setTask(airStrike);
+            }
+        }
+        else {
+            for (Selectable selectable : theSelected) {
+                AirStrike airStrike = new AirStrike((Fightable) selectable, type,
+                        (Destructable) selectableEnemies.get(random.nextInt() % selectableEnemies.size()), x, y);
+                currentMatch.addTask(airStrike);
+                ((Man) selectable).setTask(airStrike);
+            }
         }
         return null;
     }

@@ -143,6 +143,8 @@ public class GameController {
 
                 selectedUnits.clear();
                 SoldierType type = SoldierType.getTypeByName(man.getName());
+                type = SoldierType.ARCHER;
+                System.out.println(man.getName());
                 int i = 0;
                 for (Man man1 : allMen) {
                     if (i == cnt) break;
@@ -538,28 +540,30 @@ public class GameController {
             }
             else if (event.getClickCount() == 1) {
                 if (taskName == null) return;
-                if (taskName.equals("move")) {
-                    targetCell = tileToCell.get(tile);
-                    initMove(targetCell);
-                    targetCell = null;
-                }
-                else if (taskName.equals("attack")) {
-                    targetCell = tileToCell.get(tile);
-                    initAttack(targetCell);
-                    targetCell = null;
-                }
-                else if (taskName.equals("patrol")) {
-                    if (targetCell == null) targetCell = tileToCell.get(tile);
-                    else {
-                        Cell targetCell2 = tileToCell.get(tile);
-                        initPatrol(targetCell , targetCell2);
+                switch (taskName) {
+                    case "move":
+                        targetCell = tileToCell.get(tile);
+                        initMove(targetCell);
                         targetCell = null;
-                    }
-                }
-                else if (taskName.equals("air strike")) {
-                    targetCell = tileToCell.get(tile);
-                    initAirStrike(targetCell);
-                    targetCell = null;
+                        break;
+                    case "attack":
+                        targetCell = tileToCell.get(tile);
+                        initAttack(targetCell);
+                        targetCell = null;
+                        break;
+                    case "patrol":
+                        if (targetCell == null) targetCell = tileToCell.get(tile);
+                        else {
+                            Cell targetCell2 = tileToCell.get(tile);
+                            initPatrol(targetCell, targetCell2);
+                            targetCell = null;
+                        }
+                        break;
+                    case "air strike":
+                        targetCell = tileToCell.get(tile);
+                        initAirStrike(targetCell);
+                        targetCell = null;
+                        break;
                 }
             }
         });
