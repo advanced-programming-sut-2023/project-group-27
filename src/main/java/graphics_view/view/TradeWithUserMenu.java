@@ -27,7 +27,7 @@ public class TradeWithUserMenu extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Utilities.setStage(stage);
+//        Utilities.setStage(stage);
         URL url = getClass().getResource("/fxml/TradeWith.fxml");
         FXMLLoader loader = new FXMLLoader(url);
         BorderPane borderPane = loader.load();

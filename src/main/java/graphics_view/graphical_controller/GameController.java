@@ -187,8 +187,8 @@ public class GameController {
             });
             hBox.getChildren().add(button);
         }
-        while (infoPane.getChildren().size() > 8) {
-            infoPane.getChildren().remove(8);
+        while (infoPane.getChildren().size() > 9) {
+            infoPane.getChildren().remove(9);
         }
         infoPane.getChildren().add(selectedTilesInfo);
         ScrollPane scrollSoldiers = new ScrollPane(soldiers);
@@ -395,8 +395,8 @@ public class GameController {
     }
 
     public void refreshRateInfoPane() {
-        while (infoPane.getChildren().size() > 8) {
-            infoPane.getChildren().remove(8);
+        while (infoPane.getChildren().size() > 9) {
+            infoPane.getChildren().remove(9);
         }
         infoPane.getChildren().add(monarchyInfo);
         Monarchy monarchy = match.getCurrentUser().getMonarchy();
