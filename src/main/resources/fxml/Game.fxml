@@ -18,6 +18,7 @@
         <Button fx:id="endTurnButton" text="next turn" layoutX="10" layoutY="90" onMouseClicked="#nextTurn"/>
         <Button fx:id="enterTradeMenu" text="trade menu" layoutX="10" layoutY="130" onMouseClicked="#enterTrade"/>
         <Button fx:id="enterShopMenu" text="shop menu" layoutX="10" layoutY="170" onMouseClicked="#enterShop"/>
+        <Button fx:id="enterBuildMenu" text="build menu" layoutX="1000" layoutY="90" onMouseClicked="#enterBuild"/>
         <Button fx:id="dropTree" text="dropTree" layoutX="1000" layoutY="130" onMouseClicked="#dropTree" managed="false" visible="false"/>
         <Button fx:id="dropRock" text="dropRock" layoutX="1000" layoutY="170" onMouseClicked="#dropRock" managed="false" visible="false"/>
         <Button fx:id="dropBuilding" text="drop building" layoutX="1100" layoutY="90" onMouseClicked="#dropBuilding" managed="false" visible="false"/>

@@ -96,10 +96,15 @@ public class Building extends Destructable implements Passable {
     }
 
     public ImageView getPicture(Pane pane) {
-        Image image = new Image(getClass().getResource("/assets/buildings/" + pictures.get(this.name)).toExternalForm());
+        Image image = getImage(this.name);
         ImageView imageView = new ImageView(image);
         imageView.fitHeightProperty().bind(pane.heightProperty());
         imageView.fitWidthProperty().bind(pane.widthProperty());
         return imageView;
+    }
+
+    public static Image getImage(String name) {
+        Image image = new Image(Building.class.getResource("/assets/buildings/" + pictures.get(name)).toExternalForm());
+        return image;
     }
 }

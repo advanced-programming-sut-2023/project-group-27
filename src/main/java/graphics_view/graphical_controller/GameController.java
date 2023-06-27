@@ -2,7 +2,8 @@ package graphics_view.graphical_controller;
 
 import controller.controller.CoreGameMenuController;
 import controller.controller.CoreMapEditMenuController;
-import controller.view_controllers.Utilities;
+import controller.controller.Utilities;
+import static controller.view_controllers.Utilities.getAllBuildingNames;
 import controller.controller.CoreSelectUnitMenuController;
 import graphics_view.view.ShopMenu;
 import graphics_view.view.TradeMenu;
@@ -14,17 +15,23 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import model.*;
 import model.Cell;
+import model.building.Building;
+import model.building.CivilBuildingType;
+import model.building.EngineerBuildingType;
+import model.building.ProductionBuildingType;
 import model.man.Man;
-import model.man.Soldier;
 import model.man.SoldierType;
-import model.task.Move;
 
 import java.util.*;
 
@@ -184,7 +191,10 @@ public class GameController {
             infoPane.getChildren().remove(8);
         }
         infoPane.getChildren().add(selectedTilesInfo);
-        selectedTilesInfo.getChildren().add(soldiers);
+        ScrollPane scrollSoldiers = new ScrollPane(soldiers);
+        scrollSoldiers.setMaxHeight(120);
+        scrollSoldiers.setMinWidth(200);
+        selectedTilesInfo.getChildren().add(scrollSoldiers);
 
         VBox buildings = new VBox();
         buildings.getChildren().add(new Label("buildings to be selected:"));
@@ -209,7 +219,10 @@ public class GameController {
             hBox.setAlignment(Pos.CENTER);
             buildings.getChildren().add(hBox);
         }
-        selectedTilesInfo.getChildren().add(buildings);
+        ScrollPane scrollBuildings = new ScrollPane(buildings);
+        scrollBuildings.setMinWidth(180);
+        scrollBuildings.setMaxHeight(120);
+        selectedTilesInfo.getChildren().add(scrollBuildings);
     }
 
     private void assignTask(SoldierType type) {
@@ -546,9 +559,27 @@ public class GameController {
         });
 
         tile.setOnDragOver(event -> {
-            if (event.getGestureSource() != tile && event.getDragboard().hasString()) {
-                event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+            event.acceptTransferModes(TransferMode.ANY);
+            event.consume();
+        });
 
+        tile.setOnDragDropped(event -> {
+            if (event.getGestureSource() != tile && event.getDragboard().hasString()) {
+                event.acceptTransferModes(TransferMode.ANY);
+                String buildingName = event.getDragboard().getString();
+                Cell cell = tileToCell.get(tile);
+                String xStr = String.valueOf(cell.getLocation().x);
+                String yStr = String.valueOf(cell.getLocation().y);
+                String log = controller.dropBuilding(xStr, yStr, buildingName);
+                if (!log.equals("success")) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setContentText(log);
+                    alert.showAndWait();
+                } else {
+                    mountCellData(cellToTile.get(cell), cell);
+                }
+                event.consume();
             }
             event.consume();
         });
@@ -696,7 +727,7 @@ public class GameController {
         VBox vBox = new VBox();
         TilePane selectionTilePane = new TilePane();
         selectionTilePane.setPrefColumns(10);
-        HashMap<Object, String> buildingsData = Utilities.getAllBuildingNames();
+        HashMap<Object, String> buildingsData = getAllBuildingNames();
         for (Map.Entry<Object, String> buildingType : buildingsData.entrySet()) {
             Button button = new Button(buildingType.getValue());
             selectionTilePane.getChildren().add(button);
@@ -827,5 +858,76 @@ public class GameController {
             });
         }
         popUpHandler(vBox);
+    }
+
+    public void enterBuild(MouseEvent mouseEvent) {
+        TabPane pane = new TabPane();
+        Tab civilTab = new Tab("civil");
+        Tab engineerTab = new Tab("engineer");
+        Tab producerTab = new Tab("producer");
+        ScrollPane civilPane = new ScrollPane();
+        ScrollPane engineerPane = new ScrollPane();
+        ScrollPane producerPane = new ScrollPane();
+        civilTab.setContent(civilPane);
+        engineerTab.setContent(engineerPane);
+        producerTab.setContent(producerPane);
+        pane.getTabs().addAll(civilTab, engineerTab, producerTab);
+
+        HBox civilHBox = new HBox();
+        HBox engineerHBox = new HBox();
+        HBox producerHBox = new HBox();
+
+        civilPane.setContent(civilHBox);
+        engineerPane.setContent(engineerHBox);
+        producerPane.setContent(producerHBox);
+
+        civilHBox.setSpacing(3);
+        engineerHBox.setSpacing(3);
+        producerHBox.setSpacing(3);
+
+        civilHBox.setAlignment(Pos.CENTER);
+        engineerHBox.setAlignment(Pos.CENTER);
+        producerHBox.setAlignment(Pos.CENTER);
+
+        for (CivilBuildingType type :CivilBuildingType.values()) {
+            Image image = Building.getImage(type.getName());
+            String name = type.getName();
+            Rectangle rectangle = getDragRectangle(image, name);
+            civilHBox.getChildren().add(rectangle);
+        }
+
+        for (EngineerBuildingType type :EngineerBuildingType.values()) {
+            Image image = Building.getImage(type.getName());
+            String name = type.name();
+            Rectangle rectangle = getDragRectangle(image, name);
+            engineerHBox.getChildren().add(rectangle);
+        }
+
+//        for (ProductionBuildingType type :ProductionBuildingType.values()) {
+//            Image image = Building.getImage(type.getName());
+//            String name = type.name();
+//            Rectangle rectangle = getDragRectangle(image, name);
+//            producerHBox.getChildren().add(rectangle);
+//        }
+
+        Popup  popup = new Popup();
+        popup.getContent().add(pane);
+        popup.show(Utilities.getStage());
+    }
+
+    private static Rectangle getDragRectangle(Image image, String name) {
+        Rectangle rectangle = new Rectangle(50, 50);
+        rectangle.setFill(new ImagePattern(image));
+        rectangle.setOnDragDetected(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Dragboard dragboard = rectangle.startDragAndDrop(TransferMode.ANY);
+                ClipboardContent clipboardContent = new ClipboardContent();
+                clipboardContent.putString(name);
+                dragboard.setContent(clipboardContent);
+                dragboard.setDragView(image);
+            }
+        });
+        return rectangle;
     }
 }
