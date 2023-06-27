@@ -571,7 +571,7 @@ public class GameController {
                 String xStr = String.valueOf(cell.getLocation().x);
                 String yStr = String.valueOf(cell.getLocation().y);
                 String log = controller.dropBuilding(xStr, yStr, buildingName);
-                if (!log.equals("success")) {
+                if (!log.equals("success\n")) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setContentText(log);
