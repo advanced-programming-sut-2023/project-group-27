@@ -22,6 +22,7 @@ public class InitialMenu extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Utilities.setStage(stage);
+        Utilities.init();
         if (stayLoggedInCheck() != null) {
             new MainMenu().start(stage);
             return;
