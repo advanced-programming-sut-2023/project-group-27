@@ -1,6 +1,7 @@
 package model.task;
 
 import controller.controller.BFS;
+import graphics_view.view.animations.MoveAnimation;
 import model.GameMap;
 import model.Location;
 import model.Movable;
@@ -14,6 +15,16 @@ public class Move extends Task {
     private double reminder;
     private final double movementSpeed;
     private final Movable movable;
+
+    public Move(GameMap map, Movable movable, int destinationX, int destinationY) {
+        this.movementSpeed = movable.getMovementSpeed();
+        Location origin = movable.getLocation();
+        Location destination = new Location(destinationX, destinationY);
+        this.map = map;
+        this.bfs = new BFS(map, movable);
+        this.path = this.bfs.pathTo(destination);
+        this.movable = movable;
+    }
 
     @Override
     public void run() {
@@ -31,7 +42,8 @@ public class Move extends Task {
                 break;
             }
         }
-        this.movable.move(map.getCell(path.get(Math.min(range, path.size() - 1))), map);
+        Location location = path.get(Math.min(range, path.size() - 1));
+        this.movable.move(map.getCell(location), map);
         for (int i = 0; i < Math.min(range, path.size() - 1); i++) {
             path.removeFirst();
         }
@@ -45,16 +57,6 @@ public class Move extends Task {
             return false;
         }
         return true;
-    }
-
-     public Move(GameMap map, Movable movable, int destinationX, int destinationY) {
-        this.movementSpeed = movable.getMovementSpeed();
-        Location origin = movable.getLocation();
-        Location destination = new Location(destinationX, destinationY);
-        this.map = map;
-        this.bfs = new BFS(map, movable);
-        this.path = this.bfs.pathTo(destination);
-        this.movable = movable;
     }
 
     public Movable getOwner() {

@@ -65,8 +65,8 @@ public class GameController {
     private CoreGameMenuController controller;
     private double tileSize = 30.0;
     private GameMap mapData;
-    private final HashMap<Cell, StackPane> cellToTile = new HashMap<>();
-    private final HashMap<StackPane, Cell> tileToCell = new HashMap<>();
+    public static final HashMap<Cell, StackPane> cellToTile = new HashMap<>();
+    public static final HashMap<StackPane, Cell> tileToCell = new HashMap<>();
     private double x = -1, y = -1;
     StackPane origin = null, destination = null;
     private List<StackPane> selectedTiles = new ArrayList<>();
@@ -98,6 +98,8 @@ public class GameController {
         selectedTilesInfo.setLayoutY(80);
         unitSelected = false;
         selectedTilesInfo.setSpacing(35);
+        Utilities.setGameMap(gameMap);
+        Utilities.setGameController(this);
     }
 
     private void refreshSelectedTilesInfo(List<StackPane> tiles) {
@@ -336,7 +338,6 @@ public class GameController {
         unitController.attackByXY(targetCell.getXCoordinate() , targetCell.getYCoordinate());
         System.out.println("Air Strike!!");
         unitSelected = false;
-        //TODO find why task is null
     }
 
 

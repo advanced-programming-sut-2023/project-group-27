@@ -1,10 +1,7 @@
 package model.man;
 
 import model.*;
-import model.building.Building;
-import model.task.Task;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
@@ -18,7 +15,8 @@ public class Soldier extends Man implements Fightable {
     private boolean isFighting;
 
     public Soldier(SoldierType soldierType, User owner) {
-        super(soldierType.getHitpoint(), soldierType.getName(), owner, soldierType.getMovementSpeed());
+        super(soldierType.getHitpoint(), soldierType.getName(), owner,
+                soldierType.getMovementSpeed());
         this.soldierType = soldierType;
         this.damage = soldierType.getDamage();
         this.range = soldierType.getRange();
