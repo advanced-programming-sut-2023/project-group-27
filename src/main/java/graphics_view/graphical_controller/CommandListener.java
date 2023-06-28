@@ -1,6 +1,7 @@
 package graphics_view.graphical_controller;
 
 import controller.controller.CoreGameMenuController;
+import controller.controller.CoreMapEditMenuController;
 import controller.controller.CoreSelectUnitMenuController;
 import model.Cell;
 import model.GameMap;
@@ -55,9 +56,12 @@ public class CommandListener extends Thread{
                                 new ArrayList<>(List.of(selectable)), match, new Scanner(command2 + "\nExit"),
                                 match.getCurrentUser(), map, SoldierType.getTypeByName(selectable.getName()));
                         controller.run();
-                    } else if (command.startsWith("mapEdit")) {
-                        // TODO mapEditOnline -> yousef
                     }
+                } else if (command.startsWith("mapEdit")) {
+                    command = command.substring(8);
+                    CoreMapEditMenuController controller =
+                            new CoreMapEditMenuController(match, new Scanner(command + "\nExit"));
+                    controller.run();
                 }
                 System.out.println(command);
             } catch (Exception e) {
