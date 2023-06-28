@@ -9,14 +9,13 @@ public class GameServer extends Thread{
     boolean isPublic;
     ServerSocket server;
     List<Connection> connectionList;
+    long creationTime;
 
     public GameServer(int port, int capacity, int mapIndex, boolean isPublic) throws IOException {
+        this.creationTime = System.currentTimeMillis() / 1000;
         this.isPublic = isPublic;
         this.capacity = capacity;
         this.server = new ServerSocket(port);
-        while(true) {
-            server.accept();
-        }
     }
 
     @Override
