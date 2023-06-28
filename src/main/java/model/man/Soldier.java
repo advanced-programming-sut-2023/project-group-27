@@ -1,7 +1,11 @@
 package model.man;
 
+import graphics_view.graphical_controller.GameController;
+import graphics_view.view.animations.FightAnimation;
+import javafx.scene.image.Image;
 import model.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
@@ -40,10 +44,12 @@ public class Soldier extends Man implements Fightable {
         this.damage = damage;
     }
 
+    @Override
     public boolean isFighting() {
         return isFighting;
     }
 
+    @Override
     public void setFighting(boolean fighting) {
         isFighting = fighting;
     }
@@ -53,6 +59,11 @@ public class Soldier extends Man implements Fightable {
         if (destructable.getOwner() == getOwner()) {
             return;
         }
+        Cell cell = StrongholdCrusader.getCurrentMatch().
+                getCurrentMatchMap().getCell(destructable.getLocation());
+        isFighting = true;
+        FightAnimation animation = new FightAnimation(this , GameController.cellToTile.get(cell));
+        animation.play();
         destructable.setHitpoint(destructable.getHitpoint() - damage);
     }
 
@@ -83,6 +94,16 @@ public class Soldier extends Man implements Fightable {
     @Override
     public int getHitPoint() {
         return super.getHitpoint();
+    }
+
+    @Override
+    public ArrayList<Image> getFightImages() {
+        ArrayList<Image> fightImages = new ArrayList<>();
+        for (int i = 1 ; i <= 1 ; i++) {
+            fightImages.add(new Image(
+                    Man.class.getResource("/assets/men/" + super.getName() + ".png").toExternalForm()));
+        }
+        return fightImages;
     }
 
 }

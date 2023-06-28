@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 import model.Cell;
 import model.Movable;
@@ -34,14 +35,11 @@ public class MoveAnimation extends Transition {
         gameMap = Utilities.getGameMap();
         setCycleCount(1);
         setCycleDuration(Duration.millis(3000));
-        setOnFinished(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                gameMap.getChildren().remove(currentImage);
-                Cell cell = GameController.tileToCell.get(destination);
-                cell.addMan((Man) movable);
-                controller.mountCellData(destination , cell);
-            }
+        setOnFinished(actionEvent -> {
+            gameMap.getChildren().remove(currentImage);
+            Cell cell = GameController.tileToCell.get(destination);
+            cell.addMan((Man) movable);
+            controller.mountCellData(destination , cell);
         });
     }
 

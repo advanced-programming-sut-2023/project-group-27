@@ -92,7 +92,7 @@ public class CoreSelectUnitMenuController {
 
     public String attackByEnemy(int x, int y) {
         ArrayList<Selectable> selectableEnemies = map.getCell(x , y).getSelectables();
-        for (Selectable selectable : selectableEnemies) {
+        for (Selectable selectable : theSelected) {
             if (selectable instanceof Fightable && !((Soldier) selectable).isFighting()) {
                 for (Selectable enemy : selectableEnemies) {
                     if (enemy instanceof Fightable && !((Soldier) enemy).isFighting()) {

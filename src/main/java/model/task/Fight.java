@@ -10,14 +10,12 @@ public class Fight extends Task {
     private final Location location;
     private GameMap map;
     private boolean isValid = true;
-    private final FightAnimation animation;
 
     public Fight(GameMap map, Fightable fightable , Destructable target) {
         this.fightable = fightable;
         this.target = target;
         this.location = target.getLocation();
         this.map = map;
-        animation = new FightAnimation();
     }
 
     public Soldier getTarget() {
@@ -42,9 +40,11 @@ public class Fight extends Task {
     @Override
     public boolean isValid() {
         if (fightable.getHitPoint() <= 0) {
+            fightable.setFighting(false);
             return false;
         }
         if (target.getHitpoint() <= 0) {
+            fightable.setFighting(false);
             return false;
         }
         return isValid;

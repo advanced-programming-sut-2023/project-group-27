@@ -1,9 +1,11 @@
 package model.building;
 
+import javafx.scene.image.Image;
 import model.*;
 import model.man.Man;
 import model.task.Task;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -11,10 +13,12 @@ import java.util.stream.Collectors;
 public class FightableBuilding extends Building implements Fightable {
     private int damage;
     private Task task;
+    private boolean isFighting;
       
     public FightableBuilding(int hitpoint, User owner, Cell cell, int damage) {
         super(hitpoint, owner, cell, "fighterBuilding");
         this.damage = damage;
+        isFighting = false;
     }
     
     public int getDamage() {
@@ -27,6 +31,16 @@ public class FightableBuilding extends Building implements Fightable {
 
     public void setTask(Task task) {
         this.task = task;
+    }
+
+    @Override
+    public boolean isFighting() {
+        return isFighting;
+    }
+
+    @Override
+    public void setFighting(boolean fighting) {
+        isFighting = fighting;
     }
 
     @Override
@@ -65,5 +79,15 @@ public class FightableBuilding extends Building implements Fightable {
     @Override
     public Destructable getDestructable() {
         return this;
+    }
+
+    @Override
+    public ArrayList<Image> getFightImages() {
+        ArrayList<Image> fightImages = new ArrayList<>();
+        for (int i = 1 ; i <= 1 ; i++) {
+            fightImages.add(new Image(
+                    Man.class.getResource("/assets/buildings/" + super.getName() + ".png").toExternalForm()));
+        }
+        return fightImages;
     }
 }
