@@ -42,6 +42,10 @@ public class CoreSelectUnitMenuController {
         selectUnitMenu = selectUnitController.getUnitMenu();
     }
 
+    public ArrayList<Selectable> getTheSelected() {
+        return theSelected;
+    }
+
     public CoreSelectUnitMenuController(ArrayList<Selectable> theSelected , Match match , Scanner scanner, User currentUser, GameMap map, SoldierType type) {
         this.scanner = scanner;
         this.currentMatch = match;

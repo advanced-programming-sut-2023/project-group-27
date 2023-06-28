@@ -72,9 +72,9 @@ public class GameController {
     private double x = -1, y = -1;
     StackPane origin = null, destination = null;
     private List<StackPane> selectedTiles = new ArrayList<>();
-    private CoreMapEditMenuController coreMapEditMenuController;
+    private CoreMapEditOnline coreMapEditMenuController;
     private int count;
-    private CoreSelectUnitMenuController unitController;
+    private CoreSelectUnitOnline unitController;
     private ArrayList<Selectable> selectedUnits = new ArrayList<>();
     private boolean unitSelected;
     private Cell targetCell;
@@ -85,7 +85,7 @@ public class GameController {
     public void init(Match match, Connection serverConnection) {
         this.serverConnection = serverConnection;
         this.match = match;
-        coreMapEditMenuController = new CoreMapEditMenuController(match, null);
+        coreMapEditMenuController = new CoreMapEditOnline(match, serverConnection);
         mapData = match.getCurrentMatchMap();
         this.controller = new CoreGameOnline(match, serverConnection);
         initiateGameMap();
@@ -286,8 +286,8 @@ public class GameController {
     }
 
     private void assignTask(SoldierType type) {
-        unitController = new CoreSelectUnitMenuController(selectedUnits , match , null ,
-                match.getCurrentUser() , mapData , type);
+        unitController = new CoreSelectUnitOnline(selectedUnits , match,
+                mapData , type, serverConnection);
         mainPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
@@ -752,7 +752,7 @@ public class GameController {
     public void nextTurn(MouseEvent mouseEvent) {
         controller.nextTurn();
         this.controller = new CoreGameOnline(match, serverConnection);
-        this.coreMapEditMenuController = new CoreMapEditMenuController(match, null);
+        this.coreMapEditMenuController = new CoreMapEditOnline(match, serverConnection);
         refreshRateInfoPane();
     }
 
@@ -796,7 +796,7 @@ public class GameController {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
                     Alert result = new Alert(Alert.AlertType.INFORMATION);
-                    result.setContentText(coreMapEditMenuController.dropBuilding(cellToModify.getLocation(), buildingType.getKey()));
+                    result.setContentText(coreMapEditMenuController.dropBuilding(cellToModify.getLocation(), buildingType.getKey(), buildingType.getValue()));
                     mountCellData(selectedTiles.get(0), cellToModify);
                     result.showAndWait();
                 }

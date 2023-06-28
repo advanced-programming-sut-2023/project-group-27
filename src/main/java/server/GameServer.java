@@ -12,9 +12,6 @@ public class GameServer extends Thread{
     public GameServer(int port, int capacity, int mapIndex) throws IOException {
         this.capacity = capacity;
         this.server = new ServerSocket(port);
-        while(true) {
-            server.accept();
-        }
     }
 
     @Override
@@ -27,6 +24,25 @@ public class GameServer extends Thread{
                 throw new RuntimeException(e);
             }
         }
+        System.out.println("starting GameServer");
 
+        for (Connection connection: connectionList) {
+            Thread thread = new Thread(() -> {
+                while (true) {
+                    String command = null;
+                    try {
+                        command = connection.receive();
+                        for (Connection connection1: connectionList) {
+                            if (connection1 != connection) {
+                                connection1.send(command);
+                            }
+                        }
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    System.out.println(command);
+                }
+            });
+        }
     }
 }
