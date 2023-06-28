@@ -18,4 +18,8 @@ public enum Reactions {
         this.name = name;
         this.image = image;
     }
+
+    public Image getImage() {
+        return image;
+    }
 }

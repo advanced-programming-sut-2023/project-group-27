@@ -2,23 +2,26 @@ package model.chat;
 
 import model.User;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Message {
     private final User sender;
     private final Chat chat;
     private String content;
-    private final Date date;
+    private final String date;
     private boolean isSent;
     private boolean isSeen;
+    private final ArrayList<Reactions> reactions;
 
-    public Message(User sender, Chat chat , String content , Date date) {
+    public Message(User sender, Chat chat , String content , String date) {
         this.sender = sender;
         this.chat = chat;
         this.content = content;
         this.date = date;
         isSent = false;
         isSeen = false;
+        reactions = new ArrayList<>();
     }
 
     public User getSender() {
@@ -33,7 +36,7 @@ public class Message {
         return content;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -51,6 +54,14 @@ public class Message {
 
     public void setSeen(boolean seen) {
         isSeen = seen;
+    }
+
+    public ArrayList<Reactions> getReactions() {
+        return reactions;
+    }
+
+    public void addReaction(Reactions reaction) {
+        reactions.add(reaction);
     }
 
     public void editMessage(String newContent) {
