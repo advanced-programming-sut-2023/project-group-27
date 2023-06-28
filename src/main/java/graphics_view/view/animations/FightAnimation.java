@@ -46,8 +46,8 @@ public class FightAnimation extends Transition {
         controller.mountCellData(tile ,
                 GameController.tileToCell.get(tile));
         if (v <= 0.33) currentImage = new ImageView(fightImages.get(0));
-        if (v > 0.33 && v <= 0.66) currentImage = new ImageView(fightImages.get(1));
-        if (v > 0.66) currentImage = new ImageView(fightImages.get(2));
+        if (v > 0.33 && v <= 0.66) currentImage = new ImageView(fightImages.get(0));
+        if (v > 0.66) currentImage = new ImageView(fightImages.get(0));
         currentImage.setFitWidth(30.0);
         currentImage.setFitHeight(30.0);
         gameMap.getChildren().add(currentImage);
