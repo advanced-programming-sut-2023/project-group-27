@@ -29,6 +29,7 @@ import model.*;
 import model.Cell;
 import model.building.*;
 import model.castle_components.CastleComponent;
+import model.castle_components.CastleComponentType;
 import model.man.Man;
 import model.man.SoldierType;
 
@@ -932,29 +933,36 @@ public class GameController {
         Tab civilTab = new Tab("civil");
         Tab engineerTab = new Tab("engineer");
         Tab producerTab = new Tab("producer");
+        Tab castleTab = new Tab("castleComp");
         ScrollPane civilPane = new ScrollPane();
         ScrollPane engineerPane = new ScrollPane();
         ScrollPane producerPane = new ScrollPane();
+        ScrollPane castlePane = new ScrollPane();
         civilTab.setContent(civilPane);
         engineerTab.setContent(engineerPane);
         producerTab.setContent(producerPane);
-        pane.getTabs().addAll(civilTab, engineerTab, producerTab);
+        castleTab.setContent(castlePane);
+        pane.getTabs().addAll(civilTab, engineerTab, producerTab, castleTab);
 
         HBox civilHBox = new HBox();
         HBox engineerHBox = new HBox();
         HBox producerHBox = new HBox();
+        HBox castleHBox = new HBox();
 
         civilPane.setContent(civilHBox);
         engineerPane.setContent(engineerHBox);
         producerPane.setContent(producerHBox);
+        castlePane.setContent(castleHBox);
 
         civilHBox.setSpacing(3);
         engineerHBox.setSpacing(3);
         producerHBox.setSpacing(3);
+        castleHBox.setSpacing(3);
 
         civilHBox.setAlignment(Pos.CENTER);
         engineerHBox.setAlignment(Pos.CENTER);
         producerHBox.setAlignment(Pos.CENTER);
+        castleHBox.setAlignment(Pos.CENTER);
 
         for (CivilBuildingType type :CivilBuildingType.values()) {
             Image image = Building.getImage(type.getName());
@@ -965,17 +973,24 @@ public class GameController {
 
         for (EngineerBuildingType type :EngineerBuildingType.values()) {
             Image image = Building.getImage(type.getName());
-            String name = type.name();
+            String name = type.getName();
             Rectangle rectangle = getDragRectangle(image, name);
             engineerHBox.getChildren().add(rectangle);
         }
 
 //        for (ProductionBuildingType type :ProductionBuildingType.values()) {
 //            Image image = Building.getImage(type.getName());
-//            String name = type.name();
+//            String name = type.getName();
 //            Rectangle rectangle = getDragRectangle(image, name);
 //            producerHBox.getChildren().add(rectangle);
 //        }
+
+        for (CastleComponentType type: CastleComponentType.values()) {
+            Image image = Building.getImage(type.getName());
+            String name = type.getName();
+            Rectangle rectangle = getDragRectangle(image, name);
+            castleHBox.getChildren().add(rectangle);
+        }
 
         Popup  popup = new Popup();
         popup.getContent().add(pane);
