@@ -4,35 +4,27 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.List;
 
-public class GameServer extends Thread{
+public class GameServer extends Thread {
     int capacity;
-    ServerSocket server;
+    boolean isPublic;
     List<Connection> connectionList;
+    long creationTime;
 
-    public GameServer(int port, int capacity, int mapIndex) throws IOException {
+    public GameServer(int capacity, int mapIndex, boolean isPublic) throws IOException {
+        this.creationTime = System.currentTimeMillis() / 1000;
+        this.isPublic = isPublic;
         this.capacity = capacity;
-        this.server = new ServerSocket(port);
     }
 
     @Override
     public void run() {
-        while (connectionList.size() < capacity) {
-            try {
-                Connection connection = new Connection(server.accept());
-                connectionList.add(connection);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        System.out.println("starting GameServer");
-
-        for (Connection connection: connectionList) {
+        for (Connection connection : connectionList) {
             Thread thread = new Thread(() -> {
                 while (true) {
                     String command = null;
                     try {
                         command = connection.receive();
-                        for (Connection connection1: connectionList) {
+                        for (Connection connection1 : connectionList) {
                             if (connection1 != connection) {
                                 connection1.send(command);
                             }
@@ -44,5 +36,14 @@ public class GameServer extends Thread{
                 }
             });
         }
+
+    }
+
+    public void addConnection(Connection connection) {
+        connectionList.add(connection);
+    }
+
+    public void removeConnection (Connection connection){
+        connectionList.remove(connection);
     }
 }
