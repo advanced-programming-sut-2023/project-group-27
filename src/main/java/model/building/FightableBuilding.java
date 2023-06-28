@@ -13,10 +13,12 @@ import java.util.stream.Collectors;
 public class FightableBuilding extends Building implements Fightable {
     private int damage;
     private Task task;
+    private boolean isFighting;
       
     public FightableBuilding(int hitpoint, User owner, Cell cell, int damage) {
         super(hitpoint, owner, cell, "fighterBuilding");
         this.damage = damage;
+        isFighting = false;
     }
     
     public int getDamage() {
@@ -29,6 +31,16 @@ public class FightableBuilding extends Building implements Fightable {
 
     public void setTask(Task task) {
         this.task = task;
+    }
+
+    @Override
+    public boolean isFighting() {
+        return isFighting;
+    }
+
+    @Override
+    public void setFighting(boolean fighting) {
+        isFighting = fighting;
     }
 
     @Override

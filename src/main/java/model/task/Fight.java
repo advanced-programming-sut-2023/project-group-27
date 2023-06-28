@@ -40,9 +40,11 @@ public class Fight extends Task {
     @Override
     public boolean isValid() {
         if (fightable.getHitPoint() <= 0) {
+            fightable.setFighting(false);
             return false;
         }
         if (target.getHitpoint() <= 0) {
+            fightable.setFighting(false);
             return false;
         }
         return isValid;

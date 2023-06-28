@@ -33,26 +33,13 @@ public class MoveAnimation extends Transition {
         this.origin = originTile;
         this.destination = destTile;
         gameMap = Utilities.getGameMap();
-        double deltaX = destTile.getLayoutX() - originTile.getLayoutX();
-        double deltaY = destTile.getLayoutY() - originTile.getLayoutY();
-        double angle;
-        if (deltaX != 0) {
-            angle = Math.toDegrees(Math.atan(deltaY / deltaX));
-        }
-        else {
-            angle = 90;
-        }
-//        currentImage.getTransforms().add(new Rotate(angle + 90));
         setCycleCount(1);
         setCycleDuration(Duration.millis(3000));
-        setOnFinished(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                gameMap.getChildren().remove(currentImage);
-                Cell cell = GameController.tileToCell.get(destination);
-                cell.addMan((Man) movable);
-                controller.mountCellData(destination , cell);
-            }
+        setOnFinished(actionEvent -> {
+            gameMap.getChildren().remove(currentImage);
+            Cell cell = GameController.tileToCell.get(destination);
+            cell.addMan((Man) movable);
+            controller.mountCellData(destination , cell);
         });
     }
 

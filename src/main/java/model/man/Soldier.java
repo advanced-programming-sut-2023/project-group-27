@@ -44,10 +44,12 @@ public class Soldier extends Man implements Fightable {
         this.damage = damage;
     }
 
+    @Override
     public boolean isFighting() {
         return isFighting;
     }
 
+    @Override
     public void setFighting(boolean fighting) {
         isFighting = fighting;
     }
@@ -59,6 +61,7 @@ public class Soldier extends Man implements Fightable {
         }
         Cell cell = StrongholdCrusader.getCurrentMatch().
                 getCurrentMatchMap().getCell(destructable.getLocation());
+        isFighting = true;
         FightAnimation animation = new FightAnimation(this , GameController.cellToTile.get(cell));
         animation.play();
         destructable.setHitpoint(destructable.getHitpoint() - damage);
