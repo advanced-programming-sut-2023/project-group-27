@@ -32,7 +32,7 @@ public class CoreSelectUnitOnline {
         for (Selectable selectable : controller.getTheSelected()) {
             connection.send("selectunit -x " + selectable.getLocation().x + " -y "
                     + selectable.getLocation().y + " -h " + selectable.hashCode() +
-                    " attackByEnemy -x " + xCoordinate + " -y " + yCoordinate);
+                    " attack -e " + xCoordinate + " " + yCoordinate);
         }
         controller.attackByEnemy(xCoordinate, yCoordinate);
     }
@@ -41,8 +41,8 @@ public class CoreSelectUnitOnline {
         for (Selectable selectable : controller.getTheSelected()) {
             connection.send("selectunit -x " + selectable.getLocation().x + " -y "
                     + selectable.getLocation().y + " -h " + selectable.hashCode()
-                    + " patrol -x " + xCoordinate + " -y " + yCoordinate + " -x1 "
-                    + xCoordinate1 + " -y1 " + yCoordinate1);
+                    + " patrol unit -x1 " + xCoordinate + " -y1 " + yCoordinate + " -x2 "
+                    + xCoordinate1 + " -y2 " + yCoordinate1);
         }
         controller.patrol(xCoordinate, yCoordinate, xCoordinate1, yCoordinate1);
     }
