@@ -2,9 +2,18 @@ package model.chat;
 
 import model.User;
 
-import java.util.ArrayList;
-
 public class Room extends Chat{
-    private String roomName;
-    private ArrayList<User> usersInRoom;
+    private final String roomName;
+
+    public Room(String roomName) {
+        this.roomName = roomName;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void addUserToRoom(User user) {
+        super.addUSerToChat(user);
+    }
 }

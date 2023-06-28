@@ -9,6 +9,7 @@ public class Message {
     private final Chat chat;
     private String content;
     private final Date date;
+    private boolean isSent;
     private boolean isSeen;
 
     public Message(User sender, Chat chat , String content , Date date) {
@@ -16,6 +17,8 @@ public class Message {
         this.chat = chat;
         this.content = content;
         this.date = date;
+        isSent = false;
+        isSeen = false;
     }
 
     public User getSender() {
@@ -34,6 +37,14 @@ public class Message {
         return date;
     }
 
+    public boolean isSent() {
+        return isSent;
+    }
+
+    public void setSent(boolean sent) {
+        isSent = sent;
+    }
+
     public boolean isSeen() {
         return isSeen;
     }
@@ -46,7 +57,7 @@ public class Message {
         content = newContent;
     }
 
-    public void deleteMessage() {
+    public void deleteMessage(boolean onlyForSender) {
         content = null;
     }
 }
