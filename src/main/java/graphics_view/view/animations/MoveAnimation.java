@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 import model.Cell;
 import model.Movable;
@@ -32,6 +33,16 @@ public class MoveAnimation extends Transition {
         this.origin = originTile;
         this.destination = destTile;
         gameMap = Utilities.getGameMap();
+        double deltaX = destTile.getLayoutX() - originTile.getLayoutX();
+        double deltaY = destTile.getLayoutY() - originTile.getLayoutY();
+        double angle;
+        if (deltaX != 0) {
+            angle = Math.toDegrees(Math.atan(deltaY / deltaX));
+        }
+        else {
+            angle = 90;
+        }
+//        currentImage.getTransforms().add(new Rotate(angle + 90));
         setCycleCount(1);
         setCycleDuration(Duration.millis(3000));
         setOnFinished(new EventHandler<ActionEvent>() {
