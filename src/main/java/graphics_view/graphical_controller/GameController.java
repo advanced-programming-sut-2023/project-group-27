@@ -32,6 +32,7 @@ import model.castle_components.CastleComponent;
 import model.castle_components.CastleComponentType;
 import model.man.Man;
 import model.man.SoldierType;
+import server.Connection;
 
 import java.util.*;
 
@@ -63,7 +64,7 @@ public class GameController {
 
     private Match match;
     private VBox rateInfo, popularityInfo, foodInfo, goldPopulationInfo;
-    private CoreGameMenuController controller;
+    private CoreGameOnline controller;
     private double tileSize = 30.0;
     private GameMap mapData;
     public static final HashMap<Cell, StackPane> cellToTile = new HashMap<>();
@@ -79,12 +80,14 @@ public class GameController {
     private Cell targetCell;
     private String taskName;
     private CoreSelectBuildingMenuController coreSelectBuildingMenuController;
+    private Connection serverConnection;
 
-    public void init(Match match) {
+    public void init(Match match, Connection serverConnection) {
+        this.serverConnection = serverConnection;
         this.match = match;
         coreMapEditMenuController = new CoreMapEditMenuController(match, null);
         mapData = match.getCurrentMatchMap();
-        this.controller = new CoreGameMenuController(match, null);
+        this.controller = new CoreGameOnline(match, serverConnection);
         initiateGameMap();
         monarchyInfo.setSpacing(35);
         rateInfo = new VBox();
@@ -748,7 +751,7 @@ public class GameController {
 
     public void nextTurn(MouseEvent mouseEvent) {
         controller.nextTurn();
-        this.controller = new CoreGameMenuController(match, null);
+        this.controller = new CoreGameOnline(match, serverConnection);
         this.coreMapEditMenuController = new CoreMapEditMenuController(match, null);
         refreshRateInfoPane();
     }

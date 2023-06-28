@@ -4,6 +4,7 @@ import controller.controller.CoreGameMenuController;
 import model.GameMap;
 import model.Match;
 import model.man.SoldierType;
+import server.Connection;
 
 import java.util.Map;
 import java.util.regex.Matcher;

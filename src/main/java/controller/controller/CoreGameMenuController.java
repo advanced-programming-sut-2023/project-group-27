@@ -10,6 +10,7 @@ import model.man.Man;
 import model.man.SoldierType;
 import org.apache.commons.lang3.math.NumberUtils;
 import console_view.GameMenu;
+import server.Connection;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -27,8 +28,10 @@ public class CoreGameMenuController {
     private CoreSelectBuildingMenuController coreBuildingController;
     private CoreShopMenuController coreShopController;
     private GameMenuController gameController;
+    private Connection serverConnection;
 
     public CoreGameMenuController(Match currentMatch, Scanner scanner) {
+        this.serverConnection = serverConnection;
         this.scanner = scanner;
         this.currentMatch = currentMatch;
         this.currentUser = currentMatch.getCurrentUser();
