@@ -35,6 +35,7 @@ public class GameServer extends Thread {
                     System.out.println(command);
                 }
             });
+            thread.start();
         }
 
     }
