@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="selectBuilding3">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="s">
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/Lobby.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/GameServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +21,9 @@
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
         <option value="module-info" />
-        <option value="Class" />
         <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -34,6 +35,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="SOFT" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
@@ -259,14 +261,9 @@
       <workItem from="1687763468100" duration="16631000" />
       <workItem from="1687800545423" duration="4795000" />
       <workItem from="1687833670345" duration="15403000" />
-      <workItem from="1687885356011" duration="871000" />
-    </task>
-    <task id="LOCAL-00074" summary="captcha added">
-      <created>1685268680945</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1685268680945</updated>
+      <workItem from="1687885356011" duration="1291000" />
+      <workItem from="1687903254586" duration="265000" />
+      <workItem from="1687976464858" duration="2045000" />
     </task>
     <task id="LOCAL-00075" summary="functionality">
       <created>1685380811487</created>
@@ -604,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687874089381</updated>
     </task>
-    <option name="localTasksCounter" value="123" />
+    <task id="LOCAL-00123" summary="s">
+      <created>1687886555125</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1687886555126</updated>
+    </task>
+    <option name="localTasksCounter" value="124" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -669,7 +673,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="g start2" />
     <MESSAGE value="g start3" />
     <MESSAGE value="g start4" />
     <MESSAGE value="implementing game map." />
@@ -694,7 +697,8 @@
     <MESSAGE value="selectBuilding1" />
     <MESSAGE value="selectBuilding2" />
     <MESSAGE value="selectBuilding3" />
-    <option name="LAST_COMMIT_MESSAGE" value="selectBuilding3" />
+    <MESSAGE value="s" />
+    <option name="LAST_COMMIT_MESSAGE" value="s" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
