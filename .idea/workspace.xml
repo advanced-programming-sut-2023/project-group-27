@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="s">
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/Lobby.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/GameServer.java" afterDir="false" />
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="initiate lobby class">
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,14 +261,7 @@
       <workItem from="1687833670345" duration="15403000" />
       <workItem from="1687885356011" duration="1291000" />
       <workItem from="1687903254586" duration="265000" />
-      <workItem from="1687976464858" duration="2045000" />
-    </task>
-    <task id="LOCAL-00075" summary="functionality">
-      <created>1685380811487</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1685380811488</updated>
+      <workItem from="1687976464858" duration="2421000" />
     </task>
     <task id="LOCAL-00076" summary="functionality 2">
       <created>1685396858431</created>
@@ -608,7 +599,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687886555126</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="initiate lobby class">
+      <created>1687978566238</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1687978566238</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -673,7 +671,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="g start3" />
     <MESSAGE value="g start4" />
     <MESSAGE value="implementing game map." />
     <MESSAGE value="implementing game map2" />
@@ -698,7 +695,8 @@
     <MESSAGE value="selectBuilding2" />
     <MESSAGE value="selectBuilding3" />
     <MESSAGE value="s" />
-    <option name="LAST_COMMIT_MESSAGE" value="s" />
+    <MESSAGE value="initiate lobby class" />
+    <option name="LAST_COMMIT_MESSAGE" value="initiate lobby class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
