@@ -14,9 +14,9 @@
     <Tab fx:id="publicChat" text="Public Chat">
         <BorderPane style="-fx-padding: 10">
             <center>
-                <VBox alignment="CENTER" spacing="20" fx:id="messageList">
-
-                </VBox>
+                <ScrollPane>
+                    <VBox spacing="20" fx:id="messageList"/>
+                </ScrollPane>
             </center>
             <bottom>
                 <HBox alignment="CENTER" spacing="20">

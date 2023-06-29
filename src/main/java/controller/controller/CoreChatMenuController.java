@@ -16,7 +16,7 @@ public class CoreChatMenuController {
     public Message sendMessagePublicChat(String messageContent) {
         User loggedInUser = StrongholdCrusader.getLoggedInUser();
         Date date = new Date();
-        DateFormat format = new SimpleDateFormat("HHmm");
+        DateFormat format = new SimpleDateFormat("HH:mm");
         //TODO access chat
         Message message = new Message(
                 loggedInUser , Messenger.getPublicChat(),messageContent , format.format(date));
