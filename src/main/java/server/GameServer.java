@@ -23,10 +23,10 @@ public class GameServer extends Thread {
                 while (true) {
                     String command = null;
                     try {
-                        command = connection.receive();
+                        command = connection.listen();
                         for (Connection connection1 : connectionList) {
                             if (connection1 != connection) {
-                                connection1.send(command);
+                                connection1.request(command);
                             }
                         }
                     } catch (IOException e) {

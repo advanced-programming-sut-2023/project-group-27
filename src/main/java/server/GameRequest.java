@@ -1,0 +1,54 @@
+package server;
+
+import model.User;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GameRequest {
+    private User owner;
+    private int capacity;
+    private int mapIndex;
+    private int port;
+
+    private List<User> players = new ArrayList<>();
+
+    public GameRequest(User owner, int capacity, int mapIndex, int port, boolean isPublic) {
+        this.owner = owner;
+        this.capacity = capacity;
+        this.mapIndex = mapIndex;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public int getMapIndex() {
+        return mapIndex;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof GameRequest) {
+            GameRequest gameRequest = (GameRequest) obj;
+            return gameRequest.owner.equals(owner) && gameRequest.capacity == capacity && gameRequest.mapIndex == mapIndex;
+        }
+        return false;
+    }
+
+    public void addPlayer(User player) {
+        players.add(player);
+    }
+
+    public List<User> getPlayers() {
+        return players;
+    }
+}

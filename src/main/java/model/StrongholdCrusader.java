@@ -58,6 +58,12 @@ public class StrongholdCrusader {
         currentMatch = match;
     }
 
+    public static int getPort() {
+        // generate a random port number between 10000 and 20000
+        Random random = new Random();
+        return random.nextInt(10000) + 10000;
+    }
+
     public User getUserByUsername(String username) {
         return allUsers.getOrDefault(username, null);
     }

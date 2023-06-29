@@ -31,7 +31,7 @@ public class CommandListener extends Thread{
         while (true) {
             String command = null;
             try {
-                command = connection.receive();
+                command = connection.listen();
                 if (command.startsWith("game")) {
                     new CoreGameMenuController(match, new Scanner(command.substring(5) + "\nExit")).run();
                 } else if (command.startsWith("selectunit")) {

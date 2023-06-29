@@ -21,7 +21,7 @@ public class CoreSelectUnitOnline {
 
     public void moveTo(int xCoordinate, int yCoordinate) {
         for (Selectable selectable : controller.getTheSelected()) {
-            connection.send("selectunit -x " + selectable.getLocation().x + " -y "
+            connection.request("selectunit -x " + selectable.getLocation().x + " -y "
                     + selectable.getLocation().y + " -h " + selectable.hashCode() +
                     " move unit to -x " + xCoordinate + " -y " + yCoordinate);
         }
@@ -30,7 +30,7 @@ public class CoreSelectUnitOnline {
 
     public void attackByEnemy(int xCoordinate, int yCoordinate) {
         for (Selectable selectable : controller.getTheSelected()) {
-            connection.send("selectunit -x " + selectable.getLocation().x + " -y "
+            connection.request("selectunit -x " + selectable.getLocation().x + " -y "
                     + selectable.getLocation().y + " -h " + selectable.hashCode() +
                     " attack -e " + xCoordinate + " " + yCoordinate);
         }
@@ -39,7 +39,7 @@ public class CoreSelectUnitOnline {
 
     public void patrol(int xCoordinate, int yCoordinate, int xCoordinate1, int yCoordinate1) {
         for (Selectable selectable : controller.getTheSelected()) {
-            connection.send("selectunit -x " + selectable.getLocation().x + " -y "
+            connection.request("selectunit -x " + selectable.getLocation().x + " -y "
                     + selectable.getLocation().y + " -h " + selectable.hashCode()
                     + " patrol unit -x1 " + xCoordinate + " -y1 " + yCoordinate + " -x2 "
                     + xCoordinate1 + " -y2 " + yCoordinate1);
@@ -49,7 +49,7 @@ public class CoreSelectUnitOnline {
 
     public void attackByXY(int xCoordinate, int yCoordinate) {
         for (Selectable selectable : controller.getTheSelected()) {
-            connection.send("selectunit -x " + selectable.getLocation().x + " -y "
+            connection.request("selectunit -x " + selectable.getLocation().x + " -y "
                     + selectable.getLocation().y + " -h " + selectable.hashCode() +
                     " attack -x " + xCoordinate + " -y " + yCoordinate);
         }

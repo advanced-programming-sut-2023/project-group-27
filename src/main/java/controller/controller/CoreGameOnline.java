@@ -13,22 +13,22 @@ public class CoreGameOnline {
     }
 
     public String setFoodRate(String rateStr){
-        connection.send("game food rate -r " + rateStr);
+        connection.request("game food rate -r " + rateStr);
         return controller.setFoodRate(rateStr);
     }
 
     public String setTaxRate(String rateStr){
-        connection.send("game tax rate -r " + rateStr);
+        connection.request("game tax rate -r " + rateStr);
         return controller.setTaxRate(rateStr);
     }
 
     public String setFearRate(String rateStr){
-        connection.send("game fear rate -r " + rateStr);
+        connection.request("game fear rate -r " + rateStr);
         return controller.setFearRate(rateStr);
     }
 
     public String dropBuilding(String xStr , String yStr , String type){
-        connection.send("game drop building -x " + xStr + " -y " + yStr + " -t " + type);
+        connection.request("game drop building -x " + xStr + " -y " + yStr + " -t " + type);
         return controller.dropBuilding(xStr, yStr, type);
     }
 

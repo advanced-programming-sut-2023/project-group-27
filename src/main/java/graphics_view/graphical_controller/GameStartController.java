@@ -205,12 +205,17 @@ public class GameStartController implements Initializable {
         return 2;
     }
 
+    private String getVisibility() {
+        // TODO implement
+        return "public";
+    }
+
 
     public void start(MouseEvent mouseEvent) throws Exception {
-        Utilities.getMainServer().send("start game -u "
+        Utilities.getMainServer().request("start game -u "
                 + StrongholdCrusader.getLoggedInUser().getUsername());
         Gson gson = new Gson();
-        String response = Utilities.getMainServer().receive();
+        String response = Utilities.getMainServer().listen();
         Connection connection = gson.fromJson(response, Connection.class);
         enterGame(connection);
         return;
@@ -231,20 +236,20 @@ public class GameStartController implements Initializable {
     }
 
     public void publishGame(MouseEvent mouseEvent) {
-        Utilities.getMainServer().send("create game -m " + selectedMapIndex + " -c "
-                + getCapacity() + " -o " + StrongholdCrusader.getLoggedInUser());
+        Utilities.getMainServer().request("create game -m " + selectedMapIndex + " -c "
+                + getCapacity() + " -o " + StrongholdCrusader.getLoggedInUser() + " -v " + getVisibility());
         Connection connection = Utilities.getMainServer();
         new Thread(() -> {
             try {
-                String response = connection.receive();
-                if (response.startsWith("player added")) {
-                    String[] split = response.split(" ");
+                String command = connection.listen();
+                if (command.startsWith("player added")) {
+                    String[] split = command.split(" ");
                     String username = split[2];
                     User addedUser = StrongholdCrusader.getUserByName(username);
                     int index = Arrays.stream(StrongholdCrusader.getAllUsersList())
                             .collect(Collectors.toList()).indexOf(addedUser);
                     String result = controller.addPlayer(index);
-                    connection.send(result);
+                    connection.response(result);
                     updateSelectedPlayers();
                 }
             } catch (IOException e) {
