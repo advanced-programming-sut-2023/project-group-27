@@ -1,10 +1,12 @@
 package graphics_view.graphical_controller;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import controller.controller.CoreGameMenuController;
 import controller.controller.CoreGameStartMenuController;
 import controller.controller.Utilities;
 import graphics_view.view.GameMenu;
+import graphics_view.view.MainMenu;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -24,8 +26,10 @@ import model.User;
 import org.w3c.dom.Text;
 import server.Connection;
 import server.GameRequest;
+import server.GameServer;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,21 +94,28 @@ public class LobbyController {
     }
 
     public void refresh(MouseEvent mouseEvent) throws IOException {
-
         Connection mainServer = Utilities.getMainServer();
         mainServer.request("get games");
         String jsonString  = mainServer.getResponse();
         Gson gson = new Gson();
-        gameRequests = gson.fromJson(jsonString, List.class);
-
+        Type listOfMyClassObject = new TypeToken<List<GameRequest>>() {}.getType();
+        gameRequests = gson.fromJson(jsonString, listOfMyClassObject);
+        VBox vBox = new VBox();
+        for (GameRequest gameRequest : gameRequests) {
+            vBox.getChildren().add(getRequestUI(gameRequest));
+        }
+        serversToJoin.setContent(vBox);
     }
 
     private HBox getRequestUI(GameRequest gameRequest) {
         Connection mainServer = Utilities.getMainServer();
         HBox hBox = new HBox();
+        hBox.setMinWidth(200);
+        hBox.setSpacing(10);
         Circle circle = new Circle(10);
         circle.setFill(new ImagePattern(gameRequest.getOwner().getAvatar()));
         Label label = new Label(gameRequest.getOwner().getNickname() + "'s game");
+        label.setMinWidth(100);
         Button button = new Button("join");
         button.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -179,5 +190,9 @@ public class LobbyController {
         });
         hBox.getChildren().addAll(circle, label, button);
         return hBox;
+    }
+
+    public void exit(MouseEvent mouseEvent) throws Exception {
+        new MainMenu().start(Utilities.getStage());
     }
 }

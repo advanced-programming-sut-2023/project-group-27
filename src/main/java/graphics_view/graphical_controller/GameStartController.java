@@ -22,6 +22,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.*;
 import server.Connection;
+import server.GameRequest;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,19 +38,21 @@ public class GameStartController implements Initializable {
     private final HashMap<User, MonarchyColorType> colors;
     private final User[] allUsersList;
     private final HashMap<User, Integer> playersKeeps;
+    public Button capacityButton;
+    public Button visibilityButton;
     @FXML
     private TilePane miniMap;
     private Cell[] keepsLocations;
     @FXML
     private VBox selectedPlayers;
     @FXML
-    private VBox allUsersVBox;
-    @FXML
     private ScrollPane allUsers;
     @FXML
     private Label miniMapInfo;
     private GameMap selectedMap;
     private int selectedMapIndex = 0;
+    private int capacity = 2;
+    private String visibility = "public";
 
     public GameStartController() {
         controller = new CoreGameStartMenuController(null, StrongholdCrusader.getLoggedInUser());
@@ -67,24 +70,24 @@ public class GameStartController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateMiniMap();
-        mountAllUsers();
+//        mountAllUsers();
         updateSelectedPlayers();
     }
 
-    private void mountAllUsers() {
-        int index = 1;
-        for (User user : allUsersList) {
-            Button button = new Button(user.getUsername());
-            int finalIndex = index;
-            button.setOnMouseClicked(mouseEvent -> {
-                controller.addPlayer(finalIndex);
-                updateSelectedPlayers();
-            });
-            button.setMinWidth(100);
-            allUsersVBox.getChildren().add(button);
-            index++;
-        }
-    }
+//    private void mountAllUsers() {
+//        int index = 1;
+//        for (User user : allUsersList) {
+//            Button button = new Button(user.getUsername());
+//            int finalIndex = index;
+//            button.setOnMouseClicked(mouseEvent -> {
+//                controller.addPlayer(finalIndex);
+//                updateSelectedPlayers();
+//            });
+//            button.setMinWidth(100);
+//            allUsersVBox.getChildren().add(button);
+//            index++;
+//        }
+//    }
 
     private void updateSelectedPlayers() {
         selectedPlayers.getChildren().clear();
@@ -201,13 +204,11 @@ public class GameStartController implements Initializable {
     }
 
     private int getCapacity() {
-        // TODO implement
-        return 2;
+        return capacity;
     }
 
     private String getVisibility() {
-        // TODO implement
-        return "public";
+        return visibility;
     }
 
 
@@ -235,9 +236,49 @@ public class GameStartController implements Initializable {
         new MainMenu().start(GameStartMenu.stage);
     }
 
-    public void publishGame(MouseEvent mouseEvent) {
+    public void publishGame(MouseEvent mouseEvent) throws IOException {
         Utilities.getMainServer().request("create game -m " + selectedMapIndex + " -c "
-                + getCapacity() + " -o " + StrongholdCrusader.getLoggedInUser() + " -v " + getVisibility());
+                + getCapacity() + " -o " + StrongholdCrusader.getLoggedInUser().getUsername() + " -v " + getVisibility());
         Connection connection = Utilities.getMainServer();
+        new Thread(() -> {
+            while (true) {
+                String command;
+                try {
+                    command = connection.listen();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                if (command.equals("player joined")) {
+                    String username = null;
+                    try {
+                        username = connection.listen();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    User addedPlayer = StrongholdCrusader.getUserByName(username);
+                    int index = StrongholdCrusader.getUsers().indexOf(addedPlayer);
+                    controller.addPlayer(index);
+                }
+            }
+        });
+    }
+
+    public void addCapacity(MouseEvent mouseEvent) {
+        capacity++;
+        capacity -= 2;
+        capacity %= 7;
+        capacity += 2;
+        capacityButton.setText(capacity + "");
+    }
+
+    public void changeVisibility(MouseEvent mouseEvent) {
+        if (visibility.equals("public")) {
+            visibility = "private";
+            visibilityButton.setText("private");
+        } else {
+            visibility = "public";
+            visibilityButton.setText("public");
+        }
     }
 }

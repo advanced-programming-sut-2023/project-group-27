@@ -2,6 +2,7 @@ package graphics_view.graphical_controller;
 
 import controller.Controller;
 import controller.controller.Utilities;
+import graphics_view.view.ClientLobby;
 import graphics_view.view.GameStartMenu;
 import graphics_view.view.InitialMenu;
 import graphics_view.view.ProfileMenu;
@@ -38,5 +39,9 @@ public class MainMenuController {
             Controller.pushData();
             System.exit(0);
         }
+    }
+
+    public void enterLobby(MouseEvent mouseEvent) throws Exception {
+        new ClientLobby().start(Utilities.getStage());
     }
 }

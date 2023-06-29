@@ -11,7 +11,7 @@ public class GameRequest {
     private int capacity;
     private int mapIndex;
     private int port;
-    private GameServer gameServer;
+    private transient GameServer gameServer;
 
     private List<User> players = new ArrayList<>();
 
@@ -46,7 +46,8 @@ public class GameRequest {
     public boolean equals(Object obj) {
         if (obj instanceof GameRequest) {
             GameRequest gameRequest = (GameRequest) obj;
-            return gameRequest.owner.equals(owner) && gameRequest.capacity == capacity && gameRequest.mapIndex == mapIndex;
+            return gameRequest.owner.getUsername().equals(owner.getUsername())
+                    && gameRequest.capacity == capacity && gameRequest.mapIndex == mapIndex;
         }
         return false;
     }

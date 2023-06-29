@@ -1,12 +1,14 @@
 package server;
 
 import com.google.gson.Gson;
+import controller.Controller;
 import model.StrongholdCrusader;
 import model.User;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,15 +16,16 @@ import java.util.regex.Matcher;
 
 public class Server {
     ServerSocket server;
-    List<Connection> connectionList;
-    List<GameRequest> gameRequests;
+    List<Connection> connectionList = new ArrayList<>();
+    List<GameRequest> gameRequests = new ArrayList<>();
     Lobby lobby;
-    HashMap<Connection, User> connectionToUser;
-    HashMap<User, Connection> userToConnection;
+    HashMap<Connection, User> connectionToUser = new HashMap<>();
+    HashMap<User, Connection> userToConnection = new HashMap<>();
 
     public Server(int port) throws IOException {
         this.lobby = new Lobby();
         this.server = new ServerSocket(port);
+        System.out.println("server started ...");
         new Thread(() -> {
             while(true) {
                 try {
@@ -30,14 +33,17 @@ public class Server {
                     Socket socket2 = server.accept();
                     Connection connection = new Connection(socket2, socket1);
                     String username = connection.getResponse();
+                    System.out.println("connection added " + username);
                     connectionToUser.put(connection, StrongholdCrusader.getUserByName(username));
                     userToConnection.put(StrongholdCrusader.getUserByName(username), connection);
                     connectionList.add(connection);
                     new Thread(() -> {
+                        System.out.println("listening to " + username);
                         while (true) {
                             String command;
                             try {
                                 command = connection.listen();
+                                System.out.println("command received from " + username + " : " + command);
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
@@ -54,8 +60,10 @@ public class Server {
                                 String ownerUsername = matcher.group("owner");
                                 String visibility = matcher.group("visibility");
                                 User owner = StrongholdCrusader.getUserByName(ownerUsername);
-                                gameRequests.add(new GameRequest(owner, capacity,
-                                        mapIndex, StrongholdCrusader.getPort(), visibility.equals("public")));
+                                GameRequest request = new GameRequest(owner, capacity,
+                                        mapIndex, StrongholdCrusader.getPort(), visibility.equals("public"));
+                                request.addPlayer(owner);
+                                gameRequests.add(request);
                             }
                             if (serverCommands.JOIN_GAME.getMatcher(command).matches()) {
                                 String jsonString = null;
@@ -115,7 +123,7 @@ public class Server {
                                 }
                             }
                         }
-                    });
+                    }).start();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -125,6 +133,7 @@ public class Server {
     }
 
     public static void main(String[] args) throws IOException {
+        Controller.fetchData();
         new Server(8080);
     }
 }

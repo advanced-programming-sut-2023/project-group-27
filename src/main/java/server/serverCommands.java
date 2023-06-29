@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public enum serverCommands {
     GET_GAMES("get games"),
-    CREATE_GAME("create game -m (?<mapIndex>\\d+) -c (?<capacity>\\d+) -o (?<owner>\\S+)"),
+    CREATE_GAME("create game -m (?<mapIndex>\\d+) -c (?<capacity>\\d+) -o (?<owner>\\S+) -v (?<visibility>\\S+)"),
     JOIN_GAME("join game"),
     START_GAME("start game");
 
