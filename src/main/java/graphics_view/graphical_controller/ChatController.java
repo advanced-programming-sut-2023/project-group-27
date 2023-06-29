@@ -89,11 +89,12 @@ public class ChatController implements Initializable {
         showMessage(controller.sendMessage(message), messageList , inputMessage);
     }
 
-    static void showMessage(Message message, VBox messageList , TextField inputMessage) {
+    static void showMessage(Message message, VBox messageList ,
+                            TextField inputMessage) {
         HBox showMessage = new HBox();
         showMessage.setSpacing(50);
         HBox options = new HBox();
-        setupOptions(options , message, inputMessage);
+        setupOptions(messageList , options , message, inputMessage);
         HBox text = new HBox();
         setupText(text , message);
         Region filler = new Region();
@@ -127,7 +128,8 @@ public class ChatController implements Initializable {
         }
     }
 
-    private static void setupOptions(HBox options , Message message , TextField inputMessage) {
+    private static void setupOptions(VBox messageList , HBox options ,
+                                     Message message , TextField inputMessage) {
         options.setSpacing(10);
         options.setAlignment(Pos.BASELINE_RIGHT);
         Button reaction = new Button("Reactions");
@@ -138,13 +140,19 @@ public class ChatController implements Initializable {
         Button edit = new Button("Edit");
         edit.setOnAction(actionEvent -> editMessage(message, inputMessage));
         Button delete = new Button("Delete");
-        delete.setOnAction(actionEvent -> deleteMessage(message));
+        CheckBox forOthers = new CheckBox("Delete for others");
+        delete.setOnAction(actionEvent -> deleteMessage(message , forOthers ,
+                messageList));
         options.getChildren().add(edit);
         options.getChildren().add(delete);
+        options.getChildren().add(forOthers);
     }
 
-    private static void deleteMessage(Message message) {
-
+    private static void deleteMessage(Message message , CheckBox forOthers ,
+                                      VBox messageList) {
+        int index = Messenger.getCurrentChat().getAllMessages().indexOf(message);
+        messageList.getChildren().remove(index);
+        message.deleteMessage(!forOthers.isSelected());
     }
 
     private static void editMessage(Message message , TextField inputMessage) {

@@ -34,6 +34,10 @@ public class Chat {
         allMessages.add(message);
     }
 
+    public void removeMessage(Message message) {
+        allMessages.remove(message);
+    }
+
     public void sendMessage(Message message) {
         allMessages.add(message);
     }

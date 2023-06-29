@@ -86,6 +86,7 @@ public class Message {
     }
 
     public void deleteMessage(boolean onlyForSender) {
-        content = null;
+        Messenger.getCurrentChat().removeMessage(this);
+        //TODO implement message deletion for others
     }
 }
