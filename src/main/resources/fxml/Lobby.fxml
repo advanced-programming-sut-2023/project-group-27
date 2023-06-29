@@ -15,5 +15,7 @@
     <HBox spacing="50">
         <TextField fx:id="searchTextField" promptText="searchServer"/>
         <Button text="search" onMouseClicked="#search"/>
+        <ScrollPane fx:id="serversToJoin"/>
+        <Button text="refresh" onMouseClicked="#refresh"/>
     </HBox>
 </Pane>

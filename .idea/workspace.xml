@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="initiate lobby class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/LobbyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/Lobby.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/graphics_view/view/ClientLobby.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/LobbyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/LobbyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Lobby.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Lobby.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +129,20 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.InitialMenu">
+  <component name="RunManager" selected="Application.ClientLobby">
+    <configuration name="ClientLobby" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphics_view.view.ClientLobby" />
+      <module name="project-group-27" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="graphics_view.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GameMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="graphics_view.view.GameMenu" />
       <module name="project-group-27" />
@@ -168,19 +182,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="graphics_view.view.LoginMenu" />
-      <module name="AP-project-group27" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="graphics_view.view.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -198,11 +199,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ClientLobby" />
         <item itemvalue="Application.InitialMenu" />
         <item itemvalue="Application.MainMenu" />
         <item itemvalue="Application.GameMenu" />
         <item itemvalue="Application.GameStartMenu" />
-        <item itemvalue="Application.LoginMenu" />
       </list>
     </recent_temporary>
   </component>
@@ -264,14 +265,7 @@
       <workItem from="1687885356011" duration="1291000" />
       <workItem from="1687903254586" duration="265000" />
       <workItem from="1687976464858" duration="6845000" />
-      <workItem from="1688018547369" duration="2383000" />
-    </task>
-    <task id="LOCAL-00080" summary="functionality 6">
-      <created>1685466010750</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1685466010750</updated>
+      <workItem from="1688018547369" duration="5581000" />
     </task>
     <task id="LOCAL-00081" summary="functionality 8">
       <created>1685470318927</created>
@@ -609,7 +603,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687983982355</updated>
     </task>
-    <option name="localTasksCounter" value="129" />
+    <task id="LOCAL-00129" summary="initiate lobby class">
+      <created>1688020962470</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1688020962470</updated>
+    </task>
+    <option name="localTasksCounter" value="130" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
