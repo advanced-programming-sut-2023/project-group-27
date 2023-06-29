@@ -17,10 +17,10 @@
                 </ScrollPane>
             </center>
             <bottom>
-                <HBox alignment="CENTER" spacing="20">
+                <HBox alignment="CENTER" spacing="20" fx:id="inputBox">
                     <TextField promptText="send a message..." fx:id="inputMessage"
                                prefWidth="700"/>
-                    <Button text="Send" onMouseClicked="#sendMessagePublicChat"/>
+                    <Button text="Send" onMouseClicked="#sendMessagePublicChat" fx:id="sendButton"/>
                 </HBox>
             </bottom>
         </BorderPane>

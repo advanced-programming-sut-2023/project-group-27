@@ -5,6 +5,7 @@ import controller.controller.Utilities;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -28,6 +29,8 @@ import java.util.ResourceBundle;
 public class ChatController implements Initializable {
     private final CoreChatMenuController controller;
     @FXML
+    private HBox inputBox;
+    @FXML
     private TabPane mainTabPane;
     @FXML
     public VBox privateChatList;
@@ -42,7 +45,10 @@ public class ChatController implements Initializable {
     @FXML
     private TextField inputMessage;
     @FXML
+    private static Button sendButton;
+    @FXML
     private TextField searchUsername;
+    private boolean editMode = false;
 
     public ChatController() {
         controller = new CoreChatMenuController();
@@ -78,13 +84,28 @@ public class ChatController implements Initializable {
     public void sendMessagePublicChat(MouseEvent mouseEvent) {
         Messenger.setCurrentChat(Messenger.getPublicChat());
         String message = inputMessage.getText();
+        if (message.equals("")) return;
         inputMessage.setText("");
         showMessage(controller.sendMessage(message), messageList);
     }
 
     static void showMessage(Message message, VBox messageList) {
         HBox showMessage = new HBox();
-        showMessage.setSpacing(10);
+        showMessage.setSpacing(50);
+        HBox options = new HBox();
+        setupOptions(options , message);
+        HBox text = new HBox();
+        setupText(text , message);
+        Region filler = new Region();
+        filler.setMaxWidth(200);
+        filler.prefWidth(200);
+        HBox.setHgrow(filler , Priority.ALWAYS);
+        showMessage.getChildren().addAll(text , filler , options);
+        messageList.getChildren().add(showMessage);
+    }
+
+    private static void setupText(HBox text , Message message) {
+        text.setSpacing(10);
         ImageView avatar = new ImageView(message.getSender().getAvatar());
         avatar.setFitHeight(15);
         avatar.setFitWidth(15);
@@ -93,17 +114,42 @@ public class ChatController implements Initializable {
         Text content = new Text(message.getContent());
         Text date = new Text(message.getDate());
         ArrayList<Reactions> reactions = message.getReactions();
-        showMessage.getChildren().add(avatar);
-        showMessage.getChildren().add(nickname);
-        showMessage.getChildren().add(content);
-        showMessage.getChildren().add(date);
+        text.getChildren().add(avatar);
+        text.getChildren().add(nickname);
+        text.getChildren().add(content);
+        text.getChildren().add(date);
         for (Reactions reactions1 : reactions) {
             ImageView imageView = new ImageView(reactions1.getImage());
             imageView.setFitHeight(10);
             imageView.setFitWidth(10);
-            showMessage.getChildren().add(imageView);
+            text.getChildren().add(imageView);
         }
-        messageList.getChildren().add(showMessage);
+    }
+
+    private static void setupOptions(HBox options , Message message) {
+        options.setSpacing(10);
+        options.setAlignment(Pos.BASELINE_RIGHT);
+        Button reaction = new Button("Reactions");
+        reaction.setOnAction(actionEvent -> newReaction(message));
+        Button edit = new Button("Edit");
+        reaction.setOnAction(actionEvent -> editMessage(message));
+        Button delete = new Button("Delete");
+        reaction.setOnAction(actionEvent -> deleteMessage(message));
+        options.getChildren().add(reaction);
+        options.getChildren().add(edit);
+        options.getChildren().add(delete);
+    }
+
+    private static void deleteMessage(Message message) {
+
+    }
+
+    private static void editMessage(Message message) {
+
+    }
+
+    private static void newReaction(Message message) {
+
     }
 
     public void startNewPrivateChat(MouseEvent mouseEvent) {

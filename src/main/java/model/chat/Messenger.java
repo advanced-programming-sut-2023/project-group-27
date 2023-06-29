@@ -60,7 +60,4 @@ public class Messenger {
         return allRooms.contains(room);
     }
 
-    public static void createChat(Chat chat) {
-        allChats.add(chat);
-    }
 }
