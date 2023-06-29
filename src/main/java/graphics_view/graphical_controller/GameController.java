@@ -1002,12 +1002,12 @@ public class GameController {
             engineerHBox.getChildren().add(rectangle);
         }
 
-//        for (ProductionBuildingType type :ProductionBuildingType.values()) {
-//            Image image = Building.getImage(type.getName());
-//            String name = type.getName();
-//            Rectangle rectangle = getDragRectangle(image, name);
-//            producerHBox.getChildren().add(rectangle);
-//        }
+        for (ProductionBuildingType type :ProductionBuildingType.values()) {
+            Image image = Building.getImage(type.getName());
+            String name = type.getName();
+            Rectangle rectangle = getDragRectangle(image, name);
+            producerHBox.getChildren().add(rectangle);
+        }
 
         for (CastleComponentType type: CastleComponentType.values()) {
             Image image = Building.getImage(type.getName());

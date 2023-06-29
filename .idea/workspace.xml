@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="initiate lobby class">
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="debug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/view/animations/MoveAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/view/animations/MoveAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Match.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Game.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,13 +260,6 @@
       <workItem from="1687800545423" duration="4795000" />
       <workItem from="1687833670345" duration="15403000" />
       <workItem from="1687885356011" duration="871000" />
-    </task>
-    <task id="LOCAL-00074" summary="captcha added">
-      <created>1685268680945</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1685268680945</updated>
     </task>
     <task id="LOCAL-00075" summary="functionality">
       <created>1685380811487</created>
@@ -607,7 +597,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687874089381</updated>
     </task>
-    <option name="localTasksCounter" value="123" />
+    <task id="LOCAL-00123" summary="debug">
+      <created>1688031674025</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1688031674025</updated>
+    </task>
+    <option name="localTasksCounter" value="124" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -690,14 +687,14 @@
     <MESSAGE value="moveEnhanced" />
     <MESSAGE value="zoomOut borderBug Fix" />
     <MESSAGE value="pop up handler" />
-    <MESSAGE value="debug" />
     <MESSAGE value="cheatBarFunctionality" />
     <MESSAGE value="cheatBarFunctionality2" />
     <MESSAGE value="cheatBarFunctionality3" />
     <MESSAGE value="selectBuilding1" />
     <MESSAGE value="selectBuilding2" />
     <MESSAGE value="selectBuilding3" />
-    <option name="LAST_COMMIT_MESSAGE" value="selectBuilding3" />
+    <MESSAGE value="debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
