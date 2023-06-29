@@ -119,7 +119,7 @@ public class Match {
         turnNumber++;
         if (monarchies.size() <= 1) {
             for (Monarchy monarchy: monarchies) {
-                monarchy.getKing().setHighScore(monarchy.getPopularity());
+                monarchy.getKing().setHighScore(Math.max(monarchy.getPopularity(), monarchy.getKing().getHighScore()));
             }
             return "Game Over";
         }

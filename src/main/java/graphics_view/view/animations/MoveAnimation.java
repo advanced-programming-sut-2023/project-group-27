@@ -47,7 +47,7 @@ public class MoveAnimation extends Transition {
     protected void interpolate(double v) {
         double newX = v * destination.getLayoutX() + (1 - v) * origin.getLayoutX();
         double newY = v * destination.getLayoutY() + (1 - v) * origin.getLayoutY();
-        int index = ((int)(v * 1000) % 1);
+        int index = ((int)(v * 1000) % moveImages.size());
         gameMap.getChildren().remove(currentImage);
         controller.mountCellData(origin ,
                 GameController.tileToCell.get(origin));

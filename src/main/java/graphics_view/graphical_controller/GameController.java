@@ -4,9 +4,7 @@ import controller.controller.*;
 
 import static controller.view_controllers.Utilities.getAllBuildingNames;
 
-import graphics_view.view.InitialMenu;
-import graphics_view.view.ShopMenu;
-import graphics_view.view.TradeMenu;
+import graphics_view.view.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -19,6 +17,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Popup;
@@ -36,6 +36,8 @@ import model.man.SoldierType;
 import java.util.*;
 
 public class GameController {
+    @FXML
+    private Label currentTurnLAbel;
     @FXML
     private Button dropRock;
     @FXML
@@ -79,9 +81,13 @@ public class GameController {
     private Cell targetCell;
     private String taskName;
     private CoreSelectBuildingMenuController coreSelectBuildingMenuController;
+    private final Media media= new Media(ProfileMenu.class.getResource("/assets/tracks/profileMenu.mp3").toExternalForm());
+    private final MediaPlayer mediaPlayer = new MediaPlayer(media);
 
     public void init(Match match) {
         this.match = match;
+        mediaPlayer.setCycleCount(-1);
+        mediaPlayer.play();
         coreMapEditMenuController = new CoreMapEditMenuController(match, null);
         mapData = match.getCurrentMatchMap();
         this.controller = new CoreGameMenuController(match, null);
@@ -101,6 +107,7 @@ public class GameController {
         selectedTilesInfo.setSpacing(35);
         Utilities.setGameMap(gameMap);
         Utilities.setGameController(this);
+        currentTurnLAbel.setText(match.getCurrentUser().getUsername());
     }
 
     private void refreshSelectedTilesInfo(List<StackPane> tiles) {
@@ -190,8 +197,8 @@ public class GameController {
             });
             hBox.getChildren().add(button);
         }
-        while (infoPane.getChildren().size() > 9) {
-            infoPane.getChildren().remove(9);
+        while (infoPane.getChildren().size() > 10) {
+            infoPane.getChildren().remove(10);
         }
         infoPane.getChildren().add(selectedTilesInfo);
         ScrollPane scrollSoldiers = new ScrollPane(soldiers);
@@ -451,8 +458,8 @@ public class GameController {
     }
 
     public void refreshRateInfoPane() {
-        while (infoPane.getChildren().size() > 9) {
-            infoPane.getChildren().remove(9);
+        while (infoPane.getChildren().size() > 10) {
+            infoPane.getChildren().remove(10);
         }
         infoPane.getChildren().add(monarchyInfo);
         Monarchy monarchy = match.getCurrentUser().getMonarchy();
@@ -746,11 +753,28 @@ public class GameController {
         new ShopMenu().start(new Stage());
     }
 
-    public void nextTurn(MouseEvent mouseEvent) {
-        controller.nextTurn();
+    public void nextTurn(MouseEvent mouseEvent) throws Exception {
+        String result = controller.nextTurn();
+        if (result.equals("Game Over")) {
+            showGameOverPopUp();
+            mediaPlayer.stop();
+            new MainMenu().start(Utilities.getStage());
+        }
         this.controller = new CoreGameMenuController(match, null);
         this.coreMapEditMenuController = new CoreMapEditMenuController(match, null);
         refreshRateInfoPane();
+        currentTurnLAbel.setText(match.getCurrentUser().getUsername());
+    }
+
+    private void showGameOverPopUp() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Game Over");
+        alert.setHeaderText("HighScores will be updated");
+        if (match.getMonarchies().size() != 0)
+            alert.setContentText("The survivor is: " + match.getMonarchies().get(0).getKing().getUsername());
+        else alert.setContentText("No one survived");
+
+        alert.showAndWait();
     }
 
     private void enableButtons() {
