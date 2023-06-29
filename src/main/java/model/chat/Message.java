@@ -1,9 +1,11 @@
 package model.chat;
 
+import javafx.scene.text.Text;
 import model.User;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Message {
     private final User sender;
@@ -14,6 +16,7 @@ public class Message {
     private boolean isSeen;
     private final ArrayList<Reactions> reactions;
     private final ArrayList<User> usersReacted;
+    private static final HashMap<Message , Text> messageToText = new HashMap<>();
 
     public Message(User sender, Chat chat , String content , String date) {
         this.sender = sender;
@@ -68,6 +71,14 @@ public class Message {
 
     public void addUserReacted(User user) {
         usersReacted.add(user);
+    }
+
+    public static Text getTextByMessage(Message message) {
+        return messageToText.get(message);
+    }
+
+    public static void addTextToMessage(Message message , Text text) {
+        messageToText.put(message , text);
     }
 
     public void editMessage(String newContent) {

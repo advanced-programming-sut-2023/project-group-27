@@ -63,7 +63,7 @@ public class ChatController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (publicChat != null) {
             Messenger.setCurrentChat(Messenger.getPublicChat());
-            initCurrentChat(messageList);
+            initCurrentChat(messageList , inputMessage);
             initPrivateChat();
         }
     }
@@ -75,9 +75,9 @@ public class ChatController implements Initializable {
         }
     }
 
-    static void initCurrentChat(VBox messageList) {
+    static void initCurrentChat(VBox messageList , TextField inputMessage) {
         for (Message message : Messenger.getCurrentChat().getAllMessages()) {
-            showMessage(message , messageList);
+            showMessage(message , messageList , inputMessage);
         }
     }
 
@@ -86,14 +86,14 @@ public class ChatController implements Initializable {
         String message = inputMessage.getText();
         if (message.equals("")) return;
         inputMessage.setText("");
-        showMessage(controller.sendMessage(message), messageList);
+        showMessage(controller.sendMessage(message), messageList , inputMessage);
     }
 
-    static void showMessage(Message message, VBox messageList) {
+    static void showMessage(Message message, VBox messageList , TextField inputMessage) {
         HBox showMessage = new HBox();
         showMessage.setSpacing(50);
         HBox options = new HBox();
-        setupOptions(options , message);
+        setupOptions(options , message, inputMessage);
         HBox text = new HBox();
         setupText(text , message);
         Region filler = new Region();
@@ -112,6 +112,7 @@ public class ChatController implements Initializable {
         Text nickname = new Text(message.getSender().getNickname());
         nickname.setFill(Color.BLUE);
         Text content = new Text(message.getContent());
+        Message.addTextToMessage(message , content);
         Text date = new Text(message.getDate());
         ArrayList<Reactions> reactions = message.getReactions();
         text.getChildren().add(avatar);
@@ -126,16 +127,18 @@ public class ChatController implements Initializable {
         }
     }
 
-    private static void setupOptions(HBox options , Message message) {
+    private static void setupOptions(HBox options , Message message , TextField inputMessage) {
         options.setSpacing(10);
         options.setAlignment(Pos.BASELINE_RIGHT);
         Button reaction = new Button("Reactions");
         reaction.setOnAction(actionEvent -> newReaction(message));
-        Button edit = new Button("Edit");
-        reaction.setOnAction(actionEvent -> editMessage(message));
-        Button delete = new Button("Delete");
-        reaction.setOnAction(actionEvent -> deleteMessage(message));
         options.getChildren().add(reaction);
+        if (!message.getSender().getUsername().equals(StrongholdCrusader.
+                getLoggedInUser().getUsername())) return;
+        Button edit = new Button("Edit");
+        edit.setOnAction(actionEvent -> editMessage(message, inputMessage));
+        Button delete = new Button("Delete");
+        delete.setOnAction(actionEvent -> deleteMessage(message));
         options.getChildren().add(edit);
         options.getChildren().add(delete);
     }
@@ -144,8 +147,12 @@ public class ChatController implements Initializable {
 
     }
 
-    private static void editMessage(Message message) {
-
+    private static void editMessage(Message message , TextField inputMessage) {
+        String newContent = inputMessage.getText();
+        inputMessage.setText("");
+        message.editMessage(newContent);
+        Text content = Message.getTextByMessage(message);
+        content.setText(newContent);
     }
 
     private static void newReaction(Message message) {
@@ -172,6 +179,7 @@ public class ChatController implements Initializable {
             alert.showAndWait();
             return;
         }
+        searchUsername.setText("");
         alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
         alert.setHeaderText("Start chat successful");

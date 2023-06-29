@@ -32,7 +32,7 @@ public class PrivateChatController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ChatController.initCurrentChat(privateMessageList);
+        ChatController.initCurrentChat(privateMessageList , inputMessage);
         username.setText(((PrivateChat) Messenger.getCurrentChat()).
                 getOtherUser().getUsername());
         username.setFill(Color.GREEN);
@@ -41,11 +41,12 @@ public class PrivateChatController implements Initializable {
 
     public void sendMessagePrivateChat(MouseEvent mouseEvent) {
         String message = inputMessage.getText();
+        inputMessage.setText("");
         showMessage(controller.sendMessage(message));
     }
 
     private void showMessage(Message message) {
-        ChatController.showMessage(message, privateMessageList);
+        ChatController.showMessage(message, privateMessageList , inputMessage);
         //TODO implement showing message
     }
 
