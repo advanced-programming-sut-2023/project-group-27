@@ -30,8 +30,8 @@ public class Server {
                     Socket socket2 = server.accept();
                     Connection connection = new Connection(socket2, socket1);
                     String username = connection.getResponse();
-                    // TODO user should sent it's username right after connecting
                     connectionToUser.put(connection, StrongholdCrusader.getUserByName(username));
+                    userToConnection.put(StrongholdCrusader.getUserByName(username), connection);
                     connectionList.add(connection);
                     new Thread(() -> {
                         while (true) {
@@ -92,11 +92,11 @@ public class Server {
                                             Connection playerConnection = userToConnection.get(player);
                                             if (!player.equals(owner)) {
                                                 playerConnection.request("game started");
-                                                playerConnection.request(request.getMapIndex() + "");
                                             }
                                             Gson gson = new Gson();
                                             Socket socket3, socket4;
                                             try {
+                                                request.getGameServer().addConnection();
                                                 socket3 = new Socket("localhost", request.getPort());
                                                 socket4 = new Socket("localhost", request.getPort());
                                             } catch (IOException e) {
@@ -110,7 +110,6 @@ public class Server {
                                             }
                                             String jsonString = gson.toJson(gameConnection);
                                             playerConnection.request(jsonString);
-                                            // TODO receive this
                                         }
                                     }
                                 }
@@ -123,5 +122,9 @@ public class Server {
             }
         }).start();
 
+    }
+
+    public static void main(String[] args) throws IOException {
+        new Server(8080);
     }
 }

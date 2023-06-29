@@ -239,22 +239,5 @@ public class GameStartController implements Initializable {
         Utilities.getMainServer().request("create game -m " + selectedMapIndex + " -c "
                 + getCapacity() + " -o " + StrongholdCrusader.getLoggedInUser() + " -v " + getVisibility());
         Connection connection = Utilities.getMainServer();
-        new Thread(() -> {
-            try {
-                String command = connection.listen();
-                if (command.startsWith("player added")) {
-                    String[] split = command.split(" ");
-                    String username = split[2];
-                    User addedUser = StrongholdCrusader.getUserByName(username);
-                    int index = Arrays.stream(StrongholdCrusader.getAllUsersList())
-                            .collect(Collectors.toList()).indexOf(addedUser);
-                    String result = controller.addPlayer(index);
-                    connection.response(result);
-                    updateSelectedPlayers();
-                }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }).start();
     }
 }

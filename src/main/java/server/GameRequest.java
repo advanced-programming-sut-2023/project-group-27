@@ -2,6 +2,7 @@ package server;
 
 import model.User;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ public class GameRequest {
     private int capacity;
     private int mapIndex;
     private int port;
+    private GameServer gameServer;
 
     private List<User> players = new ArrayList<>();
 
@@ -17,6 +19,11 @@ public class GameRequest {
         this.owner = owner;
         this.capacity = capacity;
         this.mapIndex = mapIndex;
+        this.gameServer = new GameServer(port);
+    }
+
+    public GameServer getGameServer() {
+        return gameServer;
     }
 
     public User getOwner() {

@@ -64,6 +64,10 @@ public class StrongholdCrusader {
         return random.nextInt(10000) + 10000;
     }
 
+    public static List<User> getUsers() {
+        return new ArrayList<>(allUsers.values());
+    }
+
     public User getUserByUsername(String username) {
         return allUsers.getOrDefault(username, null);
     }

@@ -1,7 +1,10 @@
 package graphics_view.graphical_controller;
 
 import com.google.gson.Gson;
+import controller.controller.CoreGameMenuController;
+import controller.controller.CoreGameStartMenuController;
 import controller.controller.Utilities;
+import graphics_view.view.GameMenu;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -14,6 +17,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import model.Match;
+import model.MonarchyColorType;
 import model.StrongholdCrusader;
 import model.User;
 import org.w3c.dom.Text;
@@ -22,6 +27,7 @@ import server.GameRequest;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LobbyController {
@@ -145,15 +151,27 @@ public class LobbyController {
                         if (command.equals("game started")) {
                             String mapIndex, connectionString;
                             try {
-                                mapIndex = mainServer.listen();
                                 connectionString = mainServer.listen();
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
-                            int mapIndexInt = Integer.parseInt(mapIndex);
+                            int mapIndexInt = gameRequest.getMapIndex();
                             User owner = gameRequest.getOwner();
                             Connection gameConnection = gson.fromJson(connectionString, Connection.class);
-
+                            CoreGameStartMenuController startGameController =
+                                    new CoreGameStartMenuController(null, owner);
+                            for (User user : gameRequest.getPlayers()) {
+                                int index = StrongholdCrusader.getUsers().indexOf(user);
+                                startGameController.addPlayer(index);
+                            }
+                            startGameController.selectMap(mapIndexInt);
+                            ArrayList<Integer> numbers = new ArrayList<>();
+                            for (int i = 0; i < gameRequest.getPlayers().size(); i++) {
+                                numbers.add(i+1);
+                                startGameController.setColor(i + 1, MonarchyColorType.values()[i]);
+                            }
+                            startGameController.assignKeepsAndStart(numbers);
+                            GameMenu gameMenu = new GameMenu(startGameController.getMatch(), gameConnection);
                         }
                     }
                 });
