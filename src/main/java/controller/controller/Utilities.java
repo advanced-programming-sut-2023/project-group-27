@@ -14,6 +14,7 @@ import model.man.Engineer;
 import model.man.Man;
 import model.man.Soldier;
 import model.man.SoldierType;
+import server.Connection;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -23,6 +24,7 @@ public class Utilities {
     private static Stage stage;
     private static TilePane gameMap;
     private static GameController gameController;
+    private static Connection mainServer;
 
     static {
         sampleSlogans = Arrays.asList(
@@ -35,6 +37,10 @@ public class Utilities {
         );
     }
 
+    public static Connection getMainServer() {
+        return mainServer;
+    }
+
     public static TilePane getGameMap() {
         return gameMap;
     }
@@ -45,6 +51,10 @@ public class Utilities {
 
     public static void setGameController(GameController gameController) {
         Utilities.gameController = gameController;
+    }
+
+    public static void setMainServer(Connection mainServer) {
+        Utilities.mainServer = mainServer;
     }
 
     public static void setGameMap(TilePane gameMap) {

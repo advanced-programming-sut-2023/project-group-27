@@ -24,6 +24,7 @@
         <TilePane fx:id="miniMap"/>
     </VBox>
 
-    <Button text="start" onMouseClicked="#start" layoutY="600" layoutX="100"/>
+    <Button text="publish game" onMouseClicked="#publishGame" layoutX="100" layoutY="600"/>
+    <Button text="start" onMouseClicked="#start" layoutY="600" layoutX="150"/>
     <Button text="exit" onMouseClicked="#exit" layoutX="50" layoutY="600"/>
 </Pane>

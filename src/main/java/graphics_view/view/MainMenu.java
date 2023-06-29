@@ -10,7 +10,7 @@ public class MainMenu extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Pane pane = FXMLLoader.load(ProfileMenu.class.getResource("/fxml/mainMenu.fxml"));
-
+        // TODO connect to the server
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.show();

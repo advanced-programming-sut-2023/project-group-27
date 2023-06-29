@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import model.*;
 import model.man.Soldier;
 import model.man.SoldierType;
+import server.Connection;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -18,19 +19,9 @@ import java.util.stream.Collectors;
 
 public class GameMenu extends Application {
     private Match match;
-//    {
-//        Location[] locations = new Location[] {new Location(1, 1), new Location(10, 10)};
-//        GameMap gameMap = new GameMap(100, 100, "myMap", 100, locations);
-//        User user = new User("user", "Password@1", "n", "s", "e", "a", "b");
-//        User user2 = new User("user2", "Password@1", "n", "s", "e", "a", "b");
-//        user.setMonarchy(new Monarchy(user, MonarchyColorType.BLACK, gameMap, locations[0]));
-//        user.getMonarchy().setLord(new Soldier(SoldierType.LORD, user));
-//        user2.setMonarchy(new Monarchy(user2, MonarchyColorType.RED, gameMap, locations[1]));
-//        user2.getMonarchy().setLord(new Soldier(SoldierType.LORD, user2));
-//        User[] users = new User[]{user, user2};
-//        this.match = new Match(gameMap, Arrays.stream(users).collect(Collectors.toList()));
-//    }
-    public GameMenu(Match match) {
+    private Connection connection;
+    public GameMenu(Match match, Connection connection) {
+        this.connection = connection;
         this.match = match;
     }
 
@@ -39,7 +30,7 @@ public class GameMenu extends Application {
         Utilities.setStage(stage);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Game.fxml"));
         Pane pane = loader.load();
-        ((GameController) loader.getController()).init(match);
+        ((GameController) loader.getController()).init(match, connection);
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.show();

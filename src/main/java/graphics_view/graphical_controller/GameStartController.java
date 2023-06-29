@@ -1,28 +1,33 @@
 package graphics_view.graphical_controller;
 
+import com.google.gson.Gson;
 import controller.controller.CoreGameStartMenuController;
+import controller.controller.Utilities;
 import graphics_view.view.GameMenu;
 import graphics_view.view.GameStartMenu;
 import graphics_view.view.MainMenu;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.*;
+import server.Connection;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class GameStartController implements Initializable {
     private final CoreGameStartMenuController controller;
@@ -195,17 +200,56 @@ public class GameStartController implements Initializable {
         }
     }
 
+    private int getCapacity() {
+        // TODO implement
+        return 2;
+    }
+
+
     public void start(MouseEvent mouseEvent) throws Exception {
+        Utilities.getMainServer().send("start game -u "
+                + StrongholdCrusader.getLoggedInUser().getUsername());
+        Gson gson = new Gson();
+        String response = Utilities.getMainServer().receive();
+        Connection connection = gson.fromJson(response, Connection.class);
+        enterGame(connection);
+        return;
+    }
+
+    public void enterGame(Connection connection) throws Exception {
         if (thisGamePlayers.size() < 2) return;
         ArrayList<Integer> keeps = new ArrayList<>();
         for (User user : thisGamePlayers)
             keeps.add(playersKeeps.get(user) + 1);
         controller.assignKeepsAndStart(keeps);
 
-        new GameMenu(controller.getMatch()).start(GameStartMenu.stage);
+        new GameMenu(controller.getMatch(), connection).start(GameStartMenu.stage);
     }
 
     public void exit(MouseEvent mouseEvent) throws Exception {
         new MainMenu().start(GameStartMenu.stage);
+    }
+
+    public void publishGame(MouseEvent mouseEvent) {
+        Utilities.getMainServer().send("create game -m " + selectedMapIndex + " -c "
+                + getCapacity() + " -o " + StrongholdCrusader.getLoggedInUser());
+        Connection connection = Utilities.getMainServer();
+        new Thread(() -> {
+            try {
+                String response = connection.receive();
+                if (response.startsWith("player added")) {
+                    String[] split = response.split(" ");
+                    String username = split[2];
+                    User addedUser = StrongholdCrusader.getUserByName(username);
+                    int index = Arrays.stream(StrongholdCrusader.getAllUsersList())
+                            .collect(Collectors.toList()).indexOf(addedUser);
+                    String result = controller.addPlayer(index);
+                    connection.send(result);
+                    updateSelectedPlayers();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 }
