@@ -6,9 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 public class ProfileMenu extends Application {
 
     public static void main(String[] args) {

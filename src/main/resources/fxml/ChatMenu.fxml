@@ -21,7 +21,7 @@
             <bottom>
                 <HBox alignment="CENTER" spacing="20">
                     <TextField promptText="send a message..." fx:id="inputMessage"
-                    prefWidth="700"/>
+                               prefWidth="700"/>
                     <Button text="Send" onMouseClicked="#sendMessagePublicChat"/>
                 </HBox>
             </bottom>
@@ -31,7 +31,20 @@
 
     </Tab>
     <Tab fx:id="privateChats" text="Private Chats">
-
+        <BorderPane style="-fx-padding: 10">
+            <top>
+                <HBox alignment="CENTER" spacing="20">
+                    <TextField promptText="search for user..." fx:id="searchUsername"
+                               prefWidth="400"/>
+                    <Button text="Search" onMouseClicked="#startNewPrivateChat"/>
+                </HBox>
+            </top>
+            <center>
+                <ScrollPane>
+                    <VBox spacing="20" fx:id="privateChatList"/>
+                </ScrollPane>
+            </center>
+        </BorderPane>
     </Tab>
 
 </TabPane>
