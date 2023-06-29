@@ -10,6 +10,7 @@ public class Messenger {
     private static final PublicChat publicChat = new PublicChat();
     private static final ArrayList<PrivateChat> allPrivateChats = new ArrayList<>();
     private static final ArrayList<Room> allRooms = new ArrayList<>();
+    private static Chat currentChat;
 
     public static ArrayList<Chat> getAllChats() {
         return allChats;
@@ -45,6 +46,14 @@ public class Messenger {
                 arrayList.add(privateChat);
         }
         return arrayList;
+    }
+
+    public static Chat getCurrentChat() {
+        return currentChat;
+    }
+
+    public static void setCurrentChat(Chat currentChat) {
+        Messenger.currentChat = currentChat;
     }
 
     public static boolean roomExists(Room room) {

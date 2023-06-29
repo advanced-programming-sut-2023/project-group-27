@@ -2,7 +2,6 @@ package graphics_view.graphical_controller;
 
 import controller.controller.CoreChatMenuController;
 import controller.controller.Utilities;
-import graphics_view.view.ChatMenu;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -44,10 +43,6 @@ public class ChatController implements Initializable {
     private TextField inputMessage;
     @FXML
     private TextField searchUsername;
-    @FXML
-    private Text username;
-    private TabPane root;
-    private Scene scene;
 
     public ChatController() {
         controller = new CoreChatMenuController();
@@ -61,7 +56,8 @@ public class ChatController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (publicChat != null) {
-            initPublicChat();
+            Messenger.setCurrentChat(Messenger.getPublicChat());
+            initCurrentChat(messageList);
             initPrivateChat();
         }
     }
@@ -73,19 +69,20 @@ public class ChatController implements Initializable {
         }
     }
 
-    private void initPublicChat() {
-        for (Message message : Messenger.getPublicChat().getAllMessages()) {
-            showMessage(message);
+    static void initCurrentChat(VBox messageList) {
+        for (Message message : Messenger.getCurrentChat().getAllMessages()) {
+            showMessage(message , messageList);
         }
     }
 
     public void sendMessagePublicChat(MouseEvent mouseEvent) {
+        Messenger.setCurrentChat(Messenger.getPublicChat());
         String message = inputMessage.getText();
         inputMessage.setText("");
-        showMessage(controller.sendMessagePublicChat(message));
+        showMessage(controller.sendMessage(message), messageList);
     }
 
-    private void showMessage(Message message) {
+    static void showMessage(Message message, VBox messageList) {
         HBox showMessage = new HBox();
         showMessage.setSpacing(10);
         ImageView avatar = new ImageView(message.getSender().getAvatar());
@@ -107,7 +104,6 @@ public class ChatController implements Initializable {
             showMessage.getChildren().add(imageView);
         }
         messageList.getChildren().add(showMessage);
-        //TODO implement showing message
     }
 
     public void startNewPrivateChat(MouseEvent mouseEvent) {
@@ -165,21 +161,12 @@ public class ChatController implements Initializable {
     }
 
     private void enterPrivateChat(PrivateChat pv) throws IOException {
+        Messenger.setCurrentChat(pv);
         Stage stage = Utilities.getStage();
         BorderPane borderPane = FXMLLoader.load(
                 ChatController.class.getResource("/fxml/PrivateChat.fxml"));
         Scene scene = new Scene(borderPane);
         stage.setScene(scene);
-//        System.out.println(username == null);
-//        username.setText(pv.getOtherUser().getUsername());
         stage.show();
-    }
-
-    public void sendMessagePrivateChat(MouseEvent mouseEvent) {
-
-    }
-
-    public void back(MouseEvent mouseEvent) throws Exception {
-        new ChatMenu().start(Utilities.getStage());
     }
 }

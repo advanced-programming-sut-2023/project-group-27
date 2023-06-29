@@ -12,13 +12,13 @@ import java.util.Date;
 
 public class CoreChatMenuController {
     private User loggedInUser;
-    public Message sendMessagePublicChat(String messageContent) {
+    public Message sendMessage(String messageContent) {
         loggedInUser = StrongholdCrusader.getLoggedInUser();
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("HH:mm");
         Message message = new Message(
-                loggedInUser , Messenger.getPublicChat(),messageContent , format.format(date));
-        Messenger.getPublicChat().addNewMessage(message);
+                loggedInUser , Messenger.getCurrentChat(),messageContent , format.format(date));
+        Messenger.getCurrentChat().addNewMessage(message);
         return message;
         //TODO access chat
     }
