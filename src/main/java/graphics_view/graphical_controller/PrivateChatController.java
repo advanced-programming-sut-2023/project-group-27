@@ -8,9 +8,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import model.chat.Message;
 import model.chat.Messenger;
+import model.chat.PrivateChat;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,6 +33,10 @@ public class PrivateChatController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ChatController.initCurrentChat(privateMessageList);
+        username.setText(((PrivateChat) Messenger.getCurrentChat()).
+                getOtherUser().getUsername());
+        username.setFill(Color.GREEN);
+        username.setStyle("-fx-font-size: 20");
     }
 
     public void sendMessagePrivateChat(MouseEvent mouseEvent) {
