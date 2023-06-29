@@ -1,5 +1,6 @@
 package graphics_view.view;
 
+import controller.controller.Utilities;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,6 +10,7 @@ import javafx.stage.Stage;
 public class ChatMenu extends Application {
     @Override
     public void start(Stage stage) throws Exception {
+        Utilities.setStage(stage); //TODO remove this
         TabPane tabPane = FXMLLoader.load(
                 ChatMenu.class.getResource("/fxml/ChatMenu.fxml"));
         Scene scene = new Scene(tabPane);

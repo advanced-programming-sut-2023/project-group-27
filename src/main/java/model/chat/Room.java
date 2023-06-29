@@ -14,6 +14,6 @@ public class Room extends Chat{
     }
 
     public void addUserToRoom(User user) {
-        super.addUSerToChat(user);
+        super.addUserToChat(user);
     }
 }

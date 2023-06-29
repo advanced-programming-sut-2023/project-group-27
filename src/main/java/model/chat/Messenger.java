@@ -1,5 +1,6 @@
 package model.chat;
 
+import model.StrongholdCrusader;
 import model.User;
 
 import java.util.ArrayList;
@@ -10,6 +11,9 @@ public class Messenger {
     private static final ArrayList<PrivateChat> allPrivateChats = new ArrayList<>();
     private static final ArrayList<Room> allRooms = new ArrayList<>();
 
+    public static ArrayList<Chat> getAllChats() {
+        return allChats;
+    }
 
     public static PublicChat getPublicChat() {
         return publicChat;
@@ -25,13 +29,22 @@ public class Messenger {
         allChats.add(room);
     }
 
-    public static boolean privateChatExists(User user1 , User user2) {
+    public static PrivateChat getPrivateChatByUsers(User user1 , User user2) {
         for (PrivateChat privateChat : allPrivateChats) {
-            if (privateChat.getParticipantUsers().contains(user1)
-            && privateChat.getParticipantUsers().contains(user2))
-                return true;
+            if (privateChat.getParticipantUserByName(user1.getUsername()) != null
+            && privateChat.getParticipantUserByName(user2.getUsername()) != null)
+                return privateChat;
         }
-        return false;
+        return null;
+    }
+
+    public static ArrayList<PrivateChat> getUsersPrivateChats(User user) {
+        ArrayList<PrivateChat> arrayList = new ArrayList<>();
+        for (PrivateChat privateChat : allPrivateChats) {
+            if (privateChat.getParticipantUserByName(user.getUsername()) != null)
+                arrayList.add(privateChat);
+        }
+        return arrayList;
     }
 
     public static boolean roomExists(Room room) {

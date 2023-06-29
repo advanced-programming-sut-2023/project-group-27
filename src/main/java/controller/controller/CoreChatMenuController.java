@@ -27,7 +27,7 @@ public class CoreChatMenuController {
         loggedInUser = StrongholdCrusader.getLoggedInUser();
         User user = StrongholdCrusader.getUserByName(username);
         if (user == null) return null;
-        if (Messenger.privateChatExists(loggedInUser , user))
+        if (Messenger.getPrivateChatByUsers(loggedInUser , user) != null)
             return "Private chat already exists";
         PrivateChat pv = new PrivateChat(loggedInUser, user);
         Messenger.addPrivateChat(pv);

@@ -13,6 +13,7 @@ public class Message {
     private boolean isSent;
     private boolean isSeen;
     private final ArrayList<Reactions> reactions;
+    private final ArrayList<User> usersReacted;
 
     public Message(User sender, Chat chat , String content , String date) {
         this.sender = sender;
@@ -22,6 +23,7 @@ public class Message {
         isSent = false;
         isSeen = false;
         reactions = new ArrayList<>();
+        usersReacted = new ArrayList<>();
     }
 
     public User getSender() {
@@ -62,6 +64,10 @@ public class Message {
 
     public void addReaction(Reactions reaction) {
         reactions.add(reaction);
+    }
+
+    public void addUserReacted(User user) {
+        usersReacted.add(user);
     }
 
     public void editMessage(String newContent) {

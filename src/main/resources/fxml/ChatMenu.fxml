@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <TabPane xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml"
          fx:controller="graphics_view.graphical_controller.ChatController"
          tabClosingPolicy="UNAVAILABLE"
-         prefHeight="700.0" prefWidth="1200.0" style="-fx-start-margin: 0">
+         prefHeight="700.0" prefWidth="1200.0"
+         fx:id="mainTabPane"
+         style="-fx-start-margin: 0">
     <Tab fx:id="publicChat" text="Public Chat">
         <BorderPane style="-fx-padding: 10">
             <center>
