@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="initiate lobby class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/LobbyController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/Lobby.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/GameServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +21,8 @@
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
         <option value="module-info" />
-        <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -264,21 +263,8 @@
       <workItem from="1687833670345" duration="15403000" />
       <workItem from="1687885356011" duration="1291000" />
       <workItem from="1687903254586" duration="265000" />
-      <workItem from="1687976464858" duration="4850000" />
-    </task>
-    <task id="LOCAL-00078" summary="functionality 4">
-      <created>1685448572806</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1685448572806</updated>
-    </task>
-    <task id="LOCAL-00079" summary="functionality 5">
-      <created>1685463465505</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1685463465505</updated>
+      <workItem from="1687976464858" duration="6845000" />
+      <workItem from="1688018547369" duration="2383000" />
     </task>
     <task id="LOCAL-00080" summary="functionality 6">
       <created>1685466010750</created>
@@ -609,7 +595,21 @@
       <option name="project" value="LOCAL" />
       <updated>1687979719873</updated>
     </task>
-    <option name="localTasksCounter" value="127" />
+    <task id="LOCAL-00127" summary="initiate lobby class">
+      <created>1687981351585</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1687981351586</updated>
+    </task>
+    <task id="LOCAL-00128" summary="initiate lobby class">
+      <created>1687983982355</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1687983982355</updated>
+    </task>
+    <option name="localTasksCounter" value="129" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
