@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public enum SoldierType {
-    SPEARMAN("SpearMan", 200, 100, 1.2, 0, 8, "european",
+    SPEARMAN("SpearMan", 200, 100, 1.2, 3, 8, "european",
             new GoodsType[] {GoodsType.SPEAR}),
     PIKEMAN("PikeMan", 200, 90, 1.0, 0, 20, "european",
             new GoodsType[] {GoodsType.ARMOUR, GoodsType.PIKE}),
@@ -21,18 +21,18 @@ public enum SoldierType {
     TUNNELER("Tunneler", 60, 40, 2.1, 0, 30, "guild", null),
     LADDERMAN("LadderMan", 50, 20, 1.8, 0, 3, "guild", null),
     SLAVE("Slave", 50, 50, 1.5, 0, 5, "arab", null),
-    ASSASSIN("Assassin", 120, 90, 3.0, 0, 60, "arab", null),
+    ASSASSIN("Assassin", 120, 90, 3.0, 1, 60, "arab", null),
     ARABSWORDSMAN("ArabSwordsMan", 220, 120, 0.8, 0, 80, "arab", null),
     ARCHER("Archer", 120, 80, 1.5, 10, 12, "european",
             new GoodsType[] {GoodsType.BOW}),
     CROSSBOWMAN("CrossBowMan", 120, 90, 1.2, 10, 20, "european",
             new GoodsType[] {GoodsType.CROSSBOW, GoodsType.LEATHER_ARMOUR}),
     ARCHERBOW("ArcherBow", 100, 100, 1.2, 10, 75, "arab", null),
-    SLINGER("Slinger", 80, 120, 1.0, 0, 12, "arab", null),
+    SLINGER("Slinger", 80, 120, 1.0, 3, 12, "arab", null),
     HORSEARCHER("HorseArcher", 350, 100, 3.5, 10, 60, "arab", null),
-    FIRETHROWER("FireThrower", 120, 80, 1.0, 0, 100, "arab", null),
+    FIRETHROWER("FireThrower", 120, 80, 1.0, 3, 100, "arab", null),
     ENGINEER("Engineer", 60, 10, 1.5, 0, 40, "guild", null),
-    LORD("Lord",400, 100, 1.0 , null, 0 , "LordShip", null);
+    LORD("Lord",400, 100, 1.0 , 0, 0 , "LordShip", null);
 
     private static final HashMap<String, SoldierType> map = new HashMap<>();
     private final String name;
