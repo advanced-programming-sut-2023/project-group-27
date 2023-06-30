@@ -49,4 +49,9 @@ public class Fight extends Task {
         }
         return isValid;
     }
+
+    @Override
+    public String toString() {
+        return "Fight";
+    }
 }

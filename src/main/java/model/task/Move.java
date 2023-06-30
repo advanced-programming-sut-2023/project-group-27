@@ -62,4 +62,9 @@ public class Move extends Task {
     public Movable getOwner() {
         return movable;
     }
+
+    @Override
+    public String toString() {
+        return "Move";
+    }
 }

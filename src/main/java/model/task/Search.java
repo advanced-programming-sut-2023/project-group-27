@@ -49,4 +49,9 @@ public class Search extends Task{
         if (soldier.getHitPoint() <= 0) return false;
         return isValid;
     }
+
+    @Override
+    public String toString() {
+        return "Search";
+    }
 }
