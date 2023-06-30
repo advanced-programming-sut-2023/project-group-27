@@ -199,7 +199,7 @@ public class LoginController {
             alert.setHeaderText("Password Change");
             alert.setContentText("Password changed successfully!");
             alert.showAndWait();
-            new LoginMenu().start(stage);
+            new LoginMenu().start(Utilities.getStage());
         }
     }
 

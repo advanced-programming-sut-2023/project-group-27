@@ -360,6 +360,7 @@ public class GameController {
                         }
                         selectedTiles.clear();
                         unitSelected = false;
+                        origin = null;
                         break;
                 }
             }
