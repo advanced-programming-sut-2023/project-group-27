@@ -354,8 +354,8 @@ public class GameController {
     private void initiateGameMap() {
         gameMap.setVgap(1);
         gameMap.setHgap(1);
-        gameMap.setPrefRows(mapData.getHeight() / 10);
-        gameMap.setPrefColumns(mapData.getWidth() / 10);
+        gameMap.setPrefRows(mapData.getHeight());
+        gameMap.setPrefColumns(mapData.getWidth());
         gameMap.setPrefTileHeight(tileSize);
         gameMap.setPrefTileWidth(tileSize);
         gameMap.setLayoutX(0);
@@ -425,8 +425,8 @@ public class GameController {
 
 
     private void mountTiles(GameMap selectedMap) {
-        for (int i = selectedMap.getHeight() / 10 - 1; i >= 0 ;i--) {
-            for (int j = 0; j < selectedMap.getWidth() / 10; j++) {
+        for (int i = selectedMap.getHeight() - 1; i >= 0 ;i--) {
+            for (int j = 0; j < selectedMap.getWidth(); j++) {
                 StackPane tile = getTile(selectedMap.getCell(j, i));
                 gameMap.getChildren().add(tile);
                 cellToTile.put(selectedMap.getCell(j, i), tile);
