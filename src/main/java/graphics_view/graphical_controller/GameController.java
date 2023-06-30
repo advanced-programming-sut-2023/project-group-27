@@ -66,7 +66,7 @@ public class GameController {
     private Match match;
     private VBox rateInfo, popularityInfo, foodInfo, goldPopulationInfo;
     private CoreGameMenuController controller;
-    private double tileSize = 30.0;
+    private double tileSize = 30;
     private GameMap mapData;
     public static final HashMap<Cell, StackPane> cellToTile = new HashMap<>();
     public static final HashMap<StackPane, Cell> tileToCell = new HashMap<>();
@@ -401,7 +401,7 @@ public class GameController {
     }
 
     private void mountZoomFeature() {
-        int maxZoom = 5;
+        int maxZoom = 6;
         gameMap.setOnScroll(scrollEvent -> {
             if (scrollEvent.getDeltaY() >= 0) {
                 gameMap.setScaleX(gameMap.getScaleX() + ((gameMap.getScaleX() + 0.1 > maxZoom) ? 0 : 0.1));
