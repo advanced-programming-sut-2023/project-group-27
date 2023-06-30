@@ -5,6 +5,7 @@ import model.User;
 import model.chat.Message;
 import model.chat.Messenger;
 import model.chat.PrivateChat;
+import model.chat.Room;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -32,5 +33,16 @@ public class CoreChatMenuController {
         PrivateChat pv = new PrivateChat(loggedInUser, user);
         Messenger.addPrivateChat(pv);
         return "New Private chat started with " + username + "!";
+    }
+
+    public Room createNewRoom(String roomsName) {
+        loggedInUser = StrongholdCrusader.getLoggedInUser();
+        Room room = Messenger.roomExists(roomsName);
+        if (room != null)
+            return null;
+        room = new Room(roomsName);
+        room.addUserToRoom(loggedInUser);
+        Messenger.addRoom(room);
+        return room;
     }
 }

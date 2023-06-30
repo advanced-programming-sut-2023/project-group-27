@@ -16,16 +16,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.StrongholdCrusader;
 import model.User;
-import model.chat.Message;
-import model.chat.Messenger;
-import model.chat.PrivateChat;
-import model.chat.Reactions;
+import model.chat.*;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ChatController implements Initializable {
@@ -50,6 +45,10 @@ public class ChatController implements Initializable {
     private static Button sendButton;
     @FXML
     private TextField searchUsername;
+    @FXML
+    private VBox roomsList;
+    @FXML
+    private TextField roomName;
 
     public ChatController() {
         controller = new CoreChatMenuController();
@@ -65,6 +64,7 @@ public class ChatController implements Initializable {
         if (publicChat != null) {
             Messenger.setCurrentChat(Messenger.getPublicChat());
             initCurrentChat(messageList , inputMessage);
+            initRooms();
             initPrivateChat();
         }
     }
@@ -74,6 +74,10 @@ public class ChatController implements Initializable {
                 StrongholdCrusader.getLoggedInUser())) {
             addPrivateChat(privateChat);
         }
+    }
+
+    private void initRooms() {
+
     }
 
     static void initCurrentChat(VBox messageList , TextField inputMessage) {
@@ -273,5 +277,26 @@ public class ChatController implements Initializable {
         Scene scene = new Scene(borderPane);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void createNewRoom(MouseEvent mouseEvent) {
+        String roomsName = roomName.getText();
+        Room newRoom = controller.createNewRoom(roomsName);
+        Alert alert;
+        if (newRoom == null) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Create Room Error");
+            alert.setContentText("Room already exist!");
+            alert.showAndWait();
+            return;
+        }
+        roomName.setText("");
+        alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText("Create room successful");
+        alert.setContentText("Room " + newRoom.getRoomName() + " created" +
+                " successfully!");
+        alert.showAndWait();
     }
 }

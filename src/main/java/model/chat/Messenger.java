@@ -1,15 +1,15 @@
 package model.chat;
 
-import model.StrongholdCrusader;
 import model.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Messenger {
     private static final ArrayList<Chat> allChats = new ArrayList<>();
     private static final PublicChat publicChat = new PublicChat();
     private static final ArrayList<PrivateChat> allPrivateChats = new ArrayList<>();
-    private static final ArrayList<Room> allRooms = new ArrayList<>();
+    private static final HashMap<String , Room> allRooms = new HashMap<>();
     private static Chat currentChat;
 
     public static ArrayList<Chat> getAllChats() {
@@ -26,7 +26,7 @@ public class Messenger {
     }
 
     public static void addRoom(Room room) {
-        allRooms.add(room);
+        allRooms.put(room.getRoomName() , room);
         allChats.add(room);
     }
 
@@ -48,6 +48,15 @@ public class Messenger {
         return arrayList;
     }
 
+    public static ArrayList<Room> getUsersRooms(User user) {
+        ArrayList<Room> arrayList = new ArrayList<>();
+        for (Room room : allRooms.values()) {
+            if (room.getParticipantUserByName(user.getUsername()) != null)
+                arrayList.add(room);
+        }
+        return arrayList;
+    }
+
     public static Chat getCurrentChat() {
         return currentChat;
     }
@@ -56,8 +65,8 @@ public class Messenger {
         Messenger.currentChat = currentChat;
     }
 
-    public static boolean roomExists(Room room) {
-        return allRooms.contains(room);
+    public static Room roomExists(String roomName) {
+        return allRooms.get(roomName);
     }
 
 }

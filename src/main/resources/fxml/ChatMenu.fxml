@@ -20,20 +20,35 @@
                 <HBox alignment="CENTER" spacing="20" fx:id="inputBox">
                     <TextField promptText="send a message..." fx:id="inputMessage"
                                prefWidth="700"/>
-                    <Button text="Send" onMouseClicked="#sendMessagePublicChat" fx:id="sendButton"/>
+                    <Button text="Send" onMouseClicked="#sendMessagePublicChat"
+                            fx:id="sendButton"/>
                 </HBox>
             </bottom>
         </BorderPane>
     </Tab>
     <Tab fx:id="room" text="Rooms">
-
+        <BorderPane style="-fx-padding: 10">
+            <top>
+                <HBox alignment="CENTER" spacing="20">
+                    <TextField promptText="enter room name..."
+                               fx:id="roomName" prefWidth="400"/>
+                    <Button text="Create Room"
+                            onMouseClicked="#createNewRoom"/>
+                </HBox>
+            </top>
+            <center>
+                <ScrollPane>
+                    <VBox spacing="20" fx:id="roomsList"/>
+                </ScrollPane>
+            </center>
+        </BorderPane>
     </Tab>
     <Tab fx:id="privateChats" text="Private Chats">
         <BorderPane style="-fx-padding: 10">
             <top>
                 <HBox alignment="CENTER" spacing="20">
-                    <TextField promptText="search for user..." fx:id="searchUsername"
-                               prefWidth="400"/>
+                    <TextField promptText="search for user..."
+                               fx:id="searchUsername" prefWidth="400"/>
                     <Button text="Search" onMouseClicked="#startNewPrivateChat"/>
                 </HBox>
             </top>
