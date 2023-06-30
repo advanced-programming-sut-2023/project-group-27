@@ -1,6 +1,8 @@
 package graphics_view.graphical_controller;
 
 import controller.controller.CoreRegisterMenuController;
+import controller.controller.Utilities;
+import graphics_view.view.InitialMenu;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
@@ -45,5 +47,9 @@ public class SecurityQuestionController {
             alert.setContentText("User created successfully!");
             alert.showAndWait();
         }
+    }
+
+    public void back(MouseEvent mouseEvent) throws Exception {
+        new InitialMenu().start(Utilities.getStage());
     }
 }
