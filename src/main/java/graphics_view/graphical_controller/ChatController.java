@@ -24,6 +24,8 @@ import model.chat.Reactions;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ChatController implements Initializable {
@@ -48,7 +50,6 @@ public class ChatController implements Initializable {
     private static Button sendButton;
     @FXML
     private TextField searchUsername;
-    private boolean editMode = false;
 
     public ChatController() {
         controller = new CoreChatMenuController();
@@ -115,17 +116,18 @@ public class ChatController implements Initializable {
         Text content = new Text(message.getContent());
         Message.addTextToMessage(message , content);
         Text date = new Text(message.getDate());
-        ArrayList<Reactions> reactions = message.getReactions();
+        HashMap<User, Reactions> reactions = message.getReactions();
         text.getChildren().add(avatar);
         text.getChildren().add(nickname);
         text.getChildren().add(content);
         text.getChildren().add(date);
-        for (Reactions reactions1 : reactions) {
+        for (Reactions reactions1 : reactions.values()) {
             ImageView imageView = new ImageView(reactions1.getImage());
-            imageView.setFitHeight(10);
-            imageView.setFitWidth(10);
+            imageView.setFitHeight(20);
+            imageView.setFitWidth(20);
             text.getChildren().add(imageView);
         }
+        message.setShowMessage(text);
     }
 
     private static void setupOptions(VBox messageList , HBox options ,
@@ -133,7 +135,22 @@ public class ChatController implements Initializable {
         options.setSpacing(10);
         options.setAlignment(Pos.BASELINE_RIGHT);
         Button reaction = new Button("Reactions");
-        reaction.setOnAction(actionEvent -> newReaction(message));
+        reaction.setOnAction(actionEvent -> {
+            try {
+                if (message.usersReaction(
+                        StrongholdCrusader.getLoggedInUser()) != null) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Reaction Error");
+                    alert.setContentText("You already reacted to this message!");
+                    alert.showAndWait();
+                    return;
+                }
+                newReaction(message);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         options.getChildren().add(reaction);
         if (!message.getSender().getUsername().equals(StrongholdCrusader.
                 getLoggedInUser().getUsername())) return;
@@ -163,8 +180,34 @@ public class ChatController implements Initializable {
         content.setText(newContent);
     }
 
-    private static void newReaction(Message message) {
+    private static void newReaction(Message message) throws IOException {
+        Stage stage = new Stage();
+        BorderPane reactPane = FXMLLoader.load(
+                ChatController.class.getResource("/fxml/Reactions.fxml"));
+        Scene scene = new Scene(reactPane);
+        stage.setScene(scene);
+        stage.show();
+        setupReactions(message , stage , reactPane);
+    }
 
+    private static void setupReactions(Message message, Stage stage,
+                                       BorderPane reactPane) {
+        VBox buttons = (VBox) reactPane.getChildren().get(0);
+        for (Reactions reactions : Reactions.values()) {
+            Button reaction = new Button(reactions.getName());
+            buttons.getChildren().add(reaction);
+            reaction.setOnAction(actionEvent -> {
+                User loggedInUser = StrongholdCrusader.getLoggedInUser();
+                if (message.usersReaction(loggedInUser) == null)
+                    message.addReaction(loggedInUser
+                            , Reactions.getTypeByName(reaction.getText()));
+                stage.close();
+                ImageView newReaction = new ImageView(reactions.getImage());
+                newReaction.setFitHeight(20);
+                newReaction.setFitWidth(20);
+                message.getShowMessage().getChildren().add(newReaction);
+            });
+        }
     }
 
     public void startNewPrivateChat(MouseEvent mouseEvent) {

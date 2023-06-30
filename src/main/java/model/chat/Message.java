@@ -1,10 +1,9 @@
 package model.chat;
 
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import model.User;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 public class Message {
@@ -14,19 +13,18 @@ public class Message {
     private final String date;
     private boolean isSent;
     private boolean isSeen;
-    private final ArrayList<Reactions> reactions;
-    private final ArrayList<User> usersReacted;
+    private final HashMap<User , Reactions> reactions;
+    private HBox showMessage;
     private static final HashMap<Message , Text> messageToText = new HashMap<>();
 
-    public Message(User sender, Chat chat , String content , String date) {
+    public Message(User sender, Chat chat, String content, String date) {
         this.sender = sender;
         this.chat = chat;
         this.content = content;
         this.date = date;
         isSent = false;
         isSeen = false;
-        reactions = new ArrayList<>();
-        usersReacted = new ArrayList<>();
+        reactions = new HashMap<>();
     }
 
     public User getSender() {
@@ -50,6 +48,7 @@ public class Message {
     }
 
     public void setSent(boolean sent) {
+        //TODO implement with server
         isSent = sent;
     }
 
@@ -58,20 +57,22 @@ public class Message {
     }
 
     public void setSeen(boolean seen) {
+        //TODO implement with server
         isSeen = seen;
     }
 
-    public ArrayList<Reactions> getReactions() {
+    public HashMap<User, Reactions> getReactions() {
         return reactions;
     }
 
-    public void addReaction(Reactions reaction) {
-        reactions.add(reaction);
+    public void addReaction(User user , Reactions reaction) {
+        reactions.put(user , reaction);
     }
 
-    public void addUserReacted(User user) {
-        usersReacted.add(user);
+    public Reactions usersReaction(User user) {
+        return reactions.get(user);
     }
+
 
     public static Text getTextByMessage(Message message) {
         return messageToText.get(message);
@@ -79,6 +80,14 @@ public class Message {
 
     public static void addTextToMessage(Message message , Text text) {
         messageToText.put(message , text);
+    }
+
+    public HBox getShowMessage() {
+        return showMessage;
+    }
+
+    public void setShowMessage(HBox showMessage) {
+        this.showMessage = showMessage;
     }
 
     public void editMessage(String newContent) {
