@@ -13,9 +13,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.StrongholdCrusader;
 import model.User;
+import server.Connection;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.Socket;
 import java.net.URL;
 import java.util.Optional;
 
@@ -27,6 +29,11 @@ public class InitialMenu extends Application {
         stage.setTitle("StrongHold Crusader");
         Utilities.init();
         if (stayLoggedInCheck() != null) {
+            Socket socket1 = new Socket("localhost", 8080);
+            Socket socket2 = new Socket("localhost", 8080);
+            Connection connection = new Connection(socket1, socket2);
+            Utilities.setMainServer(connection);
+            connection.response(StrongholdCrusader.getLoggedInUser().getUsername());
             new MainMenu().start(stage);
             return;
         }

@@ -16,6 +16,7 @@ module APGame {
     exports controller;
     opens model to com.google.gson;
     opens model.database to com.google.gson;
+    opens server to com.google.gson;
     opens model.building to com.google.gson;
     opens model.man to com.google.gson;
     opens graphics_view.graphical_controller to javafx.fxml;

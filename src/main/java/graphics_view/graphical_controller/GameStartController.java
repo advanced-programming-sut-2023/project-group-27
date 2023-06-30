@@ -1,28 +1,38 @@
 package graphics_view.graphical_controller;
 
+import com.google.gson.Gson;
 import controller.controller.CoreGameStartMenuController;
+import controller.controller.Utilities;
 import graphics_view.view.GameMenu;
 import graphics_view.view.GameStartMenu;
 import graphics_view.view.MainMenu;
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import model.*;
+import server.Connection;
+import server.GameRequest;
 
+import java.io.IOException;
+import java.net.Socket;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class GameStartController implements Initializable {
     private final CoreGameStartMenuController controller;
@@ -32,19 +42,22 @@ public class GameStartController implements Initializable {
     private final HashMap<User, MonarchyColorType> colors;
     private final User[] allUsersList;
     private final HashMap<User, Integer> playersKeeps;
+    public Button capacityButton;
+    public Button visibilityButton;
     @FXML
     private TilePane miniMap;
     private Cell[] keepsLocations;
     @FXML
     private VBox selectedPlayers;
     @FXML
-    private VBox allUsersVBox;
-    @FXML
     private ScrollPane allUsers;
     @FXML
     private Label miniMapInfo;
     private GameMap selectedMap;
     private int selectedMapIndex = 0;
+    private int capacity = 2;
+    private int port;
+    private String visibility = "public";
 
     public GameStartController() {
         controller = new CoreGameStartMenuController(null, StrongholdCrusader.getLoggedInUser());
@@ -62,24 +75,24 @@ public class GameStartController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateMiniMap();
-        mountAllUsers();
+//        mountAllUsers();
         updateSelectedPlayers();
     }
 
-    private void mountAllUsers() {
-        int index = 1;
-        for (User user : allUsersList) {
-            Button button = new Button(user.getUsername());
-            int finalIndex = index;
-            button.setOnMouseClicked(mouseEvent -> {
-                controller.addPlayer(finalIndex);
-                updateSelectedPlayers();
-            });
-            button.setMinWidth(100);
-            allUsersVBox.getChildren().add(button);
-            index++;
-        }
-    }
+//    private void mountAllUsers() {
+//        int index = 1;
+//        for (User user : allUsersList) {
+//            Button button = new Button(user.getUsername());
+//            int finalIndex = index;
+//            button.setOnMouseClicked(mouseEvent -> {
+//                controller.addPlayer(finalIndex);
+//                updateSelectedPlayers();
+//            });
+//            button.setMinWidth(100);
+//            allUsersVBox.getChildren().add(button);
+//            index++;
+//        }
+//    }
 
     private void updateSelectedPlayers() {
         selectedPlayers.getChildren().clear();
@@ -197,17 +210,112 @@ public class GameStartController implements Initializable {
         }
     }
 
-    public void start(MouseEvent mouseEvent) throws Exception {
+    private int getCapacity() {
+        return capacity;
+    }
+
+    private String getVisibility() {
+        return visibility;
+    }
+
+    public void start(MouseEvent mouseEvent) {
+        Utilities.getMainServer().request("start game");
+    }
+
+
+    public void start2() throws Exception {
+        Gson gson = new Gson();
+        Socket socket3, socket4;
+//        Thread.sleep(1000);
+        socket3 = new Socket("localhost", port);
+        socket4 = new Socket("localhost", port);
+        Connection connection = new Connection(socket3, socket4);
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (int i = 0; i < controller.getThisGamePlayers().size(); i++) {
+            numbers.add(i+1);
+            controller.setColor(i + 1, MonarchyColorType.values()[i]);
+        }
+        controller.assignKeepsAndStart(numbers);
+        GameMenu gameMenu = new GameMenu(controller.getMatch(), connection);
+        Popup popup = new Popup();
+        popup.getContent().add(new Label("aaaa"));
+//        popup.show(GameStartMenu.stage);
+        Platform.runLater(() -> {
+            try {
+                gameMenu.start(new Stage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public void enterGame(Connection connection) throws Exception {
         if (thisGamePlayers.size() < 2) return;
         ArrayList<Integer> keeps = new ArrayList<>();
         for (User user : thisGamePlayers)
             keeps.add(playersKeeps.get(user) + 1);
         controller.assignKeepsAndStart(keeps);
 
-        new GameMenu(controller.getMatch()).start(GameStartMenu.stage);
+        new GameMenu(controller.getMatch(), connection).start(GameStartMenu.stage);
     }
 
     public void exit(MouseEvent mouseEvent) throws Exception {
         new MainMenu().start(GameStartMenu.stage);
+    }
+
+    public void publishGame(MouseEvent mouseEvent) throws IOException {
+        Utilities.getMainServer().request("create game -m " + selectedMapIndex + " -c "
+                + getCapacity() + " -o " + StrongholdCrusader.getLoggedInUser().getUsername() + " -v " + getVisibility());
+        Connection connection = Utilities.getMainServer();
+        new Thread(() -> {
+            while (true) {
+                String command;
+                try {
+                    command = connection.listen();
+                    System.out.println("command: " + command);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                if (command.equals("player joined")) {
+                    String username = null;
+                    try {
+                        username = connection.listen();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    User addedPlayer = StrongholdCrusader.getUserByName(username);
+                    int index = StrongholdCrusader.getUsers().indexOf(addedPlayer);
+                    controller.addPlayer(index + 1);
+                } else {
+                    System.out.println("game port is " + port);
+                    port = Integer.parseInt(command);
+                    try {
+                        start2();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        }).start();
+
+    }
+
+    public void addCapacity(MouseEvent mouseEvent) {
+        capacity++;
+        capacity -= 2;
+        capacity %= 7;
+        capacity += 2;
+        capacityButton.setText(capacity + "");
+    }
+
+    public void changeVisibility(MouseEvent mouseEvent) {
+        if (visibility.equals("public")) {
+            visibility = "private";
+            visibilityButton.setText("private");
+        } else {
+            visibility = "public";
+            visibilityButton.setText("public");
+        }
     }
 }

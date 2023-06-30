@@ -22,8 +22,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.StrongholdCrusader;
 import model.User;
+import server.Connection;
 
 import java.io.IOException;
+import java.net.Socket;
 import java.net.URL;
 import java.util.Optional;
 
@@ -125,6 +127,11 @@ public class LoginController {
         String password = this.password.getText();
         String result = controller.login(username, password, stayLoggedIn);
         if (result.equals("User logged in successfully!")) {
+            Socket socket1 = new Socket("localhost", 8080);
+            Socket socket2 = new Socket("localhost", 8080);
+            Connection connection = new Connection(socket1, socket2);
+            Utilities.setMainServer(connection);
+            connection.response(StrongholdCrusader.getLoggedInUser().getUsername());
             new MainMenu().start(Utilities.getStage());
         } else {
             errorText.setText(result);

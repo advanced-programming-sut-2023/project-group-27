@@ -35,6 +35,7 @@ import model.castle_components.CastleComponentType;
 import model.man.Man;
 import model.man.Soldier;
 import model.man.SoldierType;
+import server.Connection;
 
 import java.util.*;
 
@@ -68,7 +69,7 @@ public class GameController {
 
     private Match match;
     private VBox rateInfo, popularityInfo, foodInfo, goldPopulationInfo;
-    private CoreGameMenuController controller;
+    private CoreGameOnline controller;
     private double tileSize = 30;
     private GameMap mapData;
     public static final HashMap<Cell, StackPane> cellToTile = new HashMap<>();
@@ -76,24 +77,27 @@ public class GameController {
     private double x = -1, y = -1;
     StackPane origin = null, destination = null;
     private List<StackPane> selectedTiles = new ArrayList<>();
-    private CoreMapEditMenuController coreMapEditMenuController;
+    private CoreMapEditOnline coreMapEditMenuController;
     private int count;
-    private CoreSelectUnitMenuController unitController;
+    private CoreSelectUnitOnline unitController;
     private ArrayList<Selectable> selectedUnits = new ArrayList<>();
     private boolean unitSelected;
     private Cell targetCell;
     private String taskName;
     private CoreSelectBuildingMenuController coreSelectBuildingMenuController;
+    private Connection serverConnection;
     private final Media media = new Media(ProfileMenu.class.getResource("/assets/tracks/profileMenu.mp3").toExternalForm());
     private final MediaPlayer mediaPlayer = new MediaPlayer(media);
 
-    public void init(Match match) {
+    public void init(Match match, Connection serverConnection) {
+        new CommandListener(serverConnection, match, this).start();
+        this.serverConnection = serverConnection;
         this.match = match;
         mediaPlayer.setCycleCount(-1);
         mediaPlayer.play();
-        coreMapEditMenuController = new CoreMapEditMenuController(match, null);
+        coreMapEditMenuController = new CoreMapEditOnline(match, serverConnection);
         mapData = match.getCurrentMatchMap();
-        this.controller = new CoreGameMenuController(match, null);
+        this.controller = new CoreGameOnline(match, serverConnection);
         initiateGameMap();
         monarchyInfo.setSpacing(35);
         rateInfo = new VBox();
@@ -324,8 +328,8 @@ public class GameController {
     }
 
     private void assignTask(SoldierType type) {
-        unitController = new CoreSelectUnitMenuController(selectedUnits, match, null,
-                match.getCurrentUser(), mapData, type);
+        unitController = new CoreSelectUnitOnline(selectedUnits , match,
+                mapData , type, serverConnection);
         mainPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
@@ -801,8 +805,12 @@ public class GameController {
             mediaPlayer.stop();
             new MainMenu().start(Utilities.getStage());
         }
-        this.controller = new CoreGameMenuController(match, null);
-        this.coreMapEditMenuController = new CoreMapEditMenuController(match, null);
+        refreshNext();
+    }
+
+    public void refreshNext() {
+        this.controller = new CoreGameOnline(match, serverConnection);
+        this.coreMapEditMenuController = new CoreMapEditOnline(match, serverConnection);
         refreshRateInfoPane();
         currentTurnLAbel.setText(match.getCurrentUser().getUsername());
     }
@@ -858,7 +866,7 @@ public class GameController {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
                     Alert result = new Alert(Alert.AlertType.INFORMATION);
-                    result.setContentText(coreMapEditMenuController.dropBuilding(cellToModify.getLocation(), buildingType.getKey()));
+                    result.setContentText(coreMapEditMenuController.dropBuilding(cellToModify.getLocation(), buildingType.getKey(), buildingType.getValue()));
                     mountCellData(selectedTiles.get(0), cellToModify);
                     result.showAndWait();
                 }
@@ -1091,5 +1099,10 @@ public class GameController {
             }
         });
         return rectangle;
+    }
+
+    public void refreshCell(int x, int y) {
+        Cell cell = match.getCurrentMatchMap().getCell(x, y);
+        mountCellData(cellToTile.get(cell), cell);
     }
 }

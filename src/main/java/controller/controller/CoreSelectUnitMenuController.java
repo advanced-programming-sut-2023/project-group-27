@@ -53,9 +53,13 @@ public class CoreSelectUnitMenuController {
         selectUnitMenu = selectUnitController.getUnitMenu();
     }
 
+    public ArrayList<Selectable> getTheSelected() {
+        return theSelected;
+    }
+
+
     public void run(){
         selectUnitMenu.run();
-        System.out.println("Exited Unit Selection Menu");
     }
 
     public void moveTo(int x,int y) {
