@@ -7,6 +7,7 @@ import static controller.view_controllers.Utilities.getAllBuildingNames;
 import graphics_view.view.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -21,6 +22,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -31,6 +33,7 @@ import model.building.*;
 import model.castle_components.CastleComponent;
 import model.castle_components.CastleComponentType;
 import model.man.Man;
+import model.man.Soldier;
 import model.man.SoldierType;
 
 import java.util.*;
@@ -81,7 +84,7 @@ public class GameController {
     private Cell targetCell;
     private String taskName;
     private CoreSelectBuildingMenuController coreSelectBuildingMenuController;
-    private final Media media= new Media(ProfileMenu.class.getResource("/assets/tracks/profileMenu.mp3").toExternalForm());
+    private final Media media = new Media(ProfileMenu.class.getResource("/assets/tracks/profileMenu.mp3").toExternalForm());
     private final MediaPlayer mediaPlayer = new MediaPlayer(media);
 
     public void init(Match match) {
@@ -118,14 +121,14 @@ public class GameController {
         }
         allMen.removeIf(x -> x.getOwner() != match.getCurrentUser());
         HashMap<SoldierType, Integer> manCount = new HashMap<>();
-        for (SoldierType type: SoldierType.values()) {
+        for (SoldierType type : SoldierType.values()) {
             int count = 0;
-            for (Man man: allMen) {
+            for (Man man : allMen) {
                 if (man.getName().equals(type.getName())) {
                     count++;
                 }
             }
-            if (count == 0)continue;
+            if (count == 0) continue;
             manCount.put(type, count);
         }
 
@@ -193,6 +196,7 @@ public class GameController {
                     if (man.getName().equals(type.getName())) selectedUnits.add(man);
                     i++;
                 }
+                refreshSelectedUnitInfo();
                 assignTask(type);
             });
             hBox.getChildren().add(button);
@@ -208,7 +212,7 @@ public class GameController {
 
         VBox buildings = new VBox();
         buildings.getChildren().add(new Label("buildings to be selected:"));
-        for (StackPane selectedTile: selectedTiles) {
+        for (StackPane selectedTile : selectedTiles) {
             Cell cell = tileToCell.get(selectedTile);
             if (cell.getBuilding() == null || cell.getBuilding().getOwner() != match.getCurrentUser()) {
                 continue;
@@ -234,6 +238,39 @@ public class GameController {
         selectedTilesInfo.getChildren().add(scrollBuildings);
     }
 
+    private void refreshSelectedUnitInfo() {
+        while (infoPane.getChildren().size() > 10) {
+            infoPane.getChildren().remove(10);
+        }
+
+        HBox buttons = new HBox();
+        buttons.setLayoutX(320);
+        buttons.setLayoutY(80);
+        buttons.setSpacing(10);
+        buttons.setAlignment(Pos.CENTER);
+        Button standing = new Button("standing");
+        Button offensive = new Button("offensive");
+        Button defending = new Button("defending");
+        ArrayList<Button> buttonArrayList = new ArrayList<>();
+        buttonArrayList.add(standing);
+        buttonArrayList.add(offensive);
+        buttonArrayList.add(defending);
+        buttons.getChildren().addAll(standing , offensive , defending);
+        Text showState = new Text(((Soldier) selectedUnits.get(0)).getState());
+        buttons.getChildren().add(showState);
+        for (Button button : buttonArrayList) {
+            button.setOnAction(actionEvent -> {
+                showState.setText(button.getText());
+                for (Selectable selectable : selectedUnits) {
+                    if (selectable instanceof Soldier) {
+                        ((Soldier) selectable).setState(button.getText());
+                    }
+                }
+            });
+        }
+        infoPane.getChildren().add(buttons);
+    }
+
     private void handleSelectedBuildingRequests(Cell cell, Building building) {
         coreSelectBuildingMenuController = new CoreSelectBuildingMenuController(
                 building, null, match.getCurrentMonarchy());
@@ -249,23 +286,19 @@ public class GameController {
                     alert.showAndWait();
                 }
             });
-        }
-        else if (building instanceof CivilBuilding
+        } else if (building instanceof CivilBuilding
                 && ((CivilBuilding) building).getCivilType() == CivilBuildingType.BARRACKS) {
             handleUnitCreationBuilding(vBox, SoldierType.getSpecifiedTroops("european"), cell);
-        }
-        else if (building instanceof CivilBuilding
+        } else if (building instanceof CivilBuilding
                 && ((CivilBuilding) building).getCivilType() == CivilBuildingType.MERCENARY_POST) {
             handleUnitCreationBuilding(vBox, SoldierType.getSpecifiedTroops("arab"), cell);
-        }
-        else if (building instanceof Storage) {
+        } else if (building instanceof Storage) {
             for (Map.Entry<GoodsType, Integer> goodsTypeIntegerEntry : ((Storage) building).getMap().entrySet()) {
                 Label label = new Label(
                         goodsTypeIntegerEntry.getKey().getName() + " : " + goodsTypeIntegerEntry.getValue());
                 vBox.getChildren().add(label);
             }
-        }
-        else return;
+        } else return;
         popUpHandler(vBox);
     }
 
@@ -291,8 +324,8 @@ public class GameController {
     }
 
     private void assignTask(SoldierType type) {
-        unitController = new CoreSelectUnitMenuController(selectedUnits , match , null ,
-                match.getCurrentUser() , mapData , type);
+        unitController = new CoreSelectUnitMenuController(selectedUnits, match, null,
+                match.getCurrentUser(), mapData, type);
         mainPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
@@ -320,36 +353,43 @@ public class GameController {
                         }
                         taskName = "air strike";
                         break;
+                    case "Esc":
+                        refreshRateInfoPane();
+                        for (StackPane stackPane : selectedTiles) {
+                            stackPane.setStyle("-fx-border-color: transparent");
+                        }
+                        selectedTiles.clear();
+                        unitSelected = false;
+                        break;
                 }
             }
         });
     }
 
     private void initMove(Cell targetCell) {
-        unitController.moveTo(targetCell.getXCoordinate() , targetCell.getYCoordinate());
+        unitController.moveTo(targetCell.getXCoordinate(), targetCell.getYCoordinate());
         System.out.println("Move!!");
         unitSelected = false;
     }
 
     private void initAttack(Cell targetCell) {
-        unitController.attackByEnemy(targetCell.getXCoordinate() , targetCell.getYCoordinate());
+        unitController.attackByEnemy(targetCell.getXCoordinate(), targetCell.getYCoordinate());
         System.out.println("Attack!!");
         unitSelected = false;
     }
 
-    private void initPatrol(Cell targetCell1 , Cell targetCell2) {
-        unitController.patrol(targetCell1.getXCoordinate() , targetCell1.getYCoordinate() ,
-                targetCell2.getXCoordinate() , targetCell2.getYCoordinate());
+    private void initPatrol(Cell targetCell1, Cell targetCell2) {
+        unitController.patrol(targetCell1.getXCoordinate(), targetCell1.getYCoordinate(),
+                targetCell2.getXCoordinate(), targetCell2.getYCoordinate());
         System.out.println("Patrol!!");
         unitSelected = false;
     }
+
     private void initAirStrike(Cell targetCell) {
-        unitController.attackByXY(targetCell.getXCoordinate() , targetCell.getYCoordinate());
+        unitController.attackByXY(targetCell.getXCoordinate(), targetCell.getYCoordinate());
         System.out.println("Air Strike!!");
         unitSelected = false;
     }
-
-
 
 
     private void initiateGameMap() {
@@ -377,13 +417,13 @@ public class GameController {
             } else if (mouseEvent.getX() < x - tileSize) {
                 gameMap.setLayoutX(
                         Math.max(
-                            gameMap.getLayoutX() - amount
-                            , 1200 - gameMap.getWidth() * gameMap.getScaleX() + (gameMap.getWidth() / 2) * (gameMap.getScaleX() - 1))
-                        );
+                                gameMap.getLayoutX() - amount
+                                , 1200 - gameMap.getWidth() * gameMap.getScaleX() + (gameMap.getWidth() / 2) * (gameMap.getScaleX() - 1))
+                );
             }
             if (mouseEvent.getY() > y + tileSize) {
                 gameMap.setLayoutY(Math.min(gameMap.getLayoutY() + amount, (gameMap.getHeight() / 2) * (gameMap.getScaleY() - 1)));
-            } else if (mouseEvent.getY() < y - tileSize){
+            } else if (mouseEvent.getY() < y - tileSize) {
                 gameMap.setLayoutY(
                         Math.max(
                                 gameMap.getLayoutY() - amount
@@ -426,7 +466,7 @@ public class GameController {
 
 
     private void mountTiles(GameMap selectedMap) {
-        for (int i = selectedMap.getHeight() - 1; i >= 0 ;i--) {
+        for (int i = selectedMap.getHeight() - 1; i >= 0; i--) {
             for (int j = 0; j < selectedMap.getWidth(); j++) {
                 StackPane tile = getTile(selectedMap.getCell(j, i));
                 gameMap.getChildren().add(tile);
@@ -584,11 +624,11 @@ public class GameController {
         Label gold = new Label("Gold: " + monarchy.getGold());
         goldInfo.getChildren().add(gold);
         Label deltaGold;
-        if (monarchy.getTotalTax() > 0){
+        if (monarchy.getTotalTax() > 0) {
             deltaGold = new Label("+" + monarchy.getTotalTax());
             deltaGold.setStyle("-fx-text-fill: green");
             goldInfo.getChildren().add(deltaGold);
-        } else if (monarchy.getTotalTax() < 0){
+        } else if (monarchy.getTotalTax() < 0) {
             deltaGold = new Label("" + monarchy.getTotalTax());
             deltaGold.setStyle("-fx-text-fill: red");
             goldInfo.getChildren().add(deltaGold);
@@ -650,7 +690,7 @@ public class GameController {
         });
 
         tile.setOnMouseClicked(event -> {
-            if (event.getButton() != MouseButton.PRIMARY)return;
+            if (event.getButton() != MouseButton.PRIMARY) return;
             int rows = gameMap.getPrefRows();
             int columns = gameMap.getPrefColumns();
             if (event.getClickCount() == 2) {
@@ -710,8 +750,7 @@ public class GameController {
                 if (origin == null) {
                     enableButtons();
                 }
-            }
-            else if (event.getClickCount() == 1) {
+            } else if (event.getClickCount() == 1) {
                 if (taskName == null) return;
                 switch (taskName) {
                     case "move":
@@ -950,7 +989,7 @@ public class GameController {
     public void dropRock(MouseEvent mouseEvent) {
         Cell cellToModify = tileToCell.get(selectedTiles.get(0));
         VBox vBox = new VBox();
-        for (NaturalEntityType rockType: NaturalEntityType.getRockTypes()) {
+        for (NaturalEntityType rockType : NaturalEntityType.getRockTypes()) {
             Button button = new Button(rockType.getNaturalEntityName());
             vBox.getChildren().add(button);
 
@@ -1004,35 +1043,35 @@ public class GameController {
         producerHBox.setAlignment(Pos.CENTER);
         castleHBox.setAlignment(Pos.CENTER);
 
-        for (CivilBuildingType type :CivilBuildingType.values()) {
+        for (CivilBuildingType type : CivilBuildingType.values()) {
             Image image = Building.getImage(type.getName());
             String name = type.getName();
             Rectangle rectangle = getDragRectangle(image, name);
             civilHBox.getChildren().add(rectangle);
         }
 
-        for (EngineerBuildingType type :EngineerBuildingType.values()) {
+        for (EngineerBuildingType type : EngineerBuildingType.values()) {
             Image image = Building.getImage(type.getName());
             String name = type.getName();
             Rectangle rectangle = getDragRectangle(image, name);
             engineerHBox.getChildren().add(rectangle);
         }
 
-        for (ProductionBuildingType type :ProductionBuildingType.values()) {
+        for (ProductionBuildingType type : ProductionBuildingType.values()) {
             Image image = Building.getImage(type.getName());
             String name = type.getName();
             Rectangle rectangle = getDragRectangle(image, name);
             producerHBox.getChildren().add(rectangle);
         }
 
-        for (CastleComponentType type: CastleComponentType.values()) {
+        for (CastleComponentType type : CastleComponentType.values()) {
             Image image = Building.getImage(type.getName());
             String name = type.getName();
             Rectangle rectangle = getDragRectangle(image, name);
             castleHBox.getChildren().add(rectangle);
         }
 
-        Popup  popup = new Popup();
+        Popup popup = new Popup();
         popup.getContent().add(pane);
         popup.show(Utilities.getStage());
     }
