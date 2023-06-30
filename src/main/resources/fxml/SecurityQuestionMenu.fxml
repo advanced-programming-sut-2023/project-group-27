@@ -26,6 +26,7 @@
             <ListView fx:id="securityQuestions" maxWidth="300"/>
             <TextField promptText="security answer" fx:id="securityAnswer" maxWidth="300"/>
             <Button text="Register" onMouseClicked="#register"/>
+            <Button text="Back" onMouseClicked="#back"/>
         </VBox>
     </center>
 </BorderPane>

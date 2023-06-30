@@ -29,7 +29,7 @@ public class Fight extends Task {
 
     @Override
     public void run() {
-        if (fightable.getLocation().distance(target.getLocation()) > fightable.getAttackRange()) {
+        if (fightable.getLocation().distance(target.getLocation()) > fightable.getAttackRange() + 1) {
             if (!(fightable instanceof Movable)) return;
             new Move(map, (Movable) fightable, target.getLocation().x, target.getLocation().y).run();
             return;
@@ -48,5 +48,10 @@ public class Fight extends Task {
             return false;
         }
         return isValid;
+    }
+
+    @Override
+    public String toString() {
+        return "Fight";
     }
 }

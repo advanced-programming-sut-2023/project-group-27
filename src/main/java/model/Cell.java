@@ -4,6 +4,8 @@ import javafx.scene.layout.StackPane;
 import model.building.Building;
 import model.building.FightableBuilding;
 import model.man.Man;
+import model.man.Soldier;
+import model.man.SoldierType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -128,8 +130,14 @@ public class Cell implements Passable{
         if (this.getBuilding() != null)
             output += "Building Type: " + this.getBuilding().getName() + ", owner: " + this.getBuilding().getOwner().getUsername() + ", hitpoints: " + this.getBuilding().getHitpoint() + "\n";
         if (this.getMen() != null && this.getMen().size() != 0)
-            for (Man man : this.getMen())
-                output += "Human Type: " + man.getName() + ", owner: " + man.getOwner().getUsername() + ", hitpoints: " + man.getHitpoint() + "\n";
+            for (Man man : this.getMen()) {
+                output += "Human Type: " + man.getName() + ", owner: " + man.getOwner().getUsername() + ", hitpoints: " + man.getHitpoint();
+                if (man instanceof Soldier)
+                    output += ", state: " + ((Soldier) man).getState();
+                if (man.getTask() != null)
+                    output += ", task: " + man.getTask().toString();
+                output += "\n";
+            }
         return output;
     }
 

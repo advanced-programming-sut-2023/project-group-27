@@ -79,8 +79,10 @@ public class Match {
             else if (task instanceof Patrol) {
                 owner = ((Patrol) task).getOwner().getDestructable();
             }
-            else {
+            else if (task instanceof AirStrike) {
                 owner = ((AirStrike) task).getOwner().getDestructable();
+            } else {
+                owner = ((Search) task).getOwner().getDestructable();
             }
             if (owner instanceof Soldier) {
                 if (((Soldier) owner).getTask() != task) continue;
@@ -119,7 +121,7 @@ public class Match {
         turnNumber++;
         if (monarchies.size() <= 1) {
             for (Monarchy monarchy: monarchies) {
-                monarchy.getKing().setHighScore(monarchy.getPopularity());
+                monarchy.getKing().setHighScore(Math.max(monarchy.getPopularity(), monarchy.getKing().getHighScore()));
             }
             return "Game Over";
         }
@@ -149,7 +151,9 @@ public class Match {
                         currentMatchMap.getCell(man.getLocation()).getMen().remove(man);
                     } else {
                         if (man.getTask() == null && man instanceof Soldier) {
-                            man.setTask(new Search((Soldier) man, currentMatchMap, this));
+                            Search task = new Search((Soldier) man, currentMatchMap, this);
+                            man.setTask(task);
+                            addTask(task);
                         }
                     }
                 }

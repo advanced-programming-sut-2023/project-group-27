@@ -10,6 +10,7 @@ import model.building.CivilBuildingType;
 import model.building.ProductionBuildingType;
 import model.castle_components.CastleComponent;
 import model.castle_components.CastleComponentType;
+import model.chat.Reactions;
 import model.man.Engineer;
 import model.man.Man;
 import model.man.Soldier;
@@ -163,6 +164,7 @@ public class Utilities {
         CastleComponentType.init();
         LandType.init();
         NaturalEntityType.init();
+        Reactions.init();
     }
 
     public static boolean canBuildOnThisType(Building building, LandType landType) {

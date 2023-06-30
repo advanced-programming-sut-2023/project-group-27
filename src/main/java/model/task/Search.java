@@ -1,9 +1,15 @@
 package model.task;
 
+import com.google.common.util.concurrent.AbstractScheduledService;
 import controller.controller.BFS;
+import model.Fightable;
 import model.GameMap;
 import model.Match;
+import model.User;
 import model.man.Soldier;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Search extends Task{
     private final Soldier soldier;
@@ -27,7 +33,7 @@ public class Search extends Task{
                 range = 5;
                 break;
             case "standing":
-                range = 0;
+                range = 1;
                 break;
             case "offensive":
                 range = 10;
@@ -35,18 +41,34 @@ public class Search extends Task{
         }
         bfs = new BFS(map , soldier , range);
         Soldier target = bfs.getTarget();
-        if (target == null) {
+        if (target != null) {
             isValid = false;
-            return;
+            Fight fight = new Fight(map , soldier , target);
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    if (fight.isValid()) {
+                        match.addTask(fight);
+                    }
+                }
+            } , 500);
+            soldier.setTask(fight);
         }
-        Fight fight = new Fight(map , soldier , target);
-        match.addTask(fight);
-        soldier.setTask(fight);
     }
 
     @Override
     public boolean isValid() {
         if (soldier.getHitPoint() <= 0) return false;
         return isValid;
+    }
+
+    @Override
+    public String toString() {
+        return "Search";
+    }
+
+    public Soldier getOwner() {
+        return soldier;
     }
 }

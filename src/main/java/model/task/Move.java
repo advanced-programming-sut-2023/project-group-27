@@ -23,6 +23,11 @@ public class Move extends Task {
         this.map = map;
         this.bfs = new BFS(map, movable);
         this.path = this.bfs.pathTo(destination);
+        for (Location location: new Location(destinationX, destinationY).getNeighbors(map, movable)) {
+            if (path == null) {
+                this.path = bfs.pathTo(location);
+            }
+        }
         this.movable = movable;
     }
 
@@ -61,5 +66,10 @@ public class Move extends Task {
 
     public Movable getOwner() {
         return movable;
+    }
+
+    @Override
+    public String toString() {
+        return "Move";
     }
 }

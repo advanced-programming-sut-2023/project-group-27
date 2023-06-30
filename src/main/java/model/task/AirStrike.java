@@ -72,4 +72,9 @@ public class AirStrike extends Task{
     public Fightable getOwner() {
         return fightable;
     }
+
+    @Override
+    public String toString() {
+        return "AirStrike";
+    }
 }

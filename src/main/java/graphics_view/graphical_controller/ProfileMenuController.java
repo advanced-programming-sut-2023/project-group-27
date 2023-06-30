@@ -516,6 +516,7 @@ public class ProfileMenuController implements Initializable {
     }
 
     public void exit(MouseEvent mouseEvent) throws Exception {
+        mediaPlayer.stop();
         new MainMenu().start(Utilities.getStage());
     }
 }

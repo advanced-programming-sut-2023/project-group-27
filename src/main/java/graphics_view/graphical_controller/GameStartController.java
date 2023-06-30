@@ -101,7 +101,9 @@ public class GameStartController implements Initializable {
             Button button = new Button(user.getUsername());
             int finalIndex = index;
             button.setOnMouseClicked(mouseEvent -> {
-                controller.removePlayer(finalIndex);
+                if (controller.removePlayer(finalIndex).startsWith("removed "))
+                    playersKeeps.remove(user);
+
                 updateSelectedPlayers();
             });
 
