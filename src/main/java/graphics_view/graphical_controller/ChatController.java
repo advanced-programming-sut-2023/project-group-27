@@ -5,6 +5,7 @@ import controller.controller.Utilities;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -98,6 +99,7 @@ public class ChatController implements Initializable {
                             TextField inputMessage) {
         HBox showMessage = new HBox();
         showMessage.setSpacing(50);
+        showMessage.setPadding(new Insets(5));
         HBox options = new HBox();
         setupOptions(messageList , options , message, inputMessage);
         HBox text = new HBox();
@@ -249,6 +251,7 @@ public class ChatController implements Initializable {
     private void addPrivateChat(PrivateChat pv) {
         HBox privateChat = new HBox();
         privateChat.setSpacing(10);
+        privateChat.setPadding(new Insets(10));
         ImageView avatar = new ImageView(pv.getOtherUser().getAvatar());
         avatar.setFitWidth(20);
         avatar.setFitHeight(20);
@@ -298,5 +301,26 @@ public class ChatController implements Initializable {
         alert.setContentText("Room " + newRoom.getRoomName() + " created" +
                 " successfully!");
         alert.showAndWait();
+        addNewRoom(newRoom);
+    }
+
+    private void addNewRoom(Room room) {
+        HBox newRoom = new HBox();
+        newRoom.setPadding(new Insets(10));
+        newRoom.setSpacing(10);
+        Text roomName = new Text(room.getRoomName());
+        roomName.setFill(Color.ROSYBROWN);
+        roomName.setStyle("-fx-font-size: 20");
+        Button enterChat = new Button("Enter Chat");
+        enterChat.setOnAction(actionEvent -> {
+            enterRoom(room);
+        });
+        newRoom.getChildren().add(roomName);
+        newRoom.getChildren().add(enterChat);
+        roomsList.getChildren().add(newRoom);
+    }
+
+    private void enterRoom(Room room) {
+
     }
 }
