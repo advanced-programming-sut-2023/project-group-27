@@ -37,7 +37,7 @@ public class ChatController implements Initializable {
     @FXML
     private Tab publicChat;
     @FXML
-    private Tab room;
+    private Tab roomChat;
     @FXML
     private Tab privateChats;
     @FXML
@@ -71,14 +71,18 @@ public class ChatController implements Initializable {
     }
 
     private void initPrivateChat() {
+        User loggedInUser = StrongholdCrusader.getLoggedInUser();
         for (PrivateChat privateChat : Messenger.getUsersPrivateChats(
-                StrongholdCrusader.getLoggedInUser())) {
+                loggedInUser)) {
             addPrivateChat(privateChat);
         }
     }
 
     private void initRooms() {
-
+        User loggedInUser = StrongholdCrusader.getLoggedInUser();
+        for (Room room : Messenger.getUsersRooms(loggedInUser)) {
+            addNewRoom(room);
+        }
     }
 
     static void initCurrentChat(VBox messageList , TextField inputMessage) {
@@ -313,14 +317,24 @@ public class ChatController implements Initializable {
         roomName.setStyle("-fx-font-size: 20");
         Button enterChat = new Button("Enter Chat");
         enterChat.setOnAction(actionEvent -> {
-            enterRoom(room);
+            try {
+                enterRoom(room);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
         newRoom.getChildren().add(roomName);
         newRoom.getChildren().add(enterChat);
         roomsList.getChildren().add(newRoom);
     }
 
-    private void enterRoom(Room room) {
-
+    private void enterRoom(Room room) throws IOException {
+        Messenger.setCurrentChat(room);
+        Stage stage = Utilities.getStage();
+        BorderPane borderPane = FXMLLoader.load(
+                ChatController.class.getResource("/fxml/RoomChat.fxml"));
+        Scene scene = new Scene(borderPane);
+        stage.setScene(scene);
+        stage.show();
     }
 }

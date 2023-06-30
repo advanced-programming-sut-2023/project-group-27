@@ -26,7 +26,7 @@
             </bottom>
         </BorderPane>
     </Tab>
-    <Tab fx:id="room" text="Rooms">
+    <Tab fx:id="roomChat" text="Rooms">
         <BorderPane style="-fx-padding: 10">
             <top>
                 <HBox alignment="CENTER" spacing="20">

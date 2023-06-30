@@ -47,7 +47,7 @@ public class PrivateChatController implements Initializable {
 
     private void showMessage(Message message) {
         ChatController.showMessage(message, privateMessageList , inputMessage);
-        //TODO implement showing message
+        //TODO implement showing message for other person
     }
 
 

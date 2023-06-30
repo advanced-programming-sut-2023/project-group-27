@@ -41,7 +41,7 @@ public class CoreChatMenuController {
         if (room != null)
             return null;
         room = new Room(roomsName);
-        room.addUserToRoom(loggedInUser);
+        room.addUserToChat(loggedInUser);
         Messenger.addRoom(room);
         return room;
     }

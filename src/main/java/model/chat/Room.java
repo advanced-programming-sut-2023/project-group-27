@@ -1,7 +1,5 @@
 package model.chat;
 
-import model.User;
-
 public class Room extends Chat{
     private final String roomName;
 
@@ -11,9 +9,5 @@ public class Room extends Chat{
 
     public String getRoomName() {
         return roomName;
-    }
-
-    public void addUserToRoom(User user) {
-        super.addUserToChat(user);
     }
 }
