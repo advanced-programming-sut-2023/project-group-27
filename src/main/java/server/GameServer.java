@@ -3,14 +3,16 @@ package server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 
-public class GameServer extends Thread {
+public class GameServer {
     private int port;
-    private List<Connection> connectionList;
+    private List<Connection> connectionList = new ArrayList<>();
     private long creationTime;
     private ServerSocket serverSocket;
     public Socket socket1, socket2;
+    private Thread thread;
 
     public GameServer(int port) {
         this.port = port;
@@ -22,7 +24,6 @@ public class GameServer extends Thread {
         this.creationTime = System.currentTimeMillis() / 1000;
     }
 
-    @Override
     public void run() {
         for (Connection connection : connectionList) {
             Thread thread = new Thread(() -> {
@@ -30,6 +31,7 @@ public class GameServer extends Thread {
                     String command = null;
                     try {
                         command = connection.listen();
+                        System.out.println("command: " + command);
                         for (Connection connection1 : connectionList) {
                             if (connection1 != connection) {
                                 connection1.request(command);
@@ -49,7 +51,7 @@ public class GameServer extends Thread {
     public void addConnection() throws IOException {
         Socket socket1, socket2;
         GameServer gameServer = this;
-        new Thread(() -> {
+        this.thread = new Thread(() -> {
             try {
                 gameServer.socket1 = serverSocket.accept();
                 gameServer.socket2 = serverSocket.accept();
@@ -58,6 +60,11 @@ public class GameServer extends Thread {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }).start();
+        });
+        thread.start();
+    }
+
+    public void stableConnection() throws InterruptedException {
+        thread.join();
     }
 }

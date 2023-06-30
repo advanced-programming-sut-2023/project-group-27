@@ -108,7 +108,13 @@ public class Server {
                                                 throw new RuntimeException(e);
                                             }
                                             playerConnection.request(String.valueOf(request.getPort()));
+                                            try {
+                                                request.getGameServer().stableConnection();
+                                            } catch (InterruptedException e) {
+                                                throw new RuntimeException(e);
+                                            }
                                         }
+                                        request.getGameServer().run();
                                     }
                                 }
                             }
