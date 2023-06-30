@@ -7,6 +7,7 @@ import controller.controller.CoreGameStartMenuController;
 import controller.controller.Utilities;
 import graphics_view.view.GameMenu;
 import graphics_view.view.MainMenu;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -136,6 +137,7 @@ public class LobbyController {
                     alert.showAndWait();
                     return;
                 }
+                gameRequest.addPlayer(StrongholdCrusader.getLoggedInUser());
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("confirmation");
                 alert.setContentText("waiting for other players");
@@ -145,6 +147,7 @@ public class LobbyController {
                         String command;
                         try {
                                 command = mainServer.listen();
+                                System.out.println("command: " + command);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
@@ -160,22 +163,30 @@ public class LobbyController {
                             gameRequest.addPlayer(addedPlayer);
                         }
                         if (command.equals("game started")) {
-                            String mapIndex, connectionString;
+                            String mapIndex, portStr;
                             try {
-                                connectionString = mainServer.listen();
+                                portStr = mainServer.listen();
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
                             int mapIndexInt = gameRequest.getMapIndex();
                             User owner = gameRequest.getOwner();
-                            Connection gameConnection = gson.fromJson(connectionString, Connection.class);
+                            Socket socket3, socket4;
+                            Connection gameConnection;
+                            try {
+                                socket3 = new Socket("localhost", Integer.parseInt(portStr));
+                                socket4 = new Socket("localhost", Integer.parseInt(portStr));
+                                gameConnection = new Connection(socket3, socket4);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
                             CoreGameStartMenuController startGameController =
                                     new CoreGameStartMenuController(null, owner);
                             for (User user : gameRequest.getPlayers()) {
                                 int index = StrongholdCrusader.getUsers().indexOf(user);
-                                startGameController.addPlayer(index);
+                                startGameController.addPlayer(index + 1);
                             }
-                            startGameController.selectMap(mapIndexInt);
+                            startGameController.selectMap(mapIndexInt + 1);
                             ArrayList<Integer> numbers = new ArrayList<>();
                             for (int i = 0; i < gameRequest.getPlayers().size(); i++) {
                                 numbers.add(i+1);
@@ -183,9 +194,16 @@ public class LobbyController {
                             }
                             startGameController.assignKeepsAndStart(numbers);
                             GameMenu gameMenu = new GameMenu(startGameController.getMatch(), gameConnection);
+                            Platform.runLater(() -> {
+                                try {
+                                    gameMenu.start(Utilities.getStage());
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                            });
                         }
                     }
-                });
+                }).start();
             }
         });
         hBox.getChildren().addAll(circle, label, button);

@@ -83,7 +83,7 @@ public class Server {
                                         for (User player : request.getPlayers()){
                                             Connection playerConnection = userToConnection.get(player);
                                             playerConnection.request("player joined");
-                                            playerConnection.request(player.getUsername());
+                                            playerConnection.request(connectionToUser.get(connection).getUsername());
                                             // TODO receive this
                                         }
                                         request.addPlayer(connectionToUser.get(connection));
@@ -102,22 +102,12 @@ public class Server {
                                                 playerConnection.request("game started");
                                             }
                                             Gson gson = new Gson();
-                                            Socket socket3, socket4;
                                             try {
                                                 request.getGameServer().addConnection();
-                                                socket3 = new Socket("localhost", request.getPort());
-                                                socket4 = new Socket("localhost", request.getPort());
                                             } catch (IOException e) {
                                                 throw new RuntimeException(e);
                                             }
-                                            Connection gameConnection = null;
-                                            try {
-                                                gameConnection = new Connection(socket3, socket4);
-                                            } catch (IOException e) {
-                                                throw new RuntimeException(e);
-                                            }
-                                            String jsonString = gson.toJson(gameConnection);
-                                            playerConnection.request(jsonString);
+                                            playerConnection.request(String.valueOf(request.getPort()));
                                         }
                                     }
                                 }

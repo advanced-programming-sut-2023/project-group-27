@@ -1,5 +1,6 @@
 package server;
 
+import model.StrongholdCrusader;
 import model.User;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ public class GameRequest {
     private List<User> players = new ArrayList<>();
 
     public GameRequest(User owner, int capacity, int mapIndex, int port, boolean isPublic) {
+        this.port = port;
         this.owner = owner;
         this.capacity = capacity;
         this.mapIndex = mapIndex;

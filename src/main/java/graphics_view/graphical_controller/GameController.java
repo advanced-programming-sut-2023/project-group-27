@@ -83,7 +83,7 @@ public class GameController {
     private Connection serverConnection;
 
     public void init(Match match, Connection serverConnection) {
-        new CommandListener(serverConnection, match).run();
+        new CommandListener(serverConnection, match).start();
         this.serverConnection = serverConnection;
         this.match = match;
         coreMapEditMenuController = new CoreMapEditOnline(match, serverConnection);

@@ -6,6 +6,8 @@ import controller.controller.Utilities;
 import graphics_view.view.GameMenu;
 import graphics_view.view.GameStartMenu;
 import graphics_view.view.MainMenu;
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -19,12 +21,14 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import model.*;
 import server.Connection;
 import server.GameRequest;
 
 import java.io.IOException;
+import java.net.Socket;
 import java.net.URL;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -52,6 +56,7 @@ public class GameStartController implements Initializable {
     private GameMap selectedMap;
     private int selectedMapIndex = 0;
     private int capacity = 2;
+    private int port;
     private String visibility = "public";
 
     public GameStartController() {
@@ -211,15 +216,35 @@ public class GameStartController implements Initializable {
         return visibility;
     }
 
+    public void start(MouseEvent mouseEvent) {
+        Utilities.getMainServer().request("start game");
+    }
 
-    public void start(MouseEvent mouseEvent) throws Exception {
-        Utilities.getMainServer().request("start game -u "
-                + StrongholdCrusader.getLoggedInUser().getUsername());
+
+    public void start2() throws Exception {
         Gson gson = new Gson();
-        String response = Utilities.getMainServer().listen();
-        Connection connection = gson.fromJson(response, Connection.class);
-        enterGame(connection);
-        return;
+        Socket socket3, socket4;
+//        Thread.sleep(1000);
+        socket3 = new Socket("localhost", port);
+        socket4 = new Socket("localhost", port);
+        Connection connection = new Connection(socket3, socket4);
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (int i = 0; i < controller.getThisGamePlayers().size(); i++) {
+            numbers.add(i+1);
+            controller.setColor(i + 1, MonarchyColorType.values()[i]);
+        }
+        controller.assignKeepsAndStart(numbers);
+        GameMenu gameMenu = new GameMenu(controller.getMatch(), connection);
+        Popup popup = new Popup();
+        popup.getContent().add(new Label("aaaa"));
+//        popup.show(GameStartMenu.stage);
+        Platform.runLater(() -> {
+            try {
+                gameMenu.start(new Stage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public void enterGame(Connection connection) throws Exception {
@@ -245,6 +270,7 @@ public class GameStartController implements Initializable {
                 String command;
                 try {
                     command = connection.listen();
+                    System.out.println("command: " + command);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -258,10 +284,19 @@ public class GameStartController implements Initializable {
 
                     User addedPlayer = StrongholdCrusader.getUserByName(username);
                     int index = StrongholdCrusader.getUsers().indexOf(addedPlayer);
-                    controller.addPlayer(index);
+                    controller.addPlayer(index + 1);
+                } else {
+                    System.out.println("game port is " + port);
+                    port = Integer.parseInt(command);
+                    try {
+                        start2();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
-        });
+        }).start();
+
     }
 
     public void addCapacity(MouseEvent mouseEvent) {

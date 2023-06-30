@@ -10,6 +10,7 @@ public class GameServer extends Thread {
     private List<Connection> connectionList;
     private long creationTime;
     private ServerSocket serverSocket;
+    public Socket socket1, socket2;
 
     public GameServer(int port) {
         this.port = port;
@@ -46,9 +47,17 @@ public class GameServer extends Thread {
     }
 
     public void addConnection() throws IOException {
-        Socket socket1 = serverSocket.accept();
-        Socket socket2 = serverSocket.accept();
-        Connection connection = new Connection(socket2, socket1);
-        connectionList.add(connection);
+        Socket socket1, socket2;
+        GameServer gameServer = this;
+        new Thread(() -> {
+            try {
+                gameServer.socket1 = serverSocket.accept();
+                gameServer.socket2 = serverSocket.accept();
+                Connection connection = new Connection(gameServer.socket2, gameServer.socket1);
+                connectionList.add(connection);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 }
