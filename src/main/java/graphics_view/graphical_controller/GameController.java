@@ -285,8 +285,9 @@ public class GameController {
                 }
             });
         }
-
-        vBox.getChildren().add(getNumberButton());
+        Button button = getNumberButton();
+        vBox.getChildren().add(button);
+        vBox.getChildren().add(getDecrementButton(button));
     }
 
     private void assignTask(SoldierType type) {
@@ -850,7 +851,9 @@ public class GameController {
         }
 
 
-        vBox.getChildren().add(getNumberButton());
+        Button button = getNumberButton();
+        vBox.getChildren().add(button);
+        vBox.getChildren().add(getDecrementButton(button));
         popUpHandler(vBox);
     }
 
@@ -863,6 +866,19 @@ public class GameController {
                 count++;
                 if (count == (max + 1)) count = 1;
                 number.setText(String.valueOf(count));
+            }
+        });
+        return number;
+    }
+
+    private Button getDecrementButton(Button button) {
+        Button number = new Button("decrement");
+        number.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                count--;
+                if (count == 0) count = 1;
+                button.setText(String.valueOf(count));
             }
         });
         return number;
