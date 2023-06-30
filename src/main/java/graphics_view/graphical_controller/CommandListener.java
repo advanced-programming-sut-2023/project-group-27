@@ -3,6 +3,8 @@ package graphics_view.graphical_controller;
 import controller.controller.CoreGameMenuController;
 import controller.controller.CoreMapEditMenuController;
 import controller.controller.CoreSelectUnitMenuController;
+import controller.controller.Utilities;
+import javafx.application.Platform;
 import model.Cell;
 import model.GameMap;
 import model.Match;
@@ -19,11 +21,13 @@ import java.util.regex.Pattern;
 
 public class CommandListener extends Thread{
     private Connection connection;
+    private GameController controller;
     private Match match;
 
-    public CommandListener(Connection connection, Match match) {
+    public CommandListener(Connection connection, Match match, GameController controller) {
         this.match = match;
         this.connection = connection;
+        this.controller = controller;
     }
 
     @Override
@@ -63,6 +67,25 @@ public class CommandListener extends Thread{
                     CoreMapEditMenuController controller =
                             new CoreMapEditMenuController(match, new Scanner(command + "\nExit"));
                     controller.run();
+                } else if (command.startsWith("refresh")) {
+                    Pattern pattern = Pattern.compile("-x (?<x>\\d+) -y (?<y>\\d+)");
+                    Matcher matcher = pattern.matcher(command);
+                    if (matcher.find()) {
+                        int x = Integer.parseInt(matcher.group("x"));
+                        int y = Integer.parseInt(matcher.group("y"));
+                        Platform.runLater(() -> {
+                            controller.refreshCell(x, y);
+                        });
+                    } else {
+                        throw new Exception("invalid command");
+                    }
+                } else if (command.equals("next turn")) {
+                    CoreGameMenuController gameMenuController =
+                            new CoreGameMenuController(match, new Scanner("next turn\nExit"));
+                    gameMenuController.run();
+                    Platform.runLater(() -> {
+                        controller.refreshNext();
+                    });
                 }
                 System.out.println(command);
             } catch (Exception e) {

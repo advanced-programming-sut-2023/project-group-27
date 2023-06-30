@@ -29,10 +29,12 @@ public class CoreGameOnline {
 
     public String dropBuilding(String xStr , String yStr , String type){
         connection.request("game drop building -x " + xStr + " -y " + yStr + " -t " + type);
+        connection.request("refresh -x " + xStr + " -y " + yStr);
         return controller.dropBuilding(xStr, yStr, type);
     }
 
     public String nextTurn() {
+        connection.request("next turn");
         return controller.nextTurn();
     }
 }

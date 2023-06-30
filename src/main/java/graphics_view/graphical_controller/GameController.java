@@ -83,7 +83,7 @@ public class GameController {
     private Connection serverConnection;
 
     public void init(Match match, Connection serverConnection) {
-        new CommandListener(serverConnection, match).start();
+        new CommandListener(serverConnection, match, this).start();
         this.serverConnection = serverConnection;
         this.match = match;
         coreMapEditMenuController = new CoreMapEditOnline(match, serverConnection);
@@ -752,6 +752,10 @@ public class GameController {
 
     public void nextTurn(MouseEvent mouseEvent) {
         controller.nextTurn();
+        refreshNext();
+    }
+
+    public void refreshNext() {
         this.controller = new CoreGameOnline(match, serverConnection);
         this.coreMapEditMenuController = new CoreMapEditOnline(match, serverConnection);
         refreshRateInfoPane();
@@ -1015,5 +1019,10 @@ public class GameController {
             }
         });
         return rectangle;
+    }
+
+    public void refreshCell(int x, int y) {
+        Cell cell = match.getCurrentMatchMap().getCell(x, y);
+        mountCellData(cellToTile.get(cell), cell);
     }
 }
