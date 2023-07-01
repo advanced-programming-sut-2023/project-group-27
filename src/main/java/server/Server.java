@@ -4,8 +4,12 @@ import com.google.gson.Gson;
 import controller.Controller;
 import model.StrongholdCrusader;
 import model.User;
+import model.chat.Message;
+import model.chat.Messenger;
+import model.chat.MessengerWrapper;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -17,10 +21,14 @@ import java.util.regex.Matcher;
 public class Server {
     ServerSocket server;
     List<Connection> connectionList = new ArrayList<>();
+    List<Connection> connectionChatList = new ArrayList<>();
     List<GameRequest> gameRequests = new ArrayList<>();
     Lobby lobby;
     HashMap<Connection, User> connectionToUser = new HashMap<>();
     HashMap<User, Connection> userToConnection = new HashMap<>();
+
+    HashMap<Connection, User> connectionChatToUser = new HashMap<>();
+    HashMap<User, Connection> userToConnectionChat = new HashMap<>();
 
     public Server(int port) throws IOException {
         this.lobby = new Lobby();
@@ -31,12 +39,21 @@ public class Server {
                 try {
                     Socket socket1 = server.accept();
                     Socket socket2 = server.accept();
+                    Socket socketChat1 = server.accept();
+                    Socket socketChat2 = server.accept();
                     Connection connection = new Connection(socket2, socket1);
+                    Connection connectionChat = new Connection(socketChat2, socketChat1);
                     String username = connection.getResponse();
                     System.out.println("connection added " + username);
+
                     connectionToUser.put(connection, StrongholdCrusader.getUserByName(username));
                     userToConnection.put(StrongholdCrusader.getUserByName(username), connection);
+
+                    connectionChatToUser.put(connectionChat, StrongholdCrusader.getUserByName(username));
+                    userToConnectionChat.put(StrongholdCrusader.getUserByName(username), connectionChat);
+
                     connectionList.add(connection);
+                    connectionChatList.add(connectionChat);
                     new Thread(() -> {
                         System.out.println("listening to " + username);
                         while (true) {
@@ -101,7 +118,6 @@ public class Server {
                                             if (!player.equals(owner)) {
                                                 playerConnection.request("game started");
                                             }
-                                            Gson gson = new Gson();
                                             try {
                                                 request.getGameServer().addConnection();
                                             } catch (IOException e) {
@@ -115,6 +131,23 @@ public class Server {
                                             }
                                         }
                                         request.getGameServer().run();
+                                    }
+                                }
+                            }
+                            if (serverCommands.SEND_MESSAGE.getMatcher(command).matches()) {
+                                User owner = connectionChatToUser.get(connectionChat);
+                                String jsonString = null;
+                                try {
+                                    jsonString = connectionChat.listen();
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Gson gson = new Gson();
+                                for (User user : StrongholdCrusader.getAllUsers().values()) {
+                                    try {
+                                        Connection connectionSend = userToConnectionChat.get(user);
+                                        connectionSend.response(jsonString);
+                                    } catch (Exception ignored) {
                                     }
                                 }
                             }

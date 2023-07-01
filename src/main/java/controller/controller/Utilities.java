@@ -26,6 +26,7 @@ public class Utilities {
     private static TilePane gameMap;
     private static GameController gameController;
     private static Connection mainServer;
+    private static Connection chatRoomConnection;
 
     static {
         sampleSlogans = Arrays.asList(
@@ -60,6 +61,14 @@ public class Utilities {
 
     public static void setGameMap(TilePane gameMap) {
         Utilities.gameMap = gameMap;
+    }
+
+    public static Connection getChatRoomConnection() {
+        return chatRoomConnection;
+    }
+
+    public static void setChatRoomConnection(Connection chatRoomConnection) {
+        Utilities.chatRoomConnection = chatRoomConnection;
     }
 
     public static String validatePassword(String newPassword) {

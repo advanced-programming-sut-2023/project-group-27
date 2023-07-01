@@ -14,8 +14,8 @@ public class Message {
     private boolean isSent;
     private boolean isSeen;
     private final HashMap<User , Reactions> reactions;
-    private HBox showMessage;
-    private static final HashMap<Message , Text> messageToText = new HashMap<>();
+    private transient HBox showMessage;
+    private transient static final HashMap<Message , Text> messageToText = new HashMap<>(); //TODO remove this
 
     public Message(User sender, Chat chat, String content, String date) {
         this.sender = sender;

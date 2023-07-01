@@ -7,10 +7,20 @@ import java.util.HashMap;
 
 public class Messenger {
     private static final ArrayList<Chat> allChats = new ArrayList<>();
-    private static final PublicChat publicChat = new PublicChat();
+    private static PublicChat publicChat = new PublicChat();
     private static final ArrayList<PrivateChat> allPrivateChats = new ArrayList<>();
     private static final HashMap<String , Room> allRooms = new HashMap<>();
     private static Chat currentChat;
+
+    public static void initialize(MessengerWrapper wrapper) {
+        allChats.clear();
+        allChats.addAll(wrapper.getAllChats());
+        allRooms.clear();
+        allRooms.putAll(wrapper.getAllRooms());
+        allPrivateChats.clear();
+        allPrivateChats.addAll(wrapper.getAllPrivateChats());
+        publicChat = wrapper.getPublicChat();
+    }
 
     public static ArrayList<Chat> getAllChats() {
         return allChats;
@@ -67,6 +77,18 @@ public class Messenger {
 
     public static Room roomExists(String roomName) {
         return allRooms.get(roomName);
+    }
+
+    public static ArrayList<PrivateChat> getAllPrivateChats() {
+        return allPrivateChats;
+    }
+
+    public static HashMap<String , Room> getAllRooms() {
+        return allRooms;
+    }
+
+    public static MessengerWrapper getWrapper() {
+        return new MessengerWrapper();
     }
 
 }
