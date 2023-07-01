@@ -201,6 +201,7 @@ public class LobbyController {
                                     throw new RuntimeException(e);
                                 }
                             });
+                            break;
                         }
                     }
                 }).start();
