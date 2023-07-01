@@ -2,10 +2,7 @@ package graphics_view.graphical_controller;
 
 import controller.Controller;
 import controller.controller.Utilities;
-import graphics_view.view.ClientLobby;
-import graphics_view.view.GameStartMenu;
-import graphics_view.view.InitialMenu;
-import graphics_view.view.ProfileMenu;
+import graphics_view.view.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
@@ -43,5 +40,9 @@ public class MainMenuController {
 
     public void enterLobby(MouseEvent mouseEvent) throws Exception {
         new ClientLobby().start(Utilities.getStage());
+    }
+
+    public void enterChatRoom(MouseEvent mouseEvent) throws Exception {
+        new ChatMenu().start(Utilities.getStage());
     }
 }

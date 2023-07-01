@@ -53,11 +53,6 @@ public class ChatController implements Initializable {
 
     public ChatController() {
         controller = new CoreChatMenuController();
-        StrongholdCrusader.setLoggedInUser(new User("mazdak", ""
-                , "mazmz", "", "", "", ""));
-        StrongholdCrusader.addUser(new User("mani", "",
-                "", "manman", "", "", ""));
-        //TODO remove dummy user
     }
 
     @Override

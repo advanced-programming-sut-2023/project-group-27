@@ -17,6 +17,7 @@
             <Button text="profile" onMouseClicked="#enterProfileMenu"/>
             <Button text="start" onMouseClicked="#enterGameStartMenu"/>
             <Button text="lobby" onMouseClicked="#enterLobby"/>
+            <Button text="chat room" onMouseClicked="#enterChatRoom"/>
             <Button text="log out" onMouseClicked="#logOut"/>
             <Button text="exit" onMouseClicked="#exit"/>
         </VBox>
