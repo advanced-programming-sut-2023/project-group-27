@@ -3,9 +3,13 @@ package controller;
 import com.google.gson.Gson;
 import controller.controller.CoreMainMenuController;
 import controller.controller.CoreRegisterMenuController;
+import controller.controller.Utilities;
 import model.GameMap;
 import model.StrongholdCrusader;
 import model.User;
+import model.chat.Message;
+import model.chat.Messenger;
+import model.chat.MessengerWrapper;
 import model.database.Data;
 
 import java.io.File;
@@ -49,12 +53,17 @@ public class Controller {
         StrongholdCrusader.addAllUsers(usersToBeAdded);
         StrongholdCrusader.addAllMaps(gameMapsToBeAdded);
         StrongholdCrusader.addAllStaticMaps(gameMapsToBeAdded1);
+        Messenger.initialize(fetchedData.getWrapper());
+        Utilities.addAllDeletedMessages(fetchedData.getDeletedMessages());
     }
 
     public static void pushData() throws IOException {
         ArrayList<User> users = new ArrayList<>(StrongholdCrusader.getAllUsers().values());
         ArrayList<GameMap> gameMaps = new ArrayList<>(StrongholdCrusader.getAllStaticMaps().values());
-        Data dataToBePushed = new Data(users, gameMaps);
+        MessengerWrapper wrapper = Messenger.getWrapper();
+        ArrayList<Message> deletedMessages = Utilities.getDeletedMessages();
+
+        Data dataToBePushed = new Data(users, gameMaps , wrapper , deletedMessages);
 
         FileWriter fileWriter = new FileWriter("src/main/resources/data/data.json");
         Gson gson = new Gson();

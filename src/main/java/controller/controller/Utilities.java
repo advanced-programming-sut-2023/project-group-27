@@ -29,7 +29,7 @@ public class Utilities {
     private static Connection mainServer;
     private static Connection chatRoomConnection;
     private static boolean chatRoomOpen = false;
-    private static ArrayList<Message> deletedMessages = new ArrayList<>();
+    private static final ArrayList<Message> deletedMessages = new ArrayList<>();
 
     static {
         sampleSlogans = Arrays.asList(
@@ -88,6 +88,10 @@ public class Utilities {
 
     public static void addDeletedMessage(Message message) {
         deletedMessages.add(message);
+    }
+
+    public static void addAllDeletedMessages(ArrayList<Message> deletedMessages) {
+        Utilities.deletedMessages.addAll(deletedMessages);
     }
 
     public static String validatePassword(String newPassword) {
