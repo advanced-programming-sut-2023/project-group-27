@@ -73,7 +73,7 @@ public class RoomChatController implements Initializable {
         alert.showAndWait();
         searchUsername.setText("");
         room.addUserToChat(user);
-        controller.updateChat();
+        CoreChatMenuController.updateChat();
     }
 
     public void sendMessageRoomChat(MouseEvent mouseEvent) {

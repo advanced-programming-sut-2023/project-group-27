@@ -15,7 +15,7 @@ public class Message {
     private final String date;
     private boolean isSent;
     private boolean isSeen;
-    private final HashMap<User , Reactions> reactions;
+    private final HashMap<String , String> reactions;
     private transient HBox showMessage;
     private transient static final HashMap<Message , Text> messageToText = new HashMap<>(); //TODO remove this
 
@@ -63,16 +63,16 @@ public class Message {
         isSeen = seen;
     }
 
-    public HashMap<User, Reactions> getReactions() {
+    public HashMap<String, String> getReactions() {
         return reactions;
     }
 
     public void addReaction(User user , Reactions reaction) {
-        reactions.put(user , reaction);
+        reactions.put(user.getUsername() , reaction.getName());
     }
 
-    public Reactions usersReaction(User user) {
-        return reactions.get(user);
+    public String usersReaction(User user) {
+        return reactions.get(user.getUsername());
     }
 
 

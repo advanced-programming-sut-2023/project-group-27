@@ -13,7 +13,7 @@ import java.util.Date;
 
 public class CoreChatMenuController {
     private User loggedInUser;
-    private Connection connection;
+
     public Message sendMessage(String messageContent) {
         loggedInUser = StrongholdCrusader.getLoggedInUser();
         Date date = new Date();
@@ -49,8 +49,8 @@ public class CoreChatMenuController {
         return room;
     }
 
-    public void updateChat() {
-        connection = Utilities.getChatRoomConnection();
+    public static void updateChat() {
+        Connection connection = Utilities.getChatRoomConnection();
         connection.request("update");
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.excludeFieldsWithModifiers(

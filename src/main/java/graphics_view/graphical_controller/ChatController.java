@@ -122,13 +122,14 @@ public class ChatController implements Initializable {
         Text content = new Text(message.getContent());
         Message.addTextToMessage(message , content);
         Text date = new Text(message.getDate());
-        HashMap<User, Reactions> reactions = message.getReactions();
+        HashMap<String, String> reactions = message.getReactions();
         text.getChildren().add(avatar);
         text.getChildren().add(nickname);
         text.getChildren().add(content);
         text.getChildren().add(date);
-        for (Reactions reactions1 : reactions.values()) {
-            ImageView imageView = new ImageView(reactions1.getImage());
+        for (String reactionName : reactions.values()) {
+            Reactions theReaction = Reactions.getTypeByName(reactionName);
+            ImageView imageView = new ImageView(theReaction.getImage());
             imageView.setFitHeight(20);
             imageView.setFitWidth(20);
             text.getChildren().add(imageView);
@@ -212,6 +213,7 @@ public class ChatController implements Initializable {
                 newReaction.setFitHeight(20);
                 newReaction.setFitWidth(20);
                 message.getShowMessage().getChildren().add(newReaction);
+                CoreChatMenuController.updateChat();
             });
         }
     }
