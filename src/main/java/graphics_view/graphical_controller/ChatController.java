@@ -177,6 +177,7 @@ public class ChatController implements Initializable {
         int index = Messenger.getCurrentChat().getAllMessages().indexOf(message);
         messageList.getChildren().remove(index);
         message.deleteMessage(!forOthers.isSelected());
+        CoreChatMenuController.updateChat();
     }
 
     private static void editMessage(Message message , TextField inputMessage) {
@@ -185,6 +186,7 @@ public class ChatController implements Initializable {
         message.editMessage(newContent);
         Text content = Message.getTextByMessage(message);
         content.setText(newContent);
+        CoreChatMenuController.updateChat();
     }
 
     private static void newReaction(Message message) throws IOException {
