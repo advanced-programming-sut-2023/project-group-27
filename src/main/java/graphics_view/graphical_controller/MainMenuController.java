@@ -43,6 +43,7 @@ public class MainMenuController {
     }
 
     public void enterChatRoom(MouseEvent mouseEvent) throws Exception {
+        Utilities.setChatRoomOpen(true);
         new ChatMenu().start(Utilities.getStage());
     }
 }

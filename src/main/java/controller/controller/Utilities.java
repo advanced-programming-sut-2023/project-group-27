@@ -27,6 +27,7 @@ public class Utilities {
     private static GameController gameController;
     private static Connection mainServer;
     private static Connection chatRoomConnection;
+    private static boolean chatRoomOpen = false;
 
     static {
         sampleSlogans = Arrays.asList(
@@ -69,6 +70,14 @@ public class Utilities {
 
     public static void setChatRoomConnection(Connection chatRoomConnection) {
         Utilities.chatRoomConnection = chatRoomConnection;
+    }
+
+    public static boolean isChatRoomOpen() {
+        return chatRoomOpen;
+    }
+
+    public static void setChatRoomOpen(boolean chatRoomOpen) {
+        Utilities.chatRoomOpen = chatRoomOpen;
     }
 
     public static String validatePassword(String newPassword) {

@@ -46,22 +46,22 @@ public class InitialMenu extends Application {
             new Thread(()-> {
                while (true) {
                    try {
-                       System.out.println("JESUS CHRIST");
                        String result = connectionChat.getResponse();
                        Gson gson = new Gson();
-                       System.out.println("json : " + result);
                        MessengerWrapper wrapper = gson.fromJson(result , MessengerWrapper.class);
                        Messenger.initialize(wrapper);
-                       Platform.runLater(new Runnable() {
-                           @Override
-                           public void run() {
-                               try {
-                                   new ChatMenu().start(Utilities.getStage());
-                               } catch (Exception e) {
-                                   throw new RuntimeException(e);
+                       if (Utilities.isChatRoomOpen()) {
+                           Platform.runLater(new Runnable() {
+                               @Override
+                               public void run() {
+                                   try {
+                                       new ChatMenu().start(Utilities.getStage());
+                                   } catch (Exception e) {
+                                       throw new RuntimeException(e);
+                                   }
                                }
-                           }
-                       });
+                           });
+                       }
                    } catch (Exception e) {
                        throw new RuntimeException(e);
                    }
