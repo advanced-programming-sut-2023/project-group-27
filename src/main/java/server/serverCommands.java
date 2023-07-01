@@ -8,7 +8,7 @@ public enum serverCommands {
     CREATE_GAME("create game -m (?<mapIndex>\\d+) -c (?<capacity>\\d+) -o (?<owner>\\S+) -v (?<visibility>\\S+)"),
     JOIN_GAME("join game"),
     START_GAME("start game"),
-    SEND_MESSAGE("send message");
+    UPDATE_CHAT("update");
 
     private Pattern pattern;
     serverCommands(String regex) {

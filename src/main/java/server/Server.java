@@ -134,7 +134,7 @@ public class Server {
                                     }
                                 }
                             }
-                            if (serverCommands.SEND_MESSAGE.getMatcher(command).matches()) {
+                            if (serverCommands.UPDATE_CHAT.getMatcher(command).matches()) {
                                 User owner = connectionChatToUser.get(connectionChat);
                                 String jsonString = null;
                                 try {
@@ -145,6 +145,7 @@ public class Server {
                                 Gson gson = new Gson();
                                 for (User user : StrongholdCrusader.getAllUsers().values()) {
                                     try {
+                                        if (user.equals(owner)) continue;
                                         Connection connectionSend = userToConnectionChat.get(user);
                                         connectionSend.response(jsonString);
                                     } catch (Exception ignored) {

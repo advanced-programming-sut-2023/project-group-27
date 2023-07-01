@@ -1,11 +1,10 @@
 package controller.controller;
 
+import com.google.gson.Gson;
 import model.StrongholdCrusader;
 import model.User;
-import model.chat.Message;
-import model.chat.Messenger;
-import model.chat.PrivateChat;
-import model.chat.Room;
+import model.chat.*;
+import server.Connection;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -13,6 +12,7 @@ import java.util.Date;
 
 public class CoreChatMenuController {
     private User loggedInUser;
+    private Connection connection;
     public Message sendMessage(String messageContent) {
         loggedInUser = StrongholdCrusader.getLoggedInUser();
         Date date = new Date();
@@ -20,8 +20,9 @@ public class CoreChatMenuController {
         Message message = new Message(
                 loggedInUser , Messenger.getCurrentChat(),messageContent , format.format(date));
         Messenger.getCurrentChat().addNewMessage(message);
+        connection = Utilities.getChatRoomConnection();
+        updateChat();
         return message;
-        //TODO access chat
     }
 
     public String startNewPrivateChat(String username) {
@@ -32,6 +33,7 @@ public class CoreChatMenuController {
             return "Private chat already exists";
         PrivateChat pv = new PrivateChat(loggedInUser, user);
         Messenger.addPrivateChat(pv);
+        updateChat();
         return "New Private chat started with " + username + "!";
     }
 
@@ -43,6 +45,14 @@ public class CoreChatMenuController {
         room = new Room(roomsName);
         room.addUserToChat(loggedInUser);
         Messenger.addRoom(room);
+        updateChat();
         return room;
+    }
+
+    private void updateChat() {
+        connection.request("update");
+        Gson gson = new Gson();
+        String request = gson.toJson(Messenger.getWrapper());
+        connection.request(request);
     }
 }
