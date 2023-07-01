@@ -8,25 +8,19 @@ import java.util.HashMap;
 
 
 public enum Reactions {
-    LAUGH("laugh" , new Image(Reactions.class.getResource(
-            "/assets/reactions/Laugh.jpg").toExternalForm())),
-    LOVE("love" , new Image(Reactions.class.getResource(
-            "/assets/reactions/Love.jpg").toExternalForm())),
-    ANGRY("angry" , new Image(Reactions.class.getResource(
-            "/assets/reactions/Angry.jpg").toExternalForm())),
-    LIKE("like" , new Image(Reactions.class.getResource(
-            "/assets/reactions/Like.png").toExternalForm())),
-    DISLIKE("dislike" , new Image(Reactions.class.getResource(
-            "/assets/reactions/Dislike.png").toExternalForm())),
-    SAD("sad" , new Image(Reactions.class.getResource(
-            "/assets/reactions/Sad.jpg").toExternalForm()));
+    LAUGH("laugh" , "/assets/reactions/Laugh.jpg"),
+    LOVE("love" , "/assets/reactions/Love.jpg"),
+    ANGRY("angry" , "/assets/reactions/Angry.jpg"),
+    LIKE("like" , "/assets/reactions/Like.png"),
+    DISLIKE("dislike" , "/assets/reactions/Dislike.png"),
+    SAD("sad" , "/assets/reactions/Sad.jpg");
 
     private final String name;
-    private final Image image;
+    private final String imagePath;
     private static final HashMap<String , Reactions> allReactions = new HashMap<>();
-    Reactions(String name , Image image) {
+    Reactions(String name , String imagePath) {
         this.name = name;
-        this.image = image;
+        this.imagePath = imagePath;
     }
 
     public static void init() {
@@ -40,7 +34,7 @@ public enum Reactions {
     }
 
     public Image getImage() {
-        return image;
+        return new Image(Reactions.class.getResource(imagePath).toExternalForm());
     }
 
     public static Reactions getTypeByName(String name) {

@@ -1,14 +1,16 @@
 package model.chat;
 
+import com.google.gson.annotations.Expose;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import model.User;
 
+import java.beans.Transient;
 import java.util.HashMap;
 
 public class Message {
     private final User sender;
-    private final Chat chat;
+    private transient final Chat chat;
     private String content;
     private final String date;
     private boolean isSent;

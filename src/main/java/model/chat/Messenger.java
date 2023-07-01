@@ -1,5 +1,6 @@
 package model.chat;
 
+import com.google.gson.annotations.Expose;
 import model.User;
 
 import java.util.ArrayList;
@@ -13,8 +14,6 @@ public class Messenger {
     private static Chat currentChat;
 
     public static void initialize(MessengerWrapper wrapper) {
-        allChats.clear();
-        allChats.addAll(wrapper.getAllChats());
         allRooms.clear();
         allRooms.putAll(wrapper.getAllRooms());
         allPrivateChats.clear();

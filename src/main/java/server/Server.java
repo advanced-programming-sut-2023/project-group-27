@@ -134,23 +134,33 @@ public class Server {
                                     }
                                 }
                             }
-                            if (serverCommands.UPDATE_CHAT.getMatcher(command).matches()) {
-                                User owner = connectionChatToUser.get(connectionChat);
-                                String jsonString = null;
-                                try {
-                                    jsonString = connectionChat.listen();
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
-                                }
-                                Gson gson = new Gson();
-                                for (User user : StrongholdCrusader.getAllUsers().values()) {
+
+                        }
+                    }).start();
+                    new Thread(()-> {
+                        while (true) {
+                            try {
+                                String command = connectionChat.listen();
+                                if (serverCommands.UPDATE_CHAT.getMatcher(command).matches()) {
+                                    User owner = connectionChatToUser.get(connectionChat);
+                                    String jsonString = null;
                                     try {
-                                        if (user.equals(owner)) continue;
-                                        Connection connectionSend = userToConnectionChat.get(user);
-                                        connectionSend.response(jsonString);
-                                    } catch (Exception ignored) {
+                                        jsonString = connectionChat.listen();
+                                    } catch (IOException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                    for (User user : StrongholdCrusader.getAllUsers().values()) {
+                                        try {
+                                            if (user.equals(owner)) continue;
+                                            Connection connectionSend = userToConnectionChat.get(user);
+                                            connectionSend.response(jsonString);
+                                            System.out.println("Messenger data send to others...");
+                                        } catch (Exception ignored) {
+                                        }
                                     }
                                 }
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
                             }
                         }
                     }).start();

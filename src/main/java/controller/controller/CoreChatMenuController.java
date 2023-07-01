@@ -1,6 +1,7 @@
 package controller.controller;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import model.StrongholdCrusader;
 import model.User;
 import model.chat.*;
@@ -53,8 +54,11 @@ public class CoreChatMenuController {
 
     private void updateChat() {
         connection.request("update");
-        Gson gson = new Gson();
-        String request = gson.toJson(Messenger.getWrapper());
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        Gson gson = gsonBuilder.excludeFieldsWithModifiers(
+                java.lang.reflect.Modifier.TRANSIENT).create();
+        MessengerWrapper wrapper = Messenger.getWrapper();
+        String request = gson.toJson(wrapper);
         connection.request(request);
     }
 }

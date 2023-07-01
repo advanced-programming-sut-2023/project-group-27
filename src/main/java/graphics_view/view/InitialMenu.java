@@ -1,8 +1,10 @@
 package graphics_view.view;
 
+import com.google.gson.Gson;
 import controller.Controller;
 import controller.controller.Utilities;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -13,6 +15,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.StrongholdCrusader;
 import model.User;
+import model.chat.Messenger;
+import model.chat.MessengerWrapper;
 import server.Connection;
 
 import java.io.FileNotFoundException;
@@ -39,7 +43,30 @@ public class InitialMenu extends Application {
             Socket socketChat2 = new Socket("localhost", 8080);
             Connection connectionChat = new Connection(socketChat1, socketChat2);
             Utilities.setChatRoomConnection(connectionChat);
-
+            new Thread(()-> {
+               while (true) {
+                   try {
+                       System.out.println("JESUS CHRIST");
+                       String result = connectionChat.getResponse();
+                       Gson gson = new Gson();
+                       System.out.println("json : " + result);
+                       MessengerWrapper wrapper = gson.fromJson(result , MessengerWrapper.class);
+                       Messenger.initialize(wrapper);
+                       Platform.runLater(new Runnable() {
+                           @Override
+                           public void run() {
+                               try {
+                                   new ChatMenu().start(Utilities.getStage());
+                               } catch (Exception e) {
+                                   throw new RuntimeException(e);
+                               }
+                           }
+                       });
+                   } catch (Exception e) {
+                       throw new RuntimeException(e);
+                   }
+               }
+            }).start();
             new MainMenu().start(stage);
             return;
         }
