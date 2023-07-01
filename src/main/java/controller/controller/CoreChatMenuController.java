@@ -33,6 +33,7 @@ public class CoreChatMenuController {
             return "Private chat already exists";
         PrivateChat pv = new PrivateChat(loggedInUser, user);
         Messenger.addPrivateChat(pv);
+        connection = Utilities.getChatRoomConnection();
         updateChat();
         return "New Private chat started with " + username + "!";
     }
@@ -45,6 +46,7 @@ public class CoreChatMenuController {
         room = new Room(roomsName);
         room.addUserToChat(loggedInUser);
         Messenger.addRoom(room);
+        connection = Utilities.getChatRoomConnection();
         updateChat();
         return room;
     }
