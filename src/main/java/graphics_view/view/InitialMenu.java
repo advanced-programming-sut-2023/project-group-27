@@ -39,8 +39,8 @@ public class InitialMenu extends Application {
             Utilities.setMainServer(connection);
             connection.response(StrongholdCrusader.getLoggedInUser().getUsername());
 
-            Socket socketChat1 = new Socket("localhost", 8080);
-            Socket socketChat2 = new Socket("localhost", 8080);
+            Socket socketChat1 = new Socket("localhost", 8160);
+            Socket socketChat2 = new Socket("localhost", 8160);
             Connection connectionChat = new Connection(socketChat1, socketChat2);
             Utilities.setChatRoomConnection(connectionChat);
             new Thread(()-> {

@@ -19,6 +19,7 @@ module APGame {
     opens model.chat to com.google.gson;
     opens server to com.google.gson;
     opens model.building to com.google.gson;
+    opens model.castle_components to com.google.gson;
     opens model.man to com.google.gson;
     opens graphics_view.graphical_controller to javafx.fxml;
     opens graphics_view.view to com.google.gson, javafx.fxml;

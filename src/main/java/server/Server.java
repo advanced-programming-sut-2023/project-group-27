@@ -20,6 +20,7 @@ import java.util.regex.Matcher;
 
 public class Server {
     ServerSocket server;
+    ServerSocket serverChat;
     List<Connection> connectionList = new ArrayList<>();
     List<Connection> connectionChatList = new ArrayList<>();
     List<GameRequest> gameRequests = new ArrayList<>();
@@ -33,14 +34,15 @@ public class Server {
     public Server(int port) throws IOException {
         this.lobby = new Lobby();
         this.server = new ServerSocket(port);
+        this.serverChat = new ServerSocket(port + 80);
         System.out.println("server started ...");
         new Thread(() -> {
             while(true) {
                 try {
                     Socket socket1 = server.accept();
                     Socket socket2 = server.accept();
-                    Socket socketChat1 = server.accept();
-                    Socket socketChat2 = server.accept();
+                    Socket socketChat1 = serverChat.accept();
+                    Socket socketChat2 = serverChat.accept();
                     Connection connection = new Connection(socket2, socket1);
                     Connection connectionChat = new Connection(socketChat2, socketChat1);
                     String username = connection.getResponse();
@@ -146,6 +148,7 @@ public class Server {
                                     String jsonString = null;
                                     try {
                                         jsonString = connectionChat.listen();
+                                        System.out.println(jsonString);
                                     } catch (IOException e) {
                                         throw new RuntimeException(e);
                                     }

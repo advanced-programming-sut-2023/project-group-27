@@ -1108,7 +1108,7 @@ public class GameController {
         mountCellData(cellToTile.get(cell), cell);
     }
 
-    public void openChatScreen(MouseEvent mouseEvent) {
-        //TODO open chat screen
+    public void openChatScreen(MouseEvent mouseEvent) throws Exception {
+        new ChatMenu().start(new Stage());
     }
 }

@@ -336,6 +336,9 @@ public class ChatController implements Initializable {
 
     public void exitChatRoom(MouseEvent mouseEvent) throws Exception {
         Utilities.setChatRoomOpen(false);
-        new MainMenu().start(Utilities.getStage());
+        Stage stage = (Stage) mainTabPane.getScene().getWindow();
+        if (stage.equals(Utilities.getStage()))
+            new MainMenu().start(Utilities.getStage());
+        else stage.close();
     }
 }
