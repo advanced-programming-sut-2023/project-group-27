@@ -24,6 +24,7 @@
         <Button fx:id="dropBuilding" text="drop building" layoutX="1100" layoutY="90" onMouseClicked="#dropBuilding" managed="false" visible="false"/>
         <Button fx:id="dropUnit" text="drop unit" layoutX="1100" layoutY="130" onMouseClicked="#dropUnit" managed="false" visible="false"/>
         <Button fx:id="setTexture" text="setTexture" layoutX="1100" layoutY="170" onMouseClicked="#setTexture" managed="false" visible="false"/>
+        <Button fx:id="openChat" text="OpenChat" layoutX="800" layoutY="140" onMouseClicked="#openChatScreen"/>
         <Label fx:id="currentTurnLAbel" layoutX="900" layoutY="140" style="-fx-font-weight: bold" textAlignment="CENTER"/>
     </Pane>
 </Pane>

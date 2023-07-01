@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="initiate lobby class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/graphics_view/view/ClientLobby.java" afterDir="false" />
+    <list default="true" id="10de436b-8473-4fc5-a31f-67a5377c716e" name="Changes" comment="debug7">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/LobbyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/LobbyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Lobby.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Lobby.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics_view/graphical_controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Game.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,16 +21,16 @@
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
         <option value="module-info" />
-        <option value="CSS File" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="chat-network" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -129,20 +128,7 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClientLobby">
-    <configuration name="ClientLobby" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="graphics_view.view.ClientLobby" />
-      <module name="project-group-27" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="graphics_view.view.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.InitialMenu">
     <configuration name="GameMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="graphics_view.view.GameMenu" />
       <module name="project-group-27" />
@@ -182,6 +168,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LoginMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphics_view.view.LoginMenu" />
+      <module name="AP-project-group27" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="graphics_view.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -199,11 +198,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientLobby" />
         <item itemvalue="Application.InitialMenu" />
         <item itemvalue="Application.MainMenu" />
         <item itemvalue="Application.GameMenu" />
         <item itemvalue="Application.GameStartMenu" />
+        <item itemvalue="Application.LoginMenu" />
       </list>
     </recent_temporary>
   </component>
@@ -262,10 +261,49 @@
       <workItem from="1687763468100" duration="16631000" />
       <workItem from="1687800545423" duration="4795000" />
       <workItem from="1687833670345" duration="15403000" />
-      <workItem from="1687885356011" duration="1291000" />
-      <workItem from="1687903254586" duration="265000" />
-      <workItem from="1687976464858" duration="6845000" />
-      <workItem from="1688018547369" duration="5581000" />
+      <workItem from="1687885356011" duration="871000" />
+    </task>
+    <task id="LOCAL-00075" summary="functionality">
+      <created>1685380811487</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1685380811488</updated>
+    </task>
+    <task id="LOCAL-00076" summary="functionality 2">
+      <created>1685396858431</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1685396858431</updated>
+    </task>
+    <task id="LOCAL-00077" summary="functionality 3">
+      <created>1685426498503</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1685426498504</updated>
+    </task>
+    <task id="LOCAL-00078" summary="functionality 4">
+      <created>1685448572806</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1685448572806</updated>
+    </task>
+    <task id="LOCAL-00079" summary="functionality 5">
+      <created>1685463465505</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1685463465505</updated>
+    </task>
+    <task id="LOCAL-00080" summary="functionality 6">
+      <created>1685466010750</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1685466010750</updated>
     </task>
     <task id="LOCAL-00081" summary="functionality 8">
       <created>1685470318927</created>
@@ -561,56 +599,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687874089381</updated>
     </task>
-    <task id="LOCAL-00123" summary="s">
-      <created>1687886555125</created>
+    <task id="LOCAL-00123" summary="debug">
+      <created>1688031674025</created>
       <option name="number" value="00123" />
       <option name="presentableId" value="LOCAL-00123" />
       <option name="project" value="LOCAL" />
-      <updated>1687886555126</updated>
+      <updated>1688031674025</updated>
     </task>
-    <task id="LOCAL-00124" summary="initiate lobby class">
-      <created>1687978566238</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1687978566238</updated>
-    </task>
-    <task id="LOCAL-00125" summary="initiate lobby class">
-      <created>1687978915556</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1687978915557</updated>
-    </task>
-    <task id="LOCAL-00126" summary="initiate lobby class">
-      <created>1687979719873</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1687979719873</updated>
-    </task>
-    <task id="LOCAL-00127" summary="initiate lobby class">
-      <created>1687981351585</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1687981351586</updated>
-    </task>
-    <task id="LOCAL-00128" summary="initiate lobby class">
-      <created>1687983982355</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1687983982355</updated>
-    </task>
-    <task id="LOCAL-00129" summary="initiate lobby class">
-      <created>1688020962470</created>
-      <option name="number" value="00129" />
-      <option name="presentableId" value="LOCAL-00129" />
-      <option name="project" value="LOCAL" />
-      <updated>1688020962470</updated>
-    </task>
-    <option name="localTasksCounter" value="130" />
+    <option name="localTasksCounter" value="124" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -675,6 +671,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="g start2" />
+    <MESSAGE value="g start3" />
     <MESSAGE value="g start4" />
     <MESSAGE value="implementing game map." />
     <MESSAGE value="implementing game map2" />
@@ -691,16 +689,14 @@
     <MESSAGE value="moveEnhanced" />
     <MESSAGE value="zoomOut borderBug Fix" />
     <MESSAGE value="pop up handler" />
-    <MESSAGE value="debug" />
     <MESSAGE value="cheatBarFunctionality" />
     <MESSAGE value="cheatBarFunctionality2" />
     <MESSAGE value="cheatBarFunctionality3" />
     <MESSAGE value="selectBuilding1" />
     <MESSAGE value="selectBuilding2" />
     <MESSAGE value="selectBuilding3" />
-    <MESSAGE value="s" />
-    <MESSAGE value="initiate lobby class" />
-    <option name="LAST_COMMIT_MESSAGE" value="initiate lobby class" />
+    <MESSAGE value="debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

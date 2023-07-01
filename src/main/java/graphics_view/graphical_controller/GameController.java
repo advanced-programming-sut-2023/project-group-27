@@ -41,6 +41,8 @@ import java.util.*;
 
 public class GameController {
     @FXML
+    private Button openChat;
+    @FXML
     private Label currentTurnLAbel;
     @FXML
     private Button dropRock;
@@ -205,8 +207,8 @@ public class GameController {
             });
             hBox.getChildren().add(button);
         }
-        while (infoPane.getChildren().size() > 10) {
-            infoPane.getChildren().remove(10);
+        while (infoPane.getChildren().size() > 11) {
+            infoPane.getChildren().remove(11);
         }
         infoPane.getChildren().add(selectedTilesInfo);
         ScrollPane scrollSoldiers = new ScrollPane(soldiers);
@@ -243,8 +245,8 @@ public class GameController {
     }
 
     private void refreshSelectedUnitInfo() {
-        while (infoPane.getChildren().size() > 10) {
-            infoPane.getChildren().remove(10);
+        while (infoPane.getChildren().size() > 11) {
+            infoPane.getChildren().remove(11);
         }
 
         HBox buttons = new HBox();
@@ -504,8 +506,8 @@ public class GameController {
     }
 
     public void refreshRateInfoPane() {
-        while (infoPane.getChildren().size() > 10) {
-            infoPane.getChildren().remove(10);
+        while (infoPane.getChildren().size() > 11) {
+            infoPane.getChildren().remove(11);
         }
         infoPane.getChildren().add(monarchyInfo);
         Monarchy monarchy = match.getCurrentUser().getMonarchy();
@@ -1104,5 +1106,9 @@ public class GameController {
     public void refreshCell(int x, int y) {
         Cell cell = match.getCurrentMatchMap().getCell(x, y);
         mountCellData(cellToTile.get(cell), cell);
+    }
+
+    public void openChatScreen(MouseEvent mouseEvent) {
+        //TODO open chat screen
     }
 }
