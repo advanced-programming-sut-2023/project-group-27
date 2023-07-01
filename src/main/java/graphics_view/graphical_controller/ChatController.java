@@ -2,6 +2,7 @@ package graphics_view.graphical_controller;
 
 import controller.controller.CoreChatMenuController;
 import controller.controller.Utilities;
+import graphics_view.view.MainMenu;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -331,5 +332,9 @@ public class ChatController implements Initializable {
         Scene scene = new Scene(borderPane);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void exitChatRoom(MouseEvent mouseEvent) throws Exception {
+        new MainMenu().start(Utilities.getStage());
     }
 }
