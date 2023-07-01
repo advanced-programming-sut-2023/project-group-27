@@ -73,6 +73,7 @@ public class RoomChatController implements Initializable {
         alert.showAndWait();
         searchUsername.setText("");
         room.addUserToChat(user);
+        controller.updateChat();
     }
 
     public void sendMessageRoomChat(MouseEvent mouseEvent) {
@@ -83,7 +84,6 @@ public class RoomChatController implements Initializable {
 
     private void showMessage(Message message) {
         ChatController.showMessage(message , messageList , inputMessage);
-        //TODO implement showing message for other people
     }
 
     public void back(MouseEvent mouseEvent) throws Exception {

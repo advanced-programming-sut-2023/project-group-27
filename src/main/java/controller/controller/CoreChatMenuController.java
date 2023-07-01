@@ -21,7 +21,6 @@ public class CoreChatMenuController {
         Message message = new Message(
                 loggedInUser , Messenger.getCurrentChat(),messageContent , format.format(date));
         Messenger.getCurrentChat().addNewMessage(message);
-        connection = Utilities.getChatRoomConnection();
         updateChat();
         return message;
     }
@@ -34,7 +33,6 @@ public class CoreChatMenuController {
             return "Private chat already exists";
         PrivateChat pv = new PrivateChat(loggedInUser, user);
         Messenger.addPrivateChat(pv);
-        connection = Utilities.getChatRoomConnection();
         updateChat();
         return "New Private chat started with " + username + "!";
     }
@@ -47,12 +45,12 @@ public class CoreChatMenuController {
         room = new Room(roomsName);
         room.addUserToChat(loggedInUser);
         Messenger.addRoom(room);
-        connection = Utilities.getChatRoomConnection();
         updateChat();
         return room;
     }
 
-    private void updateChat() {
+    public void updateChat() {
+        connection = Utilities.getChatRoomConnection();
         connection.request("update");
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.excludeFieldsWithModifiers(
