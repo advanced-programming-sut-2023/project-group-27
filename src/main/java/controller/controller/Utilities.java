@@ -10,6 +10,7 @@ import model.building.CivilBuildingType;
 import model.building.ProductionBuildingType;
 import model.castle_components.CastleComponent;
 import model.castle_components.CastleComponentType;
+import model.chat.Message;
 import model.chat.Reactions;
 import model.man.Engineer;
 import model.man.Man;
@@ -28,6 +29,7 @@ public class Utilities {
     private static Connection mainServer;
     private static Connection chatRoomConnection;
     private static boolean chatRoomOpen = false;
+    private static ArrayList<Message> deletedMessages = new ArrayList<>();
 
     static {
         sampleSlogans = Arrays.asList(
@@ -78,6 +80,14 @@ public class Utilities {
 
     public static void setChatRoomOpen(boolean chatRoomOpen) {
         Utilities.chatRoomOpen = chatRoomOpen;
+    }
+
+    public static ArrayList<Message> getDeletedMessages() {
+        return deletedMessages;
+    }
+
+    public static void addDeletedMessage(Message message) {
+        deletedMessages.add(message);
     }
 
     public static String validatePassword(String newPassword) {
