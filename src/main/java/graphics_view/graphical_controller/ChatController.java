@@ -82,8 +82,18 @@ public class ChatController implements Initializable {
     }
 
     static void initCurrentChat(VBox messageList , TextField inputMessage) {
-        for (Message message : Messenger.getCurrentChat().getAllMessages()) {
-            showMessage(message , messageList , inputMessage);
+        messageList.getChildren().clear();
+        Chat currentChat = Messenger.getCurrentChat();
+        checkpoint:
+        for (Message message : currentChat.getAllMessages()) {
+            for (Message message1 : Utilities.getDeletedMessages()) {
+                if (message1.getDate().equals(message.getDate())
+                && message1.getSender().getUsername().equals(
+                        message.getSender().getUsername())) {
+                    continue checkpoint;
+                }
+            }
+            showMessage(message, messageList, inputMessage);
         }
     }
 
@@ -166,18 +176,18 @@ public class ChatController implements Initializable {
         Button delete = new Button("Delete");
         CheckBox forOthers = new CheckBox("Delete for others");
         delete.setOnAction(actionEvent -> deleteMessage(message , forOthers ,
-                messageList));
+                messageList, inputMessage));
         options.getChildren().add(edit);
         options.getChildren().add(delete);
         options.getChildren().add(forOthers);
     }
 
     private static void deleteMessage(Message message , CheckBox forOthers ,
-                                      VBox messageList) {
-        int index = Messenger.getCurrentChat().getAllMessages().indexOf(message);
-        messageList.getChildren().remove(index);
+                                      VBox messageList , TextField inputMessage) {
+//        int index = Messenger.getCurrentChat().getAllMessages().indexOf(message);
+//        messageList.getChildren().remove(index);
         message.deleteMessage(!forOthers.isSelected());
-        CoreChatMenuController.updateChat();
+        initCurrentChat(messageList , inputMessage);
     }
 
     private static void editMessage(Message message , TextField inputMessage) {

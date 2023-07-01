@@ -1,6 +1,8 @@
 package model.chat;
 
 import com.google.gson.annotations.Expose;
+import controller.controller.CoreChatMenuController;
+import controller.controller.Utilities;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import model.User;
@@ -97,7 +99,10 @@ public class Message {
     }
 
     public void deleteMessage(boolean onlyForSender) {
-        Messenger.getCurrentChat().removeMessage(this);
-        //TODO implement message deletion for others
+        if (!onlyForSender) {
+            Messenger.getCurrentChat().removeMessage(this);
+            CoreChatMenuController.updateChat();
+        }
+        else Utilities.addDeletedMessage(this);
     }
 }
