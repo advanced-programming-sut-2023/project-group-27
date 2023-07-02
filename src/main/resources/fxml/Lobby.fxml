@@ -12,11 +12,14 @@
       fx:controller="graphics_view.graphical_controller.LobbyController"
       prefHeight="400.0" prefWidth="600.0">
     <Button text="createServer" fx:id="createServer" onMouseClicked="#createServer"/>
-    <HBox spacing="50">
-        <TextField fx:id="searchTextField" promptText="searchServer"/>
-        <Button text="search" onMouseClicked="#search"/>
-        <ScrollPane fx:id="serversToJoin"/>
-        <Button text="refresh" onMouseClicked="#refresh"/>
-        <Button text="exit" onMouseClicked="#exit"/>
-    </HBox>
+    <VBox>
+        <HBox spacing="50">
+            <TextField fx:id="searchTextField" promptText="searchServer"/>
+            <Button text="search" onMouseClicked="#search"/>
+            <ScrollPane fx:id="serversToJoin"/>
+            <Button text="refresh" onMouseClicked="#refresh"/>
+            <Button text="exit" onMouseClicked="#exit"/>
+        </HBox>
+        <Button text="chat room" onMouseClicked="#enterChatRoom"/>
+    </VBox>
 </Pane>

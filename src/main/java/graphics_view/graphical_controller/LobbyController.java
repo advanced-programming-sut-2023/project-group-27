@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import controller.controller.CoreGameMenuController;
 import controller.controller.CoreGameStartMenuController;
 import controller.controller.Utilities;
+import graphics_view.view.ChatMenu;
 import graphics_view.view.GameMenu;
 import graphics_view.view.MainMenu;
 import javafx.application.Platform;
@@ -213,5 +214,9 @@ public class LobbyController {
 
     public void exit(MouseEvent mouseEvent) throws Exception {
         new MainMenu().start(Utilities.getStage());
+    }
+
+    public void enterChatRoom(MouseEvent mouseEvent) throws Exception {
+        new ChatMenu().start(new Stage());
     }
 }
